@@ -1,0 +1,196 @@
+<!doctype html>
+<meta charset="utf-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" href="../../../static/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../static/script.js"></script>
+<title>Project Ideas for GSoC 2019 — Creative Commons on GitHub</title>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      
+      <a class="navbar-brand" href="#"><img src="../../../cclogo.svg"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../community/">Community</a>
+            </li>
+          
+          <li class="nav-item dropdown  active">
+            <a class="nav-link" href="/gsoc-2019/" id="navbarDropdown" role="button">Google Summer of Code 2019</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+                <a class="dropdown-item" href="../../../gsoc-2019/project-ideas/">Project Ideas</a>
+              
+                <a class="dropdown-item" href="../../../gsoc-2019/application-instructions/">Application Instructions</a>
+              
+              <!-- <a class="dropdown-item" href="#">Action</a> -->
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h2 class="pb-2"><strong>GSoC 2019: Project Ideas</strong></h2>
+          
+  <p class="text-muted">This is the project idea list for the <a href="/gsoc-2019">Google Summer of Code 2019</a> program. We have a mix of projects that are meant to be installed widely (such as plugins for other software) and projects that are more focused on improving user experience for users of Creative Commons licenses. Regardless of scope, these projects all have a broad and positive community impact.</p>
+  <a name="ideas-top"></a>
+  <hr/>
+  <!-- We display all ideas by default. -->
+  
+  <!-- The following code filters the ideas to display based on the current URL. These mappings are defined in the "databags" folder. 
+  Jinja does not support changing values of variables inside loops, so we have to use namespace objects.
+  See "Scoping Behavior" here: http://jinja.pocoo.org/docs/2.10/templates/#assignments -->
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      
+    
+  
+  
+  
+    
+  
+  <div class="mt-4">
+    <div>
+      
+        <a href="/gsoc-2019/project-ideas">
+          <button type="button" class="btn btn-sm btn-primary" >
+            All Projects
+          </button>
+        </a>
+      
+        <a href="/gsoc-2019/project-ideas/difficulty-easy">
+          <button type="button" class="btn btn-sm btn-primary" >
+            Difficulty: Easy
+          </button>
+        </a>
+      
+        <a href="/gsoc-2019/project-ideas/difficulty-medium">
+          <button type="button" class="btn btn-sm btn-primary" >
+            Difficulty: Medium
+          </button>
+        </a>
+      
+        <a href="/gsoc-2019/project-ideas/difficulty-hard">
+          <button type="button" class="btn btn-sm btn-primary" >
+            Difficulty: Hard
+          </button>
+        </a>
+      
+        <a href="/gsoc-2019/project-ideas/skill-python">
+          <button type="button" class="btn btn-sm btn-primary" >
+            Skill: Python
+          </button>
+        </a>
+      
+        <a href="/gsoc-2019/project-ideas/skill-javascript">
+          <button type="button" class="btn btn-sm btn-primary" >
+            Skill: JavaScript
+          </button>
+        </a>
+      
+        <a href="/gsoc-2019/project-ideas/skill-wordpress">
+          <button type="button" class="btn btn-sm btn-dark" disabled>
+            Skill: WordPress
+          </button>
+        </a>
+      
+      <ul class="list-unstyled m-3">
+      
+        <li class="my-2"><a href="#cc-resource-archive">Creative Commons Resource Archive</a></li>
+      
+        <li class="my-2"><a href="#wordpress-plugin">Creative Commons WordPress plugin</a></li>
+      
+      </ul>
+    </div>
+    <hr/>
+    
+      <div class="project-idea-card m-1 mb-4">
+        <h2 class="card-header"><a name="cc-resource-archive">Creative Commons Resource Archive</a></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Description:</strong> <p>We have an old website that collects resources related to using Creative Commons licenses. It is extremely outdated and we would like to rewrite it from the ground up to nake it easy for non-techbical users to update and to match the style of CC's current website.</p>
+</li>
+          <li class="list-group-item"><strong>Rationale:</strong> <p>A place to collect resources about CC licensing would be very useful to our users but the site as-is is not usable. The design is not modern or intuitive and since it uses a static-site generator, it is not easy for non-technical users to add content, which leads to it being out of date.</p>
+</li>
+          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://resources.creativecommons.org/">CC Resource Archive site</a></li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/tree/gh-pages">CC Resource Archive code</a></li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Expected result:</strong> <p>Release of an up-to-date site that provdes an interface for non-technical users to add content. It should be styled more modernly and to match CC's current website. It should be easily deployable and the code should be documented.</p>
+</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> Python or WordPress/PHP</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar (primary), Breno Ferreira (backup)</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
+          <li class="list-group-item"><strong>Proposal tag to use:</strong> Usability</li>
+        </ul>
+      </div>
+    
+      <div class="project-idea-card m-1 mb-4">
+        <h2 class="card-header"><a name="wordpress-plugin">Creative Commons WordPress plugin</a></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Description:</strong> <p>Our WordPress plugin has not been updated for two years. We'd like to update the plugin so that it is compatible with the latest version of WordPress and the code is in line with WordPress best practices. Add features to it that would help users find CC-licensed content, attribute them correctly, and license their own work under CC licenses.</p>
+</li>
+          <li class="list-group-item"><strong>Rationale:</strong> <p>WordPress is one of the top platforms for creators on the internet who both produce and consume CC-licensed content. We would like to integrate with it as seamlessly as possible to promote use of CC licenses and discovery of CC-licensed content.</p>
+</li>
+          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">WordPress plugin code</a></li>
+<li><a href="https://creativecommons.org/2017/01/18/one-click-wordpress/">Blog post announcing last WordPress plugin update</a></li>
+<li><a href="https://ccsearch.creativecommons.org/">CC Search (for potential integration with the plugin)</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-api">CC Search API code</a></li>
+<li><a href="https://github.com/cc-archive/wordpress-cc-plugin">Older CC WordPress plugin</a></li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Expected result:</strong> <p>Public release of an functional, up-to-date, and well-documented WordPress plugin.</p>
+</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> PHP, WordPress</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar (primary), Kriti Godey (backup)</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
+          <li class="list-group-item"><strong>Proposal tag to use:</strong> Plugin</li>
+        </ul>
+      </div>
+    
+    <a id="back-to-top" href="#ideas-top" class="btn btn-dark btn-sm" role="button">Back to list</a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-12 footer bg-dark text-light py-4 px-3">
+        <small>
+          <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+          <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></strong> unless otherwise specified.</p>
+        </small>
+      </div>
+    </div>
+  </div>
+</body>

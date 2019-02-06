@@ -2,17 +2,17 @@
 <meta charset="utf-8">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-<link rel="stylesheet" href="../../static/style.css">
+<link rel="stylesheet" href="../../../static/style.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../static/script.js"></script>
+<script type="text/javascript" src="../../../static/script.js"></script>
 <title>Project Ideas for GSoC 2019 — Creative Commons on GitHub</title>
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark">
       
-      <a class="navbar-brand" href="#"><img src="../../cclogo.svg"></a>
+      <a class="navbar-brand" href="#"><img src="../../../cclogo.svg"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,19 +20,19 @@
   
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="../../">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
           
             <li class="nav-item">
-              <a class="nav-link" href="../../community/">Community</a>
+              <a class="nav-link" href="../../../community/">Community</a>
             </li>
           
           <li class="nav-item dropdown  active">
             <a class="nav-link" href="/gsoc-2019/" id="navbarDropdown" role="button">Google Summer of Code 2019</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               
-                <a class="dropdown-item" href="../../gsoc-2019/project-ideas/">Project Ideas</a>
+                <a class="dropdown-item" href="../../../gsoc-2019/project-ideas/">Project Ideas</a>
               
-                <a class="dropdown-item" href="../../gsoc-2019/application-instructions/">Application Instructions</a>
+                <a class="dropdown-item" href="../../../gsoc-2019/application-instructions/">Application Instructions</a>
               
               <!-- <a class="dropdown-item" href="#">Action</a> -->
             </div>
@@ -58,6 +58,14 @@
   
   
     
+  
+    
+  
+    
+  
+    
+  
+    
       
       
     
@@ -66,21 +74,15 @@
   
     
   
-    
   
-    
   
     
-  
-    
-  
-  
   
   <div class="mt-4">
     <div>
       
         <a href="/gsoc-2019/project-ideas">
-          <button type="button" class="btn btn-sm btn-dark" disabled>
+          <button type="button" class="btn btn-sm btn-primary" >
             All Projects
           </button>
         </a>
@@ -104,7 +106,7 @@
         </a>
       
         <a href="/gsoc-2019/project-ideas/skill-python">
-          <button type="button" class="btn btn-sm btn-primary" >
+          <button type="button" class="btn btn-sm btn-dark" disabled>
             Skill: Python
           </button>
         </a>
@@ -123,23 +125,11 @@
       
       <ul class="list-unstyled m-3">
       
-        <li class="my-2"><a href="#js-cc-search-library">CC Search JavaScript library</a></li>
-      
-        <li class="my-2"><a href="#narrow-use-case-search">CC Search: search by use case</a></li>
-      
         <li class="my-2"><a href="#button-for-contact">Contact content creators easily</a></li>
       
         <li class="my-2"><a href="#archive-cc-licensed-content">Creative Commons Archive</a></li>
       
-        <li class="my-2"><a href="#js-license-chooser-widget">Creative Commons JavaScript license chooser</a></li>
-      
-        <li class="my-2"><a href="#cc-plugins">Creative Commons plugins for creation platforms and tools</a></li>
-      
         <li class="my-2"><a href="#cc-resource-archive">Creative Commons Resource Archive</a></li>
-      
-        <li class="my-2"><a href="#wordpress-plugin">Creative Commons WordPress plugin</a></li>
-      
-        <li class="my-2"><a href="#new-license-pathway">New educational tool for CC licenses</a></li>
       
         <li class="my-2"><a href="#reimagine-translation-pipeline">New license translation pipeline</a></li>
       
@@ -156,53 +146,6 @@
       </ul>
     </div>
     <hr/>
-    
-      <div class="project-idea-card m-1 mb-4">
-        <h2 class="card-header"><a name="js-cc-search-library">CC Search JavaScript library</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Description:</strong> <p>A JavaScript library allows users to search for CC-licensed content using the CC Catalog API.</p>
-</li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>Providing a JavaScript library that allows integration of searching for CC-licensed content into other websites will expand the reach of CC-licensed content.</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://github.com/creativecommons/cccatalog-api/">CC Catalog API code</a></li>
-<li><a href="https://ccsearch.creativecommons.org/">CC Search</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend">CC Search frontend code</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Expected result:</strong> <p>Public release of an functional, up-to-date, and well-documented JavaScript library using the CC Catalog API.</p>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Breno Ferreira (primary), Alden Page (backup)</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-          <li class="list-group-item"><strong>Proposal tag to use:</strong> Plugin</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4">
-        <h2 class="card-header"><a name="narrow-use-case-search">CC Search: search by use case</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Description:</strong> <p>Prototype in CC Search a way to search for specific materials to use for specific types of projects e.g. CC music for videos or podcasts.</p>
-</li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>Addresses the following insights from our user research (see the Resources section for link to all insights):</p>
-<ul>
-<li>People want to share and find good work, but find it difficult to navigate the abundance of content and information online.</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://medium.com/@janepk/findings-from-the-discovery-phase-of-cc-usability-3bde89d55a74">Findings from the Discovery phase of CC usability</a></li>
-<li><a href="https://ccsearch.creativecommons.org/">CC Search</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend">CC Search code</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Expected result:</strong> <p>A new feature or set of new features added to CC Search to support searching CC-licensed content for a specific purpose. You can decide what use cases you'd like to focus on.</p>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Breno Ferreira (primary), Alden Page (backup)</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-          <li class="list-group-item"><strong>Proposal tag to use:</strong> Search</li>
-        </ul>
-      </div>
     
       <div class="project-idea-card m-1 mb-4">
         <h2 class="card-header"><a name="button-for-contact">Contact content creators easily</a></h5>
@@ -261,50 +204,6 @@
       </div>
     
       <div class="project-idea-card m-1 mb-4">
-        <h2 class="card-header"><a name="js-license-chooser-widget">Creative Commons JavaScript license chooser</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Description:</strong> <p>Our license chooser JavaScript widget has not been updated since 2015. We'd like to update it so that it is functional and follows modern coding style and best practices, including not hardcoding license information and removing its dependency on PHP.</p>
-</li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>Providing a functional JavaScript widget that allows anyone to embed choosing a CC license on their site will widen the reach of CC licenses.</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://github.com/creativecommons/LicenseChooser.js">JS widget code</a></li>
-<li><a href="https://github.com/creativecommons/jswidget">Older CC JS widget</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Expected result:</strong> <p>Public release of an functional, up-to-date, and well-documented JavaScript widget or library.</p>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Breno Ferreira (primary), Kriti Godey (backup)</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-          <li class="list-group-item"><strong>Proposal tag to use:</strong> Plugin</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4">
-        <h2 class="card-header"><a name="cc-plugins">Creative Commons plugins for creation platforms and tools</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Description:</strong> <p>We'd like to create plugins for other platforms to help users find CC-licensed content (using the CC Catalog API), attribute them correctly, and license their own work under CC licenses. Any creation platform or software is fair game. Some ideas: Google Docs/Slides, Microsoft Office, browser extensions,</p>
-</li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>We would like to integrate with as many content creation platforms and tools as seamlessly as possible to promote use of CC licenses and discovery of CC-licensed content.</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://developers.google.com/gsuite/add-ons/overview">Documentation for developing add-ons for G-Suite</a></li>
-<li><a href="https://wiki.creativecommons.org/wiki/Microsoft_Office_Addin">Old Microsoft Office plugin information</a></li>
-<li><a href="https://wiki.creativecommons.org/wiki/OpenOfficeOrg_Addin">Old OpenOffice plugin information</a></li>
-<li><a href="https://github.com/raulsi/CClicense">CC license finder browser extension</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Expected result:</strong> <p>Public release of a functional and well-documented plugin.</p>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> Varies</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Timid Robot Zehta (primary), Kriti Godey (backup)</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-          <li class="list-group-item"><strong>Proposal tag to use:</strong> Plugin</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4">
         <h2 class="card-header"><a name="cc-resource-archive">Creative Commons Resource Archive</a></h5>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong>Description:</strong> <p>We have an old website that collects resources related to using Creative Commons licenses. It is extremely outdated and we would like to rewrite it from the ground up to nake it easy for non-techbical users to update and to match the style of CC's current website.</p>
@@ -320,57 +219,6 @@
 </li>
           <li class="list-group-item"><strong>Skills recommended:</strong> Python or WordPress/PHP</li>
           <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar (primary), Breno Ferreira (backup)</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
-          <li class="list-group-item"><strong>Proposal tag to use:</strong> Usability</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4">
-        <h2 class="card-header"><a name="wordpress-plugin">Creative Commons WordPress plugin</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Description:</strong> <p>Our WordPress plugin has not been updated for two years. We'd like to update the plugin so that it is compatible with the latest version of WordPress and the code is in line with WordPress best practices. Add features to it that would help users find CC-licensed content, attribute them correctly, and license their own work under CC licenses.</p>
-</li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>WordPress is one of the top platforms for creators on the internet who both produce and consume CC-licensed content. We would like to integrate with it as seamlessly as possible to promote use of CC licenses and discovery of CC-licensed content.</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">WordPress plugin code</a></li>
-<li><a href="https://creativecommons.org/2017/01/18/one-click-wordpress/">Blog post announcing last WordPress plugin update</a></li>
-<li><a href="https://ccsearch.creativecommons.org/">CC Search (for potential integration with the plugin)</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-api">CC Search API code</a></li>
-<li><a href="https://github.com/cc-archive/wordpress-cc-plugin">Older CC WordPress plugin</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Expected result:</strong> <p>Public release of an functional, up-to-date, and well-documented WordPress plugin.</p>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> PHP, WordPress</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar (primary), Kriti Godey (backup)</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-          <li class="list-group-item"><strong>Proposal tag to use:</strong> Plugin</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4">
-        <h2 class="card-header"><a name="new-license-pathway">New educational tool for CC licenses</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Description:</strong> <p>Prototype a new pathway and educational tool that clearly communicates the differences between CC licenses and leads the creator to the appropriate license for her needs. See the resources section for the link to the current license chooser.</p>
-</li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>Addresses the following insights from our user research (see the Resources section for link to all insights):</p>
-<ul>
-<li>People understand that CC stands for free content sharing, but the nuances of the specific licenses are lost on them — including experts and longtime CC users.</li>
-<li>People are motivated to license their work under CC, but have a hard time figuring out how to do it.</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://medium.com/@janepk/findings-from-the-discovery-phase-of-cc-usability-3bde89d55a74">Findings from the Discovery phase of CC usability</a></li>
-<li><a href="https://github.com/creativecommons/cc-usability-prototypes/issues/1">Potential design by a UCB student #1</a></li>
-<li><a href="https://github.com/creativecommons/cc-usability-prototypes/issues/2">Potential design by a UCB student #2</a></li>
-<li><a href="https://creativecommons.org/choose/">Current license chooser</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Expected result:</strong> <p>A working interface for users to learn about CC licenses and pick the one most appropriate for their needs. The potential designs linked above are just ideas, you do not have to follow them although you can certainly build on them.</p>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Timid Robot Zehta (primary), Breno Ferreira (backup)</li>
           <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
           <li class="list-group-item"><strong>Proposal tag to use:</strong> Usability</li>
         </ul>
@@ -429,7 +277,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><strong>Description:</strong> <p>Prototype a small, fun idea that gives reward and delight to users, e.g. a graphic CC mascot overlaid to help users navigate the licensing process.</p>
 </li>
-          <li class="list-group-item"><strong>Rationale:</strong> <p>Addresses all the <a href="../../gsoc-2019/project-ideas/project-ideas-list/reward-and-delight/(https:/medium.com/@janepk/findings-from-the-discovery-phase-of-cc-usability-3bde89d55a74">insights from our user research</a>).</p>
+          <li class="list-group-item"><strong>Rationale:</strong> <p>Addresses all the <a href="../../../gsoc-2019/project-ideas/project-ideas-list/reward-and-delight/(https:/medium.com/@janepk/findings-from-the-discovery-phase-of-cc-usability-3bde89d55a74">insights from our user research</a>).</p>
 </li>
           <li class="list-group-item"><strong>Resources:</strong> <ul>
 <li><a href="https://medium.com/@janepk/findings-from-the-discovery-phase-of-cc-usability-3bde89d55a74">Findings from the Discovery phase of CC usability</a></li>
