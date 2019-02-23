@@ -1,0 +1,135 @@
+<!doctype html>
+<meta charset="utf-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link rel="stylesheet" href="../static/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/script.js"></script>
+<title>Contributing Code — Creative Commons on GitHub</title>
+<body>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-md navbar-dark">
+            
+            <a class="navbar-brand" href="../">
+              <img src="../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../community/">Community</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="/gsoc-2019/" id="navbarDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                      <a class="dropdown-item" href="../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h2 class="pb-2"><strong>Contributing Code</strong></h2>
+          
+  <ul class="toc list-unstyled">
+    
+      <li><a href="#existing-projects">Existing projects</a></li>
+    
+      <li><a href="#new-projects">New projects</a></li>
+    
+      <li><a href="#general-best-practices">General best practices</a></li>
+    
+  </ul>
+  <hr/>
+  <h3 id="existing-projects">Existing projects</h3><p>Here's a list of <a href="../projects">all our current projects</a>. We do all of our development on GitHub and are generally open to pull requests. We would especially like help with reviving projects that CC's engineering team does not have the time to actively work on (such as <a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">our WordPress plugin</a> and <a href="https://github.com/creativecommons/LicenseChooser.js">license chooser widget</a>). We're also looking to improve our documentation and increase our automated test coverage across pretty much all our projects.</p>
+<p>We are working on making sure all of our projects are documented, licensed, and have self-contained contribution guidelines. Until we finish that work, follow the checklist below before writing any code.</p>
+<hr>
+<p><strong>Make sure that the project is ready for contribution</strong></p>
+<p>If the repository has no license file, code of conduct, or is missing basic documentation, please create a GitHub issue attached to that repository to set those up. We will prioritize adding these files to repositories towards which people show active interest in contributing.</p>
+<p><strong>Make sure your change will be accepted</strong></p>
+<ul>
+<li>If you want to work on an open GitHub issue tagged "help wanted" or "good first issue", comment on it to indicate that you're working on it (so that no one else does) and submit a pull request when you're ready. No other steps are needed.</li>
+<li>If you want to work on an open GitHub issue without those tags, comment on it to ask if help is desired.<ul>
+<li>Indications that it may not be available to work on are that it was created very recently, it already has someone assigned to it, or it is in a project whose name starts with "Active".</li>
+</ul>
+</li>
+<li>If you want to work on something that there is no GitHub issue for, either create an issue and ask there whether a pull request will be accepted for that change or propose the change in <a href="../community">one of our community forums</a> before creating the ticket.<ul>
+<li>If the project has a roadmap documented in the README, checking the roadmap to see if the feature is already in our pipeline would be a good first step.</li>
+</ul>
+</li>
+</ul>
+<p>When in doubt, ask a question on <a href="../community">one of our community forums</a>.</p>
+<hr>
+<h3 id="new-projects">New projects</h3><p>We are also open to working on or hosting projects that are related to the Creative Commons licenses or general mission. Our <a href="../gsoc-2019/project-ideas">Google Summer of Code project ideas</a> list is a good place to find ideas we'd like implemented. If you're interested in working on one of them, please propose it in one of our <a href="../community">community forums</a> (you don't need to be a student, anyone is welcome to work on those ideas) and work out implementation details with CC staff members before you write any code. If you want to suggest a new project idea, follow the same process.</p>
+<p>In general, we'd like any new projects to use Python, WordPress/PHP, and/or JavaScript (our framework of choice is Vue.js) so that our team can help review and maintain the project.</p>
+<hr>
+<h3 id="general-best-practices">General best practices</h3><p>No matter what kind of project you're working on, these are good guidelines to follow</p>
+<p><strong>Code</strong></p>
+<ul>
+<li>Write comprehensive and robust tests that cover the changes you've made in your work.</li>
+<li>Follow the appropriate code style standards for the language and framework you're using (e.g. PEP 8 for Python).</li>
+<li>Write readable code – keep functions small and modular and name variables descriptively.</li>
+<li>Document your code thoroughly.</li>
+<li>Make sure all the existing tests pass.</li>
+</ul>
+<p><strong>Pull requests</strong></p>
+<ul>
+<li>Use the format specified in pull request template for the repository if there is one.</li>
+<li>Describe your change in detail. Too much detail is better than too little.</li>
+<li>Describle how you tested your change.</li>
+<li>Request a review from either the repository maintainer (if you have that information) or <code>@creativecommons/engineering</code>.</li>
+</ul>
+
+  
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
