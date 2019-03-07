@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="../../static/style.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
     <div class="container-fluid">
       <div class="row justify-content-md-center">
         <div class="col-9">
-          <nav class="navbar navbar-expand-md navbar-dark">
+          <nav class="navbar navbar-expand-xl navbar-dark">
             
             <a class="navbar-brand" href="../../">
               <img src="../../cclogo.svg">
@@ -49,13 +49,23 @@
                     <a class="nav-link" href="../../projects/">Projects</a>
                   </li>
                 
-                  <li class="nav-item">
-                    <a class="nav-link" href="../../community/">Community</a>
-                  </li>
-                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
                 <li class="nav-item dropdown  active">
-                  <a class="nav-link" href="/gsoc-2019/" id="navbarDropdown" role="button">GSoC 2019</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/">General Information</a>
                     
                       <a class="dropdown-item" href="../../gsoc-2019/project-ideas/all/">Project Ideas</a>
                     
@@ -76,12 +86,12 @@
       <div class="col-9 content-wrap">
         <div class="page py-3">
           <a name="top"></a>
-          <h2 class="pb-2"><strong>GSoC 2019: Application Instructions</strong></h2>
+          <h1 class="page-title pb-3 mb-4">GSoC 2019: Application Instructions</h1>
           
-  <h3 id="before-you-apply">Before You Apply</h3><p><a href="https://creativecommons.github.io/community/">Join the <code>#cc-gsoc</code> channel on the CC Slack or the CC Developers mailing list</a> as early as possible to introduce yourself and get feedback on your ideas. All our mentors will be on Slack and respond to emails on the mailing list and it is better to post there rather than contact them individually. Feel free to ask questions!</p>
+  <h2 id="before-you-apply">Before You Apply</h2><p><a href="https://creativecommons.github.io/community/">Join the <code>#cc-gsoc</code> channel on the CC Slack or the CC Developers mailing list</a> as early as possible to introduce yourself and get feedback on your ideas. All our mentors will be on Slack and respond to emails on the mailing list and it is better to post there rather than contact them individually. Feel free to ask questions!</p>
 <p>Take a look at the Creative Commons website to learn more about what we do. Also look at our GitHub organization and our developer community website to get a sense of the code and projects we work on. Making a successful contribution to one of our projects will help us get a sense of your work and is highly recommended.</p>
 <p>Read our <a href="../../gsoc-2019/student-expectations">Student Expectations</a> guide and follow our guidelines when <a href="../../contributing-code">contributing code</a>.</p>
-<h3 id="applying">Applying</h3><p>Your proposal must be submitted through the <a href="https://summerofcode.withgoogle.com/dashboard/">Google Summer of Code website</a>. It is a good idea to submit drafts and get feedback from CC mentors before you submit your final proposal.</p>
+<h2 id="applying">Applying</h2><p>Your proposal must be submitted through the <a href="https://summerofcode.withgoogle.com/dashboard/">Google Summer of Code website</a>. It is a good idea to submit drafts and get feedback from CC mentors before you submit your final proposal.</p>
 <p>Please read and follow <a href="https://google.github.io/gsocguides/student/writing-a-proposal">the GSoC student guide on writing proposals</a>. Format your proposal so that it is readable; keep paragraphs small and divide it into sections. We don’t have a strict template to follow but your proposal must include the following:</p>
 <ul>
 <li>A short and clear title</li>

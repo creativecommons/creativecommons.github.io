@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="../static/style.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
     <div class="container-fluid">
       <div class="row justify-content-md-center">
         <div class="col-9">
-          <nav class="navbar navbar-expand-md navbar-dark">
+          <nav class="navbar navbar-expand-xl navbar-dark">
             
             <a class="navbar-brand" href="../">
               <img src="../cclogo.svg">
@@ -49,13 +49,23 @@
                     <a class="nav-link" href="../projects/">Projects</a>
                   </li>
                 
-                  <li class="nav-item active">
-                    <a class="nav-link" href="../community/">Community</a>
-                  </li>
-                
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
                 <li class="nav-item dropdown ">
-                  <a class="nav-link" href="/gsoc-2019/" id="navbarDropdown" role="button">GSoC 2019</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../gsoc-2019/">General Information</a>
                     
                       <a class="dropdown-item" href="../gsoc-2019/project-ideas/all/">Project Ideas</a>
                     
@@ -76,9 +86,9 @@
       <div class="col-9 content-wrap">
         <div class="page py-3">
           <a name="top"></a>
-          <h2 class="pb-2"><strong>Join the CC Developer Community</strong></h2>
+          <h1 class="page-title pb-3 mb-4">Join the CC Developer Community</h1>
           
-  <h4 id="slack">Slack</h4><p>CC has an active Slack community open to the public. <a href="http://slack-signup.creativecommons.org/">Sign up here</a>. We have a lot of channels to explore, but the ones most relevant to CC's developer community are:</p>
+  <h2 id="slack">Slack</h2><p>CC has an active Slack community open to the public. <a href="http://slack-signup.creativecommons.org/">Sign up here</a>. We have a lot of channels to explore, but the ones most relevant to CC's developer community are:</p>
 <ul>
 <li><code>#intro</code> – introduce yourself here</li>
 <li><code>#cc-developers</code> – for general technical discussion</li>
@@ -88,9 +98,9 @@
 <p>For information regarding joining a channel on Slack, <a href="https://get.slack.help/hc/en-us/articles/205239967-Join-a-channel">look here</a>.</p>
 <p>Note that channels like <code>#general</code> on Slack consist of a fair amount of users. While it is a channel for general-purpose discussions, please take into consideration that a post on such a channel will notify thousands of users. 😄</p>
 <p>If you're looking to talk to someone on CC's tech team, we are all in the Americas and someone is usually around on Slack between 11:00 and 23:00 UTC on weekdays.</p>
-<h4 id="mailing-list">Mailing List</h4><p>Join the <a href="https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers">current CC Developers mailing list here</a>.</p>
+<h2 id="mailing-list">Mailing List</h2><p>Join the <a href="https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers">current CC Developers mailing list here</a>.</p>
 <p>The archives of our <a href="https://lists.ibiblio.org/pipermail/cc-devel/">previous mailing list are here</a>.</p>
-<h4 id="irc">IRC</h4><p>IRC isn't very active anymore, but we have two channels on <a href="https://freenode.net/">Freenode</a>.</p>
+<h2 id="irc">IRC</h2><p>IRC isn't very active anymore, but we have two channels on <a href="https://freenode.net/">Freenode</a>.</p>
 <ul>
 <li><code>#creativecommons-dev</code> – for technical discussion</li>
 <li><code>#creativecommons</code> – for general discussion (this is mirrored to the <code>#general</code> channel on Slack, use only if you want to reach 4000+ people)</li>
