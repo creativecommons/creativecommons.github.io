@@ -106,7 +106,7 @@
           
             <ul class="toc list-unstyled pl-4">
               
-                <li><a href="#code">Code</a></li>
+                <li><a href="#code-guidelines">Code guidelines</a></li>
               
             </ul>
           
@@ -150,12 +150,21 @@
 <li>Describe how you tested your change.</li>
 <li>If a reviewer is not assigned automatically, manually <a href="https://help.github.com/en/articles/requesting-a-pull-request-review">request a review</a> from either the repository maintainer (if you have that information) or <code>@creativecommons/engineering</code>.</li>
 </ul>
-<h3 id="code">Code</h3><ul>
+<h3 id="code-guidelines">Code guidelines</h3><ul>
 <li>Write comprehensive and robust tests that cover the changes you've made in your work.</li>
 <li>Follow the appropriate code style standards for the language and framework you're using (e.g. PEP 8 for Python).</li>
 <li>Write readable code – keep functions small and modular and name variables descriptively.</li>
 <li>Document your code thoroughly.</li>
 <li>Make sure all the existing tests pass.</li>
+<li>User-facing code should support the following browsers:<ul>
+<li>Chrome (Webkit-Blink / 22+)</li>
+<li>Firefox (Gecko / 28+)</li>
+<li>Edge (Chromium based / 12+)</li>
+<li>Opera (Chromium-Blink / 12.1+)</li>
+<li>Safari (Apple’s Webkit / 7+)</li>
+<li>IE 11 (Trident)</li>
+</ul>
+</li>
 </ul>
 <h2 id="new-projects">New projects</h2><p>We are also open to working on or hosting projects that are related to the Creative Commons licenses or general mission. Our <a href="../gsoc-2019/project-ideas">Google Summer of Code project ideas</a> list is a good place to find ideas we'd like implemented. If you're interested in working on one of them, please propose it in one of our <a href="../community">community forums</a> (you don't need to be a student, anyone is welcome to work on those ideas) and work out implementation details with CC staff members before you write any code. If you want to suggest a new project idea, follow the same process.</p>
 <p>In general, we'd like any new projects to use Python, WordPress/PHP, and/or JavaScript (our framework of choice is Vue.js) so that our team can help review and maintain the project.</p>
