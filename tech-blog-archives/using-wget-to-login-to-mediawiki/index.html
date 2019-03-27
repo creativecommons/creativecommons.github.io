@@ -1,15 +1,15 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
-<link rel="stylesheet" href="../static/gen/style.css">
+<link rel="stylesheet" href="../../static/gen/style.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../static/gen/script.js"></script>
-<title>CC Technical Blog Archives — Creative Commons on GitHub</title>
+<script type="text/javascript" src="../../static/gen/script.js"></script>
+<title>Using wget to login to Mediawiki — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -28,8 +28,8 @@
         <div class="col-9">
           <nav class="navbar navbar-expand-xl navbar-dark" name="top">
             
-            <a class="navbar-brand" href="../">
-              <img src="../cclogo.svg">
+            <a class="navbar-brand" href="../../">
+              <img src="../../cclogo.svg">
               <span class="legend">Creative Commons Open Source</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -39,25 +39,25 @@
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../">Home</a></li>
                 
                   <li class="nav-item">
-                    <a class="nav-link" href="../contributing-code/">Contributing Code</a>
+                    <a class="nav-link" href="../../contributing-code/">Contributing Code</a>
                   </li>
                 
                   <li class="nav-item">
-                    <a class="nav-link" href="../projects/">Projects</a>
+                    <a class="nav-link" href="../../projects/">Projects</a>
                   </li>
                 
                 <li class="nav-item dropdown ">
                   <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
                   <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
                     
-                      <a class="dropdown-item" href="../community/">Join the Community</a>
+                      <a class="dropdown-item" href="../../community/">Join the Community</a>
                     
-                      <a class="dropdown-item" href="../community/code-of-conduct/">Code of Conduct</a>
+                      <a class="dropdown-item" href="../../community/code-of-conduct/">Code of Conduct</a>
                     
-                      <a class="dropdown-item" href="../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                      <a class="dropdown-item" href="../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
                     
                   </div>
                 </li>
@@ -65,13 +65,13 @@
                   <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
                   <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
                     
-                      <a class="dropdown-item" href="../gsoc-2019/">General Information</a>
+                      <a class="dropdown-item" href="../../gsoc-2019/">General Information</a>
                     
-                      <a class="dropdown-item" href="../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                      <a class="dropdown-item" href="../../gsoc-2019/project-ideas/all/">Project Ideas</a>
                     
-                      <a class="dropdown-item" href="../gsoc-2019/student-expectations/">Student Expectations</a>
+                      <a class="dropdown-item" href="../../gsoc-2019/student-expectations/">Student Expectations</a>
                     
-                      <a class="dropdown-item" href="../gsoc-2019/application-instructions/">Application Instructions</a>
+                      <a class="dropdown-item" href="../../gsoc-2019/application-instructions/">Application Instructions</a>
                     
                   </div>
                 </li>
@@ -87,75 +87,38 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
-  <p>Here are CC's technical blog posts from 2007-2014 for historical preservation. The information in the posts is probably inaccurate and links may be broken.</p>
+  <h2 class="mb-0">Using wget to login to Mediawiki</h2>
+  <p class="meta text-muted mt-0">by nkinkade on Saturday, April 30, 2011
+  <div class="body"><p>For a couple years CC has been using the <a href="http://meta.wikimedia.org/wiki/Pywikipediabot">Pywikipediabot</a> to do a few small operations on a password-protected, private installation of <a href="http://www.mediawiki.org/wiki/MediaWiki">Mediawiki</a>. It used to create a basic page, then ask people to add information to that page, and then a few days later it would email the contents of that page to a group of people.</p>
+<p>As of a today we are no longer using Pywikipediabot to create a page, but only to mail the contents of a page. It occurred to me that Pywikipediabot was really overkill for such a small task. I decided to write a simple shell script using wget to accomplish this task. My initial thought was to use the <a href="http://www.mediawiki.org/wiki/API:Main_page">Mediawiki API</a>, but all the documents I found indicated that if one merely wanted the content of a page, to use the <em>action</em> query parameter to index.php, such as <em>/SomeArticle?action=raw</em>. It wasn't even clear to me that there would be a way to accomplish what I wanted via the API without having to parse an XML response (there may be, I just didn't readily find it).</p>
+<p>So I decided to use wget to work with the normal user interface of Mediawiki, but I didn't quickly find any good information on how to go about this, or what I found was outdated and no longer worked. I'm posting this here in case it could be useful to anyone else. Here is the basic idea:</p>
+<pre><code>#!/bin/bash
 
-  <ul class="blog-index list-unstyled">
-  
-    <li>
-      <a href="../tech-blog-archives/getting-started-with-hacking-on-the-list/">Getting started with hacking on The List</a>
-      <p class="text-muted small">by Matt Lee on 2014-12-15</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/weekend-hacks/">Weekend hacks #1</a>
-      <p class="text-muted small">by Matt Lee on 2014-12-12</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/how-creativecommons-dot-org-is-built/">How creativecommons.org is built</a>
-      <p class="text-muted small">by Matt Lee on 2014-12-10</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/liberated-pixel-cup-and-distributed-free-culture-projects/">Liberated Pixel Cup and distributed free culture projects</a>
-      <p class="text-muted small">by cwebber on 2012-07-11</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/dissecting_lpcd/">Dissecting the Liberated Pixel Cup Demo</a>
-      <p class="text-muted small">by lunpa on 2012-07-10</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/setting-kernel-clocksource-to-hpet-solves-mysterious-performance-issues/">Setting kernel clocksource to HPET solves mysterious performance issues</a>
-      <p class="text-muted small">by nkinkade on 2012-04-10</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/converting-a-remote-headless-server-to-raid1/">Converting a remote, headless server to RAID1</a>
-      <p class="text-muted small">by nkinkade on 2012-04-06</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/cc-legaleratta-errata-annotations-without-republishing-licenses/">cc.legaleratta: errata annotations without republishing licenses</a>
-      <p class="text-muted small">by lunpa on 2012-02-22</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/see-also-roundup/">See also roundup</a>
-      <p class="text-muted small">by ml on 2012-01-25</p>
-    </li>
-  
-    <li>
-      <a href="../tech-blog-archives/provenance/">Creative Commons: Using Provenance in the Context of Sharing Creative Works</a>
-      <p class="text-muted small">by ml on 2011-10-03</p>
-    </li>
-  
-  </ul>
+PAGE_TITLE="Some_page_title"
 
-  
-    
-  <div class="pagination">
-    
-      <span class="disabled">&laquo; Previous</span>
-    
-    | 1 |
-    
-      <a href="../tech-blog-archives/page/2/">Next &raquo;</a>
-    
-  </div>
+RCPT_TO=group@somesite.com
+MAIL_FROM="'John Q. Public' &lt;management@somesite.com&gt;"
+MAIL_SUBJECT="Contents of ${PAGE_TITLE}"
 
-  
+MW_LOGIN="Some Login"
+MW_PASSWD="somepassword"
+
+# Mediawiki uses a login token, and we must have it for this to work.
+WP_LOGIN_TOKEN=$(wget -q -O - --save-cookies cookies.txt --keep-session-cookies 
+                                     http://www.somesite.com/Special:UserLogin 
+                                     | grep wpLoginToken | grep -o '[a-z0-9]{32}')
+
+wget -q --load-cookies cookies.txt --save-cookies cookies.txt --keep-session-cookies 
+        --post-data "wpName=${MW_LOGIN}&amp;wpPassword;=${MW_PASSWD}
+&amp;wpRemember;=1&amp;wpLoginattempt;=Log%20in&amp;wpLoginToken;=${WP_LOGIN_TOKEN}" 
+        "http://www.somesite.com/index.php?title=Special:UserLogin&amp;action;=submitlogin&amp;type;=login"
+
+wget -q -O email_body.txt --load-cookies cookies.txt 
+        "http://www.somesite.com/${PAGE_TITLE}?action=raw"
+
+cat email_body.txt | mail -s "${MAIL_SUBJECT}" -a "From: ${MAIL_FROM}" ${RCPT_TO}
+</code></pre>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

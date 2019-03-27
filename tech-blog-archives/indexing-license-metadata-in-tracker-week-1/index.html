@@ -1,0 +1,165 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../static/gen/script.js"></script>
+<title>Indexing License Metadata in Tracker, Week 1 — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../">
+              <img src="../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
+          
+  <h2 class="mb-0">Indexing License Metadata in Tracker, Week 1</h2>
+  <p class="meta text-muted mt-0">by jakin on Tuesday, June 12, 2007
+  <div class="body"><p>Week 1 of Google Summer of Code is complete and already I'm seeing much progress. There's a mess of formats to embed licenses into and a mess of ways to embed them. My first task has been straightening out where licenses are embedded in each format and how exactly to go about extracting them. Here's where I'm at:</p>
+<table>
+<thead><tr>
+<th><strong>Format</strong></th>
+<th><strong>Form of Metadata</strong></th>
+<th><strong>Location of Metadata</strong></th>
+<th><strong>Extraction with Tracker</strong></th>
+<th><strong>Test content</strong>  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MP3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>XMP</li>
+<li>Native id3 tags</li>
+</ul>
+<p>|</p>
+<ul>
+<li>For id3v24, the PRIV,XMP field</li>
+<li>WCOP tag</li>
+</ul>
+<p>| Extracting MP3 tags has moved from an ID3 parser to handing off the work to GStreamer/MPlayer/Totem. As far as I can tell, this prevents me from extracting the XMP. | XMP embedded with Exempi<br>
+PDF | XMP | metadata field | Extend the current PDF extractor (which uses Poppler) to read the metadata field. However reading the metadata field isn't wrapped in Poppler's glib bindings, but I have written and submitted a patch. | XMP embedded with Exempi<br>
+OGG |</p>
+<ul>
+<li>XMP</li>
+<li>Native comment field</li>
+</ul>
+<p>|</p>
+<ul>
+<li>XMP comment field</li>
+<li>LICENSE comment field</li>
+</ul>
+<p>| Extend the GStreamer extractor to check for the presence of an XMP comment field. GStreamer places this within the EXTENDED_COMMENTS tag (requires GStreamer 0.10.10). | XMP embedded with vorbiscomment<br>
+JPEG | XMP | Exif XML Packet field | Extend the Imagemagick extractor, using 'convert file.jpg xmp:-' to read XMP | XMP embedded with Exempi<br>
+PNG | XMP | iTXt, XML:com:adobe:xmp field | Extend the PNG extractor, adding a check for XML:com:adobe:xmp. (For backwards compatibility, the ability to read iTXt in libpng is disabled by default until version 1.3.) | XMP embedded with Exempi<br>
+HTML | RDFa | &lt;a rel="license" href="..."&gt;&lt;/a&gt; | Write a new HTML extractor, using libxml2, and scan for RDFa | Various actual sites, including creativecommons.org<br>
+SVG | RDF | /svg/metadata/rdf | I could specifically parse the XML, checking for the RDF schema used by Inkscape. Should I check for XMP also??? | Inkscape<br>
+Any XML | XMP | Wherever valid | Write a generic XML extractor (and/or extractor for each particular format), scanning with libxml2 |<br>
+OpenOffice.org (OASIS) | OO.org CC License Add-In SoC Project is working on the spec | OO.org Add-In<br>
+MS Office | DocumentSummaryInformation Infile, CreativeCommons_LicenseURL property | Extend existing msoffice extractor | <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=113b53dd-1cc0-4fbe-9e1d-b91d07c76504&amp;displaylang=en">MSOffice Add-in</a></p>
+<p>If this is all well and good, I'd like to help update the CC Wiki with updated embedding specifications.</p>
+<p>As far as coding goes, I wrote the code for Tracker to check for and extract metadata from XMP sidecar files. XMP is parsed by Hubert's XMP library. The timing of Adobe's release of their XMP Toolkit and Hubert subsequently release of Exempi 1.99.x, have been an early boon to the project. The 'license' tag in the CC namespace is the only metadata extracted at the moment.</p>
+<p>I've also been hacking the extractors of the above list of formats to determine the feasibility and processes of extracting license metadata from each.</p>
+<p>Where I stand now is that feedback on the above would be much appreciated and if all is well I can get the XMP sidecar code I have pushed into Tracker's Subversion repository soon.</p>
+<p>Happy hacking, indeed.</p>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

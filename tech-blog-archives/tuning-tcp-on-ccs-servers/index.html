@@ -1,0 +1,136 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../static/gen/script.js"></script>
+<title>Tuning TCP on CC&#39;s servers — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../">
+              <img src="../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
+          
+  <h2 class="mb-0">Tuning TCP on CC&#39;s servers</h2>
+  <p class="meta text-muted mt-0">by nkinkade on Wednesday, December 8, 2010
+  <div class="body"><p>A couple weeks ago we launched a new rack-mount server, which is kindly hosted by the <a href="http://www.isc.org/">ISC</a> in their Redwood City, California data center. The sole purpose of this new server is to host static content, mostly i.creativecommons.org, which is probably the busiest domain CC has due to the license icons and badges being served from there.</p>
+<p>Upon moving i.creativecommons.org to this new machine I noticed that there were terrible problems with connection timeouts when requesting images. After thrashing around for why this was happening, I used <code>tcpdump</code> to grab some network traffic on the server and discovered that SYN requests were arriving at the machine and dying right there, with no subsequent SYN-ACK. At that point it was clear that this was not a <a href="http://www.varnish-cache.org/">Varnish</a> or Apache problem, but something at a much lower level. After testing various TCP tweaks in the running kernel I discovered that setting <code>net.ipv4.tcp_max_syn_backlog=2048</code>, up from the default of 256, <em>and</em> turning on <code>net.ipv4.tcp_syncookies</code> seemed to resolve the connection timeout issues.</p>
+<p>However, the kernel message log was <em>filled</em> with message like the following. In fact, there was one such message written to the log every minute:</p>
+<p><em>possible SYN flooding on port 80. Sending cookies.</em></p>
+<p>I was confused by this because ostensibly the site was functioning just fine. My understanding was that SYN cookies were only activated when the SYN queue filled up, but as far as I could tell I had increased the depth of the queue sufficiently to avoid that problem. I even tried setting <code>net.ipv4.tcp_max_syn_backlog</code> arbitrarily high to see what would happen. Same result: site operated fine, but with SYN cookie kernel messages. In my testing I also discovered that disabling <code>net.ipv4.tcp_syncookies</code> would immediately bring back the connection timeout problems. Additionally, <code>netstat</code> revealed that though the site appeared to be functioning correctly, there were still an abnormally large amount of 'failed connection attempts' listed in the TCP stats.</p>
+<p>I went over and over all the TCP settings and just couldn't figure out what was happening, nor did Google shed any light on this. I then decided to do this:</p>
+<p><code>$ netstat -n | grep SYN_RECV | wc -l</code></p>
+<p>I ran this command many times in a row over a period of time and was surprised to see that the result was nearly always 256, give or take a few. It then occurred to me that that number looked a lot like the default value of <code>net.ipv4.tcp_max_syn_backlog</code>. However, as far as I knew (and know), all of those kernel parameters are supposed to be dynamic, capable of being changed on-the-fly, with <code>sysctl</code> or writing directly to the /proc file system. So I set all my TCP changes in <code>/etc/sysctl.conf</code> and rebooted the machine. Sure enough, since coming back up about a day ago I haven't seen a single kernel message about SYN cookies. I even decided to just disable SYN cookies altogether based on a <a href="http://lkml.org/lkml/2008/2/5/167">recommendation</a> to do so in the default <code>/etc/sysctl.conf</code> file found on <a href="http://www.debian.org/">Debian</a> systems.</p>
+<p>The machine is now humming along nicely. For reference here are the TCP parameters I changed. The values were gleaned from various sites while doing extensive research on TCP tuning. Some of the values seem improbable to me, but don't seem to be having any perceptible negative impact, and were also recommended in TCP tuning articles on more than one site. I went ahead and implemented these settings on the rest of CC's servers as well:</p>
+<pre><code>net.ipv4.tcp_fin_timeout = 3
+net.core.netdev_max_backlog = 30000
+net.ipv4.tcp_no_metrics_save = 1 
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_max_syn_backlog = 8192
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 87380 16777216 
+net.ipv4.tcp_wmem = 4096 65536 16777216
+net.core.somaxconn = 1024
+vm.min_free_kbytes = 65536
+</code></pre>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

@@ -1,0 +1,145 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../static/gen/script.js"></script>
+<title>Dissecting the Liberated Pixel Cup Demo — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../">
+              <img src="../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
+          
+  <h2 class="mb-0">Dissecting the Liberated Pixel Cup Demo</h2>
+  <p class="meta text-muted mt-0">by lunpa on Tuesday, July 10, 2012
+  <div class="body"><p><img src="../../tech-blog-archives/dissecting_lpcd/dissecting_lpcd.png" alt=""></p>
+<h3 id="abstract">ABSTRACT</h3><p>The <a href="http://lpc.opengameart.org/static/lpc-style-guide/demo.html">Liberated Pixel Cup Demo</a> (LPCD) was written by yours truly over the course of two weeks, prior to the art phase of the Liberated Pixel Cup contest. The demo had several intended purposes. First, to test the usability of the base tile set for building levels. Second, to show character sprites interacting with environments and to demonstrate animations. And third, to inspire. As there has been some interest in the construction of the demo, this article is an overview to how the demo was constructed. Before I go into any detail, it is worth noting that this demo was put together without really knowing how much time would have been available to work on it. Because of this, the demo progressed through several stages - each playable and a plausible endpoint - before arriving to what it is today. This is reflected in a few places in the source code, either in code that was written with the best of intentions or in code that was written to be the foundation for something that never came to be.</p>
+<h3 id="structure">STRUCTURE</h3><p>Complex JavaScript programs get messy pretty fast. This is largely because it is impractical to split a JavaScript program across several files. Lack of namespaces and overly verbose language features (like Object.<strong>defineGetter</strong>) probably don't help the matter. <a href="http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/">There is a ridiculous amount of information</a> on how to organize your code and keep sane. I've yet to fall madly in love with any of these solutions.</p>
+<p>Here's what I usually do:<br>
+I start by defining a dummy module using the object notation (I call this the 'header'). Then I monkey patch all of my functions into it. As I add function definitions and the like, I update the module to reflect the expected structure. Function stubs have comments next to them outlining the expected arguments. I don't use a closure to fake a private scope for the module. Instead, the module is organized to keep calls, callbacks, and different sorts of data separate. It makes testing your code much easier. If you want to scare people from touching something, throw some underscores in front of its name.</p>
+<p>The program itself is split into several files, grouping code more or less by purpose. <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/header.js">Header.js</a> contains the module object definition, and the starting point of execution for the game engine. All of the remaining files are appended to the end of this file (the order doesn't really matter). Assembly of the program (as well as minification) is automated via a make file.</p>
+<p>The advantages of using this organizational scheme are:</p>
+<ul>
+<li>The header provides a simple reference and easy visualization of the program's structure.</li>
+<li>Doesn't do anything clever with language features to make it work.</li>
+<li>Looks cleaner to me.</li>
+</ul>
+<p>The only disadvantage I can think of is that the header must be maintained as the program is written. It isn't easy to tell if the header is maintained well, since the program can still run if function stubs are missing or some of the variables aren't defined.</p>
+<h3 id="graphics-engine">GRAPHICS ENGINE</h3><p>Levels are built using the program <a href="http://www.mapeditor.org/">Tiled</a>, with the level data exported to json. The levels are tiled on a 32x32 grid, which turned out to be a mistake. If I wrote this again, I would go with a 16x16 grid instead, to simplify the conversion of world coordinates <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/graphics.js#line58">to</a> and <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/controls.js#line121">from</a> screen space coordinates. This is explained further in the section about the physics engine.</p>
+<p>Tile boards are rendered upon two html5 canvas elements; an iframe between the two is where the actors are drawn. Level data may contain more than two layers, but will be automatically flattened into two layers <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line80">when the level is rendered</a>. <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line80">Actors are represented with div elements</a>; css is used to <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line96">crop and position</a> them. For actors inheriting from VisibleKind, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line206">Z-index is used to do depth sorting</a>, which is why the actors are in an iframe. Depth sorting behavior is done on the actor's _dirty method, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line263">which may be overridden</a>.</p>
+<p>Art assets are fetched in the background by creating a new Image object in JavaScript. The onload callback is used to inform the engine when the resource is ready for use. When the json file for a level is being parsed, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line243">the number of pending downloads is incremented</a> when an image download is started, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line230">and decremented on its callback</a>. This allows for the program to wait far all of the images to finish downloading <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line232">before drawing the tile boards</a>. <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line133">A similar technique</a> is used with art assets for actors, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line98">but this is unnecessary because the asset is displayed using css</a>. This is a throwback from when a third canvas element was used to draw the actors.</p>
+<p><a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/graphics.js#line47">The redraw event is scheduled</a> when the focused character's coordinates change (it might still be when any actor's coordinates change, which would be a throwback from when all actors were drawn on a canvas). Because a bunch of functions may request a redraw at once (some might do this multiple times), the first request is honored and the rest are ignored. This simplifies things quite a bit, because the request itself is inexpensive, it can be used when-in-doubt without worrying about a significant performance cost. I'm thinking of generalizing this for another JavaScript game engine I am planning, where there are various engine functions that would make sense to schedule like this. I'm thinking in that version, I'll have the scheduling function be named "please". Eg, please("redraw scene"), etc.</p>
+<h3 id="physics-engine">PHYSICS ENGINE</h3><p>Physics information is stored on a 16x16 conceptual grid. Originally, this was to be 32x32, but proved to be a mistake: in some cases, this would prevent the character from walking right up to the edge of something. Because many hours of work already spent building levels would be lost by making the whole engine use a 16x16 grid, I opted for a flimsy workaround. Physics info for tiles is now one of A, N, NE, E, SE, S, SW, W, NW; <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line100">which describes the wall coverage in a given graphical tile's conceptual subtiles</a>.</p>
+<p>The physics grid is populated during level load. <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/controls.js#line32">Several</a> <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/controls.js#line42">helper</a> <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/controls.js#line71">functions</a> <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/controls.js#line82">exist</a> to check if a given coordinate is blocked by a wall, an actor, or a warp point.</p>
+<p>Actors that prototype AnimateKind (which also happens to be the actors which can be the focused player) have a <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line384">_move_to function</a> that initiates <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line415">the walk cycle</a>. The walk cycle function is probably the most complex singular part of the game engine. This is in part due to the fact that the character's coordinates are floating point values, not array indices. <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line424">A good chunk of this code</a> is used to make sure the character doesn't appear to be walking through walls when cutting around a corner; this had the added side effect of the movement trajectory appearing to be adaptive to obstructions despite the lack of a real path finding algorithm. Part of the complexity of this function also comes from the fact that it is possible <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line467">to call events on other actors when colliding into them</a>.</p>
+<p>The player character is an actor. Any actor that prototypes AnimateKind can be focused as the main character. This is used in the demo a bit, allowing you to play as Alice (<a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/header.js#line147">by default</a>), Bobby Tables, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/dynamics/secret1.json.js">and a secret character</a>. Using a JavaScript debugger <a href="http://pastebin.com/vGcsnRJY">and a little know-how</a>, you can take control of many other actors; such as any of the students or any of the monsters.</p>
+<h3 id="actor-model">ACTOR MODEL</h3><p>Each entity in gameplay is represented by a javascript object that contains data describing the actor, and event handler functions. Actor objects are stored in LPCD.ACTORS.registry, and there exists <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line580">several helper functions</a> to be used to manage them. If you use the api <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/api.js#line72">functions</a> to <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/api.js#line97">create</a> <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/api.js#line106">your</a> <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/api.js#line115">actors</a>, this process is entirely automatic.</p>
+<p>There is an inheritance chain used in creating an actor, allowing different engine features to be implemented on the actors themselves while keeping the code isolated. This means that the code for things like human characters, monsters, treasure boxes, and etc are all responsible for rendering themselves in the graphics engine. These actor type constructors can be found on the header object in <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/header.js#line54">LPCD.ACTORS</a>, and defined in the file <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js">actor_model.js</a>. For the most part, these constructors are fairly concise, with the exceptions of VisibleKind and AnimateKind.</p>
+<p>All actors inherit from <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line31">AbstractKind</a>. The most important aspect of this actor is the variable "_binding", which determines if an actor is cleared from memory or not when a new level is loaded. This allows focused actors to travel from level to level. There was going to be a feature for persistent actors, allowing for things like items and treasure, though this was never implemented. Thus, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line68">PersistentKind</a> exists, though I don't believe anything actually uses it.</p>
+<p><a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line80">VisibleKind</a> inherits from AbstractKind and is used to provide a presence for the actor in the graphics engine <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line119">by creating a div element</a> and <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line180">inserting it into the iframe</a> used to display actors. This object also provides world coordinates (since they're needed for drawing) to the actor. This object does not make an actor responsive to collision detection.</p>
+<p><a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line221">ObjectKind</a> inherits from VisibleKind, and is used for inanimate objects. It provides the <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line255">_blocking function</a>, so that the actor can be used in the physics system.</p>
+<p><a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line282">AnimateKind</a> inherits from ObjectKind. It provides the <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line303">_gain_input_focus</a> function, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line355">directional facing information</a>, a <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line364">_look_at</a> function, and the walk cycle via the <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line384">_move_to</a> function. This does not implement any animation features, but is simply for animate objects. <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line509">CritterKind</a> and <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/actor_model.js#line553">HumonKind</a> both inherit from AnimateKind and implement animation specific features.</p>
+<h3 id="level-scripting-and-character-definitions">LEVEL SCRIPTING AND CHARACTER DEFINITIONS</h3><p>Level scripts are found in the <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/trees/code_freeze/source/static/demogame/dynamics">dynamics folder</a>, and have the file name of the level they correspond to + ".js". So for example, the starting level's file name is "start1.json" (level data is found in the <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/trees/code_freeze/source/static/demogame/levels">levels folder</a>. I <strong>do not</strong> recommend viewing it via web browser), the corresponding dynamics script is "<a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/dynamics/start1.json.js">start1.json.js</a>". To make it easy to clean things up when the level changes; when the level is loaded, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line155">an iframe is created and the level dynamics script is loaded within that iframe</a>. It is <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/map_loader.js#line167">given access to LPCD.API</a> via a global variable named API; but is left blind to the rest of the engine. This allows us to dispose of the script easily <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/graphics.js#line38">by deleting the iframe</a>.</p>
+<p>An amusing side effect of this is if you define within a dynamics script an actor that inherits from AnimateKind, and change your input focus to this new actor and leave the level; the object for the actor remains, but none of its member functions may be called anymore. However, anything in the prototype chain still works fine provided that it was defined in the engine itself. Because of this, <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/characters.js">characters.js</a> is used to define game-specific characters and useful objects outside of the levels and <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/dynamics/house1.json.js#line6">instance them from the level dynamics script</a> via <a href="https://gitorious.org/liberated-pixel-cup/lpc_styleguide/blobs/code_freeze/source/static/demogame/js/api.js#line72">the API.instance function</a>. Because the code was defined outside of the level, the object remains functional after the level has been flushed.</p>
+<p>Conveniently, this behavior is consistent between Firefox and Chrome. If this behavior for scripts in iframes is standardized, I imagine this was never an intended use case.</p>
+<h3 id="closing-thoughts">CLOSING THOUGHTS</h3><p>Overall, I'm quite pleased with how the demo turned out. There are some rough spots where it isn't clear where things are happening (eg, flushing the level actors by changing the innerHTML property of a DOM element), which I had forgotten about prior to writing this article. Despite that, I think the code is pretty usable as a game engine, and should still be fairly easy to extend. Hopefully this article serves as a guide for others to tinker with the engine, to use the code in their own projects, or even to study in building something entirely new.</p>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
