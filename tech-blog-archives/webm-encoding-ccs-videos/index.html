@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">WebM encoding CC&#39;s videos</h2>
-  <p class="meta text-muted mt-0">by akozak on Friday, December 3, 2010
+  <p class="meta text-muted mt-0">by akozak on Friday, December 3, 2010</p>
   <div class="body"><p>I was recently tasked with encoding all of <a href="http://creativecommons.org/videos">CC's videos</a> into <a href="http://en.wikipedia.org/wiki/WebM">WebM</a>, a new open video container format.</p>
 <p>I started out by <a href="http://wiki.creativecommons.org/WebM">creating a table</a> of all of the videos and target quality. Then, I started to track down the highest quality version of each video I could find.</p>
 <p>At first I had high hopes of using ffmpeg (with libvpx support) wrapped in a bash script to batch process all of the videos into .webm. Although there are some <a href="http://ubuntuforums.org/showthread.php?t=786095">decent directions</a> to re-compiling ffmpeg to enable webm, I ran into trouble (some sort of version conflict) and wasn't able to complete the process.</p>
@@ -99,6 +99,13 @@
 <p>One minor hurdle was to encode the videos into 240p WebM, a resolution not included in the Web Browser (Advanced) preset package. To accomplish that, I modified the json preset file to include 240p into webm. You can download my modified version of the json file in the preset <a href="http://mirrors.creativecommons.org/~akozak/web-advanced.json">here</a>. My only modification comes at the end. You should be able to just copy my version into <code>~/.arista/presets</code> and replace the original if it exists.</p>
 <p>When we start to embed the files on <a href="http://creativecommons.org/videos">creativecommons.org/videos</a>, I plan on following the instructions in the <a href="http://diveintohtml5.org/video.html">Dive Into HTML5 Video chapter</a>.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">video</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

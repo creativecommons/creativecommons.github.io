@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">liblicense packages for Ubuntu and Debian</h2>
-  <p class="meta text-muted mt-0">by asheesh on Monday, June 16, 2008
+  <p class="meta text-muted mt-0">by asheesh on Monday, June 16, 2008</p>
   <div class="body"><p>I've finally finished creating and updating the <a href="http://wiki.creativecommons.org/Liblicense">liblicense</a> packages for Debian and Ubuntu.</p>
 <p>For Debian, just make sure your system is set to pull from Debian sid ("unstable") - the packages are in the official archives; take a look at <a href="http://packages.debian.org/liblicense">http://packages.debian.org/liblicense</a>! (Thanks to Mako for sponsoring my upload.)</p>
 <p>For Ubuntu, for the time being, you should use the Creative Commons<br>
@@ -100,6 +100,11 @@ repository. Information on that is at <a href="http://mirrors.creativecommons.or
 <p>Nathan Y. asked a question: Why "liblicense2"? This is because of ABI versioning - if you write a C application that links to liblicense and upload that to the Debian archive, it is crucial that if the liblicense library gets updated, the user of your application not need to recompile your app. For that reason, "ABI versioning" is a promise that so long as the library has version <em>2.x</em> , any program built with an earlier or equal version of <em>2.x</em> will have the library functions appear in the same place in memory. That way, the compiled-in assumptions about those functions' location will not be violated. If it were to be violated, the application would quickly crash with a "Segmentation fault" or "Access violation," or it might even try to execute the wrong liblicense function.</p>
 <p>Now I need to work on the <a href="https://bugzilla.redhat.com/show_bug.cgi?id=446993">Fedora liblicense packaging bug</a>....</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      none
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

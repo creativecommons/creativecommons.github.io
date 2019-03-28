@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Recent instability of the CC Wiki: ImageMagick?</h2>
-  <p class="meta text-muted mt-0">by nkinkade on Friday, June 4, 2010
+  <p class="meta text-muted mt-0">by nkinkade on Friday, June 4, 2010</p>
   <div class="body"><p>For the past few weeks we have been having some intermittent but fairly serious problems with the machine that runs the CC Wiki. Every few days it would just crash and burn, and not being able to login, the only remedy was a reboot. The system and application logs were very silent on the cause.</p>
 <p>A day or two ago <a href="http://purl.org/NET/JesseW/SundryStuff/">Jesse Weinstein</a> (who helps CC greatly by monitoring the CC Wiki and keeping down spam) wrote to say that he was getting 503 errors from the wiki. I explained that we were having problems, but that it should be working at that moment. He wrote back to mention that /Special:NewFiles was still returning a 503. Sure<br>
 enough, not only did it return a 503, but it hung for 30s to a minute, and eventually <a href="http://varnish-cache.org/">Varnish</a> would return the 503 error.</p>
@@ -96,6 +96,11 @@ enough, not only did it return a 503, but it hung for 30s to a minute, and event
 <p>I'm guessing our problem was something like this: bots and crawlers were hitting the /Special:NewFiles page repeatedly with an incremental &from;= query parameter, and each Apache process would hang until eventually we reached Apache's MaxClients setting, then requests would start to back up in Varnish's queue, and the machine would slow to a crawl and eventually become unresponsive.</p>
 <p>Hopefully this supposition is true, and we not only have a fully functional wiki again, but the systemic problems with the server are now resolved.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      none
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Updates to CC Network OpenID Provider</h2>
-  <p class="meta text-muted mt-0">by nathan on Monday, April 13, 2009
+  <p class="meta text-muted mt-0">by nathan on Monday, April 13, 2009</p>
   <div class="body"><p>We received a couple bug reports over the weekend about the CC Network OpenID provider. Users were seeing a situation where they were asked to log into the CC Network with a username that was <em>similar</em> to their's, but not quite right -- specifically, the final character was omitted. When they put in their correct username and password they were just redirected to the login screen again and again.</p>
 <p>After some digging we arrived at <a href="http://code.creativecommons.org/issues/issue308">Issue 308</a>. The problem occurs when a non-compliant OpenID-enabled site asks for the OpenID URL and the user supplies something that <em>should</em> work, but isn't canonical. For example, my CC Network profile is at <code>https://creativecommons.net/nathan/</code>. I should be able to use any of the following as my OpenID and have the site get to the canonical version:</p>
 <ul>
@@ -103,6 +103,11 @@
 <p>Instead we went ahead and added an error screen so that instead of the completely frustrating never-ending login loop, you at least get a hint that something's wrong (and how to fix it).</p>
 <p>The moral of the story? If you run into a problem logging into an OpenID-enabled site, first make sure you're using your "real" URL (and if you still have a problem, at least with your CC Network ID, please <a href="http://code.creativecommons.org/issues/issue?@template=item">report it</a>).</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      none
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

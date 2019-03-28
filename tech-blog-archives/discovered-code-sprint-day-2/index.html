@@ -88,13 +88,24 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">DiscoverEd Code Sprint: Day 2</h2>
-  <p class="meta text-muted mt-0">by akozak on Thursday, June 17, 2010
+  <p class="meta text-muted mt-0">by akozak on Thursday, June 17, 2010</p>
   <div class="body"><p>Day 2 of the <a href="http://discovered.creativecommons.org/search/">DiscoverEd</a> <a href="http://wiki.creativecommons.org/DiscoverEd_Sprint_\(June,_2010\">code sprint</a>) was largely a continuation of work that started on <a href="../../tech-blog-archives/discovered-code-sprint-day-1/">Day 1</a>.</p>
 <p>The team working on a plugin architecture for DiscoverEd finished their project, which was to build an extension point that enables plugins to pull arbitrary metadata from external sources. At the beginning of the day they had to finish some tests for the new support for arbitrary metadata added in Day 1, but by the end of the day were able to merge their new functionality back into the DiscoverEd repository. They were even able to build a small proof-of-concept plugin that pulled data from the <a href="http://delicious.com/help/tools">delicious.com API</a> into the Jena store, which later makes its way into the Lucene index. Tomorrow they'll start looking at developing support for custom vocabularies and ontologies (such as <a href="http://en.wikipedia.org/wiki/AGROVOC">AGROVOC</a>).</p>
 <p>The flexible query syntax team were able to commit their changes to the DiscoverEd code that makes it so you can configure arbitrary metadata queries. For example, if you had been running a DiscoverEd instance to search a feed of OpenCourseWare resources that uses <a href="http://en.wikipedia.org/wiki/Dublin_Core">Dublin Core</a> metadata in RDFa format to express information about those resources, and wanted to enable searches on metadata which weren't supported in DiscoverEd, you would have had to write Java code to enable that. With this change you can now just create a configuration file mapping an arbitrary tag to that metadata, which will store that metadata along side the tag in the Lucene index. This allows Nutch (which searches the Lucene index) to search for those custom tags in the config file. This code was pushed to a branch while the team spent the rest of the day chasing down a bug where only a subset of metadata gets successfully added to the Lucene index in their working environment.</p>
 <p>The "user-generated metadata" team was able to create a test which adds a new resource into the Jena store, adds a tag to that resource, and verifies the tag was added... and it passes! Their next step is to create a test for a similar process in the Lucene index, such that a tag added to a new resource in the Jena store gets successfully added to the index and one can search for that tag through Nutch. The first test passing was a prerequisite for starting work on the second test.</p>
 <p>Work continues into the third and final day, so look for a wrap-up report from Day 3 soon. The various repository commits can be <a href="http://gitorious.org/discovered">browsed on Gitorious</a>.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">AgShare</a>,
+      
+      <a href="#">code</a>,
+      
+      <a href="#">DiscoverEd</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

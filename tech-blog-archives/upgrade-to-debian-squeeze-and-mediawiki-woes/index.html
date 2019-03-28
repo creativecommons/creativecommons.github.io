@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Upgrade to Debian Squeeze and Mediawiki woes</h2>
-  <p class="meta text-muted mt-0">by nkinkade on Thursday, February 10, 2011
+  <p class="meta text-muted mt-0">by nkinkade on Thursday, February 10, 2011</p>
   <div class="body"><p>Just a number of days ago <a href="http://www.debian.org">Debian</a> <a href="http://www.debian.org/News/2011/20110205a">released Squeeze</a> as the new stable version. I decided to test the upgrade one or two of CC's servers to see how it would go. The upgrade process was standard and went without problems, as one comes to expect with Debian. Any problems with the upgrade didn't manifest until I noticed that one of our sites running on Mediawiki had apparently broken.</p>
 <p>I narrowed the problem down to several extensions. Upgrading to Squeeze brought in a new version of PHP, taking it from 5.2.6 (in Lenny) to 5.3.3. PHP was emitting warnings in the Apache logs like:</p>
 <p><em>Warning: Parameter 1 to somefunction() expected to be a reference, value given in /path/to/some/file.php on line ##</em></p>
@@ -112,6 +112,17 @@ call_user_func_array('lol', $args);</code></p>
 <p><a href="http://www.mediawiki.org/wiki/Extension:ReCAPTCHA#Parameter_1_to_ReCaptcha::confirmEdit.28.29_expected_to_be_a_reference">The fix</a> for the ReCAPTCHA extension was easy, since it's published on the extension's page. For the other extensions, I investigated the places where this problem was occurring and removed the references from the function definitions, but not before poking around a bit to make reasonably sure that the references weren't fully necessary.</p>
 <p>Lesson: use caution when doing any upgrade that moves you from PHP &lt;5.2.x to &gt;5.3.x. Google searches reveal that this issue is rife in not only Mediawiki, but also Joomla!, and presumably any other CMS or framework that makes use of call_user_func_array().</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">Debian</a>,
+      
+      <a href="#">mediawiki</a>,
+      
+      <a href="#">php</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

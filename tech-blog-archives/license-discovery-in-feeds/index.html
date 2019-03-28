@@ -88,12 +88,19 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">License Discovery in Feeds</h2>
-  <p class="meta text-muted mt-0">by nathan on Tuesday, January 4, 2011
+  <p class="meta text-muted mt-0">by nathan on Tuesday, January 4, 2011</p>
   <div class="body"><p>Right before the winter break I came across <a href="http://zope.cetis.ac.uk/members/scott/blogview?entry=20101214120842">Scott Wilson's blog post</a> on a <a href="http://jisc.cetis.ac.uk/">CETIS</a> blog about <a href="http://wiki.creativecommons.org/Syndication">license discovery in RSS and Atom feeds</a>. Scott provides an pseudo-algorithm for how they've approached license discovery. It's a good approach, and I'm very happy to see people publishing about how they've approached this sort of issue. Reading it reminded me of a few points that are often glossed over or forgotten.</p>
 <p>Scott points out that there are two CC namespaces -- <code>http://creativecommons.org/ns</code> and <code>http://web.resource.org/cc/</code>. Due to hysteric^W historical reasons, web.resource.org was the first host of the <a href="http://wiki.creativecommons.org/CC_REL">CC REL</a> schema, which we later moved to creativecommons.org (as the appropriate home). This came up on another thread late last year, and we've taken the first step to making this a little easier to deal with, redirecting the old home, web.resource.org, to creativecommons.org/ns. We'll be <a href="http://code.creativecommons.org/issues/issue757">publishing equivalency assertions</a> soon to further clarify the situation for processors.</p>
 <p>Scott also points out that the RDF included with licensed works is sometimes redundant. Yes, absolutely. Our previous recommendation suggested the inclusion of RDF describing the license in an HTML comment. As mentioned <a href="../../tech-blog-archives/semantic-copyright-and-cc-rel/">previously</a>, we also realized this is redundant and of minimal value. It's not clear under what circumstances a processor would be inclined to trust RDF about a license, at creativecommons.org, published with the work, elsewhere. Hindsight, 20/20, etc.</p>
 <p>Finally, when discussing how to handle the license URIs extracted, Scott's approach states that if the license URI is not known, they mark it as "unknown". This is a situation where self-describing documents can be useful to processors. An alternative approach would be to dereference the URI and attempt to extract details about the license. We use this approach ourselves in several situations, most recently with <a href="http://yergler.net/blog/2010/12/31/minor-update-for-openattribute/">OpenAttribute</a>, a prototype Firefox add-on for displaying license and attribution information.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">case</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

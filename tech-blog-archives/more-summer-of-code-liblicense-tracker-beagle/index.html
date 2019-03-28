@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">More Summer of Code -- Liblicense, Tracker, Beagle,...</h2>
-  <p class="meta text-muted mt-0">by jakin on Saturday, June 30, 2007
+  <p class="meta text-muted mt-0">by jakin on Saturday, June 30, 2007</p>
   <div class="body"><p>Let's see, where am I at.</p>
 <p>Code in GStreamer to read the license URI is getting pushed through. Now there's <a href="http://bugzilla.gnome.org/show_bug.cgi?id=451939">Bug #451939</a> that updates the GStreamer API with a license and copyright uri tag. When this all gets pushed through, access to the license URI will be available through GST_TAG_LICENSE_URI and/or GST_TAG_COPYRIGHT_URI.</p>
 <p>In Tracker, I've written code to handle generic indexing of embedded/sidecar XMP. Previously it just extracted the license, and now any elements can be pulled out and indexed. Currently, Dublin Core and CC elements are indexed. The code is still local, and yet to be committed.</p>
@@ -97,6 +97,23 @@
 <p>And in yet another direction, I'm looking into indexing licenses in Beagle. After browsing the code, I can adapt most of what I learned about license metadata while working with Tracker to extending Beagle. I even notice that their image formats filters already support extracting XMP, so adding the extra license checks is straightforward. A preliminary patch and request for feedback has been posted on their mailing list.</p>
 <p>All in all, I've done some work here and there, for this project and that...</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">beagle</a>,
+      
+      <a href="#">embedding</a>,
+      
+      <a href="#">license</a>,
+      
+      <a href="#">metadata</a>,
+      
+      <a href="#">summer</a>,
+      
+      <a href="#">xmp</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

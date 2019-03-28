@@ -88,12 +88,21 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Well Covered</h2>
-  <p class="meta text-muted mt-0">by nathan on Tuesday, October 5, 2010
+  <p class="meta text-muted mt-0">by nathan on Tuesday, October 5, 2010</p>
   <div class="body"><p>When we <a href="../../tech-blog-archives/welcome-hudson-to-creative-commons/">rolled out</a> <a href="http://code.creativecommons.org/hudson">Hudson for CC code</a> last month, I already knew that I wanted to have test coverage reporting. There's simply no reason not to: it provides a way to understand how complete your tests are, and when combined with branch testing, gives you an easy way to figure out what tests need to be written (or where to target your test writing efforts).</p>
 <p>Last week I updated <a href="http://wiki.creativecommons.org/DiscoverEd">DiscoverEd</a> to use <a href="http://cobertura.sourceforge.net/">Cobertura</a> for <a href="http://code.creativecommons.org/hudson/job/discovered/cobertura/">coverage</a>. It was pretty easy to crib the example ant build file to <a href="http://gitorious.org/discovered/repo/commit/ea1a28b823fdee9657b7f63f347c72cf5e9b82bd">add support</a> for instrumenting and testing our code.</p>
 <p>When I first tried to add <a href="http://pypi.python.org/pypi/coverage/">coverage</a> support to our Python code, I <a href="http://yergler.net/blog/2010/08/20/ci-at-cc/">encountered</a> <a href="http://bitbucket.org/ned/coveragepy/issue/82/tokenerror-when-generating-html-report">an issue</a> between coverage and Jinja2. Ned quickly committed a fix, and today I finished instrumenting our core Python projects for coverage reporting. This includes the license engine (<a href="http://code.creativecommons.org/hudson/job/cc.engine/cobertura/">cc.engine</a>), the API (<a href="http://code.creativecommons.org/hudson/job/cc.api/cobertura/">cc.api</a>), the underlying license library (<a href="http://code.creativecommons.org/hudson/job/cc.license/cobertura/">cc.license</a>), and the structured data scraper used by the deeds (<a href="http://code.creativecommons.org/hudson/job/deedscraper/cobertura/">deedscraper</a>).</p>
 <p>A pleasant surprise after instrumenting is the current state of coverage. With the exception of cc.engine, we're at greater than 90% coverage for our core code (it appears that there are lots of branches/conditionals we don't test adequately in cc.engine right now). Looking forward to seeing 100's across the board.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">infrastructure</a>,
+      
+      <a href="#">tools</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

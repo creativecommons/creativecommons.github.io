@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Using virtualenv and zc.buildout together</h2>
-  <p class="meta text-muted mt-0">by cwebber on Tuesday, March 16, 2010
+  <p class="meta text-muted mt-0">by cwebber on Tuesday, March 16, 2010</p>
   <div class="body"><p><a href="http://pypi.python.org/pypi/virtualenv">Virtualenv</a> and <a href="http://www.buildout.org/">zc.buildout</a> are both great ways to develop python packages and deploy collections of packages without needing to touch the system library. They are both fairly similar, but also fairly different.</p>
 <p>The primary difference between them is that zc.buildout focuses on having a single package, and all relevant dependencies are installed automatically within that package's directory via the buildout script (Nathan Yergler points out that you don't have to use things this way, but that seems to me to be the way things happen in practice... anyway, I'm not a buildout expert). The buildout script is very automagical and does all the configuration and installation of dependencies for you. Since this is a build system, you can also configure it to do a number of other neat things, such as compile all your gettext catalogs, or scp the latest cheesefile.txt from themoon.example.org... whatever you need to do to build a package.</p>
 <p>Virtualenv is mostly the same creature, but it's like you reached your hand inside and pulled it inside out. Instead of a bunch of packages installed within a subdirectory of one package, there is a more generic directory layout that allows you to set up a number of packages within it. Installing a package and keeping it up to date is much more manual in general, but also a bit more flexible in the sense that you can switch paths around within the environment fairly easily and simultaneously developing multiple interwoven packages is not difficult.</p>
@@ -146,6 +146,17 @@ $ python setup.py develop
 <p>To leave virtualenv, you can simply type "deactivate".</p>
 <p>That's it! Now you have a fully functional zc.buildout AND virtualenv setup, where switching back and forth is super simple.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">development</a>,
+      
+      <a href="#">python</a>,
+      
+      <a href="#">techblog</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

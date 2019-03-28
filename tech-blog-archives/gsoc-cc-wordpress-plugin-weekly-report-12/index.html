@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">GSoC CC Wordpress Plugin: Weekly Report #12</h2>
-  <p class="meta text-muted mt-0">by erlehmann on Thursday, August 19, 2010
+  <p class="meta text-muted mt-0">by erlehmann on Thursday, August 19, 2010</p>
   <div class="body"><p><em>This</em> may be my last report for the <a href="../../tech-blog-archives/gsoc-project-introduction-cc-wordpress-plugin/">plugin</a>. After 150 commits and a bit over 30KB of written PHP code, the <em>Google Summer of Code</em> proposal <a href="http://socghop.appspot.com/gsoc/student_proposal/show/google/gsoc2010/erlehmann/t126992832487"><em>Support for CC licenses in Wordpress</em></a> is finally finished, though the final product is remarkably different from the original suggestion. As time went by fast in the last few days before the deadline, I successfully managed to fix the three remaining issues mentioned before; namely an  IE bug, adding license information to the media manager overview table (<a href="http://daten.dieweltistgarnichtso.net/pics/screenshots/web/wordpress-cc-plugin/media-manager-table.png">screenshot</a>) and having a proper README (written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>).</p>
 <p>However, one thing still did not work quite right: Embedding. A security restriction called the <a href="http://en.wikipedia.org/wiki/Same_origin_policy"><em>same origin policy</em></a> prevents audio and video (but not images, as they came before the  SOP) from one site to be included on another, unless a special HTTP header is sent. As Jonas Sicking puts it in an <a href="http://lists.xiph.org/pipermail/theora/2008-November/001958.html">explanatory email</a> (<a href="http://ajaxian.com/archives/video-audio-cross-origin">via</a>):</p>
 <blockquote><p>Requiring that sites add 'Access-Control-Allow-Origin:*' simply is<br>
@@ -118,6 +118,17 @@
   <em>[ IE]: Internet Explorer
   </em>[ SOP]: Same Origin Policy</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">CC</a>,
+      
+      <a href="#">summer</a>,
+      
+      <a href="#">wordpress</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">WordPress MU v. Lyceum</h2>
-  <p class="meta text-muted mt-0">by nathan on Thursday, April 12, 2007
+  <p class="meta text-muted mt-0">by nathan on Thursday, April 12, 2007</p>
   <div class="body"><p>We're preparing to launch "hosted blogging":<a href="http://wiki.creativecommons.org/CCi_Blogs">http://wiki.creativecommons.org/CCi_Blogs</a> service for our "international affiliates":<a href="http://creativecommons.org/worldwide">http://creativecommons.org/worldwide</a>, and the TechBlog is actually the first blog to run on the new "WordPress MU":<a href="http://mu.wordpress.org">http://mu.wordpress.org</a> installation. Sort of "eating our own dog food":<a href="http://en.wikipedia.org/wiki/Eating_one%27s_own_dog_food">http://en.wikipedia.org/wiki/Eating_one%27s_own_dog_food</a>, I suppose. Much of the pre-launch work (beyond the obvious theme tweaking, etc) was in evaluating which WordPress-based multi-user blog product was more appropriate: "Lyceum":<a href="http://en.wikipedia.org/wiki/Lyceum_%28software%29">http://en.wikipedia.org/wiki/Lyceum_%28software%29</a> or "WordPress MU":<a href="http://en.wikipedia.org/wiki/WordPress_MU">http://en.wikipedia.org/wiki/WordPress_MU</a>.</p>
 <p>I admit that going into the evaluation, I was predisposed to like Lyceum. This predisposition, like so many, was based on completely irrelevant facts: I like the way their website looks, I dislike the wordpress.org forums[1], that sort of thing. And initially it looked like Lyceum was going to be the winner. Both their website and the Wikipedia article on Lyceum[2] stated that a difference between MU and Lyceum was MU's requirement that every user have their own blog. That was clearly a deal breaker for us: we needed multiple multi-user blogs, not multiple single user blogs (and we didn't want a pile of single-user blogs lying around as a side effect of implementing the multi-user blogs). However, after installing MU and poking at it a bit, this doesn't seem to be the case any longer.</p>
 <p>The primary difference really comes down to how they handle the database tables. WordPress MU creates a separate set of tables for every blog. Lyceum modifies the basic WordPress table structure to add blog information to the tables. And there seems to be some debate over which is more efficient and scalable: tons of rows, or tons of tables. In the end, I'm not smart enough (or maybe I just don't care enough) to evaluate which statement is truer. We chose WordPress MU for a couple reasons:</p>
@@ -100,6 +100,17 @@
 <p>fn1. More than I dislike most forums, which is saying something.</p>
 <p>fn2. Since edited.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">evaluation</a>,
+      
+      <a href="#">software</a>,
+      
+      <a href="#">wordpress</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

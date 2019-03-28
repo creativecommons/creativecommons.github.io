@@ -88,13 +88,34 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">liblicense 0.8 (important) fixes RDF predicate error</h2>
-  <p class="meta text-muted mt-0">by asheesh on Wednesday, July 30, 2008
+  <p class="meta text-muted mt-0">by asheesh on Wednesday, July 30, 2008</p>
   <div class="body"><p>Brown paper bag release: liblicense claims that the RDF predicate for a file's license is <a href="http://creativecommons.org/ns#License">http://creativecommons.org/ns#License</a> rather than <a href="http://creativecommons.org/ns#license">http://creativecommons.org/ns#license</a>. Only the latter is correct.</p>
 <p>Any code compiled with liblicense between 0.6 and 0.7.1 (inclusive) contains this mistake.</p>
 <p>This time I have audited the library for other insanities like the one fixed here, and there are none. Great thanks to Nathan Yergler for spotting this. I took this chance to change ll_write() and ll_read() to <em>NOT</em> take NULL as a valid predicate; this makes the implementation simpler (and more correct).</p>
 <p>Sadly, I have bumped the API and ABI numbers accordingly. It's available in SourceForge at <a href="http://sf.net/projects/cctools">http://sf.net/projects/cctools</a>, and will be uploaded to Debian and Fedora shortly (and will follow from Debian to Ubuntu).</p>
 <p>I'm going to head to Argentina for a vacation and Debconf shortly, so there'll be no activity from on liblicense for a few weeks. I would <strong>love</strong> help with liblicense in the form of further unit tests. Let's squash those bugs by just demonstrating all the cases the license should work in.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <a href="#">Debian</a>,
+      
+      <a href="#">liblicense</a>,
+      
+      <a href="#">metadata</a>,
+      
+      <a href="#">rdf</a>,
+      
+      <a href="#">releases</a>,
+      
+      <a href="#">software</a>,
+      
+      <a href="#">standards</a>,
+      
+      <a href="#">xmp</a>
+      
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

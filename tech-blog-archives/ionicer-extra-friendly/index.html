@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">ionicer: Making Subversion and git extra friendly</h2>
-  <p class="meta text-muted mt-0">by asheesh on Tuesday, December 2, 2008
+  <p class="meta text-muted mt-0">by asheesh on Tuesday, December 2, 2008</p>
   <div class="body"><p>We've discovered that some of our websites, in particular those that rely on MySQL, are very sensitive to spikes in disk I/O load. Right now, we do run some non-interactive services on the same machines as some of our websites.</p>
 <p>Subversion and git in particular seem to cause long-duration high disk load, which causes Nathan Kinkade to get paged when e.g. wiki.creativecommons.org takes too long to load. We have found that using <a href="http://friedcpu.wordpress.com/2007/07/17/why-arent-you-using-ionice-yet/">ionice to set</a> background activities to "idle" priority is very useful in avoiding sending text messages to NK.</p>
 <p>However, ionice can only be run by root, meaning regular users can't even request the system be more gentle. So I wrote a simple tool, "ionicer," that is a setuid-root C tool that sets its parent process's IO priority to idle.</p>
@@ -105,6 +105,11 @@
 </ul>
 <p>Ta-da!</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      none
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

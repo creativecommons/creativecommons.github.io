@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Asterisk on a $20/mo. Linode, part 2.</h2>
-  <p class="meta text-muted mt-0">by nkinkade on Wednesday, January 20, 2010
+  <p class="meta text-muted mt-0">by nkinkade on Wednesday, January 20, 2010</p>
   <div class="body"><p>I mentioned in my recent post about running Asterisk on a $20/month Linode that I would try to follow up with a review of the steps necessary to actually get it working. This isn't going to be a detailed review, but just a more or less bulleted list of steps to take.</p>
 <p>In the previous post I said that I had run into a kernel-package bug (<a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=508487">#508487</a>) that was preventing me from successfully building a Xen kernel with make-kpkg. So I installed the version from unstable, in which the bug had been fixed. This step may not be necessary at some point:</p>
 <h1 id="vi-/etc/apt/sources.lst">vi /etc/apt/sources.lst</h1><p>[change deb-src to point to an unstable repository]</p>
@@ -99,6 +99,11 @@
 <h1 id="apt-get-install-zaptel-source">apt-get install zaptel-source</h1><h1 id="cd-/usr/src">cd /usr/src</h1><h1 id="vi-modules/zaptel/kernel/ztdummy.c">vi modules/zaptel/kernel/ztdummy.c</h1><p>[comment out _#define USE<em>RTC</em> lines]</p>
 <h1 id="m-a-prepare">m-a prepare</h1><h1 id="m-a-build-zaptel">m-a build zaptel</h1><h1 id="m-a-install-zaptel">m-a install zaptel</h1><h1 id="modprobe-ztdummy">modprobe ztdummy</h1><p>I think those are the basic steps I took. The actual path was much less clean, as I hit bugs and went back and forth. It's possible I have missed a step or two in there, or that the way I went about things wasn't right, ideal or even correct. Of course, all of this also presupposes that you have already configured your Linode to boot from a custom local kernel instead of the default Linode kernel. <a href="http://library.linode.com/advanced/pv-grub-howto">Instructions</a> on how to do this can be found at at linode.com.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      none
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

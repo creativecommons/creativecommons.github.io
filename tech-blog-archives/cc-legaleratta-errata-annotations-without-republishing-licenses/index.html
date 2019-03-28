@@ -88,7 +88,7 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">cc.legaleratta: errata annotations without republishing licenses</h2>
-  <p class="meta text-muted mt-0">by lunpa on Wednesday, February 22, 2012
+  <p class="meta text-muted mt-0">by lunpa on Wednesday, February 22, 2012</p>
   <div class="body"><p><a href="http://labs.creativecommons.org/files/2012/02/errata_highlighted1.png"><img src="../../tech-blog-archives/cc-legaleratta-errata-annotations-without-republishing-licenses/errata_highlighted1.png" alt="Screenshot of the errata tool."></a></p>
 <p>The html for the legalcode pages cannot be changed once they are published. The reason for this is because we provide sha1 hashes of them so that they may be redistributed. It also is a reason of credibility; that the license you've applied to your work today will still be the same one tomorrow. However, sometimes there are errors. They need to be accessible, yet they usually are too small to merit releasing a new version of the license.</p>
 <p>The solution to this problem so far has been an errata page on our wiki. But, that isn't apparent from just looking at the license; and the errata page is disorganized and confusing to read.</p>
@@ -98,6 +98,11 @@
 <p><img src="../../tech-blog-archives/cc-legaleratta-errata-annotations-without-republishing-licenses/Errata_tool_alternate.jpg" alt="UI mockup for the errata tool."></p>
 <p>The actual implementation of the tool ended up being much simpler than the proposed one. Json is still used for storing the machine readable errata, but rather than a convoluted scheme of managing text diffs, machine readable errata is a collection of entries that contain a css selector, attribute overrides (optional), and html fragments. The css selectors are used by jquery to select an element in the dom; the element's innerHTML attribute is then written over by the html fragment. The html fragment itself is the original innerHTML of the node, but with subtractions noted by <del></del> tags, and additions noted by <ins></ins> tags. These files are maintained by hand at this current time, with no plans of writing a frontend for it. The errata tool takes a snapshot of the page's html before and after overriding it, so that you can efficiently toggle between view modes. CSS in both errata modes to either make the text look clean (subtractions hidden) or to accomplish highlighting.</p>
 </div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      none
+    </p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
