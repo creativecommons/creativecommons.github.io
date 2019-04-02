@@ -88,7 +88,8 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Caching deeds for peak performance</h2>
-  <p class="meta text-muted mt-0">by nathan on Wednesday, January 6, 2010</p>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/nathan">nathan</a>
+  on Wednesday, January 6, 2010</p>
   <div class="body"><p>As Chris <a href="../../tech-blog-archives/understanding-the-state-of-sanity-via-whiteboards-and-ascii-art/">mentioned</a>, he's been working on improving the <a href="http://creativecommons.org/choose/">license chooser</a>, among other things simplifying it and making it a better behaved <a href="http://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">WSGI</a> citizen. That code also handles generating the license deeds. For performance reasons we like to serve those from static files; I <a href="http://yergler.net/blog/2010/01/05/caching-wsgi-applications-to-disk/">put together some details</a> about <a href="http://pypi.python.org/pypi/wsgi_cache">wsgi_cache</a>, a piece of WSGI middleware I wrote this week to help with this, on my <a href="http://yergler.net/blog/">personal blog</a>:</p>
 <blockquote><p>The idea behind wsgi_cache is that you create a disk cache for results, caching only the body of the response. We only cache the body for a simple reason—we want something else, something faster, like Apache or other web server, to serve the request when it’s a cache hit. We’ll use mod_rewrite to send the request to our WSGI application when the requested file doesn’t exist; otherwise it hits the on disk version. And cache “invalidation” becomes as simple as rm (and as fine grained as single resources).</p>
 </blockquote>

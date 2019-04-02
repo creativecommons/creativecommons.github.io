@@ -88,7 +88,8 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">Varnish Cache at CC</h2>
-  <p class="meta text-muted mt-0">by nkinkade on Thursday, April 3, 2008</p>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/nkinkade">nkinkade</a>
+  on Thursday, April 3, 2008</p>
   <div class="body"><p>Over the past few months we have been migrating most of our web services to new servers. <a href="http://www.squid-cache.org/">Squid Cache</a> was in use on a number of the old servers as an HTTP accelerator, and we decided that while upgrading hardware and OS we might as well bring our HTTP accelerator fully into the 21st century. Enter <a href="http://varnish.projects.linpro.no/">Varnish Cache</a>, which has some <a href="http://varnish.projects.linpro.no/wiki/ArchitectNotes">interesting architectural/design features</a>.</p>
 <p>Varnish was easy to install thanks to the Debian package management system, and the configuration file is vastly simpler than that of Squid despite a horrendous dearth of documentation. Varnish runs well and we are generally happy with it. However, after a few months we have encountered a number of gotchas, most of which probably have workarounds:</p>
 <ul>

@@ -88,7 +88,8 @@
           <h1 class="page-title pb-3 mb-4">CC Technical Blog Archives</h1>
           
   <h2 class="mb-0">64 bit woes (almost) cleared up</h2>
-  <p class="meta text-muted mt-0">by nkinkade on Saturday, August 2, 2008</p>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/nkinkade">nkinkade</a>
+  on Saturday, August 2, 2008</p>
   <div class="body"><p>As I mentioned in a <a href="http://labs.creativecommons.org/2008/07/15/32-to-64bit-remotely/">recent post</a>, we have upgraded our servers to 64 bit. All of them are now running <a href="http://www.debian.org/ports/amd64/">amd64</a> for <a href="http://debian.org">Debian</a>. The first three server were upgraded remotely, but we noticed that a few applications were constantly dying due to segmentation faults. There was some speculation that this was a strange consequence of the remote upgrade process, so we upgraded the 4th server by reprovisioning it with <a href="http://serverbeach.com">Server Beach</a> as a 64 bit system, cleanly installed from scratch.</p>
 <p>Well, it turned out that even the cleanly installed 64 bit system was having problems. So I installed the <a href="http://www.gnu.org/software/gdb/">GNU Debugger</a>, which I had never actually used before. I attached it to one of the processes that was having a problem, and what should immediately reveal itself but:</p>
 <blockquote><p>(gdb) c<br>
