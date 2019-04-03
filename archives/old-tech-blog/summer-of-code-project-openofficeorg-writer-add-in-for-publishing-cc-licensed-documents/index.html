@@ -1,0 +1,148 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../static/gen/script.js"></script>
+<title>&#34;Summer of Code Project: â€œOpenOffice.org Writer Add-in for Publishing CC — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../../">
+              <img src="../../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          
+  <h2 class="mb-0">&#34;Summer of Code Project: â€œOpenOffice.org Writer Add-in for Publishing CC</h2>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/ksiomelo">ksiomelo</a>
+  on Saturday, April 14, 2007</p>
+  <div class="body"><p>Hi there!</p>
+<p>I also was selected for the Google Summer of Code with this project mentored by Nathan R. Yergler. An introduction about the project:</p>
+<blockquote><p>The goal of this project is to provide a tool for supporting the process of licensing documents. <a href="http://wiki.creativecommons.org/Microsoft_Office_Addin">Microsoft Office has a Creative Commons plug-in</a> to put licenses metadata in its documents. I propose a similar <a href="http://wiki.creativecommons.org/OpenOfficeOrg_Addin">Creative Commons add-in for OpenOffice.org</a> that would allow license information to be embedded in OpenOffice.org documents. Despite being a requested feature for OpenOffice.org for more than two years, nothing has materialized. Having a simple way to add Creative Commons licenses will help to spread those licenses much more broadly. Making licenses available as Autotext for example, is one way this can be reached.</p>
+</blockquote>
+<p>At first moment, I will concentrate on OOo Writer plugin, but of course, I have plans to extend this functionality to Calc and Impress as well. Get the full proposal <a href="http://www.cin.ufpe.br/~cam2/soc2007proposal.txt">here</a>. If you have any suggestion, please let me know.</p>
+<p>Let me introduce myself. My name is Cassio Melo, I'm 22 old and I live in Recife, Brazil. I'm an undergraduate at the same university of Alan Kelon (<a href="http://www.cin.ufpe.br">Informatics Center</a>, <a href="http://www.ufpe.br">Federal University of Pernambuco</a>).</p>
+<p>Beyond my passion for Computer Science, I also have interests in Business and Economy. <a href="http://www.e-drexler.com/p/idx04/00/0404drexlerBioCV.html">Eric Drexler</a> and <a href="http://www.claytonchristensen.com/">Clayton Christensen</a> are my preferred authors.</p>
+<p>I did work for a summer in my undergraduate course at Federal University of Pernambuco with the <a href="https://simple.dev.java.net/">SimPLe</a>, which is an open source software factory using Product Line approach for action games domain.</p>
+<p>This year, I developed an OOo plugin to replace the existing OOo notes. Public distribution will begin in the near future.</p>
+<p>Additionally I have a year of industrial experience, having worked as a software engineer on <a href="http://www.cesar.org.br">C.E.S.A.R</a>, developing a <a href="http://wdbc2006.cesar.org.br/wp-content/uploads/23959.pdf">tool</a> (codenamed BART project) for software components search and retrieval. We also have developed plugins for Eclipse, MS Word and OpenOffice.org for supporting artifacts searching. As a member of the <a href="http://www.rise.com.br">R.i.S.E</a> group, I've worked on algorithms for ranking software components.</p>
+<p>You can view my full profile <a href="http://www.cin.ufpe.br/~cam2/info/english">here</a>.</p>
+<p>Finally, I would like to share the thanks with my friends. We hope to bring new energy and enthusiasm to CC projects. :)</p>
+</div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <strong>Add-In</strong>,
+      
+      <strong>OpenOffice</strong>,
+      
+      <strong>software</strong>,
+      
+      <strong>summer</strong>
+      
+    </p>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

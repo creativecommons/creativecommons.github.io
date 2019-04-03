@@ -1,0 +1,185 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../static/gen/script.js"></script>
+<title>cc.engine and web non-frameworks — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../../">
+              <img src="../../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          
+  <h2 class="mb-0">cc.engine and web non-frameworks</h2>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/cwebber">cwebber</a>
+  on Wednesday, January 13, 2010</p>
+  <div class="body"><p>The <a href="../../../archives/old-tech-blog/understanding-the-state-of-sanity-via-whiteboards-and-ascii-art/">sanity overhaul</a> has included a number of reworkings, one of them being a rewrite of cc.engine, which in its previous form was a Zope 3 application. Zope is a full featured framework and we already knew we weren't using many of its features (most notably the ZODB); we suspected that something simpler would serve us better, but weren't certain what. Nathan suggested one of two directions: either we go with Django (although it wasn't clear this was "simpler", it did seem to be where a large portion of the python knowledge and effort in the web world is pooling), or we go with <a href="http://docs.repoze.org/bfg/">repoze.bfg</a>, a minimalist WSGI framework that pulls in some Zope components. After some discussion we both agreed: repoze.bfg seemed like the better choice for a couple of reasons: for one, Django seemed like it would be providing quite a bit more than necessary... in cc.engine we don't have a traditional database (we do have an RDF store that we query, but no SQL), we don't have a need for a user model, etc... the application is simple: show some pages and apply some specialized logic. Second, repoze.bfg built upon and reworked Zope infrastructure and paradigms, and so in that sense it looked like an easier transition. So we went forward with that.</p>
+<p>As I went on developing it, I started to feel more and more like, while repoze.bfg certainly had some good ideas, I was having to create a lot of workarounds to support what I needed. For one thing, the URL routing is unordered and based off a ZCML config file. It was at the point where, for resolving the license views, I had to route to a view method that then called other view methods. We also needed a type of functionality as Django provides with its "APPEND_SLASH=True" feature. I discussed with the repoze.bfg people, and they were accommodating to this idea and actually applied it to their codebase for the next release. There were some other components they provided that were well developed but were not what we really needed (and were besides technically decoupled from repoze.bfg the core framework). As an example, the <a href="http://chameleon.repoze.org/">chameleon zpt</a> engine is very good, but it was easier to just pull Zope's template functionality into our system than make the minor conversions necessary to go with chameleon's zpt.</p>
+<p>Repoze was also affecting the Zope queryutility functionality in a way that made internationalization difficult. Once again, this was done for reasons that make sense and are good within a certain context, but make did not seem to mesh well with our existing needs. I was looking for a solution and reading over the repoze.bfg documentation when I came across these lines:</p>
+<blockquote><p>repoze.bfg provides only the very basics: URL to code mapping, templating, security, and resources. There is not much more to the framework than these pieces: you are expected to provide the rest.</p>
+</blockquote>
+<p>But if we weren't using the templating, we weren't using the security model, and we weren't using the resources, the URL mapping was making things difficult, and those were the things that repoze.bfg was providing on top of what was otherwise just WSGI + WebOb, how hard would it be to just strip things down to just the WSGI + WebOb layer? It turns out, not too difficult, and with an end result of significantly cleaner code.</p>
+<p>I went through Ian Bicking's excellent tutorial <a href="http://pythonpaste.org/webob/do-it-yourself.html">Another Do-It-Yourself Framework</a> and applied those ideas to what we already had in cc.engine. Within a night I had the entire framework replaced with a single module, cc/engine/app.py, which contained these few lines:</p>
+<pre><code>import sys
+import urllib
+
+from webob import Request, exc
+
+from cc.engine import routing
+
+def load_controller(string):
+    module_name, func_name = string.split(':', 1)
+    __import__(module_name)
+    module = sys.modules[module_name]
+    func = getattr(module, func_name)
+    return func
+
+def ccengine_app(environ, start_response):
+    """
+    Really basic wsgi app using routes and WebOb.
+    """
+    request = Request(environ)
+    path_info = request.path_info
+    route_match = routing.mapping.match(path_info)
+    if route_match is None:
+        if not path_info.endswith('/') 
+                and request.method == 'GET' 
+                and routing.mapping.match(path_info + '/'):
+            new_path_info = path_info + '/'
+            if request.GET:
+                new_path_info = '%s?%s' % (
+                    new_path_info, urllib.urlencode(request.GET))
+            redirect = exc.HTTPTemporaryRedirect(location=new_path_info)
+            return request.get_response(redirect)(environ, start_response)
+        return exc.HTTPNotFound()(environ, start_response)
+    controller = load_controller(route_match['controller'])
+    request.start_response = start_response
+    request.matchdict = route_match
+    return controller(request)(environ, start_response)
+
+def ccengine_app_factory(global_config, **kw):
+    return ccengine_app
+</code></pre>
+<p>The main method of importance in this module is ccengine_app. This is a really simple WSGI application: it takes routes as defined in cc.engine.routes (which uses the very enjoyable <a href="http://routes.groovie.org/">Routes</a> package) and sees if the current URL (or, the path_info portion of it) matches that URL. If it finds a result, it loads that controller and passes a WebOb-wrapped request into it, with any special URL matching data tacked into the matchdict attribute. And actually, the only reason that this method is even so long at all is because of the "if route_match is None" block in the middle: that whole part is providing APPEND_SLASH=True type functionality, as one would find in Django. (Ie, if you're visiting the url "/licenses", and that doesn't resolve to anything, but the URL "/licenses/" does, redirect to /licenses/.) The portions before and after are just getting the controller for a url and passing the request into it. That's all! (The current app.py is a few lines longer than this, utilizing a callable class rather than a method in place of ccengine_app for the sake of configurability and attaching a few more things onto the request object, but not longer or complicated by much. The functionality otherwise is pretty much the same.)</p>
+<p>Most interesting is that I swapped in this code, changed over the routing, fired up the server and.. it pretty much just worked. I swapped out a framework for about a 50 line module and everything was just as nice and functioning as it was. In fact, with the improved routing provided by Routes, I was able to cut out the fake routing view, and thus the amount of code was actually <em>less</em> than what it was before I stripped out the framework. Structurally there was no real loss either; the application still looks familiar to that you'd see in a pylons/django/whatever application.</p>
+<p>I'm still a fan of frameworks, and I think we are very fortunate to <em>have</em> Zope, Pylons, Django, Repoze.bfg, and et cetera. But in the case of cc.engine I do believe that the position we are at is the right one for us; our needs are both minimal and special case, and the number of components out there for python are quite rich and easily tied together. So it seems the best framework for cc.engine turned out to be no framework at all, and in the end I am quite happy with it.</p>
+<p><strong>ADDENDUM:</strong> Chris McDonough's comments below are worth reading. It's quite possible that the issues I experienced were my own error, and not repoze.bfg's. I also hope that in no way did I give the impression that we moved away from repoze.bfg because it was a bad framework, because repoze.bfg is a great framework, especially if you are using a lot of zope components and concepts. It's also worth mentioning that the type of setup that we ended up at, as I described, probably wouldn't have happened unless I had adapted my concepts directly from repoze.bfg, which does a great job of showing just how usable Zope components are without using the entirety of Zope itself. Few ideas are born without prior influence; repoze.bfg was built on ideas of Zope (as many Python web frameworks are in some capacity), and so too was the non-framework setup I described here based on the ideas of repoze.bfg. It is best for us to be courteous to giants as we step on their shoulders, but it is also easier to forget or unintentionally fail to extend that courtesy as I may have done here. Thankfully I've talked to Chris offline and he didn't seem to have taken this as an offense, so for that I am glad.</p>
+</div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <strong>development</strong>,
+      
+      <strong>python</strong>,
+      
+      <strong>sanity</strong>
+      
+    </p>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

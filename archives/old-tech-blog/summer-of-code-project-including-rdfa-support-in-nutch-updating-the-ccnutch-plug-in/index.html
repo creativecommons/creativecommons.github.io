@@ -1,0 +1,145 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../static/gen/script.js"></script>
+<title>&#39;Summer of Code Project: &#34;Including RDFa support in Nutch: Updating the ccNutch — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../../">
+              <img src="../../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          
+  <h2 class="mb-0">&#39;Summer of Code Project: &#34;Including RDFa support in Nutch: Updating the ccNutch</h2>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/alankelon">alankelon</a>
+  on Friday, April 13, 2007</p>
+  <div class="body"><p>Hello!</p>
+<p>I'm one of the <a href="../../../archives/old-tech-blog/summer-of-code-projects/">selected students</a> for Google Summer of Code 2007 and I'm pleased to be joining Creative Commons community this summer. My project title is <a href="http://code.google.com/soc/cc/appinfo.html?csaid=33FD37DB5A5F2E4C">Including RDFa support in Nutch: Updating the ccNutch plug-in</a> under mentoring of<a href="http://yergler.net/"> Nathan R. Yergler</a>. The abstract (with hyperlinks missing in soc page) is:</p>
+<blockquote><p><a href="http://www.w3.org/TR/2007/WD-xhtml-rdfa-primer-20070312">RDFa</a> is emerging standard from W3 Consortium to provide a <a href="http://www.w3.org/2001/sw/BestPractices/HTML/2005-rdfa-syntax">syntax</a> that expresses semantics in structured data using a set of elements and attributes that embeds RDF in HTML, such as a license on a document or<br>
+ a photoâ€™s creator name and its camera setting information.</p>
+<p><a href="http://lucene.apache.org/nutch">Nutch</a> is an open source search engine that uses <a href="http://lucene.apache.org/">Lucene</a> for searching the Web (or a subset of it) or in a customized form for an intranet. <a href="http://wiki.creativecommons.org/CcNutch">ccNutch</a> is a plug-in for Nutch to search Creative Commons content. Currently, ccNutch indexes only text documents and does not support RDFa very well.</p>
+<p>The inclusion of RDFa in ccNutch will be a great improvement for the advances of semantic web because we could easily index image, audio and video contained in web pages through their RDFa meta-data and then search them. In this way, we will be increasing our range of searchable artifacts available under creative licenses that is a worth to try.</p>
+</blockquote>
+<p>My first step is to update ccNutch with the source code from Lucene repository. Then I'll start to write the Requirements Document and Architecture to define precisely what I'll do. To do so, I'm going to study the ccNutch and Nutch code base more deeply as well to study the RDFa standard. After that, I'll write the Project Plan document to define our schedule, milestones and make risk assessment.</p>
+<p>Right now, let me introduce myself: My name is Alan Kelon, I'm 23 years old and I live in <a href="http://en.wikipedia.org/wiki/Recife">Recife</a>, Brazil. I am a 1st year Ph.D. student in Computer Science (in Portuguese) at <a href="http://www.cin.ufpe.br">Informatics Center</a> (in Portuguese), <a href="http://www.ufpe.br">Federal University of Pernambuco</a> (in Portuguese), a.k.a. CIn/UFPE. The university and my house are very close to <a href="http://en.wikipedia.org/wiki/Ricardo_Brennand_Institute" title="Ricardo Brennand Institute">Ricardo Brennand Institute</a> :-) I also hold a M.Sc. degree in Computer Science from Federal University of Pernambuco (2005-2007) â€“ entitled as "A Software Process Proposal to Open Source Software Factories" â€“ and a B.Sc. in Computer Science from <a href="http://www.ufpb.br">Federal University of ParaÃ­ba</a> (2005). In 2006, I was a teaching assistant in a Software Engineer graduate level class. The course was entitled "Software Engineering: Building Open Source Software Factories". This year edition of the course will be starting at the end of this month and I'll be lecturer again. This year, I lectured in a undergraduate leval class entitled "Advanced Topics in Software Engineering: Open Source Software".</p>
+<p>Since my undergrad studies I'm involved with free software. The first contact was to to build and maintain a Beowulf Linux cluster and to developed a high availability system from 10/2002 to 01/2005. In the past, I was also with <a href="http://www.debian.org">Debian</a> in my local community, played with <a href="http://www.andromda.org">AndroMDA</a> in the very early stages of <a href="http://openerp.persapiens.org">OpenERP</a>, developed <a href="http://vensso.sourceforge.net">VENSSO CRM</a> (in Portuguese), mentored/founded <a href="http://sourceforge.net/projects/gvsproject">GVS</a> and <a href="http://sourceforge.net/project/telescope">Telescope</a>. This last one is my active research project as part of my Ph.D. Finally, I lead the research group on Open Source and Distributed Software Development at Informatics Center, Federal University of Pernambuco, and <a href="http://salu.cesar.org.br/ncm_cesar/servlet/newstorm.ns.presentation.NavigationServlet?publicationCode=15&amp;pageCode=1229">C.E.S.A.R</a> â€“ Recife Center for Advanced Studies and Systems â€“, with strong collaboration of the local software industry, where I have the opportunity to advocate the open source development model and philosophy.</p>
+<p>All in all: "Talk is cheap, show me the code". Let's do it now ;-)</p>
+</div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      <strong>nutch</strong>,
+      
+      <strong>rdfa</strong>,
+      
+      <strong>summer</strong>
+      
+    </p>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
