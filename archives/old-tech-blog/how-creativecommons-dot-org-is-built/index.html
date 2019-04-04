@@ -98,35 +98,45 @@
   <h2 class="mb-0">How creativecommons.org is built</h2>
   <p class="meta text-muted mt-0">by <a href="/blog/authors/Matt-Lee">Matt-Lee</a>
   on Wednesday, December 10, 2014</p>
-  <div class="body"><p>On Tuesday, December 9th 2014 you may have noticed a bit of downtime on creativecommons.org.</p>
-<p>This is both an outage report, but also a little insight into how the Creative Commons website is built. I was happily assisted in this work by former technical lead at Creative Commons, Christopher Allen Webber who you may know as one of the developers of GNU MediaGoblin, where he drew me <a href="http://mediagoblin.com/u/cwebber/m/machalus-duke-of-time/">as a time-travelling goblin</a>.</p>
+  <div class="body"><p>On Tuesday, December 9th 2014 you may have noticed a bit of downtime on
+creativecommons.org.</p>
+<p>This is both an outage report, but also a little insight into how the Creative
+Commons website is built. I was happily assisted in this work by former
+technical lead at Creative Commons, Christopher Allen Webber who you may know
+as one of the developers of GNU MediaGoblin, where he drew me <a href="https://mediagoblin.org/news/contributor-drawings.html">as a
+time-travelling goblin</a>.</p>
 <p>In short, CC's website was down for two reasons:</p>
 <ul>
 <li>An outdated dependency on RDQL, not SPARQL.</li>
 <li>An update to Ubuntu 14.04 LTS installed a version of a Zope library we use.</li>
 </ul>
-<p>The Creative Commons website is a mixture of WordPress and several
-Python applications. In the near future, we plan to replace the
-WordPress portion with Jekyll.</p>
-<p>The Python applications are vast, well engineered and easy to find
-your way around, even if you're not the best Python programmer (like
-me) -- they are: cc.engine, cc.license, i18n and license.rdf.</p>
+<p>The Creative Commons website is a mixture of WordPress and several Python
+applications. In the near future, we plan to replace the WordPress portion with
+Jekyll.</p>
+<p>The Python applications are vast, well engineered and easy to find your way
+around, even if you're not the best Python programmer (like me) -- they are:
+cc.engine, cc.license, i18n and license.rdf.</p>
 <p><strong>cc.engine</strong></p>
-<p>This is the code that handles the license chooser and the display of
-licenses on the site. As such, it's pretty important. Chris was able
-to see that the program loaded at all by accessing its hidden start-up
-message "This is the root" -- <a href="https://github.com/creativecommons/creativecommons.org/blob/master/python_env/src/cc.engine/cc/engine/views.py">you'll see that here in the views.py file</a>.</p>
+<p>This is the code that handles the license chooser and the display of licenses
+on the site. As such, it's pretty important. Chris was able to see that the
+program loaded at all by accessing its hidden start-up message "This is the
+root" -- <a href="https://github.com/creativecommons/cc.engine/blob/master/cc/engine/views.py">you'll see that here in the views.py file</a>.</p>
 <p><strong>cc.license</strong></p>
 <p>This is the code that takes the RDF description of the license (from
-license.rdf) and returns it to the chooser or to the license
-display. Here's where the code was updated to reflect a change from
-RDQL to SPARQL, which are both RDF query
-languages. <a href="https://github.com/creativecommons/cc.license/pull/1">As noted in the pull request</a>
--- "one obscure query language is enough" -- as
-<a href="https://github.com/creativecommons/cc.license/blob/master/cc/license/_lib/functions.py">you can see from the source code file</a>,
-SPARQL was already in use.</p>
-<h3 id="future-goals">Future goals</h3><p>One goal is to make the CC website very easy to people to hack on and make improvements to it. And yes, we're a little way off on that today, but thanks to Chris, I have a better understanding of the site myself now, and I hope to pass that knowledge along with future updates to the site, especially once we move to Jekyll in the new year.</p>
-<p>You can check out the <a href="http://github.com/creativecommons.org">CC website code</a> for more info on how to recreate the CC website locally. Please help us out by filing any/all bugs/feature requests at <a href="http://github.com/creativecommons.org/issues">the GitHub repo</a>. If you have questions, you can ask them on <a href="https://wiki.creativecommons.org/IRC">our dedicated development IRC channel</a>.</p>
+license.rdf) and returns it to the chooser or to the license display. Here's
+where the code was updated to reflect a change from RDQL to SPARQL, which are
+both RDF query languages. <a href="https://github.com/creativecommons/cc.license/pull/1">As noted in the pull request</a> -- "one
+obscure query language is enough" -- as <a href="https://github.com/creativecommons/cc.license/blob/master/cc/license/_lib/functions.py">you can see from the source code
+file</a>, SPARQL was already in use.</p>
+<h3 id="future-goals">Future goals</h3><p>One goal is to make the CC website very easy to people to hack on and make
+improvements to it. And yes, we're a little way off on that today, but thanks
+to Chris, I have a better understanding of the site myself now, and I hope to
+pass that knowledge along with future updates to the site, especially once we
+move to Jekyll in the new year.</p>
+<p>You can check out the <a href="http://github.com/creativecommons/creativecommons.org">CC website code</a> for more info on how to recreate
+the CC website locally. Please help us out by filing any/all bugs/feature
+requests at <a href="http://github.com/creativecommons/creativecommons.org/issues">the GitHub repo</a>. If you have questions, you can ask them
+on <a href="https://wiki.creativecommons.org/IRC">our dedicated development IRC channel</a>.</p>
 </div>
   <hr>
   <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
