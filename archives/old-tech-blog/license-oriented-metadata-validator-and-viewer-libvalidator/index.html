@@ -97,7 +97,7 @@
           
   <h2 class="mb-0">License-oriented metadata validator and viewer: libvalidator</h2>
   <p class="meta text-muted mt-0">by <a href="/blog/authors/hugo">hugo</a>
-  on Tuesday, July 8, 2008</p>
+  on Tuesday, 2008 July 8</p>
   <div class="body"><p>As the <a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> midterm evaluation <a href="http://code.google.com/soc/2008/faqs.html#0.1_timeline">deadline is approaching</a>, it is a good time to report the progress when it comes to the license-oriented metadata validator and viewer.</p>
 <p>The source code is located in two dedicated <a href="http://git.or.cz/">git</a> repositories. The first being <a href="http://code.creativecommons.org/viewgit?r=validator.git">validator</a>, which contains the source code of the Web application based on <a href="http://pylonshq.com/">Pylons</a> and <a href="http://genshi.edgewall.org/">Genshi</a>. The second repository is <a href="http://code.creativecommons.org/viewgit?r=libvalidator.git">libvalidator</a>, which hosts the files that constitute the core library that the project will utilise. This is the component that the development focuses on right now.</p>
 <p>The purpose of the aforementioned library is to parse input files, scan them for relevant license information, and output the results in a machine-readable fashion. More precisely, its workflow is the following: parse the file and associated <a href="http://www.w3.org/RDF/">RDF</a> information so that a complete set of RDF data is available, filter the results with regard to license information (not only related to the document itself, but also to other objects described within it), and return the results in a manner preferable for the usage by the Web application.</p>

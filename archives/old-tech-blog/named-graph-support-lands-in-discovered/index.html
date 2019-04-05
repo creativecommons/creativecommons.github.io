@@ -97,7 +97,7 @@
           
   <h2 class="mb-0">Named Graph support lands in DiscoverEd</h2>
   <p class="meta text-muted mt-0">by <a href="/blog/authors/nathan">nathan</a>
-  on Wednesday, September 1, 2010</p>
+  on Wednesday, 2010 September 1</p>
   <div class="body"><p>Earlier this week we updated the <a href="http://gitorious.org/discovered/repo">master branch</a> on the <a href="http://wiki.creativecommons.org/DiscoverEd">DiscoverEd</a> <a href="http://gitorious.org/discovered">project</a>. While this "release" contains many improvements, the biggest one by far is the use of named graphs for <a href="http://wiki.creativecommons.org/Metadata_Provenance">tracking provenance</a>. The initial DiscoverEd prototype supported multiple curators making statements about the same resource. For example, the same photograph of the US moon landing might be useful for both a history and a physics course. Unfortunately the initial prototype didn't retain information about who made each individual statement, which limited the ways in which you could refine your search.</p>
 <p>With this week's release we're storing that information, and opening up more ways to explore the metadata stored about resources. We use <a href="http://openjena.org">Jena</a> as our RDF store, and <a href="http://www4.wiwiss.fu-berlin.de/bizer/ng4j/">Named Graphs for Jena</a> (NG4J) provide an elegant way to integrate this source information with DiscoverEd.</p>
 <p>Also notable in this release is database independence. Any <a href="http://www4.wiwiss.fu-berlin.de/bizer/ng4j/#Persistence">database backend supported by NG4J</a> can be used with DiscoverEd, and the default configuration uses Derby for ease of experimentation and development.</p>
