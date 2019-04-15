@@ -108,17 +108,21 @@
 <p>The 2nd thing relates to the recommended way to point the browser to the extension being developed. The way (mentioned <a href="http://blog.mozilla.com/addons/2009/01/28/how-to-develop-a-firefox-extension/">here</a>) is to create a text file in the extensions` directory in your profile containing the path to the extension directory (so, it may be put anywhere). I though this mechanism is primarily supported for Windows, because creating symlinks is not a very common operation there (what I did myself). Then, while testing extension uninstall process, it appeared that Fx just removes all files (and keeps directories) in the place of an extension when it gets uninstalled. Working perfectly when deleting a usual extension (a single zip-compressed *.xpi file), this behavior used to silently drop my local git repo, making to think of not using symlinks/doing frequent backups/pushing on every commit. :)</p>
 <h3 id="feedback">Feedback</h3><p>Al usual, I'll be pleased if anyone tries the extension, probably <a href="http://code.creativecommons.org/issues/">reporting any issues</a>. Any opinions are welcome here in comments, on the <code>irc.freenode.net#cc</code> channel, by <a href="mailto:mail@igor.lukanin.name">email</a> or via Jabber.</p>
 </div>
-  <hr>
-  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
-    
-      
-      
-      <a href=" /archives/old-tech-blog/categories/rdfa ">rdfa</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/summer ">summer</a>
-      
-    </p>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /archives/old-tech-blog/categories/rdfa ">rdfa</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/summer ">summer</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

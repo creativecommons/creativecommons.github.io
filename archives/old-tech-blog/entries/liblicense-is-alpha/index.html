@@ -102,38 +102,42 @@
 <p>The most common data structure I've been using is a null-terminated list (really an array) of strings (char*). Yesterday I wrote out some common methods to be shared throughout the library. These are in <a href="http://cctools.svn.sourceforge.net/viewvc/cctools/liblicense/trunk/list.c?view=markup">list.c</a>. My hope is that these common functions will allow the other code to be cleaner. Next week I plan on fixing up system_licenses.c to use the list functions. At the moment it is the<a href="http://cctools.svn.sourceforge.net/viewvc/cctools/liblicense/trunk/system_licenses.c?view=markup"> largest, ugliest and leakiest</a> of all the files. That will all be fixed Monday.</p>
 <p>After the code cleanup on Monday the much more exciting task of creating modules and clients of the library begins. We'd like to support embedding in as many file formats as possible. Without this ability, the license tracking only works locally. One of the most useful libraries so far is <a href="http://libopenraw.freedesktop.org/wiki/Exempi">Exempi</a> which can embed in a number of formats. Jason wrote an <a href="http://cctools.svn.sourceforge.net/viewvc/cctools/liblicense/trunk/modules/io/exempi.c?view=markup">Exempi liblicense module</a> yesterday. On my list of clients to do is a Gnome Control Panel system default, Nautilus license select, Sugar license select and Creative Commons default license chooser. Am I missing anything important? Where could licenses be integrate besides this? Perhaps Amarok or an equivalent? ccHost? Let me know what you think.</p>
 </div>
-  <hr>
-  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
-    
-      
-      
-      <a href=" /archives/old-tech-blog/categories/development ">development</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/embedding ">embedding</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/Interns ">Interns</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/metadata ">metadata</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/opensource ">opensource</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/python ">python</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/rdf ">rdf</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/system ">system</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/xmp ">xmp</a>
-      
-    </p>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /archives/old-tech-blog/categories/development ">development</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/embedding ">embedding</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/Interns ">Interns</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/metadata ">metadata</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/opensource ">opensource</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/python ">python</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/rdf ">rdf</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/system ">system</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/xmp ">xmp</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

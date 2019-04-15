@@ -107,11 +107,15 @@
 <p><img src="../../../../archives/old-tech-blog/entries/cc-legaleratta-errata-annotations-without-republishing-licenses/Errata_tool_alternate.jpg" alt="UI mockup for the errata tool."></p>
 <p>The actual implementation of the tool ended up being much simpler than the proposed one. Json is still used for storing the machine readable errata, but rather than a convoluted scheme of managing text diffs, machine readable errata is a collection of entries that contain a css selector, attribute overrides (optional), and html fragments. The css selectors are used by jquery to select an element in the dom; the element's innerHTML attribute is then written over by the html fragment. The html fragment itself is the original innerHTML of the node, but with subtractions noted by <del></del> tags, and additions noted by <ins></ins> tags. These files are maintained by hand at this current time, with no plans of writing a frontend for it. The errata tool takes a snapshot of the page's html before and after overriding it, so that you can efficiently toggle between view modes. CSS in both errata modes to either make the text look clean (subtractions hidden) or to accomplish highlighting.</p>
 </div>
-  <hr>
-  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
-    
-      none
-    </p>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          none
+        
+      </p>
+    </div>
+  </div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

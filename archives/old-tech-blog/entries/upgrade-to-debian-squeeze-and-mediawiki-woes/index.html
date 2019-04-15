@@ -121,20 +121,24 @@ call_user_func_array('lol', $args);</code></p>
 <p><a href="http://www.mediawiki.org/wiki/Extension:ReCAPTCHA#Parameter_1_to_ReCaptcha::confirmEdit.28.29_expected_to_be_a_reference">The fix</a> for the ReCAPTCHA extension was easy, since it's published on the extension's page. For the other extensions, I investigated the places where this problem was occurring and removed the references from the function definitions, but not before poking around a bit to make reasonably sure that the references weren't fully necessary.</p>
 <p>Lesson: use caution when doing any upgrade that moves you from PHP &lt;5.2.x to &gt;5.3.x. Google searches reveal that this issue is rife in not only Mediawiki, but also Joomla!, and presumably any other CMS or framework that makes use of call_user_func_array().</p>
 </div>
-  <hr>
-  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
-    
-      
-      
-      <a href=" /archives/old-tech-blog/categories/Debian ">Debian</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/mediawiki ">mediawiki</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/php ">php</a>
-      
-    </p>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /archives/old-tech-blog/categories/Debian ">Debian</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/mediawiki ">mediawiki</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/php ">php</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

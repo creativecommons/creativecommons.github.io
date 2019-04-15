@@ -103,17 +103,21 @@
 <p>When I first tried to add <a href="http://pypi.python.org/pypi/coverage/">coverage</a> support to our Python code, I <a href="http://yergler.net/blog/2010/08/20/ci-at-cc/">encountered</a> <a href="http://bitbucket.org/ned/coveragepy/issue/82/tokenerror-when-generating-html-report">an issue</a> between coverage and Jinja2. Ned quickly committed a fix, and today I finished instrumenting our core Python projects for coverage reporting. This includes the license engine (<a href="http://code.creativecommons.org/hudson/job/cc.engine/cobertura/">cc.engine</a>), the API (<a href="http://code.creativecommons.org/hudson/job/cc.api/cobertura/">cc.api</a>), the underlying license library (<a href="http://code.creativecommons.org/hudson/job/cc.license/cobertura/">cc.license</a>), and the structured data scraper used by the deeds (<a href="http://code.creativecommons.org/hudson/job/deedscraper/cobertura/">deedscraper</a>).</p>
 <p>A pleasant surprise after instrumenting is the current state of coverage. With the exception of cc.engine, we're at greater than 90% coverage for our core code (it appears that there are lots of branches/conditionals we don't test adequately in cc.engine right now). Looking forward to seeing 100's across the board.</p>
 </div>
-  <hr>
-  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
-    
-      
-      
-      <a href=" /archives/old-tech-blog/categories/infrastructure ">infrastructure</a>,
-      
-      
-      <a href=" /archives/old-tech-blog/categories/tools ">tools</a>
-      
-    </p>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /archives/old-tech-blog/categories/infrastructure ">infrastructure</a>,
+          
+          
+          <a href=" /archives/old-tech-blog/categories/tools ">tools</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
