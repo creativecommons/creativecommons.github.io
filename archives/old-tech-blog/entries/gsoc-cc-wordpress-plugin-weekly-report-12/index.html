@@ -1,0 +1,165 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../../static/gen/script.js"></script>
+<title>GSoC CC Wordpress Plugin: Weekly Report #12 — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../../../">
+              <img src="../../../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          
+  <h2 class="mb-0">GSoC CC Wordpress Plugin: Weekly Report #12</h2>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/erlehmann">erlehmann</a>
+  on Thursday, 2010 August 19</p>
+  <div class="body"><p><em>This</em> may be my last report for the <a href="../../../../archives/old-tech-blog/gsoc-project-introduction-cc-wordpress-plugin/">plugin</a>. After 150 commits and a bit over 30KB of written PHP code, the <em>Google Summer of Code</em> proposal <a href="http://socghop.appspot.com/gsoc/student_proposal/show/google/gsoc2010/erlehmann/t126992832487"><em>Support for CC licenses in Wordpress</em></a> is finally finished, though the final product is remarkably different from the original suggestion. As time went by fast in the last few days before the deadline, I successfully managed to fix the three remaining issues mentioned before; namely an  IE bug, adding license information to the media manager overview table (<a href="http://daten.dieweltistgarnichtso.net/pics/screenshots/web/wordpress-cc-plugin/media-manager-table.png">screenshot</a>) and having a proper README (written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>).</p>
+<p>However, one thing still did not work quite right: Embedding. A security restriction called the <a href="http://en.wikipedia.org/wiki/Same_origin_policy"><em>same origin policy</em></a> prevents audio and video (but not images, as they came before the  SOP) from one site to be included on another, unless a special HTTP header is sent. As Jonas Sicking puts it in an <a href="http://lists.xiph.org/pipermail/theora/2008-November/001958.html">explanatory email</a> (<a href="http://ajaxian.com/archives/video-audio-cross-origin">via</a>):</p>
+<blockquote><p>Requiring that sites add 'Access-Control-Allow-Origin:*' simply is<br>
+ a way for us to know that "this is a public resource that other sites<br>
+ can embed".</p>
+</blockquote>
+<p>In addition to the above issue, <a href="https://developer.mozilla.org/en/Configuring_servers_for_Ogg_media">other things</a> should be taken care of server-side to ensure media playback works as intended:</p>
+<ul>
+<li><strong>The X-Content-Duration header</strong> should tell the browser how long a media file is, in seconds. If it is not given, Browsers will have to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=502894#c1">figure out the duration by themselves</a>, by seeking to the end of the file.</li>
+<li><strong>gzip/deflate compression</strong> <em>must not</em> be used — if it is employed, Firefox will be unable to fast-forward, and Chrome will not play the given file at all.</li>
+<li><strong>HTTP 1.1 byte range requests</strong> must be served correctly; otherwise there can be no seeking unless the relevant part of the file is already downloaded.</li>
+</ul>
+<p>For many of these cases, if a server does not already handle them, only a few lines in the <a href="http://httpd.apache.org/docs/1.3/howto/htaccess.html"><em>.htaccess</em></a> file would need to be changed. But, as the plugin should also accommodate users who may not have the option, technical skill or time to edit their web server configuration, everything mentioned above needs to happen automagically. This has led me to writing a small <em>web server</em> and bundling it with the plugin.</p>
+<p>Technical issues aside, participating in the Google Summer of Code was an interesting and unique experience that certainly made me grow in confidence regarding my abilities. I also learned to value how much work can go into a relatively small piece of code to create a sufficiently polished product. Finally, the plugin in its current incarnation was made possible only through assistance of the following people, whom I wish to thank:</p>
+<ul>
+<li><strong>Matthias <em>wetterfrosch</em> Mehldau</strong> for a <a href="http://einmachglas.wordpress.com/2009/03/10/creative-commons-html-code/">blog post</a> regarding markup for creative-commons-licensed content</li>
+<li><strong>Julia <em>zeitrafferin</em> Seeliger</strong> for a <a href="http://julia-seeliger.de/wunschzettel-creative-commons-plugin-fur-wordpress/">related article</a>, the inspiring moment for me</li>
+<li><strong>Johnny Häusler</strong> for a <a href="http://daten.dieweltistgarnichtso.net/pics/screenshots/web/spreeblick-plugin.png">screenshot</a> of the Spreeblick plugin interfaces</li>
+<li><strong>Michelle Thorne</strong> for connecting me with a metadata expert</li>
+<li><strong>Nathan Yergler</strong> for advising me on RDFa</li>
+<li><strong>Nathan Kinkade</strong> for mentoring me over the course of the Google Summer of Code, continually suggesting code improvements and standing by to patiently explain issues until I got the point</li>
+<li><strong>Moritz Metz</strong> for advising me to take non-standard Wordpress directory names and post thumbnails into account</li>
+<li><strong>Markus Beckedahl</strong> for suggesting the <em>embed</em> functionality</li>
+<li><strong>Bernd Holzmüller</strong> for testing performance and explaining how to avoid memory leaks</li>
+</ul>
+<p>What will follow now is user testing, hopefully yielding some real world experience and small improvements so a more polished version of the plugin can be packaged and released through the <a href="http://wordpress.org/extend/plugins/">Wordpress.org plugin directory</a>. If, in the future, the plugin's functionality is extended notably, I may write another blog post — for now, however, I'm done.
+  <em>[ IE]: Internet Explorer
+  </em>[ SOP]: Same Origin Policy</p>
+</div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      
+      <a href=" /archives/old-tech-blog/categories/CC ">CC</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/summer ">summer</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/wordpress ">wordpress</a>
+      
+    </p>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

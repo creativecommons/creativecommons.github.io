@@ -1,0 +1,175 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../../static/gen/script.js"></script>
+<title>System Integrated Licensing — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../../../">
+              <img src="../../../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          
+  <h2 class="mb-0">System Integrated Licensing</h2>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/tannewt">tannewt</a>
+  on Tuesday, 2007 June 19</p>
+  <div class="body"><p>I've been asked, as a tech intern here at Creative Commons, to create a way of locally tracking file licenses on a system. A while back Jon <a href="http://wiki.creativecommons.org/Licenses_in_Operating_Systems_Specification">wrote down his ideas</a> about system-wide license tracking on the Creative Commons wiki. The purpose of this system would be to provide an interface for developers to access the available licenses on a system. Additionally, like the existing online license chooser, this library, called libLicense, will feature a way to choose a license through toggling certain flags available for a family of licenses. Naturally, the first family available will be the Creative Commons licenses. The larger goal for the summer is to utilize this library in a few initial systems. Currently, I'm looking at integration into <a href="http://www.gnome.org">Gnome</a> and Sugar (from the <a href="http://www.laptop.org">One Laptop Per Child</a> project). This further work will occur after libLicense is working.</p>
+<p><strong>Data</strong></p>
+<p>To run libLicense the data of all the licenses will need to be stored in some sort of fashion. My initial thought is this:</p>
+<ul>
+<li>All data will be stored in a directory. On Linux this directory would be /usr/share/licenses . (This is borrowed from Jon's thoughts.)</li>
+<li>Families of licenses will be stored in a subdirectory of the licenses directory. For example, the Creative Commons licenses would be stored within creative_commons.</li>
+<li>Within these family directories each specific license will be stored in a file with the naming scheme <bitcode>-<short name>-<jurisdiction>-<locale>.license . These files will store the license uri, name, status (active or retired), description and legal text. How this will be stored is up in the air. My intial thoughts include separating each attribute on a line or having a format similar to .desktop files.</li>
+<li>In addition to storing license data, some family information must be stored, namely the family bit flags. In the case of the Creative Commons licenses, the bit flags would be Attribution, Share-Alike, Non-Commercial and No Derivatives. They would combine to create the bitcode present in the license filename. These bit flags would be the heart of the license chooser logic. If the combination does not exist, the flags are incompatible.</li>
+</ul>
+<p><strong>API</strong><br>
+The library would potentially have these functions:</p>
+<p><strong>get_jurisdiction(uri)</strong> - returns the jurisdiction for the given license.<br>
+<strong>get_jurisdictions(short or bitcode)</strong> - returns the available jurisdiction for the given short name or bitcode.<br>
+<strong>get_locale(uri)</strong> - returns the locale for the given license.<br>
+<strong>get_locales(jurisdiction, short or bitcode)</strong> - returns the available locales for the given jurisdiction and short name or bitcode.<br>
+<strong>get_name(uri)</strong> - returns the name of the license.<br>
+<strong>get_version(uri)</strong> - returns the version of the license.<br>
+<strong>get_versions(short, jurisdiction)</strong> - returns the available versions for the given short name or bitcode and jurisdiction.<br>
+<strong>get_short(uri)</strong> - returns the short name for the given uri.<br>
+<strong>has_flag(attribute,uri)</strong> - returns if the flag is set for the given uri.<br>
+<strong>family_flags(family)</strong> - returns the flags available for a given family.<br>
+<strong>family(uri)</strong> - returns the family the given uri belongs to.<br>
+<strong>get_notification(uri[,url])</strong> - returns the notification string for the given url with an option to provide a verification url.<br>
+<strong>verify_uri(uri)</strong> - returns whether or not the given uri is recognized by the system.<br>
+<strong>get_license(family,flags, jurisdiction,locale)</strong> - returns the uri which satisfies the given attributes.<br>
+<strong>get_all_licenses()</strong> - returns all general licenses available.<br>
+<strong>get_general_licenses(family)</strong> - returns all general licenses in a family.<br>
+<strong>get_families()</strong> - returns a list of available families.</p>
+<p>Did I miss something? Does something not make sense? Please post a comment.</p>
+</div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      
+      <a href=" /archives/old-tech-blog/categories/development ">development</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/Interns ">Interns</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/license ">license</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/one ">one</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/software ">software</a>,
+      
+      
+      <a href=" /archives/old-tech-blog/categories/system ">system</a>
+      
+    </p>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

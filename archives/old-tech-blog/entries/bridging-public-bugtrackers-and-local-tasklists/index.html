@@ -1,0 +1,160 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="../../../../static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="../../../../static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../../../../static/gen/script.js"></script>
+<title>Orgmode and Roundup: Bridging public bugtrackers and local tasklists — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="../../../../">
+              <img src="../../../../cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../contributing-code/">Contributing Code</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../../projects/">Projects</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="../../../../community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="../../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="../../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="../../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          
+  <h2 class="mb-0">Orgmode and Roundup: Bridging public bugtrackers and local tasklists</h2>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/cwebber">cwebber</a>
+  on Wednesday, 2010 November 10</p>
+  <div class="body"><p>So maybe you're already familiar with the problem. You're collaborating with other people, and especially if you're in a free software environment (but maybe even some install at your work) you have some bugtracker, and that's where everyone collaborates. But on the other hand, you have a life, your own todo systems, your own notes, etc. Even for the tasks that are on the bugtracker, you might keep your own local copy of that task and notes on that task. Eventually things start to get out of sync. Chaos!</p>
+<p>Wouldn't it be great if you could sync both worlds? Keep the notes that are relevant to being public on the public bugtracker, but keep private notes that would just clutter up the ticket/issue/bugreport private. Mesh the public task system with your private task system. Well, why not?</p>
+<p>So this was the very problem I'd run into. I have my work bugtracker for here at CC, our <a href="http://code.creativecommons.org/issues/">install of roundup</a>, and then I have my own TODO setup, a collection of <a href="http://orgmode.org">Org-mode</a> files.</p>
+<p>There are a lot of things I like about org-mode. It's in emacs (though there's apparently a <a href="http://article.gmane.org/gmane.emacs.orgmode/33226">lean vim port in the works</a>), it's plaintext (which means I can sync across all my machines with git... which I do!), tasks are nested trees / outlines (I really tend to break down tasks in very granular fashions as I go so I don't get lost), notes are integrated directly with tasks (I take a <strong>lot</strong> of notes), and it's as simple as you need it or as complex as you want to get (I started out very simple, now my usage of org-mode is fairly intricate). It also does a good job of spanning across multiple files while still retraining the ability to pull everything together with its agenda, which is useful since I like to keep things semi-organized.</p>
+<p>And of course, the relevant file here is all my Creative Commons stuff, which I keep in a file called ccommons.org. There's a lot of private data in here, but I've uploaded a <a href="http://labs.creativecommons.org/~cwebber/misc/ccommons.org">minimalist version of my ccommons.org file</a>.</p>
+<p>So! Syncing things. If you open the file in an emacs version with org-mode installed, you'll notice 4 sections. Two of these are crucial to my setup, but we won't be using them today: "Events" holds say, meeting at X time, traveling on certain days; "Various Tasks" contains not roundup-related tasks. Then there's the other two: "Roundup" will collect all the tasks we need to work on, and "Supporting funcs" has a couple of org-babel blocks in Python and emacs-lisp.</p>
+<p>Anyway, enough talk, let's give it a spin. You'll need a recent version org-mode and a copy of emacs. Make sure that newer org-mode is on your load-path and then evaluate:</p>
+<pre><code>(require 'org)
+(require 'org-install)
+(require 'ob-python)
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-fontify-natively t)
+(setq org-src-tab-acts-natively t)
+</code></pre>
+<p>Next open up the relevant org-mode file. Move to the "Roundup" line, hit Tab to cycle its visibility, and move to the line that starts with "#+call:"</p>
+<p><a href="http://labs.creativecommons.org/files/2010/11/cc_blog_ccommons_screenshot1.png"><img src="../../../../archives/old-tech-blog/entries/bridging-public-bugtrackers-and-local-tasklists/cc_blog_ccommons_screenshot1.png" alt=""></a></p>
+<p>Now press "Ctrl+c Ctrl+c". You'll see it populate with issues from <a href="http://code.creativecommons.org/issues/issue?status=-1,1,2,3,4,5,6,7&amp;@sort=-activity&amp;@search_text=&amp;@dispname=Your%20Issues&amp;@filter=status,assignedto&amp;@group=priority&amp;@columns=id,activity,title,creator,status&amp;assignedto=40&amp;@pagesize=50&amp;@startwith=0">my issues list</a>:</p>
+<p><a href="http://labs.creativecommons.org/files/2010/11/cc_blog_ccommons_screenshot2.png"><img src="../../../../archives/old-tech-blog/entries/bridging-public-bugtrackers-and-local-tasklists/cc_blog_ccommons_screenshot2.png" alt=""></a></p>
+<p>What's happening here? So we're executing an org-babel block at point. <a href="http://orgmode.org/worg/org-contrib/babel/intro.php">Org-babel</a> is an org-mode extension that allows you to make blocks of code executable, and even chain from one language to another (it also has some stuff relevant to Donald Knuth's "literate programming" which is cool but I'm not using here). If we look at the code blocks:</p>
+<p><a href="http://labs.creativecommons.org/files/2010/11/cc_blog_ccommons_screenshot3.png"><img src="../../../../archives/old-tech-blog/entries/bridging-public-bugtrackers-and-local-tasklists/cc_blog_ccommons_screenshot3.png" alt=""></a></p>
+<p>Anyway, there are three code blocks here.</p>
+<ul>
+<li><strong>ccommons-roundup-parse:</strong> uses python to read the <a href="http://code.creativecommons.org/issues/issue?@action=export_csv&amp;@columns=id,activity,title,creator,status&amp;@sort=-activity&amp;@group=priority&amp;@filter=status,assignedto&amp;@pagesize=50&amp;@startwith=0&amp;status=-1,1,2,3,4,5,6,7&amp;assignedto=40">CSV file</a> generated by roundup which is relevant to my task list, converts it into a list of two-item lists (task id, task title)</li>
+<li><strong>ccommons-roundup-insert-func:</strong> the function that actually inserts items into our "* Roundup" heading. It checks the ROUNDUPID property to see if that task is already inserted or not. If not, it inserts the task with the appropriate title and ROUNDUPID.</li>
+<li><strong>ccommons-roundup-insert</strong> the actual block we end up invoking. It binds together the data from ccommons-roundup-parse with a function call to the function defined in ccommons-roundup-insert-func.</li>
+</ul>
+<p>You can evaluate it multiple times. It'll only insert new tasks that aren't on your list currently. Now you can take notes on your tasks, schedule them for various dates, make subtasks, etc. When you're ready to close out a task close it out both on the ticket and in org-mode. If you want to use a similar setup for org-mode, I think it's easy enough to borrow these methods and just change the CSV URL to whatever URL is appropriate for your user's tasks.</p>
+<p>Now admittedly this still isn't even the best setup. It would be good if it told you when some tasks are marked as closed in your org-mode and open in roundup and vice versa. Org-babel still feels a bit hacky... I probably wouldn't use it on anything other than scripts-I-want-to-embed-in-my-orgmode-files (for now at least). I even had to strip out quotes from the titles because org-babel python <a href="http://article.gmane.org/gmane.emacs.orgmode/33349">doesn't escape quotations from strings correctly</a> currently (but that's a bug, one that will hopefully be fixed). Even so, I've been trying to close out a lot of roundup tasks lately, and it's really helped me to bridge both worlds.</p>
+<p><strong>Edit:</strong> And in case you're wondering why I didn't use url.el instead of piping to python, the reason is because of CSV support... there's none builtin to emacs as far as I know, and splitting on commas doesn't handle all of the escaping intricacies... and org-babel makes it pretty easy to be lazy and simply use python for what python already handles well.</p>
+</div>
+  <hr>
+  <p class="meta mt-0 mb-0"><span class="text-muted">Categories: </span>
+    
+      
+      
+      <a href=" /archives/old-tech-blog/categories/tools ">tools</a>
+      
+    </p>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
