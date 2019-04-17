@@ -96,7 +96,7 @@
           <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
           
   <h2 class="mb-0">liblicense 0.7.0: Now with working Python bindings again</h2>
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/asheesh">asheesh</a>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/asheesh">asheesh</a>
   on Friday, 2008 May 16</p>
   <div class="body"><p>I just released liblicense 0.7.0 on SourceForge. It fixes the Python bindings. They've been broken since the 0.6 release, it seems. Some functionality in them probably worked between 0.6 and 0.7, but (read on for more)...</p>
 <p>LL_LICENSE and other constants were "extern const char" arrays before. Now they're just lousy old #defines. This way, even though the strings might appear more than once in memory, it's very simple for the IO modules like exempi.so to refer to those constants.</p>

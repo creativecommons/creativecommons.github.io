@@ -96,7 +96,7 @@
           <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
           
   <h2 class="mb-0">A patchy web server</h2>
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/asheesh">asheesh</a>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/asheesh">asheesh</a>
   on Monday, 2007 August 13</p>
   <div class="body"><p>The tech team here is examining how we can better-organize our web servers and web sites. If you are a DNS sleuth, you may have noticed that most of our web sites are served from a server called "apps.creativecommons.org." But there are some problems with this setup: for example, some of our sites are lots of little static files (like the images site, i.creativecommons.org), and some serve CPU-intensive web pages (like wiki.creativecommons.org). We can handle many, many more requests to i.creativecommons.org per second than to wiki.creativecommons.org.</p>
 <p>In order to prevent Apache from overloading the computer it's running on, we have to limit the maximum number of web pages it can serve at once. If a thousand people at once were requesting our images, that would be no problem, but we couldn't really handle a thousand requests to our wiki at once. So we have to set the web server to the limit that can be handled by the most difficult site - otherwise, when more people start editing our wiki at once than we can handle, service will degrade really terribly for everyone, even the clients just getting images from i.creativecommons.org!</p>

@@ -96,7 +96,7 @@
           <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
           
   <h2 class="mb-0">wpLicense 0.7.6</h2>
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/nathan">nathan</a>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/nathan">nathan</a>
   on Wednesday, 2007 April 11</p>
   <div class="body"><p>Today I released <a href="http://wiki.creativecommons.org/WpLicense">wpLicense</a> 0.7.6 ( <del>download</del> see update below). It's a minor bug fix, but one worth noting. Thanks to Tiago and CristÃ³bal for both reporting the bug.</p>
 <p>The bug was simple: the <a href="http://wiki.creativecommons.org/WpLicense_Function_Reference">documentation</a> says that the <code>licenseUri</code> function returns the URI of the selected license. And that's what the internal wpLicense code relied on. However, the implementation actually <code>echo</code>'d the URI, introducing a race condition: if things were timed <em>just right</em> , the problem wasn't apparent. But too often they weren't, and then it was.</p>

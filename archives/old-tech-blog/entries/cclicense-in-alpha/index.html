@@ -96,7 +96,7 @@
           <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
           
   <h2 class="mb-0">cc.license in alpha</h2>
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/frank">frank</a>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/frank">frank</a>
   on Thursday, 2008 July 24</p>
   <div class="body"><p>Work on cc.license and cc.api is going swimmingly well. I think it's about time I share what I've been doing for the past few weeks.</p>
 <p>Creative Commons provides a <a href="http://api.creativecommons.org/docs/">web api</a> to make license information available to applications. Per <a href="http://creativecommons.org/about/people/#31">Nathan Yergler</a>'s aptly-named Gradually Increasing Sanity Initiative, my task this summer has been to reimplement the web api using <a href="http://pylonshq.com/">Pylons</a> (the cc.api project) so that CC has fewer server stacks to maintain. The huge dependency of this project is to implement a python layer over license.rdf (the one unified place where all license data exists, in a happy RDF format), which shall be called cc.license. Indeed, the development of cc.api and cc.license have been gloriously intertwined, with the cc.license API being shaped by the needs of cc.api.</p>

@@ -96,7 +96,7 @@
           <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
           
   <h2 class="mb-0">Upgrade to Debian Squeeze and Mediawiki woes</h2>
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/nkinkade">nkinkade</a>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/nkinkade">nkinkade</a>
   on Thursday, 2011 February 10</p>
   <div class="body"><p>Just a number of days ago <a href="http://www.debian.org">Debian</a> <a href="http://www.debian.org/News/2011/20110205a">released Squeeze</a> as the new stable version. I decided to test the upgrade one or two of CC's servers to see how it would go. The upgrade process was standard and went without problems, as one comes to expect with Debian. Any problems with the upgrade didn't manifest until I noticed that one of our sites running on Mediawiki had apparently broken.</p>
 <p>I narrowed the problem down to several extensions. Upgrading to Squeeze brought in a new version of PHP, taking it from 5.2.6 (in Lenny) to 5.3.3. PHP was emitting warnings in the Apache logs like:</p>
