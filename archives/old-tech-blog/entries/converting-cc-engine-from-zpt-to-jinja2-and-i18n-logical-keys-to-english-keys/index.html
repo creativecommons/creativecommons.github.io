@@ -1,14 +1,14 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" type="image/x-icon" href="../../../../static/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
-<link rel="stylesheet" href="../../../../static/gen/style.css">
+<link rel="stylesheet" href="/static/gen/style.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../../../static/gen/script.js"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
 <title>Converting cc.engine from ZPT to Jinja2 and i18n logical keys to english keys — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
@@ -28,8 +28,8 @@
         <div class="col-9">
           <nav class="navbar navbar-expand-xl navbar-dark" name="top">
             
-            <a class="navbar-brand" href="../../../../">
-              <img src="../../../../cclogo.svg">
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
               <span class="legend">Creative Commons Open Source</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -39,29 +39,29 @@
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="../../../../">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../../contributing-code/">Contributing Code</a>
+                    <a class="nav-link" href="/contributing-code/">Contributing Code</a>
                   </li>
                 
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../../projects/">Projects</a>
+                    <a class="nav-link" href="/projects/">Projects</a>
                   </li>
                 
                   <li class="nav-item">
-                    <a class="nav-link" href="../../../../blog/">Blog</a>
+                    <a class="nav-link" href="/blog/">Blog</a>
                   </li>
                 
                 <li class="nav-item dropdown ">
                   <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
                   <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
                     
-                      <a class="dropdown-item" href="../../../../community/">Join the Community</a>
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
                     
-                      <a class="dropdown-item" href="../../../../community/code-of-conduct/">Code of Conduct</a>
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
                     
-                      <a class="dropdown-item" href="../../../../community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
                     
                   </div>
                 </li>
@@ -69,13 +69,13 @@
                   <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
                   <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
                     
-                      <a class="dropdown-item" href="../../../../gsoc-2019/">General Information</a>
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
                     
-                      <a class="dropdown-item" href="../../../../gsoc-2019/project-ideas/all/">Project Ideas</a>
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
                     
-                      <a class="dropdown-item" href="../../../../gsoc-2019/student-expectations/">Student Expectations</a>
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
                     
-                      <a class="dropdown-item" href="../../../../gsoc-2019/application-instructions/">Application Instructions</a>
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
                     
                   </div>
                 </li>
@@ -83,7 +83,7 @@
                   <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
                   <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
                     
-                      <a class="dropdown-item" href="../../../../archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                      <a class="dropdown-item" href="/archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
                     
                   </div>
                 </li>
@@ -100,9 +100,10 @@
           <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
           
   <h2 class="mb-0">Converting cc.engine from ZPT to Jinja2 and i18n logical keys to english keys</h2>
+  
   <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/cwebber">cwebber</a>
   on Friday, 2011 September 2</p>
-  <div class="body"><h2 id="some-cc-specfic-background">Some CC-specfic background</h2><p>Right now I'm in the middle of retooling of our translation infrastructure. <a href="http://code.creativecommons.org/viewgit/cc.engine.git/">cc.engine</a> and <a href="../../../../archives/old-tech-blog/entries/understanding-the-state-of-sanity-via-whiteboards-and-ascii-art/">related tools</a> have a long, complex history (dating back, as I understand, to <a href="http://en.wikipedia.org/wiki/Tcl">TCL</a> scripts running on <a href="http://www.aolserver.com/">AOL server</a> software). The short of it is, CC's tools have evolved a lot over the years, and sometimes we're left with systems and tools that require a lot of organization-specific knowledge for historical reasons.</p>
+  <div class="body"><h2 id="some-cc-specfic-background">Some CC-specfic background</h2><p>Right now I'm in the middle of retooling of our translation infrastructure. <a href="http://code.creativecommons.org/viewgit/cc.engine.git/">cc.engine</a> and <a href="/archives/old-tech-blog/entries/understanding-the-state-of-sanity-via-whiteboards-and-ascii-art/">related tools</a> have a long, complex history (dating back, as I understand, to <a href="http://en.wikipedia.org/wiki/Tcl">TCL</a> scripts running on <a href="http://www.aolserver.com/">AOL server</a> software). The short of it is, CC's tools have evolved a lot over the years, and sometimes we're left with systems and tools that require a lot of organization-specific knowledge for historical reasons.</p>
 <p>This has been the case with CC's translation tools. Most of the world these days uses english-key translations. CC used logical key translations. This means that if you marked up a bit of text for translation, instead of the key being the actual text being translated (such as "About The Licenses"), the key would be an identifier code which mapped to said english string, like "util.View_Legal_Code". What's the problem with this? Actually, there are a number of benefits that I'll miss and that I won't get into here, but the real problem is that the rest of the translation world mostly doesn't work this way. We use <a href="http://transifex.net">Transifex</a> (and previously used <a href="http://translate.sourceforge.net/wiki/pootle/index?redirect=1">Pootle</a>) as a tool for our translators managing our translations. Since these tools don't expect logical keys we had to write tools to convert from logical keys to english keys on upload and english keys to logical keys back and a whole bunch of other crazy custom tooling.</p>
 <p>Another time suck has been that we'd love to be able to just dynamically extract all translations from our python code and templates, but this also turns out to be impossible with our current setup. A strange edge-case in ZPT means that certain situations with dynamic attributes in ZPT-translated-HTML means that we have to edit certain translations after they're extracted, meaning we can't rely on an auto-extracted set of translations.</p>
 <p>So we'd like to move to a future with no or very few custom translation tools (which means we need English keys) and auto-extraction of translations (which means because of that edge case, no ZPT). Since we need to move to a new templating engine, I decided that we should go with my personal favorite templating engine, <a href="http://jinja.pocoo.org/">Jinja2</a>.</p>

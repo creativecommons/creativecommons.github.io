@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">CC technical blog</title>
+  <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
+  <updated>2019-04-17T00:00:00Z</updated>
+  <link href="http://creativecommons.github.io/" />
+  <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
+  <author>
+    <name></name>
+  </author>
+  <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/open-development-with-saltstack/">
+    <title type="text">Open Development with SaltStack</title>
+    <id>urn:uuid:6dc70283-9d5a-3a76-bc8e-95cabae41752</id>
+    <updated>2019-04-17T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/open-development-with-saltstack/" />
+    <author>
+      <name>TimidRobot</name>
+    </author>
+    <content type="html">&lt;p&gt;I am excited to publicize the open source repository for our SaltStack configuration: &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot;&gt;creativecommons/sre-salt-prime&lt;/a&gt;. This is a rare offering. Not many configuration management system repositories are open sourced. Read on for why this is important to me :)&lt;/p&gt;
+&lt;p&gt;I really like open source software (&lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;The Open Source Definition (Annotated) | Open Source Initiative&lt;/a&gt;). Over the years it has provided me with access and capabilities I would not normally be able to afford.&lt;/p&gt;
+&lt;p&gt;I had very little money in college. My first computer was salvaged from a dumpster and ran entirely on open source software. I was once reduced to begging a few dollars to satisfy a museum's arbitrarily enforced &quot;suggested donation&quot;. Thankfully, open source image manipulation software powered many of my art projects.&lt;/p&gt;
+&lt;p&gt;With the exception of typing class in high school and a few training sessions at work, I have never received any formal computer training. Instead, I was able to teach myself by using and investigating open source software. I have been able to determine exactly why open source software behaves the way it does by looking at the source code. It is instructive to be able to synthesize complex systems as a single user and participate in the same communities as SysAdmins using the same software with thousands or millions of users.&lt;/p&gt;
+&lt;p&gt;I've been gainfully employed in the technology sector for over a decade so the free cost of open source software is not as necessary to me. However, open source software remains very important. As a SysAdmin, I have repeatedly found open source communities to be a better resource for support than even the most expensive maintenance contract. The ability to make at-will modifications to a codebase can save project timelines, and seeing those modifications accepted upstream is deeply satisfying.&lt;/p&gt;
+&lt;p&gt;When I started at Creative Commons in the fall of 2018, I began using &lt;a href=&quot;https://en.wikipedia.org/wiki/Salt_(software)&quot;&gt;SaltStack&lt;/a&gt; full time. As part of my work on developing infrastructure as code at Creative Commons, I created a new open source repository for our SaltStack configuration: &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot;&gt;creativecommons/sre-salt-prime&lt;/a&gt;. While working on provisioning of AWS resources, I have had trouble finding examples. I learn best by example and I know I’m not alone. I hope opening this repository helps other Site Reliability Engineers (SREs) and Systems Administrators (SysAdmins).&lt;/p&gt;
+&lt;p&gt;I expect that working in the open will improve the quality of my work. Research has not only shown that people produce higher quality work when they expect it to be reviewed or shared, but also that open source allows others to provide criticism, feedback, and contributions.&lt;/p&gt;
+&lt;p&gt;Perhaps most of all, I hope to give back to the community. I hope it helps others learn when they do not have access to proprietary software at home, school, or work. I hope that my work in the open might lower the resources required to implement open source for others.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-plus-gsoc-2019/">
+    <title type="text">CC + Google Summer of Code 2019</title>
+    <id>urn:uuid:e516bab4-2140-3384-9d82-d91e738b450c</id>
+    <updated>2019-03-04T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-plus-gsoc-2019/" />
+    <author>
+      <name>kgodey</name>
+    </author>
+    <content type="html">&lt;p&gt;We are proud to announce that Creative Commons &lt;a href=&quot;https://summerofcode.withgoogle.com/organizations/6514859793973248/&quot;&gt;has been accepted as a mentor organization&lt;/a&gt; for the 2019 Google Summer of Code program.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/&quot;&gt;Google Summer of Code&lt;/a&gt; (GSoC) is a annual global program through which Google awards stipends to university students who write code for free and open-source software projects during their school break. CC has been a mentor organization for GSoC on seven previous occasions, but our last participation was in 2013, so we are glad to be reviving the tradition and hosting students again.&lt;/p&gt;
+&lt;p&gt;We’ve compiled &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/&quot;&gt;a list of project ideas&lt;/a&gt; for students to choose from when submitting their work proposal. There’s a lot of variety to choose from – adding features to CC Search, reviving older CC products, creating entirely new tools that increase the reach of CC licenses, figuring out ways to better present our legal and technical work, and more. There is definitely room for creativity – the project ideas are defined in broad terms, and students may also choose to submit a proposal for an original idea.&lt;/p&gt;
+&lt;p&gt;One of the goals of the CC engineering team this year is to build an active developer community around our projects. We’ve been writing free and open-source software for over a decade. Lately, we haven’t done the best job of enabling external developers to contribute to those projects. Hosting Google Summer of Code is our first step to change that for the better, and we’re also actively working on several other improvements to our code and processes, such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://creativecommons.github.io/&quot;&gt;Creative Commons Open Source&lt;/a&gt;, a hub for the CC developer community.&lt;/li&gt;
+&lt;li&gt;Making CC Search’s development more transparent. Our &lt;a href=&quot;https://github.com/orgs/creativecommons/projects/7&quot;&gt;current sprint workload&lt;/a&gt; is already public and we’ll be releasing a roadmap soon.&lt;/li&gt;
+&lt;li&gt;General cleanup, documentation, and contribution guidelines for our projects.&lt;/li&gt;
+&lt;li&gt;A technical blog.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to stay updated on our work, join our &lt;a href=&quot;https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers&quot;&gt;brand new developer mailing list&lt;/a&gt;, the #creativecommons-dev IRC channel on &lt;a href=&quot;https://freenode.net/&quot;&gt;freenode&lt;/a&gt;, or the #cc-developers and #cc-gsoc channels on our &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack community&lt;/a&gt;. And if you’re a student (or know a student), please consider submitting a Google Summer of Code proposal! It’s a great way to get an introduction to open-source, build real-world skills, work on interesting technical challenges, and help advance CC’s mission.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This post was originally posted &lt;a href=&quot;https://creativecommons.org/2019/03/04/cc-google-summer-of-code-2019/&quot;&gt;on the primary Creative Commons blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+</feed>
