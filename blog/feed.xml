@@ -2,13 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-04-17T00:00:00Z</updated>
+  <updated>2019-05-01T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/open-source-at-cc-gs2019-pre-event/">
+    <title type="text">Open Source at Creative Commons - 2019 Global Summit Event</title>
+    <id>urn:uuid:b6919fc1-840a-3084-93ff-b2debfde5926</id>
+    <updated>2019-05-01T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/open-source-at-cc-gs2019-pre-event/" />
+    <author>
+      <name>sclachar</name>
+    </author>
+    <content type="html">&lt;p&gt;Creative Commons has been building free software for over a decade to support its mission of maximizing digital creativity, sharing, and innovation. We would love your assistance in creating and improving that software. Please join us at &lt;a href=&quot;https://summit.creativecommons.org/&quot;&gt;Creative Commons Global Summit 2019&lt;/a&gt; in Lisbon, Portugal May 9-11 2019 where we will host a session entitled &lt;a href=&quot;https://ccglobalsummit2019lisbonportugal.sched.com/event/MiWW/open-source-at-creative-commons&quot;&gt;Open Source at Creative Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Session goals&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduce the Creative Commons Engineering Team.&lt;/li&gt;
+&lt;li&gt;Discuss our primary projects and potential collaborations.&lt;/li&gt;
+&lt;li&gt;Network with the attendees to build a vibrant community of developers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Event Information&lt;/strong&gt;
+&lt;br&gt;Date: Friday May 10, 2019 1:30pm - 2:25pm
+&lt;br&gt;Location: &lt;a href=&quot;http://www.museudooriente.pt/museuoriente/deli-ilhas.php&quot;&gt;New Delhi Room&lt;/a&gt;, 4th Floor, Museu do Oriente Av. Brasília 352, 1350-279 Lisboa, Portugal
+&lt;br&gt;Moderator: &lt;a href=&quot;https://mzeinstra.nl/&quot;&gt;Maarten Zeinstra&lt;/a&gt; Chapter lead for Creative Commons Netherlands&lt;/p&gt;
+&lt;p&gt;We look forward to meeting you at this event and getting your feedback. If you would like to stay updated on our work, join our &lt;a href=&quot;https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers&quot;&gt;developer mailing list&lt;/a&gt;, the #creativecommons-dev IRC channel on &lt;a href=&quot;https://freenode.net/&quot;&gt;freenode&lt;/a&gt;, or the #cc-developers channel on our &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack community&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/open-development-with-saltstack/">
     <title type="text">Open Development with SaltStack</title>
     <id>urn:uuid:6dc70283-9d5a-3a76-bc8e-95cabae41752</id>
