@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC + Google Summer of Code 2019 — Creative Commons on GitHub</title>
+<title>CC Search is out of beta with 300M images and easier attribution — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -99,24 +99,23 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2 class="mb-0">CC + Google Summer of Code 2019</h2>
+  <h2 class="mb-0">CC Search is out of beta with 300M images and easier attribution</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/kgodey">kgodey</a>
-  on Monday, 2019 March 4</p>
-  <div class="body"><p><img src="/blog/entries/cc-plus-gsoc-2019/cc-gsoc.png" alt="CC + Google Summer of Code"></p>
-<p>We are proud to announce that Creative Commons <a href="https://summerofcode.withgoogle.com/organizations/6514859793973248/">has been accepted as a mentor organization</a> for the 2019 Google Summer of Code program.</p>
-<p><a href="https://summerofcode.withgoogle.com/">Google Summer of Code</a> (GSoC) is a annual global program through which Google awards stipends to university students who write code for free and open-source software projects during their school break. CC has been a mentor organization for GSoC on seven previous occasions, but our last participation was in 2013, so we are glad to be reviving the tradition and hosting students again.</p>
-<p>We’ve compiled <a href="https://creativecommons.github.io/gsoc-2019/project-ideas/all/">a list of project ideas</a> for students to choose from when submitting their work proposal. There’s a lot of variety to choose from – adding features to CC Search, reviving older CC products, creating entirely new tools that increase the reach of CC licenses, figuring out ways to better present our legal and technical work, and more. There is definitely room for creativity – the project ideas are defined in broad terms, and students may also choose to submit a proposal for an original idea.</p>
-<p>One of the goals of the CC engineering team this year is to build an active developer community around our projects. We’ve been writing free and open-source software for over a decade. Lately, we haven’t done the best job of enabling external developers to contribute to those projects. Hosting Google Summer of Code is our first step to change that for the better, and we’re also actively working on several other improvements to our code and processes, such as:</p>
-<ul>
-<li><a href="https://creativecommons.github.io/">Creative Commons Open Source</a>, a hub for the CC developer community.</li>
-<li>Making CC Search’s development more transparent. Our <a href="https://github.com/orgs/creativecommons/projects/7">current sprint workload</a> is already public and we’ll be releasing a roadmap soon.</li>
-<li>General cleanup, documentation, and contribution guidelines for our projects.</li>
-<li>A technical blog.</li>
-</ul>
-<p>If you want to stay updated on our work, join our <a href="https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers">brand new developer mailing list</a>, the #creativecommons-dev IRC channel on <a href="https://freenode.net/">freenode</a>, or the #cc-developers and #cc-gsoc channels on our <a href="https://slack-signup.creativecommons.org/">Slack community</a>. And if you’re a student (or know a student), please consider submitting a Google Summer of Code proposal! It’s a great way to get an introduction to open-source, build real-world skills, work on interesting technical challenges, and help advance CC’s mission.</p>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/janeatcc">janeatcc</a>
+  on Tuesday, 2019 April 30</p>
+  <div class="body"><p>Today <a href="https://search.creativecommons.org/">CC Search</a> comes out of beta, with over 300 million images indexed from multiple collections, a major redesign, and faster, more relevant search. It’s the result of a huge amount of work from the engineering team at Creative Commons and our community of volunteer developers.</p>
+<p><img src="/blog/entries/cc-search-out-of-beta/compressed-kittens-again.gif" alt="cc-search-gif"></p>
+<p>CC Search searches images across <a href="https://search.creativecommons.org/about">19 collections</a> pulled from open APIs and the <a href="https://commoncrawl.org/">Common Crawl</a> dataset, including cultural works from museums (the Metropolitan Museum of Art, Cleveland Museum of Art), graphic designs and art works (Behance, DeviantArt), photos from Flickr, and an initial set of CC0 3D designs from Thingiverse.</p>
+<p>Aesthetically, you’ll see some key changes — a cleaner home page, better navigation and filters, design alignment with creativecommons.org, streamlined attribution options, and clear channels for providing feedback on both the overall function of the site and on specific image reuses. It’s also now linked directly from the Creative Commons homepage as the default method to search for CC-licensed works, and replaces the old search portal (though that tool is still online <a href="https://oldsearch.creativecommons.org/">here</a>).</p>
+<p>Under the hood, we improved search loading times and search phrase relevance, implemented analytics to better understand when and how the tools are used, and fixed many critical bugs our community helped us to identify.</p>
+<h3 id="whats-next">What’s next</h3><p>We will continue to grow the number of images in our catalog, prioritizing key image collections such as Europeana and Wikimedia Commons. We also plan to index additional types of CC-licensed works, such as open textbooks and audio, later this year. While our ultimate goal remains the same (to provide access to all 1.4 billion works in the commons), we are initially focused on <a href="https://creativecommons.org/2019/03/19/cc-search/">images that creators desire to reuse in meaningful ways</a>, learning about how these images are reused in the wild, and incorporating that learning back into CC Search.</p>
+<p>Feature-wise, we have specific deliverables for this quarter listed in our <a href="https://docs.google.com/document/d/19yH2V5K4nzWgEXaZhkzD1egzrRayyDdxlzxZOTCm_pc/">roadmap</a>, which includes advanced filters on the home page, the ability to browse collections without entering search terms, and improved accessibility and UX on mobile. In addition, we expect some work related to CC Search will be done by our Google Summer of Code students starting in May.</p>
+<p>We’re also presenting the “<a href="https://sched.co/MhKv">State of CC Search</a>” at the <a href="https://summit.creativecommons.org/">CC Global Summit</a> next month in Lisbon, Portugal, where we’ll host a global community discussion around desired features and collections for CC Search.</p>
+<h3 id="get-involved">Get involved</h3><p>Your feedback is valuable, and we invite you to <a href="https://search.creativecommons.org/feedback">let us know</a> what you would like to see improved. You can also join the <a href="https://creativecommons.slack.com/messages/CCS9CF2JE/details/">#cc-usability</a> channel on <a href="https://wiki.creativecommons.org/wiki/Slack#How_to_join_Slack">CC Slack</a> to keep up with new releases.</p>
+<p>All of our code, including the code behind CC Search, is open source (<a href="https://github.com/creativecommons/cccatalog-frontend/">CC Search</a>, <a href="https://github.com/creativecommons/cccatalog-api">CC Catalog API</a>, <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a>) and we <a href="https://creativecommons.github.io/contributing-code/">welcome community contribution</a>. If you know how to code, we invite you to <a href="https://creativecommons.github.io/">join the growing CC developer community</a>.</p>
+<h3 id="thank-you">Thank you</h3><p>CC Search is also made possible by a number of institutional and individual supporters and donors. Specifically, we would like to thank <a href="https://www.arcadiafund.org.uk/about-peter-baldwin-lisbet-rausing/">Arcadia</a> – a charitable fund of Lisbet Rausing and Peter Baldwin, <a href="https://www.mozilla.org/en-US/foundation/">Mozilla</a>, and the Brin Wojcicki Foundation for their support.</p>
 <hr>
-<p><em>This post was originally posted <a href="https://creativecommons.org/2019/03/04/cc-google-summer-of-code-2019/">on the primary Creative Commons blog</a>.</em></p>
+<p><em>This post was originally posted <a href="https://creativecommons.org/2019/04/30/cc-search-images/">on the primary Creative Commons blog</a>.</em></p>
 </div>
   <div class="card bg-light">
     <div class="card-body p-2">
@@ -127,16 +126,10 @@
           <a href=" /blog/categories/announcements ">announcements</a>,
           
           
-          <a href=" /blog/categories/community ">community</a>,
+          <a href=" /blog/categories/cc-search ">cc-search</a>,
           
           
-          <a href=" /blog/categories/gsoc ">gsoc</a>,
-          
-          
-          <a href=" /blog/categories/gsoc-2019 ">gsoc-2019</a>,
-          
-          
-          <a href=" /blog/categories/open-source ">open-source</a>
+          <a href=" /blog/categories/product ">product</a>
           
         
       </p>
