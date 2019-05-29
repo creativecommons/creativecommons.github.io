@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>opencontentlibrary - Archive: CC Technical Blog (2007-2014) — Creative Commons on GitHub</title>
+<title>Write a Blog Post — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -63,7 +63,7 @@
                     <a class="nav-link" href="/blog/">Blog</a>
                   </li>
                 
-                <li class="nav-item dropdown ">
+                <li class="nav-item dropdown  active">
                   <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
                   <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
                     
@@ -91,7 +91,7 @@
                     
                   </div>
                 </li>
-                <li class="nav-item dropdown  active">
+                <li class="nav-item dropdown ">
                   <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
                   <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
                     
@@ -109,22 +109,38 @@
     <div class="row justify-content-md-center">
       <div class="col-9 content-wrap">
         <div class="page py-3">
-          <h1 class="page-title pb-3 mb-4">Archive: CC Technical Blog (2007-2014)</h1>
+          <h1 class="page-title pb-3 mb-4">Write a Blog Post</h1>
           
-  <h2>All posts categorized "opencontentlibrary"</h2>
-  
-  <ul class="blog-index list-unstyled">
-    
-    <li>
-      <a href="/archives/old-tech-blog/entries/libre-graphics-meeting/">Libre Graphics Meeting</a>
-      <p class="text-muted small">by <a href="/archives/old-tech-blog/authors/ml">ml</a>
-        on 2007-05-13</p>
-    </li>
-    
-  </ul>
+  <div class="card toc-card bg-light">
+    <div class="card-body">
+      <ul class="toc list-unstyled">
+        
+          <li><a href="#publishing-a-new-post">Publishing a new post</a></li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <p>We invite members of the Creative Commons community to write posts on <a href="/blog">our technical blog</a> about any work they are doing related to CC and technology. It does not have to be related to any of our official projects; any topic that intersects with CC and technology will be considered. Please talk to us on <a href="/community">one of our community forms</a> to propose your ideas.</p>
+<p>Once your post idea has been approved, please send a pull request with your post as detailed below.</p>
+<h2 id="publishing-a-new-post">Publishing a new post</h2><p>New blog posts must be published by submitting a <a href="/contributing-code/pr-guidelines">pull request</a> to the <a href="https://github.com/creativecommons/creativecommons.github.io-source">creativecommons.github.io-source</a> repository (<a href="https://github.com/creativecommons/creativecommons.github.io-source/commit/eac3fbc23b7cadb58fe49d3af3286e4c8bf20d2f">like this commit</a>). Follow these steps:</p>
+<ol>
+<li>Create a new folder in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/entries">content/blog/entries</a> folder with a <a href="https://blog.tersmitten.nl/slugify/">slugified</a> version of your blog post title.</li>
+<li>Create a file named <code>contents.lr</code> in the folder you just created and put your blog post and associated metadata in it. Blog posts must have a <code>title</code>, <code>author</code>, <code>categories</code>, <code>pub_date</code>, and <code>body</code>. See <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/entries/open-development-with-saltstack/contents.lr">this post</a> for an example.  <ul>
+<li>Use the author's GitHub username as the value of the <code>author</code> field. There should be no spaces in the name.</li>
+<li>For the <code>categories</code> field, each category must be on a separate line. Categories should not have spaces.</li>
+<li><code>pub_date</code> should be in ISO format (<code>YYYY-MM-DD</code>)</li>
+<li><code>body</code> should be formatted using Markdown.</li>
+<li>All fields should be separated by three hyphens: <code>---</code></li>
+</ul>
+</li>
+<li>Ensure that all the categories you use have corresponding folders in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/categories">content/blog/categories</a> folder. Each category should have a folder named the same thing and have a <code>contents.lr</code> file within that says <code>name: &lt;category-name&gt;</code> (see <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/categories/gsoc-2019/contents.lr">example</a>).</li>
+<li>Similarly, ensure that the author has a corresponding folder in the  <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/authors">content/blog/authors</a> folder. Each author should have a folder named the same thing and have a <code>contents.lr</code> file within that says <code>name: &lt;author-name&gt;</code> (see <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/authors/TimidRobot/contents.lr">example</a>).</li>
+<li>Build the CC Open Source (instructions are in the <code>README</code> in the repository) and ensure your blog post shows up correctly locally. If you have not created the appropriate category or author files, you will see a build error in this step.</li>
+<li>Make a pull request.</li>
+</ol>
+<p>Once it is merged, it will auto-deploy to the production site and post a notification in the <code>#cc-developers</code> channel on Slack.</p>
 
-  <hr>
-  <strong><a href="/archives/old-tech-blog/categories">All Categories</a></strong>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

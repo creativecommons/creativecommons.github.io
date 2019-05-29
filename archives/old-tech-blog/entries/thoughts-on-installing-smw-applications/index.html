@@ -69,6 +69,8 @@
                     
                       <a class="dropdown-item" href="/community/">Join the Community</a>
                     
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
                       <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
                     
                       <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
