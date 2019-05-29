@@ -74,7 +74,7 @@ h2 {
 
 .dropdown-item {
   font-size: 1.2em;
-  text-align: center; }
+  text-align: left; }
 
 .dropdown:hover:hover .dropdown-menu {
   display: block; }

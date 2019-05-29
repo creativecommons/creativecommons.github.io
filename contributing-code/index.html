@@ -39,11 +39,21 @@
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                
-                  <li class="nav-item active">
-                    <a class="nav-link" href="/contributing-code/">Contributing Code</a>
-                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
                 
                   <li class="nav-item">
                     <a class="nav-link" href="/projects/">Projects</a>
@@ -114,23 +124,15 @@
             </ul>
           
         
-          <li><a href="#pull-request-guidelines">Pull request guidelines</a></li>
-          
-            <ul class="toc list-unstyled pl-4">
-              
-                <li><a href="#code-guidelines">Code guidelines</a></li>
-              
-            </ul>
-          
-        
           <li><a href="#new-projects">New projects</a></li>
           
         
       </ul>
     </div>
   </div>
-  <p>We do all of our development on GitHub and are generally open to pull requests and proposals for new community-maintained projects. We would especially like help with reviving projects that CC's engineering team does not have the time to actively work on (such as <a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">our WordPress plugin</a> and <a href="https://github.com/creativecommons/cc-license-chooser">license chooser widget</a>). We're also looking to improve our documentation and increase our automated test coverage across pretty much all our projects, so help with that would be greatly appreciated.</p>
-<p>If you are not familiar with GitHub, <a href="https://guides.github.com/activities/hello-world/">here is an excellent guide to get started</a>.</p>
+  <p>We do all of our development on GitHub and are generally open to pull requests and proposals for new community-maintained projects.</p>
+<p>We would especially like help with reviving projects that CC's engineering team does not have the time to actively work on (such as <a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">our WordPress plugin</a> and <a href="https://github.com/creativecommons/cc-license-chooser">license chooser widget</a>). We're also looking to improve our documentation and increase our automated test coverage across pretty much all our projects, so help with that would be greatly appreciated.</p>
+<p>Please follow our <a href="/contributing-code/pr-guidelines">pull request guidelines</a> when submitting code. If you are not familiar with GitHub or pull requests, <a href="https://guides.github.com/activities/hello-world/">here is an excellent guide to get started</a>.</p>
 <h2 id="working-on-an-existing-project">Working on an existing project</h2><p>Here's a list of <a href="/projects">all our current projects</a>.</p>
 <p>We are actively working on documenting and licensing them and adding self-contained contribution guidelines but we still have a lot of work ahead of us. We're open to contributions on any of our public projects, as long as they have a license. The license for a project is located in a file named <code>LICENSE</code> in the root directory of the repository. If the repository you want to contribute to has no license file, please create a GitHub issue attached to that repository and we'll prioritize setting those up.</p>
 <p>You may also create GitHub issues for any other missing infrastructure such as a <code>README</code> file.</p>
@@ -148,38 +150,13 @@
 <ol>
 <li>Comment on it and say you'd like to work on that issue.</li>
 <li>Wait for someone to confirm that you may work on the issue before writing any code. The person who confirms will add an "in progress" label to the issue to indicate that the issue has been assigned.</li>
-<li>Once the issue has been updated to "in progress", write your code and submit your pull request (be sure to read and follow the <strong><a href="/contributing-code/#pull-request-guidelines">Pull request guidelines</a></strong> guide below!)</li>
+<li>Once the issue has been updated to "in progress", write your code and submit your pull request (be sure to read and follow our <strong><a href="/contributing-code/pr-guidelines">pull request guidelines</a></strong>!)</li>
 <li>Wait for code review and address any issues raised as soon as you can.</li>
 </ol>
-<p>Even if you're not done with the issue, create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a> and push your code <a href="https://www.worklytics.co/blog/commit-early-push-often/">early and often</a>. If we haven't heard from you in over a week and someone else expresses interest in that issue, we may assign it to the new person.</p>
+<p>Even if you're not done with the issue, create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a> and push your code <a href="https://www.worklytics.co/blog/commit-early-push-often/">early and often</a>. If we haven't heard from you in over a week and someone else expresses interest in that issue, we may approve work by the new person.</p>
 <h3 id="proposing-a-new-issue">Proposing a new issue</h3><p>If you want to work on something that there is no GitHub issue for, then propose the change in <a href="/community">one of our community forums</a> or create a a new GitHub issue associated with the relevant repository amd propose your change there. Be sure to include implementation details and the rationale for the proposed change.</p>
 <p>If the project has a roadmap documented in the README, checking the roadmap to see if the feature is already in our pipeline would be a good first step.</p>
 <p>When in doubt, ask a question on <a href="/community">one of our community forums</a>.</p>
-<h2 id="pull-request-guidelines">Pull request guidelines</h2><p>We aim to review pull requests within three business days.<a href="#footnote-1"><strong>*</strong></a>. If it has been over three business days and you have not received any feedback, feel free to follow up.</p>
-<ul>
-<li>Read and follow the contributing guidelines and code of conduct for the project. Here are screenshots of where to find them for <a href="/contributing-code/first-time-contributor-resources.png">first time contributors</a> and <a href="/contributing-code/previous-contributor-resources.png">previous contributors</a>.</li>
-<li>Use the format specified in pull request template for the repository if one exists.</li>
-<li>Describe your change in detail. Too much detail is better than too little.</li>
-<li>Describe how you tested your change.</li>
-<li>If a reviewer is not assigned automatically, manually <a href="https://help.github.com/en/articles/requesting-a-pull-request-review">request a review</a> from either the repository maintainer (if you have that information) or <code>@creativecommons/engineering</code>.</li>
-</ul>
-<h3 id="code-guidelines">Code guidelines</h3><ul>
-<li>Write comprehensive and robust tests that cover the changes you've made in your work.</li>
-<li>Follow the appropriate code style standards for the language and framework you're using (e.g. PEP 8 for Python).</li>
-<li>Write readable code – keep functions small and modular and name variables descriptively.</li>
-<li>Document your code thoroughly.</li>
-<li>Make sure all the existing tests pass.</li>
-<li>User-facing code should support the following browsers:<ul>
-<li>Chrome (Webkit-Blink / 22+)</li>
-<li>Firefox (Gecko / 28+)</li>
-<li>Edge (Chromium based / 12+)</li>
-<li>Opera (Chromium-Blink / 12.1+)</li>
-<li>Safari (Apple’s Webkit / 7+)</li>
-<li>IE 11 (Trident)</li>
-</ul>
-</li>
-</ul>
-<p><a name="footnote-1"><p class="muted small"><strong>*</strong> CC staff work Monday through Friday and are not available on weekends and national holidays (the specific holidays observed vary based on the person's location). CC is closed between Christmas Eve and New Years' Day every year and for a few days following the CC Global Summit. Also, our availability during events such as the CC Global Summit and our biannual staff meetups is limited.</p></a></p>
 <h2 id="new-projects">New projects</h2><p>We are also open to working on or hosting projects that are related to the Creative Commons licenses or general mission. Our <a href="/gsoc-2019/project-ideas">Google Summer of Code project ideas</a> list is a good place to find ideas we'd like implemented. If you're interested in working on one of them, please propose it in one of our <a href="/community">community forums</a> (you don't need to be a student, anyone is welcome to work on those ideas) and work out implementation details with CC staff members before you write any code. If you want to suggest a new project idea, follow the same process.</p>
 <p>In general, we'd like any new projects to use Python, WordPress/PHP, and/or JavaScript (our framework of choice is Vue.js) so that our team can help review and maintain the project.</p>
 

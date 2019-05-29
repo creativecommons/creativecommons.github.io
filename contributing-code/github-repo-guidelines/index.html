@@ -1,0 +1,272 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>GitHub Repo Guidelines — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">GitHub Repo Guidelines</h1>
+          
+  <div class="card toc-card bg-light">
+    <div class="card-body">
+      <ul class="toc list-unstyled">
+        
+          <li><a href="#required-items">Required Items</a></li>
+          
+            <ul class="toc list-unstyled pl-4">
+              
+                <li><a href="#files">Files</a></li>
+              
+                <li><a href="#additional-items">Additional Items</a></li>
+              
+            </ul>
+          
+        
+          <li><a href="#optional-items">Optional items</a></li>
+          
+        
+          <li><a href="#standard-labels">Standard Labels</a></li>
+          
+        
+          <li><a href="#cc-metadata-file">CC Metadata file</a></li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <p>This is a checklist for all public repositories hosted on the <a href="https://github.com/creativecommons">Creative Commons GitHub organization</a>. Not all repositories meet these criteria yet. Please notify us if a project you'd like to work on does not meet this checklist by opening a GitHub issue associated with the repository.</p>
+<h2 id="required-items">Required Items</h2><p>All GitHub repositories should have the following items to be considered fully ready for external contributors.</p>
+<h3 id="files">Files</h3><ul>
+<li><code>/.github/CODEOWNERS</code>: Defined code owners<ul>
+<li><a href="https://help.github.com/en/articles/about-code-owners">About code owners - GitHub Help</a></li>
+</ul>
+</li>
+<li><code>/.cc-metadata.yml</code>: The standard <a href="/contributing-code/github-repo-guidelines/#cc-metadata-file">CC metadata YAML file</a>.</li>
+<li><code>/CODE_OF_CONDUCT.md</code>: Code of Conduct<ul>
+<li>Feel free to use our standard <a href="https://github.com/creativecommons/.github/blob/master/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT.md</code></a> file from <a href="https://github.com/creativecommons/.github">creativecommons/.github</a></li>
+<li><a href="https://help.github.com/en/articles/adding-a-code-of-conduct-to-your-project">Adding a code of conduct to your project - GitHub Help</a></li>
+</ul>
+</li>
+<li><code>/LICENSE</code>: license file.</li>
+<li><code>/CONTRIBUTING.md</code>: contributor guidelines<ul>
+<li>Can be project-specific or our standard <a href="https://github.com/creativecommons/.github/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a> file from <a href="https://github.com/creativecommons/.github">creativecommons/.github</a></li>
+<li><a href="https://help.github.com/en/articles/setting-guidelines-for-repository-contributors">Setting guidelines for repository contributors - GitHub Help</a></li>
+</ul>
+</li>
+<li><code>/README.md</code>: read me information file<ul>
+<li>Must documents how to install and build the project locally and documents a high level overview of the project and code structure. It should also link to any other available documentation.</li>
+</ul>
+</li>
+<li><strong>All pull request templates must include the full text of the <a href="https://developercertificate.org/">DCO</a></strong>.</li>
+</ul>
+<h3 id="additional-items">Additional Items</h3><ul>
+<li>CI and code style linters that run automatically whenever new code is pushed (if applicable to the project).</li>
+<li>At least a couple of automated tests (if applicable to the project).</li>
+</ul>
+<h2 id="optional-items">Optional items</h2><ul>
+<li><a href="https://help.github.com/en/articles/creating-issue-templates-for-your-repository">Issue templates</a>. GitHub pulls the default templates from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to customize them, create them in your repository.</li>
+<li>A <a href="https://help.github.com/en/articles/creating-a-pull-request-template-for-your-repository">pull request template</a>. GitHub pulls the default template from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to customize it, create it in your repository.</li>
+<li><a href="https://help.github.com/en/articles/adding-support-resources-to-your-project">Support resources</a>. GitHub pulls the default <code>SUPPORT.md</code> file from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to customize it, create it in your repository.</li>
+<li>Setting up <a href="https://help.github.com/en/articles/about-protected-branches">branch protections</a> that don't allow code to be merged in without tests passing or requires reviews for pull requests to be merged.</li>
+</ul>
+<h2 id="standard-labels">Standard Labels</h2><p>All repositories must contain the following labels. CC staff have access to a script that you can run to make sure all repositories have this label.</p>
+<p>Repositories may contain additional custom labels as well. It is recommended that custom labels be explained in the contribution guidelines for that project.</p>
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bug</td>
+      <td><code>#d73a4a</code></td>
+      <td>Something isn't working</td>
+    </tr>
+    <tr>
+      <td>duplicate</td>
+      <td><code>#cfd3d7</code></td>
+      <td>This issue or pull request already exists</td>
+    </tr>
+    <tr>
+      <td>enhancement</td>
+      <td><code>#a2eeef</code></td>
+      <td>New feature or request</td>
+    </tr>
+    <tr>
+      <td>good first issue</td>
+      <td><code>#7057ff</code></td>
+      <td>Good for newcomers</td>
+    </tr>
+    <tr>
+      <td>help wanted</td>
+      <td><code>#008672</code></td>
+      <td>Seeking help from community</td>
+    </tr>
+    <tr>
+      <td>in progress</td>
+      <td><code>#ffcc00</code></td>
+      <td>Currently being worked on</td>
+    </tr>
+    <tr>
+      <td>invalid</td>
+      <td><code>#e4e669</code></td>
+      <td>This doesn't seem right</td>
+    </tr>
+    <tr>
+      <td>question</td>
+      <td><code>#d876e3</code></td>
+      <td>Further information is requested</td>
+    </tr>
+    <tr>
+      <td>urgent</td>
+      <td><code>#d93f0b</code></td>
+      <td>Needs to be fixed ASAP</td>
+    </tr>
+    <tr>
+      <td>wontfix</td>
+      <td><code>#ffffff</code></td>
+      <td>This will not be worked on</td>
+    </tr>
+  </tbody>
+</table><h2 id="cc-metadata-file">CC Metadata file</h2><p>Each repo should have a <code>.cc-metadata.yml</code> file in the root directory with the following structure:</p>
+<pre>
+  <code>
+    # Whether this GitHub repo is engineering related
+    engineering_project: true
+    # Name of the repository/project in English
+    english_name: CC Catalog API
+    # All technologies used
+    technologies: Python, Django, Django REST Framework, Elasticsearch
+    # Whether this repository should be featured on the CC Open Source site
+    featured: true
+  </code>
+</pre><p>This metadata file is used in the <a href="/projects">Projects</a> page. Repos that are marked as non-engineering projects are not displayed in the page and repos marked as featured as displayed at the top of the page. Repos should be marked as featured if we are actively looking for community contributions and have the bandwidth to review them quickly.</p>
+<p>Repos without this metadata file are treated as <code>engineering_projects: true</code> and <code>featured: false</code>. A default is necessary since it will take time for us to clean up and add metadata to all our repos.</p>
+
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

@@ -39,11 +39,21 @@
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contributing-code/">Contributing Code</a>
-                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
                 
                   <li class="nav-item">
                     <a class="nav-link" href="/projects/">Projects</a>
