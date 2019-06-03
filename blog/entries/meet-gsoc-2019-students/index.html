@@ -1,0 +1,319 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Meet CC’s 2019 Google Summer of Code students — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Meet CC’s 2019 Google Summer of Code students</h2>
+  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/kgodey">kgodey</a>
+  on Thursday, 2019 May 30</p>
+  <div class="body"><p>This year, <a href="https://creativecommons.org/2019/03/04/cc-google-summer-of-code-2019/">CC is participating in Google Summer of Code (GSoC)</a>
+ as a mentoring organization after a six year break from the program. We
+ are excited to be hosting five phenomenal students (representing three 
+continents) who will be working on CC tech projects full-time over the 
+summer. Here they are!</p>
+<div class="students">
+  <div class="row">
+    <div class="col">
+      <p><strong>Ahmad Bilal</strong></p>
+
+      <p><em>I am Ahmad Bilal, a Computer Science undergrad from UET Lahore, 
+      who likes computers, problems and using the former to solve the later. I
+      am always excited about Open Source, and currently focused on Node.js, 
+      Serverless, GraphQL, Cloud, Gatsby.js with React.js and WordPress. I 
+      like organizing meetups, conferences and meeting new people. I view 
+      working in GSoC with Creative Commons, one of the biggest opportunities 
+      of my life. Cats are my weakness, and I am a sucker for well-engineered 
+      cars.</em></p>
+
+      <p><a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">Ahmad will be taking ownership of [the CC WordPress plugin</a>,
+      which simplifies the process of applying CC licenses to content created
+      using the popular WordPress blogging platform. He will be updating it 
+      to use the latest WordPress best practices, resolving open issues, and 
+      adding new features like integrating with CC Search. Ahmad’s mentor is 
+      our Core Systems Manager <a href="https://creativecommons.org/author/timidcreativecommons-org/">Timid Robot Zehta</a>, backed up by Hugo Solar.</p>
+
+      <p>You can follow the progress of this project through the <a href="https://github.com/creativecommons/creativecommons-wordpress-plugin">GitHub repo</a> or on the <code>#cc-dev-wordpress</code> channel on our <a href="https://creativecommons.github.io/community">Slack community</a>.</p>
+    </div>
+    <div class="col pt-3">
+      <img src="ahmad.jpg" alt="ahmad bilal" /><br />
+      <small class="muted">Ahmad Bilal, credit: Usman C., CC BY-NC-ND 2.0</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p><strong>Dhruv Bhanushali</strong></p>
+
+      <p><em>I am Dhruv Bhanushali, a Mumbai-based software developer recently
+       graduated from IIT Roorkee. I started programming as a hobby some five 
+      years ago and, having found my calling, am now am pursuing a career in 
+      the field. I have worked on a lot of institute-level projects and am 
+      excited to expand the reach of my code to a global scale with CC through
+       GSoC. Apart from development, I am a huge music fan and keep my curated
+       collection of music with me at all times. I also love to binge watch TV
+       shows and movies, especially indie art _</em>films._</p>
+
+      <p>Dhruv will be working on an original project, CC Vocabulary, which is
+       a collection of UI components that make it easy to develop Creative 
+      Commons apps and services while ensuring a cohesive experience and 
+      appearance across CC projects. These components will be able to be used 
+      in sites built using modern JavaScript frameworks (specifically Vue.js) 
+      as well as simpler websites built using WordPress. CC’s Web Developer <a href="https://creativecommons.org/author/hugocreativecommons-org/">Hugo Solar</a> serves as primary mentor, with backup from Sophine Clachar.</p>
+
+      <p>You can follow the progress of this project through the <a href="https://github.com/creativecommons/cc-vocabulary">GitHub repo</a> or on the <code>#gsoc-cc-vocabulary</code> channel on our <a href="https://creativecommons.github.io/community/">Slack community</a>.</p>
+    </div>
+    <div class="col pt-3">
+      <img src="dhruv.jpg" alt="dhruv bhanushali" /><br />
+      <small class="muted">Dhruv Bhanushali, credit: Arpit Gupta, CC BY</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p><strong>María Belén Guaranda Cabezas</strong></p>
+
+      <p><em>Hello! My name is María, and I am an undergraduate Computer 
+      Science student from ESPOL, in Ecuador. I have worked for the past 2 
+      years as a research assistant. I have worked in projects including 
+      computer vision, the estimation of socio-economic indexes through CDRs 
+      analysis, and a machine learning model with sensors data. During my 
+      spare time, I like to watch animes and reading. I love sports! Specially
+       soccer. I am also committed to environmental causes, and I am a huge 
+      fan of cats and dogs (I have 4 and 1 respectively).</em></p>
+
+      <p>María will be working on producing visualizations of the data 
+      associated with more than 300 million works we have indexed in the CC 
+      Catalog (which powers CC Search) and how that data is interconnected. 
+      These visualizations will enable users to understand how much 
+      CC-licensed content is available on the internet, which websites host 
+      the most content, which CC licenses are used the most, and much more. 
+      She will be mentored by our Data Engineer <a href="https://creativecommons.org/author/sclachar/">Sophine Clachar</a> with backup from Breno Ferreira.</p>
+
+      <p>You can follow the progress of this project through the <a href="https://github.com/creativecommons/cccatalog-dataviz">GitHub repo</a> or on the <code>#gsoc-cc-catalog-viz</code> channel on our <a href="https://creativecommons.github.io/community/">Slack community</a>.</p>
+    </div>
+    <div class="col pt-3">
+      <img src="maria.jpg" alt="María Belén Guaranda Cabezas" /><br />
+      <small class="muted">María Belén Guaranda Cabezas, CC BY-NC-SA</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p><strong>Ari Madian</strong></p>
+
+      <p><em>I am an 18 year old, Seattle based, mostly self taught, Computer 
+      Science student. I originally started programming by tinkering with 
+      Python, and eventually moved into C# and the .NET framework, as well as 
+      JS and some web development. I like Chai and Rooibos teas, volunteering 
+      at my local food bank, and some occasional PC gaming, among other 
+      things. I’m now working with Creative Commons on Google Summer of Code!</em></p>
+
+      <p>Ari will be working on creating a modern human-centered version of <a href="https://creativecommons.org/choose/">our CC license chooser tool</a>, which is long overdue for an update. His work will focus on design and usability as well as code. CC’s Front End Engineer <a href="https://creativecommons.org/author/brenoferreira/">Breno Ferreira</a> is the primary mentor for this project with support from Alden Page.</p>
+
+      <p>You can follow the progress of this project through the <a href="https://github.com/creativecommons/cc-chooser">GitHub repo</a> or on the <code>#gsoc-license-chooser</code> channel on our <a href="https://creativecommons.github.io/community/">Slack community</a>.</p>
+    </div>
+    <div class="col pt-3">
+      <p><img src="ari.jpg" alt="Ari Madian" /><br />
+      <small class="muted">Ari Madian, credit: Ellen Madian, CC0</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p><strong>Mayank Nader</strong></p>
+
+      <p><em>I am Mayank Nader, a sophomore Computer Science student from 
+      India. Currently, my main area of interest is Python scripting, 
+      JavaScript development, backend, and API development. I also like to 
+      experiment with bash scripting and ricing and configuring my Linux 
+      setup. Apart from that, I like listening to music and watching movies, 
+      documentaries, and tv shows. I am very much inspired by Open Source and 
+      try to contribute whenever I can.</em></p>
+
+      <p>Mayank will be working on building a cross-platform browser plugin 
+      that allows users to search CC-licensed works directly from the browser 
+      and enable reuse of those works by providing easy image attribution 
+      tools. Users will be able to find content to use without having to 
+      switch to a new website. Mayank will be mentored by CC’s Software 
+      Engineer <a href="https://creativecommons.org/author/aldencreativecommons-org/">Alden Page</a> with support from Timid Robot Zehta.</p>
+
+      <p>You can follow the progress of this project through the GitHub repo or on the #gsoc-browser-ext channel on our <a href="https://creativecommons.github.io/community/">Slack community</a>.</p>
+
+      <p>You can visit <a href="https://summerofcode.withgoogle.com/organizations/6514859793973248/">the Creative Commons organization page</a>
+       on Google Summer of Code site to see longer descriptions of the 
+      projects. We welcome community input and feedback – you are the users of
+       all these products and we’d love for you to be involved. So don’t 
+      hesitate to join the project Slack channel or talk to us on GitHub or <a href="https://creativecommons.github.io/community/">our other community forums</a>.</p>
+    </div>
+    <div class="col pt-3">
+      <p><img src="mayank.png" alt="Mayank Nader" /><br />
+      <small class="muted">Mayank Nader, credit: Rohit Motwani, CC BY</small>
+    </div>
+  </div>
+</div><hr>
+<p><em>This post was originally posted <a href="https://creativecommons.org/2019/05/30/meet-ccs-2019-google-summer-of-code-students/">on the primary Creative Commons blog</a>.</em></p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /blog/categories/community ">community</a>,
+          
+          
+          <a href=" /blog/categories/gsoc ">gsoc</a>,
+          
+          
+          <a href=" /blog/categories/gsoc-2019 ">gsoc-2019</a>,
+          
+          
+          <a href=" /blog/categories/open-source ">open-source</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/meet-gsoc-2019-students"; this.page.url = "http://creativecommons.github.io/blog/entries/meet-gsoc-2019-students/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
