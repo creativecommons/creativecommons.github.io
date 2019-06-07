@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>cc-search - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>CC Catalog: Leveraging Open Data and Open APIs — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -111,26 +111,62 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts categorized "cc-search"</h2>
+  <h2 class="mb-0">CC Catalog: Leveraging Open Data and Open APIs</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-    <li>
-      <a href="/blog/entries/cc-catalog-leverage-open-data-1/">CC Catalog: Leveraging Open Data and Open APIs</a>
-      <p class="text-muted small">by <a href="/blog/authors/sclachar">sclachar</a>
-        on 2019-06-07</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-search-out-of-beta/">CC Search is out of beta with 300M images and easier attribution</a>
-      <p class="text-muted small">by <a href="/blog/authors/janeatcc">janeatcc</a>
-        on 2019-04-30</p>
-    </li>
-    
-  </ul>
-
-  <hr>
-  <strong><a href="/blog/categories">All Categories</a></strong>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/sclachar">sclachar</a>
+  on Friday, 2019 June 7</p>
+  <div class="body"><p>This post is the first of a three part series about the underlying infrastructure for Creative Commons (CC) Catalog and the efforts to increase the volume and variety of creative works.</p>
+<p>The purpose of <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a> is to facilitate the discovery of openly licensed content, that proliferates the web. However, this is a challenging task and it requires a combination of techniques. The initial efforts to catalog the Commons began in 2016. The goal was to identify approximately <a href="https://hackernoon.com/cc-search-developer-notes-and-reflection-418271194682">1% of the estimated 1.4 billion works</a>, by harnessing open repositories and open APIs to build a <a href="https://creativecommons.org/2017/02/07/new-cc-search/">front door to the Commons</a>. Since then, there has been an emphasis on including more content and discovering new platforms. While CC Catalog still leverages open data to achieve the above, we needed to develop the appropriate infrastructure to also routinely update the existing data.</p>
+<p>The development of this infrastructure began in 2018, with the first <a href="http://commoncrawl.org/">Common Crawl</a> <a href="https://en.wikipedia.org/wiki/Pipeline_(computing)">data pipeline</a>. <a href="https://spark.apache.org/">Apache Spark</a> was used to streamline the processing of petabytes of web crawl data to identify all domains that link to a Creative Commons license. The first test of this strategy was successful and it was instrumental in increasing the number of images and added 13 new platforms for the <a href="https://creativecommons.org/2018/09/24/big-changes-for-cc-search-beta-updates-released-today/">updates to CC Search beta</a>. It also provided incremental updates to the catalog on a monthly basis. Even though Common Crawl corpus is an invaluable source, it requires us to develop a custom parser for each platform that we integrate. This has its merits, but presents a few challenges.</p>
+<p>After this, <a href="https://en.wikipedia.org/wiki/Open_API">Open APIs</a> were explored and its purpose was not to replace the Common Crawl methodology but to augment it and hopefully increase the volume of data. This approach began with two platforms: 1) Flickr, since it its known to have <a href="https://blog.flickr.net/en/2019/03/08/update-on-creative-commons-licenses-and-in-memoriam-accounts/">millions of CC license content</a> and 2) Thingiverse. At the end of 2018, the exploratory efforts paid off and the catalog grew from 10 million images to over 260 million and the Flickr API was instrumental in achieving this. In early 2019, three new API providers were included: 1) Met Museum, 2) Cleveland Museum, and 3) Brooklyn Museum. This led to the development of our API <a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL data pipeline</a> which is managed by <a href="https://airflow.apache.org/">Apache Airflow</a>.</p>
+<p>Currently, we have over 305 million images from 25 providers, and we are still working to improve the data infrastructure and solidify our efforts for <a href="https://creativecommons.org/2017/02/07/new-cc-search/">building a vibrant, usable Commons</a>.</p>
+<p><img src="/blog/entries/cc-catalog-leverage-open-data-1/cc-catalog-growth.png" alt="cc-catalog-img"></p>
+<p>The above data is made available to <a href="https://search.creativecommons.org/">CC Search</a> via <a href="https://github.com/creativecommons/cccatalog-api">CC Catalog API</a>. However, all providers in the catalog are not immediately available in CC Search. Various preprocessing efforts are performed in the back-end by the CC Catalog API to determine which content is deemed ready for publishing. Also, platforms are subject to additional reviews and may be suppressed until that process has completed. Currently CC Search has 19 of the above providers, comprising over <a href="https://creativecommons.github.io/blog/entries/cc-search-out-of-beta/">300 million images</a>.</p>
+<p>The goal for 2019 is to increase the catalog to:</p>
+<ul>
+<li>325 million images,</li>
+<li>30 providers, and</li>
+<li>add new content types</li>
+</ul>
+<p>The next post will discuss the details of the Common Crawl ETL Pipeline and how instrumental this corpus is for identifying potential providers and understanding how people are using the various CC license.</p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /blog/categories/community ">community</a>,
+          
+          
+          <a href=" /blog/categories/open-source ">open-source</a>,
+          
+          
+          <a href=" /blog/categories/cc-search ">cc-search</a>,
+          
+          
+          <a href=" /blog/categories/cc-catalog ">cc-catalog</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-catalog-leverage-open-data-1"; this.page.url = "http://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

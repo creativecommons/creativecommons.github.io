@@ -2,13 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-05-30T00:00:00Z</updated>
+  <updated>2019-06-07T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/">
+    <title type="text">CC Catalog: Leveraging Open Data and Open APIs</title>
+    <id>urn:uuid:e24cc83b-b6fb-312b-b379-5aa16af58a16</id>
+    <updated>2019-06-07T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/" />
+    <author>
+      <name>sclachar</name>
+    </author>
+    <content type="html">&lt;p&gt;This post is the first of a three part series about the underlying infrastructure for Creative Commons (CC) Catalog and the efforts to increase the volume and variety of creative works.&lt;/p&gt;
+&lt;p&gt;The purpose of &lt;a href=&quot;https://github.com/creativecommons/cccatalog&quot;&gt;CC Catalog&lt;/a&gt; is to facilitate the discovery of openly licensed content, that proliferates the web. However, this is a challenging task and it requires a combination of techniques. The initial efforts to catalog the Commons began in 2016. The goal was to identify approximately &lt;a href=&quot;https://hackernoon.com/cc-search-developer-notes-and-reflection-418271194682&quot;&gt;1% of the estimated 1.4 billion works&lt;/a&gt;, by harnessing open repositories and open APIs to build a &lt;a href=&quot;https://creativecommons.org/2017/02/07/new-cc-search/&quot;&gt;front door to the Commons&lt;/a&gt;. Since then, there has been an emphasis on including more content and discovering new platforms. While CC Catalog still leverages open data to achieve the above, we needed to develop the appropriate infrastructure to also routinely update the existing data.&lt;/p&gt;
+&lt;p&gt;The development of this infrastructure began in 2018, with the first &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Pipeline_(computing)&quot;&gt;data pipeline&lt;/a&gt;. &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt; was used to streamline the processing of petabytes of web crawl data to identify all domains that link to a Creative Commons license. The first test of this strategy was successful and it was instrumental in increasing the number of images and added 13 new platforms for the &lt;a href=&quot;https://creativecommons.org/2018/09/24/big-changes-for-cc-search-beta-updates-released-today/&quot;&gt;updates to CC Search beta&lt;/a&gt;. It also provided incremental updates to the catalog on a monthly basis. Even though Common Crawl corpus is an invaluable source, it requires us to develop a custom parser for each platform that we integrate. This has its merits, but presents a few challenges.&lt;/p&gt;
+&lt;p&gt;After this, &lt;a href=&quot;https://en.wikipedia.org/wiki/Open_API&quot;&gt;Open APIs&lt;/a&gt; were explored and its purpose was not to replace the Common Crawl methodology but to augment it and hopefully increase the volume of data. This approach began with two platforms: 1) Flickr, since it its known to have &lt;a href=&quot;https://blog.flickr.net/en/2019/03/08/update-on-creative-commons-licenses-and-in-memoriam-accounts/&quot;&gt;millions of CC license content&lt;/a&gt; and 2) Thingiverse. At the end of 2018, the exploratory efforts paid off and the catalog grew from 10 million images to over 260 million and the Flickr API was instrumental in achieving this. In early 2019, three new API providers were included: 1) Met Museum, 2) Cleveland Museum, and 3) Brooklyn Museum. This led to the development of our API &lt;a href=&quot;https://en.wikipedia.org/wiki/Extract,_transform,_load&quot;&gt;ETL data pipeline&lt;/a&gt; which is managed by &lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Currently, we have over 305 million images from 25 providers, and we are still working to improve the data infrastructure and solidify our efforts for &lt;a href=&quot;https://creativecommons.org/2017/02/07/new-cc-search/&quot;&gt;building a vibrant, usable Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-catalog-leverage-open-data-1/cc-catalog-growth.png&quot; alt=&quot;cc-catalog-img&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The above data is made available to &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; via &lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt;. However, all providers in the catalog are not immediately available in CC Search. Various preprocessing efforts are performed in the back-end by the CC Catalog API to determine which content is deemed ready for publishing. Also, platforms are subject to additional reviews and may be suppressed until that process has completed. Currently CC Search has 19 of the above providers, comprising over &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-search-out-of-beta/&quot;&gt;300 million images&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The goal for 2019 is to increase the catalog to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;325 million images,&lt;/li&gt;
+&lt;li&gt;30 providers, and&lt;/li&gt;
+&lt;li&gt;add new content types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The next post will discuss the details of the Common Crawl ETL Pipeline and how instrumental this corpus is for identifying potential providers and understanding how people are using the various CC license.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/meet-gsoc-2019-students/">
     <title type="text">Meet CC’s 2019 Google Summer of Code students</title>
     <id>urn:uuid:dba4248f-6d54-3bc7-a553-fae71da290e1</id>
