@@ -118,7 +118,8 @@
 <li>Each blog entry lives in its own subdirectory of the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/entries">content/blog/entries</a> folder. Create a new subdirectory with a <a href="https://blog.tersmitten.nl/slugify/">slugified</a> version of your blog post title.</li>
 <li>Create a file named <code>contents.lr</code> in the subdirectory you just created. This is the file that will contain your blog post content.</li>
 <li>If your post uses images or other files, put them in the same subdirectory as the <code>contents.lr</code> file.</li>
-<li>Fill in <code>contents.lr</code> in the following format (<a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/entries/open-development-with-saltstack/contents.lr">see example post</a>):<pre>
+<li><p>Fill in <code>contents.lr</code> in the following format (<a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/entries/open-development-with-saltstack/contents.lr">see example post</a>):</p>
+<pre>
  <code>
    title: Replace this text with the title of your blog post
   ---
@@ -136,7 +137,8 @@
    If you're including images, you can use the Markdown image syntax i.e. ![image-title](image-file-name.jpg).
    You don't need to specify the path to the image since you have uploaded it to the same folder in Step 3.
  </code>
-</pre></li>
+</pre><p><em>Read more about <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown formatting here</a>.</em></p>
+</li>
 <li>Each category you have applied to the post must have its own subdirectory in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/categories">content/blog/categories</a> directory.<ul>
 <li>If there is no subdirectory for that category, create one using <strong>the exact category name</strong> as the blog post with its own <code>contents.lr</code> file within.</li>
 <li>The new <code>contents.lr</code> file within should follow the same format as the other categories. Here's an <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/categories/gsoc-2019/contents.lr">example category content file</a>.</li>
