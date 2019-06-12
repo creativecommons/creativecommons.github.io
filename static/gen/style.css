@@ -117,3 +117,6 @@ h2 {
   align-items: center; }
   .main-footer .footer small .text-muted {
     margin-left: 2rem; }
+
+img {
+  max-width: 100%; }
