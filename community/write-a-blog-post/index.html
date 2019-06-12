@@ -111,35 +111,47 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">Write a Blog Post</h1>
           
-  <div class="card toc-card bg-light">
-    <div class="card-body">
-      <ul class="toc list-unstyled">
-        
-          <li><a href="#publishing-a-new-post">Publishing a new post</a></li>
-          
-        
-      </ul>
-    </div>
-  </div>
   <p>We invite members of the Creative Commons community to write posts on <a href="/blog">our technical blog</a> about any work they are doing related to CC and technology. It does not have to be related to any of our official projects; any topic that intersects with CC and technology will be considered. Please talk to us on <a href="/community">one of our community forms</a> to propose your ideas.</p>
 <p>Once your post idea has been approved, please send a pull request with your post as detailed below.</p>
-<h2 id="publishing-a-new-post">Publishing a new post</h2><p>New blog posts must be published by submitting a <a href="/contributing-code/pr-guidelines">pull request</a> to the <a href="https://github.com/creativecommons/creativecommons.github.io-source">creativecommons.github.io-source</a> repository (<a href="https://github.com/creativecommons/creativecommons.github.io-source/commit/eac3fbc23b7cadb58fe49d3af3286e4c8bf20d2f">like this commit</a>). Follow these steps:</p>
+<h2 id="submitting-a-post">Submitting a Post</h2><p>New blog posts must be submitted <strong>by submitting a <a href="/contributing-code/pr-guidelines">pull request</a> containing your blog post to the <a href="https://github.com/creativecommons/creativecommons.github.io-source">creativecommons.github.io-source</a> repository</strong>. The CC Open Source site is built using the static site generator <a href="https://www.getlektor.com/">Lektor</a> and your blog post must follow the specific format documented below to appear correctly on the site. For example, please see <a href="https://github.com/creativecommons/creativecommons.github.io-source/commit/eac3fbc23b7cadb58fe49d3af3286e4c8bf20d2f">this commit adding a post</a>.</p>
 <ol>
-<li>Create a new folder in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/entries">content/blog/entries</a> folder with a <a href="https://blog.tersmitten.nl/slugify/">slugified</a> version of your blog post title.</li>
-<li>Create a file named <code>contents.lr</code> in the folder you just created and put your blog post and associated metadata in it. Blog posts must have a <code>title</code>, <code>author</code>, <code>categories</code>, <code>pub_date</code>, and <code>body</code>. See <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/entries/open-development-with-saltstack/contents.lr">this post</a> for an example.  <ul>
-<li>Use the author's GitHub username as the value of the <code>author</code> field. There should be no spaces in the name.</li>
-<li>For the <code>categories</code> field, each category must be on a separate line. Categories should not have spaces.</li>
-<li><code>pub_date</code> should be in ISO format (<code>YYYY-MM-DD</code>)</li>
-<li><code>body</code> should be formatted using Markdown.</li>
-<li>All fields should be separated by three hyphens: <code>---</code></li>
+<li>Each blog entry lives in its own subdirectory of the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/entries">content/blog/entries</a> folder. Create a new subdirectory with a <a href="https://blog.tersmitten.nl/slugify/">slugified</a> version of your blog post title.</li>
+<li>Create a file named <code>contents.lr</code> in the subdirectory you just created. This is the file that will contain your blog post content.</li>
+<li>If your post uses images or other files, put them in the same subdirectory as the <code>contents.lr</code> file.</li>
+<li>Fill in <code>contents.lr</code> in the following format (<a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/entries/open-development-with-saltstack/contents.lr">see example post</a>):<pre>
+ <code>
+   title: Replace this text with the title of your blog post
+  ---
+   categories:
+   Replace this text with category names as shown below. Each category name should be on its own line and the name should not contain spaces.
+   example-category-name-1
+   example-category-name-2
+  ---
+   author: Replace this text with author's GitHub username. There should be no spaces in the name.
+  ---
+   pub_date: Replace this text with the publication date in YYYY-MM-DD format.
+  ---
+   body:
+   Replace this text with your post's content (minus the title). This field accepts Markdown for formatting.
+   If you're including images, you can use the Markdown image syntax i.e. ![image-title](image-file-name.jpg).
+   You don't need to specify the path to the image since you have uploaded it to the same folder in Step 3.
+ </code>
+</pre></li>
+<li>Each category you have applied to the post must have its own subdirectory in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/categories">content/blog/categories</a> directory.<ul>
+<li>If there is no subdirectory for that category, create one using <strong>the exact category name</strong> as the blog post with its own <code>contents.lr</code> file within.</li>
+<li>The new <code>contents.lr</code> file within should follow the same format as the other categories. Here's an <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/categories/gsoc-2019/contents.lr">example category content file</a>.</li>
 </ul>
 </li>
-<li>Ensure that all the categories you use have corresponding folders in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/categories">content/blog/categories</a> folder. Each category should have a folder named the same thing and have a <code>contents.lr</code> file within that says <code>name: &lt;category-name&gt;</code> (see <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/categories/gsoc-2019/contents.lr">example</a>).</li>
-<li>Similarly, ensure that the author has a corresponding folder in the  <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/authors">content/blog/authors</a> folder. Each author should have a folder named the same thing and have a <code>contents.lr</code> file within that says <code>name: &lt;author-name&gt;</code> (see <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/authors/TimidRobot/contents.lr">example</a>).</li>
-<li>Build the CC Open Source (instructions are in the <code>README</code> in the repository) and ensure your blog post shows up correctly locally. If you have not created the appropriate category or author files, you will see a build error in this step.</li>
-<li>Make a pull request.</li>
+<li>Similarly, each author must have their own subdirectory in the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/authors">content/blog/authors</a> directory.<ul>
+<li>If there is no subdirectory for your username, create one using <strong>the exact username</strong> as the blog post with its own <code>contents.lr</code> file within.</li>
+<li>The new <code>contents.lr</code> file within should follow the same format as the other categories. Here's an <a href="https://raw.githubusercontent.com/creativecommons/creativecommons.github.io-source/master/content/blog/authors/TimidRobot/contents.lr">example author content file</a>.</li>
+</ul>
+</li>
+<li>Build the <code>creativecommons.github.io-source</code> project locally (instructions are in the <code>README</code> in the repository) and ensure your blog post shows up correctly locally. If you have not created the appropriate category or author files, you will see a build error in this step.</li>
+<li>Push your code and make a pull request.</li>
+<li>Wait for a member of CC's fulltime staff to merge the post into the <code>master</code> branch.</li>
 </ol>
-<p>Once it is merged, it will auto-deploy to the production site and post a notification in the <code>#cc-developers</code> channel on Slack.</p>
+<p>Once merged, your new post will automatically be pushed to the production site and a notification containing your post URL will be sent to the <code>#cc-developers</code> channel on Slack.</p>
 
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
