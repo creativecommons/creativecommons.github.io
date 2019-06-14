@@ -2,13 +2,235 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-06-14T00:00:00Z</updated>
+  <updated>2019-06-15T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-vocabulary-new-design-system/">
+    <title type="text">CC Vocabulary is a new design system for Creative Commons</title>
+    <id>urn:uuid:965695b7-ade4-322e-8936-55d5dd0d1180</id>
+    <updated>2019-06-15T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-vocabulary-new-design-system/" />
+    <author>
+      <name>dhruvkb</name>
+    </author>
+    <content type="html">&lt;p&gt;With the development period of GSoC 2019 well under way, a number of new and
+improved Creative Commons apps are navigating their way to production and
+worldwide reception. With all this development comes one obvious challenge:
+&lt;em&gt;consistency&lt;/em&gt; (not to mention a number of other challenges such as 
+internationalisation and modularity).&lt;/p&gt;
+&lt;p&gt;The idea of a design system, to have a collection of elements and components
+designed cohesively to be used across the body of applications of a particular
+brand, is not new or even remotely my original. In fact, every organisation with
+more than one application should have a design system. My last project was
+backed by its own component library and it saved my team countless hours of
+bikeshedding and repetitive design iterations.&lt;/p&gt;
+&lt;p&gt;Contributing to CC Search in the period before GSoC made me realize the numerous
+areas of the project that would benefit from a pre-built library and prompted
+the proposal that eventually became my project. I'll cite the same example that 
+I used in my proposal because it so clearly shows a problem and its solution.&lt;/p&gt;
+&lt;p&gt;Consider for example the header and footer. All CC apps have a header and a
+footer developed along the lines of &lt;a href=&quot;https://creativecommons.org/&quot;&gt;the
+homepage&lt;/a&gt;, albeit to varying extents. However, due
+to the lack of a common component, every app develops its own and they end up
+looking like these. Calling them inconsistent would be an understatement.&lt;/p&gt;
+&lt;div&gt;
+&lt;img src=&quot;cc_home.png&quot; alt=&quot;CC Homepage&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The footer on the CC homepage&lt;/small&gt;
+&lt;/div&gt;&lt;div&gt;
+&lt;img alt=&quot;CC Search&quot; src=&quot;cc_search.png&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The footer in the CC Search app&lt;/small&gt;
+&lt;/div&gt;&lt;div&gt;
+&lt;img alt&quot;CC GitHub&quot; src=&quot;cc_github.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;The footer on the CC Open Source site&lt;/small&gt;
+&lt;/div&gt;&lt;h3 id=&quot;enter-cc-vocabulary&quot;&gt;Enter CC Vocabulary&lt;/h3&gt;&lt;p&gt;CC Vocabulary solves precisely that. It is a set of components, elements and
+patterns that unite Creative Commons' applications in terms of look and feel,
+while encapsulating and abstracting basic functionality that need not be
+reinvented per-app.&lt;/p&gt;
+&lt;p&gt;Now CC Vocabulary provides a footer (ready to use today!) that can be used on
+all three of the above sites, conveying the same information in the same
+consistent layout.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&quot;What about the different contents in the footers?&quot;&lt;/em&gt;, you ask.&lt;/p&gt;
+&lt;p&gt;As for the different content in all three footers, the third column is 100%
+customisable. So whether crediting the developers of the website, attributing
+the icon artists or licensing the content therein, the footer just works. And
+when it comes to translations, Vocabulary has you covered. Lastly, to embody the
+colorful world of creativity, every CC Vocabulary component can be colored. So
+from the blue header of CC Search to the orange one on the homepage, there's a
+component for everybody.&lt;/p&gt;
+&lt;p&gt;'Nuff said.&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;CC Vocabulary&quot; src=&quot;cc_vocabulary.png&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The footer provided by CC Vocabulary&lt;/small&gt;
+&lt;/div&gt;&lt;div&gt;
+&lt;img alt=&quot;CC Vocabulary GitHub&quot; src=&quot;cc_vocabulary_github.png&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The footer provided by CC Vocabulary customised for the CC
+Open Source site&lt;/small&gt;
+&lt;/div&gt;&lt;div&gt;
+&lt;img alt=&quot;CC Vocabulary Hindi&quot; src=&quot;cc_vocabulary_hindi.png&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The footer provided by CC Vocabulary in Hindi&lt;/small&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;Let's get to the nerdy stuff, the &lt;strong&gt;development details&lt;/strong&gt;. Here's the good, the
+bad and the ugly of Vue development and also how all three adjectives fail to
+embody the one constant feeling: &lt;em&gt;challenging&lt;/em&gt;!&lt;/p&gt;
+&lt;h3 id=&quot;the-good&quot;&gt;The good&lt;/h3&gt;&lt;p&gt;As you've already seen, the prospects of the library in making the CC codebase
+modular, cleaner and i18n-ready are huge. And being written in Vue has a ton of
+perks, not the least of which is a future-ready, progressive framework to back
+the project!&lt;/p&gt;
+&lt;p&gt;Working in JavaScript is very different from a Python project. For instance, I
+had literally very little need for Docker containers in the first place as npm
+modules are local unlike pip, which needs Pipenv or similar to add sanity to
+package management.&lt;/p&gt;
+&lt;p&gt;Development in Vue is even more different, and even even more so when building a
+Webpack-based app with Vue CLI, which takes a different approach compared to
+React CRA. For one, there is no option to eject! So any changes to the Webpack
+config have to be submitted via an object in &lt;code&gt;vue.config.js&lt;/code&gt; and deep merged
+with the existing config.&lt;/p&gt;
+&lt;p&gt;Then there are plugins. Plugins for Vue CLI are few and far in between but those
+that are work extremely well and integrate with the Vue UI, a web based
+management tool for Vue projects. Both Vue Styleguidist, the plugin used to
+generate the styleguide and Vue i18n, the plugin used to provide translations
+work seamlessly with Vue and, with the exception of having to manually enable
+i18n in Styleguidist by extending the renderer in &lt;code&gt;styleguide.config.js&lt;/code&gt; (more
+on that later), with each other.&lt;/p&gt;
+&lt;p&gt;Coming from a React background, the helpfulness of the Vue framework contrasts
+starkly with the cold stony world I was accustomed to. &lt;em&gt;&quot;I'm beginning to enjoy
+JavaScript&quot;&lt;/em&gt;, a sentence I never thought I'd say.&lt;/p&gt;
+&lt;p&gt;So by the end of week one, I had a styleguide with a Heading component and a
+Docker setup to boot. I also had a ridiculously large smile from all the
+learning that I did. By the end of three weeks, I was the proud developer of a
+world-class web component framework that was beginning to have some real
+footing, something I had not even dreamed possible!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; If you haven't seen or experienced Vue UI, you should. It will 
+change your opinion of Vue for the better, as it did mine.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[user cc-vocabulary]$ vue ui
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;the-bad&quot;&gt;The bad&lt;/h3&gt;&lt;p&gt;In week 2, I had to develop a number of components and incorporate design
+tokens, a practice with origins at Salesforce. Folks wiser than myself at
+Salesforce came up with the idea of using design tokens to keep constants out of
+the design and frontend development process, abstracting the actual nitty gritty
+of colors and border radii behind semantic names such as &lt;code&gt;blue_light&lt;/code&gt; and
+&lt;code&gt;radius_small&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Hardcoding every single color and every single dimension in YAML files manually
+from little to no reference at all was a very low point in an already low week.
+The reason behing this pain is &lt;a href=&quot;https://wiki.creativecommons.org/wiki/colors&quot;&gt;CC's color
+palette&lt;/a&gt; which provides all values
+in hex &lt;code&gt;#abcdef&lt;/code&gt; for the close to forty colors in the palette. Were they HSL
+values, it would have been extremely easy to shade the colors. If any brand aims
+to redo its colors, I would suggest using HSL wherein HS is used to determine a
+color and L is varied to determine its shades.&lt;/p&gt;
+&lt;p&gt;Another strange decision taken by Vue is that Vue components use a Single File
+Component scheme making use of &lt;code&gt;.vue&lt;/code&gt; files that Webpack processes using the
+&lt;code&gt;vue-loader&lt;/code&gt; package. Now Styleguidist and Vue i18n both add their own tags to
+the mix such as &lt;code&gt;&amp;lt;docs&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;i18n&amp;gt;&lt;/code&gt; making one component file go to hundreds
+or even thousands of lines! In a world that taught us to decouple style from
+functionality, this mushing of languages did not sit too well with me and I kept
+contemplating what reasons would have prompted the developers to take this step.&lt;/p&gt;
+&lt;p&gt;Also Styleguidist comes with a very bland default style so to make it barely
+presentable, one needs to override a lot of CSS styles that have absurdly high
+specificities. Thankfully the default design is bland, not ugly otherwise the
+whole thing would have been an ugly, miserable affair.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; This catastrophe could have become ugly were it not for the
+benevolent &lt;code&gt;src&lt;/code&gt; attribute supported by some Vue tags. I had known this for
+merely seconds when I found myself breaking my components down using&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&amp;lt;style scoped lang=&amp;quot;stylus&amp;quot; src=&amp;quot;./Component.styl&amp;quot;&amp;gt;&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to store CSS separately and&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&amp;lt;i18n src=&amp;quot;./Component.json&amp;quot;&amp;gt;&amp;lt;/i18n&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to keep translations outside of my code, thus making the file much more
+manageable. There is still no way to split the JS &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; from the HTML
+&lt;code&gt;&amp;lt;template&amp;gt;&lt;/code&gt; without losing all autocompletion features provided by the IDE.&lt;/p&gt;
+&lt;h3 id=&quot;the-ugly&quot;&gt;The ugly&lt;/h3&gt;&lt;p&gt;Incorporating translations into the project was the weirdest. With two or three
+commands maximum, the Vue website had translations enabled and was working
+perfectly. But the Styleguide would &lt;em&gt;just not render translations at all!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It took close to three days to even figure out why. Once I misinterpreted the
+cause of the error, broke the entire styleguide and had to&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[user cc-vocabulary]$ git reset --hard HEAD
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to even get things to work. &lt;em&gt;&quot;Use VCS.&quot;&lt;/em&gt;, proved one again.&lt;/p&gt;
+&lt;p&gt;Finally I had to register the i18n plugin separately for the styleguide, install
+the middleware on all components and add a locale selector to every preview box
+across the styleguide by extending and overriding the preview component. The
+good folks at Styleguidist had provided for that functionality, and it revealed
+itself to me as I was at the very brink of losing my mind.&lt;/p&gt;
+&lt;p&gt;To add insult to injury, translations have to be done by hand. I know this is
+how the world of i18n works but it would be really magical if we had a service
+to do the translations automatically. Now I can write in two languages, and will
+translate components to the other one as best as I can. But I urge you to
+&lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;contribute&lt;/a&gt; too. Together we
+can make CC components globally local.&lt;/p&gt;
+&lt;p&gt;Languages that follow an alternate orientation, such as top-to-bottom or
+right-to-left would pose significant difficulty to implement, having to manually
+render everything in an opposite or perpendicular direction gives me the chills.
+It's gonna be ugly.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; I learned that flags are a terrible way to represent language. Many
+languages are spoken more widely outside countries of origin (think English) and
+many countries are home to several languages (think India). Many large websites
+make the mistake of using flag alongside language names and that seems so stupid
+in retrospect.&lt;/p&gt;
+&lt;p&gt;Also one should use the native name of the language in the selector (like हिन्दी)
+and the universal translation icon (or some stylistic variant thereof).&lt;/p&gt;
+&lt;center&gt;
+&lt;img alt=&quot;Translate icon&quot; src=&quot;translate.png&quot; height=&quot;48px&quot;/&gt;
+&lt;/center&gt;&lt;hr&gt;
+&lt;h3 id=&quot;tl;dr&quot;&gt;TL;DR&lt;/h3&gt;&lt;p&gt;The project which takes out a lot of the hard work from frontend
+development has its fair share of hard work cut out for itself. The challenges
+ahead are plentiful, but the solutions they inspire are diamonds in their own
+right. It is safe to say that I can attribute my complete understanding of Vue, i18n,
+component libraries, styleguides and design systems to CC Vocabulary.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Before we move on, let me tell you the bad and the ugly are not the norm. The 
+good was the major portion of the project.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&quot;future&quot;&gt;Future&lt;/h3&gt;&lt;p&gt;So as you can see CC Vocabulary represents a huge leap forward for the
+web-facing Creative Commons. I can't wait to see the new generation of apps by
+Creative Commons, &lt;em&gt;powered by CC Vocabulary&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;CC Vocabulary is out now, with its code, design and translations on GitHub and a
+live styleguide hosted on GitHub pages. Please &lt;a href=&quot;https://creativecommons.github.io/cc-vocabulary/&quot;&gt;check it
+out&lt;/a&gt; and join the discussions.
+Since it is too early to even call it a beta, your feedback is crucial in shaping
+its future and with it, the future of all Creative Commons apps.&lt;/p&gt;
+&lt;p&gt;Here's a sneak peek!&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;CC Vocabulary in production&quot; src=&quot;hello.png&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Say hello to CC Vocabulary!&lt;/small&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;CC Vocabulary is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo
+Solar&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
+Clachar&lt;/a&gt;. Although not officially
+a mentor &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt; has also
+been really supportive and helpful.&lt;/p&gt;
+&lt;h3 id=&quot;work-log&quot;&gt;Work log&lt;/h3&gt;&lt;p&gt;See GitHub &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/commits&quot;&gt;commits&lt;/a&gt;
+for in-depth logs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set up the Vue CLI 3 project&lt;/li&gt;
+&lt;li&gt;Installed and customised Styleguidist&lt;/li&gt;
+&lt;li&gt;Dockerised the setup for ease of setup and development&lt;/li&gt;
+&lt;li&gt;Developed a home page for the project&lt;/li&gt;
+&lt;li&gt;Developed simple components, called elements, like Heading and Paragraph&lt;/li&gt;
+&lt;li&gt;Added design tokens and Theo workflow&lt;/li&gt;
+&lt;li&gt;Converted all constants to design tokens: color, fonts and dimensions&lt;/li&gt;
+&lt;li&gt;Wrote some, not all and definitely not enough, tests&lt;/li&gt;
+&lt;li&gt;Added elements like Container and Badge&lt;/li&gt;
+&lt;li&gt;Added complex components, called patterns, like Hello, Header and Footer&lt;/li&gt;
+&lt;li&gt;Deployed styleguide to GitHub Pages&lt;/li&gt;
+&lt;li&gt;Added color to patterns in a reusable way&lt;/li&gt;
+&lt;li&gt;Added i18n capabilities and initiated translation to Hindi in the Footer&lt;/li&gt;
+&lt;li&gt;Developed the Locale switcher and integrated with Styleguidist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming up&lt;/h3&gt;&lt;p&gt;See proposal for in-depth goals.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Integrate the library, gradually, with CC Search&lt;/li&gt;
+&lt;li&gt;Add more generic components&lt;/li&gt;
+&lt;li&gt;Go to point 1&lt;/li&gt;
+&lt;li&gt;Develop a non-Vue vanilla CSS + JS based version of the library&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chooser-week2/">
     <title type="text">GSoC cc-chooser Week 2</title>
     <id>urn:uuid:c7a72678-ddcf-3e4a-a341-87a52fa48a7f</id>
