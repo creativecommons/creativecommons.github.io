@@ -2,13 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-06-07T00:00:00Z</updated>
+  <updated>2019-06-14T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chooser-week2/">
+    <title type="text">GSoC cc-chooser Week 2</title>
+    <id>urn:uuid:c7a72678-ddcf-3e4a-a341-87a52fa48a7f</id>
+    <updated>2019-06-14T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-chooser-week2/" />
+    <author>
+      <name>akmadian</name>
+    </author>
+    <content type="html">&lt;p&gt;In case you don't know, my GSoC project involves revamping &lt;a href=&quot;https://creativecommons.org/choose/&quot;&gt;the CC license chooser&lt;/a&gt;.
+ I am working with my mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, to visually overhaul the tool, as well as making it more educational, and more usable.&lt;/p&gt;
+&lt;p&gt;This week, I worked on the site layout and usability testing of the existing chooser.&lt;/p&gt;
+&lt;p&gt;I enjoyed usability testing more than I expected. During my mid-week standup meeting with Breno, he had some suggestions about the layout that came up in usability testing I was conducting literally the same day.
+ I thought this was kinda funny, it was like my tester and Breno had talked about the layout between the meeting and testing. 
+ I really enjoyed working on the layout. Experimenting with different layouts and visual styles, seeing the changes and the progression
+ from iteration to iteration was a really fun process, and I really enjoyed seeing the new site take shape right before my eyes.&lt;/p&gt;
+&lt;p&gt;This week's time managment was somewhat difficult for me. It's the second to last week of my current college quarter, so I'm working hard to prep for finals,
+ and that takes lots of time (something I've never considered to be too scarce before I started college, but it's now a precious commodity!).
+ With lots of tea and careful time management, I made it through on schedule.&lt;/p&gt;
+&lt;p&gt;Next week is all about planning code structure and taking steps with dialing the look and feel of the site, and I'm excited to get started.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/">
     <title type="text">CC Catalog: Leveraging Open Data and Open APIs</title>
     <id>urn:uuid:e24cc83b-b6fb-312b-b379-5aa16af58a16</id>
