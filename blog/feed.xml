@@ -2,13 +2,66 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-06-15T00:00:00Z</updated>
+  <updated>2019-06-17T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/">
+    <title type="text">Visualize CC Catalog data</title>
+    <id>urn:uuid:bc2e5551-25e5-3bba-8183-83f3b905bef4</id>
+    <updated>2019-06-17T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/" />
+    <author>
+      <name>soccerdroid</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;“By visualizing information, we turn it into a landscape that you can explore with your eyes.”&lt;/em&gt; – David McCandless.&lt;/p&gt;
+&lt;p&gt;The landscape of licensed content is wide and varied. We have domains linking to other domains, different license types, and some metadata. This information is extracted from the Internet monthly by &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Open Crawl&lt;/a&gt;. It is fair to mention that we have 250 million works and growing! If you didn't know we had so much licensed content, well then, this is one of the goals of this project: show the users how licensers are connected, their licensed content, and show how the licensing wave is expanding.&lt;/p&gt;
+&lt;h3 id=&quot;hands-to-work&quot;&gt;Hands to work!&lt;/h3&gt;&lt;p&gt;Currently, there are tons of graphs and visualization concepts that have proven to work better with certain data. I'm addition, because of the huge amount of data we possess, a critical point to keep in mind is that the graph must keep being meaningful (for example, with the classic node-link approach, you can end up having a confusing hairball). Hence, the visualization must be scalable. Finding which visualization would  work the best with the CC catalog dataset was my first task. I reviewed the state-of-art in graphs visualization, but in this post I'm not going to go deep with it. The highlights and conclusions of this review are the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Two case studies were reviewed, named &lt;a href=&quot;https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.12395&quot;&gt;Papilio&lt;/a&gt; and &lt;a href=&quot;https://ieeexplore.ieee.org/document/5613445&quot;&gt;GeneaQuilts&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;In both cases, data needs to be hierarchical (or have an attribute to use so to order or group the data) .&lt;/li&gt;
+&lt;li&gt;Benefits are focused on the analysis tasks that are specific to those use cases (and yes, they are not the same for our case).&lt;/li&gt;
+&lt;li&gt;Visualizations are not meaningful when you have thousands of nodes.&lt;/li&gt;
+&lt;li&gt;Both cases needed to build a library from scratch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Conclusion:&lt;/strong&gt; neither of the solutions reviewed seemed viable for the CC-Catalog visualization project, as they do not show huge improvements in scalability. In addition, they do not fit for our case study.&lt;/p&gt;
+&lt;h3 id=&quot;the-graph&quot;&gt;The graph&lt;/h3&gt;&lt;p&gt;Now that I knew what to draw, the next step was to find HOW to draw the graph. There is a wide range of visualization libraries where to choose from, you might feel overwhelmed at first. &lt;strong&gt;Tip:&lt;/strong&gt; define priorities/ key aspects according to what you want to visualize. Performance with big data, community support and a smooth learning curve were the aspects I checked for making a decision. We finally chose to work with &lt;a href=&quot;https://github.com/vasturiano/force-graph&quot;&gt;force-d3&lt;/a&gt;, an open-source library that uses the d3-force module as the underlying physics engine.  It has a friendly and simple API, as well as documentation and examples.&lt;/p&gt;
+&lt;p&gt;One challenging task was to draw the nodes. The idea here is to show the domains names inside the nodes, and let the nodes size to be data driven. Funny fact: I spent hours before finding out that I received nodes as canvas objects with the API. Once you know how to draw nodes, the styling of the edges is a ride, because in force-d3 they are handled in the same way as the nodes objects. The edges are highlighted and their width increases when the user hovers over them. Another not-so-easy feature I implemented was to highlight a node and its neighbors. Here I have to thank to &lt;a href=&quot;https://github.com/vasturiano&quot;&gt;Mr. Vasturiano&lt;/a&gt;, the author of the library, who directed me to an example he developed with a very similar functionality. He is continuously checking and fixing open issues in his repo. Great library! I recommend you to check it out.&lt;/p&gt;
+&lt;h3 id=&quot;licensed-content-by-types-of-cc-licenses&quot;&gt;Licensed content by types of CC licenses&lt;/h3&gt;&lt;p&gt;Creative Commons has &lt;a href=&quot;https://creativecommons.org/licenses/&quot;&gt;6 license types&lt;/a&gt;. We know which licenses each domain uses for their content, so it would be great if we can show to the public, for example, the most popular license. The idea is then, to display in a simple graph like a pie chart, the licensed content of each domain, classified by their type. The pie chart will be placed inside a modal. The modal will be triggered and showed after the user clicks on a node in the graph. For this visualization, we are using &lt;a href=&quot;https://www.highcharts.com/&quot;&gt;Highcharts&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The final look of the front-end is:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;cc_graph.png&quot; alt=&quot;CC Data Catalog Visualization&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Current sample graph, developed with force-d3. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;cc_graph_zoom.png&quot; alt=&quot;CC Data Catalog Visualization&quot; /&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Nodes with sample domain names. When the user hovers over a node, its neighbors are highlighted. The nodes sizes are data-driven.&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;cc_piechart.png&quot; alt=&quot;Pie chart license types&quot; /&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot; style=&quot;text-align:center;&quot;&gt;Pie chart that shows the proportions of licensed content of a domain, classified by CC license types.&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PD:&lt;/strong&gt; if the nodes labels are familiar to you, yes, they are the names of the characters of Les Misérables. I'm working with sample data!&lt;/p&gt;
+&lt;h3 id=&quot;coming-soon&quot;&gt;Coming soon&lt;/h3&gt;&lt;p&gt;As the front-end is complete, I am going to get my hands dirty with the data. Future milestones for the next two weeks include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Files conversion in Spark&lt;/li&gt;
+&lt;li&gt;Reviewing of part of the dataset&lt;/li&gt;
+&lt;li&gt;Implementation of a module for cleaning and parsing the data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can follow the project development in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
+Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+&lt;p&gt;Have a nice week!&lt;/p&gt;
+&lt;p&gt;Maria&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-vocabulary-new-design-system/">
     <title type="text">CC Vocabulary is a new design system for Creative Commons</title>
     <id>urn:uuid:965695b7-ade4-322e-8936-55d5dd0d1180</id>
