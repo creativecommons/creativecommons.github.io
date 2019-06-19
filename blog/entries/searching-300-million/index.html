@@ -1,0 +1,196 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Searching 300MM Images with CC Search: Backend Architecture — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Searching 300MM Images with CC Search: Backend Architecture</h2>
+  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/aldenpage">aldenpage</a>
+  on Wednesday, 2019 June 19</p>
+  <div class="body"><p>In 2016, Creative Commons hired <a href="https://lizadaly.com/">Liza Daly</a> to build <a href="https://hackernoon.com/cc-search-developer-notes-and-reflection-418271194682">a proof-of-concept engine</a> for searching 10 million CC works. Based on the success of that project, Creative Commons chose to pursue funding for scaling up CC Search even further, setting a goal to catalog a larger sample of the estimated 1.4 billion CC-licensed works on the internet. To date, we’ve indexed over 300 million images and served over 15 million search queries in the <a href="https://search.creativecommons.org">new version of CC Search</a>. This post describes some of the technical architecture changes we’ve made to CC Search in order to reach this point.</p>
+<h1 id="evolution-of-architecture">Evolution of architecture</h1><p>While the prototype successfully demonstrated the usefulness and feasibility of searching openly licensed images, accommodating more images and traffic inevitably required some architectural changes. In addition to supporting a higher quantity of works, we would have significantly increased traffic requirements after exiting the beta phase of the project.
+The original prototype was structured as a 3-tier Django app hosted on Amazon Elastic Beanstalk. That’s the best design for a team of one building a minimum viable product. However, the requirements of the project changed: we now have a rapidly growing set of works, more developers, and higher traffic requirements. It would not be possible to meet these requirements without rewriting a lot of code.</p>
+<p>At this point, it’s easy to fall into the trap of overengineering. Rather than start from scratch, we decided to preserve the parts of the project that worked well for our use case, and perform an informed rewrite of the parts that didn’t. To that end, bits and pieces of the original CC Search prototype live on in the current version of CC Search.</p>
+<h2 id="peopleware">Peopleware</h2><p>First, we divided the work into 3 separate silos - data engineering, backend, and frontend. That means that each respective developer could focus entirely on accumulating CC licensed content, building scalable infrastructure to serve this content to the public, and improving the user experience/presentation layer. The data and frontend layers would be tied together through an <a href="https://api.creativecommons.engineering">open API</a>, which also opens up the possibility of developers building their own custom applications with CC Search, such as a Photoshop plugin or a <a href="https://github.com/creativecommons/ccsearch-browser-extension/">Firefox addon</a>. Each developer could use whatever tools they were most familiar with to implement their slice of the project.</p>
+<h2 id="updating-the-search-index">Updating the Search Index</h2><p>One of the first problems that needed to be solved was reducing the time that it took to add works to our search engine. It took about 3 days to index 10 million images in the original prototype. Since the prototype search data was static, that was completely acceptable; however, for 300 million works, it would take 90 days to index the data.
+Investigation revealed that the problem was the use of Django signals to populate the search index. Every time a work was added to the database, it would be indexed inside of Elasticsearch. This works well for a steady trickle of updates, but does not work so well for 300 million updates.
+ Instead of using Django signals to incrementally add individual items to the database and search index, we took a “freight train” approach where we would rebuild the entire database and search index in bulk. The tradeoff is that there would be some lag time between finding CC licensed content and when it actually shows up in production where the end user can see it. Since users can’t really tell if your image index is a few hours out of date, this seemed like a worthwhile price to pay; we can always introduce “fast path” updates later when the situation calls for it.</p>
+<p><img src="/blog/entries/searching-300-million/ingestion_diagram.jpg" alt="Ingestion Server"></p>
+<p>The piece of software responsible for updating our search data is called <a href="https://github.com/creativecommons/cccatalog-api/tree/master/ingestion_server/ingestion_server">Ingestion Server</a>. It copies data from the CC Catalog into the production PostgreSQL database, and then indexes that data inside of Elasticsearch in bulk. The tricky part about this is that we had to reload the data without impacting performance or availability of the production system. So, if the ingestion were to fail for some reason (Elasticsearch or our database runs out of space, malformed data breaks the indexer, etc), the users shouldn’t even notice. To accomplish that, all data is loaded into temporary tables and indices, tested for defects, and then promoted to the “live” search index.</p>
+<h2 id="searching-300-million-works-in-high-traffic-conditions">Searching 300 million works in high traffic conditions</h2><p>Searching 10 million works is achievable with nothing but a database and a single virtual machine. Searching 300 million images to an unknown (but probably larger) number of users would take some more firepower.
+We predicted that we would have a lot more users after removing the “beta” designation and promoting CC Search to the general public, but couldn’t possibly predict exactly how much. To deal with that uncertainty, we designed the system to be horizontally scalable: we can always add more nodes to Elasticsearch to accommodate an increase in content and traffic, and we can also scale up the number of API servers in response to demand. Finally, we can utilize caching to reduce the cost of each search query. With these changes, our infrastructure is able to handle high volumes of visitors without unplanned downtime.</p>
+<p><img src="/blog/entries/searching-300-million/system_architecture.png" alt="System Architecture"></p>
+<pre><code>Unfortunately, drawing architecture diagrams and allocating autoscaling groups does not prove that your design will work under load. To that end, we wrote up some Locust load tests. With about 50 lines of code, we were able to hammer the API with tens of thousands of requests per second and see what happened. This step was vital, as it allowed us to fix performance bottlenecks before experiencing live traffic. It uncovered a number of difficult to discover performance related configuration problems and deadlock conditions before we ever even hit production.
+</code></pre>
+<h2 id="a-hack-for-handling-link-rot-at-scale">A Hack for Handling Link Rot at Scale</h2><p>One significant challenge we faced was link rot: over time, images are moved to new locations or entirely deleted. Once we began indexing more data from social platforms like Flickr and Behance, the problem became too big to ignore; CC Search was returning page after page of dead links. To make matters worse, we don’t host our own thumbnails; we scrape them from the original data source and embed them in our results. As a consequence of this, broken thumbnails would show up in the search results, creating a really bad user experience.</p>
+<p>The logical answer to this would be to scrape the images and produce our own thumbnails, which we intend to do in the near future. That would solve the immediate usability problem of broken thumbnails, but not solve the underlying issue of deleted images being linked in our search results. Additionally, scraping and storing 300 million+ images would incur significant storage costs. We would also need to crawl 300 million images without placing undue burden on our content partners. When 290 million images in the catalog are stored on Flickr alone, this is impossible; we would have to make thousands of calls per second to crawl that amount of content in a reasonable period of time. Your crawler will not survive for very long if all of your target sites block you for sucking up all of their capacity. Finally, how often can we perform such a crawl? Once a month? Once per year? In the meantime, between crawls, more link rot is taking place.</p>
+<p>Instead of building a crawler, we decided to perform some server-side validation. After we obtain the search results, the API server concurrently performs a HEAD request on every single image in the result set to check that it’s still valid. If it’s invalid, we delete it from the search results. We cache the image’s status code in Redis with a TTL to ensure that we aren’t making loads of pointless HTTP requests and reduce the risk of being throttled by 3rd parties.</p>
+<p>In general, this “just-in-time validation” has worked surprisingly well. Broken thumbnails are a rare occurrence now. It solved a lot of the issues related to embedding 3rd party content in our search results, buying us more time to build a more sustainable database-layer solution to link rot and thumbnailing.</p>
+<h2 id="managing-infrastructure-with-terraform">Managing Infrastructure with Terraform</h2><p>With greater scale comes greater complexity. Since there would be more moving parts in our implementation of CC Search, we would need some kind of infrastructure as code tool to manage zero-downtime deployments, provisioning new virtual machines, configuration management, tracking expenses, and documenting what is actually in production. We considered Kubernetes, but that seemed like massive overkill for a team of our size and a source of too much operational complexity. Instead, we use <a href="https://www.terraform.io/">Terraform</a> to declaratively provision our software to EC2 instances hosted on AWS. Everything is containerized, so we can easily transition to Kubernetes or Nomad if we desire in the future, but Terraform has proven to be more than sufficient so far.</p>
+<p>With Terraform, we are able to produce deployment plans, see what changes are going to appear in production, and only then pull the trigger. It also provides <a href="https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure">immutable infrastructure</a>:  instead of sshing into servers and fiddling with settings or running bespoke deployment scripts, whenever we want to make a change, we completely re-provision the virtual machine with new settings. The current state of the system is always documented in our Terraform code.</p>
+<h2 id="the-future">The Future</h2><p>The next step for CC Search is improving the relevance of our search results, which is going to entail performing large scale scraping of some of the catalog, performing AI analysis of the scraped content, and implementing some popularity-based algorithm to boost the most interesting results to the top. We’re also going to start producing thumbnails for at least some subset of our catalog, perhaps on a just-in-time basis or through multiple caching image proxies.</p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /blog/categories/community ">community</a>,
+          
+          
+          <a href=" /blog/categories/open-source ">open-source</a>,
+          
+          
+          <a href=" /blog/categories/cc-search ">cc-search</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/searching-300-million"; this.page.url = "http://creativecommons.github.io/blog/entries/searching-300-million/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
