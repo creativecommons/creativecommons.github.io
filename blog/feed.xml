@@ -40,6 +40,21 @@ We predicted that we would have a lot more users after removing the “beta” d
 &lt;h2 id=&quot;the-future&quot;&gt;The Future&lt;/h2&gt;&lt;p&gt;The next step for CC Search is improving the relevance of our search results, which is going to entail performing large scale scraping of some of the catalog, performing AI analysis of the scraped content, and implementing some popularity-based algorithm to boost the most interesting results to the top. We’re also going to start producing thumbnails for at least some subset of our catalog, perhaps on a just-in-time basis or through multiple caching image proxies.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/">
+    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
+    <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
+    <updated>2019-06-19T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/" />
+    <author>
+      <name>ahmadbilaldev</name>
+    </author>
+    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
+&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
+&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
+&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/">
     <title type="text">Visualize CC Catalog data</title>
     <id>urn:uuid:bc2e5551-25e5-3bba-8183-83f3b905bef4</id>
