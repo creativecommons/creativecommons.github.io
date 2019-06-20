@@ -9,6 +9,50 @@
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-browser-extension-a-gsoc-project/">
+    <title type="text">CC Browser Extension - A GSoC Project</title>
+    <id>urn:uuid:7c38e099-2edb-34f9-820e-fc0924196a57</id>
+    <updated>2019-06-20T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-browser-extension-a-gsoc-project/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;With the Creative Commons engineering team working very hard to catalog and index a plethora of CC-licensed works floating all over the internet, the next step is to make a suite of user-centric applications and interfaces to interact, consume and even reuse the content. The CC-Search is one such app with over &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-search-out-of-beta/&quot;&gt;300 million CC-Licensed images indexed&lt;/a&gt; and since there is a full separation of concern between the backend (&lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC-Catalog-API&lt;/a&gt;) and frontend (&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;CC-Catalog-frontend&lt;/a&gt;), we can leverage the backend architecture to design plugins for other platforms.&lt;/p&gt;
+&lt;p&gt;This GSoC project aims to do this by making a Cross-Browser extension to interact with CC-Catalog-API.&lt;/p&gt;
+&lt;h3 id=&quot;why-browser-extension?&quot;&gt;Why browser Extension?&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Having at least two browser-centric front-ends (&lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search web app&lt;/a&gt; and browser extension) to the CC-Catalog-API would be beneficial because based on the community feedback we can ship only those features to the extension that would make the most sense to its users while having CC Search up to date. Therefore making &lt;em&gt;two flavors of interfaces&lt;/em&gt; in the process.&lt;/li&gt;
+&lt;li&gt;We don’t have to tackle compatibility issues of different Operating Systems. If it runs in Firefox, it will run on any OS that has Firefox.&lt;/li&gt;
+&lt;li&gt;Majority of users surf the internet through modern browsers which provide easy ways to add extensions with most of them having dedicated online stores.&lt;/li&gt;
+&lt;li&gt;Most people tend to look for an extension for something they do more often on the internet so that they can save time, so it makes sense to develop one for CC Search also.&lt;/li&gt;
+&lt;li&gt;Personalized experience: I talk more about this later in the post.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;the-plan:&quot;&gt;The Plan:&lt;/h3&gt;&lt;p&gt;The first task would be to make an MVP that would be inspired by the CC Search design. For this, I will make sure to have the least dependence on browser extension APIs (probably use only &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction&quot;&gt;browserAction&lt;/a&gt;) so that the extension can be easily ported to different browsers without any major change in the code. Sure, we still have to work out porting and polyfilling CS3 and javaScript code to work on different browsers, but having one less thing to worry about while porting the initial version of extension will only help.&lt;/p&gt;
+&lt;p&gt;Then I want to move to the next step and work on things that would make the user experience more personal and intuitive and here various browser extensions APIs would come handy, like &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage&quot;&gt;storage&lt;/a&gt;, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs&quot;&gt;tabs&lt;/a&gt;, etc. Then the priority would shift to making the extension compatible with Firefox and chrome.&lt;/p&gt;
+&lt;h3 id=&quot;what-do-i-mean-by-personalized-experience?&quot;&gt;What do I mean by Personalized experience?&lt;/h3&gt;&lt;p&gt;Most people who will download the extension would want it to act as their own. They would want to customize it so that their flow is more intuitive and they don't have to repeat steps like if one user searches extensively for CC Content on Behance and DeviantArt only, they would want to not set the search filter before every new session. &lt;em&gt;This is where the browser extension shines&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;One good example of solving this problem would be to make an options page, that would open in a new tab, where they can set the filters they use more often as default.&lt;/p&gt;
+&lt;p&gt;Similarly, if we add a feature, say dark-mode, then the users who prefer it over the default can set their preferences.&lt;/p&gt;
+&lt;h3 id=&quot;work-done-till-now:&quot;&gt;Work Done till Now:&lt;/h3&gt;&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;extension-screenshot.png&quot; alt&quot;CC Browser Extension Screenshot&quot; align=&quot;middle&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot; style=&quot;display:block; text-align:center;&quot;&gt;CC Browser Extension Screenshot&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set up the project directory structure, Eslint, Circle-ci.&lt;/li&gt;
+&lt;li&gt;Set up the popup markup and styles.&lt;/li&gt;
+&lt;li&gt;Started making API calls. You can search and get thumbnails of images.&lt;/li&gt;
+&lt;li&gt;Showing image metadata like its title, license, provider when thumbnails are hovered on.&lt;/li&gt;
+&lt;li&gt;Add a loading animation.&lt;/li&gt;
+&lt;li&gt;Add functionality to apply license and provider filters to search.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Set up lazy loading or pagination.&lt;/li&gt;
+&lt;li&gt;Start working on the functionality of showing the image preview with data, attribution, etc when we click on the image. This may take more than one week.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;how-you-can-help&quot;&gt;How you can help&lt;/h3&gt;&lt;p&gt;The development is still in the initial phase but you can check out &lt;strong&gt;a working extension&lt;/strong&gt; at the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github Repository&lt;/a&gt;. There are instructions to help you get started and load it to Firefox.&lt;/p&gt;
+&lt;p&gt;Tell us what you expect the extension to do, or a feature that you wish would be implemented. At this early stage of development, it might help us improve our goals. You can join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://localhost:5000/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; to for their mentorship and providing an experienced perspective and solutions to the problems faced by this naive developer.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/">
     <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
     <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
