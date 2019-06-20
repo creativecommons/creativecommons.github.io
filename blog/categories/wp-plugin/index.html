@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>Reviving and Updating Creative Commons Plugin for WordPress — Creative Commons on GitHub</title>
+<title>wp-plugin - CC Open Source Blog — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -111,50 +111,20 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2 class="mb-0">Reviving and Updating Creative Commons Plugin for WordPress</h2>
+  <h2>All posts categorized "wp-plugin"</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/ahmadbilaldev">ahmadbilaldev</a>
-  on Thursday, 2019 June 20</p>
-  <div class="body"><p>I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my <a href="https://summerofcode.withgoogle.com/projects/#5810039753801728">CC WordPress Plugin project</a>. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.</p>
-<h3 id="first-phase">First Phase</h3><p>The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.</p>
-<p>After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on "Classic Editor" of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.</p>
-<p><img src="/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png" alt="CC Gutenberg Blocks"></p>
-<p>A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, <a href="https://creativecommons.org/author/timidcreativecommons-org/">Timid Robot</a> and <a href="https://creativecommons.org/author/hugocreativecommons-org/">Hugo Solar</a> have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!</p>
-</div>
-  <div class="card bg-light">
-    <div class="card-body p-2">
-      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
-        
-          
-          
-          <a href=" /blog/categories/gsoc ">gsoc</a>,
-          
-          
-          <a href=" /blog/categories/gsoc-2019 ">gsoc-2019</a>,
-          
-          
-          <a href=" /blog/categories/wp-plugin ">wp-plugin</a>
-          
-        
-      </p>
-    </div>
-  </div>
-  <div class="comments">
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-wp-plugin-first-phase"; this.page.url = "http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/"; };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//cc-open-source.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
-    rel="nofollow">comments powered by Disqus.</a>
-</noscript>
-</div>
+  <ul class="blog-index list-unstyled">
+    
+    <li>
+      <a href="/blog/entries/cc-wp-plugin-first-phase/">Reviving and Updating Creative Commons Plugin for WordPress</a>
+      <p class="text-muted small">by <a href="/blog/authors/ahmadbilaldev">ahmadbilaldev</a>
+        on 2019-06-20</p>
+    </li>
+    
+  </ul>
+
+  <hr>
+  <strong><a href="/blog/categories">All Categories</a></strong>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

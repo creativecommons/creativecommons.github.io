@@ -2,13 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-06-19T00:00:00Z</updated>
+  <updated>2019-06-20T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/">
+    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
+    <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
+    <updated>2019-06-20T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/" />
+    <author>
+      <name>ahmadbilaldev</name>
+    </author>
+    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
+&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
+&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
+&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/searching-300-million/">
     <title type="text">Searching 300MM Images with CC Search: Backend Architecture</title>
     <id>urn:uuid:0aea69db-370b-3995-82ed-1e94702284c9</id>
@@ -38,21 +53,6 @@ We predicted that we would have a lot more users after removing the “beta” d
 &lt;h2 id=&quot;managing-infrastructure-with-terraform&quot;&gt;Managing Infrastructure with Terraform&lt;/h2&gt;&lt;p&gt;With greater scale comes greater complexity. Since there would be more moving parts in our implementation of CC Search, we would need some kind of infrastructure as code tool to manage zero-downtime deployments, provisioning new virtual machines, configuration management, tracking expenses, and documenting what is actually in production. We considered Kubernetes, but that seemed like massive overkill for a team of our size and a source of too much operational complexity. Instead, we use &lt;a href=&quot;https://www.terraform.io/&quot;&gt;Terraform&lt;/a&gt; to declaratively provision our software to EC2 instances hosted on AWS. Everything is containerized, so we can easily transition to Kubernetes or Nomad if we desire in the future, but Terraform has proven to be more than sufficient so far.&lt;/p&gt;
 &lt;p&gt;With Terraform, we are able to produce deployment plans, see what changes are going to appear in production, and only then pull the trigger. It also provides &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure&quot;&gt;immutable infrastructure&lt;/a&gt;:  instead of sshing into servers and fiddling with settings or running bespoke deployment scripts, whenever we want to make a change, we completely re-provision the virtual machine with new settings. The current state of the system is always documented in our Terraform code.&lt;/p&gt;
 &lt;h2 id=&quot;the-future&quot;&gt;The Future&lt;/h2&gt;&lt;p&gt;The next step for CC Search is improving the relevance of our search results, which is going to entail performing large scale scraping of some of the catalog, performing AI analysis of the scraped content, and implementing some popularity-based algorithm to boost the most interesting results to the top. We’re also going to start producing thumbnails for at least some subset of our catalog, perhaps on a just-in-time basis or through multiple caching image proxies.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/">
-    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
-    <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
-    <updated>2019-06-19T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/" />
-    <author>
-      <name>ahmadbilaldev</name>
-    </author>
-    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
-&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
-&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
-&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/">
