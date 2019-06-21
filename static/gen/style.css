@@ -27,9 +27,11 @@ h2 {
 
 .card-columns {
   -webkit-column-count: 2;
+     -moz-column-count: 2;
           column-count: 2; }
 
 .navbar {
+  background-image: -webkit-gradient(linear, left top, right top, from(#EE5B32), color-stop(#FB7928), to(#EE5B32));
   background-image: linear-gradient(90deg, #EE5B32, #FB7928, #EE5B32);
   background-size: 100% 130px;
   background-position-y: bottom; }
@@ -113,8 +115,10 @@ h2 {
   margin-bottom: 0; }
 
 .main-footer .footer small {
+  display: -webkit-box;
   display: flex;
-  align-items: center; }
+  -webkit-box-align: center;
+          align-items: center; }
   .main-footer .footer small .text-muted {
     margin-left: 2rem; }
 
