@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC Open Source Blog — Creative Commons on GitHub</title>
+<title>GSoC cc-chooser Week 4 — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -111,94 +111,56 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <p>Welcome to CC's new technical blog! The CC technical team writes about what we're working on, updates about CC's software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our <a href="/blog/feed.xml">news feed here</a>.</p>
-
+  <h2 class="mb-0">GSoC cc-chooser Week 4</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-    <li>
-      <a href="/blog/entries/cc-chooser-week4/">GSoC cc-chooser Week 4</a>
-      <p class="text-muted small">by <a href="/blog/authors/akmadian">akmadian</a>
-        on 2019-06-24</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-browser-extension-a-gsoc-project/">CC Browser Extension - A GSoC Project</a>
-      <p class="text-muted small">by <a href="/blog/authors/makkoncept">makkoncept</a>
-        on 2019-06-20</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-wp-plugin-first-phase/">Reviving and Updating Creative Commons Plugin for WordPress</a>
-      <p class="text-muted small">by <a href="/blog/authors/ahmadbilaldev">ahmadbilaldev</a>
-        on 2019-06-20</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/searching-300-million/">Searching 300MM Images with CC Search: Backend Architecture</a>
-      <p class="text-muted small">by <a href="/blog/authors/aldenpage">aldenpage</a>
-        on 2019-06-19</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-datacatalog-visualization/">Visualize CC Catalog data</a>
-      <p class="text-muted small">by <a href="/blog/authors/soccerdroid">soccerdroid</a>
-        on 2019-06-17</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-vocabulary-new-design-system/">CC Vocabulary is a new design system for Creative Commons</a>
-      <p class="text-muted small">by <a href="/blog/authors/dhruvkb">dhruvkb</a>
-        on 2019-06-15</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-chooser-week2/">GSoC cc-chooser Week 2</a>
-      <p class="text-muted small">by <a href="/blog/authors/akmadian">akmadian</a>
-        on 2019-06-14</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-catalog-leverage-open-data-1/">CC Catalog: Leveraging Open Data and Open APIs</a>
-      <p class="text-muted small">by <a href="/blog/authors/sclachar">sclachar</a>
-        on 2019-06-07</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/meet-gsoc-2019-students/">Meet CC’s 2019 Google Summer of Code students</a>
-      <p class="text-muted small">by <a href="/blog/authors/kgodey">kgodey</a>
-        on 2019-05-30</p>
-    </li>
-    
-    <li>
-      <a href="/blog/entries/cc-gsoc-accepted-students/">CC Google Summer of Code accepted students announced</a>
-      <p class="text-muted small">by <a href="/blog/authors/kgodey">kgodey</a>
-        on 2019-05-06</p>
-    </li>
-    
-  </ul>
-
-  
-    
-  <ul class="pagination table-responsive mb-2">
-    
-      <li class="page-item disabled"><a class="page-link">Previous</a></li>
-    
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/entries/">1</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/2/">2</a></li>
-      
-    
-    
-      <li class="page-item"><a class="page-link" href="/blog/entries/page/2/">Next</a></li>
-    
-  </ul>
-
-  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/akmadian">akmadian</a>
+  on Monday, 2019 June 24</p>
+  <div class="body"><p>In case you don't know, my GSoC project involves revamping <a href="https://creativecommons.org/choose/">the CC license chooser</a>.
+ I am working with my mentor, <a href="https://creativecommons.org/author/brenoferreira/">Breno Ferreira</a>, to visually overhaul the tool, as well as making it more educational, and more usable.</p>
+<p>This week, I worked on some of the Chooser's JS functionality, and the educational section's layout.</p>
+<p>Getting the chooser working was lots of fun. It's the first real JS I've written for the site (other than the modal system, which is about 6 lines total).
+ The thing I like most is seeing the site take shape. Previously, the chooser was all dummy controls and placeholder text.
+ Now, it has a fully working chooser, complete with the license icons being updated, the link to the license page being set, etc.
+ The thing that took the longest was getting the code to return the correct license based on the user's inputs. There was some
+ temperamental code, and the starting state variables were also a little off.</p>
+<p>Next up was the educational section. I decided to go from a three column layout, to a to row layout. I moved the question buttons 
+ to the top row (now alone), and the license icon descriptions (and example) to the bottom row. This allows the icon descriptions 
+ to be longer without looking really weird, and gives a space for an example of how the license name, icons, and permissions are related.
+ I also decided to swap the positions of the educational section and the chooser section on the page. This means that the chooser is 
+ now at the top of the page, with the educational section (re-labelled as "Confused? Need Help?") below it.</p>
+<p>Next week, I'll be working on getting a new version of the license chooser controls working.</p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /blog/categories/gsoc ">gsoc</a>,
+          
+          
+          <a href=" /blog/categories/gsoc-2019 ">gsoc-2019</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-chooser-week4"; this.page.url = "http://creativecommons.github.io/blog/entries/cc-chooser-week4/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
