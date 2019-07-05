@@ -83,6 +83,32 @@ for in-depth logs.&lt;/p&gt;
 &lt;/ul&gt;
 </content>
   </entry>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-browser-extension-week5-6/">
+    <title type="text">CC Browser Extension Week 5, 6</title>
+    <id>urn:uuid:2282b957-f43f-310e-8cc3-bf8db6e2a18a</id>
+    <updated>2019-07-04T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-browser-extension-week5-6/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://creativecommons.github.io/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;These couple weeks were spent on finishing the filter section, setting up infinite-scroll and fixing issues and bugs after some days of testing.&lt;/p&gt;
+&lt;p&gt;Most of the filter section was complete but I missed a tiny detail that the Catalog API &lt;a href=&quot;https://api.creativecommons.engineering/image/search?q=hello&amp;amp;li=cc0&amp;amp;lt=commercial&quot;&gt;does not accept&lt;/a&gt; both the license and use-case filter queries in the same request. I did some changes in the code for generating the valid URL for every filter action and added the relevant UI changes of deselecting and disabling the license drop-down when a use-case is selected.&lt;/p&gt;
+&lt;p&gt;The infinite scroll was set-up by following the classic solution of firing another request to the API when the user scrolls to the bottom and appending the thumbnails of the result in the grid.&lt;/p&gt;
+&lt;p&gt;I tested the extension for a couple of days and made some &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/issues?q=is%3Aissue+is%3Aclosed&quot;&gt;bug reports&lt;/a&gt; on Github. Most of them were pretty easy to fix but the one I struggled with was &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/issues/3&quot;&gt;this&lt;/a&gt; one. After some discussion on slack,  &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno&lt;/a&gt; and &lt;a href=&quot;https://github.com/dhruvkb&quot;&gt;Dhruv&lt;/a&gt; suggested using the &lt;a href=&quot;https://masonry.desandro.com/&quot;&gt;Masonry grid&lt;/a&gt; for the thumbnails (I was previously using the standard float grid of 3 columns). I made the transition but observed some flickering in the images on firefox when a new batch loaded on scrolling. It was working fine on chrome though. I spent a whole day looking for alternatives or doing some silly fix by using a bunch of timeouts. Again, Breno and Druv came to the rescue and suggested that some animations may be causing this. But even after a few hours of hit and trial and removing and fixing animations, I couldn't fix it only because I was looking in the wrong place. By changing the &lt;code&gt;transitionDuration&lt;/code&gt; option of masonry to &lt;code&gt;0&lt;/code&gt; did the trick. In fact, it was the first thing I should have tried. I should maybe take breaks more often to clear my mind :p&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Work on showing relevant image info when we click on the image.&lt;/li&gt;
+&lt;li&gt;Let users copy the rich-text or HTML version of the attribution with one click.&lt;/li&gt;
+&lt;li&gt;Add the download buttons to download the image and the attribution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://creativecommons.github.io/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chapter-websites/">
     <title type="text">Creative Commons Chapter Websites network</title>
     <id>urn:uuid:ad9d7eb8-60d9-34f0-a3e8-53043bb359ef</id>
@@ -179,7 +205,7 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;li&gt;Start working on the functionality of showing the image preview with data, attribution, etc when we click on the image. This may take more than one week.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;how-you-can-help&quot;&gt;How you can help&lt;/h3&gt;&lt;p&gt;The development is still in the initial phase but you can check out &lt;strong&gt;a working extension&lt;/strong&gt; at the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github Repository&lt;/a&gt;. There are instructions to help you get started and load it to Firefox.&lt;/p&gt;
-&lt;p&gt;Tell us what you expect the extension to do, or a feature that you wish would be implemented. At this early stage of development, it might help us improve our goals. You can join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://localhost:5000/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Tell us what you expect the extension to do, or a feature that you wish would be implemented. At this early stage of development, it might help us improve our goals. You can join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://creativecommons.github.io/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; to for their mentorship and providing an experienced perspective and solutions to the problems faced by this naive developer.&lt;/p&gt;
 </content>
   </entry>
