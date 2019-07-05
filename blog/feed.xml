@@ -2,13 +2,87 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-03T00:00:00Z</updated>
+  <updated>2019-07-05T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-vocabulary-so-far/">
+    <title type="text">CC Vocabulary, the lexicon so far</title>
+    <id>urn:uuid:7de012d1-19ae-3698-8f14-5113221d3011</id>
+    <updated>2019-07-05T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-vocabulary-so-far/" />
+    <author>
+      <name>dhruvkb</name>
+    </author>
+    <content type="html">&lt;p&gt;CC Vocabulary has really come into its own over the last couple of weeks. Here
+are some of the newest additions to the CC Vocabulary thesaurus of components.&lt;/p&gt;
+&lt;p&gt;Tokens now have i18n enabled.&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;Token i18n&quot; src=&quot;token-i18n.png&quot;/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;/div&gt;&lt;p&gt;The code editor has a new dark Material-design inspired theme.&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;Dark editor theme&quot; src=&quot;editor.png&quot;/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;/div&gt;&lt;p&gt;Meet Inputs, the Vue approach to forms.&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;Input&quot; src=&quot;input.png&quot;/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;/div&gt;&lt;p&gt;Say hi to new documentation for Container (and a lot of other components).&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;Container&quot; src=&quot;container.png&quot;/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;/div&gt;&lt;p&gt;Grids are a powerful way to lay your content out.&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;Grid&quot; src=&quot;grid.png&quot;/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;/div&gt;&lt;p&gt;There's also a new table component. It's still under active development as of
+now.&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;Table&quot; src=&quot;table.png&quot;/&gt;&lt;br/&gt;&lt;br/&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id=&quot;future&quot;&gt;Future&lt;/h3&gt;&lt;p&gt;CC Vocabulary is much more mature now than it was at the time of writing my last 
+blog. It has a much more stable codebase and a larger collection of polished
+components. So if you are a developer of CC apps, I would recommend you use some
+of its offerings in your latest project.&lt;/p&gt;
+&lt;p&gt;CC Vocabulary is out now, with its code, design and translations on GitHub and a
+live styleguide hosted on GitHub pages. Please &lt;a href=&quot;https://creativecommons.github.io/cc-vocabulary/&quot;&gt;check it
+out&lt;/a&gt; and join the discussions.
+Since it is too early to even call it a beta, your feedback is crucial in shaping
+its future and with it, the future of all Creative Commons apps.&lt;/p&gt;
+&lt;p&gt;Here's a sneak peek!&lt;/p&gt;
+&lt;div&gt;
+&lt;img alt=&quot;CC Vocabulary in production&quot; src=&quot;hello.png&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Say hello to CC Vocabulary!&lt;/small&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;CC Vocabulary is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo
+Solar&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
+Clachar&lt;/a&gt;. Although not officially
+a mentor &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt; has also
+been really supportive and helpful.&lt;/p&gt;
+&lt;h3 id=&quot;work-log&quot;&gt;Work log&lt;/h3&gt;&lt;p&gt;See GitHub &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/commits&quot;&gt;commits&lt;/a&gt;
+for in-depth logs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Refactored and massively improved code quality&lt;/li&gt;
+&lt;li&gt;Developed some layout components such as Container and Grid&lt;/li&gt;
+&lt;li&gt;Reworked styling so as to publish a vanilla CSS library&lt;/li&gt;
+&lt;li&gt;Developed a consistent system of colors&lt;/li&gt;
+&lt;li&gt;Rewrote significant portions of documentation for almost all components&lt;/li&gt;
+&lt;li&gt;Split large components like Header and Footer into smaller elementary components&lt;/li&gt;
+&lt;li&gt;Developed an Input component for forms&lt;/li&gt;
+&lt;li&gt;Switched to a developer-beloved darker theme for the code editor&lt;/li&gt;
+&lt;li&gt;I18n-ed the tokens section of the documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming up&lt;/h3&gt;&lt;p&gt;See proposal for in-depth goals.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Develop buttons, tables, dropdown boxes (important, urgent)&lt;/li&gt;
+&lt;li&gt;Increase the interdependent use of components&lt;/li&gt;
+&lt;li&gt;Add more generic components&lt;/li&gt;
+&lt;li&gt;Integrate these into CC Search&lt;/li&gt;
+&lt;li&gt;Go to point 3&lt;/li&gt;
+&lt;li&gt;Add a dark theme for the entire styleguide (unimportant, non-urgent)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chapter-websites/">
     <title type="text">Creative Commons Chapter Websites network</title>
     <id>urn:uuid:ad9d7eb8-60d9-34f0-a3e8-53043bb359ef</id>
