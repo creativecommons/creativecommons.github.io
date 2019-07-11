@@ -121,10 +121,10 @@
 <h3 id="data-extraction">Data Extraction</h3><p>Each month, Creative Commons uses <a href="http://commoncrawl.org/">Common Crawl</a> data to find all domains that contain CC licensed content. As you might be guessing, the amount of data is very big, so the CC Catalog data is stored in <a href="http://commoncrawl.org/the-data/get-started/">S3</a> buckets and <a href="https://spark.apache.org/">Apache Spark</a> is used to extract the data from Common Crawl.</p>
 <p>Spark is used again in this project to extract the data, in the form of parquet files, from the buckets. In order to facilitate the analysis and processing of the data, the files are converted to TSV (tab-separated values). The dataset I work on contains the following fields:</p>
 <ul>
-<li>provider_domain: name of the domain with licensed content.</li>
-<li>cc_license: path to the Creative Commons license deed used by the _provider_domain_.</li>
-<li>images: number of images showed in the _provider_domain_ web page.</li>
-<li>links: JSON field that contains a dictionary with domains as keys, and number of links as values. A link appears when _provider_domain_ has an href tag in its web page that points to the domain key.</li>
+<li><code>provider_domain</code>: name of the domain with licensed content.</li>
+<li><code>cc_license</code>: path to the Creative Commons license deed used by the <code>provider_domain</code>.</li>
+<li><code>images</code>: number of images showed in the <code>provider_domain</code> web page.</li>
+<li><code>links</code>: JSON field that contains a dictionary with domains as keys, and number of links as values. A link appears when <code>provider_domain</code> has an href tag in its web page that points to the domain key.</li>
 </ul>
 <p>Each file can easily contain dozens of millions of rows. My first aproach is to load the information in a Pandas Dataframe, but this can become very slow. Therefore, I will test the scripts for the data processing with a portion of the real data. Afterwards, I will use <a href="https://dask.org/">Dask</a> with the entire dataset. Dask provides advanced parallelism for analytics, and has a behaviour similar to Pandas.</p>
 <h3 id="cleansing-and-filtering">Cleansing and Filtering</h3><p>This step is about preparing the data for analysis and reducing the amount of data, in order to get a meaningful visualization. The data that comes from the S3 buckets is actually pretty neat (no strange characters for example, or incomplete rows). Nevertheless as a first step, duplicate rows are deleted (given by duplicate URLs). Next I, develop pruning rules. I try to:</p>
