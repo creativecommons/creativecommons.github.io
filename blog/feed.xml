@@ -17,17 +17,17 @@
     <author>
       <name>soccerdroid</name>
     </author>
-    <content type="html">&lt;p&gt;Welcome to the data processing part of the GSoC project! In this blog post, I am going to tell you about my firsts thoughts with the real data, and give you some details of the implementation developed so far.&lt;/p&gt;
-&lt;h3 id=&quot;data-extraction&quot;&gt;Data extraction&lt;/h3&gt;&lt;p&gt;Each month, Creative Commons uses &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt; data to find all domains that contain CC licensed content. As you might be guessing, the amount of data is very big, so the CC Catalog data is stored in &lt;a href=&quot;http://commoncrawl.org/the-data/get-started/&quot;&gt;S3&lt;/a&gt; buckets and &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt; is used to extract the data from Common Crawl.&lt;/p&gt;
+    <content type="html">&lt;p&gt;Welcome to the data processing part of the GSoC project! In this blog post, I am going to tell you about my first thoughts with the real data, and give you some details of the implementation developed so far.&lt;/p&gt;
+&lt;h3 id=&quot;data-extraction&quot;&gt;Data Extraction&lt;/h3&gt;&lt;p&gt;Each month, Creative Commons uses &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt; data to find all domains that contain CC licensed content. As you might be guessing, the amount of data is very big, so the CC Catalog data is stored in &lt;a href=&quot;http://commoncrawl.org/the-data/get-started/&quot;&gt;S3&lt;/a&gt; buckets and &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt; is used to extract the data from Common Crawl.&lt;/p&gt;
 &lt;p&gt;Spark is used again in this project to extract the data, in the form of parquet files, from the buckets. In order to facilitate the analysis and processing of the data, the files are converted to TSV (tab-separated values). The dataset I work on contains the following fields:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;provider_domain: name of the domain with licensed content.&lt;/li&gt;
-&lt;li&gt;cc_license: path to the Creative Commons license deed used by the _provider\&lt;em&gt;domain&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;images: number of images showed in the _provider\&lt;em&gt;domain&lt;/em&gt; web page.&lt;/li&gt;
-&lt;li&gt;links: JSON field that contains a dictionary with domains as keys, and number of links as values. A link appears when _provider\&lt;em&gt;domain&lt;/em&gt; has an href tag in its web page that points to the domain key.&lt;/li&gt;
+&lt;li&gt;cc_license: path to the Creative Commons license deed used by the _provider_domain_.&lt;/li&gt;
+&lt;li&gt;images: number of images showed in the _provider_domain_ web page.&lt;/li&gt;
+&lt;li&gt;links: JSON field that contains a dictionary with domains as keys, and number of links as values. A link appears when _provider_domain_ has an href tag in its web page that points to the domain key.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Each file can easily contain dozens of millions of rows. My first aproach is to load the information in a Pandas Dataframe, but this can become very slow. Therefore, I will test the scripts for the data processing with a portion of the real data. Afterwards, I will use &lt;a href=&quot;https://dask.org/&quot;&gt;Dask&lt;/a&gt; with the entire dataset. Dask provides advanced parallelism for analytics, and has a behaviour similar to Pandas.&lt;/p&gt;
-&lt;h3 id=&quot;cleansing-and-filtering&quot;&gt;Cleansing and filtering&lt;/h3&gt;&lt;p&gt;This step is about preparing the data for analysis and reducing the amount of data, in order to get a meaningful visualization. The data that comes from the S3 buckets is actually pretty neat (no strange characters for example, or incomplete rows). Nevertheless as a first step, duplicate rows are deleted (given by duplicate URLs). Next I, develop pruning rules. I try to:&lt;/p&gt;
+&lt;h3 id=&quot;cleansing-and-filtering&quot;&gt;Cleansing and Filtering&lt;/h3&gt;&lt;p&gt;This step is about preparing the data for analysis and reducing the amount of data, in order to get a meaningful visualization. The data that comes from the S3 buckets is actually pretty neat (no strange characters for example, or incomplete rows). Nevertheless as a first step, duplicate rows are deleted (given by duplicate URLs). Next I, develop pruning rules. I try to:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;exclude cycles (cyclic edges),&lt;/li&gt;
 &lt;li&gt;exclude lonely nodes,&lt;/li&gt;
@@ -35,17 +35,17 @@
 &lt;p&gt;These rules are being developed on an on-going basis and new rules will be added based on the insights derived from the data.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;formatting-domain-names&quot;&gt;Formatting Domain Names&lt;/h3&gt;&lt;p&gt;Now in the dataset, we have domain names in the form of URLs. But we want to make the graph looks pretty well. This is why I am going to extract the domain name from the URLs we have in the dataset. For this purpose, I use &lt;a href=&quot;https://github.com/john-kurkowski/tldextract&quot;&gt;tldextract&lt;/a&gt;, which is a simple and complete open source library for extracting the parts of the domains (say: suffix, subdomain, domain name). This package is available in conda-forge too. Here is how tldextract works:&lt;/p&gt;
+&lt;h3 id=&quot;formatting-domain-names&quot;&gt;Formatting Domain Names&lt;/h3&gt;&lt;p&gt;In the dataset, we have domain names in the form of URLs. But we want to make the graph looks pretty well. This is why I am going to extract the domain name from the URLs we have in the dataset. For this purpose, I use &lt;a href=&quot;https://github.com/john-kurkowski/tldextract&quot;&gt;tldextract&lt;/a&gt;, which is a simple and complete open source library for extracting the parts of the domains (e.g. suffix, subdomain, domain name). This package is available in conda-forge too. Here is how tldextract works:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; ext = tldextract.extract(&amp;#39;http://forums.bbc.co.uk&amp;#39;)
 &amp;gt;&amp;gt;&amp;gt; (ext.subdomain, ext.domain, ext.suffix)
 (&amp;#39;forums&amp;#39;, &amp;#39;bbc&amp;#39;, &amp;#39;co.uk&amp;#39;) #extract the domain name &amp;quot;bbc&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The main part is the extraction of the domain name. This will be applied to the _provider\&lt;em&gt;domain&lt;/em&gt; and &lt;em&gt;links&lt;/em&gt; fields in order to build the graph. The domain names will be the ones displayed over the nodes, as depicted in &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/&quot;&gt;my first blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;license-validation&quot;&gt;License validation&lt;/h3&gt;&lt;p&gt;Another important aspect is the licenses types. In the dataset, we do not have the exact license name; rather, we have a URL that directs to the license definition on &lt;a href=&quot;/blog/entries/cc-datacatalog-data-processing/creativecommons.org&quot;&gt;creativecommons.org&lt;/a&gt;. We have developed a &lt;a href=&quot;https://github.com/creativecommons/cccatalog/blob/master/src/providers/api/modules/etlMods.py#L75&quot;&gt;function&lt;/a&gt; with some regular expressions to validate the correct format of these URls, and extracts from them the license name and version. This information will be shown in the pie chart that appears after the user clicks on a node.&lt;/p&gt;
+&lt;p&gt;The main part is the extraction of the domain name. This will be applied to the _provider_domain_ and &lt;em&gt;links&lt;/em&gt; fields in order to build the graph. The domain names will be the ones displayed over the nodes, as depicted in &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/&quot;&gt;my first blog post&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;license-validation&quot;&gt;License Validation&lt;/h3&gt;&lt;p&gt;Another important aspect is the licenses types. In the dataset, we do not have the exact license name; rather, we have a URL that directs to the license definition on &lt;a href=&quot;https://creativecommons.org&quot;&gt;creativecommons.org&lt;/a&gt;. We have developed a &lt;a href=&quot;https://github.com/creativecommons/cccatalog/blob/master/src/providers/api/modules/etlMods.py#L75&quot;&gt;function&lt;/a&gt; with some regular expressions to validate the correct format of these URls, and extracts from them the license name and version. This information will be shown in the pie chart that appears after the user clicks on a node.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;'https://creativecommons.org/licenses/by/4.0/' #valid license
 'https://creativecommons.org/licenses/zero/' #non-valid license
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;coming-soon&quot;&gt;Coming soon&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;coming-soon&quot;&gt;Coming Soon&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Data aggregation&lt;/li&gt;
 &lt;li&gt;Visualization with the data + perfectioning pruning/filtering rules&lt;/li&gt;
 &lt;/ul&gt;
