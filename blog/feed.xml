@@ -2,13 +2,61 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-10T00:00:00Z</updated>
+  <updated>2019-07-15T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-link-checker/">
+    <title type="text">Combating dead links with CC Link Checker</title>
+    <id>urn:uuid:fcf5a6f1-4501-3b2f-bf0f-216fd057290e</id>
+    <updated>2019-07-15T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-link-checker/" />
+    <author>
+      <name>bhumijgupta</name>
+    </author>
+    <content type="html">&lt;p&gt;Creative Commons provides vast number of public copyright licenses for people who want to enable free distribution of their work. Creative Commons licenses currently covers over &lt;strong&gt;1.6 billion resources&lt;/strong&gt;. These license files are then translated to multiple different languages and ported for &lt;a href=&quot;https://wiki.creativecommons.org/wiki/CC_Ports_by_Jurisdiction&quot;&gt;different jurisdictions&lt;/a&gt; for international usage. People link to the respective licenses along with their licensed works. These license files are in the form of &lt;code&gt;html&lt;/code&gt; files, stored in &lt;a href=&quot;https://github.com/creativecommons/creativecommons.org/tree/master/docroot/legalcode&quot;&gt;creativecommons/creativecommons.org&lt;/a&gt; repo.&lt;/p&gt;
+&lt;h3 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h3&gt;&lt;p&gt;These license files contain links to their deeds, license translated to other languages, internal links, and many more. Sometimes due to errors, these files may contain dead / broken links. These broken links leads to incorrect/ incomplete understanding of the license clauses and permissions by the viewer. This may sometime lead to incorrect usage of the licensed resource.&lt;/p&gt;
+&lt;p&gt;At the time of writing, the repo contains over &lt;strong&gt;930 files&lt;/strong&gt; with an average of &lt;strong&gt;50 links per file&lt;/strong&gt;. New translation of license deeds are regularly added to the repo and the existing license deeds are also updated frequently. Manually testing these files would take a lot of time. Considering the future additions of licenses, translations and jurisdiction ports, the time required for manual testing would increase drastically.&lt;/p&gt;
+&lt;h3 id=&quot;solution-cc-link-checker&quot;&gt;Solution - CC Link Checker&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cc-link-checker&quot;&gt;CC Link Checker&lt;/a&gt; aims to solve the problem by automating the task of checking links in the license and reporting errorneous and broken links. The python script scrapes all the licenses from the repo and checks the status of the links in the files. The script checks the link for &lt;code&gt;40X&lt;/code&gt; errors, &lt;code&gt;timeout errors&lt;/code&gt; and &lt;code&gt;invalid schema&lt;/code&gt; error.&lt;/p&gt;
+&lt;p&gt;Firstly, let's get the features out of the way. The script uses multiprocessing, taking full use of multiple core processors, has 2 modes of output to CLI - default and verbose, and can also print the error links, summary of the result, and mapping of error links to their URLs of occurence in a file.&lt;/p&gt;
+&lt;p&gt;Now let's hop in the nerd train and take a deeper look at development journey.&lt;/p&gt;
+&lt;h3 id=&quot;development-journey&quot;&gt;Development Journey&lt;/h3&gt;&lt;p&gt;I started working on the project a month back i.e. 13 Jun. During this journey there were many ups and downs, with some productive and some totally unproductive days. For better understanding, lets look the journey for each week.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Week 1
+  The approach for the first week was to get the basic functionality done. The script was able to scrape and parse all license and links from the github repo using &lt;code&gt;requests&lt;/code&gt; and &lt;code&gt;BeautifulSoup&lt;/code&gt;. I implemented basic memoization to prevent repeated fetching of already fetched links. This step decreased the execution time of the script by several folds. Parallel to the development of the script, I also had to implement Circle-CI. Since it was my first time using a CI service, it took me quite some time to wrap my head around Circle-CI.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Circle-CI, pipenv, different docstring formats, different code styles and pep8 recommendations - black and flake8&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Week 2
+  With the basic functionality completed, now it was time to implement some advance features. This week I worked on implementing &lt;code&gt;--verbose&lt;/code&gt; flag a.k.a. the verbose mode of output to CLI. The verbose mode would help in debugging and give a deeper look into how the python script was working. Also I worked on &lt;code&gt;--output-errors&lt;/code&gt; flag, which would print error links and summary to a file.&lt;/p&gt;
+&lt;p&gt;Everything was working fine and ahead of schedule, until a major bug was detected i.e. incorrect conversion of relative to absolute links which resulted in several false positive and false negatives. Fixing this required deducing pattern between the URL on which the license file would be displayed from the license name. This step took a lot of time and pushed project below its schedule.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Argument parser and help text&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Week 3
+  The output file consisted only file name and the errorneous links encountered in the file. As per suggestion of &lt;a href=&quot;https://creativecommons.org/author/kgodey&quot;&gt;Kriti Godey&lt;/a&gt;, I worked on adding the summary section to the file which would include information like total error links, number of unique links along with errorneous link and the page URLs on which it is present (since many page consist the same dead link). The next step was optimizing time taken to run the script.&lt;/p&gt;
+&lt;p&gt;Before any optimisation the script took 4+ minutes to run on cloud servers. To reduce the time, I started working on implementing &lt;strong&gt;multithreading&lt;/strong&gt; to reduce the execution time of the script. Implementing multithreading was a big task as it required major refactoring of the code to make it thread safe and compatible with concurrency. After sucessfully refactoring and implementing multithreading, I was able to bring down the execution time to around 3:20.&lt;/p&gt;
+&lt;p&gt;As pointed out by my mentor, this came with its own set of problems. Due to python's &lt;code&gt;Global Interpretor Lock(GIL)&lt;/code&gt; no two threads can run parallely inside the python interpretor and the use of global and lock made the code more complex. Also, the performance increase was not significant. This was a setback as my week long efforts had gone in vain.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Multithreading, locks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Week 4
+  To aid the situation my mentors suggested using &lt;strong&gt;multiprocessing&lt;/strong&gt; instead. I had no former experience with multiprocessing, but thanks to python's beautiful documentations and examples, I was quickly able to get a hold of it. I finished implementing multiprocessing and to my surprise, there was &lt;strong&gt;49.5% performance increase&lt;/strong&gt;. The script now only took 2:27 to complete.&lt;/p&gt;
+&lt;p&gt;The major functionality of the script were completed, and the optimisations were done. To improve the code quality and improve documentation, it was time to write &lt;strong&gt;unit tests&lt;/strong&gt; for the script. To write the tests I used &lt;code&gt;pytests&lt;/code&gt; framework which provides several benefits and higher level abstraction over the inbuilt &lt;code&gt;unittest&lt;/code&gt; module.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Multiprocessing, pytests&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;future-work&quot;&gt;Future work&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Optimising the script for more performace increase&lt;/li&gt;
+&lt;li&gt;Making the script more CI-friendly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CC Link Checker is only possible due to the support and guidance of my mentors &lt;a href=&quot;https://creativecommons.org/author/aldenpage&quot;&gt;Alden Page&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/TimidRobot&quot;&gt;Timid Robot Zehta&lt;/a&gt;, who have been very supportive on every step of the project. Also I would like to thank engineering director &lt;a href=&quot;https://creativecommons.org/author/kgodey&quot;&gt;Kriti Godey&lt;/a&gt; for her continuous support.&lt;/p&gt;
+&lt;p&gt;You can follow the project on Github: &lt;a href=&quot;https://github.com/creativecommons/cc-link-checker&quot;&gt;creativecommons/cc-link-checker&lt;/a&gt;. You can also join the discussion on &lt;code&gt;#cc-link-checker&lt;/code&gt; on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;Slack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The project is approaching its completion. Can't wait to see it in production.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Signing off&lt;br&gt;
+Bhumij Gupta&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-datacatalog-data-processing/">
     <title type="text">Visualize CC Catalog data - data processing</title>
     <id>urn:uuid:5f2e74fa-1573-327e-be6f-3d7ce57f7916</id>

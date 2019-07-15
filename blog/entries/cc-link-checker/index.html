@@ -1,0 +1,214 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Combating dead links with CC Link Checker — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Combating dead links with CC Link Checker</h2>
+  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/bhumijgupta">bhumijgupta</a>
+  on Monday, 2019 July 15</p>
+  <div class="body"><p>Creative Commons provides vast number of public copyright licenses for people who want to enable free distribution of their work. Creative Commons licenses currently covers over <strong>1.6 billion resources</strong>. These license files are then translated to multiple different languages and ported for <a href="https://wiki.creativecommons.org/wiki/CC_Ports_by_Jurisdiction">different jurisdictions</a> for international usage. People link to the respective licenses along with their licensed works. These license files are in the form of <code>html</code> files, stored in <a href="https://github.com/creativecommons/creativecommons.org/tree/master/docroot/legalcode">creativecommons/creativecommons.org</a> repo.</p>
+<h3 id="problem-statement">Problem Statement</h3><p>These license files contain links to their deeds, license translated to other languages, internal links, and many more. Sometimes due to errors, these files may contain dead / broken links. These broken links leads to incorrect/ incomplete understanding of the license clauses and permissions by the viewer. This may sometime lead to incorrect usage of the licensed resource.</p>
+<p>At the time of writing, the repo contains over <strong>930 files</strong> with an average of <strong>50 links per file</strong>. New translation of license deeds are regularly added to the repo and the existing license deeds are also updated frequently. Manually testing these files would take a lot of time. Considering the future additions of licenses, translations and jurisdiction ports, the time required for manual testing would increase drastically.</p>
+<h3 id="solution-cc-link-checker">Solution - CC Link Checker</h3><p><a href="https://github.com/creativecommons/cc-link-checker">CC Link Checker</a> aims to solve the problem by automating the task of checking links in the license and reporting errorneous and broken links. The python script scrapes all the licenses from the repo and checks the status of the links in the files. The script checks the link for <code>40X</code> errors, <code>timeout errors</code> and <code>invalid schema</code> error.</p>
+<p>Firstly, let's get the features out of the way. The script uses multiprocessing, taking full use of multiple core processors, has 2 modes of output to CLI - default and verbose, and can also print the error links, summary of the result, and mapping of error links to their URLs of occurence in a file.</p>
+<p>Now let's hop in the nerd train and take a deeper look at development journey.</p>
+<h3 id="development-journey">Development Journey</h3><p>I started working on the project a month back i.e. 13 Jun. During this journey there were many ups and downs, with some productive and some totally unproductive days. For better understanding, lets look the journey for each week.</p>
+<ul>
+<li><p>Week 1
+  The approach for the first week was to get the basic functionality done. The script was able to scrape and parse all license and links from the github repo using <code>requests</code> and <code>BeautifulSoup</code>. I implemented basic memoization to prevent repeated fetching of already fetched links. This step decreased the execution time of the script by several folds. Parallel to the development of the script, I also had to implement Circle-CI. Since it was my first time using a CI service, it took me quite some time to wrap my head around Circle-CI.</p>
+<p><strong>Things I learned:</strong> Circle-CI, pipenv, different docstring formats, different code styles and pep8 recommendations - black and flake8</p>
+</li>
+<li><p>Week 2
+  With the basic functionality completed, now it was time to implement some advance features. This week I worked on implementing <code>--verbose</code> flag a.k.a. the verbose mode of output to CLI. The verbose mode would help in debugging and give a deeper look into how the python script was working. Also I worked on <code>--output-errors</code> flag, which would print error links and summary to a file.</p>
+<p>Everything was working fine and ahead of schedule, until a major bug was detected i.e. incorrect conversion of relative to absolute links which resulted in several false positive and false negatives. Fixing this required deducing pattern between the URL on which the license file would be displayed from the license name. This step took a lot of time and pushed project below its schedule.</p>
+<p><strong>Things I learned:</strong> Argument parser and help text</p>
+</li>
+<li><p>Week 3
+  The output file consisted only file name and the errorneous links encountered in the file. As per suggestion of <a href="https://creativecommons.org/author/kgodey">Kriti Godey</a>, I worked on adding the summary section to the file which would include information like total error links, number of unique links along with errorneous link and the page URLs on which it is present (since many page consist the same dead link). The next step was optimizing time taken to run the script.</p>
+<p>Before any optimisation the script took 4+ minutes to run on cloud servers. To reduce the time, I started working on implementing <strong>multithreading</strong> to reduce the execution time of the script. Implementing multithreading was a big task as it required major refactoring of the code to make it thread safe and compatible with concurrency. After sucessfully refactoring and implementing multithreading, I was able to bring down the execution time to around 3:20.</p>
+<p>As pointed out by my mentor, this came with its own set of problems. Due to python's <code>Global Interpretor Lock(GIL)</code> no two threads can run parallely inside the python interpretor and the use of global and lock made the code more complex. Also, the performance increase was not significant. This was a setback as my week long efforts had gone in vain.</p>
+<p><strong>Things I learned:</strong> Multithreading, locks</p>
+</li>
+<li><p>Week 4
+  To aid the situation my mentors suggested using <strong>multiprocessing</strong> instead. I had no former experience with multiprocessing, but thanks to python's beautiful documentations and examples, I was quickly able to get a hold of it. I finished implementing multiprocessing and to my surprise, there was <strong>49.5% performance increase</strong>. The script now only took 2:27 to complete.</p>
+<p>The major functionality of the script were completed, and the optimisations were done. To improve the code quality and improve documentation, it was time to write <strong>unit tests</strong> for the script. To write the tests I used <code>pytests</code> framework which provides several benefits and higher level abstraction over the inbuilt <code>unittest</code> module.</p>
+<p><strong>Things I learned:</strong> Multiprocessing, pytests</p>
+</li>
+</ul>
+<h3 id="future-work">Future work</h3><ul>
+<li>Optimising the script for more performace increase</li>
+<li>Making the script more CI-friendly</li>
+</ul>
+<p>CC Link Checker is only possible due to the support and guidance of my mentors <a href="https://creativecommons.org/author/aldenpage">Alden Page</a> and <a href="https://creativecommons.org/author/TimidRobot">Timid Robot Zehta</a>, who have been very supportive on every step of the project. Also I would like to thank engineering director <a href="https://creativecommons.org/author/kgodey">Kriti Godey</a> for her continuous support.</p>
+<p>You can follow the project on Github: <a href="https://github.com/creativecommons/cc-link-checker">creativecommons/cc-link-checker</a>. You can also join the discussion on <code>#cc-link-checker</code> on <a href="https://opensource.creativecommons.org/community/#slack">Slack</a></p>
+<p>The project is approaching its completion. Can't wait to see it in production.</p>
+<p><em>Signing off<br>
+Bhumij Gupta</em></p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+          
+          <a href=" /blog/categories/open-source ">open-source</a>,
+          
+          
+          <a href=" /blog/categories/product ">product</a>,
+          
+          
+          <a href=" /blog/categories/cc-link-checker ">cc-link-checker</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-link-checker"; this.page.url = "http://creativecommons.github.io/blog/entries/cc-link-checker/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
