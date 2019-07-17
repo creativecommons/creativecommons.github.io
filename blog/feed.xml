@@ -2,13 +2,51 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-15T00:00:00Z</updated>
+  <updated>2019-07-17T00:00:00Z</updated>
   <link href="http://creativecommons.github.io/" />
   <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-search-redesign/">
+    <title type="text">CC Search Redesign</title>
+    <id>urn:uuid:0f657796-a8be-3d58-8140-2b06bf93e5ed</id>
+    <updated>2019-07-17T00:00:00Z</updated>
+    <link href="http://creativecommons.github.io/blog/entries/cc-search-redesign/" />
+    <author>
+      <name>brenoferreira</name>
+    </author>
+    <content type="html">&lt;p&gt;In 2018, Creative Commons started a project to build a new, improved front door to the Commons, and in September 2018, a &lt;a href=&quot;https://creativecommons.org/2018/09/24/big-changes-for-cc-search-beta-updates-released-today/&quot;&gt;beta version of this new CC Search product was released&lt;/a&gt; to the public.
+This is what it looked like back then:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/old homepage.png&quot; alt=&quot;old homepage design&quot;&gt;&lt;/p&gt;
+&lt;p&gt;You can see that the home page is quite convoluted, with a lot of things presented to the user right from the start. And one of the main problems that we identified during some of our usability testing was that it didn't look exactly like a search engine page. Maybe it looked like an image gallery website? Moreover, the &quot;Search the commons...&quot; placeholder text on the search box isn't really clear, unless you are someone familiar with Creative Commons and know what The Commons represents.&lt;/p&gt;
+&lt;p&gt;But the biggest problem was that it didn't look at all like any of the other CC pages. So our intuition was that if we linked this on the CC homepage, people would have gone to a different environment that looked and felt different from where they were previously. Unlike in other platforms where every tool follows similar UI patterns under a single visual identity.&lt;/p&gt;
+&lt;p&gt;We then decided to do a redesign of the entire CC Search website, addressing the issues described previously, and at the same time, fixing some other usability issues we had already identified. This redesign started around the end of March 2019, and we decided on having it ready in time for the CC Summit at the end of May. That gave us around two months to work on the following items.&lt;/p&gt;
+&lt;h2 id=&quot;the-homepage&quot;&gt;The homepage&lt;/h2&gt;&lt;p&gt;We started the redesign of the homepage by removing all that content that was distracting to the user: the background image, top categories, suggested images, therefore having only the essential on the homepage: a search box, a navigation bar, and a footer with some legal information.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/new homepage.png&quot; alt=&quot;new homepage design&quot;&gt;&lt;/p&gt;
+&lt;p&gt;There's a lot less &quot;noise&quot; on the new homepage. It also follows more of the design you can see on the Creative Commons homepage, (&lt;a href=&quot;https://creativecommons.org/)[https://creativecommons.org/&quot;&gt;https://creativecommons.org/)[https://creativecommons.org/&lt;/a&gt;]. Initially, we planned to follow the same color scheme, but in internal conversations, we decided to have each of CC's main pages have some colors of its own, so they are more easily recognizable by users. So we dropped the orange from CC's homepage in favour of this light blue you see now.&lt;/p&gt;
+&lt;p&gt;We also replaced the &quot;Search the Commons...&quot; placeholder on the search text box for &quot;Search for images...&quot;. As we currently provide only image search, users can more easily and intuitively know what they will be searching for using our tool, instead of hoping to find textbooks or video works in the results because &quot;Search the commons...&quot; could have meant search the full Commons corpus.&lt;/p&gt;
+&lt;h2 id=&quot;search-results&quot;&gt;Search results&lt;/h2&gt;&lt;p&gt;Along with the redesign of the overall look and feel of the website and the homepage, we made some improvements to the search results page as well.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/old search results.png&quot; alt=&quot;old search results page&quot;&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, the old results are displayed in rows of three columns of fixed width and as a result, many of those image-container boxes have a lot of empty space, except for images that fit into a landscape orientation. If the image is in portrait orientation, or a square resolution, which tends to be a large portion of the total collection, we end up with a lot of unused space.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/new search results.png&quot; alt=&quot;new search results page&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The new search results page address this by removing the container box and displaying them in a grid that maximizes the available space for every image, considering its orientation and resolution. Now the user can see more images at a single glance, without having to scroll down as much to see more of the results. We are also able to render the full image in this new design, as opposed to the old one, where we would sometimes scale the images to fit into the rectangle-shaped container box, sometimes cropping out a part of some images.&lt;/p&gt;
+&lt;h2 id=&quot;filters&quot;&gt;Filters&lt;/h2&gt;&lt;p&gt;This is a smaller update, changing the location and layout of the search filters.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/old filters.gif&quot; alt=&quot;old filters&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/new filters.gif&quot; alt=&quot;new filters&quot;&gt;&lt;/p&gt;
+&lt;p&gt;With this new layout, when the select dropdowns are open, they don't hide the other filter components. And they now take less space since they are displayed one next to the other, as opposed to one below the other in the old design.&lt;/p&gt;
+&lt;p&gt;There's been some feedback from the community requesting additional filters, such as resolution, image type (such as illustrations, vector graphics, etc..), and a few others. So this is a piece of UI that might change in the future.&lt;/p&gt;
+&lt;h2 id=&quot;photo-details&quot;&gt;Photo details&lt;/h2&gt;&lt;p&gt;On this page, what we did was more of a rearrangement and change of layout instead of a full redesign. The information there is still the same, but we added a few things, which, if we still had the same layout, would result in a lot of information cramped and cluttered in a tight space.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/old details.png&quot; alt=&quot;old photo details page&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-redesign/new details.gif&quot; alt=&quot;new photo details page&quot;&gt;&lt;/p&gt;
+&lt;p&gt;What we ended up with is a page that makes the photo itself stand out among everything else, and we split distinct pieces of information in separate tabs below the image. This gave us the possibility of adding more information of a particular domain without mixing it with a bunch of unrelated data that distracts the user and results in information confusion.&lt;/p&gt;
+&lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;&lt;p&gt;Now we're in a phase of making small improvements to this UI standard. Like we said before, there's some recurrent feedback from the community asking for additional image filters, so we're planning to add that soon.&lt;/p&gt;
+&lt;p&gt;As part of our Google Summer of Code initiative, we have a project called &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt; that aims to build a set of reusable UI styles and components that will be used across all CC websites. Soon this will also be integrated into the CC Search website.&lt;/p&gt;
+&lt;p&gt;If you have any feedback, please feel free to send your thoughts and opinions &lt;a href=&quot;https://ccsearch.creativecommons.org/feedback&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you feel like contributing to the CC Search frontend code, please refer to our &lt;a href=&quot;https://opensource.creativecommons.org/contributing-code/&quot;&gt;Contribution guide&lt;/a&gt; and to the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;CC Search frontend codebase&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://creativecommons.github.io/blog/entries/cc-link-checker/">
     <title type="text">Combating dead links with CC Link Checker</title>
     <id>urn:uuid:fcf5a6f1-4501-3b2f-bf0f-216fd057290e</id>
