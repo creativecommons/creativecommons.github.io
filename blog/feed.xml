@@ -3,17 +3,17 @@
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
   <updated>2019-07-17T00:00:00Z</updated>
-  <link href="http://creativecommons.github.io/" />
-  <link href="http://creativecommons.github.io/blog/feed.xml" rel="self" />
+  <link href="http://opensource.creativecommons.org/" />
+  <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-search-redesign/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
     <title type="text">CC Search Redesign</title>
     <id>urn:uuid:0f657796-a8be-3d58-8140-2b06bf93e5ed</id>
     <updated>2019-07-17T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-search-redesign/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/" />
     <author>
       <name>brenoferreira</name>
     </author>
@@ -47,11 +47,11 @@ This is what it looked like back then:&lt;/p&gt;
 &lt;p&gt;If you feel like contributing to the CC Search frontend code, please refer to our &lt;a href=&quot;https://opensource.creativecommons.org/contributing-code/&quot;&gt;Contribution guide&lt;/a&gt; and to the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;CC Search frontend codebase&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-link-checker/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-link-checker/">
     <title type="text">Combating dead links with CC Link Checker</title>
     <id>urn:uuid:fcf5a6f1-4501-3b2f-bf0f-216fd057290e</id>
     <updated>2019-07-15T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-link-checker/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-link-checker/" />
     <author>
       <name>bhumijgupta</name>
     </author>
@@ -95,11 +95,11 @@ This is what it looked like back then:&lt;/p&gt;
 Bhumij Gupta&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-datacatalog-data-processing/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/">
     <title type="text">Visualize CC Catalog data - data processing</title>
     <id>urn:uuid:5f2e74fa-1573-327e-be6f-3d7ce57f7916</id>
     <updated>2019-07-10T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-datacatalog-data-processing/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/" />
     <author>
       <name>soccerdroid</name>
     </author>
@@ -143,11 +143,11 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;Maria&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-vocabulary-so-far/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-so-far/">
     <title type="text">CC Vocabulary, the lexicon so far</title>
     <id>urn:uuid:7de012d1-19ae-3698-8f14-5113221d3011</id>
     <updated>2019-07-05T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-vocabulary-so-far/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-so-far/" />
     <author>
       <name>dhruvkb</name>
     </author>
@@ -217,11 +217,11 @@ for in-depth logs.&lt;/p&gt;
 &lt;/ul&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-browser-extension-week5-6/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/">
     <title type="text">CC Browser Extension Week 5, 6</title>
     <id>urn:uuid:2282b957-f43f-310e-8cc3-bf8db6e2a18a</id>
     <updated>2019-07-04T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-browser-extension-week5-6/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/" />
     <author>
       <name>makkoncept</name>
     </author>
@@ -243,11 +243,11 @@ for in-depth logs.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chapter-websites/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chapter-websites/">
     <title type="text">Creative Commons Chapter Websites network</title>
     <id>urn:uuid:ad9d7eb8-60d9-34f0-a3e8-53043bb359ef</id>
     <updated>2019-07-03T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-chapter-websites/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-chapter-websites/" />
     <author>
       <name>hugosolar</name>
     </author>
@@ -275,11 +275,11 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;Also, we're planning on providing the chapters data via the WP-API so it can be used in other CC websites (The CC Global Network for instance), so we can show information from what's going on in the whole network&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chooser-week4/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/">
     <title type="text">GSoC cc-chooser Week 4</title>
     <id>urn:uuid:52628df9-b64c-397d-9ac1-da264f65ae29</id>
     <updated>2019-06-24T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-chooser-week4/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/" />
     <author>
       <name>akmadian</name>
     </author>
@@ -299,11 +299,11 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;Next week, I'll be working on getting a new version of the license chooser controls working.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-browser-extension-a-gsoc-project/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/">
     <title type="text">CC Browser Extension - A GSoC Project</title>
     <id>urn:uuid:7c38e099-2edb-34f9-820e-fc0924196a57</id>
     <updated>2019-06-20T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-browser-extension-a-gsoc-project/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/" />
     <author>
       <name>makkoncept</name>
     </author>
@@ -343,11 +343,11 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; to for their mentorship and providing an experienced perspective and solutions to the problems faced by this naive developer.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
     <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
     <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
     <updated>2019-06-20T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-wp-plugin-first-phase/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
     <author>
       <name>ahmadbilaldev</name>
     </author>
@@ -358,11 +358,11 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/searching-300-million/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/searching-300-million/">
     <title type="text">Searching 300MM Images with CC Search: Backend Architecture</title>
     <id>urn:uuid:0aea69db-370b-3995-82ed-1e94702284c9</id>
     <updated>2019-06-19T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/searching-300-million/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/searching-300-million/" />
     <author>
       <name>aldenpage</name>
     </author>
@@ -389,11 +389,11 @@ We predicted that we would have a lot more users after removing the “beta” d
 &lt;h2 id=&quot;the-future&quot;&gt;The future&lt;/h2&gt;&lt;p&gt;The next step for CC Search is improving the relevance of our search results, which is going to entail performing large scale scraping of some of the catalog, performing AI analysis of the scraped content, and implementing some popularity-based algorithm to boost the most interesting results to the top. We’re also going to start producing thumbnails for at least some subset of our catalog, perhaps on a just-in-time basis or through multiple caching image proxies.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/">
     <title type="text">Visualize CC Catalog data</title>
     <id>urn:uuid:bc2e5551-25e5-3bba-8183-83f3b905bef4</id>
     <updated>2019-06-17T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/" />
     <author>
       <name>soccerdroid</name>
     </author>
@@ -442,11 +442,11 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;Maria&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-vocabulary-new-design-system/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/">
     <title type="text">CC Vocabulary is a new design system for Creative Commons</title>
     <id>urn:uuid:965695b7-ade4-322e-8936-55d5dd0d1180</id>
     <updated>2019-06-15T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-vocabulary-new-design-system/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/" />
     <author>
       <name>dhruvkb</name>
     </author>
@@ -664,11 +664,11 @@ for in-depth logs.&lt;/p&gt;
 &lt;/ul&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-chooser-week2/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week2/">
     <title type="text">GSoC cc-chooser Week 2</title>
     <id>urn:uuid:c7a72678-ddcf-3e4a-a341-87a52fa48a7f</id>
     <updated>2019-06-14T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-chooser-week2/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week2/" />
     <author>
       <name>akmadian</name>
     </author>
@@ -685,11 +685,11 @@ for in-depth logs.&lt;/p&gt;
 &lt;p&gt;Next week is all about planning code structure and taking steps with dialing the look and feel of the site, and I'm excited to get started.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/">
     <title type="text">CC Catalog: Leveraging Open Data and Open APIs</title>
     <id>urn:uuid:e24cc83b-b6fb-312b-b379-5aa16af58a16</id>
     <updated>2019-06-07T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/" />
     <author>
       <name>sclachar</name>
     </author>
@@ -709,11 +709,11 @@ for in-depth logs.&lt;/p&gt;
 &lt;p&gt;The next post will discuss the details of the Common Crawl data pipeline and how instrumental this corpus is for identifying potential providers and understanding how people are using the various CC license.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/meet-gsoc-2019-students/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/meet-gsoc-2019-students/">
     <title type="text">Meet CC’s 2019 Google Summer of Code students</title>
     <id>urn:uuid:dba4248f-6d54-3bc7-a553-fae71da290e1</id>
     <updated>2019-05-30T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/meet-gsoc-2019-students/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/meet-gsoc-2019-students/" />
     <author>
       <name>kgodey</name>
     </author>
@@ -861,11 +861,11 @@ summer. Here they are!&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This post was originally posted &lt;a href=&quot;https://creativecommons.org/2019/05/30/meet-ccs-2019-google-summer-of-code-students/&quot;&gt;on the primary Creative Commons blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-gsoc-accepted-students/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/">
     <title type="text">CC Google Summer of Code accepted students announced</title>
     <id>urn:uuid:6570016b-b89a-3f5a-9e6f-09a9c9d88f01</id>
     <updated>2019-05-06T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-gsoc-accepted-students/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/" />
     <author>
       <name>kgodey</name>
     </author>
@@ -884,11 +884,11 @@ summer. Here they are!&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;A note about availability&lt;/em&gt;: all CC staff have very limited availability over the next week because of&lt;a href=&quot;https://summit.creativecommons.org/&quot;&gt; CC Global Summit&lt;/a&gt; and CC is closed for most of the following week so we won’t be around at all then. Please be patient, we’ll respond to you as soon as we can.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/open-source-at-cc-gs2019-pre-event/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/">
     <title type="text">Open Source at Creative Commons - 2019 Global Summit Event</title>
     <id>urn:uuid:b6919fc1-840a-3084-93ff-b2debfde5926</id>
     <updated>2019-05-01T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/open-source-at-cc-gs2019-pre-event/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/" />
     <author>
       <name>sclachar</name>
     </author>
@@ -906,11 +906,11 @@ summer. Here they are!&lt;/p&gt;
 &lt;p&gt;We look forward to meeting you at this event and getting your feedback. If you would like to stay updated on our work, join our &lt;a href=&quot;https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers&quot;&gt;developer mailing list&lt;/a&gt;, the #creativecommons-dev IRC channel on &lt;a href=&quot;https://freenode.net/&quot;&gt;freenode&lt;/a&gt;, or the #cc-developers channel on our &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack community&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-search-out-of-beta/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/">
     <title type="text">CC Search is out of beta with 300M images and easier attribution</title>
     <id>urn:uuid:08054206-9702-389e-b5c0-ce707ce5884d</id>
     <updated>2019-04-30T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-search-out-of-beta/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/" />
     <author>
       <name>janeatcc</name>
     </author>
@@ -929,11 +929,11 @@ summer. Here they are!&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This post was originally posted &lt;a href=&quot;https://creativecommons.org/2019/04/30/cc-search-images/&quot;&gt;on the primary Creative Commons blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/open-development-with-saltstack/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-development-with-saltstack/">
     <title type="text">Open Development with SaltStack</title>
     <id>urn:uuid:6dc70283-9d5a-3a76-bc8e-95cabae41752</id>
     <updated>2019-04-17T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/open-development-with-saltstack/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/open-development-with-saltstack/" />
     <author>
       <name>TimidRobot</name>
     </author>
@@ -947,11 +947,11 @@ summer. Here they are!&lt;/p&gt;
 &lt;p&gt;Perhaps most of all, I hope to give back to the community. I hope it helps others learn when they do not have access to proprietary software at home, school, or work. I hope that my work in the open might lower the resources required to implement open source for others.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://creativecommons.github.io/blog/entries/cc-plus-gsoc-2019/">
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-plus-gsoc-2019/">
     <title type="text">CC + Google Summer of Code 2019</title>
     <id>urn:uuid:e516bab4-2140-3384-9d82-d91e738b450c</id>
     <updated>2019-03-04T00:00:00Z</updated>
-    <link href="http://creativecommons.github.io/blog/entries/cc-plus-gsoc-2019/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-plus-gsoc-2019/" />
     <author>
       <name>kgodey</name>
     </author>
