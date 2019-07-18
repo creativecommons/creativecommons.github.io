@@ -113,9 +113,42 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">Write a Blog Post</h1>
           
-  <p>We invite members of the Creative Commons community to write posts on <a href="/blog">our technical blog</a> about any work they are doing related to CC and technology. It does not have to be related to any of our official projects; any topic that intersects with CC and technology will be considered. Please talk to us on <a href="/community">one of our community forms</a> to propose your ideas.</p>
-<p>Once your post idea has been approved, please send a pull request with your post as detailed below.</p>
-<h2 id="submitting-a-post">Submitting a Post</h2><p>New blog posts must be submitted <strong>by submitting a <a href="/contributing-code/pr-guidelines">pull request</a> containing your blog post to the <a href="https://github.com/creativecommons/creativecommons.github.io-source">creativecommons.github.io-source</a> repository</strong>. The CC Open Source site is built using the static site generator <a href="https://www.getlektor.com/">Lektor</a> and your blog post must follow the specific format documented below to appear correctly on the site. For example, please see <a href="https://github.com/creativecommons/creativecommons.github.io-source/commit/eac3fbc23b7cadb58fe49d3af3286e4c8bf20d2f">this commit adding a post</a>.</p>
+  <div class="card toc-card bg-light">
+    <div class="card-body">
+      <ul class="toc list-unstyled">
+        
+          <li><a href="#what-to-write-about">What to write about</a></li>
+          
+        
+          <li><a href="#writing-tips">Writing tips</a></li>
+          
+        
+          <li><a href="#how-to-post">How to post</a></li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <p class="lead">We invite members of the Creative Commons community to write posts on <a href="/blog">our technical blog</a>.</p><h2 id="what-to-write-about">What to write about</h2><p>You can write about anything that generally intersects with CC and technology. Some examples:</p>
+<ul>
+<li>a new CC or copyright related tool you've built</li>
+<li>your use of CC's official tools or services</li>
+<li>a contribution you've made to a CC project</li>
+<li>ideas or analysis of CC related technology projects</li>
+<li>guides to best practices of working with technologies in the context of a CC-related project</li>
+<li><em>your idea here</em></li>
+</ul>
+<p>It is a good idea to float what you're going to write about <a href="/community">with the CC tech team</a> ahead of time so that we can give you feedback before you put in the work of writing it.</p>
+<h2 id="writing-tips">Writing tips</h2><p><strong>Structuring posts about your project</strong><br>
+If you're writing about a project you're working on, here are a few ways you could structure your post:</p>
+<ul>
+<li>Talk about the process of building it from when you first started and what decisions you had to make (examples: <a href="https://www.kalzumeus.com/2015/08/20/designing-and-building-stockfighter-our-programming-game/">post 1</a>, <a href="https://medium.com/women-make/building-a-web-based-motion-graphics-editor-bd070f8db795">post 2</a>)</li>
+<li>Talk about the technical decisions you made and challenges you faced (examples: <a href="https://hackernoon.com/how-i-built-my-own-mailchimp-app-with-aws-ses-and-mjml-%EF%B8%8F-5e180432cc33">post 1</a>, <a href="https://www.freecodecamp.org/news/how-i-built-a-react-game-with-react-dnd-and-react-flip-move-26300156a825/">post 2</a>)</li>
+<li>Announce your project and ask for contributions (example: <a href="https://creativecommons.github.io/blog/entries/cc-vocabulary-new-design-system/">CC Vocabulary announcement</a>)</li>
+<li>Write an overview of how your project works without as much narrative (example: <a href="https://creativecommons.github.io/blog/entries/cc-catalog-leverage-open-data-1/">this post about the CC Catalog</a>)</li>
+</ul>
+<p class="text-muted"><em>If you have more tips, <a href="https://github.com/creativecommons/creativecommons.github.io-source/blob/master/content/community/write-a-blog-post/contents.lr">submit an edit to this page</a>.</em></p><h2 id="how-to-post">How to post</h2><p>Once you have written your post, you can either send it to us (Markdown is easiest for us, but we're happy to work with other formats) or directly create a pull request for your post as detailed below.</p>
+<p><a href="/contributing-code/pr-guidelines">Pull requests</a> should be submitted to the <strong><a href="https://github.com/creativecommons/creativecommons.github.io-source">creativecommons.github.io-source</a> repository</strong>. The CC Open Source site is built using the static site generator <a href="https://www.getlektor.com/">Lektor</a> and your blog post must follow the specific format documented below to appear correctly on the site. For example, please see <a href="https://github.com/creativecommons/creativecommons.github.io-source/commit/eac3fbc23b7cadb58fe49d3af3286e4c8bf20d2f">this commit adding a post</a>.</p>
 <ol>
 <li>Each blog entry lives in its own subdirectory of the <a href="https://github.com/creativecommons/creativecommons.github.io-source/tree/master/content/blog/entries">content/blog/entries</a> folder. Create a new subdirectory with a <a href="https://blog.tersmitten.nl/slugify/">slugified</a> version of your blog post title.</li>
 <li>Create a file named <code>contents.lr</code> in the subdirectory you just created. This is the file that will contain your blog post content.</li>
