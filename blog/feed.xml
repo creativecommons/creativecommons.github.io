@@ -9,6 +9,58 @@
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
+    <title type="text">CC Browser Extension Week 7, 8</title>
+    <id>urn:uuid:2dc4d01d-66c8-3309-ab42-31bb038ec5dd</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
+&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
+&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;
+These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
+&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
+&lt;li&gt;Test and fix bugs.&lt;/li&gt;
+&lt;li&gt;Improve documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
     <id>urn:uuid:c79d72eb-45a9-3d96-939b-54bad5b7a2fa</id>
