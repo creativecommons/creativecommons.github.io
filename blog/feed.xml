@@ -2,13 +2,164 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-17T00:00:00Z</updated>
+  <updated>2019-07-19T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
+    <title type="text">CC Vocabulary: the main course</title>
+    <id>urn:uuid:c79d72eb-45a9-3d96-939b-54bad5b7a2fa</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/" />
+    <author>
+      <name>dhruvkb</name>
+    </author>
+    <content type="html">&lt;p&gt;A little over seven weeks ago we initialised CC Vocabulary. It was a simple recipe, a set of components for other apps to
+use for consistency and ease of development.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Week 1:&lt;/strong&gt;    we assembled the ingredients: &lt;em&gt;Vue CLI, Vue Styleguidist, Theo, Lodash, Font Awesome&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 2:&lt;/strong&gt;    we cleaned up the kitchen: &lt;em&gt;Dockerised our project and set up CI/CD&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 3:&lt;/strong&gt;    we ground spices: &lt;em&gt;developed and incorporated design tokens&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weeks 4-5:&lt;/strong&gt; we cooked appetizers: &lt;em&gt;our collection of simple Elements&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weeks 6-7:&lt;/strong&gt; we cooked the main dishes: &lt;em&gt;our collection of very functional Patterns and Layouts&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Last week:&lt;/strong&gt; we garnished these dishes: &lt;em&gt;a splash of styling for the &lt;a href=&quot;https://opensource.creativecommons.org/cc-vocabulary&quot;&gt;styleguide&lt;/a&gt; itself&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Today, main course is served, &lt;em&gt;hot&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Grab your forks, knives and spoons for today we announce that CC Vocabulary is now very stable, has a lot of valuable,
+nay indispensable features such as mobile responsiveness and i18n and, best of all, embodies the vibrancy of Creative
+Commons in its versatile customisability and its collection of 36 hues and 8 greyscale tones usable across dozens of
+elements and patterns.&lt;/p&gt;
+&lt;p&gt;Based on the facts that fewer and fewer changes are being made to the core functionality with every commit, that there
+is a definite coding and nomenclature scheme, that desirable consistency has been achieved across its myriad of
+offerings and that a number of features have been frozen, I am very confident that CC Vocabulary is nearing its public
+release and into version &lt;code&gt;1.0.0&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As we head into the next phase of Vocabulary, i.e. using it in our very own apps, here is a comprehensive look on where
+we stand right now in terms of what the library provides. The goal of this exercise is to determine what elements and/or
+patterns have been overlooked and to determine additional functionality that may be required in some of them. Since
+every component can be customised tweaked and extended, an interactive exploration is preferable but to get you hyped up
+for the meal, here are some pictures of what to expect.&lt;/p&gt;
+&lt;p&gt;If you are a developer of CC applications, please take the time to visit the styleguide and play around with these
+components so that you may identify shortcomings or ideas for improvement. If you are an explorer, do so for the thrill
+of seeing a design system take shape. Any and all contributions are welcome in this crucial moment as our beloved
+brainchild comes of age.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Presenting to you our special menu of Vue components.&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;th colspan=&quot;2&quot;&gt;&lt;h3&gt;Tokens&lt;/h3&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Colors&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;colors.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Fonts&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;fonts.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Spaces&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;spaces.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th colspan=&quot;2&quot;&gt;&lt;h3&gt;Elements&lt;/h3&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Button&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;button.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;InputField&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;inputfield.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;SelectField&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;selectfield.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Heading&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;heading.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Paragraph&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;paragraph.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;LicenseBadge&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;licensebadge.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;LicenseIconography&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;licenseiconography.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;ProgressBar&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;progressbar.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Shield&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;shield.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th colspan=&quot;2&quot;&gt;&lt;h3&gt;Layouts&lt;/h3&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Container&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;container.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Grid&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;grid.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Table&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;table.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th colspan=&quot;2&quot;&gt;&lt;h3&gt;Patterns&lt;/h3&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Header&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;header.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Footer&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;footer.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Locale&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;locale.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Hello&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;hello.png&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th colspan=&quot;2&quot;&gt;&lt;h3&gt;Templates&lt;/h3&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Index&lt;/td&gt;
+        &lt;td&gt;&lt;img src=&quot;orange.png&quot; onclick=&quot;this.src = 'green.png'&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;There are a number of components under construction right now such as cards and social media buttons. They will be
+published on the styleguide very soon. After these, the final month, phase III of of the project's GSoC term will be
+spent continuously polishing the project to suit the needs of all CC apps as discovered during the integration with
+CC Search as mentioned by &lt;a href=&quot;/blog/authors/brenoferreira&quot;&gt;Breno Ferreira&lt;/a&gt; in the 'Next steps' in his post on
+&lt;a href=&quot;/blog/entries/cc-search-redesign/&quot;&gt;CC Search Redesign&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In keeping with the culinary theme of this post, think of it as sweet sweet dessert.&lt;/p&gt;
+&lt;h3 id=&quot;closing-note&quot;&gt;Closing note&lt;/h3&gt;&lt;p&gt;In closing, I would like to thank my GSoC mentor Hugo Solar as always for always being present to help and refer me to
+documentation that I would likely never have found myself. Also I extend thanks to Kriti Godey for regularly keeping
+in touch and directing me to the right people to contact whenever in difficulty.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CC Vocabulary is for, by, inspired from and due to the diverse and active Creative Commons community.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
+See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
     <title type="text">CC Search Redesign</title>
     <id>urn:uuid:0f657796-a8be-3d58-8140-2b06bf93e5ed</id>
