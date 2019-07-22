@@ -2,13 +2,39 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-19T00:00:00Z</updated>
+  <updated>2019-07-20T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/">
+    <title type="text">Creative Commons WordPress Plugin Second Phase</title>
+    <id>urn:uuid:956ce97c-d991-33b9-8dd8-1796aa195feb</id>
+    <updated>2019-07-20T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/" />
+    <author>
+      <name>ahmadbilaldev</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working with my mentor &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; on Creative Commons WordPress Plugin in GSoC 2019. It is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website. The second phase of the project is now ending, and the plugin has a stable version ready. Following is a summary of the work accomplished during this phase.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Week 5:&lt;/strong&gt; Added customization settings for Gutenberg blocks for backend and front end.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 6:&lt;/strong&gt; Fixed and closed 17 existing issues to pave way for a stable release.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 7-8:&lt;/strong&gt; Prepped the plugin for the release to WordPress.org directory. Started working on the support to use the new license chooser. For now, removing the integrated chooser (old Partner Interface) and linking to the new chooser is our strategy.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;release-of-v2019.7.1&quot;&gt;Release of v2019.7.1&lt;/h3&gt;&lt;p&gt;We have released the latest stable version of the plugin. &lt;code&gt;v2019.7.1&lt;/code&gt; is out and tagged in the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons/releases&quot;&gt;wp-plugin-creativecommons repository&lt;/a&gt;. Given that a stable release is available, we have submitted it to &lt;a href=&quot;https://en-nz.wordpress.org/plugins/&quot;&gt;WordPress.org plugin directory&lt;/a&gt;. As soon as their team approves it, the plugin will be available to install for all WordPress users, which is substantial.&lt;/p&gt;
+&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;Although the current implentation does the job, but we want it to use new &lt;a href=&quot;https://creativecommons.org/choose/&quot;&gt;CC License Chooser&lt;/a&gt; in the future. The existing approach uses an integrated modal of &lt;a href=&quot;https://creativecommons.org/choose/?partner={partner}&quot;&gt;Partner Interface&lt;/a&gt; from 2014. So, currently I am re-writing and re-designing the plugin settings to use the new and improved chooser without integrating it. Other upcoming additions are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add a button to copy license and author information for content sharing.&lt;/li&gt;
+&lt;li&gt;CC Search integration.&lt;/li&gt;
+&lt;li&gt;Changes in design and features.&lt;/li&gt;
+&lt;li&gt;Improve the documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more, see the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
     <title type="text">CC Browser Extension Week 7, 8</title>
     <id>urn:uuid:2dc4d01d-66c8-3309-ab42-31bb038ec5dd</id>
