@@ -117,16 +117,19 @@
   
   <ul class="blog-index list-unstyled">
     
-    <li>
-      <a href="/archives/old-tech-blog/entries/metadata-work-of-interest/">Metadata work of interest</a>
-      <p class="text-muted small">by <a href="/archives/old-tech-blog/authors/ml">ml</a>
-        on 2007-08-03</p>
-    </li>
+      
+      <li>
+        <a href="/archives/old-tech-blog/entries/metadata-work-of-interest/">Metadata work of interest</a>
+        <p class="text-muted small">by <a href="/archives/old-tech-blog/authors/ml/">
+  ml
+</a>
+          on 2007-08-03</p>
+      </li>
     
   </ul>
 
   <hr>
-  <strong><a href="/archives/old-tech-blog/categories">All Categories</a></strong>
+  <strong><a href="/archives/old-tech-blog/categories/">All Categories</a></strong>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

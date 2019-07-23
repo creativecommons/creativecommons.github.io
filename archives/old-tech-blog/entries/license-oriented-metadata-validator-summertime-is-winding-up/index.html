@@ -115,8 +115,10 @@
           
   <h2 class="mb-0">License-oriented metadata validator and viewer: summertime is winding up</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/hugo">hugo</a>
-  on Saturday, 2008 August 16</p>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/hugo/">
+  hugo
+</a>
+  on Saturday, 2008-08-16</p>
   <div class="body"><p><a href="http://code.google.com/soc/2008/">Google Summer of Code 2008</a> approaches <a href="http://code.google.com/soc/2008/faqs.html#0.1_timeline" title="Google Summer of Code 2008 Timeline">its end</a>, as less than forty-eight hours are left to submit the code that will then be evaluated by mentors, therefore it is fitting to pause for a moment and sum up the work that has been done with regard to the license-oriented metadata validator and viewer and to confront it with <a href="http://wiki.creativecommons.org/Rewrite_Metadata_Validator/SoC_2008#Proposed_timeline">the original proposal for the project</a>.</p>
 <p>A Web application capable of parsing and displaying license information embedded in both <a href="http://www.w3.org/TR/2006/REC-xml-20060816/#sec-well-formed">well-formed</a> and ill-formed Web pages has been developed. It supports the following means of embedding license information: <a href="http://dublincore.org/documents/dcq-html/">Dublin Core metadata</a>, <a href="http://www.w3.org/TR/rdfa-syntax/">RDFa</a>, <a href="http://www.w3.org/TR/rdf-syntax-grammar/">RDF/XML</a> linked externally or embedded (utilising <a href="http://www.ietf.org/rfc/rfc2397.txt">the data URL scheme</a>) using the link and a elements, and RDF/XML embedded in a comment or as an element (the last two being deprecated). This functionality has been proven by unit testing. The source code of a Web page can be uploaded or pasted by a user, there is also a possibility to provide a <a href="http://www.ietf.org/rfc/rfc3986.txt">URI</a> for the Web application to analyse it. The software has been written in <a href="http://www.python.org/">Python</a> and uses <a href="http://pylonshq.com/">the Pylons Web Framework</a> and <a href="http://genshi.edgewall.org/">the Genshi toolkit</a>. Should you be willing to test this <a href="http://lynx.isc.org/">Lynx</a>-friendly application, please visit <a href="http://validator-beta.creativecommons.org/" title="The temporary address of the license validator">its Web site</a>.</p>
 <p>The Web application itself uses a library called “libvalidator”, which in turn is powered by cc.license (a library developed by Creative Commons that returns information about a given license), <a href="http://www.w3.org/2007/08/pyRdfa/">pyRdfa</a> (a distiller that generates the <a href="http://www.w3.org/RDF/">RDF</a> triples from an (X)HTML+RDFa file), <a href="http://code.google.com/p/html5lib/">html5lib</a> (an HTML parser/tokenizer), and <a href="http://rdflib.net/">RDFLib</a> (a library for working with RDF). The choice of this set of tools has not been obvious and the library had undergone several redesigns, which included removing the code that employed <a href="http://cthedot.de/encutils/">encutils</a>, <a href="http://www.w3.org/TR/xml-c14n">XML canonicalization</a>, <a href="http://utidylib.berlios.de/">µTidylib</a>, and <a href="http://www.crummy.com/software/BeautifulSoup/">the BeautifulSoup</a>. The idea of using <a href="http://librdf.org/">librdf</a>, <a href="http://rdfa.digitalbazaar.com/librdfa/">librdfa</a>, rdfadict has been abandoned. The source code of both the Web application (licensed under <a href="http://www.gnu.org/licenses/agpl-3.0.txt">the GNU Affero General Public License version 3</a> or newer) and its core library (licensed under <a href="http://www.gnu.org/licenses/lgpl-3.0.txt">the GNU Lesser General Public License version 3</a> or newer) is available through <a href="http://code.creativecommons.org/viewgit">the Git repositories of Creative Commons</a>.</p>
@@ -133,26 +135,33 @@
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
         
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/development/ ">development</a>,
           
-          <a href=" /archives/old-tech-blog/categories/development ">development</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/license/ ">license</a>,
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/licenses/ ">licenses</a>,
           
-          <a href=" /archives/old-tech-blog/categories/license ">license</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/python/ ">python</a>,
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/rdf/ ">rdf</a>,
           
-          <a href=" /archives/old-tech-blog/categories/licenses ">licenses</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/rdfa/ ">rdfa</a>,
           
-          
-          <a href=" /archives/old-tech-blog/categories/python ">python</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/rdf ">rdf</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/rdfa ">rdfa</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/summer ">summer</a>
+            
+            
+            <a href=" /archives/old-tech-blog/categories/summer/ ">summer</a>
           
         
       </p>

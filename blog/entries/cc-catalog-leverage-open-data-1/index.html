@@ -115,8 +115,10 @@
           
   <h2 class="mb-0">CC Catalog: Leveraging Open Data and Open APIs</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/sclachar">sclachar</a>
-  on Friday, 2019 June 7</p>
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/sclachar/">
+  Sophine Clachar
+</a>
+  on Friday, 2019-06-7</p>
   <div class="body"><p>This post is the first of a three-part series about the underlying infrastructure for Creative Commons (CC) Catalog and the efforts to increase the volume and variety of creative works.</p>
 <p>The purpose of <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a> is to facilitate the discovery of openly licensed content, that proliferates the web. However, this is a challenging task and it requires a combination of techniques. The initial efforts to catalog the Commons began in 2016. The goal was to identify approximately <a href="https://hackernoon.com/cc-search-developer-notes-and-reflection-418271194682">1% of the estimated 1.4 billion works</a> by harnessing open repositories and open APIs to build a <a href="https://creativecommons.org/2017/02/07/new-cc-search/">front door to the Commons</a>. Since then, there has been an emphasis on including more content and discovering new platforms. While CC Catalog still leverages open data to achieve the above, we needed to develop the appropriate infrastructure to also routinely update the existing data.</p>
 <p>The development of this infrastructure began in 2018 with the first <a href="http://commoncrawl.org/">Common Crawl</a> <a href="https://en.wikipedia.org/wiki/Pipeline_(computing)">data pipeline</a>. <a href="https://spark.apache.org/">Apache Spark</a> was used to streamline the processing of petabytes of web crawl data to identify all domains that link to a Creative Commons license. The first test of this strategy was successful and it was instrumental in increasing the number of images and added 13 new platforms for the <a href="https://creativecommons.org/2018/09/24/big-changes-for-cc-search-beta-updates-released-today/">updates to CC Search beta</a>. It also provided incremental updates to the catalog on a monthly basis. Even though Common Crawl corpus is an invaluable source, it requires us to develop a custom parser for each platform that we integrate. This has its merits, but presents a few challenges.</p>
@@ -137,17 +139,21 @@
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
         
           
+            
+            
+            <a href=" /blog/categories/community/ ">community</a>,
           
-          <a href=" /blog/categories/community ">community</a>,
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
           
+            
+            
+            <a href=" /blog/categories/cc-search/ ">cc-search</a>,
           
-          <a href=" /blog/categories/open-source ">open-source</a>,
-          
-          
-          <a href=" /blog/categories/cc-search ">cc-search</a>,
-          
-          
-          <a href=" /blog/categories/cc-catalog ">cc-catalog</a>
+            
+            
+            <a href=" /blog/categories/cc-catalog/ ">cc-catalog</a>
           
         
       </p>

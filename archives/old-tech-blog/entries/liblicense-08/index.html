@@ -115,8 +115,10 @@
           
   <h2 class="mb-0">liblicense 0.8 (important) fixes RDF predicate error</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/asheesh">asheesh</a>
-  on Wednesday, 2008 July 30</p>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/asheesh/">
+  asheesh
+</a>
+  on Wednesday, 2008-07-30</p>
   <div class="body"><p>Brown paper bag release: liblicense claims that the RDF predicate for a file's license is <a href="http://creativecommons.org/ns#License">http://creativecommons.org/ns#License</a> rather than <a href="http://creativecommons.org/ns#license">http://creativecommons.org/ns#license</a>. Only the latter is correct.</p>
 <p>Any code compiled with liblicense between 0.6 and 0.7.1 (inclusive) contains this mistake.</p>
 <p>This time I have audited the library for other insanities like the one fixed here, and there are none. Great thanks to Nathan Yergler for spotting this. I took this chance to change ll_write() and ll_read() to <em>NOT</em> take NULL as a valid predicate; this makes the implementation simpler (and more correct).</p>
@@ -128,29 +130,37 @@
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
         
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/Debian/ ">Debian</a>,
           
-          <a href=" /archives/old-tech-blog/categories/Debian ">Debian</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/liblicense/ ">liblicense</a>,
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/metadata/ ">metadata</a>,
           
-          <a href=" /archives/old-tech-blog/categories/liblicense ">liblicense</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/rdf/ ">rdf</a>,
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/releases/ ">releases</a>,
           
-          <a href=" /archives/old-tech-blog/categories/metadata ">metadata</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/software/ ">software</a>,
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/standards/ ">standards</a>,
           
-          <a href=" /archives/old-tech-blog/categories/rdf ">rdf</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/releases ">releases</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/software ">software</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/standards ">standards</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/xmp ">xmp</a>
+            
+            
+            <a href=" /archives/old-tech-blog/categories/xmp/ ">xmp</a>
           
         
       </p>

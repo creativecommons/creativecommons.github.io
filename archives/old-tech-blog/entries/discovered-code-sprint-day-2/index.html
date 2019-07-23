@@ -115,8 +115,10 @@
           
   <h2 class="mb-0">DiscoverEd Code Sprint: Day 2</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/akozak">akozak</a>
-  on Thursday, 2010 June 17</p>
+  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/akozak/">
+  akozak
+</a>
+  on Thursday, 2010-06-17</p>
   <div class="body"><p>Day 2 of the <a href="http://discovered.creativecommons.org/search/">DiscoverEd</a> <a href="http://wiki.creativecommons.org/DiscoverEd_Sprint_\(June,_2010\">code sprint</a>) was largely a continuation of work that started on <a href="/archives/old-tech-blog/entries/discovered-code-sprint-day-1/">Day 1</a>.</p>
 <p>The team working on a plugin architecture for DiscoverEd finished their project, which was to build an extension point that enables plugins to pull arbitrary metadata from external sources. At the beginning of the day they had to finish some tests for the new support for arbitrary metadata added in Day 1, but by the end of the day were able to merge their new functionality back into the DiscoverEd repository. They were even able to build a small proof-of-concept plugin that pulled data from the <a href="http://delicious.com/help/tools">delicious.com API</a> into the Jena store, which later makes its way into the Lucene index. Tomorrow they'll start looking at developing support for custom vocabularies and ontologies (such as <a href="http://en.wikipedia.org/wiki/AGROVOC">AGROVOC</a>).</p>
 <p>The flexible query syntax team were able to commit their changes to the DiscoverEd code that makes it so you can configure arbitrary metadata queries. For example, if you had been running a DiscoverEd instance to search a feed of OpenCourseWare resources that uses <a href="http://en.wikipedia.org/wiki/Dublin_Core">Dublin Core</a> metadata in RDFa format to express information about those resources, and wanted to enable searches on metadata which weren't supported in DiscoverEd, you would have had to write Java code to enable that. With this change you can now just create a configuration file mapping an arbitrary tag to that metadata, which will store that metadata along side the tag in the Lucene index. This allows Nutch (which searches the Lucene index) to search for those custom tags in the config file. This code was pushed to a branch while the team spent the rest of the day chasing down a bug where only a subset of metadata gets successfully added to the Lucene index in their working environment.</p>
@@ -128,14 +130,17 @@
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
         
           
+            
+            
+            <a href=" /archives/old-tech-blog/categories/AgShare/ ">AgShare</a>,
           
-          <a href=" /archives/old-tech-blog/categories/AgShare ">AgShare</a>,
+            
+            
+            <a href=" /archives/old-tech-blog/categories/code/ ">code</a>,
           
-          
-          <a href=" /archives/old-tech-blog/categories/code ">code</a>,
-          
-          
-          <a href=" /archives/old-tech-blog/categories/DiscoverEd ">DiscoverEd</a>
+            
+            
+            <a href=" /archives/old-tech-blog/categories/DiscoverEd/ ">DiscoverEd</a>
           
         
       </p>
