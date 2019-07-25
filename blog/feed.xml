@@ -2,13 +2,88 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-20T00:00:00Z</updated>
+  <updated>2019-07-24T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/">
+    <title type="text">Easy search and use of CC-licensed images for WordPress</title>
+    <id>urn:uuid:b422bf2e-cfdc-3cd5-a3bb-f5430679d2ed</id>
+    <updated>2019-07-24T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/" />
+    <author>
+      <name>lenasterg</name>
+    </author>
+    <content type="html">&lt;h4 id=&quot;inspiration-and-idea-for-the-wordpress-plugin&quot;&gt;Inspiration and idea for the WordPress plugin&lt;/h4&gt;&lt;p&gt;Back in May, I read a blog post about the new Creative Commons search tool CC Search. I and my colleagues in CTI &lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; were fascinated by its searching power.
+Inspired by this new CC tool, we began thinking, how we could use it, into the Greek School Network’s&lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; blogging platform &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;&lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-3&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; - a WordPress multisite installation, free for all Greek teachers, students, and Greek school units.&lt;/p&gt;
+&lt;p&gt;We decided to make a WordPress plugin, which would “harvest” the images from the Creative Commons Catalog API, in a similar way &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; does, but without the need for the user to leave the WordPress post editor. The plugin should allow the execution of “search, select and import image and CC license data” into the post, while the author was still in WordPress edit page.&lt;/p&gt;
+&lt;h4 id=&quot;our-wordpress-plugin&quot;&gt;Our WordPress plugin&lt;/h4&gt;&lt;p&gt;After a while, our plugin was ready. Its temporary name is “WP CC Search plugin”. It is a WordPress plugin for searching millions of CC-licensed images while the user is still in the post edit page. He/she can select a CC licensed image and insert it into the post content or set as post-featured image very quickly.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/01.png&quot; alt=&quot;Plugin screenshot 1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The plugin’s features are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Works in WordPress editor and add a button above the content text area and into the “Add Media” pop-up window.&lt;/li&gt;
+&lt;li&gt;Via a pop-up window, allows searching through millions of images using Creative Commons Catalog API power.&lt;/li&gt;
+&lt;li&gt;Allows filtering by a provider&lt;/li&gt;
+&lt;li&gt;Paginated results&lt;/li&gt;
+&lt;li&gt;Quick insert original image or thumbnail with a link to the image URL&lt;/li&gt;
+&lt;li&gt;Use image as a featured image for the blog post&lt;/li&gt;
+&lt;li&gt;WPML compatible&lt;/li&gt;
+&lt;li&gt;Multisite compatible&lt;/li&gt;
+&lt;li&gt;Translation ready (it’s already translated in Greek)&lt;/li&gt;
+&lt;li&gt;Tested up to WordPress 5.2 with Classic Editor plugin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As intended, we already use the plugin in &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;, which hosts more than 50.000 blogs. The plugin is available to all its blogs and users since middle May, who has been using it without any issues reported yet.&lt;/p&gt;
+&lt;h4 id=&quot;how-it-works&quot;&gt;How it works&lt;/h4&gt;&lt;p&gt;The plugin needs the WordPress &lt;a href=&quot;https://wordpress.org/plugins/classic-editor/&quot;&gt;Classic Editor&lt;/a&gt; plugin in order to work for WP 5+.&lt;/p&gt;
+&lt;p&gt;After the plugin’s activation, when the user writes a post, an &lt;strong&gt;“Image via CCSearch”&lt;/strong&gt; button is added above the post editor area and as an option into the “Add Media” pop-up window.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/02.png&quot; alt=&quot;Plugin screenshot 2&quot;&gt;&lt;/p&gt;
+&lt;p&gt;By pressing the button, a pop-up window allows the user to search using Latin characters for an image.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/03.png&quot; alt=&quot;Plugin screenshot 3&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The user can browse the returned images, preview an image and its license and adjust the image settings:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use of thumbnail or original image&lt;/li&gt;
+&lt;li&gt;set the image link (if any)&lt;/li&gt;
+&lt;li&gt;insert the image into the post or as the featured image&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/04.png&quot; alt=&quot;Plugin screenshot 4&quot;&gt;&lt;/p&gt;
+&lt;p&gt;After the user selects an image and insert it, into the post, the image code along with its licensing data is pasted into the post body and the user can continue writing the blog post.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/05.png&quot; alt=&quot;Plugin screenshot 5&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;some-technical-details&quot;&gt;Some technical details&lt;/h4&gt;&lt;p&gt;The plugin uses AJAX requests to communicate with &lt;a href=&quot;https://api.creativecommons.engineering&quot;&gt;https://api.creativecommons.engineering&lt;/a&gt; and get responses in JSON format.&lt;/p&gt;
+&lt;p&gt;Only 2 AJAX requests are sent to &lt;a href=&quot;https://api.creativecommons.engineering&quot;&gt;https://api.creativecommons.engineering&lt;/a&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://api.creativecommons.engineering/statistics/image?format=json&quot;&gt;https://api.creativecommons.engineering/statistics/image?format=json&lt;/a&gt;, for getting the providers list. Then the JSON response is used as select options, for the provider’s dropdown menu.&lt;/li&gt;
+&lt;li&gt;A call to &lt;a href=&quot;https://api.creativecommons.engineering/image/search&quot;&gt;https://api.creativecommons.engineering/image/search&lt;/a&gt; with the necessary parameters for searching for images based on the given words and the selected provided.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The JSON results, are then transformed via jQuery to images and show up into the popup window. When the user selects an image, jQuery creates a complete HTML &lt;div&gt; tag with all the image info and auto add it into the post editor area or executed the WordPress code to use in as featured image.&lt;/p&gt;
+&lt;h4 id=&quot;still-to-do&quot;&gt;Still to do&lt;/h4&gt;&lt;p&gt;There are still some things that we want to add/change into the plugin and any help on building them is welcome.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Find a different plugin name :-). We believe that the plugin’s name should change since it is not an “official” CC commons plugin.&lt;/li&gt;
+&lt;li&gt;Currently, the plugin needs the Classic Editor plugin in order to work for WP 5+. A main goal is to make it Gutenberg compatible. &lt;/li&gt;
+&lt;li&gt;Add Multiple images select support&lt;/li&gt;
+&lt;li&gt;Add Multi-select options for filtering: providers&lt;/li&gt;
+&lt;li&gt;Add select options for filtering: licenses, creator&lt;/li&gt;
+&lt;li&gt;Find an icon for the 'Image via CC Search' editor button&lt;/li&gt;
+&lt;li&gt;Add plugin’s Info page&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;code-and-test-site&quot;&gt;Code and test site&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;You can find and fork the plugin’s code at: &lt;a href=&quot;https://github.com/lenasterg/wp_ccsearch&quot;&gt;https://github.com/lenasterg/wp_ccsearch&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;You can test the plugin functionality at &lt;a href=&quot;http://users.sch.gr/stergatu/wordpress/&quot;&gt;http://users.sch.gr/stergatu/wordpress/&lt;/a&gt; by login via &lt;a href=&quot;http://users.sch.gr/stergatu/wordpress/wp-login.php&quot;&gt;http://users.sch.gr/stergatu/wordpress/wp-login.php&lt;/a&gt; as username: &lt;code&gt;testuser&lt;/code&gt; password: &lt;code&gt;testuser&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;credits&quot;&gt;Credits&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;The plugin is inspired and based on the &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;https://search.creativecommons.org/&lt;/a&gt; and it couldn’t be possible without the Creative Commons Catalog API &lt;a href=&quot;https://api.creativecommons.engineering/#tag/image&quot;&gt;https://api.creativecommons.engineering/#tag/image&lt;/a&gt; which is the engine.&lt;/li&gt;
+&lt;li&gt;Most of the plugin's code is based on the WP Pexels &lt;a href=&quot;https://wordpress.org/plugins/wp-pexels/&quot;&gt;https://wordpress.org/plugins/wp-pexels/&lt;/a&gt; code by WPclever.net&lt;/li&gt;
+&lt;li&gt;Pointer's code is based on &lt;a href=&quot;https://code.tutsplus.com/articles/integrating-with-wordpress-ui-admin-pointers--wp-26853&quot;&gt;https://code.tutsplus.com/articles/integrating-with-wordpress-ui-admin-pointers--wp-26853&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;more-about-us&quot;&gt;More about us&lt;/h4&gt;&lt;p&gt;&lt;span id=&quot;footnote-1&quot;&gt;&lt;/span&gt;&lt;strong&gt;[1] CTI - Greek School Network and Networking Technologies Directorate&lt;/strong&gt;&lt;br&gt;
+Our main activities in Greek School Network and Networking Technologies Directorate (GSN-NTS) (&lt;a href=&quot;http://nts.cti.gr&quot;&gt;http://nts.cti.gr&lt;/a&gt;) of Computer Technology Institute and Press “Diophantus” (CTI) are the design, implementation, and support of network infrastructures and Internet services. Through its involvement in pioneer National and European research and development projects, GSN-NTS has a major role in the development of network infrastructures and services, and Internet services as well in Greece, especially those concerning school networks and ICT infrastructures at schools.&lt;/p&gt;
+&lt;p&gt;&lt;span id=&quot;footnote-2&quot;&gt;&lt;/span&gt;&lt;strong&gt;[2] Greek School Network (&amp;lt;www.sch.gr&amp;gt;)&lt;/strong&gt;&lt;br&gt;
+It is the national network of the Ministry of Education and Religious Affairs which safely interconnects all schools of Primary and Secondary education, including educational units abroad, services and entities supervised by the Ministry of Education and Religious Affairs at central and regional level, service providers of lifelong learning, students, teaching staff, other educators and other entities of Ministry of Education and Religious Affairs (www.minedu.gov.gr).&lt;/p&gt;
+&lt;p&gt;&lt;span id=&quot;footnote-3&quot;&gt;&lt;/span&gt;&lt;strong&gt;[3] &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;, which is the free blogging platform for all Greek teachers, students, and school units. The blogs.sch.gr is a service of Greek School Network [2] (&lt;a href=&quot;https://www.sch.gr/en&quot;&gt;https://www.sch.gr/en&lt;/a&gt;). It hosts more than 50.000 blogs and users. It is built and maintained by the Greek School Network and Networking Technologies Directorate of CTI.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/">
     <title type="text">Creative Commons WordPress Plugin Second Phase</title>
     <id>urn:uuid:956ce97c-d991-33b9-8dd8-1796aa195feb</id>

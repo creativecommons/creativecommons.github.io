@@ -1,0 +1,254 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Easy search and use of CC-licensed images for WordPress — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog/">CC Tech Blog (2007-2014)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Easy search and use of CC-licensed images for WordPress</h2>
+  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/lenasterg/">
+  Eleni (Lena) Stergatou
+</a>
+  on Wednesday, 2019-07-24</p>
+  <div class="body"><h4 id="inspiration-and-idea-for-the-wordpress-plugin">Inspiration and idea for the WordPress plugin</h4><p>Back in May, I read a blog post about the new Creative Commons search tool CC Search. I and my colleagues in CTI <strong><sup><a href="#footnote-1">[1]</a></sup></strong> were fascinated by its searching power.
+Inspired by this new CC tool, we began thinking, how we could use it, into the Greek School Network’s<strong><sup><a href="#footnote-2">[2]</a></sup></strong> blogging platform <a href="https://blogs.sch.gr">https://blogs.sch.gr</a><strong><sup><a href="#footnote-3">[3]</a></sup></strong> - a WordPress multisite installation, free for all Greek teachers, students, and Greek school units.</p>
+<p>We decided to make a WordPress plugin, which would “harvest” the images from the Creative Commons Catalog API, in a similar way <a href="https://search.creativecommons.org/">CC Search</a> does, but without the need for the user to leave the WordPress post editor. The plugin should allow the execution of “search, select and import image and CC license data” into the post, while the author was still in WordPress edit page.</p>
+<h4 id="our-wordpress-plugin">Our WordPress plugin</h4><p>After a while, our plugin was ready. Its temporary name is “WP CC Search plugin”. It is a WordPress plugin for searching millions of CC-licensed images while the user is still in the post edit page. He/she can select a CC licensed image and insert it into the post content or set as post-featured image very quickly.</p>
+<p><img src="/blog/entries/2019-07-24-cc-search-wp-plugin/01.png" alt="Plugin screenshot 1"></p>
+<p>The plugin’s features are:</p>
+<ul>
+<li>Works in WordPress editor and add a button above the content text area and into the “Add Media” pop-up window.</li>
+<li>Via a pop-up window, allows searching through millions of images using Creative Commons Catalog API power.</li>
+<li>Allows filtering by a provider</li>
+<li>Paginated results</li>
+<li>Quick insert original image or thumbnail with a link to the image URL</li>
+<li>Use image as a featured image for the blog post</li>
+<li>WPML compatible</li>
+<li>Multisite compatible</li>
+<li>Translation ready (it’s already translated in Greek)</li>
+<li>Tested up to WordPress 5.2 with Classic Editor plugin</li>
+</ul>
+<p>As intended, we already use the plugin in <a href="https://blogs.sch.gr">https://blogs.sch.gr</a>, which hosts more than 50.000 blogs. The plugin is available to all its blogs and users since middle May, who has been using it without any issues reported yet.</p>
+<h4 id="how-it-works">How it works</h4><p>The plugin needs the WordPress <a href="https://wordpress.org/plugins/classic-editor/">Classic Editor</a> plugin in order to work for WP 5+.</p>
+<p>After the plugin’s activation, when the user writes a post, an <strong>“Image via CCSearch”</strong> button is added above the post editor area and as an option into the “Add Media” pop-up window.</p>
+<p><img src="/blog/entries/2019-07-24-cc-search-wp-plugin/02.png" alt="Plugin screenshot 2"></p>
+<p>By pressing the button, a pop-up window allows the user to search using Latin characters for an image.</p>
+<p><img src="/blog/entries/2019-07-24-cc-search-wp-plugin/03.png" alt="Plugin screenshot 3"></p>
+<p>The user can browse the returned images, preview an image and its license and adjust the image settings:</p>
+<ul>
+<li>use of thumbnail or original image</li>
+<li>set the image link (if any)</li>
+<li>insert the image into the post or as the featured image</li>
+</ul>
+<p><img src="/blog/entries/2019-07-24-cc-search-wp-plugin/04.png" alt="Plugin screenshot 4"></p>
+<p>After the user selects an image and insert it, into the post, the image code along with its licensing data is pasted into the post body and the user can continue writing the blog post.</p>
+<p><img src="/blog/entries/2019-07-24-cc-search-wp-plugin/05.png" alt="Plugin screenshot 5"></p>
+<h4 id="some-technical-details">Some technical details</h4><p>The plugin uses AJAX requests to communicate with <a href="https://api.creativecommons.engineering">https://api.creativecommons.engineering</a> and get responses in JSON format.</p>
+<p>Only 2 AJAX requests are sent to <a href="https://api.creativecommons.engineering">https://api.creativecommons.engineering</a>.</p>
+<ol>
+<li><a href="https://api.creativecommons.engineering/statistics/image?format=json">https://api.creativecommons.engineering/statistics/image?format=json</a>, for getting the providers list. Then the JSON response is used as select options, for the provider’s dropdown menu.</li>
+<li>A call to <a href="https://api.creativecommons.engineering/image/search">https://api.creativecommons.engineering/image/search</a> with the necessary parameters for searching for images based on the given words and the selected provided.</li>
+</ol>
+<p>The JSON results, are then transformed via jQuery to images and show up into the popup window. When the user selects an image, jQuery creates a complete HTML <div> tag with all the image info and auto add it into the post editor area or executed the WordPress code to use in as featured image.</p>
+<h4 id="still-to-do">Still to do</h4><p>There are still some things that we want to add/change into the plugin and any help on building them is welcome.</p>
+<ul>
+<li>Find a different plugin name :-). We believe that the plugin’s name should change since it is not an “official” CC commons plugin.</li>
+<li>Currently, the plugin needs the Classic Editor plugin in order to work for WP 5+. A main goal is to make it Gutenberg compatible. </li>
+<li>Add Multiple images select support</li>
+<li>Add Multi-select options for filtering: providers</li>
+<li>Add select options for filtering: licenses, creator</li>
+<li>Find an icon for the 'Image via CC Search' editor button</li>
+<li>Add plugin’s Info page</li>
+</ul>
+<h4 id="code-and-test-site">Code and test site</h4><ul>
+<li>You can find and fork the plugin’s code at: <a href="https://github.com/lenasterg/wp_ccsearch">https://github.com/lenasterg/wp_ccsearch</a>.</li>
+<li>You can test the plugin functionality at <a href="http://users.sch.gr/stergatu/wordpress/">http://users.sch.gr/stergatu/wordpress/</a> by login via <a href="http://users.sch.gr/stergatu/wordpress/wp-login.php">http://users.sch.gr/stergatu/wordpress/wp-login.php</a> as username: <code>testuser</code> password: <code>testuser</code>.</li>
+</ul>
+<h4 id="credits">Credits</h4><ul>
+<li>The plugin is inspired and based on the <a href="https://search.creativecommons.org/">https://search.creativecommons.org/</a> and it couldn’t be possible without the Creative Commons Catalog API <a href="https://api.creativecommons.engineering/#tag/image">https://api.creativecommons.engineering/#tag/image</a> which is the engine.</li>
+<li>Most of the plugin's code is based on the WP Pexels <a href="https://wordpress.org/plugins/wp-pexels/">https://wordpress.org/plugins/wp-pexels/</a> code by WPclever.net</li>
+<li>Pointer's code is based on <a href="https://code.tutsplus.com/articles/integrating-with-wordpress-ui-admin-pointers--wp-26853">https://code.tutsplus.com/articles/integrating-with-wordpress-ui-admin-pointers--wp-26853</a></li>
+</ul>
+<h4 id="more-about-us">More about us</h4><p><span id="footnote-1"></span><strong>[1] CTI - Greek School Network and Networking Technologies Directorate</strong><br>
+Our main activities in Greek School Network and Networking Technologies Directorate (GSN-NTS) (<a href="http://nts.cti.gr">http://nts.cti.gr</a>) of Computer Technology Institute and Press “Diophantus” (CTI) are the design, implementation, and support of network infrastructures and Internet services. Through its involvement in pioneer National and European research and development projects, GSN-NTS has a major role in the development of network infrastructures and services, and Internet services as well in Greece, especially those concerning school networks and ICT infrastructures at schools.</p>
+<p><span id="footnote-2"></span><strong>[2] Greek School Network (&lt;www.sch.gr&gt;)</strong><br>
+It is the national network of the Ministry of Education and Religious Affairs which safely interconnects all schools of Primary and Secondary education, including educational units abroad, services and entities supervised by the Ministry of Education and Religious Affairs at central and regional level, service providers of lifelong learning, students, teaching staff, other educators and other entities of Ministry of Education and Religious Affairs (www.minedu.gov.gr).</p>
+<p><span id="footnote-3"></span><strong>[3] <a href="https://blogs.sch.gr">https://blogs.sch.gr</a></strong><br>
+The plugin was originally developed for <a href="https://blogs.sch.gr">https://blogs.sch.gr</a>, which is the free blogging platform for all Greek teachers, students, and school units. The blogs.sch.gr is a service of Greek School Network [2] (<a href="https://www.sch.gr/en">https://www.sch.gr/en</a>). It hosts more than 50.000 blogs and users. It is built and maintained by the Greek School Network and Networking Technologies Directorate of CTI.</p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/community/ ">community</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/wordpress/ ">wordpress</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-search/ ">cc-search</a>,
+          
+            
+            
+            <a href=" /blog/categories/plugin/ ">plugin</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2019-07-24-cc-search-wp-plugin"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
