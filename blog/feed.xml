@@ -2,13 +2,71 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-24T00:00:00Z</updated>
+  <updated>2019-07-26T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/">
+    <title type="text">Visualize CC Catalog data - data processing part 2</title>
+    <id>urn:uuid:6bfe222d-b176-362e-8711-92216ea0d3c8</id>
+    <updated>2019-07-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/" />
+    <author>
+      <name>soccerdroid</name>
+    </author>
+    <content type="html">&lt;p&gt;This is a continuation of my last blog post about the data processing part of the CC-data catalog visualization project. I recommend you to read that &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;last post&lt;/a&gt; for a better understanding of what I'll explain here.&lt;/p&gt;
+&lt;h3 id=&quot;the-data&quot;&gt;The data&lt;/h3&gt;&lt;p&gt;Every dataset needs cleasing and pre processing operations before their analysis. In order to implement validations, I have to know first with what kind of inconsistencies I would deal with. Here are some interesting insights about the dataset:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There are several cases where the provider_domain has not referenced a correct cc_license path. We might say then, that not everybody has a clear understading of how to give CC license attributions correctly.&lt;/li&gt;
+&lt;li&gt;I found a case where the links json was malformed. It had a huge paragraph as key (instead of a domain). I wasn't expecting something like that hehe.&lt;/li&gt;
+&lt;li&gt;There are both types of entries, a provider domain with a small image quantity and a lot of links, and with a huge amount of images but few links. Some of the domains with a lot of images belong to online shops or news websites.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Aside from the above, I have had to face with almost empty lines(meaning just a single column had information), columns bad separated (not a single but more than one tab between the columns), and some other usual problems of a real and non perfect dataset. I have made validations to catch these inconsistencies.&lt;/p&gt;
+&lt;h3 id=&quot;data-aggregation&quot;&gt;Data aggregation&lt;/h3&gt;&lt;p&gt;It is needed to aggregate the data by provider_domain, in order to get the complete information of every node. Aggregating the images column is simple, as I only have to sum the values in that column. Now the links column is a little bit tricky to be aggregated. We have to remember that this field contains dictionaries, with domains as keys and the times they have been referenced to as values. So for aggregating this column, I need to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create an empty dictionary&lt;/li&gt;
+&lt;li&gt;Loop through every key and save it&lt;/li&gt;
+&lt;li&gt;If I face with a key that is already in the dictionary, just sum the value that I currently hold to the existing value in the dictionary.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then, I have to extract creativecommons from the final links dictionary, and put the value into another column, called _Licences_qty_. This is because the quantity of links to &lt;a href=&quot;/blog/entries/cc-datacatalog-data-processing-2/creativecommons.org&quot;&gt;creativecommons.org&lt;/a&gt; can tell us how many licenses the provider_domains uses.&lt;/p&gt;
+&lt;p&gt;We also need to aggregate the licences column. The goal is to have a data structure that contains the licenses types the provider_domain uses, and to know how many licenses per each license type the provider_domain has.
+To achieve this, I:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create an empty dictionary of licences&lt;/li&gt;
+&lt;li&gt;For each license, create a tuple (license_name,version), which will be a key in the dictionary&lt;/li&gt;
+&lt;li&gt;Check if the key exists in the dictionary. If it doesn't, the key is added, with an initial value of 1, to the dictionary.&lt;/li&gt;
+&lt;li&gt;If the key exists, increment the value in 1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At the end, we will have rows like the following:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;row.png&quot; alt=&quot;Example row of the processed dataset&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Example row, with data aggregated. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;h3 id=&quot;considerations-and-future-challenges&quot;&gt;Considerations and future challenges&lt;/h3&gt;&lt;p&gt;I mentioned before that there are provider domains with a lot of images and a few links, and vice versa. As I still have to prune and filter data, I can develop a rule to exclude the domains that are not relevant to the graph. This relevance can be determined by the quantity of images and/or links. My thought with the rules are the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Exclude domains that have a lot of images but few links (less than 20 links).&lt;/li&gt;
+&lt;li&gt;Exclude domains that have few images(less than 100) and few links (less than 20)&lt;/li&gt;
+&lt;li&gt;Exclude domains that have no links (is not a targeted node).&lt;/li&gt;
+&lt;li&gt;Exclude domains that are social networks (Facebook, Instagram, Twitter), as they might not give relevant insights. Most of the references to these SN's are found because the provider domain gives the user the option to share a content.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The thresholds for the quantity of images and links are my intuitions from having seen the data and manually checking some provider domains. If it is possible I could validate it with some data analysis (checking average, maximum and minimum values of the columns).&lt;/p&gt;
+&lt;h3 id=&quot;coming-soon&quot;&gt;Coming soon&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Extraction of unique nodes, and links.&lt;/li&gt;
+&lt;li&gt;Visualization with the data. &lt;/li&gt;
+&lt;li&gt;Development or modification of pruning/filtering rules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can follow the project development in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
+Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+&lt;p&gt;Have a nice week!&lt;/p&gt;
+&lt;p&gt;Maria&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/">
     <title type="text">Easy search and use of CC-licensed images for WordPress</title>
     <id>urn:uuid:b422bf2e-cfdc-3cd5-a3bb-f5430679d2ed</id>
