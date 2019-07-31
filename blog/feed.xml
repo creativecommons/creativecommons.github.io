@@ -2,13 +2,77 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-07-26T00:00:00Z</updated>
+  <updated>2019-07-31T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/">
+    <title type="text">Host Classification with SaltStack</title>
+    <id>urn:uuid:567ba2e2-230a-36fc-9b0e-b2934640cd2a</id>
+    <updated>2019-07-31T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/" />
+    <author>
+      <name>TimidRobot</name>
+    </author>
+    <content type="html">&lt;p&gt;Within infrastructure as code, as with all programming, there is a goal to
+reduce redundancy as much as possible. With configuration management,
+duplicated configurations can quickly lead to confusion and unexpected states.
+One of the key ways to reduce configuration duplication is robust host
+classification.&lt;/p&gt;
+&lt;h3 id=&quot;minion-classification&quot;&gt;Minion Classification&lt;/h3&gt;&lt;p&gt;As this post is about SaltStack, the terms &quot;minion classification&quot; for &quot;host
+classification&quot; and &quot;minion&quot; for &quot;host&quot; are used. With Puppet, &quot;node
+classification&quot; and &quot;node&quot; would be used.&lt;/p&gt;
+&lt;p&gt;Minion classification consists of rules that determine what a minion is and
+which states (or configurations) should be applied to it. Good minion
+classification removes or minimizes the necessity of explicitly assigning
+configurations to a minion. Our goal is for the computer to do as much of the
+work as possible.&lt;/p&gt;
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;&lt;p&gt;Minions are added and configured from the primary salt server (called the
+salt-master) with the following Minion ID schema: &lt;strong&gt;&lt;code&gt;HST__POD__LOC&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;HST&lt;/code&gt;&lt;/strong&gt; is the hostname or role. It indications what services are running
+on the host or the role that it serves.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;POD&lt;/code&gt;&lt;/strong&gt; is the pod or group. It indicates the logical grouping of the
+host.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;LOC&lt;/code&gt;&lt;/strong&gt; is the location. It indicates where the host is.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;wordpress__prod__us-east-2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wordpress__stage__us-east-2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The Minion ID parts are matched against the following list. SaltStack pillar
+data, like Apache2, uses a last declared wins model. The following list is
+organized from least-specific to most-specific:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;1_LOC&lt;/code&gt; (location)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2_POD&lt;/code&gt; (pod/group)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;3_HST&lt;/code&gt; (host/role)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;4_POD__LOC&lt;/code&gt; (pod/group and location)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;5_HST__POD&lt;/code&gt; (host/role and pod/group)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Using our Minion ID examples above, this allows configuration data to be
+specified for both shared data (ex. WordPress security settings that should be
+applied to all WordPress hosts/roles) and specific data (ex. Let's Encrypt
+TLS/SSL settings).&lt;/p&gt;
+&lt;h2 id=&quot;security&quot;&gt;Security&lt;/h2&gt;&lt;p&gt;&lt;em&gt;The only grain which can be safely used is &lt;code&gt;grains['id']&lt;/code&gt; which contains the
+Minion ID.&lt;/em&gt; (&lt;a href=&quot;https://docs.saltstack.com/en/latest/faq.html#is-targeting-using-grain-data-secure&quot;&gt;FAQ Q.21&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;It is important to rely &lt;em&gt;only&lt;/em&gt; on the Minion ID as all other grains can be
+manipulated by the client. This means a compromised client could change its
+grains to collect secrets if a dedicated grain (ex. &lt;code&gt;role&lt;/code&gt;) was used for minion
+classification.&lt;/p&gt;
+&lt;h3 id=&quot;imperfect-work-in-progress&quot;&gt;Imperfect Work in Progress&lt;/h3&gt;&lt;p&gt;This implementation has proven to be robust and helpful. However, there is
+still room for improvement. For example, I will probably refactor &lt;code&gt;HST&lt;/code&gt; to
+&lt;code&gt;ROLE&lt;/code&gt; and &lt;code&gt;POD&lt;/code&gt; to &lt;code&gt;GRP&lt;/code&gt; for added clarity.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Feedback and development is welcomed.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot;&gt;creativecommons/sre-salt-prime&lt;/a&gt; repository is open
+source.&lt;/p&gt;
+&lt;p&gt;This host classification is also documented within it: &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime/blob/master/docs/Host_Classification.md&quot;&gt;sre-salt-prime/Host_Classification.md at master&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/">
     <title type="text">Visualize CC Catalog data - data processing part 2</title>
     <id>urn:uuid:6bfe222d-b176-362e-8711-92216ea0d3c8</id>
@@ -168,58 +232,6 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
-    <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:2dc4d01d-66c8-3309-ab42-31bb038ec5dd</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
-&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
-&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;
-These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
-&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Improve documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
     <id>urn:uuid:c79d72eb-45a9-3d96-939b-54bad5b7a2fa</id>
@@ -369,6 +381,58 @@ in touch and directing me to the right people to contact whenever in difficulty.
 &lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
 See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
+    <title type="text">CC Browser Extension Week 7, 8</title>
+    <id>urn:uuid:2dc4d01d-66c8-3309-ab42-31bb038ec5dd</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
+&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
+&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;
+These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
+&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
+&lt;li&gt;Test and fix bugs.&lt;/li&gt;
+&lt;li&gt;Improve documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
