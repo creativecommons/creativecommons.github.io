@@ -2,13 +2,285 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-08-12T00:00:00Z</updated>
+  <updated>2019-08-19T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/">
+    <title type="text">CC Vocabulary: Care for dessert?</title>
+    <id>urn:uuid:5e1efa7a-b1ef-3ad4-89bf-1efffd162f55</id>
+    <updated>2019-08-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/" />
+    <author>
+      <name>dhruvkb</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;&quot;Three months?!&quot;&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;&quot;Can't be that soon, right?&quot;&lt;/em&gt;&lt;br/&gt;
+&lt;em&gt;&quot;Right?!&quot;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Damn.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hi, it's me again. It's been long since I last sat down to write. I haven't been
+punctual with my posts and my only hope of redemption is that my punctuality
+with code makes up for it somehow.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;graph.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        All that green makes 
+        &lt;a href=&quot;https://github.com/dhruvkb&quot;&gt;me&lt;/a&gt; very happy.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;With GSoC deadlines drawing to a close, it makes sense to have a post describing
+the fruits of this quarter-year of labour. Let's start with two big news pieces.&lt;/p&gt;
+&lt;p&gt;If this feels like a self-congratulatory piece patting myself on the back, I 
+apologise. It's also my GSoC final submission work product report.&lt;/p&gt;
+&lt;h3 id=&quot;vocabulary-is-ready-for-consumption&quot;&gt;🎉 Vocabulary is ready for consumption!&lt;/h3&gt;&lt;p&gt;It's been that way for almost a couple of weeks, actually. I just wasn't able to
+take time out for a blog post.&lt;/p&gt;
+&lt;p&gt;The rate at which Vocabulary components have received compatibility-breaking
+changes has continuously gone down week after week. Code has been refactored,
+&lt;em&gt;yes&lt;/em&gt;. Stylesheets have been cleaned up, &lt;em&gt;yes&lt;/em&gt;. Documentation has been updated
+and at times even rewritten, &lt;em&gt;yes&lt;/em&gt;. But in terms of functionality, the
+components are stable and solid enough to act as a foundation for the apps to
+come. The external API for the components has matured considerably.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;scott.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;&quot;It's every parent's dream.&quot;&lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;It's been about twelve weeks since the first commit to CC Vocabulary way back in
+May. As with everything else in software, Vocabulary has moved fast. Under the
+mentorship of &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and over the course of
+&lt;strong&gt;300+ commits&lt;/strong&gt; and &lt;strong&gt;17+ alpha releases&lt;/strong&gt;, Vocabulary has gone from 1
+component that just said &lt;em&gt;&quot;Hello World!&quot;&lt;/em&gt; to &lt;strong&gt;over 33 components&lt;/strong&gt; that are
+capable of replacing over half the entire codebase of the frontend for CC
+Search. Talk about kids growing fast!&lt;/p&gt;
+&lt;p&gt;You get all the components a typical web application needs, and then some. It's
+got the standards like &lt;code&gt;InputField&lt;/code&gt; and &lt;code&gt;Button&lt;/code&gt;, some unconventional ones like
+&lt;code&gt;Definition&lt;/code&gt; and &lt;code&gt;Quote&lt;/code&gt;, and some components that only our own tailored design
+library could afford like &lt;code&gt;Header&lt;/code&gt; and &lt;code&gt;Footer&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here's a list and &lt;a href=&quot;https://creativecommons.github.io/cc-vocabulary&quot;&gt;there's&lt;/a&gt; 
+a living styleguide.&lt;/p&gt;
+&lt;details&gt;
+  &lt;summary&gt;Elements&lt;/summary&gt;
+  &lt;div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Heading&lt;/li&gt;
+      &lt;li&gt;Paragraph&lt;/li&gt;
+      &lt;li&gt;ImageView&lt;/li&gt;
+      &lt;li&gt;Button&lt;/li&gt;
+      &lt;li&gt;ChoiceField&lt;/li&gt;
+      &lt;li&gt;InputField&lt;/li&gt;
+      &lt;li&gt;SelectField&lt;/li&gt;
+      &lt;li&gt;SwitchField&lt;/li&gt;
+      &lt;li&gt;Rating&lt;/li&gt;
+      &lt;li&gt;ProgressBar&lt;/li&gt;
+      &lt;li&gt;Statistic&lt;/li&gt;
+      &lt;li&gt;LicenseIconography&lt;/li&gt;
+      &lt;li&gt;Shield&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div style=&quot;text-align: center;&quot;&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;button.png&quot;/&gt;
+        &lt;figcaption&gt;
+          &lt;em&gt;&lt;code&gt;Button&lt;/code&gt;&lt;/em&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+  &lt;summary&gt;Layouts&lt;/summary&gt;
+  &lt;div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Container&lt;/li&gt;
+      &lt;li&gt;Section&lt;/li&gt;
+      &lt;li&gt;Grid
+        &lt;ul&gt;&lt;li&gt;GridCell&lt;/li&gt;&lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Tabbed
+        &lt;ul&gt;&lt;li&gt;TabbedPane&lt;/li&gt;&lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Table
+        &lt;ul&gt;&lt;li&gt;TableCell&lt;/li&gt;&lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div style=&quot;text-align: center;&quot;&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;tabbed.png&quot;/&gt;
+        &lt;figcaption&gt;
+          &lt;em&gt;&lt;code&gt;Tabbed&lt;/code&gt;&lt;/em&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+  &lt;summary&gt;Patterns&lt;/summary&gt;
+  &lt;div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Card&lt;/li&gt;
+      &lt;li&gt;Definition&lt;/li&gt;
+      &lt;li&gt;Header&lt;/li&gt;
+      &lt;li&gt;Footer&lt;/li&gt;
+      &lt;li&gt;LicenseBadge&lt;/li&gt;
+      &lt;li&gt;BrandImagery&lt;/li&gt;
+      &lt;li&gt;Quote&lt;/li&gt;
+      &lt;li&gt;Locale&lt;/li&gt;
+      &lt;li&gt;NavigationLink
+        &lt;ul&gt;&lt;li&gt;NavigationLink&lt;/li&gt;&lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Trail
+        &lt;ul&gt;&lt;li&gt;TrailCrumb&lt;/li&gt;&lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div style=&quot;text-align: center;&quot;&gt;
+      &lt;figure&gt;
+        &lt;img src=&quot;card.png&quot;/&gt;
+        &lt;figcaption&gt;
+          &lt;em&gt;&lt;code&gt;Card&lt;/code&gt;&lt;/em&gt;
+        &lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;Button
+&lt;/details&gt;&lt;p&gt;Vocabulary also offers some Stylus mixins, token collection in Stylus, SASS and 
+JSON and some handy utils too. That's about it.&lt;/p&gt;
+&lt;p&gt;I know what you are thinking and &lt;em&gt;yes, all of that, including
+the designs and revisions, was accomplished in two months and a half&lt;/em&gt;.&lt;/p&gt;
+&lt;h4 id=&quot;quality&quot;&gt;Quality&lt;/h4&gt;&lt;p&gt;The code follows the &lt;a href=&quot;https://standardjs.com/&quot;&gt;Standard code style&lt;/a&gt; and the &lt;a href=&quot;https://vuejs.org/v2/style-guide/&quot;&gt;Vue
+official style guide&lt;/a&gt;. In addition,
+Vocabulary has &lt;a href=&quot;https://opensource.creativecommons.org/cc-vocabulary/#/Vocabulary/Code%20style&quot;&gt;its own style
+guide&lt;/a&gt;
+that has rules right down to the order of rules in the CSS. This ensures that
+code is sensibly written, easily understandable and as little in debt as
+possible.&lt;/p&gt;
+&lt;h4 id=&quot;usage&quot;&gt;Usage&lt;/h4&gt;&lt;p&gt;CC Vocabulary can be installed via &lt;code&gt;npm&lt;/code&gt; and used with a build process...&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install @creativecommons/vocabulary
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;...or used directly in the browser inside &lt;code&gt;script&lt;/code&gt; tags.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&quot;text/javascript&quot;
+        src=&quot;https://unpkg.com/@creativecommons/vocabulary&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Even JS is optional (may break in some cases, horrifying so).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;link rel=&quot;stylesheet&quot;
+      type=&quot;text/css&quot;
+      href=&quot;https://unpkg.com/@creativecommons/vocabulary/vocabulary.css&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;demo&quot;&gt;Demo&lt;/h4&gt;&lt;p&gt;Of course I'm not going to hype you up and leave you hanging! Here's a pen to
+show you what's possible. Actually, since the pen uses the UMD version, what it
+shows is the lower end of what's possible.&lt;/p&gt;
+&lt;p&gt;&lt;p class=&quot;codepen&quot; data-height=&quot;265&quot; data-theme-id=&quot;dark&quot; data-default-tab=&quot;result&quot; data-user=&quot;dhruvkb&quot; data-slug-hash=&quot;dxRJYV&quot; data-preview=&quot;true&quot; style=&quot;height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;&quot; data-pen-title=&quot;CC Vocabulary UMD demo&quot;&gt;
+  &lt;span&gt;See the Pen &lt;a href=&quot;https://codepen.io/dhruvkb/pen/dxRJYV/&quot;&gt;
+  CC Vocabulary UMD demo&lt;/a&gt; by Dhruv Bhanushali (&lt;a href=&quot;https://codepen.io/dhruvkb&quot;&gt;@dhruvkb&lt;/a&gt;)
+  on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/span&gt;
+&lt;/p&gt;&lt;/p&gt;
+&lt;script async src=&quot;https://static.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;&lt;h4 id=&quot;contributions-invited&quot;&gt;Contributions invited&lt;/h4&gt;&lt;p&gt;Also to make the repository friendlier to incoming developers a number of issues
+have been dug out, reported and labelled. This provides incomers, like myself
+three months ago, a channel to familiarise themselves with the codebase well
+before Outreachy and the next Summer of Code.&lt;/p&gt;
+&lt;h4 id=&quot;gsoc-work-product&quot;&gt;GSoC work product&lt;/h4&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;contributions.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;That's over half a million changes!&lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Repository:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/&quot;&gt;https://github.com/creativecommons/cc-vocabulary/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Commits:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/commits/master&quot;&gt;https://github.com/creativecommons/cc-vocabulary/commits/master&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Issues:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/issues&quot;&gt;https://github.com/creativecommons/cc-vocabulary/issues&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/graphs/contributors&quot;&gt;https://github.com/creativecommons/cc-vocabulary/graphs/contributors&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The proposal listed a number of components to be developed as a part of the 
+program. Over twice that number of components have been implemented.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In other news...&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;search-is-largely-integrated-with-vocabulary&quot;&gt;🎉 Search is largely integrated with Vocabulary!&lt;/h3&gt;&lt;p&gt;This was the subordinate goal of my Summer of Code proposal. Surprisingly
+enough, once the components were ready it was only a matter of finding code in
+CC Search's frontend and swapping it out with Vocabulary components. &lt;em&gt;Oh, the
+tests have pained me so.&lt;/em&gt; Literally every single test broke down and had to be
+manually updated.&lt;/p&gt;
+&lt;p&gt;The end result of the toil under the guidance and review of &lt;a href=&quot;http://localhost:5000/blog/authors/brenoferreira/&quot;&gt;Breno
+Ferreira&lt;/a&gt; is a search
+experience that &lt;strong&gt;feels polished&lt;/strong&gt; and &lt;strong&gt;looks beautiful&lt;/strong&gt; and &lt;strong&gt;works
+elegantly&lt;/strong&gt;. It also enables another &lt;strong&gt;half a billion&lt;/strong&gt; people to use the
+platform and sets the groundwork to take that number higher.&lt;/p&gt;
+&lt;p&gt;The bundle size is lower and code manageability is higher thanks to decoupling
+of low level components from the high level experience. Can you ask for more?
+How about more consistent icons?&lt;/p&gt;
+&lt;p&gt;The least I can do is attach screenshots of the new CC Search to give you a 
+sneak peek into what Creative Commons apps, starting with Search of course, will
+look like in the future. These are screenshots, &lt;em&gt;not mockups&lt;/em&gt;.&lt;/p&gt;
+&lt;h4 id=&quot;sneak-peek&quot;&gt;Sneak peek&lt;/h4&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;homepage.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;A very minor change to the homepage...&lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;homepage_hi.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;...is a door to a new world of possibilities.&lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;Yes, CC Search has largely also been translated to Hindi, making it accessible
+to the Internet-savvy chunk of the half a billion people who speak the language
+in the country with the second-largest Internet enabled populace (first if you
+factor in democracy and freedom).&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;about.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;Statistics were never this beautiful...&lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;collections.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;...and neither were collections.&lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;These pages too have been internationalised.&lt;/p&gt;
+&lt;p&gt;Did you spot the new icons? I made a choice to adopt Font Awesome for Vocabulary
+as it is a modern, scalable and lightweight alternative to finding a cohesive
+set of icons from the trove of the Noun Project and bundling them ourselves.
+Plus Font Awesome provides Vue components! What's not to like.&lt;/p&gt;
+&lt;h4 id=&quot;status&quot;&gt;Status&lt;/h4&gt;&lt;p&gt;I'm not sure if there is enough time in the GSoC period for the integration PR
+to be reviewed and merged but I'm not going anywhere and neither are you. You
+can follow the integration as it happens
+&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you're enthusiastic you can clone the branch and run the setup on your 
+machine. Experience it for yourself, how about that?&lt;/p&gt;
+&lt;h4 id=&quot;gsoc-work-product&quot;&gt;GSoC work product&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Repository:&lt;/strong&gt; &lt;a href=&quot;https://github.com/dhruvkb/cccatalog-frontend/&quot;&gt;https://github.com/dhruvkb/cccatalog-frontend/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PR&lt;/strong&gt;: &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413/&quot;&gt;https://github.com/creativecommons/cccatalog-frontend/pull/413/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Commits:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413/commits&quot;&gt;https://github.com/creativecommons/cccatalog-frontend/pull/413/commits&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The proposal aimed to replace a lot of indigenous components with Vocabulary
+counterparts. Internationalisation and a consistent icon system are just me
+going above and beyond.&lt;/p&gt;
+&lt;h3 id=&quot;tl;dr?&quot;&gt;😴 TL;DR?&lt;/h3&gt;&lt;p&gt;Summarising, &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt;
+is now mature and &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413&quot;&gt;is getting
+married&lt;/a&gt; to &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;CC
+Search&lt;/a&gt;. GSoC was a successful
+matchmaker.&lt;/p&gt;
+&lt;h3 id=&quot;postremo&quot;&gt;❤️ Postremo&lt;/h3&gt;&lt;p&gt;&lt;em&gt;&quot;I think... I feel good about it.&quot;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;GSoC has been a thoroughly refreshing, enriching and educating experience.
+Without a shred of doubt I am taking away a lot from this exercise (notably, the
+knowledge of the existence of CSS custom properties). My only hope is that I
+have given back a comparable amount of output to the community that gave an
+outsider like me a chance to work on something this impactful in the long-term.&lt;/p&gt;
+&lt;p&gt;I can't wait to continue my journey post-GSoC and see what the core team and
+the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
+&lt;p&gt;GSoC may be over, but &lt;strong&gt;CC and I have a long way to go&lt;/strong&gt;.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;letterheart.svg&quot; width=&quot;32&quot;/&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;~Signing off, for now~&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/">
     <title type="text">CC Browser Extension Week 9, 10</title>
     <id>urn:uuid:20288e35-de4f-391c-930c-85457411ef78</id>
