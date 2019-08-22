@@ -2,13 +2,37 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-08-19T00:00:00Z</updated>
+  <updated>2019-08-22T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/">
+    <title type="text">GSoC cc-chooser Final Post</title>
+    <id>urn:uuid:3f8acaa5-6aa9-3ae1-aad3-b61a369a25f5</id>
+    <updated>2019-08-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/" />
+    <author>
+      <name>akmadian</name>
+    </author>
+    <content type="html">&lt;p&gt;Summer of Code is drawing to a close, and so is my work on the chooser project (well, sort of, I'll continue to help build and support the project for some time). These have easily been some of the best months of my life for a number of reasons. I remember vividly getting my first Slack message from my mentor, Breno, and being in utter disbelief that I was chosen. I have been fortunate enough to have this project be my own, complete with a whole Git repo just for this project!&lt;/p&gt;
+&lt;p&gt;My work started with an empty GitHub repository, and bunch of planning: layout, wireframes, usability testing, etc. It wasn't until week 3 when I could start on actually building the site. To reflect on this time, I thought it would be cool to take a look back at the most significant PRs of the last three months.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;My first PR with anything of substance was &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/9&quot;&gt;#9 - Refactor Modal System&lt;/a&gt;. This changed the site's modal system from using a cooler approach to one not quite as flashy, but the old method was lacking some critical features.&lt;/li&gt;
+&lt;li&gt;Then came &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/10&quot;&gt;#10 - Add Chooser Functionality&lt;/a&gt;. This was a pretty big deal, as this brought the functionality behind the main point of the page: the License Chooser.&lt;/li&gt;
+&lt;li&gt;Next up, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/11&quot;&gt;#11&lt;/a&gt;: a big change to page layout. This changed the layout of the help section itself, and the layout of the page as a whole.&lt;/li&gt;
+&lt;li&gt;Another big design change: &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/14&quot;&gt;#14&lt;/a&gt;. This PR changed the method of displaying the chosen license from the legacy look that was essentially just copied over from the legacy chooser, to a newer, more modern, and more informative card.&lt;/li&gt;
+&lt;li&gt;Then, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/23&quot;&gt;#23 - Add HTML Generator Functionality&lt;/a&gt;. This added functionality to the HTML Generator, previously just a collection of dummy controls and fields.&lt;/li&gt;
+&lt;li&gt;Currently still open, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/18&quot;&gt;#18&lt;/a&gt;. This PR changes the look and functionality of the chooser controls. Previously they were just some standard switches. Now, they are (in my opinion) more modern, and more informative, although maybe more difficult for the average user to grasp.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Lastly, and most recently, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/24&quot;&gt;#24 - Refactor Site to Vue Components&lt;/a&gt;. This is a complete rewrite of the entire site to shift from a standard HTML5/ CSS/ JS toolset to Vue.js.&lt;/p&gt;
+&lt;p&gt;For all of these merged PRs, there is still work to be done: more usability testing, ensuring that all content on the page meets the proper legal requirments, localization, adding CSS for mobile and tablet breakpoints, and deployment!&lt;/p&gt;
+&lt;p&gt;I plan to have #24 done and merged by Monday, August 26, and I hope to continue my work on the chooser project either in my free time, or by moving into a mentor type role.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/">
     <title type="text">CC Vocabulary: Care for dessert?</title>
     <id>urn:uuid:5e1efa7a-b1ef-3ad4-89bf-1efffd162f55</id>
