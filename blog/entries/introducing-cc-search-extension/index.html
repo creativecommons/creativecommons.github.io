@@ -1,0 +1,313 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Introducing CC Search Extension — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarGSoCDropdown" role="button">GSoC 2019</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarGSoCDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/">General Information</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/project-ideas/all/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/student-expectations/">Student Expectations</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019/application-instructions/">Application Instructions</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+                    
+                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+                    
+                  </div>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-9 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Introducing CC Search Extension</h2>
+  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/makkoncept/">
+  Mayank Nader
+</a>
+  on Tuesday, 2019-09-3</p>
+  <div class="body"><p>The past three months of Google summer of code has been an amazing learning experience to say the least. I am thrilled to announce that <a href="https://github.com/creativecommons/ccsearch-browser-extension">my GSoC project</a> was successfully completed and we were able to achieve more than we aimed for!</p>
+<div style="text-align: center;">
+  <figure>
+    <img src="light-dark-mode.png"/>
+    <figcaption>
+      <em>
+        CC Search Browser Extension
+      </em>
+    </figcaption>
+  </figure>
+</div><h3 id="installation">Installation</h3><p>The three extension stores of the browsers we were building support for have approved the extension 🎉</p>
+<p>Install the extension on your favorite browser from the following links:</p>
+<ul>
+<li><strong><a href="https://addons.mozilla.org/en-US/firefox/addon/cc-search-extension/">Firefox Addon Store</a></strong></li>
+<li><strong><a href="https://chrome.google.com/webstore/detail/cc-search/agohkbfananbebiaphblgcfhcclklfnh">Google Chrome store</a></strong></li>
+<li><strong><a href="https://addons.opera.com/en/extensions/details/cc-search/">Opera Addon Store</a></strong></li>
+</ul>
+<p><strong>Checkout <a href="/blog/entries/introducing-cc-search-extension/#join-the-community">Join the community</a>.</strong></p>
+<h3 id="features">Features</h3><p>At inception, we thought that the extension would become a complementary plugin to the amazing <a href="https://search.creativecommons.org/">CC Search</a> but now I can say with confidence that the extension has the potential to sketch an identity of itself.
+In this section, I will go through all the major features(exclusive of any technical jargon) of the extension.</p>
+<ul>
+<li><strong>Search and filter CC Licensed content</strong><br>
+This feature is at the core and the extension does a good job. The searching and filtering is powered by <a href="https://github.com/creativecommons/cccatalog-api">CC Catalog API</a> which exposes various endpoints to get search results and apply filters for providers, licenses, and use-case. This makes sure that you will find exactly what are you looking for.</li>
+</ul>
+<div style="text-align: center;">
+  <figure>
+    <img src="minimal-ui.png"/>
+    <figcaption>
+      <em>
+        Bunch of features. Minimal interface.
+      </em>
+    </figcaption>
+  </figure>
+</div><ul>
+<li><strong>One-click easy attribution:</strong><br>
+Attributing the owner of the image is as easy as it can get with one-click attribution. You can copy either the Rich-text or HTML version of the attribution to your clipboard by one-click.</li>
+</ul>
+<div style="text-align: center;">
+  <figure>
+    <img src="search-images-attribution.png"/>
+    <figcaption>
+      <em>
+        Search CC License Images. Easy one-click attribution, image info, and share options.
+      </em>
+    </figcaption>
+  </figure>
+</div><ul>
+<li><strong>Download images (and attribution):</strong><br>
+Download the image to use it in your works from the extension itself. You also have the option to download the attribution as a text file along with the image. This can be helpful when you want to download multiple images in a single session.</li>
+</ul>
+<ul>
+<li><strong>Bookmark images:</strong><br>
+Hovering over the image thumbnails and clicking the bookmark icon will save the images. This is perfect for shortlisting the images that you might find usefull in the future. You can view and remove your bookmarks from the bookmarks section.</li>
+</ul>
+<div style="text-align: center;">
+  <figure>
+    <img src="bookmarks.png"/>
+    <figcaption>
+      <em>
+        View saved images in Bookmark Section. Export and import bookmarks from the "Bookmarks" tab in the options page.
+      </em>
+    </figcaption>
+  </figure>
+</div><ul>
+<li><p><strong>Export and import bookmarks.</strong><br>
+As a user, you might want to easily archive and/or transfer your bookmarks. The extension goes one step ahead and gives you the feature of exporting and importing bookmarks.  This makes sure that the solution to archiving and transfer of bookmarks is uncomplicated and straightforward.</p>
+</li>
+<li><p><strong>Sync your custom setting and bookmarks across devices.</strong><br>
+The extension uses the in-build feature of chrome and firefox to sync your custom settings and bookmarks.  So you can be sure to have a familiar user experience across your devices.</p>
+</li>
+<li><p><strong>Options-UI for custom settings.</strong><br>
+The extension also has an options page where you can set default filters and settings. The options page helps in decluttering and making sure that the main popup of the extension remains minimal and holds only the most necessary information. This page will host most of the future features too.</p>
+</li>
+</ul>
+<div style="text-align: center;">
+  <figure>
+    <img src="custom-filters.png"/>
+    <figcaption>
+      <em>
+        Add custom defaults from the options page.
+      </em>
+    </figcaption>
+  </figure>
+</div><ul>
+<li><strong>Dark Mode.</strong><br>
+Because everyone loves dark mode! Save battery and go easy on your eyes.</li>
+</ul>
+<div style="text-align: center;">
+  <figure>
+    <img src="opera-light.png"/>
+    <figcaption>
+      <em>
+        Light mode.
+      </em>
+    </figcaption>
+  </figure>
+</div><div style="text-align: center;">
+  <figure>
+    <img src="opera-dark.png"/>
+    <figcaption>
+      <em>
+        Dark Mode. Looks more cool if the browser is also in dark mode!
+      </em>
+    </figcaption>
+  </figure>
+</div><div style="text-align: center;">
+  <figure>
+    <img src="about-page.png"/>
+    <figcaption>
+      <em>
+        About page of the extension.
+      </em>
+    </figcaption>
+  </figure>
+</div><h3 id="join-the-community">Join The Community</h3><p>We hope that you will give this a shot and maybe use it as your daily driver to search for images. There is so much more that we can do to improve and expand this project. Your help in form of <a href="https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#reporting-bugs">bug reports</a>, <a href="https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#feature-requests">feature requests</a>, <a href="https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#contributing-code">code contribution</a> will be of great importance in shaping the future of the extension.</p>
+<p>You can check out the <a href="https://github.com/creativecommons/ccsearch-browser-extension">project on Github</a>.</p>
+<p>Come and say hi to us on <a href="https://opensource.creativecommons.org/community/#slack">slack</a> and tell about your experience with CC Search extension. The slack channel is <code>#gsoc-browser-ext</code>.</p>
+<p><em>Special Thanks</em>:  <a href="https://creativecommons.org/author/aldencreativecommons-org/">Alden</a>, <a href="https://creativecommons.org/author/timidcreativecommons-org/">Timid</a> and <a href="https://creativecommons.org/author/kriticreativecommons-org/">Kriti</a></p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc-2019/ ">gsoc-2019</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-browser-extension/ ">cc-browser-extension</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/announcements/ ">announcements</a>,
+          
+            
+            
+            <a href=" /blog/categories/product/ ">product</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/introducing-cc-search-extension"; this.page.url = "http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-9 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

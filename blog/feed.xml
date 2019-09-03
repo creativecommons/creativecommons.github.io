@@ -2,13 +2,141 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-08-23T00:00:00Z</updated>
+  <updated>2019-09-03T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/">
+    <title type="text">Introducing CC Search Extension</title>
+    <id>urn:uuid:b3fdbb66-8f61-39cb-8c2a-bba02bc52a94</id>
+    <updated>2019-09-03T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;The past three months of Google summer of code has been an amazing learning experience to say the least. I am thrilled to announce that &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;my GSoC project&lt;/a&gt; was successfully completed and we were able to achieve more than we aimed for!&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;light-dark-mode.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        CC Search Browser Extension
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;&lt;p&gt;The three extension stores of the browsers we were building support for have approved the extension 🎉&lt;/p&gt;
+&lt;p&gt;Install the extension on your favorite browser from the following links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/cc-search-extension/&quot;&gt;Firefox Addon Store&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/cc-search/agohkbfananbebiaphblgcfhcclklfnh&quot;&gt;Google Chrome store&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://addons.opera.com/en/extensions/details/cc-search/&quot;&gt;Opera Addon Store&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Checkout &lt;a href=&quot;/blog/entries/introducing-cc-search-extension/#join-the-community&quot;&gt;Join the community&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;&lt;p&gt;At inception, we thought that the extension would become a complementary plugin to the amazing &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; but now I can say with confidence that the extension has the potential to sketch an identity of itself.
+In this section, I will go through all the major features(exclusive of any technical jargon) of the extension.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Search and filter CC Licensed content&lt;/strong&gt;&lt;br&gt;
+This feature is at the core and the extension does a good job. The searching and filtering is powered by &lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt; which exposes various endpoints to get search results and apply filters for providers, licenses, and use-case. This makes sure that you will find exactly what are you looking for.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;minimal-ui.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        Bunch of features. Minimal interface.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;One-click easy attribution:&lt;/strong&gt;&lt;br&gt;
+Attributing the owner of the image is as easy as it can get with one-click attribution. You can copy either the Rich-text or HTML version of the attribution to your clipboard by one-click.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;search-images-attribution.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        Search CC License Images. Easy one-click attribution, image info, and share options.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download images (and attribution):&lt;/strong&gt;&lt;br&gt;
+Download the image to use it in your works from the extension itself. You also have the option to download the attribution as a text file along with the image. This can be helpful when you want to download multiple images in a single session.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bookmark images:&lt;/strong&gt;&lt;br&gt;
+Hovering over the image thumbnails and clicking the bookmark icon will save the images. This is perfect for shortlisting the images that you might find usefull in the future. You can view and remove your bookmarks from the bookmarks section.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;bookmarks.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        View saved images in Bookmark Section. Export and import bookmarks from the &quot;Bookmarks&quot; tab in the options page.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Export and import bookmarks.&lt;/strong&gt;&lt;br&gt;
+As a user, you might want to easily archive and/or transfer your bookmarks. The extension goes one step ahead and gives you the feature of exporting and importing bookmarks.  This makes sure that the solution to archiving and transfer of bookmarks is uncomplicated and straightforward.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sync your custom setting and bookmarks across devices.&lt;/strong&gt;&lt;br&gt;
+The extension uses the in-build feature of chrome and firefox to sync your custom settings and bookmarks.  So you can be sure to have a familiar user experience across your devices.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Options-UI for custom settings.&lt;/strong&gt;&lt;br&gt;
+The extension also has an options page where you can set default filters and settings. The options page helps in decluttering and making sure that the main popup of the extension remains minimal and holds only the most necessary information. This page will host most of the future features too.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;custom-filters.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        Add custom defaults from the options page.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dark Mode.&lt;/strong&gt;&lt;br&gt;
+Because everyone loves dark mode! Save battery and go easy on your eyes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;opera-light.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        Light mode.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;opera-dark.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        Dark Mode. Looks more cool if the browser is also in dark mode!
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;about-page.png&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        About page of the extension.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;h3 id=&quot;join-the-community&quot;&gt;Join The Community&lt;/h3&gt;&lt;p&gt;We hope that you will give this a shot and maybe use it as your daily driver to search for images. There is so much more that we can do to improve and expand this project. Your help in form of &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#reporting-bugs&quot;&gt;bug reports&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#feature-requests&quot;&gt;feature requests&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#contributing-code&quot;&gt;code contribution&lt;/a&gt; will be of great importance in shaping the future of the extension.&lt;/p&gt;
+&lt;p&gt;You can check out the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;project on Github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Come and say hi to us on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt; and tell about your experience with CC Search extension. The slack channel is &lt;code&gt;#gsoc-browser-ext&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/">
     <title type="text">Creative Commons WordPress Plugin Final Phase</title>
     <id>urn:uuid:1de82ef5-6d43-3e05-adc1-a5b59133e51c</id>
