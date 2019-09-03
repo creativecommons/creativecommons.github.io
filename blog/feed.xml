@@ -137,6 +137,79 @@ Because everyone loves dark mode! Save battery and go easy on your eyes.&lt;/li&
 &lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/">
+    <title type="text">The Linked Commons graph: the final vis</title>
+    <id>urn:uuid:8a42815d-8cea-30fe-a435-16a4e16e362f</id>
+    <updated>2019-09-02T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/" />
+    <author>
+      <name>soccerdroid</name>
+    </author>
+    <content type="html">&lt;p&gt;This is a continuation of my last blog post about the data processing part 3 of the CC-data catalog visualization project. I recommend you to read that &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/&quot;&gt;last post&lt;/a&gt; for a better understanding of what I'll explain here.&lt;/p&gt;
+&lt;p&gt;Hello! In this last post, I am going to talk you about the final visualization. First, I would like to talk about the data and share my recommendations.&lt;/p&gt;
+&lt;h3 id=&quot;creating-a-data-driven-graph&quot;&gt;Creating a data-driven graph&lt;/h3&gt;&lt;p&gt;+250 million licensed content is a very big number. That is the amount of data I had to visualize for this GSoC project. The graph is very sensitive to the amount of data. Let's talk about sensitivity as the property that a visualization has to look well-structured or tightly clustered like a hairball. The graph is less sensitive to the data if there are a few hundred or thousand nodes but as the amount of data increases it starts to look more and more like a hairball. Take a look at the following examples:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;20k_graph.png&quot; alt=&quot;Graph with 20k nodes&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The Linked Commons gaph with 20k nodes and links. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;100k_graph.png&quot; alt=&quot;Graph with 100k nodes&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The Linked Commons gaph with 100k nodes and links.&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Moreover, any visualization library starts to render the elements slower, and at one point, it freezes. For the 100k nodes graph, the visualization took ages to appear and had the same clustered appearance. This was my major concern. That's why I decided to choose the top 500 domains from the processed data, as well as all the other domains those 500 nodes are connected to. This is also more user-friendly, because having the entire dataset will make the navigation through the graph very dizzy. Even with this smaller dataset, we could get valuable insights from the graph. We were able to find communities like the following:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;community_graph_cc.png&quot; alt=&quot;Libraries community&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Educational community, including libraries and universities.&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Insights like this are valuable for Creative Commons, because they can help with outreach efforts, targeted communications and for the CC Search team to choose which domains to include in the CC Search tool.&lt;/p&gt;
+&lt;p&gt;The final graph is interactive. Users can pan, zoom in and out, hover over a node to see its neighbors and neighbors of neighbors, and click on a node to display a pie chart.&lt;/p&gt;
+&lt;h3 id=&quot;pie-chart-visualization&quot;&gt;Pie chart visualization&lt;/h3&gt;&lt;p&gt;The pie charts are built using the &lt;a href=&quot;https://www.highcharts.com/&quot;&gt;Highcarts library&lt;/a&gt;. The purpose of this chart is to show  to the public how each domain uses CC licenses. I spoke about this in my blog post: &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/&quot;&gt;Visualize CC Catalog data&lt;/a&gt;. Here is an image to illustrate the above:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;pie_chart.png&quot; alt=&quot;cc_licenses dictionary&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Pie chart of ask.openstack.org &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;There are some nodes that we do not have information about their CC licenses (and they probably do not have licensed content). For these nodes, a message saying &quot;The CC License information of &lt;em&gt;domain_name&lt;/em&gt; is not available&quot; is displayed instead of the pie chart. We did not wanted to disable the pie chart for them, because we wanted to be consistent with the nodes behavior. Making some nodes not clickable would confuse everyone, and it would also make more complicate the implementation of the visualization.&lt;/p&gt;
+&lt;h3 id=&quot;tweaking-the-graph&quot;&gt;Tweaking the graph&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/vasturiano/force-graph&quot;&gt;Force-graph&lt;/a&gt; has a nice API that offers a lot of possibilites for customizing the visualization. The building of the graph is data-driven, and we can use the data in order to alter the appearance of nodes and edges.&lt;/p&gt;
+&lt;p&gt;I implemented the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The node size is proportional to the number of CC licensed content in each domain. &lt;/li&gt;
+&lt;li&gt;When the user hovers over a node, a label with the domain name is displayed. This might sound redundant when you can see the node perfectly. But the graph is very big, and you will like to see it in a low zoom level in order to have a picture of the shape of the entire graph. This is when this functionality is useful, because you don't have to zoom in in order to see the name of a node. &lt;/li&gt;
+&lt;li&gt;The force of a link between two nodes (&lt;em&gt;node A&lt;/em&gt; and &lt;em&gt;node B&lt;/em&gt;) is given by the number of links &lt;em&gt;node A&lt;/em&gt; has that references &lt;em&gt;node B&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;When you hover over a node, you can also see the links to its neighbors highlighted, as well as the links to the neighbors of the neighbors. This feature make it pretty easy for you to find communities, and see how strongly connected a node is in the graph. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is the final visualization, using a sample data from one month of the Common Crawl data:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;graph.png&quot; alt=&quot;Force-directed graph with the real data&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Force-directed graph, &quot;The Linked Commons&quot;. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;highlights.png&quot; alt=&quot;Force-directed graph with the real data&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Force-directed graph, &quot;The Linked Commons&quot;. Neighbors of domain &lt;i&gt;svgsilh&lt;/i&gt; hihglighted. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;You can check the whole project source code in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/tree/master/GSoC2019&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;final-comments-and-future-work&quot;&gt;Final comments and future work&lt;/h3&gt;&lt;p&gt;This was my first experience with big data visualization, and I really enjoyed it!&lt;/p&gt;
+&lt;p&gt;There are features that could be implemented in the future in order to reduce the amount of data rendered in the graph:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A user might just want to check if a specific domain has licensed content, and how does it use it. An enhancement could be then to add a search bar and offer to the user the possibility to search for a node, given a domain name and/or URL.&lt;/li&gt;
+&lt;li&gt;Given the suffix of the URLs of the &lt;em&gt;provider_domains&lt;/em&gt;, we could try to find the country of origin, and so filter domains by country.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;check-out-the-live-demo&quot;&gt;Check out the live demo!&lt;/h3&gt;&lt;p&gt;[2D version] (&lt;a href=&quot;http://ec2-3-80-82-250.compute-1.amazonaws.com/&quot;&gt;http://ec2-3-80-82-250.compute-1.amazonaws.com/&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;[3D version] (&lt;a href=&quot;http://ec2-3-80-82-250.compute-1.amazonaws.com/visualization_3d.html&quot;&gt;http://ec2-3-80-82-250.compute-1.amazonaws.com/visualization_3d.html&lt;/a&gt;)&lt;br&gt;
+*Yes, with my mentor Sophine, we thought it could be a great idea to try with a 3D version of the graph :) . You can interact with the graph in the same way as with the 2d version.&lt;/p&gt;
+&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
+Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+&lt;p&gt;I had a great time working with Creative Commons. I hope you like the final product as much as I do. Thank you for following the development of this project.&lt;/p&gt;
+&lt;p&gt;Have a nice week!&lt;/p&gt;
+&lt;p&gt;Maria&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/">
     <title type="text">Creative Commons WordPress Plugin Final Phase</title>
     <id>urn:uuid:1de82ef5-6d43-3e05-adc1-a5b59133e51c</id>
