@@ -2,13 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2019-09-06T00:00:00Z</updated>
+  <updated>2019-09-11T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/">
+    <title type="text">Creative Commons Google Docs Add-on</title>
+    <id>urn:uuid:e638ebc8-752b-353d-8f12-4b8b6f80d632</id>
+    <updated>2019-09-11T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/" />
+    <author>
+      <name>brandonopened</name>
+    </author>
+    <content type="html">&lt;p&gt;A few years ago I published a &lt;a href=&quot;https://gsuite.google.com/marketplace/app/creative_commons_license_chooser/803008856330&quot;&gt;Google Docs Add-on that allowed users to insert a Creative Commons license image and link into their Google doc&lt;/a&gt;. Since then it’s been used thousands of times and I’ve gotten some great feedback from teachers about how nice it is to teach their students about digital literacy.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image1.png&quot; alt=&quot;Plugin screenshot 1&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;why&quot;&gt;Why&lt;/h3&gt;&lt;p&gt;I created the add-on after inspiration from students in one of the classes I teach at &lt;a href=&quot;http://www.fresno.edu/&quot;&gt;Fresno Pacific University’s Graduate School of Education&lt;/a&gt;. I was teaching a course on digital literacy, and open licenses and fair use was a large portion of the course.&lt;/p&gt;
+&lt;p&gt;To get started, I used the &lt;a href=&quot;https://developers.google.com/apps-script/overview&quot;&gt;templates Google provided about building an addon&lt;/a&gt;, took a look at the html etc on the Creative Commons License Chooser page itself, and eventually got something working! It took a couple of days off and on and mostly was me remembering javascriptI admit I had to pay a guy on Upwork to help clean up the code before I published it because sometimes the chooser would keep selecting hundreds of license images… of course, this was also before I was a bona fide contributor to the open source project I Product Manage, &lt;a href=&quot;http://www.github.com/opensalt/opensalt&quot;&gt;OpenSALT&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My hope is that folks are able to normalize the idea of putting a Creative Commons license on their public documents, as well as when &lt;a href=&quot;https://support.google.com/youtube/answer/2797468?hl=en&quot;&gt;uploading creative content to Youtube&lt;/a&gt; etc. Teachers in particular would be served by publishing a license so that if their work shows up unauthorized on &lt;a href=&quot;https://www.edweek.org/ew/articles/2018/12/19/on-teachers-pay-teachers-some-sellers-are.html&quot;&gt;Teachers Pay Teachers without attribution or for commercial purposes&lt;/a&gt;, they have a legal avenue to pursue it to be taken down. Even &lt;a href=&quot;https://creativecommons.org/2015/05/06/medium-embraces-cc-licenses/&quot;&gt;Medium has an option to publish documents with a CC license&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My nine year teaching career in Fresno Unified School District plus my career in Edtech (OpenEd.com, ACT) have opened my eyes to the need for a more open Web. Creative Commons licenses allow ‘free’ to not just be free, but able to conform to the five &lt;a href=&quot;https://opencontent.org/definition/&quot;&gt;R’s of open content&lt;/a&gt;(retained, reused, revised, remixed, and redistributed) and enable greater opportunities for innovation and equity.&lt;/p&gt;
+&lt;h3 id=&quot;what&quot;&gt;What&lt;/h3&gt;&lt;p&gt;This month I’ve finally updated it from the old Google Docs add-on store to the Gsuite Marketplace and updated some links. I’ve also updated the &lt;a href=&quot;https://github.com/brandonopened/creativecommons_gdocs&quot;&gt;Github sit&lt;/a&gt;e as the main website for the app and hope to implement some changes based on the work in&lt;a href=&quot;https://github.com/creativecommons/cc-license-chooser&quot;&gt; this Github repo&lt;/a&gt; with an updated license chooser process etc. The add-on has been installed thousands of times and usually has couple of hundred uses a month based on statistics.&lt;/p&gt;
+&lt;p&gt;I hope in the future to use an API call to support different languages, and perhaps embed RDF into the Google doc if that is possible to make the license machine-searchable. This is a fun project that is useful and helping teach me more about coding and best practices for open source software.&lt;/p&gt;
+&lt;h3 id=&quot;how&quot;&gt;How&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;In Google Docs, select “Get Add-ons” &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image2.png&quot; alt=&quot;How-to screenshot 1&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Input Creative Commons and press enter&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image3.png&quot; alt=&quot;How-to screenshot 2&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install and use!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image4.png&quot; alt=&quot;How-to screenshot 3&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;video-tutorial&quot;&gt;Video tutorial&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://youtu.be/sQZFlNXEVZ4&quot;&gt;A video tutorial is available here&lt;/a&gt; or by clicking on the image below.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.youtube.com/watch?feature=player_embedded&amp;v=sQZFlNXEVZ4
+&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/sQZFlNXEVZ4/0.jpg&quot; 
+alt=&quot;Video tutorial&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-ranking/">
     <title type="text">Some thoughts on improving the relevance of images in CC Search</title>
     <id>urn:uuid:8e103241-6a08-3ed6-8d09-210e146800d4</id>
