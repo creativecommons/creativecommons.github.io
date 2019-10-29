@@ -94,6 +94,9 @@
                     
                   </div>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">CC</a>
+                </li>
               </ul>
           </nav>
         </div>
