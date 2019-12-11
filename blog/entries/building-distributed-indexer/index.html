@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC Open Source Blog — Creative Commons on GitHub</title>
+<title>Building a Distributed Indexer for a Search Engine — Creative Commons on GitHub</title>
 <body>
   <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
   </a>
@@ -109,123 +109,73 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <p>Welcome to CC's new technical blog! The CC technical team writes about what we're working on, updates about CC's software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our <a href="/blog/feed.xml">news feed here</a>.</p>
-
+  <h2 class="mb-0">Building a Distributed Indexer for a Search Engine</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-new-design-system/">CC Vocabulary is a new design system for Creative Commons</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvkb/">
-  Dhruv Bhanushali
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/aldenpage/">
+  Alden Page
 </a>
-          on 2019-06-15</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-chooser-week2/">GSoC cc-chooser Week 2</a>
-        <p class="text-muted small">by <a href="/blog/authors/akmadian/">
-  Ari Madian
-</a>
-          on 2019-06-14</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-catalog-leverage-open-data-1/">CC Catalog: Leveraging Open Data and Open APIs</a>
-        <p class="text-muted small">by <a href="/blog/authors/sclachar/">
-  Sophine Clachar
-</a>
-          on 2019-06-07</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/meet-gsoc-2019-students/">Meet CC’s 2019 Google Summer of Code students</a>
-        <p class="text-muted small">by <a href="/blog/authors/kgodey/">
-  Kriti Godey
-</a>
-          on 2019-05-30</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-gsoc-accepted-students/">CC Google Summer of Code accepted students announced</a>
-        <p class="text-muted small">by <a href="/blog/authors/kgodey/">
-  Kriti Godey
-</a>
-          on 2019-05-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/open-source-at-cc-gs2019-pre-event/">Open Source at Creative Commons - 2019 Global Summit Event</a>
-        <p class="text-muted small">by <a href="/blog/authors/sclachar/">
-  Sophine Clachar
-</a>
-          on 2019-05-01</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-search-out-of-beta/">CC Search is out of beta with 300M images and easier attribution</a>
-        <p class="text-muted small">by <a href="/blog/authors/janeatcc/">
-  Jane Park
-</a>
-          on 2019-04-30</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/open-development-with-saltstack/">Open Development with SaltStack</a>
-        <p class="text-muted small">by <a href="/blog/authors/TimidRobot/">
-  Timid Robot Zehta
-</a>
-          on 2019-04-17</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-plus-gsoc-2019/">CC + Google Summer of Code 2019</a>
-        <p class="text-muted small">by <a href="/blog/authors/kgodey/">
-  Kriti Godey
-</a>
-          on 2019-03-04</p>
-      </li>
-    
-  </ul>
-
-  
-    
-  <ul class="pagination table-responsive mb-2">
-    
-      <li class="page-item"><a class="page-link" href="/blog/entries/page/3/">Previous</a></li>
-    
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/">1</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/2/">2</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/3/">3</a></li>
-      
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/entries/page/4/">4</a></li>
-      
-    
-    
-      <li class="page-item disabled"><a class="page-link">Next</a></li>
-    
-  </ul>
-
-  
+  on Wednesday, 2019-12-11</p>
+  <div class="body"><p>With CC Search, we want to make it possible to search all of the estimated 1.6 billion Creative Commons works on the internet. In order to make it possible for thousands of people to search billions of records in a reasonable period of time, we have to build a big inverted index (a data structure similar to the index in the back of a textbook), which allows very fast lookups of documents related to the user’s search query. To populate this index, we have to build a large database of Creative Commons works and then replicate it to our search index, which is powered by Elasticsearch.</p>
+<p>It turns out that, once your search index contains more than just a few million documents, maintaining the index is a non-trivial problem. Some of the concerns we had for our implementation:</p>
+<ol>
+<li><p>How often do we update the index as new Creative Commons licensed works are discovered? What if we need to make a change to every single document in the index, such as when we modify our search algorithm?</p>
+</li>
+<li><p>How can we rebuild the entire index quickly?</p>
+</li>
+<li><p>Can we rebuild the index without users noticing degraded search performance or, worse yet, not being able to serve results while reindexing?</p>
+</li>
+<li><p>Can we make this a completely automated process and avoid further operations tedium?</p>
+</li>
+</ol>
+<p>There is no off-the-shelf solution for this, particularly when performance is of concern; anybody in the business of writing a large search engine is going to have to write a custom indexer at some point.</p>
+<p>In the end, given the size of our dataset was in the range of a few hundred gigabytes, it turned out that bulk reindexing every week would be good enough for our purposes; our current upstream data sources don’t update much more frequently than that anyway. We wrote a program that automated the procedure of refreshing our database with the latest upstream data and pushing it to Elasticsearch, all completely online and without negative impact to production performance. A single server was responsible for moving all of our image data around to the appropriate data stores and juggling temporary tables and indices to hide the indexing process from the end user. I wrote a little bit about the design of this piece in <a href="https://opensource.creativecommons.org/blog/entries/searching-300-million/">a previous blog post</a>.</p>
+<p><img src="/blog/entries/building-distributed-indexer/one_server_indexing.png" alt="Ingestion Server architecture"></p>
+<p>At this point, we could reindex all 325 million images in about 1.5 days. That’s not exactly fast, but it could be scheduled to run over the weekend in a “set and forget” manner. That was good enough for about a year.</p>
+<p>However, in practice, we need to refresh our data more than once a week. For instance, if something went wrong with the indexing job (as often does while new search features are being tested on real data), we would have to start the process all over again, which means that the cost of even a small bug in indexing logic can dramatically lengthen the time it takes to deliver a new feature. More importantly, we wanted to iterate on our search algorithm, which meant we had to reindex our data quite frequently. We hoped to avoid this by performing tests on mock data or smaller subsets of the real data, but this ends up being only weakly correlated with search quality in the complete production dataset (in my experience, search result quality is inseparable from the quality of the underlying data). It became clear that indexing performance was slowing down the software development lifecycle, and further optimization was needed.</p>
+<p>Our single-node indexer had a throughput of about 2,500 records per second, which is far below Elasticsearch’s advertised indexing rates (although there are <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html">numerous factors unique to each workload</a> that affect indexing speed). Further profiling revealed that in our case we were likely bottlenecked by our Python code rather than I/O to the cluster: writing to the search index was reasonably fast (7,000 per second), but the indexer spent a ton of CPU time on deserializing records pulled in from database chunks, accounting for 2/3rds of the indexing process. A possible solution would be rewriting the indexer in a faster language, but there are a lot of drawbacks to this approach in that rewrites are costly, the likely performance improvement is not foreseeable, and we had already sunk plenty of time into writing the logic in Python. Instead, we decided to distribute the existing process across multiple machines, which would allow us to reuse existing code and scale up to an arbitrary number of nodes as our indexing performance requirements inevitably increase with the size of our data set.</p>
+<p>A few weeks of coding later, we had a solution in place that increased throughput to 15,000 records per second, or a 6-fold increase in performance, by splitting the work across 6 nodes. Indexing responsibilities are offloaded from Ingestion Server, which instead acts as a central point for coordinating the multiple indexing workers through a simple RPC API.</p>
+<p><img src="/blog/entries/building-distributed-indexer/indexing1.jpg" alt="Partitioning the data"></p>
+<p><img src="/blog/entries/building-distributed-indexer/indexing2.jpg" alt="Simultaneous indexing"></p>
+<p><img src="/blog/entries/building-distributed-indexer/indexing3.jpg" alt="Notification and promotion"></p>
+<p>There appears to be ample room for us to increase the node count before we become I/O bound by the database or Elasticsearch. I’m assuming doubling our node count would approximately halve our indexing time. Eventually, if our search index becomes as big as we anticipate it will, we are going to have to make the indexer workers better utilize the underlying hardware somehow, perhaps by rewriting the “hot” parts in a lower level language than Python, but that seems to be a distant concern as of today. Additionally, since workers only run when indexing is in progress, the cost of maintaining these additional nodes is low; it costs about $10 in cloud time to perform a full reindex of all 325MM images.</p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/community/ ">community</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-search/ ">cc-search</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/building-distributed-indexer"; this.page.url = "http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
