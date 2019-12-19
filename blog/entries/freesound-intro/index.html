@@ -1,0 +1,219 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>An Introduction to Freesound — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                
+                  <li class="nav-item">
+                    <a class="nav-link" href="/projects/">Projects</a>
+                  </li>
+                
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                  </li>
+                
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/programs/outreachy/2019-12-start/">Outreachy</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/gsoc-2019">GSoC 2019</a>
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+                    
+                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">CC</a>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">An Introduction to Freesound</h2>
+  
+  <p class="meta text-muted mt-0">by <a href="/blog/authors/ffont/">
+  Frederic Font
+</a>
+  on Thursday, 2019-12-19</p>
+  <div class="body"><h3 id="about-freesound">About Freesound</h3><p>To the best of our knowledge, <a href="https://freesound.org">Freesound</a> is the biggest website for sharing Creative Commons audio clips in the <em>observable universe</em>. It was started in 2005 as a research effort of the <a href="https://www.upf.edu/web/mtg/">Music Technology Group</a> in <a href="https://upf.edu">Universitat Pompeu Fabra</a>, Barcelona. The initial goal was to gather a collection of audio clips that could be shared among researchers to carry out computational analysis of sounds and learn about them. Creative Commons licenses had been introduced to the world only a couple of years before, and it seemed a perfect fit for the goals of the Freesound platform. Currently Freesound hosts more than <strong>430k audio clips</strong> uploaded by more than <strong>20k contributors</strong>. Freesound sounds have been <strong>downloaded more than 145M times</strong> by <strong>9M users</strong> all over the world. It contains all sorts of sounds, from field recordings to music instrument samples, foley, speech and music loops; but not <em>songs</em> in the traditional sense of <em>finished music compositions</em>. The aim of Freesound is to provide audio <em>building blocks</em> to be transformed and combined into other sounds, and reused elsewhere. Here are some nice examples of the variety of sounds to be found in Freesound:</p>
+<div style="text-align:center;">
+  <iframe frameborder="0" scrolling="no" src="https://freesound.org/embed/sound/iframe/264287/simple/full_size/" style="width:800px;height:245px;"></iframe>
+
+  <iframe frameborder="0" scrolling="no" src="https://freesound.org/embed/sound/iframe/261328/simple/full_size/" style="width:800px;height:245px;"></iframe>
+
+  <iframe frameborder="0" scrolling="no" src="https://freesound.org/embed/sound/iframe/392090/simple/full_size/" style="width:800px;height:245px;"></iframe>
+
+  <iframe frameborder="0" scrolling="no" src="https://freesound.org/embed/sound/iframe/447776/simple/full_size/" style="width:800px;height:245px;"></iframe>
+
+  <iframe frameborder="0" scrolling="no" src="https://freesound.org/embed/sound/iframe/161478/simple/full_size/" style="width:800px;height:245px;"></iframe>
+
+  <iframe frameborder="0" scrolling="no" src="https://freesound.org/embed/sound/iframe/416984/simple/full_size/" style="width:800px;height:245px;"></iframe>
+</div><p>Freesound has been featured in the Creative Commons blog several times in the past: <a href="https://creativecommons.org/2005/04/12/overinspaincreatinganonlinecollaborativedatabaseofsounds/">here</a>, <a href="https://creativecommons.org/2005/10/01/freesound/">here</a>, <a href="https://creativecommons.org/2006/07/08/freesoundviaccmixter20kfreesounds/">here</a>, <a href="https://creativecommons.org/2007/01/17/freesound-sample-in-children-of-men/">here</a>, <a href="https://creativecommons.org/2008/03/13/freesound-20/">here</a>, <a href="https://creativecommons.org/2008/09/29/freesoundorg/">here</a> and <a href="https://creativecommons.org/2011/09/12/celebrating-freesound-2-0-retiring-sampling-licenses/">here</a>. Also you'll find plenty of information about Freesound, statistics and the like in the <a href="https://blog.freesound.org">Freesound Blog</a>.</p>
+<p style="text-align:center;"><img src="freesound_logo.png" width=1000px/></p><h3 id="the-freesound-api">The Freesound API</h3><p>In 2011 a web API endpoint was added to Freesound and since then it has been evolving and incorporating new functionalities together with the site. The current version of the API, <strong>Freesound APIv2</strong>, can be used by 3rd party developers and researchers to programatically search sounds in Freesound, filter results (including CC license), download audio analysis and the sounds themselves. It can also be used to upload new sounds, describe, rate and comment existing ones. In summary, it provides an alternative interface to that of the web browser so that <strong>Freesound content can be easily integrated in all sorts of projects</strong> outside Freesound itself.</p>
+<p>The Freesound API is a RESTful API that can be used similarly to other web APIs. To facilitate access to the API, we provide clients in <a href="/blog/entries/freesound-intro/(https://github.com/mtg/freesound-python">Python</a>), <a href="https://github.com/g-roma/freesound.js">Javascript</a> and <a href="https://github.com/mtg/freesound-juce">Juce (C++)</a> frameworks, but there are also <a href="https://freesound.org/docs/api/client_libs.html">community-developed clients</a> for other programming languages including Max/MSP, Perl, Supercollider, Objective-C, Scala and QT (C++). As an example, using the Python Freesound API client a search for <em>dog</em> sounds would look like this:</p>
+<pre><code class="lang-python">import freesound
+
+client = freesound.FreesoundClient()
+client.set_token(&#39;&lt;Your API key obtained from https://freesound.org/apiv2/apply&gt;&#39;, &#39;token&#39;)
+
+results = client.text_search(query=&#39;dog&#39;)
+</code></pre>
+<p>The query could be further refined and, for instance, include only dog sounds which are shorter than 5 seconds, with a high average rating, and in CC0 license like this:</p>
+<pre><code class="lang-python">results = client.text_search(query=&#39;dog&#39;, filter=&#39;duration:[0.0 TO 15.0] avg_rating:[4.5 TO 5.0] license:&quot;Creative Commons 0&quot;&#39;)
+</code></pre>
+<p>Search results can also be easily downloaded:</p>
+<pre><code class="lang-python">results[0].retrieve_preview(&#39;/direcotry/to/save/the/file/&#39;)
+</code></pre>
+<p>One of the features that make the Freesound API unique is the ability to retrieve and filter sounds using <em>audio features</em> extracted with a <strong>computational analysis of the sounds uploaded to Freesound</strong>. For that purpose we use a powerful open source audio analysis library called <a href="https://essentia.upf.edu/">Essentia</a> that is also developed at the Music Technology Group. This allows the implementation of features like audio similarity search (i.e. searching for sounds given another sound as a <em>target</em>), or advanced exploration interfaces in which audio clips are displayed in a space according to some automtically estimated acoustic properties (see the <em>Freesound Explorer</em> example below).</p>
+<p>The Freesound API is a very powerful tool to facilitate the reuse of Freesound content. You can find more information about the API and its features in the <a href="https://freesound.org/docs/api/">Freesound API documentation</a>. The Freesound API is currently being used by companies like Acoustica, AudioGaming, Google, Mozilla, Soundly, Spotify, Waves Audio, Wolfram, and others.</p>
+<h3 id="spreading-cc-content-in-the-world">Spreading CC content in the world</h3><p>The audio content hosted in Freesound has a second life outside the website. It is very hard to track all the projects in which Freesound content is used, but with 50k unique visits per day, the accumulated millions and millions of download records and the integration with 3rd party applications, it becomes clear that <strong>Freesound is spreading Creative Commons audio virtually everywhere</strong>. Some users choose to use the Freesound forums to <a href="https://freesound.org/forum/your-work-made-with-freesounds/">explain the work they do using Freesound sounds</a>, including music, videogames, animations, movies, theater plays, education, etc. Unfortunately this is just a small minority of users. To try to keep track of some of the applications, research proejcts and other initiatives that use Freesound content, the <a href="https://labs.freesound.org">Freesound Labs</a> platform was introduced back in 2015. Currently it lists more than 40 projects and over 50 research papers using Freesound data. Some of these projects include <strong>CTAG's Strämpler</strong>, an eurorack sample streaming and sound synthesis module; <strong>Spotify's Sountrap</strong>, an online DAW with direct integration of Freesound search; <strong>Le Sound's AudioTexture</strong>, a granular synthetizer that transforms Freesound clips; and <strong>Freesound Explorer</strong>, a visual interface for exploring Freesound in a 2-dimensional space and create music at the same time.</p>
+<p style="text-align:center;"><img src="strampler.png" width=500px/><br>
+<a href="https://www.creative-technologies.de/ctag-strampler-a-eurorack-sample-streaming-and-sound-synthesis-module/">Strämpler</a> (see <a href="https://www.youtube.com/watch?v=zmj8tKPHV8g">video here</a>)</p><p style="text-align:center;"><img src="soundtrap.png" width=500px/><br>
+<a href="https://www.soundtrap.com">Soundtrap</a></p><p style="text-align:center;"><img src="audiotexturefree.png" width=500px/><br>
+<a href="https://lesound.io/product/audiotexture-free/">Audio Texture</a> (see <a href="https://www.youtube.com/watch?v=pv1ozaJ3K2o">video here</a>)</p><p style="text-align:center;"><img src="freesound_explorer2.png" width=500px/><br>
+<a href="http://labs.freesound.org/fse/">Freesound Explorer</a></p><h3 id="under-the-hood">Under the hood</h3><p>Both the Freesound website and API run on a modern technology stack which was built with high load and scalability in mind. Below is a diagram with the main blocks of the architecture. The main website consists of a <a href="https://www.djangoproject.com">Django</a> application and HTML/CSS/JS frontend connected to a <a href="https://www.postgresql.org">PostgreSQL</a> database. This implements sound browsing and basic social interaction features (forum, sound comments, sound ratings, private messaging, etc.). Text indexing is supported by an Apache <a href="https://lucene.apache.org/solr/">Solr</a> server including text descriptions and tags, which allows for sophisticated sound text queries using the Solr query syntax. A distributed architecture is used for processing incoming sounds, producing compressed previews and waveform/spectrogram images (using Python's <a href="https://pillow.readthedocs.io/en/stable/">Pillow</a> package), as well as for audio feature extraction. Feature extraction and the similarity search service are supported with the abovementioned Essentia library. Finally, Freesound uses <a href="https://www.nginx.com">NGINX</a> webserver to serve the Django app and static content in the appservers, and <a href="http://www.haproxy.org">HAProxy</a> loadbalancers to balance the load of incoming requests across the appservers.</p>
+<p style="text-align:center;"><img src="diagram.png" width=600px/></p><p>The code of the Freesound website is <strong>open source</strong>, and all development happens in our <a href="https://github.com/mtg/freesound/">public source code repository</a>. External contributions are welcome so if you want to participate don't hesitate to get in touch with us. Of course if you're not interested in devleopment but still want to contribute to Freesound you can upload sounds or <a href="https://freesound.org/donations/donate/">consider making a donation</a> :)</p>
+</div>
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/community/ ">community</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/freesound/ ">freesound</a>,
+          
+            
+            
+            <a href=" /blog/categories/audio/ ">audio</a>
+          
+        
+      </p>
+    </div>
+  </div>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/freesound-intro"; this.page.url = "http://opensource.creativecommons.org/blog/entries/freesound-intro/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
