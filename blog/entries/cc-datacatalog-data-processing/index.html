@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Visualize CC Catalog data - data processing</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/soccerdroid/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/soccerdroid/">
   María Belén Guaranda Cabezas
 </a>
   on Wednesday, 2019-07-10</p>
+  
   <div class="body"><p>Welcome to the data processing part of the GSoC project! In this blog post, I am going to tell you about my first thoughts with the real data, and give you some details of the implementation developed so far.</p>
 <h3 id="data-extraction">Data Extraction</h3><p>Each month, Creative Commons uses <a href="http://commoncrawl.org/">Common Crawl</a> data to find all domains that contain CC licensed content. As you might be guessing, the amount of data is very big, so the CC Catalog data is stored in <a href="http://commoncrawl.org/the-data/get-started/">S3</a> buckets and <a href="https://spark.apache.org/">Apache Spark</a> is used to extract the data from Common Crawl.</p>
 <p>Spark is used again in this project to extract the data, in the form of parquet files, from the buckets. In order to facilitate the analysis and processing of the data, the files are converted to TSV (tab-separated values). The dataset I work on contains the following fields:</p>
@@ -187,6 +188,7 @@ Godey</a>, have been very supportive.</p>
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

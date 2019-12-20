@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Recent instability of the CC Wiki: ImageMagick?</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/nkinkade/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/nkinkade/">
   nkinkade
 </a>
   on Friday, 2010-06-4</p>
+  
   <div class="body"><p>For the past few weeks we have been having some intermittent but fairly serious problems with the machine that runs the CC Wiki. Every few days it would just crash and burn, and not being able to login, the only remedy was a reboot. The system and application logs were very silent on the cause.</p>
 <p>A day or two ago <a href="http://purl.org/NET/JesseW/SundryStuff/">Jesse Weinstein</a> (who helps CC greatly by monitoring the CC Wiki and keeping down spam) wrote to say that he was getting 503 errors from the wiki. I explained that we were having problems, but that it should be working at that moment. He wrote back to mention that /Special:NewFiles was still returning a 503. Sure<br>
 enough, not only did it return a 503, but it hung for 30s to a minute, and eventually <a href="http://varnish-cache.org/">Varnish</a> would return the 503 error.</p>
@@ -131,6 +132,7 @@ enough, not only did it return a 503, but it hung for 30s to a minute, and event
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

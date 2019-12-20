@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Removing duplicate rows in MySQL</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/nkinkade/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/nkinkade/">
   nkinkade
 </a>
   on Tuesday, 2010-01-12</p>
+  
   <div class="body"><p>There are thousands of articles out there on removing duplicate rows from a SQL database. However, almost all of the first-page results of a search at Google for something like " <em>mysql remove duplicates</em> " involved creating temporary tables and other convoluted ways of solving the problem. I'm posting this simple method here in the hope that it could simplify this process for someone else. This is likely old news for people highly experienced with MySQL and SQL databases in general, but it's not that frequent that I have to tackle the duplicate row issue, so I post here for my own reference and that of others. The idea is that you create a unique index on the table based on the columns that should not be duplicated. MySQL will delete the duplicates in order to comply with the uniqueness of the index created. You then simply remove the temporary index.</p>
 <p>There was <a href="http://issues.civicrm.org/jira/browse/CRM-3901">a bug</a> in <a href="http://civicrm.org">CiviCRM</a> which was causing duplicate records in a particular table. Find the duplicates:</p>
 <p><code>mysql&gt; SELECT contact_id, contribution_id, receive_date, product_id, count(*) FROM civicrm_contribution_product JOIN civicrm_contribution ON civicrm_contribution_product.contribution_id = civicrm_contribution.id GROUP BY contribution_id, product_id having count(*) &gt; 1 ORDER BY receive_date;</code></p>
@@ -133,6 +134,7 @@
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Not Panicking: switching to Virtualenv for deployment</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/cwebber/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/cwebber/">
   cwebber
 </a>
   on Friday, 2011-07-29</p>
+  
   <div class="body"><p>I've written about <a href="/archives/old-tech-blog/entries/using-virtualenv-and-zc-buildout-together/">zc.buildout and virtualenv before</a> and how to use them both simultaneously, which I find to be useful for development on my own machine. I really admire both of these tools; I especially think that buildout is really great for projects where you want developers to be able to get your package running quickly without having to understand how python packaging works. (I <a href="http://docs.mediagoblin.org/hackinghowto.html">use buildout for this purpose</a> for one of my own personal projects, <a href="http://mediagoblin.org">MediaGoblin</a>, and I think it's served a wonderful purpose of getting new contributors up and going quickly.)</p>
 <p>Anyway, in that previous blogpost about zc.buildout and virtualenv I erroneously suggested that virtualenv is best for multiple packages in development and zc.buildout is better for just one. I was rightly corrected that you can use the develop line of a buildout config file to specify multiple python packages. So this is what we've been doing for the last year roughly, running a meta-package with <a href="http://code.creativecommons.org/viewgit/cc.engine.git/">cc.engine</a> checked out of git and the rest running out of python packages.</p>
 <p>We've been doing packaging and <a href="/archives/old-tech-blog/entries/your-own-python-egg-baskets-package-repositories/">releasing to our own egg basket</a> for a while, and for the most part that has worked out, but our system administrator Nathan Kinkade pointed out that we don't really need packages, it's a bunch of extra steps to build, nobody outside of CC is using these packages, and it's a lot easier to rollback a git repository in case of an emergency than it is a python package.</p>
@@ -133,6 +134,7 @@
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

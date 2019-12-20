@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Tuning TCP on CC&#39;s servers</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/nkinkade/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/nkinkade/">
   nkinkade
 </a>
   on Wednesday, 2010-12-8</p>
+  
   <div class="body"><p>A couple weeks ago we launched a new rack-mount server, which is kindly hosted by the <a href="http://www.isc.org/">ISC</a> in their Redwood City, California data center. The sole purpose of this new server is to host static content, mostly i.creativecommons.org, which is probably the busiest domain CC has due to the license icons and badges being served from there.</p>
 <p>Upon moving i.creativecommons.org to this new machine I noticed that there were terrible problems with connection timeouts when requesting images. After thrashing around for why this was happening, I used <code>tcpdump</code> to grab some network traffic on the server and discovered that SYN requests were arriving at the machine and dying right there, with no subsequent SYN-ACK. At that point it was clear that this was not a <a href="http://www.varnish-cache.org/">Varnish</a> or Apache problem, but something at a much lower level. After testing various TCP tweaks in the running kernel I discovered that setting <code>net.ipv4.tcp_max_syn_backlog=2048</code>, up from the default of 256, <em>and</em> turning on <code>net.ipv4.tcp_syncookies</code> seemed to resolve the connection timeout issues.</p>
 <p>However, the kernel message log was <em>filled</em> with message like the following. In fact, there was one such message written to the log every minute:</p>
@@ -147,6 +148,7 @@ vm.min_free_kbytes = 65536
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

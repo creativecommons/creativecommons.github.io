@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Indexing License Metadata in Tracker, Week 2</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/archives/old-tech-blog/authors/jakin/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/jakin/">
   jakin
 </a>
   on Tuesday, 2007-06-19</p>
+  
   <div class="body"><p>I've made progress extracting licenses from the following formats: Vorbis, MP3, FLAC, PDF, JPEG, TIFF, PNG, PDF, HTML, and MSOffice. They are by no means all done, but for several formats I have patches and am awaiting approval from <a href="http://www.gnome.org/projects/tracker/">Tracker</a>.</p>
 <p>I've written a <a href="http://bugzilla.gnome.org/show_bug.cgi?id=447000">GStreamer bug report</a> and submitted a patch to allow reading the WCOP (License URI) id3v2 tag. Discussion continues there.</p>
 <p>No luck with video metadata (AVI, Matroska, OGM, Quicktime). Things are just too ad-hoc in that arena to get anything worthwhile done. For Tracker, GStreamer is doing all the work on extracting video metadata, but as far as I can tell, nothing relating to licenses ever gets extracted and passed on to Tracker. GStreamer would need to be updated to read the tags, but that can't be done unless there are consistent specs on how to do so. Exempi can embed XMP into MOV and AVI, but I don't know how to get it back out. It may or may not be feasible to write an extractor that only extracts XMP using Exempi.</p>
@@ -147,6 +148,7 @@
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

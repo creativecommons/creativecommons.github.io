@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Combating dead links with CC Link Checker</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/bhumijgupta/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/bhumijgupta/">
   Bhumij Gupta
 </a>
   on Monday, 2019-07-15</p>
+  
   <div class="body"><p>Creative Commons provides vast number of public copyright licenses for people who want to enable free distribution of their work. Creative Commons licenses currently covers over <strong>1.6 billion resources</strong>. These license files are then translated to multiple different languages and ported for <a href="https://wiki.creativecommons.org/wiki/CC_Ports_by_Jurisdiction">different jurisdictions</a> for international usage. People link to the respective licenses along with their licensed works. These license files are in the form of <code>html</code> files, stored in <a href="https://github.com/creativecommons/creativecommons.org/tree/master/docroot/legalcode">creativecommons/creativecommons.org</a> repo.</p>
 <h3 id="problem-statement">Problem Statement</h3><p>These license files contain links to their deeds, license translated to other languages, internal links, and many more. Sometimes due to errors, these files may contain dead / broken links. These broken links leads to incorrect/ incomplete understanding of the license clauses and permissions by the viewer. This may sometime lead to incorrect usage of the licensed resource.</p>
 <p>At the time of writing, the repo contains over <strong>930 files</strong> with an average of <strong>50 links per file</strong>. New translation of license deeds are regularly added to the repo and the existing license deeds are also updated frequently. Manually testing these files would take a lot of time. Considering the future additions of licenses, translations and jurisdiction ports, the time required for manual testing would increase drastically.</p>
@@ -175,6 +176,7 @@ Bhumij Gupta</em></p>
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>

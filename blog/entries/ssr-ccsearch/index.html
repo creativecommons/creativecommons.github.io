@@ -111,10 +111,11 @@
           
   <h2 class="mb-0">Server Side Rendering with Vue.JS on CC Search</h2>
   
-  <p class="meta text-muted mt-0">by <a href="/blog/authors/brenoferreira/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/brenoferreira/">
   Breno Ferreira
 </a>
   on Friday, 2019-11-1</p>
+  
   <div class="body"><p>The frontend of CC Search is built with Vue.JS, which is a Javascript library for managing and rendering DOM elements in the browser, similar to React and Angular. But, as it is usually the case with applications built with those libraries, the application was rendered completely on the users' browser. It means that when users loaded CC Search, the server would send a blank HTML page and some Javascript files that would be downloaded by the user. Only once those JS assets were loaded and parsed, would the rendering begin.</p>
 <p>While easier to implement initially, when we needed to ship the initial versions of CC Search faster to validate our ideas, this approach has some significant disadvantages:</p>
 <ol>
@@ -175,6 +176,7 @@ One example is the <a href="https://ccsearch.creativecommons.org/photos/df2e7f75
       </p>
     </div>
   </div>
+
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>
