@@ -128,6 +128,7 @@
 <p>I was recently experimenting and discovered that for some things that were apparently broken, configuring Varnish to "pipe" requests works, while using "pass" does not. This won't make any sense unless you are familiar with VCL (Varnish Configuration Language). I know that "piping" fixed the bbPress issue, and I suspect that it will fix the Bazaar issue as well, though I haven't tested it.</p>
 <p>A week or so ago I experimented with turning off Varnish for creativecommons.org to see how Apache would handle the load unaided. Things seemed to be going well for a while, but within a weeks time the site went down twice. The second time I couldn't revive Apache. There were kernel messages like <code>ip_conntrack: table full: packet dropped</code>. Apparently the machine was just flooded and Apache was pegged at it's MaxClients limit. I re-enabled Varnish and the problem went away immediately. So it appears that not only is Varnish doing a nice job of caching, but it also is able to handle many more simultaneous TCP connections than Apache without blowing up. <a href="http://creativecommons.org/about/people/#83">Asheesh</a> and I ran some experiments that seemed to demonstrate that Varnish actually helps to mitigate floods of traffic, whether they be natural or malicious.</p>
 </div>
+  
   <div class="card bg-light">
     <div class="card-body p-2">
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>

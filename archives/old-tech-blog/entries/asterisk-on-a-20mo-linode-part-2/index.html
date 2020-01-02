@@ -126,6 +126,7 @@
 <h1 id="apt-get-install-zaptel-source">apt-get install zaptel-source</h1><h1 id="cd-/usr/src">cd /usr/src</h1><h1 id="vi-modules/zaptel/kernel/ztdummy.c">vi modules/zaptel/kernel/ztdummy.c</h1><p>[comment out _#define USE<em>RTC</em> lines]</p>
 <h1 id="m-a-prepare">m-a prepare</h1><h1 id="m-a-build-zaptel">m-a build zaptel</h1><h1 id="m-a-install-zaptel">m-a install zaptel</h1><h1 id="modprobe-ztdummy">modprobe ztdummy</h1><p>I think those are the basic steps I took. The actual path was much less clean, as I hit bugs and went back and forth. It's possible I have missed a step or two in there, or that the way I went about things wasn't right, ideal or even correct. Of course, all of this also presupposes that you have already configured your Linode to boot from a custom local kernel instead of the default Linode kernel. <a href="http://library.linode.com/advanced/pv-grub-howto">Instructions</a> on how to do this can be found at at linode.com.</p>
 </div>
+  
   <div class="card bg-light">
     <div class="card-body p-2">
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>

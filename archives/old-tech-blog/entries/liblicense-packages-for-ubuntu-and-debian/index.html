@@ -127,6 +127,7 @@ repository. Information on that is at <a href="http://mirrors.creativecommons.or
 <p>Nathan Y. asked a question: Why "liblicense2"? This is because of ABI versioning - if you write a C application that links to liblicense and upload that to the Debian archive, it is crucial that if the liblicense library gets updated, the user of your application not need to recompile your app. For that reason, "ABI versioning" is a promise that so long as the library has version <em>2.x</em> , any program built with an earlier or equal version of <em>2.x</em> will have the library functions appear in the same place in memory. That way, the compiled-in assumptions about those functions' location will not be violated. If it were to be violated, the application would quickly crash with a "Segmentation fault" or "Access violation," or it might even try to execute the wrong liblicense function.</p>
 <p>Now I need to work on the <a href="https://bugzilla.redhat.com/show_bug.cgi?id=446993">Fedora liblicense packaging bug</a>....</p>
 </div>
+  
   <div class="card bg-light">
     <div class="card-body p-2">
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>

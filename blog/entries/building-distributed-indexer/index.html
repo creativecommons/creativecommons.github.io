@@ -140,6 +140,7 @@
 <p><img src="/blog/entries/building-distributed-indexer/indexing3.jpg" alt="Notification and promotion"></p>
 <p>There appears to be ample room for us to increase the node count before we become I/O bound by the database or Elasticsearch. I’m assuming doubling our node count would approximately halve our indexing time. Eventually, if our search index becomes as big as we anticipate it will, we are going to have to make the indexer workers better utilize the underlying hardware somehow, perhaps by rewriting the “hot” parts in a lower level language than Python, but that seems to be a distant concern as of today. Additionally, since workers only run when indexing is in progress, the cost of maintaining these additional nodes is low; it costs about $10 in cloud time to perform a full reindex of all 325MM images.</p>
 </div>
+  
   <div class="card bg-light">
     <div class="card-body p-2">
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>

@@ -123,6 +123,7 @@ enough, not only did it return a 503, but it hung for 30s to a minute, and event
 <p>I'm guessing our problem was something like this: bots and crawlers were hitting the /Special:NewFiles page repeatedly with an incremental &from;= query parameter, and each Apache process would hang until eventually we reached Apache's MaxClients setting, then requests would start to back up in Varnish's queue, and the machine would slow to a crawl and eventually become unresponsive.</p>
 <p>Hopefully this supposition is true, and we not only have a fully functional wiki again, but the systemic problems with the server are now resolved.</p>
 </div>
+  
   <div class="card bg-light">
     <div class="card-body p-2">
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>

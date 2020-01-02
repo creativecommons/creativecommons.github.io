@@ -120,6 +120,7 @@
 <p>I had seen some of the tools floating around and decided to watch <a href="http://www.youtube.com/watch?v=VSq8m00p1FM">the panel from Djangocon</a> to get a better overview. For the record the represented tools are <a href="http://code.google.com/p/dmigrations/">dmigrations</a>, <a href="http://south.aeracode.org/">south</a> and <a href="http://code.google.com/p/django-evolution/">django-evolution</a>. At some point while watching the video I think I was convinced each was the right solution; they all have features/use cases to recommend them.</p>
 <p>Selecting the correct tool is an exercise in change management: it seems almost certain that Django will eventually adopt or create a "blessed" migration tool. And at that point, we need a way to move forward. Because of this I wound up choosing dmigrations. Sure, it doesn't do some of the fancy stuff that south and django-evolution do (dependency tracking, model "fingerprinting") but it does let us dump out the entire migration path as raw SQL and that's something I can easily work with when it comes time to recreate our database on the "real' platform.</p>
 </div>
+  
   <div class="card bg-light">
     <div class="card-body p-2">
       <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
