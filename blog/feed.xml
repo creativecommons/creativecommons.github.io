@@ -1,17 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
-  <id>urn:uuid:8f38fda5-63d7-30b7-80e4-0f7c972e8909</id>
-  <updated>2020-01-22T00:00:00Z</updated>
+  <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
+  <updated>2020-01-23T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/">
+    <title type="text">Apache Airflow testing with Pytest</title>
+    <id>urn:uuid:c2d026d4-8da1-3390-bfad-5b77b0d103d0</id>
+    <updated>2020-01-23T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/" />
+    <author>
+      <name>mathemancer</name>
+    </author>
+    <content type="html">&lt;p&gt;CC Catalog is a project that gathers information about images from around the
+internet, and stores the information so that these images can eventually be
+indexed in &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt;. A portion of the process is directed by
+&lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt;, which is a tool commonly used to organize workflows
+and data pipelines.&lt;/p&gt;
+&lt;p&gt;The nature of Airflow leads to some particular challenges when it comes to
+testing, and special care must be taken to make tests independent from the
+global state of the system where they are run.  This blog post will describe a
+few of the challenges we faced when writing tests for Airflow jobs, and some
+tricks we used to solve those challenges.&lt;/p&gt;
+&lt;h2 id=&quot;brief-description-of-apache-airflow&quot;&gt;Brief description of Apache Airflow&lt;/h2&gt;&lt;p&gt;Apache Airflow is an open source piece of software that loads Directed Acyclic
+Graphs (DAGs) defined via python files.  The DAG is what defines a given
+workflow.  The nodes are pieces of jobs that need to be accomplished, and the
+directed edges of the graph define dependencies between the various pieces.  By
+default, the Airflow daemon only looks for DAGs to load from a global location
+in the user's home folder: &lt;code&gt;~/airflow/dags/&lt;/code&gt;. When a DAG is 'run', i.e., the
+tasks defined by the nodes of the DAG are each performed in the order defined by
+the directed edges of the DAG, the Airflow daemon stores information about the
+dag run in &lt;code&gt;~/airflow/&lt;/code&gt;.  The daemon also stores general information about what
+DAGs exist on the system, and all of their current statuses in that directory.
+For more details, please see &lt;a href=&quot;https://airflow.apache.org/docs/stable/&quot;&gt;the documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;challenge:-localize-airflow-to-the-project-directory&quot;&gt;Challenge:  Localize Airflow to the project directory&lt;/h2&gt;&lt;p&gt;Even when installed using &lt;code&gt;pip&lt;/code&gt; within a &lt;a href=&quot;https://github.com/pypa/virtualenv&quot;&gt;&lt;code&gt;virtualenv&lt;/code&gt;&lt;/a&gt; environment,
+all airflow commands will be run against the default locations in the user's
+home directory. In particular, if you want to test a DAG from your project
+directory, the method given in the &lt;a href=&quot;https://airflow.apache.org/docs/stable/tutorial.html#testing&quot;&gt;Airflow documentation&lt;/a&gt; is to
+copy the dag into the default location &lt;code&gt;~/airflow/dags/&lt;/code&gt;, and use the
+command-line &lt;code&gt;airflow&lt;/code&gt; tool to run the tasks defined by the nodes.  The
+information about success and failure of the tests will be stored by the Airflow
+daemon in the &lt;code&gt;~/airflow/&lt;/code&gt; directory.  We'd rather keep all input and output
+from our tests to the project directory instead.  This helps avoid any side
+effects which might arise by running tests for different projects, and also
+ensures that tests can't affect anything in the default directory, which may be
+used for production in many cases.&lt;/p&gt;
+&lt;p&gt;The solution is to choose a directory in your project, and set the environment
+variable &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; whenever you run the tests, or use the &lt;code&gt;airflow&lt;/code&gt;
+command on the project DAGs. I recommend you add the command&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;export AIRFLOW_HOME=/your/desired/full/path/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to a script (ours is called &lt;code&gt;env.sh&lt;/code&gt;) that will be run in any shell dealing with
+the 'localized' Airflow instance, because forgetting to set the variable for
+even one &lt;code&gt;airflow&lt;/code&gt; command will corrupt the DAG states stored in the global
+area. Note that setting this variable is necessary even when running in a
+&lt;code&gt;virtualenv&lt;/code&gt; environment.&lt;/p&gt;
+&lt;p&gt;Now that you have &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; set, you'll likely want to load some DAGs that
+you've written.  This is made easier if you put the files defining them into a
+&lt;code&gt;dags&lt;/code&gt; directory in the directory denoted by &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt;.  I.e., it's wise
+to structure the project sub-directory dealing with Airflow and Airflow DAGs
+similarly to the default location, but in your project directory.  At this
+point, you should have some &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; directory as a subdirectory of your
+project directory, and then some &lt;code&gt;$AIRFLOW_HOME/dags&lt;/code&gt; directory, where you keep
+any python files defining Airflow DAGs, and their dependencies.  Another
+advantage of this structure is it's likely the directory structure you'll use in
+production, and replicating simplifies deployment.&lt;/p&gt;
+&lt;p&gt;Finally, Airflow will leave a number of files in the &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; directory
+which you are not likely to want to track in source control (e.g., &lt;code&gt;git&lt;/code&gt;).
+These files are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/airflow.cfg&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/airflow.db&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/logs/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/unittests.cfg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Add these files to &lt;code&gt;.gitignore&lt;/code&gt; or the equivalent.&lt;/p&gt;
+&lt;h2 id=&quot;smoketesting:-can-the-airflow-daemon-load-the-dags?&quot;&gt;Smoketesting:  Can the Airflow daemon load the DAGs?&lt;/h2&gt;&lt;p&gt;Note that we're using &lt;code&gt;pytest&lt;/code&gt; for our unit testing, and so most examples assume
+this.&lt;/p&gt;
+&lt;p&gt;The most basic test you'll want is to determine whether your DAGs can load
+without errors. To do this, you can use the following function:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;from airflow.models import DagBag
+
+def test_dags_load_with_no_errors():
+    dag_bag = DagBag(include_examples=False)
+    dag_bag.process_file(&amp;#39;common_api_workflows.py&amp;#39;)
+    assert len(dag_bag.import_errors) == 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We initialize a &lt;code&gt;DagBag&lt;/code&gt; (this loads DAG files). With the &lt;code&gt;process_file&lt;/code&gt; method,
+we instruct the Airflow daemon to attempt to load any DAGs defined in the
+&lt;code&gt;common_api_workflows.py&lt;/code&gt; file.  We then check to make sure loading the DAGs
+didn't produce any errors.&lt;/p&gt;
+&lt;h2 id=&quot;hint:-use-functions-to-create-dags.&quot;&gt;Hint: Use functions to create DAGs.&lt;/h2&gt;&lt;p&gt;This will increase testability. You can test the function, bypassing the need to
+load the DAG into the &lt;code&gt;DagBag&lt;/code&gt; (except when you're actually testing that it
+&lt;em&gt;can&lt;/em&gt; be loaded). This may seem obvious, but none of the Airflow documentation
+uses this pattern. Here is an example of a function that creates a simple dag,
+and a test of the function:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;from airflow import DAG
+from airflow.operators.bash_operator import BashOperator
+
+def create_dag(
+        source,
+        script_location,
+        dag_id,
+        crontab_str=None,
+        default_args=DAG_DEFAULT_ARGS):
+
+    dag = DAG(
+        dag_id=dag_id,
+        default_args=default_args,
+        schedule_interval=crontab_str,
+        catchup=False
+    )
+
+    with dag:
+        start_task = BashOperator(
+            task_id=&amp;#39;{}_{}&amp;#39;.format(source, status),
+            bash_command=&amp;#39;echo Starting {} workflow&amp;#39;.format(status),
+            dag=dag
+        )
+
+        run_task =  BashOperator(
+            task_id=&amp;#39;get_{}_images&amp;#39;.format(source),
+            bash_command=&amp;#39;python {} --mode default&amp;#39;.format(script_location),
+            dag=dag
+        )
+
+        start_task &amp;gt;&amp;gt; run_task
+
+    return dag
+
+def test_create_dag_creates_correct_dependencies():
+    dag = create_dag(
+        &amp;#39;test_source&amp;#39;,
+        &amp;#39;test_script_location&amp;#39;,
+        &amp;#39;test_dag_id&amp;#39;
+    )
+    start_id = &amp;#39;test_source_starting&amp;#39;
+    run_id = &amp;#39;get_test_source_images&amp;#39;
+    start_task = dag.get_task(start_id)
+    assert start_task.upstream_task_ids == set()
+    assert start_task.downstream_task_ids == set([run_id])
+    run_task = dag.get_task(run_id)
+    assert run_task.upstream_task_ids == set([start_id])
+    assert run_task.downstream_task_ids == set([])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, we assume that &lt;code&gt;DAG_DEFAULT_ARGS&lt;/code&gt; is defined earlier in the file.  See the
+Airflow documentation for details about default DAG arguments. Now, this
+function is testable (great!) but it doesn't acutally make the DAG it creates
+known to the Airflow daemon. To do that, we have to create the created dag into
+the global scope of the module defined by the file, which can be done with the
+following snippet:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;globals()[dag_id] = create_dag(
+    source,
+    script_location,
+    dag_id
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here, it's assumed that &lt;code&gt;source&lt;/code&gt;, &lt;code&gt;script_location&lt;/code&gt;, and &lt;code&gt;dag_id&lt;/code&gt; are defined
+earlier in the python file.&lt;/p&gt;
+&lt;p&gt;We hope that these hints are helpful to the reader.  For more, and for the
+context around the snippets shown here, please take a look at
+&lt;a href=&quot;https://github.com/creativecommons/cccatalog/tree/c4b80600eb5695cc294e1791ba90bdc3a408b7b9/src/cc_catalog_airflow&quot;&gt;the repo&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-3/">
     <title type="text">CC Platform Toolkit Revamp - 3</title>
-    <id>urn:uuid:42217e62-82f5-3f4a-94d9-4b3290c40dde</id>
+    <id>urn:uuid:40b08ba7-d93d-3f0d-8201-90c553fe016a</id>
     <updated>2020-01-22T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-3/" />
     <author>
@@ -25,7 +184,7 @@
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-my-first-four-weeks/">
     <title type="text">CC Vocabulary - My First Four Weeks</title>
-    <id>urn:uuid:7a879cf6-dc27-3c24-bf21-0f2b8fa3e9e6</id>
+    <id>urn:uuid:12547153-4815-3b15-8e48-9a86df2c1e89</id>
     <updated>2020-01-14T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-my-first-four-weeks/" />
     <author>
@@ -58,9 +217,23 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;Well, all said, the past weeks have been great. I will be sharing more in two weeks.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
+    <title type="text">CC Platform Toolkit Revamp - 2</title>
+    <id>urn:uuid:1fdb14dd-a714-39ac-b6fa-dd594dceac67</id>
+    <updated>2020-01-06T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
+    <author>
+      <name>apdsrocha</name>
+    </author>
+    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
+&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
+&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
+&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">
     <title type="text">Improving CC License Chooser Weeks 1-2: Design</title>
-    <id>urn:uuid:e4fd7bfd-56e8-317e-919b-a5f5dd255a5a</id>
+    <id>urn:uuid:86065865-1ff3-356d-ab4b-18eaa8737469</id>
     <updated>2020-01-06T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/" />
     <author>
@@ -117,23 +290,9 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;You can follow my work at &lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;https://github.com/creativecommons/cc-chooser&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
-    <title type="text">CC Platform Toolkit Revamp - 2</title>
-    <id>urn:uuid:0bbc5afc-aebe-3efb-bf9e-c4afac728358</id>
-    <updated>2020-01-06T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
-&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
-&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
-&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/freesound-intro/">
     <title type="text">An Introduction to Freesound</title>
-    <id>urn:uuid:d4f5b69b-e725-3568-8d0e-2c7dec0b9a6e</id>
+    <id>urn:uuid:c9a3024c-0b5c-35fe-bd6b-b2d8ca32e48c</id>
     <updated>2019-12-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/freesound-intro/" />
     <author>
@@ -181,7 +340,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/">
     <title type="text">CC Platform Toolkit Revamp</title>
-    <id>urn:uuid:a7aa7a78-f4d4-3aca-9d75-bb93479d1f21</id>
+    <id>urn:uuid:1f0c1d2c-1f4d-3057-adb5-5d9ba1c8ea4e</id>
     <updated>2019-12-16T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/" />
     <author>
@@ -195,7 +354,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/aws_grant/">
     <title type="text">Creative Commons Awarded AWS Imagine Grant</title>
-    <id>urn:uuid:d503c479-d5c3-34b7-b084-fb8b779a27d6</id>
+    <id>urn:uuid:8f9951cd-47d7-38b6-8467-9d549da73b5f</id>
     <updated>2019-12-12T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/aws_grant/" />
     <author>
@@ -219,7 +378,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/">
     <title type="text">Building a Distributed Indexer for a Search Engine</title>
-    <id>urn:uuid:70a5e8c9-2220-3a4b-aff5-53f06291829b</id>
+    <id>urn:uuid:e053d19e-75e2-3a36-92a5-5d64f8751e10</id>
     <updated>2019-12-11T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/" />
     <author>
@@ -252,7 +411,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-11-25-empowering-collaboration/">
     <title type="text">Empowering Collaboration in the Commons</title>
-    <id>urn:uuid:9dba1931-85f8-35b7-9137-4a1c9b59ec61</id>
+    <id>urn:uuid:b875b724-40d0-36df-bb7d-8db25f859664</id>
     <updated>2019-11-25T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-11-25-empowering-collaboration/" />
     <author>
@@ -302,7 +461,7 @@ underrepresented in FOSS (free and open source software)&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/ssr-ccsearch/">
     <title type="text">Server Side Rendering with Vue.JS on CC Search</title>
-    <id>urn:uuid:5d2f6b4c-30c8-3954-ad33-f25bc7e1a56c</id>
+    <id>urn:uuid:29008995-de6e-38ff-b488-4924cd3d7899</id>
     <updated>2019-11-01T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/ssr-ccsearch/" />
     <author>
@@ -354,7 +513,7 @@ One example is the &lt;a href=&quot;https://ccsearch.creativecommons.org/photos/
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-25-ccgn-redesign/">
     <title type="text">Revamping the Creative Commons Global Network website</title>
-    <id>urn:uuid:3393727f-e28b-3aa6-85a2-8bb92ebbcfe5</id>
+    <id>urn:uuid:8e4d8485-c2da-369e-b570-459c1142d953</id>
     <updated>2019-09-25T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-09-25-ccgn-redesign/" />
     <author>
@@ -382,7 +541,7 @@ One of our organizational goals regarding the global network is to “create val
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/">
     <title type="text">Creative Commons Google Docs Add-on</title>
-    <id>urn:uuid:80a647d6-9155-3b9e-a23d-e73fac723330</id>
+    <id>urn:uuid:e638ebc8-752b-353d-8f12-4b8b6f80d632</id>
     <updated>2019-09-11T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/" />
     <author>
@@ -416,7 +575,7 @@ alt=&quot;Video tutorial&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-ranking/">
     <title type="text">Some thoughts on improving the relevance of images in CC Search</title>
-    <id>urn:uuid:e6496ed0-b385-315f-845b-573e88a92397</id>
+    <id>urn:uuid:8e103241-6a08-3ed6-8d09-210e146800d4</id>
     <updated>2019-09-06T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/improving-ranking/" />
     <author>
@@ -437,7 +596,7 @@ alt=&quot;Video tutorial&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/">
     <title type="text">Introducing CC Search Extension</title>
-    <id>urn:uuid:771242d3-3942-3f6d-9180-5b61995ad9c9</id>
+    <id>urn:uuid:b3fdbb66-8f61-39cb-8c2a-bba02bc52a94</id>
     <updated>2019-09-03T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/" />
     <author>
@@ -565,7 +724,7 @@ Because everyone loves dark mode! Save battery and go easy on your eyes.&lt;/li&
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/">
     <title type="text">The Linked Commons graph: the final vis</title>
-    <id>urn:uuid:79b3563b-3d0e-30f5-969c-19f34172578e</id>
+    <id>urn:uuid:8a42815d-8cea-30fe-a435-16a4e16e362f</id>
     <updated>2019-09-03T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/" />
     <author>
@@ -638,7 +797,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/">
     <title type="text">Creative Commons WordPress Plugin Final Phase</title>
-    <id>urn:uuid:67d88033-ad1c-3f99-b3d3-8066e75c7fa8</id>
+    <id>urn:uuid:1de82ef5-6d43-3e05-adc1-a5b59133e51c</id>
     <updated>2019-08-23T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/" />
     <author>
@@ -695,7 +854,7 @@ option, which is much better than previous footer implementation.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/">
     <title type="text">GSoC cc-chooser Final Post</title>
-    <id>urn:uuid:4152e8ff-9d2d-3698-8a69-0d82f78e3814</id>
+    <id>urn:uuid:3f8acaa5-6aa9-3ae1-aad3-b61a369a25f5</id>
     <updated>2019-08-22T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/" />
     <author>
@@ -719,7 +878,7 @@ option, which is much better than previous footer implementation.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/">
     <title type="text">CC Vocabulary: Care for dessert?</title>
-    <id>urn:uuid:684a28f5-3b23-3903-bdb0-36a49af52861</id>
+    <id>urn:uuid:5e1efa7a-b1ef-3ad4-89bf-1efffd162f55</id>
     <updated>2019-08-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/" />
     <author>
@@ -991,7 +1150,7 @@ the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/">
     <title type="text">CC Browser Extension Week 9, 10</title>
-    <id>urn:uuid:3f921b05-0fd7-3889-bd7a-e25e8b45586e</id>
+    <id>urn:uuid:20288e35-de4f-391c-930c-85457411ef78</id>
     <updated>2019-08-12T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/" />
     <author>
@@ -1020,7 +1179,7 @@ the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/">
     <title type="text">Visualize CC Catalog data - data processing part 3</title>
-    <id>urn:uuid:91486fe1-754c-33a0-aaf4-21d6f985b696</id>
+    <id>urn:uuid:ef2816a6-8476-3443-b930-a932f5d7f1b0</id>
     <updated>2019-08-12T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/" />
     <author>
@@ -1065,7 +1224,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/">
     <title type="text">Host Classification with SaltStack</title>
-    <id>urn:uuid:4652e64b-a53d-3e57-89a5-e3cb95f1603f</id>
+    <id>urn:uuid:567ba2e2-230a-36fc-9b0e-b2934640cd2a</id>
     <updated>2019-07-31T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/" />
     <author>
@@ -1129,7 +1288,7 @@ source.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/">
     <title type="text">Visualize CC Catalog data - data processing part 2</title>
-    <id>urn:uuid:2d40381d-f80b-3a96-986b-97822c6f3618</id>
+    <id>urn:uuid:6bfe222d-b176-362e-8711-92216ea0d3c8</id>
     <updated>2019-07-26T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/" />
     <author>
@@ -1187,7 +1346,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/">
     <title type="text">Easy search and use of CC-licensed images for WordPress</title>
-    <id>urn:uuid:dc6ad7ec-d6e3-3f60-87de-ac25c06bf10d</id>
+    <id>urn:uuid:b422bf2e-cfdc-3cd5-a3bb-f5430679d2ed</id>
     <updated>2019-07-24T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/" />
     <author>
@@ -1262,7 +1421,7 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/">
     <title type="text">Creative Commons WordPress Plugin Second Phase</title>
-    <id>urn:uuid:9f33a763-522f-397a-be8b-b25c276d9d76</id>
+    <id>urn:uuid:956ce97c-d991-33b9-8dd8-1796aa195feb</id>
     <updated>2019-07-20T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/" />
     <author>
@@ -1286,61 +1445,9 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
-    <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:57715737-c387-335e-9264-835dae1c90d9</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
-&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
-&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;
-These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
-&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Improve documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
-    <id>urn:uuid:e6945618-7917-3fde-b06e-1a2c709ea22c</id>
+    <id>urn:uuid:c79d72eb-45a9-3d96-939b-54bad5b7a2fa</id>
     <updated>2019-07-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/" />
     <author>
@@ -1489,9 +1596,61 @@ See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/
 &lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
+    <title type="text">CC Browser Extension Week 7, 8</title>
+    <id>urn:uuid:2dc4d01d-66c8-3309-ab42-31bb038ec5dd</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
+&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
+&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;
+These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
+&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
+&lt;li&gt;Test and fix bugs.&lt;/li&gt;
+&lt;li&gt;Improve documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
     <title type="text">CC Search Redesign</title>
-    <id>urn:uuid:5162a478-4ccd-36f8-b49a-7f6012a345b3</id>
+    <id>urn:uuid:0f657796-a8be-3d58-8140-2b06bf93e5ed</id>
     <updated>2019-07-17T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/" />
     <author>
@@ -1529,7 +1688,7 @@ This is what it looked like back then:&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-link-checker/">
     <title type="text">Combating dead links with CC Link Checker</title>
-    <id>urn:uuid:83c67885-739d-3339-9bdb-50b6359be326</id>
+    <id>urn:uuid:fcf5a6f1-4501-3b2f-bf0f-216fd057290e</id>
     <updated>2019-07-15T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-link-checker/" />
     <author>
@@ -1577,7 +1736,7 @@ Bhumij Gupta&lt;/em&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/">
     <title type="text">Visualize CC Catalog data - data processing</title>
-    <id>urn:uuid:410a88d2-c0b0-384d-ac60-82b9b621ff9d</id>
+    <id>urn:uuid:5f2e74fa-1573-327e-be6f-3d7ce57f7916</id>
     <updated>2019-07-10T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/" />
     <author>
@@ -1625,7 +1784,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-so-far/">
     <title type="text">CC Vocabulary, the lexicon so far</title>
-    <id>urn:uuid:a37a5d74-e63a-3f56-9f98-f21aae9a2b7f</id>
+    <id>urn:uuid:7de012d1-19ae-3698-8f14-5113221d3011</id>
     <updated>2019-07-05T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-so-far/" />
     <author>
@@ -1699,7 +1858,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/">
     <title type="text">CC Browser Extension Week 5, 6</title>
-    <id>urn:uuid:6bc67ed8-d228-3944-8c20-1be591a69082</id>
+    <id>urn:uuid:2282b957-f43f-310e-8cc3-bf8db6e2a18a</id>
     <updated>2019-07-04T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/" />
     <author>
@@ -1725,7 +1884,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chapter-websites/">
     <title type="text">Creative Commons Chapter Websites network</title>
-    <id>urn:uuid:e4445eeb-cf53-34d5-a5e4-9b753e8c1864</id>
+    <id>urn:uuid:ad9d7eb8-60d9-34f0-a3e8-53043bb359ef</id>
     <updated>2019-07-03T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chapter-websites/" />
     <author>
@@ -1757,7 +1916,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/">
     <title type="text">GSoC cc-chooser Week 4</title>
-    <id>urn:uuid:c55b3d89-1059-3e3f-adae-8b6c5195d018</id>
+    <id>urn:uuid:52628df9-b64c-397d-9ac1-da264f65ae29</id>
     <updated>2019-06-24T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/" />
     <author>
@@ -1781,7 +1940,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/">
     <title type="text">CC Browser Extension - A GSoC Project</title>
-    <id>urn:uuid:883f1b9c-62ce-3da7-ac5e-3ca62b0e45fc</id>
+    <id>urn:uuid:7c38e099-2edb-34f9-820e-fc0924196a57</id>
     <updated>2019-06-20T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/" />
     <author>
@@ -1825,7 +1984,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
     <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
-    <id>urn:uuid:53d44b9b-7e92-312a-8a9f-f424bee3aaf1</id>
+    <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
     <updated>2019-06-20T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
     <author>
@@ -1840,7 +1999,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/searching-300-million/">
     <title type="text">Searching 300MM Images with CC Search: Backend Architecture</title>
-    <id>urn:uuid:328e1c5d-c838-3dfa-8214-753734370583</id>
+    <id>urn:uuid:0aea69db-370b-3995-82ed-1e94702284c9</id>
     <updated>2019-06-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/searching-300-million/" />
     <author>
@@ -1871,7 +2030,7 @@ We predicted that we would have a lot more users after removing the “beta” d
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/">
     <title type="text">Visualize CC Catalog data</title>
-    <id>urn:uuid:3ea6ec4c-7e5a-30e9-835c-68ff7d198427</id>
+    <id>urn:uuid:bc2e5551-25e5-3bba-8183-83f3b905bef4</id>
     <updated>2019-06-17T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/" />
     <author>
@@ -1924,7 +2083,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/">
     <title type="text">CC Vocabulary is a new design system for Creative Commons</title>
-    <id>urn:uuid:df3ad26a-5212-3915-a715-e4134424dbd9</id>
+    <id>urn:uuid:965695b7-ade4-322e-8936-55d5dd0d1180</id>
     <updated>2019-06-15T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/" />
     <author>
@@ -2146,7 +2305,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week2/">
     <title type="text">GSoC cc-chooser Week 2</title>
-    <id>urn:uuid:6ab1e18d-a87b-3f8c-b8b6-d0c120e6e3cd</id>
+    <id>urn:uuid:c7a72678-ddcf-3e4a-a341-87a52fa48a7f</id>
     <updated>2019-06-14T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week2/" />
     <author>
@@ -2167,7 +2326,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/">
     <title type="text">CC Catalog: Leveraging Open Data and Open APIs</title>
-    <id>urn:uuid:3622d2a6-4021-3fe7-8cda-6db36c1694ec</id>
+    <id>urn:uuid:e24cc83b-b6fb-312b-b379-5aa16af58a16</id>
     <updated>2019-06-07T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/" />
     <author>
@@ -2191,7 +2350,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/meet-gsoc-2019-students/">
     <title type="text">Meet CC’s 2019 Google Summer of Code students</title>
-    <id>urn:uuid:b4adf5c3-880a-39c3-9def-7da86228f262</id>
+    <id>urn:uuid:dba4248f-6d54-3bc7-a553-fae71da290e1</id>
     <updated>2019-05-30T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/meet-gsoc-2019-students/" />
     <author>
@@ -2343,7 +2502,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/">
     <title type="text">CC Google Summer of Code accepted students announced</title>
-    <id>urn:uuid:82cc4fc0-2b82-34c2-8379-5e2942c79ed1</id>
+    <id>urn:uuid:6570016b-b89a-3f5a-9e6f-09a9c9d88f01</id>
     <updated>2019-05-06T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/" />
     <author>
@@ -2366,7 +2525,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/">
     <title type="text">Open Source at Creative Commons - 2019 Global Summit Event</title>
-    <id>urn:uuid:e4babd3e-d004-3e01-9ea2-0674eea1dc92</id>
+    <id>urn:uuid:b6919fc1-840a-3084-93ff-b2debfde5926</id>
     <updated>2019-05-01T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/" />
     <author>
@@ -2388,7 +2547,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/">
     <title type="text">CC Search is out of beta with 300M images and easier attribution</title>
-    <id>urn:uuid:3b09183e-fd24-33b5-bac1-34b2a3f4f8c1</id>
+    <id>urn:uuid:08054206-9702-389e-b5c0-ce707ce5884d</id>
     <updated>2019-04-30T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/" />
     <author>
@@ -2411,7 +2570,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-development-with-saltstack/">
     <title type="text">Open Development with SaltStack</title>
-    <id>urn:uuid:3bd5aa0e-bf5f-35b5-aeec-e6adf605e7e5</id>
+    <id>urn:uuid:6dc70283-9d5a-3a76-bc8e-95cabae41752</id>
     <updated>2019-04-17T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/open-development-with-saltstack/" />
     <author>
@@ -2429,7 +2588,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-plus-gsoc-2019/">
     <title type="text">CC + Google Summer of Code 2019</title>
-    <id>urn:uuid:7d36f2e1-1b3a-3e48-96d3-18970dfe3c9f</id>
+    <id>urn:uuid:e516bab4-2140-3384-9d82-d91e738b450c</id>
     <updated>2019-03-04T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-plus-gsoc-2019/" />
     <author>
