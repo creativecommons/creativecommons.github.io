@@ -2,13 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
-  <updated>2020-01-23T00:00:00Z</updated>
+  <updated>2020-01-24T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-coding/">
+    <title type="text">Improving CC License Chooser: Coding</title>
+    <id>urn:uuid:26cf502f-0495-388c-9e23-3a36608c0b87</id>
+    <updated>2020-01-24T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-coding/" />
+    <author>
+      <name>obulat</name>
+    </author>
+    <content type="html">&lt;p&gt;During the last several weeks I have been busy with coding the redesigned version of the License Chooser.&lt;/p&gt;
+&lt;p&gt;When I just started working on coding the License Chooser, it wouldn't compile due to some dependency problems. This became a great opportunity to update the project from a Webpack based Vue.js template to a Vue-cli project, which makes managing dependencies much simpler. I also updated the project to a newer version of Creative Commons Vue Vocabulary for styling.&lt;/p&gt;
+&lt;p&gt;For the visual styles, we use Buefy component library (based on Bulma and Vue.js), namely, stepper and tabs components. It has been an interesting journey customizing them to our specific use cases.&lt;/p&gt;
+&lt;p&gt;While coding the site, I also tried to extract all the text to a separate file so that it would be easier to integrate it into translation workflow later during my internship.&lt;/p&gt;
+&lt;p&gt;After several weeks of work, 2 large PRs merged, we are finally ready to conduct usability tests to better understand how users interact with the License Chooser, and what changes we still need to implement to make it easy both for beginners and for advanced users of Creative Commons Licenses to choose the best license for their needs, and help to use the chosen license.&lt;/p&gt;
+&lt;p&gt;A new &lt;a href=&quot;https://chooser-beta.creativecommons.org/&quot;&gt;beta version of the License Chooser&lt;/a&gt; is deployed!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/">
     <title type="text">Apache Airflow testing with Pytest</title>
     <id>urn:uuid:c2d026d4-8da1-3390-bfad-5b77b0d103d0</id>
