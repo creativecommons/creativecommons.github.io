@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>Open Source Program Mentorship Guide — Creative Commons on GitHub</title>
+<title>Open Source Internships: Mentor Guide — Creative Commons on GitHub</title>
 <body>
   <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
   </a>
@@ -42,13 +42,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/">Home</a>
+                  <a class="nav-link" href="/blog/">Blog</a>
                 </li>
                 <li class="nav-item dropdown ">
-                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contributing Code</a>
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contribute</a>
                   <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
                     
-                      <a class="dropdown-item" href="/contributing-code/">Overview</a>
+                      <a class="dropdown-item" href="/contributing-code/">Contribution Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/projects/">Project List</a>
                     
                       <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
                     
@@ -56,15 +58,6 @@
                     
                   </div>
                 </li>
-                
-                  <li class="nav-item">
-                    <a class="nav-link" href="/projects/">Projects</a>
-                  </li>
-                
-                  <li class="nav-item">
-                    <a class="nav-link" href="/blog/">Blog</a>
-                  </li>
-                
                 <li class="nav-item dropdown ">
                   <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
                   <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
@@ -79,12 +72,25 @@
                     
                   </div>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/programs/outreachy/2019-12-start/">Outreachy</a>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarInternshipsDropdown" role="button">Internships</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarInternshipsDropdown">
+                    
+                      <a class="dropdown-item" href="/internships/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/internships/applicant-guide/">Applicant Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/intern-guide/">Intern Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
+                    
+                  </div>
                 </li>
                 <li class="nav-item dropdown ">
                   <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
                   <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/programs/outreachy/2019-12-start">Outreachy (Dec 2019)</a>
                     
                       <a class="dropdown-item" href="/gsoc-2019">GSoC 2019</a>
                     
@@ -95,7 +101,7 @@
                   </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="https://creativecommons.org" target="_blank">CC</a>
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">CC.org</a>
                 </li>
               </ul>
           </nav>
@@ -107,11 +113,14 @@
     <div class="row justify-content-md-center">
       <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
         <div class="page py-3">
-          <h1 class="page-title pb-3 mb-4">Open Source Program Mentorship Guide</h1>
+          <h1 class="page-title pb-3 mb-4">Open Source Internships: Mentor Guide</h1>
           
   <div class="card toc-card bg-light">
     <div class="card-body">
       <ul class="toc list-unstyled">
+        
+          <li><a href="#considering-mentorship?">Considering Mentorship?</a></li>
+          
         
           <li><a href="#proposing-a-project">Proposing a Project</a></li>
           
@@ -120,7 +129,7 @@
           
             <ul class="toc list-unstyled pl-4">
               
-                <li><a href="#application-period">Application Period</a></li>
+                <li><a href="#draft-application">Draft Application</a></li>
               
             </ul>
           
@@ -129,9 +138,9 @@
           
             <ul class="toc list-unstyled pl-4">
               
-                <li><a href="#preparing-for-the-internship">Preparing for the Internship</a></li>
+                <li><a href="#preparing">Preparing</a></li>
               
-                <li><a href="#after-intern-announcement">After Intern Announcement</a></li>
+                <li><a href="#post-announcement">Post-Announcement</a></li>
               
                 <li><a href="#during-the-internship">During the Internship</a></li>
               
@@ -141,9 +150,25 @@
       </ul>
     </div>
   </div>
-  <p>CC participates in open source mentorship programs such as Google Summer of Code and Outreachy. Both CC staff and community members are welcome to mentor projects. More details about specific programs and rounds will be announced separately; this page serves as a general mentorship guide.</p>
-<h2 id="proposing-a-project">Proposing a Project</h2><p>Mentorship is a serious commitment but a very rewarding experience. If you'd like to mentor, you need to decide what project you'd like to mentor or join a project that someone else is mentoring.</p>
-<p><em>More about this stage coming soon.</em></p>
+  <p>CC participates in open source mentorship programs such as <a href="https://summerofcode.withgoogle.com/">Google Summer of Code</a> and <a href="https://www.outreachy.org/">Outreachy</a>. Both CC staff and community members are welcome to mentor projects. Details about specific programs and rounds are listed in the <a href="/internships">Overview page</a>; this page serves as a general mentorship guide.</p>
+<h2 id="considering-mentorship?">Considering Mentorship?</h2><p>Mentorship is a serious commitment but a very rewarding experience. If you're trying to decide whether to be a mentor, please read the following documents:</p>
+<ul>
+<li><a href="https://google.github.io/gsocguides/mentor/">Google Summer of Code mentor guide</a></li>
+<li>Outreachy <a href="https://www.outreachy.org/mentor/#mentor">mentor role description</a> and <a href="https://www.outreachy.org/docs/internship/#mentor-expectations">mentor expectations</a></li>
+<li><a href="https://www.outreachy.org/mentor/mentor-faq/">Outreachy Mentor FAQ</a></li>
+</ul>
+<p>If you'd like to be a mentor but don't have a specific project in mind, email the <a href="/community">CC Developers mailing list</a> and let us know what your skillset and availability is. We'll see if we have a project you can help out with. If you'd like to propose a project, read on.</p>
+<h2 id="proposing-a-project">Proposing a Project</h2><p>If you'd like to propose a project for an intern to work on, please use the following template and send your idea to the <a href="/community">CC Developers mailing list</a>. Someone from CC staff will get back to you about whether it is a viable project and next steps for moving it forward.</p>
+<p><em><strong>[Project Title]</strong></em></p>
+<p><strong>The Problem</strong>: <em>Describe the problem that needs to be solved and why it is an important one for CC.</em><br>
+<strong>Expected Outcome</strong>: <em>Describe the outcome that you’d like to see for this internship.</em><br>
+<strong>Internship Tasks</strong>: <em>What will the intern be expected to do during the internship?</em><br>
+<strong>Application Tips</strong>: <em>What are you looking for in the intern’s project plan in their application?</em><br>
+<strong>Resources</strong>: <em>List of resources associated with this project idea. GitHub issues, specs, documentation. blog posts, etc.</em><br>
+<strong>Mentors</strong>: <em>Who will mentor this project? We require having two mentors for each project, but if you only have one, we can help find another.</em><br>
+<strong>Technical Skills</strong>: <em>What technical skills will this project need?</em><br>
+<strong>Difficulty</strong>: <em>How technically difficult is this project? Options: High, Medium, Low</em></p>
+<p>Please note that project ideas should be related to an existing CC open source project or website and should be clearly scoped out. They should be doable in three months by an intern with very little prior experience.</p>
 <h2 id="application-period">Application Period</h2><p>Once the initial application period opens, things get chaotic for a little bit as hundreds of applicants investigate various open source communities to try and contribute to them and find a good fit for an internship. There are a lot of emails, Slack messages, GitHub comments, and so on. This stage of the program is the most intense and lasts about a month (although the first few days are the most overwhelming).</p>
 <p>Some tips:</p>
 <ul>
@@ -153,34 +178,26 @@
 <li>You will get a lot of low effort questions like "how do I get started" – ask for more details. You cannot spend 20 minutes helping every single person because there are far too many people, so help them help themselves.</li>
 <li>Prepare general documentation/frequently asked questions ahead of time.</li>
 </ul>
-<h3 id="application-period">Application Period</h3><p>You should encourage applicants to share drafts of the application with you ahead of time. Using a Google Doc with comment permissions enabled is probably the easiest way to achieve collaboration. Focus on making sure that their understanding of the project, the project plan, timeline, and deliverables match what you had in mind and is feasible (keeping in mind that they may be new to all this and may not get things done as quickly).</p>
-<h2 id="internship-period">Internship Period</h2><h3 id="preparing-for-the-internship">Preparing for the Internship</h3><ul>
-<li><p>Talk to your co-mentors ahead of your time to create a plan for how to collaborate – will one of you be the primary mentor or will all of you be equally involved? How will checkins and notes work?</p>
-</li>
-<li><p>If your project affects or involves anyone else at CC that's not a co-mentor, talk to them about how they would like to be involved and come up with a plan to collaborate.</p>
-</li>
-</ul>
-<h3 id="after-intern-announcement">After Intern Announcement</h3><ul>
-<li><p>Reach out to your mentee ASAP after the internships are announced.</p>
-</li>
-<li><p>Get the mentees’ T-shirt size and address ASAP and send it to the program coordinator (we will be sending each mentee some CC goodies).</p>
-</li>
-<li><p>Review the proposal again and ensure that the implementation details and weekly deliverables are feasible and well thought-out. There are probably some things that could be clarified or changed – work with the mentee to fix these items before any work is actually started.</p>
-</li>
-<li><p>Have an introductory call with the mentee and get to know each other. Ask them questions about themselves and talk about yourself too.</p>
-</li>
-<li><p>Set up regular meetings: a weekly video call for the mentors to check-in with the mentee, and a monthly call with the CC program coordinator to check in with the mentee.</p>
-</li>
-<li><p>Create a document to keep any project information and notes. This document should be shared with the program coordinators.</p>
+<h3 id="draft-application">Draft Application</h3><p>You should encourage applicants to share drafts of the application with you ahead of time. Using a Google Doc with comment permissions enabled is probably the easiest way to achieve collaboration. Focus on making sure that their understanding of the project, the project plan, timeline, and deliverables match what you had in mind and is feasible (keeping in mind that they may be new to all this and may not get things done as quickly).</p>
+<h2 id="internship-period">Internship Period</h2><h3 id="preparing">Preparing</h3><p>Before the internship period begins:</p>
 <ul>
+<li>Talk to your co-mentors ahead of your time to create a plan for how to collaborate – will one of you be the primary mentor or will all of you be equally involved? How will checkins and notes work?</li>
+<li>If your project affects or involves anyone else at CC that's not a co-mentor, talk to them about how they would like to be involved and come up with a plan to collaborate.</li>
+</ul>
+<h3 id="post-announcement">Post-Announcement</h3><p>Once the selected interns have been announced:</p>
+<ul>
+<li>Reach out to your mentee ASAP after the internships are announced.</li>
+<li>Get the mentees’ T-shirt size and address ASAP and send it to the program coordinator (we will be sending each mentee some CC goodies).</li>
+<li>Review the proposal again and ensure that the implementation details and weekly deliverables are feasible and well thought-out. There are probably some things that could be clarified or changed – work with the mentee to fix these items before any work is actually started.</li>
+<li>Have an introductory call with the mentee and get to know each other. Ask them questions about themselves and talk about yourself too.</li>
+<li>Set up regular meetings: a weekly video call for the mentors to check-in with the mentee, and a monthly call with the CC program coordinator to check in with the mentee.</li>
+<li>Create a document to keep any project information and notes. This document should be shared with the program coordinators.<ul>
 <li>the “final” implementation plan and weekly milestones (“final” because it is subject to change during the coding period based on progress)</li>
 <li>the mentee’s contact information and emergency contact</li>
 <li>all meeting notes</li>
 <li>any other project-relevant information.</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>Decide with the mentee on the workflow the project will follow. e.g.<ul>
 <li>Does the mentee understand regular git workflow (e.g. pull requests, branches, reviews)?</li>
 <li>How often should code be reviewed? Does all code need to be reviewed?</li>
@@ -190,16 +207,12 @@
 <li>Where will their project be deployed (if applicable) during development?</li>
 </ul>
 </li>
+<li>Let the mentee know that they will be expected to post updates on their project on the CC technical blog regularly. Decide on a cadence for the blog posts (should be every two weeks at a minimum) and set due dates for them.</li>
+<li>Help the mentee get their development environment set up.</li>
+<li>Ensure that the mentee has permissions to push to the appropriate GitHub repository.</li>
 </ul>
+<h3 id="during-the-internship">During the Internship</h3><p>During the internship:</p>
 <ul>
-<li><p>Let the mentee know that they will be expected to post updates on their project on the CC technical blog regularly. Decide on a cadence for the blog posts (should be every two weeks at a minimum) and set due dates for them.</p>
-</li>
-<li><p>Help the mentee get their development environment set up.</p>
-</li>
-<li><p>Ensure that the mentee has permissions to push to the appropriate GitHub repository.</p>
-</li>
-</ul>
-<h3 id="during-the-internship">During the Internship</h3><ul>
 <li>Attend your weekly check-in.<ul>
 <li>Take good notes so that your backup mentor can pick up where you left off easily if you’re unavailable.</li>
 <li>Make sure the mentee is on-track with their weekly milestones and if not, work with them to figure out why and come up with a plan.</li>
@@ -207,36 +220,20 @@
 <li>Praise things they are doing well and provide constructive criticism on the things they could improve on. Both of these are important.</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>Review all work/code promptly. You should aim to review within 1 business day.<ul>
 <li>If your mentee is blocked on their work for some other reason, help them become unblocked as soon as possible.</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li><p>Check in on Slack with the mentee once every day or two. Remember that they are often not experienced with the work they are doing and may not know to ask for help or may be stuck on something that they cannot articulate very well.</p>
-</li>
-<li><p>Ask for feedback on your mentorship every few weeks.</p>
-</li>
-<li><p>Find an opportunity to invite your mentee to present their work at CC’s all staff meeting. It is up to you when you’d like to do this.</p>
-</li>
-<li><p>Make sure you're familiar with the program timeline and submit your required evaluations on time.</p>
-</li>
-</ul>
-<ul>
+<li>Check in on Slack with the mentee once every day or two. Remember that they are often not experienced with the work they are doing and may not know to ask for help or may be stuck on something that they cannot articulate very well.</li>
+<li>Ask for feedback on your mentorship every few weeks.</li>
+<li>Find an opportunity to invite your mentee to present their work at CC’s all staff meeting. It is up to you when you’d like to do this.</li>
+<li>Make sure you're familiar with the program timeline and submit your required evaluations on time.</li>
 <li>Engage the mentee in the larger CC development community – encourage them to share their work and talk to them about other projects and your own work.<ul>
 <li>Ensure that the development version of their project is deployed somewhere ASAP so they can seek feedback from the community.</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li><p>Work with the CC staff engineering team and program coordinators on a plan to move the project to production when the project is complete.</p>
-</li>
-<li><p>Check in with any CC staff working with the mentee regularly to make sure their feedback is also being heard and implemented by the mentee.</p>
-</li>
-</ul>
-<ul>
+<li>Work with the CC staff engineering team and program coordinators on a plan to move the project to production when the project is complete.</li>
+<li>Check in with any CC staff working with the mentee regularly to make sure their feedback is also being heard and implemented by the mentee.</li>
 <li>Talk to the program coordinator proactively. Especially if:<ul>
 <li>your mentee is not active and engaged regularly.</li>
 <li>your mentee is not communicating enough or misses a check-in.</li>

@@ -1,0 +1,1174 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Open Source Projects — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/blog/">Blog</a>
+                </li>
+                <li class="nav-item dropdown  active">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contribute</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Contribution Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/projects/">Project List</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarInternshipsDropdown" role="button">Internships</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarInternshipsDropdown">
+                    
+                      <a class="dropdown-item" href="/internships/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/internships/applicant-guide/">Applicant Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/intern-guide/">Intern Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/programs/outreachy/2019-12-start">Outreachy (Dec 2019)</a>
+                    
+                      <a class="dropdown-item" href="/gsoc-2019">GSoC 2019</a>
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+                    
+                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">CC.org</a>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">Open Source Projects</h1>
+          
+  <p>This is a list of all active open source software projects that Creative Commons maintains.</p>
+  <p>Please read the <a href="/contributing-code">Contributing Code</a> page for general information on how to get involved. Contribution guidelines specific to an individual project can be found in the <code>README</code> and the <code>CONTRIBUTING</code> files in the root folder of every repository. If you have any questions, don't hesistate to reach out to us through <a href="/community">one of our community forums</a> or open a GitHub issue.</p>
+  <h2>Featured Projects</h2>
+    <p>We are actively looking for help with these projects and each project has open GitHub issues that are ready for external contribution.</p>
+    <div class="card-deck">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <div class="card featured-project-card border-dark mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><strong>CC Catalog API</strong>
+            <div class="float-right">
+              <a class="btn btn-outline-secondary" href="https://github.com/creativecommons/cccatalog-api"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/></a>
+              
+                <a class="btn btn-outline-secondary" href="https://api.creativecommons.engineering/"><img src="/contributing-code/projects/link-external.svg" alt="website"/></a>
+              
+            </div>
+            </h5>
+            <p class="card-text">The Creative Commons Catalog API allows programmatic access to search for CC-licensed and public domain digital media.</p>
+            
+              <span class="badge badge-featured-project mr-1 mb-1">Python</span>
+            
+              <span class="badge badge-featured-project mr-1 mb-1">Django</span>
+            
+              <span class="badge badge-featured-project mr-1 mb-1">Django REST Framework</span>
+            
+              <span class="badge badge-featured-project mr-1 mb-1">Elasticsearch</span>
+            
+          </div>
+        </div>
+      
+    
+      
+    
+      
+        <div class="card featured-project-card border-dark mb-4">
+          <div class="card-body">
+            <h5 class="card-title"><strong>CC Search</strong>
+            <div class="float-right">
+              <a class="btn btn-outline-secondary" href="https://github.com/creativecommons/cccatalog-frontend"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/></a>
+              
+                <a class="btn btn-outline-secondary" href="https://search.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/></a>
+              
+            </div>
+            </h5>
+            <p class="card-text">CC Search is a search tool for CC-licensed and public domain content across the internet.</p>
+            
+              <span class="badge badge-featured-project mr-1 mb-1">JavaScript</span>
+            
+              <span class="badge badge-featured-project mr-1 mb-1">Vue.js</span>
+            
+          </div>
+        </div>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  <h2>All Active Projects</h2>
+  <p>This is a complete list of active Creative Commons software projects. Archived projects are not documented here and can be found on the <strong><a href="https://github.com/cc-archive">CC Archive GitHub organization</a>.</strong></p>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Language</th>
+        <th scope="col">License</th>
+        <th scope="col">Links</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <th scope="row">1</th>
+          <th scope="row">.github</th>
+          
+            <td>Default templates and guidelines for Creative Commons GitHub repositories.</td>
+          
+          <td></td>
+          
+            <td><a href="https://github.com/creativecommons/.github/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/.github"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">2</th>
+          <th scope="row">candela-utility</th>
+          
+            <td>Candela helper plugin to manage additional config and bootstrapping, used on CC Certificates website</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/candela-utility/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/candela-utility"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://certificates.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">3</th>
+          <th scope="row">caselaw</th>
+          
+            <td>Creates a static website of Case Law and Scholarship data frm around the world based on Google Form responses and manually curated.</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/caselaw/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/caselaw"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://labs.creativecommons.org/caselaw/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">4</th>
+          <th scope="row">cc-chooser</th>
+          
+            <td>The new and improved CC license selection tool (in progress)</td>
+          
+          <td>Vue</td>
+          
+            <td><a href="https://github.com/creativecommons/cc-chooser/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc-chooser"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://chooser-beta.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">5</th>
+          <th scope="row">cc-license-chooser</th>
+          
+            <td>Creative Commons JavaScript license selector in the form of a JavaScript widget</td>
+          
+          <td>XSLT</td>
+          
+            <td><a href="https://github.com/creativecommons/cc-license-chooser/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc-license-chooser"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">6</th>
+          <th scope="row">cc-link-checker</th>
+          
+            <td>Automated link checker for legalcode and license URLs</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cc-link-checker/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc-link-checker"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">7</th>
+          <th scope="row">cc-mexico-micro</th>
+          
+            <td>Temporary microsite for mx.creativecommons.org</td>
+          
+          <td></td>
+          
+            <td><a href="https://github.com/creativecommons/cc-mexico-micro/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc-mexico-micro"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://mx.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">8</th>
+          <th scope="row">cc-resource-archive</th>
+          
+            <td>Collection of resources on CC tools and other open topics</td>
+          
+          <td></td>
+          
+            <td><a href="https://github.com/creativecommons/cc-resource-archive/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc-resource-archive"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://resources.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">9</th>
+          <th scope="row">cc-wp-theme</th>
+          
+            <td>WordPress theme used on creativecommons.org</td>
+          
+          <td>Hack</td>
+          
+            <td><a href="https://github.com/creativecommons/cc-wp-theme/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc-wp-theme"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">10</th>
+          <th scope="row">cc.api</th>
+          
+            <td>Legacy API to integrate the Creative Commons licensing engine into third party applications</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cc.api/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc.api"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://api.creativecommons.org/docs/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">11</th>
+          <th scope="row">cc.engine</th>
+          
+            <td>Python app that runs part of the license engine on CC&#39;s website</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/cc.engine/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc.engine"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/licenses/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">12</th>
+          <th scope="row">cc.i18n</th>
+          
+            <td>Localization data for CC&#39;s deeds and license chooser</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cc.i18n/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc.i18n"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">13</th>
+          <th scope="row">cc.license</th>
+          
+            <td>Python app that runs part of the license engine on CC&#39;s website</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cc.license/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc.license"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/licenses/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">14</th>
+          <th scope="row">cc.licenserdf</th>
+          
+            <td>RDF describing Creative Commons licenses</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cc.licenserdf/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cc.licenserdf"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/ns"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">15</th>
+          <th scope="row">cccatalog</th>
+          
+            <td>Mapping the commons towards an open ledger and cc search.</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cccatalog/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cccatalog"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">16</th>
+          <th scope="row">cccatalog-api</th>
+          
+            <td>The Creative Commons Catalog API allows programmatic access to search for CC-licensed and public domain digital media.</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/cccatalog-api/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cccatalog-api"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://api.creativecommons.engineering/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">17</th>
+          <th scope="row">cccatalog-dataviz</th>
+          
+            <td>Data Visualizations</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/cccatalog-dataviz/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cccatalog-dataviz"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">18</th>
+          <th scope="row">cccatalog-frontend</th>
+          
+            <td>CC Search is a search tool for CC-licensed and public domain content across the internet.</td>
+          
+          <td>JavaScript</td>
+          
+            <td><a href="https://github.com/creativecommons/cccatalog-frontend/blob/develop/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/cccatalog-frontend"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://search.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">19</th>
+          <th scope="row">CCID-cas</th>
+          
+            <td>RubyCAS customizations for CCID (Creative Commons ID)</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/CCID-cas/blob/master/LICENSE.md">Other</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/CCID-cas"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://login.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">20</th>
+          <th scope="row">CCID-MediaWiki</th>
+          
+            <td>Script to add CCID users to MediaWiki</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/CCID-MediaWiki/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/CCID-MediaWiki"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">21</th>
+          <th scope="row">ccrel-guide</th>
+          
+            <td>A guide to using the Creative Commons Rights Expression Language (CC REL)</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/ccrel-guide/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/ccrel-guide"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://labs.creativecommons.org/2011/ccrel-guide/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">22</th>
+          <th scope="row">ccsearch-browser-extension</th>
+          
+            <td>Cross-Browser extension to search, filter and use images in the public domain and under Creative Commons licenses.</td>
+          
+          <td>JavaScript</td>
+          
+            <td><a href="https://github.com/creativecommons/ccsearch-browser-extension/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/ccsearch-browser-extension"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://summerofcode.withgoogle.com/projects/#6510509090668544"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">23</th>
+          <th scope="row">certificates-landing-page-theme</th>
+          
+            <td>Theme for CC Certificates website landing page</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/certificates-landing-page-theme/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/certificates-landing-page-theme"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://certificates.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">24</th>
+          <th scope="row">certificates-themes-plugins</th>
+          
+            <td>Themes and plugins for the Certificates WP site.</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/certificates-themes-plugins/blob/master/LICENSE.txt">Other</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/certificates-themes-plugins"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://certificates.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">25</th>
+          <th scope="row">commoners</th>
+          
+            <td>Global network social network</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/commoners/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/commoners"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">26</th>
+          <th scope="row">creativecommons.github.io</th>
+          
+            <td>Static files for CC Open Source website. :warning: DO NOT MODIFY THIS REPOSITORY! To edit, use the creativecommons.github.io-source repository.</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/creativecommons.github.io/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/creativecommons.github.io"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://opensource.creativecommons.org"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">27</th>
+          <th scope="row">creativecommons.github.io-source</th>
+          
+            <td>Source files for CC Open Source website</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/creativecommons.github.io-source/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/creativecommons.github.io-source"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://opensource.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">28</th>
+          <th scope="row">creativecommons.org</th>
+          
+            <td>Website parent project, legalcode and translations, and GitHub Issues for public help and support</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/creativecommons.org/blob/master/LICENSE">Other</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/creativecommons.org"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">29</th>
+          <th scope="row">faq</th>
+          
+            <td>Creative Commons FAQ page</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/faq/blob/master/LICENSE">Other</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/faq"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/faq/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">30</th>
+          <th scope="row">fonts</th>
+          
+            <td>Typefaces used by Creative Commons</td>
+          
+          <td>Vue</td>
+          
+            <td><a href="https://github.com/creativecommons/fonts/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/fonts"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://cc-fonts.netlify.com"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">31</th>
+          <th scope="row">labs</th>
+          
+            <td>(Deprecated) Tech Team blog</td>
+          
+          <td></td>
+          
+            <td><a href="https://github.com/creativecommons/labs/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/labs"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">32</th>
+          <th scope="row">magical-pony</th>
+          
+            <td>Helper tool for staging CC license legalcode translations before they are officially published</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/magical-pony/blob/master/COPYING">Other</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/magical-pony"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">33</th>
+          <th scope="row">mp</th>
+          
+            <td>Documentation for CC integration into user-generated content platforms</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/mp/blob/master/LICENSE">Creative Commons Zero v1.0 Universal</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/mp"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/platform/toolkit/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">34</th>
+          <th scope="row">new-creativecommons.org</th>
+          
+            <td>Primary Creative Commons website</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/new-creativecommons.org/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/new-creativecommons.org"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">35</th>
+          <th scope="row">new-www-plugin</th>
+          
+            <td>creativecommons.org various custom plugins for content types, mostly</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/new-www-plugin/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/new-www-plugin"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/new-creativecommons.org"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">36</th>
+          <th scope="row">new-www-theme</th>
+          
+            <td>creativecommons.org theme, to make it look lovely</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/new-www-theme/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/new-www-theme"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/new-creativecommons.org"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">37</th>
+          <th scope="row">open4us.org</th>
+          
+            <td>open4us.org website</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/open4us.org/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/open4us.org"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://open4us.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">38</th>
+          <th scope="row">openpolicynetwork.org</th>
+          
+            <td>OPN Website</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/openpolicynetwork.org/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/openpolicynetwork.org"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://openpolicynetwork.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">39</th>
+          <th scope="row">rdfadict</th>
+          
+            <td></td>
+          
+          <td>Python</td>
+          
+            <td>Not specified</td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/rdfadict"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">40</th>
+          <th scope="row">reversionary-rights</th>
+          
+            <td>International reversionary rights resources site.</td>
+          
+          <td>HTML</td>
+          
+            <td><a href="https://github.com/creativecommons/reversionary-rights/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/reversionary-rights"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">41</th>
+          <th scope="row">rubycas-client-rails</th>
+          
+            <td>Rails plugin for the RubyCAS-Client</td>
+          
+          <td>Ruby</td>
+          
+            <td><a href="https://github.com/creativecommons/rubycas-client-rails/blob/master/MIT-LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/rubycas-client-rails"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">42</th>
+          <th scope="row">scholars-addenda</th>
+          
+            <td>The scholars addenda system.</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/scholars-addenda/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/scholars-addenda"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://labs.creativecommons.org/scholars/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">43</th>
+          <th scope="row">search</th>
+          
+            <td>Legacy Creative Commons Search, no longer under development</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/search/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/search"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://oldsearch.creativecommons.org/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">44</th>
+          <th scope="row">sre-salt-prime</th>
+          
+            <td>Site Reliability Engineering / DevOps SaltStack configuration files</td>
+          
+          <td>SaltStack</td>
+          
+            <td><a href="https://github.com/creativecommons/sre-salt-prime/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/sre-salt-prime"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">45</th>
+          <th scope="row">sre-wp-pull</th>
+          
+            <td>Creative Commons Site Reliability Engineering WordPress Data Pull</td>
+          
+          <td>Shell</td>
+          
+            <td><a href="https://github.com/creativecommons/sre-wp-pull/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/sre-wp-pull"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">46</th>
+          <th scope="row">taaccct</th>
+          
+            <td>Profiles of exemplary workforce training programs supported by the U.S. Department of Labor TAACCCT program.</td>
+          
+          <td>JavaScript</td>
+          
+            <td><a href="https://github.com/creativecommons/taaccct/blob/gh-pages/LICENSE">Creative Commons Attribution 4.0 International</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/taaccct"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://profiles.open4us.org/taaccct/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">47</th>
+          <th scope="row">team-open</th>
+          
+            <td>Collection of stories documenting the power of open licensing</td>
+          
+          <td></td>
+          
+            <td><a href="https://github.com/creativecommons/team-open/blob/master/LICENSE">Creative Commons Attribution 4.0 International</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/team-open"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="http://teamopen.cc/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">48</th>
+          <th scope="row">termination-of-transfer</th>
+          
+            <td>Termination of Transfer tool</td>
+          
+          <td>JavaScript</td>
+          
+            <td><a href="https://github.com/creativecommons/termination-of-transfer/blob/master/LICENSE">GNU Affero General Public License v3.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/termination-of-transfer"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">49</th>
+          <th scope="row">vocabulary</th>
+          
+            <td>A cohesive design system to unify the web facing Creative Commons</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/vocabulary/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/vocabulary"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://cc-vocabulary.netlify.com/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">50</th>
+          <th scope="row">vue-vocabulary</th>
+          
+            <td>Vue components that implement a cohesive design system to unite the web facing Creative Commons</td>
+          
+          <td>Vue</td>
+          
+            <td><a href="https://github.com/creativecommons/vue-vocabulary/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/vue-vocabulary"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://cc-vue-vocabulary.netlify.com/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">51</th>
+          <th scope="row">wp-plugin-creativecommons</th>
+          
+            <td>Official Creative Commons plugin for licensing your content. With Creative Commons licenses, keep your copyright AND share your creativity.</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/wp-plugin-creativecommons/blob/master/license.txt">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/wp-plugin-creativecommons"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://wordpress.org/plugins/creative-commons/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">52</th>
+          <th scope="row">wp-theme-base</th>
+          
+            <td>New base WordPress theme for Creative Commons websites</td>
+          
+          <td>CSS</td>
+          
+            <td>Not specified</td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/wp-theme-base"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">53</th>
+          <th scope="row">wp-theme-cc-chapter</th>
+          
+            <td>Creative Commons Chapter site theme (including chapter sites setup, taxonomies, and widget code)</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/wp-theme-cc-chapter/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/wp-theme-cc-chapter"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">54</th>
+          <th scope="row">wp-theme-cc-sotc</th>
+          
+            <td>WordPress theme for the State of the Commons</td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/wp-theme-cc-sotc/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/wp-theme-cc-sotc"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">55</th>
+          <th scope="row">wp-theme-cctoolkit</th>
+          
+            <td>Creative Commons - Business Toolkit WordPress theme</td>
+          
+          <td>PHP</td>
+          
+            <td><a href="https://github.com/creativecommons/wp-theme-cctoolkit/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/wp-theme-cctoolkit"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">56</th>
+          <th scope="row">wp-theme-summit</th>
+          
+            <td></td>
+          
+          <td>CSS</td>
+          
+            <td><a href="https://github.com/creativecommons/wp-theme-summit/blob/master/LICENSE">GNU General Public License v2.0</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/wp-theme-summit"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a>
+          </td>
+        </tr>
+      
+        <tr>
+          <th scope="row">57</th>
+          <th scope="row">www-i</th>
+          
+            <td>Runs the site that hosts CC license badges</td>
+          
+          <td>Python</td>
+          
+            <td><a href="https://github.com/creativecommons/www-i/blob/master/LICENSE">MIT License</a></td>
+          
+          <td style="min-width: 12rem;">
+            <a class="btn btn-outline-secondary btn-sm" href="https://github.com/creativecommons/www-i"><img src="/contributing-code/projects/mark-github.svg" alt="GitHub"/> GitHub</a> <a class="btn btn-outline-secondary btn-sm" href="https://licensebuttons.net/"><img src="/contributing-code/projects/link-external.svg" alt="website"/> Website</a>
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
