@@ -196,21 +196,17 @@
       <div class="project-idea-card m-1 mb-4">
         <h2 class="card-header project-idea-header"><a name="add-audio">Add Audio to the CC Catalog &amp; CC Search</a></h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>Currently, <a href="https://search.creativecommons.org/">CC Search</a> and the <a href="https://api.creativecommons.engineering/">CC Catalog API</a> only support image search. We’d like to add more content types, especially audio. This would involve indexing audio sources in the CC Catalog, adding new endpoints to the CC Catalog API, and adding a UI to browse and search for audio in CC Search.</p>
+          <li class="list-group-item"><strong>The Problem:</strong> <p>Currently, <a href="https://search.creativecommons.org/">CC Search</a> and the <a href="https://api.creativecommons.engineering/">CC Catalog API</a> only support image search. We’d like to add more content types, especially audio. This would involve indexing audio sources in the CC Catalog and adding new endpoints to the CC Catalog API (user interface changes are out of scope for this project.)</p>
 </li>
           <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
 <li>There would be scripts in the <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a> repository that index metadata related to openly licensed audio files and add it to our database.</li>
 <li>The <a href="https://api.creativecommons.engineering/">CC Catalog API</a> would have a set of endpoints that allowed searching for and browsing audio files.</li>
-<li>If time permits, there would be a UI to browse and search for audio in <a href="https://search.creativecommons.org/">CC Search</a>.</li>
 </ul>
 </li>
           <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
 <li>Work with CC’s data engineer to define and implement a database schema for collecting audio file metadata.</li>
 <li>Write scripts to ingest audio file metadata from open repositories such as <a href="https://freesound.org/">Freesound</a>, <a href="https://freemusicarchive.org/">Free Music Archive</a>, etc.</li>
 <li>Implement additional API endpoints on the CC Catalog API to expose audio data.</li>
-<li>Work with CC’s Director of Product and CC’s UX designer on design mockups for adding audio to CC Search.</li>
-<li>Add components as needed to <a href="http://opensource.creativecommons.org/cc-vocabulary/">Vocabulary</a> and <a href="https://cc-vue-vocabulary.netlify.com/">Vue Vocabulary</a>, in collaboration with CC’s UX designer</li>
-<li>Implement the designs in CC Search using Vocabulary and Vue Vocabulary.</li>
 </ul>
 </li>
           <li class="list-group-item"><strong>Application Tips:</strong> <ul>
@@ -223,11 +219,6 @@
 <li><a href="https://api.creativecommons.engineering/">CC Catalog API documentation</a></li>
 <li><a href="https://github.com/creativecommons/cccatalog-api">CC Catalog API code</a></li>
 <li><a href="https://search.creativecommons.org/">CC Search</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend">CC Search code</a></li>
-<li><a href="http://opensource.creativecommons.org/cc-vocabulary/">Vocabulary landing page</a></li>
-<li><a href="https://github.com/creativecommons/vocabulary">Vocabulary code</a></li>
-<li><a href="https://cc-vue-vocabulary.netlify.com/">Vue Vocabulary landing page</a></li>
-<li><a href="https://github.com/creativecommons/vue-vocabulary">Vue Vocabulary code</a></li>
 <li>Music sources: <a href="https://freesound.org/">Freesound</a>, <a href="https://freemusicarchive.org/">Free Music Archive</a></li>
 <li><a href="https://opensource.creativecommons.org/blog/entries/freesound-intro/">Blog about Freesound on CC Open Source blog</a></li>
 </ul>
