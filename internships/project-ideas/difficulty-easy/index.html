@@ -176,10 +176,104 @@
       
       <ul class="list-unstyled m-3">
       
+        <li class="my-2"><a href="#linked-commons">Add filtering by node to the Linked Commons</a></li>
+      
+        <li class="my-2"><a href="#catalog-expansion">Add Provider API Scripts to CC Catalog</a></li>
+      
+        <li class="my-2"><a href="#web-monetization">Web Monetization Research Project</a></li>
+      
         <li class="my-2"><a href="#original-ideas">Original Ideas</a></li>
       </ul>
     </div>
     <hr/>
+    
+      <div class="project-idea-card m-1 mb-4">
+        <h2 class="card-header project-idea-header"><a name="linked-commons">Add filtering by node to the Linked Commons</a></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>The Problem:</strong> <p>For last year’s GSOC, <a href="https://opensource.creativecommons.org/blog/authors/soccerdroid/">María Belén Guaranda Cabezas</a> created a <a href="http://dataviz.creativecommons.engineering/">visualization graph of domains</a> in the Commons, using one month of data from Common Crawl.  For details, please see her posts on the CC Open Source Blog, which you can find at <a href="https://opensource.creativecommons.org/blog/authors/soccerdroid/">her author page</a>.  We’d like to expand on the current state of that project by adding the possibility to filter by domain, and show only nodes within distance 2 (i.e., they can be reached by traveling along no more than two edges from the chosen node).  If that is accomplished in short order, we’d also like to give the user the ability to choose the distance of nodes to show from a given node.</p>
+</li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
+<li>There should be a search box into which the user can type a domain (or part of a domain), and the graph should then show only nodes from that domain, and domains which can be reached with no more than two hops from the original.</li>
+<li>Stretch Goal: It’d be great if the user could choose a distance from the chosen node via some sort of drop-down menu.</li>
+<li>If both of those go well, we’d like to explore some graph-theoretic metrics on the graph.</li>
+<li>We may also add live updating to the data that backs the visualization.</li>
+<li>If these features are completed ahead of schedule, the intern may suggest further features to add to the visualization.</li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Internship Tasks:</strong> <p>The intern should implement the first feature above, and if there’s time, implement the second.  It may be useful for the intern to assist with setting up live-updating of the data backing the visualization.</p>
+</li>
+          <li class="list-group-item"><strong>Application Tips:</strong> <p>Interest in and/or experience with graph theory would be useful!</p>
+</li>
+          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="http://dataviz.creativecommons.engineering/">The Linked Commons</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-dataviz">The Linked Commons code</a></li>
+<li><a href="https://creativecommons.org/2020/01/23/introducing-the-linked-commons/">Introducing The Linked Commons</a> blog post on CC main blog</li>
+<li><a href="https://opensource.creativecommons.org/blog/authors/soccerdroid/">Maria's technical blog posts</a></li>
+<li><a href="https://github.com/vasturiano/force-graph">force-graph library</a></li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript, Graph Theory</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Brent Moran, María Belén Guaranda Cabezas</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
+        </ul>
+      </div>
+    
+      <div class="project-idea-card m-1 mb-4">
+        <h2 class="card-header project-idea-header"><a name="catalog-expansion">Add Provider API Scripts to CC Catalog</a></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>The Problem:</strong> <p>The <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a> gets a huge amount of its data by pulling image info from APIs via what we are calling ‘Provider API Scripts’.  We have a <a href="https://github.com/orgs/creativecommons/projects/12">backlog</a> of providers which have been vetted, and we’d like to have scripts that pull data from their public APIs and pass it to our storage class.  This would increase the breadth of material available from <a href="https://search.creativecommons.org/">CC Search</a> and the <a href="https://api.creativecommons.engineering/">CC Catalog API</a>.</p>
+</li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>We would like to have a number of completed, well-tested Provider API Scripts written by the end of this internship, and they should be deployed in production.  Deployment in production implies we’d also have Apache Airflow DAGs (Directed Acyclic Graphs) that run the Provider API Scripts on an appropriate schedule.</p>
+</li>
+          <li class="list-group-item"><strong>Internship Tasks:</strong> <p>The intern should write more Provider API Scripts, taking priorities from the backlog linked above.  Such a script must pull image information from a public API provided by the provider, and pass it along to a function that will validate the information, format it as necessary, and write it to disk.  This validation/storage function is already written, so the intern needs only to write a script that knows how to get the relevant data from the public API of the provider.  For examples of what we are expecting from a Provider API Script, see <code>wikimedia_commons.py</code> and <code>flickr.py</code>in <a href="https://github.com/creativecommons/cccatalog/tree/master/src/cc_catalog_airflow/dags/provider_api_scripts">the repository</a>, as well as their accompanying tests.</p>
+</li>
+          <li class="list-group-item"><strong>Application Tips:</strong> <p>Knowledge or experience with pulling real data from public APIs in JSON format would be helpful.  It would also help if the intern is familiar with Python.</p>
+</li>
+          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://github.com/creativecommons/cccatalog">CC Catalog code</a></li>
+<li><a href="https://github.com/orgs/creativecommons/projects/12">Queue of providers waiting to be added</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog/tree/master/src/cc_catalog_airflow/dags/provider_api_scripts">Example scripts</a></li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> Python, JSON, Apache Airflow (optional)</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Brent Moran, Kriti Godey</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
+        </ul>
+      </div>
+    
+      <div class="project-idea-card m-1 mb-4">
+        <h2 class="card-header project-idea-header"><a name="web-monetization">Web Monetization Research Project</a></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>The Problem:</strong> <p>CC is a non-profit supported by donations from foundations, corporations, and individuals. Despite massive traffic to CC’s web products, we do not make use of any mainstream monetization methods on our sites, such as advertising. However, as a non-profit, CC is continuously thinking about ways to fund the important work we do. As one potential avenue, CC wants to carry out in-depth research of web monetization options in order to evaluate which, if any, are appropriate for CC to pursue and integrate for our own web products.</p>
+<p><strong><p class="text-danger">This project is for Outreachy only, since it does not involve code output.</p></strong></p>
+</li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>We’d like the outcome of this internship to be a deliverable, in written form, detailing in-depth research regarding the current state of web monetization technology, with recommendations for options for CC. We expect this deliverable to take the form of a CC-licensed research paper, based on which we expect the intern to also write a blog article.</p>
+</li>
+          <li class="list-group-item"><strong>Internship Tasks:</strong> <p>The intern will be expected to create their own detailed work plan, containing activities including but not limited to:</p>
+<ul>
+<li>preliminary research</li>
+<li>user interviews</li>
+<li>preparation of an outline</li>
+<li>research to write the paper, including examples of existing implementations on other sites, of various web monetization technologies</li>
+<li>further user interviews to help inform recommendations</li>
+<li>writing a blog article about their findings</li>
+</ul>
+<p>They will work closely with their mentors, doing frequent check-ins, in order to ensure the direction of the research is on track, and that there aren’t oversights.</p>
+</li>
+          <li class="list-group-item"><strong>Application Tips:</strong> <p>A clear sense that the intern has excellent written skills, understands how to carry out research interviews, and knows how to structure findings, whether they are technical truths or takeaways from interviews. Passion for or existing knowledge of online privacy issues, cryptocurrencies, browser technologies, and other related subject matter.</p>
+</li>
+          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://webmonetization.org/">Web Monetization homepage</a></li>
+<li><a href="https://interledger.org/">Interledger</a>, the protocol that Web Monetization is built on</li>
+<li><a href="https://www.grantfortheweb.org/">Grant for the Web</a>, a fund for innovation in web monetization</li>
+<li><a href="https://tiffanyhayden.blog/web-monetization-interledger-coil-xrp/">A blog post about using Web Monetization</a></li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> Research, Writing. In so far as the work is technical, it is understanding how to navigate the world of add-ons and plugins, and being clear enough on the subject matter that they are able to correctly describe how different web monetization technology works to a non-technical person.</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Anna Tumadóttir, Sarah Pearson</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
+        </ul>
+      </div>
     
     <div class="project-idea-card m-1 mb-4">
       <h2 class="card-header project-idea-header"><a name="original-ideas">Original Ideas</a></h5>
