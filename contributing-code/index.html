@@ -146,11 +146,22 @@
 <h2 id="finding-an-issue">Finding an issue</h2><p>Here's a list of <a href="/projects">all our current projects</a>. We use GitHub issues associated with each project to track the work associated with that project. That's where you can find things to work on.</p>
 <p>We make extensive use of issue labels to desginate the status of various issues. We have a standard set of labels across all projects, <a href="https://github.com/creativecommons/ccos-scripts/blob/master/normalize_repos/labels.py">documented here</a>. Here are some of the ones that are most relevant to finding a good issue to work on:</p>
 <ul>
-<li>Issues tagged <code>help wanted</code> and/or <code>good first issue</code> are available for community contribution. You may work on an issue labeled <code>good first issue</code> even if it's not your first issue.</li>
-<li>Issues tagged <code>in progress</code> are being worked on by someone else. If there hasn't been any issue or PR activity for at least 7 days, issues with this tag can be reassigned to someone else.</li>
-<li>Issues tagged <code>blocked</code>, <code>not ready for work</code> or <code>ticket work required</code> are not yet ready for work. They need something else to be done first before they are ready.</li>
+<li><strong>Issues tagged <code>help wanted</code> or <code>good first issue</code></strong> are available for community contribution**<ul>
+<li>These issues are available for community contribution and you do not need our permission to work on one of these.</li>
+<li>You may work on an issue labeled <code>good first issue</code> even if it's not your first issue.</li>
+<li>Check the issue comments/labels to see whether someone else has indicated that they are working on it. If someone is already working on it and there has been activity within the last 7 days, you may want to find a different issue to work on.</li>
+</ul>
+</li>
+<li><strong>Issues tagged with one of these labels: <code>blocked</code>, <code>not ready for work</code>, <code>ticket work required</code>, <code>CC staff only</code> are not available to the community. Do not work on these.</strong><ul>
+<li>Issues tagged <code>blocked</code> are blocked by other work that needs to be done first.</li>
+<li>Issues tagged <code>not ready for work</code> or <code>ticket work required</code> need additional work done on the issue before they can be opened to community contributors.</li>
 <li>Issues tagged <code>CC staff only</code> are not suitable for community contribution, usually because it requires infrastructure access or institutional knowledge that would be impractical to provide to the community.</li>
-<li>Issues without any of the above labels may be open for contribution.</li>
+</ul>
+</li>
+<li><strong>Issues without any of the above labels <em>may</em> be open for contribution.</strong><ul>
+<li>Please add a comment to ask whether the issue is available before starting work.</li>
+</ul>
+</li>
 </ul>
 <p>Some helpful saved searches on GitHub than can assist with finding an issue:</p>
 <ul>
@@ -161,14 +172,23 @@
 </ul>
 <h2 id="contribution-process">Contribution process</h2><p>Once you've found an issue you'd like to work on, please follow these steps to make your contribution:</p>
 <ol>
-<li>Comment on it and say you'd like to work on that issue.</li>
-<li>Wait for someone (usually a CC staff member or project maintainer) to confirm that you may work on the issue before writing any code. The person who confirms will assign the issue to you add an "in progress" label to the issue to indicate that the issue is being worked on.</li>
-<li>Once the issue has been updated to "in progress", write your code and submit your pull request. Be sure to read and follow our <strong><a href="/contributing-code/pr-guidelines">pull request guidelines</a></strong>!</li>
+<li>Comment on it and say you're working on that issue. This is to avoid conflicts with others also working on the issue.<ul>
+<li>A project maintainer may mark the issue with an <code>in progress</code> label at this point, but we don't always get around to that.</li>
+</ul>
+</li>
+<li>Write your code and submit your pull request. Be sure to read and follow our <strong><a href="/contributing-code/pr-guidelines">pull request guidelines</a></strong>!</li>
 <li>Wait for code review and address any issues raised as soon as you can.</li>
 </ol>
-<p>Even if you're not done with the issue, create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a> and push your code <a href="https://www.worklytics.co/blog/commit-early-push-often/">early and often</a>. If we haven't heard from you in over a week and someone else expresses interest in that issue, we will reassign the issue to the new person.</p>
-<h2 id="proposing-a-new-issue">Proposing a new issue</h2><p>If you want to work on something that there is no GitHub issue for, then create a a new GitHub issue associated with the relevant repository and propose your change there. Be sure to include implementation details and the rationale for the proposed change.</p>
-<p>If the project has a roadmap documented in the README, checking the roadmap to see if the feature is already in our pipeline would be a good first step.</p>
+<p><strong>A note on collaboration:</strong> We encourage people to collaborate as much as possible. We especially appreciate contributors reviewing each others pull requests, as long as you are <a href="https://medium.com/@otarutunde/comments-during-code-reviews-2cb7791e1ac7">kind and constructive</a> when you do so.</p>
+<h2 id="proposing-a-new-issue">Proposing a new issue</h2><p>If you want to work on something that there is no GitHub issue for, follow these steps:</p>
+<ol>
+<li>Create a a new GitHub issue associated with the relevant repository and propose your change there. Be sure to include implementation details and the rationale for the proposed change.<ul>
+<li>We are very reluctant to accept random pull requests without a related issue created first.</li>
+</ul>
+</li>
+<li>The issue will automatically have the <code>not ready for work</code> label applied. Wait for a project maintainer to evaluate your issue and decide whether it's something that we will accept a pull request for.</li>
+<li>Once the project maintainer has approved the issue and removed the <code>not ready for work</code> label, you may start work on code as described in the "Contribution process" section above.</li>
+</ol>
 <p>When in doubt, ask a question on <a href="/community">one of our community forums</a>.</p>
 
 
