@@ -1,0 +1,209 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Participe do Google Summer of Code / Outreachy" />
+<meta property="og:description" content="" />
+<meta property="og:url" content="/blog/entries/2020-03-05-participe-gsoc/" />
+<meta property="og:type" content="article" />
+
+      
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Participe do Google Summer of Code / Outreachy">
+<meta name="twitter:description" content="">
+      
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Participe do Google Summer of Code / Outreachy — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">Blog</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contribute</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Contribution Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/projects/">Project List</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarInternshipsDropdown" role="button">Internships</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarInternshipsDropdown">
+                    
+                      <a class="dropdown-item" href="/internships/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/internships/project-ideas/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/internships/applicant-guide/">Applicant Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/intern-guide/">Intern Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+                    
+                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">creativecommons.org</a>
+                </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Participe do Google Summer of Code / Outreachy</h2>
+  
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/brenoferreira/">
+  Breno Ferreira
+</a>
+  on Thursday, 2020-03-5</p>
+  
+  <div class="body"><p>O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.</p>
+<p>O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.</p>
+<p>Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.</p>
+<p>Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.</p>
+<p>A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas <a href="https://creativecommons.org/licenses/?lang=pt_BR">Licenças Creative Commons</a>, como CC-BY, CC-BY-SA, etc..</p>
+<p>Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.</p>
+<p>O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no <a href="https://developers.google.com/open-source/gsoc/help/student-stipends">site do programa</a>. No caso do Outreachy, os valores estão também na <a href="https://www.outreachy.org">página do programa</a>.</p>
+<p>Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:</p>
+<p>Leia o conteúdo disponível online sobre como o programa funciona. <a href="https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/">Google Summer of Code</a>. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; <a href="https://opensource.creativecommons.org/internships/project-ideas/all/">nossa lista de projetos</a> que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e <a href="https://opensource.creativecommons.org/internships/applicant-guide/">nosso guia para candidatos</a> para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.</p>
+<p>Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo <a href="https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility">projeto que serei responsável</a>, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.</p>
+<p>O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.</p>
+<p>Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A <a href="https://help.github.com/pt">documentação do Github</a> pode ajudar, principalmente a parte sobre <a href="https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests">como funcionam os Pull Requests</a> pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.</p>
+<p>Na nossa página de <a href="https://opensource.creativecommons.org/internships/project-ideas/all/">ideias de projetos</a> os projetos listam as habilidades recomendadas para quem se interessar (listado em <em>Skills recommended</em>). Verifique se essas habilidades se alinham com as suas.</p>
+<p>Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é <a href="https://github.com/creativecommons/cccatalog-frontend">https://github.com/creativecommons/cccatalog-frontend</a>. De uma olhada na <a href="https://github.com/creativecommons/cccatalog-frontend/issues">lista de issues</a> que estão marcadas com os labels <a href="https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">"Good First Issue"</a> e <a href="https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">"Help Wanted"</a>. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce <a href="https://opensource.creativecommons.org/community/">participar da comunidade</a>. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.</p>
+<p>Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.</p>
+<p>Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.</p>
+</div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
+          
+            
+            
+            <a href=" /blog/categories/outreachy/ ">outreachy</a>
+          
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2020-03-05-participe-gsoc"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
