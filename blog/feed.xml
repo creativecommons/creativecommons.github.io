@@ -35,6 +35,56 @@
 &lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">
+    <title type="text">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</title>
+    <id>urn:uuid:fbd0a410-d502-34da-a414-935d10b140c7</id>
+    <updated>2020-03-05T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/" />
+    <author>
+      <name>hugosolar</name>
+    </author>
+    <content type="html">&lt;p&gt;En Creative Commons creemos firmemente en que el código abierto es una gran herramienta para fomentar y desarrollar productos con un enfoque comunitario y, a su vez, la consolidación de una comunidad activa de contribuyentes al  patrimonio común (o, en inglés, &lt;em&gt;Commons&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Con el fin de fomentar la participación de estudiantes en nuestros proyectos de código abierto, CC es parte de los programas que ofrece Google  (&lt;a href=&quot;https://summerofcode.withgoogle.com/&quot;&gt;Google Summer of Code&lt;/a&gt;) y también &lt;a href=&quot;https://www.outreachy.org/&quot;&gt;Outreachy&lt;/a&gt;. En ambos casos, el objetivo es involucrar a estudiantes en el código abierto. Para ello, hacemos un llamado abierto a todos y todas quienes tengan interés en colaborar con nuestro equipo, de postular a los llamados cuanto antes.&lt;/p&gt;
+&lt;h4 id=&quot;google-summer-of-code&quot;&gt;Google Summer of Code&lt;/h4&gt;&lt;p&gt;Programa impulsado por Google el cual existe desde el año 2005 el cual ha impulsado a mas de 15.000 estudiantes de mas de 118 paises a involucrarse con diversas organizaciones que abogan por el código abierto.&lt;/p&gt;
+&lt;h4 id=&quot;outreachy&quot;&gt;Outreachy&lt;/h4&gt;&lt;p&gt;Este programa impulsa pasantías de personas en organizaciones que trabajan con código abierto. El foco de Outreachy está puesto en comunidades que poseen poca representatividad, que sufren prejuicios sistémicos o discriminación en el area de las tecnologias.&lt;/p&gt;
+&lt;p&gt;Las pasantías consisten en el desarrollo de un proyecto el cual debe ser llevado a cabo en un periodo de 3 meses. Este proceso se complementa con una mentoría recibida por el estudiante la cual ayuda a guiar el desarrollo y buen término del mismo.&lt;/p&gt;
+&lt;p&gt;En las versiones pasadas de estos programas tuvimos excelentes resultados llevados a cabo por excelentes personas que pusieron toda su dedicación para concretar estos proyectos:&lt;/p&gt;
+&lt;h2 id=&quot;gsoc-2019&quot;&gt;GSoC 2019&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;Wordpress Plugin&lt;/a&gt; por Ahmad Bilal&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;CC Search Browser extension&lt;/a&gt; por Mayank Nader&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/vue-vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt; por Dhruv Bhanushali&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;Revamping the CC Chooser&lt;/a&gt; por Ari Madian&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz&quot;&gt;CC Catalog Data Visualization&lt;/a&gt; por Maria Belen Guaranda&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;outreachy-2019-2020&quot;&gt;Outreachy 2019-2020&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;Improve License Chooser&lt;/a&gt; por Olga Bulat&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/vue-vocabulary&quot;&gt;Extend the scope and/or use of CC Vocabulary&lt;/a&gt; por Chidiebere Onyegbuchulem&lt;/li&gt;
+&lt;li&gt;Revamp CC's Platform Toolkit guide por Ana Paula Rocha&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;De esta manera hemos decidido participar de las siguientes rondas de ambos programas, los cuales se encuentran en la fase de “contribución a la comunidad”, por lo tanto, aún estás a tiempo de leer documentación al respecto, tanto de los programas como de la participación en los proyectos de nuestra organización&lt;/p&gt;
+&lt;h3 id=&quot;gsoc&quot;&gt;GSoC&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/organizations/&quot;&gt;Organizaciones participantes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works/&quot;&gt;Como funciona&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://google.github.io/gsocguides/student/&quot;&gt;Guía de estudiante&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;outreachy&quot;&gt;Outreachy&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.outreachy.org/apply/project-selection/&quot;&gt;Organizaciones / proyectos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.outreachy.org/apply/&quot;&gt;Como funciona&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.outreachy.org/docs/internship/&quot;&gt;Guia de estudiante&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;cc-open-source&quot;&gt;CC Open Source&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/internships/intern-guide/&quot;&gt;Guia del postulante&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/contributing-code/projects/&quot;&gt;Listado de proyectos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/contributing-code/&quot;&gt;Lineamientos para contribuir&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;beneficios&quot;&gt;Beneficios&lt;/h2&gt;&lt;p&gt;Estos programas proveen múltiples beneficios a quienes deseen participar de ellos, por un lado, las organizaciones participantes trabajan en proyectos de código abierto utilizados en todo el mundo y en diversas aplicaciones, convirtiéndose en una oportunidad única de contribuir a proyectos de gran escala que además cuentan con comunidades globales transformando además esta pasantía en una experiencia enriquecedora.&lt;/p&gt;
+&lt;p&gt;Por otro lado, técnicamente hablando, también comprende un gran desafío, ya que existe la posibilidad de enfrentarse a la resolución de un problema del mundo real, sin embargo, el hecho de poder enfrentarlo con una mentoría exclusiva provee un gran número de herramientas para el desarrollo y concreción del proyecto, los cuales, sin duda, seran de gran ayuda para el futuro desarrollo de la vida profesional de quien participe.&lt;/p&gt;
+&lt;p&gt;Además, estos programas consideran un estipendio por los 3 meses que dura la pasantía. Valores que son variables según la ubicación que quien desea postular.&lt;/p&gt;
+&lt;h2 id=&quot;destrezas&quot;&gt;Destrezas&lt;/h2&gt;&lt;p&gt;Con respecto al idioma, para participar en estos programas no se exige un manejo del inglés al 100%, solo basta que puedas comunicarte de manera razonable, ya que, si bien, existen algunos proyectos en los cuales yo soy el mentor ( &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#wp-plugin&quot;&gt;WP Plugin&lt;/a&gt; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#vocabulary-integration&quot;&gt;Implementar Vocabulary&lt;/a&gt; ) y podemos tener reuniones en español, la comunicación pública y la documentación debe ser en Inglés.&lt;/p&gt;
+&lt;p&gt;Con respecto a nuestros proyectos, todos se encuentran en &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt; por lo tanto debes saber lo básico de &lt;a href=&quot;https://rogerdudler.github.io/git-guide/index.es.html&quot;&gt;Git&lt;/a&gt;. Te recomiendo consultar la &lt;a href=&quot;https://help.github.com/es&quot;&gt;ayuda de Github&lt;/a&gt; para mayor detalle, sugiero poner atención a la guia sobre como realizar &lt;a href=&quot;https://help.github.com/es/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;Pull Request&lt;/a&gt; ya que es muy necesario para el flujo de trabajo del equipo tecnico de CC y lo será también para tu pasantía.&lt;/p&gt;
+&lt;h2 id=&quot;invitacin&quot;&gt;Invitación&lt;/h2&gt;&lt;p&gt;Desde yá los dejamos invitados a participar en estos programas o a participar directamente en nuestra &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;comunidad de código abierto&lt;/a&gt; o visitar nuestro &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt;, el cual contiene nuestros proyectos. También pueden unirse a nuestra comunidad global en &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack&lt;/a&gt; donde me pueden encontrar como @hugo si tienen alguna duda o comentario.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/">
     <title type="text">CC Platform Toolkit Revamp - 4</title>
     <id>urn:uuid:749c62dd-4d5b-31d9-9a36-82fd3d84e47a</id>
@@ -2647,24 +2697,6 @@ summer. Here they are!&lt;/p&gt;
 &lt;h3 id=&quot;thank-you&quot;&gt;Thank you&lt;/h3&gt;&lt;p&gt;CC Search is also made possible by a number of institutional and individual supporters and donors. Specifically, we would like to thank &lt;a href=&quot;https://www.arcadiafund.org.uk/about-peter-baldwin-lisbet-rausing/&quot;&gt;Arcadia&lt;/a&gt; – a charitable fund of Lisbet Rausing and Peter Baldwin, &lt;a href=&quot;https://www.mozilla.org/en-US/foundation/&quot;&gt;Mozilla&lt;/a&gt;, and the Brin Wojcicki Foundation for their support.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This post was originally posted &lt;a href=&quot;https://creativecommons.org/2019/04/30/cc-search-images/&quot;&gt;on the primary Creative Commons blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-development-with-saltstack/">
-    <title type="text">Open Development with SaltStack</title>
-    <id>urn:uuid:6dc70283-9d5a-3a76-bc8e-95cabae41752</id>
-    <updated>2019-04-17T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/open-development-with-saltstack/" />
-    <author>
-      <name>TimidRobot</name>
-    </author>
-    <content type="html">&lt;p&gt;I am excited to publicize the open source repository for our SaltStack configuration: &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot;&gt;creativecommons/sre-salt-prime&lt;/a&gt;. This is a rare offering. Not many configuration management system repositories are open sourced. Read on for why this is important to me :)&lt;/p&gt;
-&lt;p&gt;I really like open source software (&lt;a href=&quot;https://opensource.org/osd-annotated&quot;&gt;The Open Source Definition (Annotated) | Open Source Initiative&lt;/a&gt;). Over the years it has provided me with access and capabilities I would not normally be able to afford.&lt;/p&gt;
-&lt;p&gt;I had very little money in college. My first computer was salvaged from a dumpster and ran entirely on open source software. I was once reduced to begging a few dollars to satisfy a museum's arbitrarily enforced &quot;suggested donation&quot;. Thankfully, open source image manipulation software powered many of my art projects.&lt;/p&gt;
-&lt;p&gt;With the exception of typing class in high school and a few training sessions at work, I have never received any formal computer training. Instead, I was able to teach myself by using and investigating open source software. I have been able to determine exactly why open source software behaves the way it does by looking at the source code. It is instructive to be able to synthesize complex systems as a single user and participate in the same communities as SysAdmins using the same software with thousands or millions of users.&lt;/p&gt;
-&lt;p&gt;I've been gainfully employed in the technology sector for over a decade so the free cost of open source software is not as necessary to me. However, open source software remains very important. As a SysAdmin, I have repeatedly found open source communities to be a better resource for support than even the most expensive maintenance contract. The ability to make at-will modifications to a codebase can save project timelines, and seeing those modifications accepted upstream is deeply satisfying.&lt;/p&gt;
-&lt;p&gt;When I started at Creative Commons in the fall of 2018, I began using &lt;a href=&quot;https://en.wikipedia.org/wiki/Salt_(software)&quot;&gt;SaltStack&lt;/a&gt; full time. As part of my work on developing infrastructure as code at Creative Commons, I created a new open source repository for our SaltStack configuration: &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot;&gt;creativecommons/sre-salt-prime&lt;/a&gt;. While working on provisioning of AWS resources, I have had trouble finding examples. I learn best by example and I know I’m not alone. I hope opening this repository helps other Site Reliability Engineers (SREs) and Systems Administrators (SysAdmins).&lt;/p&gt;
-&lt;p&gt;I expect that working in the open will improve the quality of my work. Research has not only shown that people produce higher quality work when they expect it to be reviewed or shared, but also that open source allows others to provide criticism, feedback, and contributions.&lt;/p&gt;
-&lt;p&gt;Perhaps most of all, I hope to give back to the community. I hope it helps others learn when they do not have access to proprietary software at home, school, or work. I hope that my work in the open might lower the resources required to implement open source for others.&lt;/p&gt;
 </content>
   </entry>
 </feed>
