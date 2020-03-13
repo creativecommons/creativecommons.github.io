@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
-  <id>urn:uuid:3b553364-cf6e-3235-baa1-779d27c1a90b</id>
+  <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
   <updated>2020-03-05T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
@@ -9,35 +9,9 @@
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
-    <title type="text">Participe do Google Summer of Code / Outreachy</title>
-    <id>urn:uuid:26bde23c-c530-310a-ab20-1e100233696c</id>
-    <updated>2020-03-05T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/" />
-    <author>
-      <name>brenoferreira</name>
-    </author>
-    <content type="html">&lt;p&gt;O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.&lt;/p&gt;
-&lt;p&gt;O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.&lt;/p&gt;
-&lt;p&gt;Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.&lt;/p&gt;
-&lt;p&gt;Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.&lt;/p&gt;
-&lt;p&gt;A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas &lt;a href=&quot;https://creativecommons.org/licenses/?lang=pt_BR&quot;&gt;Licenças Creative Commons&lt;/a&gt;, como CC-BY, CC-BY-SA, etc..&lt;/p&gt;
-&lt;p&gt;Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.&lt;/p&gt;
-&lt;p&gt;O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no &lt;a href=&quot;https://developers.google.com/open-source/gsoc/help/student-stipends&quot;&gt;site do programa&lt;/a&gt;. No caso do Outreachy, os valores estão também na &lt;a href=&quot;https://www.outreachy.org&quot;&gt;página do programa&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:&lt;/p&gt;
-&lt;p&gt;Leia o conteúdo disponível online sobre como o programa funciona. &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/&quot;&gt;Google Summer of Code&lt;/a&gt;. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;nossa lista de projetos&lt;/a&gt; que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/applicant-guide/&quot;&gt;nosso guia para candidatos&lt;/a&gt; para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.&lt;/p&gt;
-&lt;p&gt;Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility&quot;&gt;projeto que serei responsável&lt;/a&gt;, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.&lt;/p&gt;
-&lt;p&gt;O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.&lt;/p&gt;
-&lt;p&gt;Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A &lt;a href=&quot;https://help.github.com/pt&quot;&gt;documentação do Github&lt;/a&gt; pode ajudar, principalmente a parte sobre &lt;a href=&quot;https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;como funcionam os Pull Requests&lt;/a&gt; pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.&lt;/p&gt;
-&lt;p&gt;Na nossa página de &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;ideias de projetos&lt;/a&gt; os projetos listam as habilidades recomendadas para quem se interessar (listado em &lt;em&gt;Skills recommended&lt;/em&gt;). Verifique se essas habilidades se alinham com as suas.&lt;/p&gt;
-&lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
-&lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
-&lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">
     <title type="text">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</title>
-    <id>urn:uuid:fbd0a410-d502-34da-a414-935d10b140c7</id>
+    <id>urn:uuid:e28cf21f-757a-32de-a7b0-5c02f0083c21</id>
     <updated>2020-03-05T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/" />
     <author>
@@ -85,9 +59,35 @@
 &lt;h2 id=&quot;invitacin&quot;&gt;Invitación&lt;/h2&gt;&lt;p&gt;Desde yá los dejamos invitados a participar en estos programas o a participar directamente en nuestra &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;comunidad de código abierto&lt;/a&gt; o visitar nuestro &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt;, el cual contiene nuestros proyectos. También pueden unirse a nuestra comunidad global en &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack&lt;/a&gt; donde me pueden encontrar como @hugo si tienen alguna duda o comentario.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
+    <title type="text">Participe do Google Summer of Code / Outreachy</title>
+    <id>urn:uuid:e5616ac8-3b6a-3afa-85f5-eddcd822577e</id>
+    <updated>2020-03-05T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/" />
+    <author>
+      <name>brenoferreira</name>
+    </author>
+    <content type="html">&lt;p&gt;O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.&lt;/p&gt;
+&lt;p&gt;O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.&lt;/p&gt;
+&lt;p&gt;Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.&lt;/p&gt;
+&lt;p&gt;Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.&lt;/p&gt;
+&lt;p&gt;A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas &lt;a href=&quot;https://creativecommons.org/licenses/?lang=pt_BR&quot;&gt;Licenças Creative Commons&lt;/a&gt;, como CC-BY, CC-BY-SA, etc..&lt;/p&gt;
+&lt;p&gt;Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.&lt;/p&gt;
+&lt;p&gt;O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no &lt;a href=&quot;https://developers.google.com/open-source/gsoc/help/student-stipends&quot;&gt;site do programa&lt;/a&gt;. No caso do Outreachy, os valores estão também na &lt;a href=&quot;https://www.outreachy.org&quot;&gt;página do programa&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:&lt;/p&gt;
+&lt;p&gt;Leia o conteúdo disponível online sobre como o programa funciona. &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/&quot;&gt;Google Summer of Code&lt;/a&gt;. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;nossa lista de projetos&lt;/a&gt; que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/applicant-guide/&quot;&gt;nosso guia para candidatos&lt;/a&gt; para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.&lt;/p&gt;
+&lt;p&gt;Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility&quot;&gt;projeto que serei responsável&lt;/a&gt;, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.&lt;/p&gt;
+&lt;p&gt;O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.&lt;/p&gt;
+&lt;p&gt;Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A &lt;a href=&quot;https://help.github.com/pt&quot;&gt;documentação do Github&lt;/a&gt; pode ajudar, principalmente a parte sobre &lt;a href=&quot;https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;como funcionam os Pull Requests&lt;/a&gt; pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.&lt;/p&gt;
+&lt;p&gt;Na nossa página de &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;ideias de projetos&lt;/a&gt; os projetos listam as habilidades recomendadas para quem se interessar (listado em &lt;em&gt;Skills recommended&lt;/em&gt;). Verifique se essas habilidades se alinham com as suas.&lt;/p&gt;
+&lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
+&lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
+&lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/">
     <title type="text">CC Platform Toolkit Revamp - 4</title>
-    <id>urn:uuid:749c62dd-4d5b-31d9-9a36-82fd3d84e47a</id>
+    <id>urn:uuid:99b50998-4560-3b3f-80bd-b03b892c84ab</id>
     <updated>2020-03-04T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/" />
     <author>
@@ -102,7 +102,7 @@
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week5-8/">
     <title type="text">CC Vocabulary - Weeks 5-8</title>
-    <id>urn:uuid:fa7da7f9-95c3-3313-964b-89a5a9e3741e</id>
+    <id>urn:uuid:b30bf3b1-be65-3f4d-a3c5-5ac5c7c9f626</id>
     <updated>2020-02-03T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week5-8/" />
     <author>
@@ -126,7 +126,7 @@
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-coding/">
     <title type="text">Improving CC License Chooser: Coding</title>
-    <id>urn:uuid:26cf502f-0495-388c-9e23-3a36608c0b87</id>
+    <id>urn:uuid:bda5e013-2b29-3207-8041-cff3bfab0c22</id>
     <updated>2020-01-24T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-coding/" />
     <author>
@@ -142,7 +142,7 @@
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/">
     <title type="text">Apache Airflow testing with Pytest</title>
-    <id>urn:uuid:c2d026d4-8da1-3390-bfad-5b77b0d103d0</id>
+    <id>urn:uuid:c59eaf57-778e-3d75-8929-537949d119fd</id>
     <updated>2020-01-23T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/" />
     <author>
@@ -301,7 +301,7 @@ context around the snippets shown here, please take a look at
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-3/">
     <title type="text">CC Platform Toolkit Revamp - 3</title>
-    <id>urn:uuid:40b08ba7-d93d-3f0d-8201-90c553fe016a</id>
+    <id>urn:uuid:297bf32e-1761-3ec6-967a-4cb76007305c</id>
     <updated>2020-01-22T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-3/" />
     <author>
@@ -315,7 +315,7 @@ context around the snippets shown here, please take a look at
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-my-first-four-weeks/">
     <title type="text">CC Vocabulary - My First Four Weeks</title>
-    <id>urn:uuid:12547153-4815-3b15-8e48-9a86df2c1e89</id>
+    <id>urn:uuid:f0b37b2b-043a-3606-b848-2299619bb41c</id>
     <updated>2020-01-14T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-my-first-four-weeks/" />
     <author>
@@ -348,23 +348,9 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;Well, all said, the past weeks have been great. I will be sharing more in two weeks.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
-    <title type="text">CC Platform Toolkit Revamp - 2</title>
-    <id>urn:uuid:1fdb14dd-a714-39ac-b6fa-dd594dceac67</id>
-    <updated>2020-01-06T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
-&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
-&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
-&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">
     <title type="text">Improving CC License Chooser Weeks 1-2: Design</title>
-    <id>urn:uuid:86065865-1ff3-356d-ab4b-18eaa8737469</id>
+    <id>urn:uuid:24a0bec2-ab5d-3990-9d96-1c8d52fe24f1</id>
     <updated>2020-01-06T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/" />
     <author>
@@ -421,9 +407,23 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;You can follow my work at &lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;https://github.com/creativecommons/cc-chooser&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
+    <title type="text">CC Platform Toolkit Revamp - 2</title>
+    <id>urn:uuid:dba4dc6a-e8b6-3f06-9b03-2d58dd440755</id>
+    <updated>2020-01-06T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
+    <author>
+      <name>apdsrocha</name>
+    </author>
+    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
+&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
+&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
+&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/freesound-intro/">
     <title type="text">An Introduction to Freesound</title>
-    <id>urn:uuid:c9a3024c-0b5c-35fe-bd6b-b2d8ca32e48c</id>
+    <id>urn:uuid:9d8021b4-7645-3213-a8ff-ced7633a4488</id>
     <updated>2019-12-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/freesound-intro/" />
     <author>
@@ -471,7 +471,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/">
     <title type="text">CC Platform Toolkit Revamp</title>
-    <id>urn:uuid:1f0c1d2c-1f4d-3057-adb5-5d9ba1c8ea4e</id>
+    <id>urn:uuid:076e809b-c084-3977-8ca5-7bbd76064c50</id>
     <updated>2019-12-16T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/" />
     <author>
@@ -485,7 +485,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/aws_grant/">
     <title type="text">Creative Commons Awarded AWS Imagine Grant</title>
-    <id>urn:uuid:8f9951cd-47d7-38b6-8467-9d549da73b5f</id>
+    <id>urn:uuid:4d147a26-5b4d-3f51-a551-0df926143964</id>
     <updated>2019-12-12T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/aws_grant/" />
     <author>
@@ -509,7 +509,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/">
     <title type="text">Building a Distributed Indexer for a Search Engine</title>
-    <id>urn:uuid:e053d19e-75e2-3a36-92a5-5d64f8751e10</id>
+    <id>urn:uuid:707d616c-8953-3a17-925b-02567a4c9516</id>
     <updated>2019-12-11T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/" />
     <author>
@@ -542,7 +542,7 @@ results = client.text_search(query=&amp;#39;dog&amp;#39;)
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-11-25-empowering-collaboration/">
     <title type="text">Empowering Collaboration in the Commons</title>
-    <id>urn:uuid:b875b724-40d0-36df-bb7d-8db25f859664</id>
+    <id>urn:uuid:c9d7d6f2-545c-3adb-95b7-c51cdee22ed4</id>
     <updated>2019-11-25T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-11-25-empowering-collaboration/" />
     <author>
@@ -592,7 +592,7 @@ underrepresented in FOSS (free and open source software)&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/ssr-ccsearch/">
     <title type="text">Server Side Rendering with Vue.JS on CC Search</title>
-    <id>urn:uuid:29008995-de6e-38ff-b488-4924cd3d7899</id>
+    <id>urn:uuid:1dcdb6c2-1f17-364b-8ec0-9454ba69a338</id>
     <updated>2019-11-01T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/ssr-ccsearch/" />
     <author>
@@ -644,7 +644,7 @@ One example is the &lt;a href=&quot;https://ccsearch.creativecommons.org/photos/
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-25-ccgn-redesign/">
     <title type="text">Revamping the Creative Commons Global Network website</title>
-    <id>urn:uuid:8e4d8485-c2da-369e-b570-459c1142d953</id>
+    <id>urn:uuid:f7cf9cf1-939f-397e-981f-87ad4e9c50d5</id>
     <updated>2019-09-25T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-09-25-ccgn-redesign/" />
     <author>
@@ -672,7 +672,7 @@ One of our organizational goals regarding the global network is to “create val
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/">
     <title type="text">Creative Commons Google Docs Add-on</title>
-    <id>urn:uuid:e638ebc8-752b-353d-8f12-4b8b6f80d632</id>
+    <id>urn:uuid:ba029f48-4750-335c-b171-9d4a4f73f956</id>
     <updated>2019-09-11T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/" />
     <author>
@@ -706,7 +706,7 @@ alt=&quot;Video tutorial&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-ranking/">
     <title type="text">Some thoughts on improving the relevance of images in CC Search</title>
-    <id>urn:uuid:8e103241-6a08-3ed6-8d09-210e146800d4</id>
+    <id>urn:uuid:79bf7360-f0e9-3023-8ec4-827550e3502e</id>
     <updated>2019-09-06T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/improving-ranking/" />
     <author>
@@ -725,9 +725,82 @@ alt=&quot;Video tutorial&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;All of these metrics can be hooked up to our search engine and used as factors in ranking images. I expect that this will go a long way in boosting the most interesting CC images to the top and generally increase the quality of our search results.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/">
+    <title type="text">The Linked Commons graph: the final vis</title>
+    <id>urn:uuid:05bd2f86-63f9-3669-ac70-1032a147354b</id>
+    <updated>2019-09-03T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/" />
+    <author>
+      <name>soccerdroid</name>
+    </author>
+    <content type="html">&lt;p&gt;This is a continuation of my last blog post about the data processing part 3 of the CC-data catalog visualization project. I recommend you to read that &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/&quot;&gt;last post&lt;/a&gt; for a better understanding of what I'll explain here.&lt;/p&gt;
+&lt;p&gt;Hello! In this last post, I am going to talk you about the final visualization. First, I would like to talk about the data and share my recommendations.&lt;/p&gt;
+&lt;h3 id=&quot;creating-a-data-driven-graph&quot;&gt;Creating a data-driven graph&lt;/h3&gt;&lt;p&gt;+250 million licensed content is a very big number. That is the amount of data I had to visualize for this GSoC project. The graph is very sensitive to the amount of data. Let's talk about sensitivity as the property that a visualization has to look well-structured or tightly clustered like a hairball. The graph is less sensitive to the data if there are a few hundred or thousand nodes but as the amount of data increases it starts to look more and more like a hairball. Take a look at the following examples:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;20k_graph.png&quot; alt=&quot;Graph with 20k nodes&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The Linked Commons gaph with 20k nodes and links. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;100k_graph.png&quot; alt=&quot;Graph with 100k nodes&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;The Linked Commons gaph with 100k nodes and links.&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Moreover, any visualization library starts to render the elements slower, and at one point, it freezes. For the 100k nodes graph, the visualization took ages to appear and had the same clustered appearance. This was my major concern. That's why I decided to choose the top 500 domains from the processed data, as well as all the other domains those 500 nodes are connected to. This is also more user-friendly, because having the entire dataset will make the navigation through the graph very dizzy. Even with this smaller dataset, we could get valuable insights from the graph. We were able to find communities like the following:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;community_graph_cc.png&quot; alt=&quot;Libraries community&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Educational community, including libraries and universities.&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Insights like this are valuable for Creative Commons, because they can help with outreach efforts, targeted communications and for the CC Search team to choose which domains to include in the CC Search tool.&lt;/p&gt;
+&lt;p&gt;The final graph is interactive. Users can pan, zoom in and out, hover over a node to see its neighbors and neighbors of neighbors, and click on a node to display a pie chart.&lt;/p&gt;
+&lt;h3 id=&quot;pie-chart-visualization&quot;&gt;Pie chart visualization&lt;/h3&gt;&lt;p&gt;The pie charts are built using the &lt;a href=&quot;https://www.highcharts.com/&quot;&gt;Highcarts library&lt;/a&gt;. The purpose of this chart is to show  to the public how each domain uses CC licenses. I spoke about this in my blog post: &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/&quot;&gt;Visualize CC Catalog data&lt;/a&gt;. Here is an image to illustrate the above:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;pie_chart.png&quot; alt=&quot;cc_licenses dictionary&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Pie chart of ask.openstack.org &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;There are some nodes that we do not have information about their CC licenses (and they probably do not have licensed content). For these nodes, a message saying &quot;The CC License information of &lt;em&gt;domain_name&lt;/em&gt; is not available&quot; is displayed instead of the pie chart. We did not wanted to disable the pie chart for them, because we wanted to be consistent with the nodes behavior. Making some nodes not clickable would confuse everyone, and it would also make more complicate the implementation of the visualization.&lt;/p&gt;
+&lt;h3 id=&quot;tweaking-the-graph&quot;&gt;Tweaking the graph&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/vasturiano/force-graph&quot;&gt;Force-graph&lt;/a&gt; has a nice API that offers a lot of possibilites for customizing the visualization. The building of the graph is data-driven, and we can use the data in order to alter the appearance of nodes and edges.&lt;/p&gt;
+&lt;p&gt;I implemented the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The node size is proportional to the number of CC licensed content in each domain. &lt;/li&gt;
+&lt;li&gt;When the user hovers over a node, a label with the domain name is displayed. This might sound redundant when you can see the node perfectly. But the graph is very big, and you will like to see it in a low zoom level in order to have a picture of the shape of the entire graph. This is when this functionality is useful, because you don't have to zoom in in order to see the name of a node. &lt;/li&gt;
+&lt;li&gt;The force of a link between two nodes (&lt;em&gt;node A&lt;/em&gt; and &lt;em&gt;node B&lt;/em&gt;) is given by the number of links &lt;em&gt;node A&lt;/em&gt; has that references &lt;em&gt;node B&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;When you hover over a node, you can also see the links to its neighbors highlighted, as well as the links to the neighbors of the neighbors. This feature make it pretty easy for you to find communities, and see how strongly connected a node is in the graph. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is the final visualization, using a sample data from one month of the Common Crawl data:&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;graph.png&quot; alt=&quot;Force-directed graph with the real data&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Force-directed graph, &quot;The Linked Commons&quot;. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;highlights.png&quot; alt=&quot;Force-directed graph with the real data&quot;/&gt;&lt;br/&gt;
+&lt;small class=&quot;muted&quot;&gt;Force-directed graph, &quot;The Linked Commons&quot;. Neighbors of domain &lt;i&gt;svgsilh&lt;/i&gt; hihglighted. &lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;You can check the whole project source code in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/tree/master/GSoC2019&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;final-comments-and-future-work&quot;&gt;Final comments and future work&lt;/h3&gt;&lt;p&gt;This was my first experience with big data visualization, and I really enjoyed it!&lt;/p&gt;
+&lt;p&gt;There are features that could be implemented in the future in order to reduce the amount of data rendered in the graph:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A user might just want to check if a specific domain has licensed content, and how does it use it. An enhancement could be then to add a search bar and offer to the user the possibility to search for a node, given a domain name and/or URL.&lt;/li&gt;
+&lt;li&gt;Given the suffix of the URLs of the &lt;em&gt;provider_domains&lt;/em&gt;, we could try to find the country of origin, and so filter domains by country.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;check-out-the-live-demo&quot;&gt;Check out the live demo!&lt;/h3&gt;&lt;p&gt;[2D version] (&lt;a href=&quot;http://ec2-3-80-82-250.compute-1.amazonaws.com/&quot;&gt;http://ec2-3-80-82-250.compute-1.amazonaws.com/&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;[3D version] (&lt;a href=&quot;http://ec2-3-80-82-250.compute-1.amazonaws.com/visualization_3d.html&quot;&gt;http://ec2-3-80-82-250.compute-1.amazonaws.com/visualization_3d.html&lt;/a&gt;)&lt;br&gt;
+*Yes, with my mentor Sophine, we thought it could be a great idea to try with a 3D version of the graph :) . You can interact with the graph in the same way as with the 2d version.&lt;/p&gt;
+&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
+Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+&lt;p&gt;I had a great time working with Creative Commons. I hope you like the final product as much as I do. Thank you for following the development of this project.&lt;/p&gt;
+&lt;p&gt;Have a nice week!&lt;/p&gt;
+&lt;p&gt;Maria&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/">
     <title type="text">Introducing CC Search Extension</title>
-    <id>urn:uuid:b3fdbb66-8f61-39cb-8c2a-bba02bc52a94</id>
+    <id>urn:uuid:1d9e2dcd-6ee5-3ee2-a330-7acf4858af05</id>
     <updated>2019-09-03T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/" />
     <author>
@@ -853,82 +926,9 @@ Because everyone loves dark mode! Save battery and go easy on your eyes.&lt;/li&
 &lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/">
-    <title type="text">The Linked Commons graph: the final vis</title>
-    <id>urn:uuid:8a42815d-8cea-30fe-a435-16a4e16e362f</id>
-    <updated>2019-09-03T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-thelinkedcommons/" />
-    <author>
-      <name>soccerdroid</name>
-    </author>
-    <content type="html">&lt;p&gt;This is a continuation of my last blog post about the data processing part 3 of the CC-data catalog visualization project. I recommend you to read that &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/&quot;&gt;last post&lt;/a&gt; for a better understanding of what I'll explain here.&lt;/p&gt;
-&lt;p&gt;Hello! In this last post, I am going to talk you about the final visualization. First, I would like to talk about the data and share my recommendations.&lt;/p&gt;
-&lt;h3 id=&quot;creating-a-data-driven-graph&quot;&gt;Creating a data-driven graph&lt;/h3&gt;&lt;p&gt;+250 million licensed content is a very big number. That is the amount of data I had to visualize for this GSoC project. The graph is very sensitive to the amount of data. Let's talk about sensitivity as the property that a visualization has to look well-structured or tightly clustered like a hairball. The graph is less sensitive to the data if there are a few hundred or thousand nodes but as the amount of data increases it starts to look more and more like a hairball. Take a look at the following examples:&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;20k_graph.png&quot; alt=&quot;Graph with 20k nodes&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;The Linked Commons gaph with 20k nodes and links. &lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;100k_graph.png&quot; alt=&quot;Graph with 100k nodes&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;The Linked Commons gaph with 100k nodes and links.&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Moreover, any visualization library starts to render the elements slower, and at one point, it freezes. For the 100k nodes graph, the visualization took ages to appear and had the same clustered appearance. This was my major concern. That's why I decided to choose the top 500 domains from the processed data, as well as all the other domains those 500 nodes are connected to. This is also more user-friendly, because having the entire dataset will make the navigation through the graph very dizzy. Even with this smaller dataset, we could get valuable insights from the graph. We were able to find communities like the following:&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;community_graph_cc.png&quot; alt=&quot;Libraries community&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Educational community, including libraries and universities.&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Insights like this are valuable for Creative Commons, because they can help with outreach efforts, targeted communications and for the CC Search team to choose which domains to include in the CC Search tool.&lt;/p&gt;
-&lt;p&gt;The final graph is interactive. Users can pan, zoom in and out, hover over a node to see its neighbors and neighbors of neighbors, and click on a node to display a pie chart.&lt;/p&gt;
-&lt;h3 id=&quot;pie-chart-visualization&quot;&gt;Pie chart visualization&lt;/h3&gt;&lt;p&gt;The pie charts are built using the &lt;a href=&quot;https://www.highcharts.com/&quot;&gt;Highcarts library&lt;/a&gt;. The purpose of this chart is to show  to the public how each domain uses CC licenses. I spoke about this in my blog post: &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/&quot;&gt;Visualize CC Catalog data&lt;/a&gt;. Here is an image to illustrate the above:&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;pie_chart.png&quot; alt=&quot;cc_licenses dictionary&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Pie chart of ask.openstack.org &lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;There are some nodes that we do not have information about their CC licenses (and they probably do not have licensed content). For these nodes, a message saying &quot;The CC License information of &lt;em&gt;domain_name&lt;/em&gt; is not available&quot; is displayed instead of the pie chart. We did not wanted to disable the pie chart for them, because we wanted to be consistent with the nodes behavior. Making some nodes not clickable would confuse everyone, and it would also make more complicate the implementation of the visualization.&lt;/p&gt;
-&lt;h3 id=&quot;tweaking-the-graph&quot;&gt;Tweaking the graph&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/vasturiano/force-graph&quot;&gt;Force-graph&lt;/a&gt; has a nice API that offers a lot of possibilites for customizing the visualization. The building of the graph is data-driven, and we can use the data in order to alter the appearance of nodes and edges.&lt;/p&gt;
-&lt;p&gt;I implemented the following:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The node size is proportional to the number of CC licensed content in each domain. &lt;/li&gt;
-&lt;li&gt;When the user hovers over a node, a label with the domain name is displayed. This might sound redundant when you can see the node perfectly. But the graph is very big, and you will like to see it in a low zoom level in order to have a picture of the shape of the entire graph. This is when this functionality is useful, because you don't have to zoom in in order to see the name of a node. &lt;/li&gt;
-&lt;li&gt;The force of a link between two nodes (&lt;em&gt;node A&lt;/em&gt; and &lt;em&gt;node B&lt;/em&gt;) is given by the number of links &lt;em&gt;node A&lt;/em&gt; has that references &lt;em&gt;node B&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;When you hover over a node, you can also see the links to its neighbors highlighted, as well as the links to the neighbors of the neighbors. This feature make it pretty easy for you to find communities, and see how strongly connected a node is in the graph. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Here is the final visualization, using a sample data from one month of the Common Crawl data:&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;graph.png&quot; alt=&quot;Force-directed graph with the real data&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Force-directed graph, &quot;The Linked Commons&quot;. &lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;highlights.png&quot; alt=&quot;Force-directed graph with the real data&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Force-directed graph, &quot;The Linked Commons&quot;. Neighbors of domain &lt;i&gt;svgsilh&lt;/i&gt; hihglighted. &lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;You can check the whole project source code in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/tree/master/GSoC2019&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;final-comments-and-future-work&quot;&gt;Final comments and future work&lt;/h3&gt;&lt;p&gt;This was my first experience with big data visualization, and I really enjoyed it!&lt;/p&gt;
-&lt;p&gt;There are features that could be implemented in the future in order to reduce the amount of data rendered in the graph:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;A user might just want to check if a specific domain has licensed content, and how does it use it. An enhancement could be then to add a search bar and offer to the user the possibility to search for a node, given a domain name and/or URL.&lt;/li&gt;
-&lt;li&gt;Given the suffix of the URLs of the &lt;em&gt;provider_domains&lt;/em&gt;, we could try to find the country of origin, and so filter domains by country.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;check-out-the-live-demo&quot;&gt;Check out the live demo!&lt;/h3&gt;&lt;p&gt;[2D version] (&lt;a href=&quot;http://ec2-3-80-82-250.compute-1.amazonaws.com/&quot;&gt;http://ec2-3-80-82-250.compute-1.amazonaws.com/&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;[3D version] (&lt;a href=&quot;http://ec2-3-80-82-250.compute-1.amazonaws.com/visualization_3d.html&quot;&gt;http://ec2-3-80-82-250.compute-1.amazonaws.com/visualization_3d.html&lt;/a&gt;)&lt;br&gt;
-*Yes, with my mentor Sophine, we thought it could be a great idea to try with a 3D version of the graph :) . You can interact with the graph in the same way as with the 2d version.&lt;/p&gt;
-&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
-Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-&lt;p&gt;I had a great time working with Creative Commons. I hope you like the final product as much as I do. Thank you for following the development of this project.&lt;/p&gt;
-&lt;p&gt;Have a nice week!&lt;/p&gt;
-&lt;p&gt;Maria&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/">
     <title type="text">Creative Commons WordPress Plugin Final Phase</title>
-    <id>urn:uuid:1de82ef5-6d43-3e05-adc1-a5b59133e51c</id>
+    <id>urn:uuid:bd8f5195-c23f-3aab-8233-2d4cfe53580c</id>
     <updated>2019-08-23T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/" />
     <author>
@@ -985,7 +985,7 @@ option, which is much better than previous footer implementation.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/">
     <title type="text">GSoC cc-chooser Final Post</title>
-    <id>urn:uuid:3f8acaa5-6aa9-3ae1-aad3-b61a369a25f5</id>
+    <id>urn:uuid:4a9b45fd-e1a7-3613-bfba-21928b8ee42c</id>
     <updated>2019-08-22T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/" />
     <author>
@@ -1009,7 +1009,7 @@ option, which is much better than previous footer implementation.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/">
     <title type="text">CC Vocabulary: Care for dessert?</title>
-    <id>urn:uuid:5e1efa7a-b1ef-3ad4-89bf-1efffd162f55</id>
+    <id>urn:uuid:fadb492f-cfe1-309e-bb0e-18854ec25020</id>
     <updated>2019-08-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/" />
     <author>
@@ -1281,7 +1281,7 @@ the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/">
     <title type="text">CC Browser Extension Week 9, 10</title>
-    <id>urn:uuid:20288e35-de4f-391c-930c-85457411ef78</id>
+    <id>urn:uuid:48a56854-464e-306f-bf36-7e316a0e496e</id>
     <updated>2019-08-12T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/" />
     <author>
@@ -1310,7 +1310,7 @@ the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/">
     <title type="text">Visualize CC Catalog data - data processing part 3</title>
-    <id>urn:uuid:ef2816a6-8476-3443-b930-a932f5d7f1b0</id>
+    <id>urn:uuid:f6fc50e8-e571-36b1-8c3d-b8fc1f513c5f</id>
     <updated>2019-08-12T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-3/" />
     <author>
@@ -1355,7 +1355,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/">
     <title type="text">Host Classification with SaltStack</title>
-    <id>urn:uuid:567ba2e2-230a-36fc-9b0e-b2934640cd2a</id>
+    <id>urn:uuid:7f23aa93-d5a3-354d-8363-13dc2487fe78</id>
     <updated>2019-07-31T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/" />
     <author>
@@ -1419,7 +1419,7 @@ source.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/">
     <title type="text">Visualize CC Catalog data - data processing part 2</title>
-    <id>urn:uuid:6bfe222d-b176-362e-8711-92216ea0d3c8</id>
+    <id>urn:uuid:4766028d-0afd-3efb-8e6b-bd3bc0f5cc00</id>
     <updated>2019-07-26T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/" />
     <author>
@@ -1477,7 +1477,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/">
     <title type="text">Easy search and use of CC-licensed images for WordPress</title>
-    <id>urn:uuid:b422bf2e-cfdc-3cd5-a3bb-f5430679d2ed</id>
+    <id>urn:uuid:ab122e6c-a0e8-39cc-a0de-b0d5f2c444cc</id>
     <updated>2019-07-24T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/" />
     <author>
@@ -1552,7 +1552,7 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/">
     <title type="text">Creative Commons WordPress Plugin Second Phase</title>
-    <id>urn:uuid:956ce97c-d991-33b9-8dd8-1796aa195feb</id>
+    <id>urn:uuid:515b418c-a3a9-33d3-8f03-54a5b317c2b6</id>
     <updated>2019-07-20T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/" />
     <author>
@@ -1578,7 +1578,7 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
-    <id>urn:uuid:c79d72eb-45a9-3d96-939b-54bad5b7a2fa</id>
+    <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
     <updated>2019-07-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/" />
     <author>
@@ -1729,7 +1729,7 @@ See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
     <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:2dc4d01d-66c8-3309-ab42-31bb038ec5dd</id>
+    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
     <updated>2019-07-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
     <author>
@@ -1781,7 +1781,7 @@ These workflows work perfectly on chrome. Whereas, Firefox prompts the user to c
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
     <title type="text">CC Search Redesign</title>
-    <id>urn:uuid:0f657796-a8be-3d58-8140-2b06bf93e5ed</id>
+    <id>urn:uuid:de03abbc-63b0-3427-a446-750f2eb0e34e</id>
     <updated>2019-07-17T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/" />
     <author>
@@ -1819,7 +1819,7 @@ This is what it looked like back then:&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-link-checker/">
     <title type="text">Combating dead links with CC Link Checker</title>
-    <id>urn:uuid:fcf5a6f1-4501-3b2f-bf0f-216fd057290e</id>
+    <id>urn:uuid:50c64e98-b026-3a32-9993-33e3f8f5cd4b</id>
     <updated>2019-07-15T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-link-checker/" />
     <author>
@@ -1867,7 +1867,7 @@ Bhumij Gupta&lt;/em&gt;&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/">
     <title type="text">Visualize CC Catalog data - data processing</title>
-    <id>urn:uuid:5f2e74fa-1573-327e-be6f-3d7ce57f7916</id>
+    <id>urn:uuid:ed9e120c-65fb-3c67-8409-d197b629709b</id>
     <updated>2019-07-10T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/" />
     <author>
@@ -1915,7 +1915,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-so-far/">
     <title type="text">CC Vocabulary, the lexicon so far</title>
-    <id>urn:uuid:7de012d1-19ae-3698-8f14-5113221d3011</id>
+    <id>urn:uuid:eb8192d1-4f89-35cd-b13c-ba931ccba0ce</id>
     <updated>2019-07-05T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-so-far/" />
     <author>
@@ -1989,7 +1989,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/">
     <title type="text">CC Browser Extension Week 5, 6</title>
-    <id>urn:uuid:2282b957-f43f-310e-8cc3-bf8db6e2a18a</id>
+    <id>urn:uuid:5119b9c2-67aa-3110-8598-9aadbb19fce9</id>
     <updated>2019-07-04T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/" />
     <author>
@@ -2015,7 +2015,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chapter-websites/">
     <title type="text">Creative Commons Chapter Websites network</title>
-    <id>urn:uuid:ad9d7eb8-60d9-34f0-a3e8-53043bb359ef</id>
+    <id>urn:uuid:68cfff15-a1be-3330-8e22-677ea1e6452d</id>
     <updated>2019-07-03T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chapter-websites/" />
     <author>
@@ -2047,7 +2047,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/">
     <title type="text">GSoC cc-chooser Week 4</title>
-    <id>urn:uuid:52628df9-b64c-397d-9ac1-da264f65ae29</id>
+    <id>urn:uuid:5f04f948-c01a-39b2-b0cb-b84c15039d61</id>
     <updated>2019-06-24T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/" />
     <author>
@@ -2071,7 +2071,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/">
     <title type="text">CC Browser Extension - A GSoC Project</title>
-    <id>urn:uuid:7c38e099-2edb-34f9-820e-fc0924196a57</id>
+    <id>urn:uuid:a6b57727-90f7-31c1-a01f-94ff017eb17f</id>
     <updated>2019-06-20T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/" />
     <author>
@@ -2115,7 +2115,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
     <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
-    <id>urn:uuid:5e1a60ed-3975-3031-8209-5d505a043b28</id>
+    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
     <updated>2019-06-20T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
     <author>
@@ -2130,7 +2130,7 @@ I decide to take advantage of this new feature by creating customizations for th
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/searching-300-million/">
     <title type="text">Searching 300MM Images with CC Search: Backend Architecture</title>
-    <id>urn:uuid:0aea69db-370b-3995-82ed-1e94702284c9</id>
+    <id>urn:uuid:1d02b5a4-1f82-3e66-bb65-82d0ca60db09</id>
     <updated>2019-06-19T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/searching-300-million/" />
     <author>
@@ -2161,7 +2161,7 @@ We predicted that we would have a lot more users after removing the “beta” d
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/">
     <title type="text">Visualize CC Catalog data</title>
-    <id>urn:uuid:bc2e5551-25e5-3bba-8183-83f3b905bef4</id>
+    <id>urn:uuid:5c735e37-45cf-3704-884e-389e17fe42eb</id>
     <updated>2019-06-17T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/" />
     <author>
@@ -2214,7 +2214,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/">
     <title type="text">CC Vocabulary is a new design system for Creative Commons</title>
-    <id>urn:uuid:965695b7-ade4-322e-8936-55d5dd0d1180</id>
+    <id>urn:uuid:846bae1d-ddc6-307a-9f1f-edecfd142816</id>
     <updated>2019-06-15T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/" />
     <author>
@@ -2436,7 +2436,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week2/">
     <title type="text">GSoC cc-chooser Week 2</title>
-    <id>urn:uuid:c7a72678-ddcf-3e4a-a341-87a52fa48a7f</id>
+    <id>urn:uuid:aec31b22-4365-3e47-830a-aa80c115ff1d</id>
     <updated>2019-06-14T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week2/" />
     <author>
@@ -2457,7 +2457,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/">
     <title type="text">CC Catalog: Leveraging Open Data and Open APIs</title>
-    <id>urn:uuid:e24cc83b-b6fb-312b-b379-5aa16af58a16</id>
+    <id>urn:uuid:762b80c0-ba51-343d-8d65-652f83e599bc</id>
     <updated>2019-06-07T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/" />
     <author>
@@ -2481,7 +2481,7 @@ for in-depth logs.&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/meet-gsoc-2019-students/">
     <title type="text">Meet CC’s 2019 Google Summer of Code students</title>
-    <id>urn:uuid:dba4248f-6d54-3bc7-a553-fae71da290e1</id>
+    <id>urn:uuid:3a7d4f8d-5944-36d4-888b-dde225f5161e</id>
     <updated>2019-05-30T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/meet-gsoc-2019-students/" />
     <author>
@@ -2633,7 +2633,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/">
     <title type="text">CC Google Summer of Code accepted students announced</title>
-    <id>urn:uuid:6570016b-b89a-3f5a-9e6f-09a9c9d88f01</id>
+    <id>urn:uuid:7377e0a2-3d71-34a4-ae50-b7f7fd9ff043</id>
     <updated>2019-05-06T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/" />
     <author>
@@ -2656,7 +2656,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/">
     <title type="text">Open Source at Creative Commons - 2019 Global Summit Event</title>
-    <id>urn:uuid:b6919fc1-840a-3084-93ff-b2debfde5926</id>
+    <id>urn:uuid:c6faa157-f959-3177-a2e2-fc1372621ec7</id>
     <updated>2019-05-01T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/" />
     <author>
@@ -2678,7 +2678,7 @@ summer. Here they are!&lt;/p&gt;
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/">
     <title type="text">CC Search is out of beta with 300M images and easier attribution</title>
-    <id>urn:uuid:08054206-9702-389e-b5c0-ce707ce5884d</id>
+    <id>urn:uuid:33f8e2b5-b6ef-36a3-b81c-016b50feafe0</id>
     <updated>2019-04-30T00:00:00Z</updated>
     <link href="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/" />
     <author>
