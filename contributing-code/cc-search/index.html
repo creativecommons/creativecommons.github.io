@@ -6,14 +6,14 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="/static/gen/style.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="GitHub Repo Guidelines" />
+<meta property="og:title" content="Building a New Feature in CC Search" />
 <meta property="og:description" content="" />
-<meta property="og:url" content="/contributing-code/github-repo-guidelines/" />
+<meta property="og:url" content="/contributing-code/cc-search/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="GitHub Repo Guidelines">
+<meta name="twitter:title" content="Building a New Feature in CC Search">
 <meta name="twitter:description" content="">
       
 <meta name="twitter:site" content="@creativecommons">
@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>GitHub Repo Guidelines — Creative Commons on GitHub</title>
+<title>Building a New Feature in CC Search — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -126,89 +126,105 @@
     <div class="row justify-content-md-center">
       <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
         <div class="page py-3">
-          <h1 class="page-title pb-3 mb-4">GitHub Repo Guidelines</h1>
+          <h1 class="page-title pb-3 mb-4">Building a New Feature in CC Search</h1>
           
   <div class="card toc-card bg-light">
     <div class="card-body">
       <ul class="toc list-unstyled">
         
-          <li><a href="#required-items">Required Items</a></li>
-          
-            <ul class="toc list-unstyled pl-4">
-              
-                <li><a href="#files">Files</a></li>
-              
-                <li><a href="#additional-items">Additional Items</a></li>
-              
-            </ul>
+          <li><a href="#step-0:-evaluate-process">Step 0: Evaluate Process</a></li>
           
         
-          <li><a href="#optional-items">Optional items</a></li>
+          <li><a href="#step-1:-github-issue">Step 1: GitHub Issue</a></li>
           
         
-          <li><a href="#standard-labels">Standard Labels</a></li>
+          <li><a href="#step-2:-cc-response">Step 2: CC Response</a></li>
           
         
-          <li><a href="#branch-protections">Branch Protections</a></li>
+          <li><a href="#step-3:-planning">Step 3: Planning</a></li>
           
         
-          <li><a href="#cc-metadata-file">CC Metadata file</a></li>
+          <li><a href="#step-4:-design">Step 4: Design</a></li>
+          
+        
+          <li><a href="#step-5:-dependencies">Step 5: Dependencies</a></li>
+          
+        
+          <li><a href="#step-6:-code">Step 6: Code</a></li>
+          
+        
+          <li><a href="#step-7:-code-review">Step 7: Code Review</a></li>
+          
+        
+          <li><a href="#step-8:-staging">Step 8: Staging</a></li>
+          
+        
+          <li><a href="#step-9:-production">Step 9: Production</a></li>
           
         
       </ul>
     </div>
   </div>
-  <p>This is a checklist for all public repositories hosted on the <a href="https://github.com/creativecommons">Creative Commons GitHub organization</a>. Not all repositories meet these criteria yet. Please notify us if a project you'd like to work on does not meet this checklist by opening a GitHub issue associated with the repository.</p>
-<h2 id="required-items">Required Items</h2><p>All GitHub repositories should have the following items to be considered fully ready for external contributors.</p>
-<h3 id="files">Files</h3><ul>
-<li><code>/.github/CODEOWNERS</code>: Defined code owners<ul>
-<li><a href="https://help.github.com/en/articles/about-code-owners">About code owners - GitHub Help</a></li>
+  <p>CC Search is an open source project and we welcome community involvement. Our <a href="https://github.com/orgs/creativecommons/projects/7">active sprint</a>, and <a href="https://github.com/orgs/creativecommons/projects/10">backlog</a> are public and we maintain a set of GitHub issues that we could use help with.</p>
+<p>We also want to enable you - our community members - to build features that would be useful to you, regardless of where those features are on our roadmap. However, we want to make sure any new feature fits into our product vision for CC Search, and we are a small team with limited bandwidth.</p>
+<p>If you do want to build a new feature, and we would love it if you did, all we ask is that you follow the process outlined in this document to ensure a smooth experience for everyone involved.</p>
+<h3 id="step-0:-evaluate-process">Step 0: Evaluate Process</h3><p><strong>Figure out if you need to follow this process.</strong></p>
+<p>Please note that this process is only for adding significant features that require product input or infrastructural work from CC staff. If you are just fixing a bug or making an improvement to existing features, follow <a href="/contributing-code/">our much simpler guidelines for contributing code</a>. If you're not sure what category your proposed change falls under, ask us on GitHub or via <a href="/community/">our chat/mailing list</a>.</p>
+<p>Examples that <em><strong>do not</strong></em> need to follow this process:</p>
+<ul>
+<li>Any issue marked "help wanted".</li>
+<li>Improving the user experience or fixing bugs related to existing features (<a href="https://github.com/creativecommons/cccatalog-frontend/issues/141">example 1</a>, <a href="https://github.com/creativecommons/cccatalog-frontend/issues/184">example 2</a>)<ul>
+<li><strong>Reasoning</strong>: It does not change the user experience in any significant way and does not require approval.</li>
 </ul>
 </li>
-<li><code>/.cc-metadata.yml</code>: The standard <a href="/contributing-code/github-repo-guidelines/#cc-metadata-file">CC metadata YAML file</a>.</li>
-<li><code>/CODE_OF_CONDUCT.md</code>: Code of Conduct<ul>
-<li>Feel free to use our standard <a href="https://github.com/creativecommons/.github/blob/master/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT.md</code></a> file from <a href="https://github.com/creativecommons/.github">creativecommons/.github</a></li>
-<li><a href="https://help.github.com/en/articles/adding-a-code-of-conduct-to-your-project">Adding a code of conduct to your project - GitHub Help</a></li>
+<li>Adding automated tests to the code<ul>
+<li><strong>Reasoning</strong>: It is not a user facing change and does not remove or change existing functionality.</li>
 </ul>
 </li>
-<li><code>/LICENSE</code>: license file.</li>
-<li><code>/CONTRIBUTING.md</code>: contributor guidelines<ul>
-<li>Can be project-specific or our standard <a href="https://github.com/creativecommons/.github/blob/master/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a> file from <a href="https://github.com/creativecommons/.github">creativecommons/.github</a></li>
-<li><a href="https://help.github.com/en/articles/setting-guidelines-for-repository-contributors">Setting guidelines for repository contributors - GitHub Help</a></li>
+</ul>
+<p>Examples that should follow this process:</p>
+<ul>
+<li>Adding a new content type (such as audio files) to CC Search<ul>
+<li><strong>Reasoning</strong>: It changes the fundamental structure of CC Search and requires significant product input and infrastructural work from CC staff.</li>
 </ul>
 </li>
-<li><code>/README.md</code>: read me information file<ul>
-<li>Must documents how to install and build the project locally and documents a high level overview of the project and code structure. It should also link to any other available documentation.</li>
+<li>Adding a new filter to the search results page<ul>
+<li><strong>Reasoning</strong>: It is user facing and requires some product input and may require infrastructural work to collect the data that the search results will filter on.</li>
 </ul>
 </li>
-<li><strong>All pull request templates must include the full text of the <a href="https://developercertificate.org/">DCO</a></strong>.</li>
 </ul>
-<h3 id="additional-items">Additional Items</h3><ul>
-<li>CI and code style linters that run automatically whenever new code is pushed (if applicable to the project).</li>
-<li>At least a couple of automated tests (if applicable to the project).</li>
+<h3 id="step-1:-github-issue">Step 1: GitHub Issue</h3><p><strong>Describe the feature on GitHub.</strong></p>
+<p>Look through <a href="https://github.com/creativecommons/cccatalog-frontend/issues">our issues</a> to see if there is already a GitHub issue describing the feature you want to build. If none exists, create one on the <a href="https://github.com/creativecommons/cccatalog-frontend/issues">cccatalog-frontend</a> repository (which holds the code for CC Search) using the "Feature request" template.</p>
+<p>On this GitHub issue, add a comment describing the feature you want to build and why you think it would be a good addition to CC Search. Add as much detail as you can.</p>
+<h3 id="step-2:-cc-response">Step 2: CC Response</h3><p><strong>Wait for a CC staff member to respond.</strong></p>
+<p>Someone on the CC Search staff will aim to review your comments within five business days and get back to you with one of these responses:</p>
+<ul>
+<li>Ask for more information</li>
+<li>Preliminarily approve the feature</li>
+<li>Reject the feature with an explanation and close the issue</li>
 </ul>
-<h2 id="optional-items">Optional items</h2><ul>
-<li><a href="https://help.github.com/en/articles/creating-issue-templates-for-your-repository">Issue templates</a>. GitHub pulls the default templates from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to customize them, create them in your repository.</li>
-<li>A <a href="https://help.github.com/en/articles/creating-a-pull-request-template-for-your-repository">pull request template</a>. GitHub pulls the default template from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to customize it, create it in your repository.</li>
-<li><a href="https://help.github.com/en/articles/adding-support-resources-to-your-project">Support resources</a>. GitHub pulls the default <code>SUPPORT.md</code> file from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to customize it, create it in your repository.</li>
-</ul>
-<h2 id="standard-labels">Standard Labels</h2><p>All repositories must contain a set of standard labels, <a href="https://github.com/creativecommons/ccos-scripts/blob/master/normalize_repos/labels.py">documented here</a>. You don't have to set these up manually. CC staff can run <a href="https://github.com/creativecommons/ccos-scripts/tree/master/normalize_repos">a script</a> that to make sure all repositories have this label.</p>
-<p>Repositories may contain additional custom labels as well. It is recommended that custom labels be explained in the contribution guidelines for that project.</p>
-<h2 id="branch-protections">Branch Protections</h2><p>Branch protections are automatically set up by CC staff via <a href="https://github.com/creativecommons/ccos-scripts/tree/master/normalize_repos">this script</a>. By default, pushing directly to the <code>master</code> branch is disabled and all pull requests require review by at least one person before merge.</p>
-<h2 id="cc-metadata-file">CC Metadata file</h2><p>Each repo should have a <code>.cc-metadata.yml</code> file in the root directory with the following structure:</p>
-<pre>
-  <code>
-    # Whether this GitHub repo is for a CC-led engineering project
-    engineering_project: true
-    # Name of the repository/project in English
-    english_name: CC Catalog API
-    # All technologies used
-    technologies: Python, Django, Django REST Framework, Elasticsearch
-    # Whether this repository should be featured on the CC Open Source site's "Projects" page
-    featured: false
-  </code>
-</pre><p>This metadata file is used in the <a href="/projects">Projects</a> page. Repos that are marked as non-engineering projects are not displayed in the page and repos marked as featured as displayed at the top of the page. Repos should be marked as featured if we are actively looking for community contributions and have the bandwidth to review them quickly.</p>
-<p>Repos without this metadata file are treated as <code>engineering_projects: true</code> and <code>featured: false</code>. A default is necessary since it will take time for us to clean up and add metadata to all our repos.</p>
+<p>If at any time it has been more than five business days and you haven't received a response to your last message, please comment on the issue or <a href="/community/">contact us elsewhere</a>. Note that staff availability is limited during certain parts of the year, such as our annual CC Global Summit and our bi-annual staff retreats.</p>
+<p>Once your feature has been preliminarily approved, proceed to Step 3.</p>
+<h3 id="step-3:-planning">Step 3: Planning</h3><p><strong>Plan your work.</strong></p>
+<p>Create an implementation plan with the list of changes you'll need to make to implement your feature.</p>
+<p>Keep in mind that CC Search heavily depends on the CC Catalog API (<a href="https://api.creativecommons.engineering/">docs</a>, <a href="https://github.com/creativecommons/cccatalog-api">code</a>) and the CC Catalog data (<a href="https://github.com/creativecommons/cccatalog">code</a>). You may need to make changes in one of those projects; you cannot add or modify data in CC Search if it is not provided by the API, and you cannot provide data through the API if it is not collected in the CC Catalog. Some tasks (such as setting up infrastructure or ingesting new data into the CC Catalog) can only be performed by CC staff; please highlight those dependencies. You don't have to do this step on your own; asking us questions or soliciting our opinions on aspects of your plan are encouraged.</p>
+<p>Once your implementation plan is ready, update the GitHub issue and wait for a staff member to respond (per Step 2). If your work does not depend on any work by CC Staff, we will either approve your plan or provide feedback and ask you to make some changes. If your plan does depend on work by CC staff, we may reject it if it is infeasible for us to do that work in a reasonable time, otherwise we will provide feedback or approve it with a rough timeline of when we can complete the work that blocks you.</p>
+<p>Once your plan has been approved, proceed to the next applicable step.</p>
+<h3 id="step-4:-design">Step 4: Design</h3><p><strong>Get Design and UX approved (if applicable).</strong></p>
+<p>If your feature involves user-facing changes, please run these by us, either through wireframes or high fidelity mockups. We will either approve your design or provide feedback and ask you to make some changes.</p>
+<p>Once your design has been approved, proceed to Step 5.</p>
+<h3 id="step-5:-dependencies">Step 5: Dependencies</h3><p><strong>Wait for CC staff to resolve dependencies (if applicable).</strong></p>
+<p>If your feature depends on work that only CC staff can do, please wait for us to do that work. If you can start working on other parts of the feature in parallel, you may go ahead.</p>
+<h3 id="step-6:-code">Step 6: Code</h3><p><strong>Write your code.</strong></p>
+<p>At this point, CC staff and you should be on the same page about how the feature will be implemented and what it will look like. Here's where you get to actually implement it!</p>
+<p>Commit early and often, follow <a href="/contributing-code/pr-guidelines/">our pull request and code guidelines</a>, and write tests!</p>
+<h3 id="step-7:-code-review">Step 7: Code Review</h3><p><strong>Get feedback via code review.</strong></p>
+<p>Once your pull request is ready, someone on CC staff will review your code and provide feedback. Once all feedback has been resolved, your code will be merged into the main branch of the repository.</p>
+<p>You may have to do Steps 4-7 for multiple codebases in some cases, e.g. if your work includes both the CC Catalog API and CC Search, the API work will have to be done before the CC Search work that depends on it.</p>
+<h3 id="step-8:-staging">Step 8: Staging</h3><p><strong>Get feedback via live testing.</strong></p>
+<p>Once your code is merged, it will be deployed to the staging server and tested manually (in addition to the comprehensive automated tests that you've already written). We may need to run some changes by our product counsel. This may produce an additional round of feedback for you to address.</p>
+<h3 id="step-9:-production">Step 9: Production</h3><p><strong>The feature is live!</strong></p>
+<p>Once any feedback from Step 8 is resolved, we will merge your code into the stable branch and deploy it to production. Congrats, your feature is live!</p>
 
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>

@@ -1576,6 +1576,58 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
+    <title type="text">CC Browser Extension Week 7, 8</title>
+    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
+&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
+&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;
+These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
+&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
+&lt;li&gt;Test and fix bugs.&lt;/li&gt;
+&lt;li&gt;Improve documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
     <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
@@ -1725,58 +1777,6 @@ in touch and directing me to the right people to contact whenever in difficulty.
 &lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
 See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
-    <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
-&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
-&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;
-These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
-&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Improve documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
@@ -2069,6 +2069,21 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;Next week, I'll be working on getting a new version of the license chooser controls working.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
+    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
+    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
+    <updated>2019-06-20T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
+    <author>
+      <name>ahmadbilaldev</name>
+    </author>
+    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
+&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
+&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
+&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/">
     <title type="text">CC Browser Extension - A GSoC Project</title>
     <id>urn:uuid:a6b57727-90f7-31c1-a01f-94ff017eb17f</id>
@@ -2111,21 +2126,6 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;h3 id=&quot;how-you-can-help&quot;&gt;How you can help&lt;/h3&gt;&lt;p&gt;The development is still in the initial phase but you can check out &lt;strong&gt;a working extension&lt;/strong&gt; at the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github Repository&lt;/a&gt;. There are instructions to help you get started and load it to Firefox.&lt;/p&gt;
 &lt;p&gt;Tell us what you expect the extension to do, or a feature that you wish would be implemented. At this early stage of development, it might help us improve our goals. You can join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://creativecommons.github.io/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; to for their mentorship and providing an experienced perspective and solutions to the problems faced by this naive developer.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
-    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
-    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
-    <updated>2019-06-20T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
-    <author>
-      <name>ahmadbilaldev</name>
-    </author>
-    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
-&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
-&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
-&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/searching-300-million/">
