@@ -133,27 +133,49 @@
           <h1 class="page-title pb-3 mb-4">Pull Request Guidelines</h1>
           
   <p>We ask that contributors to CC projects submit a pull request with your changes. If you're not familiar with pull requests, please read <a href="https://help.github.com/en/articles/about-pull-requests">this GitHub documentation</a>. Here are our expectations for pull requests; following them will expedite the process of merging your code in.</p>
+<p>Read and follow the contributing guidelines and code of conduct for the project. Here are screenshots of where to find them for <a href="/contributing-code/pr-guidelines/first-time-contributor-resources.png">first time contributors</a> and <a href="/contributing-code/pr-guidelines/previous-contributor-resources.png">previous contributors</a>.</p>
 <ul>
-<li>Read and follow the contributing guidelines and code of conduct for the project. Here are screenshots of where to find them for <a href="/contributing-code/pr-guidelines/first-time-contributor-resources.png">first time contributors</a> and <a href="/contributing-code/pr-guidelines/previous-contributor-resources.png">previous contributors</a>.</li>
-<li><strong>Make a Branch</strong><ul>
+<li><strong>Make A Branch</strong><ul>
 <li>Please create a separate branch for each issue that you're working on. Do not make changes to the default branch (e.g. <code>master</code>, <code>develop</code>) of your fork.</li>
 </ul>
 </li>
-<li><strong>Push your code ASAP</strong> <ul>
+<li><strong>Push Your Code ASAP</strong> <ul>
 <li>Push your code as soon as you can. Follow the "<a href="https://www.worklytics.co/blog/commit-early-push-often/">early and often</a>" rule. </li>
-<li>Make a pull request as soon as you can and mark the title with a "[WIP]". You can create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a>.</li>
+<li>Make a pull request as soon as you can and <strong>mark the title with a "[WIP]"</strong>. You can create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a>.
+<br/>
+<a href="/contributing-code/pr-guidelines/draft_pr.gif">Screenshot: How to create draft PR?</a></li>
 </ul>
 </li>
 <li><strong>Describe Your Pull Request</strong><ul>
-<li>Use the format specified in pull request template for the repository.</li>
+<li>Use the format specified in pull request template for the repository. <strong>Populate the stencil completely</strong> for maximum verbosity.<ul>
+<li>Tag the actual issue number by replacing <code>#[issue_number]</code> e.g. <code>#42</code>.
+This closes the issue when your PR is merged.</li>
+<li>Tag the actual issue author by replacing <code>@[author]</code> e.g. <code>@issue_author</code>.
+This brings the reporter of the issue into the conversation.</li>
+<li>Mark the tasks off your checklist by adding an <code>x</code> in the <code>[ ]</code> e.g. <code>[x]</code>.
+This checks off the boxes in your to-do list. The more boxes you check, the better.</li>
+</ul>
+</li>
 <li>Describe your change in detail. Too much detail is better than too little.</li>
 <li>Describe how you tested your change.</li>
+<li>Check the Preview tab to make sure the Markdown is correctly rendered and that all tags and references are linked. If not, go back and edit the Markdown.
+<br/>
+<a href="/contributing-code/pr-guidelines/populated_pr.png">Screenshot: Populated pull request</a></li>
 </ul>
 </li>
 <li><strong>Request Review</strong><ul>
-<li>Once your PR is ready, remove the "[WIP]" from the title and/or change it from a draft PR to a regular PR.</li>
+<li>Once your PR is ready, <strong>remove the "[WIP]" from the title</strong> and/or change it from a draft PR to a regular PR.</li>
 <li>If a specific reviewer is not assigned automatically, please <a href="https://help.github.com/en/articles/requesting-a-pull-request-review">request a review</a> from the project maintainer and any other interested parties manually.</li>
-<li>Be sure to <strong>re-request review</strong> once you have made changes after a code review.</li>
+</ul>
+</li>
+<li><strong>Incorporating feedback</strong><ul>
+<li>If your PR gets a 'Changes requested' review, you will need to address the feedback and update your PR by pushing to the same branch. You don't need to close the PR and open a new one.</li>
+<li>Be sure to <strong>re-request review</strong> once you have made changes after a code review.
+<br/>
+<a href="/contributing-code/pr-guidelines/rereview.png">Screenshot: How to request re-review?</a></li>
+<li>Asking for a re-review makes it clear that you addressed the changes that were requested and that it's waiting on the maintainers instead of the other way round.
+<br/>
+<a href="/contributing-code/pr-guidelines/difference.png">Screenshot: Difference between 'Changes requested' and 'Review required'</a></li>
 </ul>
 </li>
 </ul>
