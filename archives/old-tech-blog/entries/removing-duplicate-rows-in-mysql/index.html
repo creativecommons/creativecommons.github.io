@@ -7,14 +7,19 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="Removing duplicate rows in MySQL" />
-<meta property="og:description" content="" />
+
+
+
+<meta property="og:description" content="There are thousands of articles out there on removing duplicate rows from a SQL database. However, almost all of the first-page results of a search at Google for something like &#34; mysql remove duplicates &#34; involved creating temporary tables and other convoluted ways of solving the problem. I&#39;m posting this simple method here in the hope that it could simplify this process for someone else. This is likely old news for people highly experienced with MySQL and SQL databases in general, but it&#39;s not that frequent that I have to tackle the duplicate row issue, so I post here for my own reference and that of others. The idea is that you create a unique index on the table based on the columns that should not be duplicated. MySQL will delete the duplicates in order to comply with the uniqueness of the index created. You then simply remove the temporary index." />
+
+
 <meta property="og:url" content="/archives/old-tech-blog/entries/removing-duplicate-rows-in-mysql/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Removing duplicate rows in MySQL">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="There are thousands of articles out there on removing duplicate rows from a SQL database. However, almost all of the first-page results of a search at Google for something like &#34; mysql remove duplicates &#34; involved creating temporary tables and other convoluted ways of solving the problem. I&#39;m posting this simple method here in the hope that it could simplify this process for someone else. This is likely old news for people highly experienced with MySQL and SQL databases in general, but it&#39;s not that frequent that I have to tackle the duplicate row issue, so I post here for my own reference and that of others. The idea is that you create a unique index on the table based on the columns that should not be duplicated. MySQL will delete the duplicates in order to comply with the uniqueness of the index created. You then simply remove the temporary index.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
