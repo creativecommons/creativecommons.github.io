@@ -2,13 +2,55 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-03-05T00:00:00Z</updated>
+  <updated>2020-04-02T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week9-13/">
+    <title type="text">CC Vocabulary - My Internship Ended</title>
+    <id>urn:uuid:85900455-54f0-35dd-b689-57e5a399b7e5</id>
+    <updated>2020-04-02T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week9-13/" />
+    <author>
+      <name>conye</name>
+    </author>
+    <content type="html">&lt;p&gt;This will be my last blog as an Outreachy intern. My watch as an intern has come to an end.  I am glad I chose the Creative Commons community or rather am glad Creative Commons chose me (am not the chosen one). I have gained a lot of valuable knowledge, skills and I am more confident in my abilities.&lt;/p&gt;
+&lt;h2 id=&quot;summary-of-my-internship-with-vocabulary&quot;&gt;Summary of  My Internship with Vocabulary&lt;/h2&gt;&lt;p&gt;I have been more involved with the Vocabulary project during my internship and am happy with the work that has been done so far. I made 24 pull requests with 17 merged. My last contribution was adding a &lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/145&quot;&gt;header component&lt;/a&gt; to the revamped Vocabulary. Here is a summary of my time with Vocabulary.&lt;/p&gt;
+&lt;h3 id=&quot;when-i-started-my-internship-vocabulary-comprised-of:&quot;&gt;When I started my Internship, Vocabulary comprised of:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;UI components built with Vue &lt;/li&gt;
+&lt;li&gt;Styling was written with Stylus&lt;/li&gt;
+&lt;li&gt;live style guide built with Styleguidist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;currently:&quot;&gt;Currently:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;UI components built with extending Bulma library components. &lt;/li&gt;
+&lt;li&gt;Styling extended with SASS.&lt;/li&gt;
+&lt;li&gt;An interactive playground experience built with Storybook that provides a live style guide and documentation.&lt;/li&gt;
+&lt;li&gt;A subset Vue-Vocabulary with the same styling but to support platforms built with Vue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To use the Vocabulary components, check out its &lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;Github repository&lt;/a&gt;. You can also have a playground experience on &lt;a href=&quot;https://cc-vocabulary.netlify.com&quot;&gt;storybook&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;my-progress&quot;&gt;My Progress&lt;/h2&gt;&lt;p&gt;Before this internship, I had just switched careers from Network engineering to Software development and this experience came at the time needed.&lt;/p&gt;
+&lt;h3 id=&quot;where-i-was-before-the-internship&quot;&gt;Where I was before the Internship&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;No experience working on open source project (or any free open source project)&lt;/li&gt;
+&lt;li&gt;My technical skills were basically on the front end (HTML, CSSS and JavaScript with little React) &lt;/li&gt;
+&lt;li&gt;No experience working remotely as a Software developer&lt;/li&gt;
+&lt;li&gt;Had only written one blog post on medium&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;where-i-am-now&quot;&gt;Where I am now&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;4 months experience working on open source project &lt;/li&gt;
+&lt;li&gt;Improved on my previous technical skills, adding new ones (added Vue, Storybook, Webpack, Docker)&lt;/li&gt;
+&lt;li&gt;4 months of experience working with a team remotely as a Software developer&lt;/li&gt;
+&lt;li&gt;Written additional 6 more blog post; 3 here and 3 for Outreachy&lt;/li&gt;
+&lt;li&gt;Improved communication skills &lt;/li&gt;
+&lt;li&gt;Improved time management&lt;/li&gt;
+&lt;li&gt;Still working to improve where I am now &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;whats-next?&quot;&gt;Whats next?&lt;/h2&gt;&lt;p&gt;I will continue to contribute to CC open source projects especially to the Vocabulary project that I have become a part of. I would love to see the application of Vocabulary to the development of other CC platforms and applications.  I also want to apply the skills that I have acquired to get a full-time software developer position.&lt;/p&gt;
+&lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">
     <title type="text">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</title>
     <id>urn:uuid:e28cf21f-757a-32de-a7b0-5c02f0083c21</id>
@@ -2674,29 +2716,6 @@ summer. Here they are!&lt;/p&gt;
 &lt;br&gt;Location: &lt;a href=&quot;http://www.museudooriente.pt/museuoriente/deli-ilhas.php&quot;&gt;New Delhi Room&lt;/a&gt;, 4th Floor, Museu do Oriente Av. Brasília 352, 1350-279 Lisboa, Portugal
 &lt;br&gt;Moderator: &lt;a href=&quot;https://mzeinstra.nl/&quot;&gt;Maarten Zeinstra&lt;/a&gt; Chapter lead for Creative Commons Netherlands&lt;/p&gt;
 &lt;p&gt;We look forward to meeting you at this event and getting your feedback. If you would like to stay updated on our work, join our &lt;a href=&quot;https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers&quot;&gt;developer mailing list&lt;/a&gt;, the #creativecommons-dev IRC channel on &lt;a href=&quot;https://freenode.net/&quot;&gt;freenode&lt;/a&gt;, or the #cc-developers channel on our &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack community&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/">
-    <title type="text">CC Search is out of beta with 300M images and easier attribution</title>
-    <id>urn:uuid:33f8e2b5-b6ef-36a3-b81c-016b50feafe0</id>
-    <updated>2019-04-30T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-out-of-beta/" />
-    <author>
-      <name>janeatcc</name>
-    </author>
-    <content type="html">&lt;p&gt;Today &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; comes out of beta, with over 300 million images indexed from multiple collections, a major redesign, and faster, more relevant search. It’s the result of a huge amount of work from the engineering team at Creative Commons and our community of volunteer developers.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-out-of-beta/compressed-kittens-again.gif&quot; alt=&quot;cc-search-gif&quot;&gt;&lt;/p&gt;
-&lt;p&gt;CC Search searches images across &lt;a href=&quot;https://search.creativecommons.org/about&quot;&gt;19 collections&lt;/a&gt; pulled from open APIs and the &lt;a href=&quot;https://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt; dataset, including cultural works from museums (the Metropolitan Museum of Art, Cleveland Museum of Art), graphic designs and art works (Behance, DeviantArt), photos from Flickr, and an initial set of CC0 3D designs from Thingiverse.&lt;/p&gt;
-&lt;p&gt;Aesthetically, you’ll see some key changes — a cleaner home page, better navigation and filters, design alignment with creativecommons.org, streamlined attribution options, and clear channels for providing feedback on both the overall function of the site and on specific image reuses. It’s also now linked directly from the Creative Commons homepage as the default method to search for CC-licensed works, and replaces the old search portal (though that tool is still online &lt;a href=&quot;https://oldsearch.creativecommons.org/&quot;&gt;here&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;Under the hood, we improved search loading times and search phrase relevance, implemented analytics to better understand when and how the tools are used, and fixed many critical bugs our community helped us to identify.&lt;/p&gt;
-&lt;h3 id=&quot;whats-next&quot;&gt;What’s next&lt;/h3&gt;&lt;p&gt;We will continue to grow the number of images in our catalog, prioritizing key image collections such as Europeana and Wikimedia Commons. We also plan to index additional types of CC-licensed works, such as open textbooks and audio, later this year. While our ultimate goal remains the same (to provide access to all 1.4 billion works in the commons), we are initially focused on &lt;a href=&quot;https://creativecommons.org/2019/03/19/cc-search/&quot;&gt;images that creators desire to reuse in meaningful ways&lt;/a&gt;, learning about how these images are reused in the wild, and incorporating that learning back into CC Search.&lt;/p&gt;
-&lt;p&gt;Feature-wise, we have specific deliverables for this quarter listed in our &lt;a href=&quot;https://docs.google.com/document/d/19yH2V5K4nzWgEXaZhkzD1egzrRayyDdxlzxZOTCm_pc/&quot;&gt;roadmap&lt;/a&gt;, which includes advanced filters on the home page, the ability to browse collections without entering search terms, and improved accessibility and UX on mobile. In addition, we expect some work related to CC Search will be done by our Google Summer of Code students starting in May.&lt;/p&gt;
-&lt;p&gt;We’re also presenting the “&lt;a href=&quot;https://sched.co/MhKv&quot;&gt;State of CC Search&lt;/a&gt;” at the &lt;a href=&quot;https://summit.creativecommons.org/&quot;&gt;CC Global Summit&lt;/a&gt; next month in Lisbon, Portugal, where we’ll host a global community discussion around desired features and collections for CC Search.&lt;/p&gt;
-&lt;h3 id=&quot;get-involved&quot;&gt;Get involved&lt;/h3&gt;&lt;p&gt;Your feedback is valuable, and we invite you to &lt;a href=&quot;https://search.creativecommons.org/feedback&quot;&gt;let us know&lt;/a&gt; what you would like to see improved. You can also join the &lt;a href=&quot;https://creativecommons.slack.com/messages/CCS9CF2JE/details/&quot;&gt;#cc-usability&lt;/a&gt; channel on &lt;a href=&quot;https://wiki.creativecommons.org/wiki/Slack#How_to_join_Slack&quot;&gt;CC Slack&lt;/a&gt; to keep up with new releases.&lt;/p&gt;
-&lt;p&gt;All of our code, including the code behind CC Search, is open source (&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/&quot;&gt;CC Search&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/cccatalog&quot;&gt;CC Catalog&lt;/a&gt;) and we &lt;a href=&quot;https://creativecommons.github.io/contributing-code/&quot;&gt;welcome community contribution&lt;/a&gt;. If you know how to code, we invite you to &lt;a href=&quot;https://creativecommons.github.io/&quot;&gt;join the growing CC developer community&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;thank-you&quot;&gt;Thank you&lt;/h3&gt;&lt;p&gt;CC Search is also made possible by a number of institutional and individual supporters and donors. Specifically, we would like to thank &lt;a href=&quot;https://www.arcadiafund.org.uk/about-peter-baldwin-lisbet-rausing/&quot;&gt;Arcadia&lt;/a&gt; – a charitable fund of Lisbet Rausing and Peter Baldwin, &lt;a href=&quot;https://www.mozilla.org/en-US/foundation/&quot;&gt;Mozilla&lt;/a&gt;, and the Brin Wojcicki Foundation for their support.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;This post was originally posted &lt;a href=&quot;https://creativecommons.org/2019/04/30/cc-search-images/&quot;&gt;on the primary Creative Commons blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
