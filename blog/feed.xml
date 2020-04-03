@@ -2,13 +2,129 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-04-02T00:00:00Z</updated>
+  <updated>2020-04-03T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-04-03-nvmee-on-debian-on-aws/">
+    <title type="text">NVMEe on Debian on AWS</title>
+    <id>urn:uuid:cd3e9db2-b141-3ea1-8cd9-61cd146ec9cd</id>
+    <updated>2020-04-03T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-04-03-nvmee-on-debian-on-aws/" />
+    <author>
+      <name>TimidRobot</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;The current Creative Commons infrastructure buildouts use Debian GNU/Linux AWS
+EC2 instances with EBS volumes. Depending on chance (or race conditions), the
+mapping of block devices can be different from one host to another or between
+reboots.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Occasionally, devices can respond to discovery in a different order in
+subsequent instance starts, which causes the device name to change.&lt;/em&gt;
+(&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html&quot; title=&quot;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute Cloud&quot;&gt;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute
+Cloud&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;our-solution&quot;&gt;Our Solution&lt;/h2&gt;&lt;p&gt;Modern Amazon Linux AMIs resolve this by providing a &lt;code&gt;udev&lt;/code&gt; rule, but Debian
+GNU/Linux does not yet do this. To ensure our systems are configured correctly,
+At Creative Commons, we use the device specified during provisioning (ex.
+&lt;code&gt;/dev/xvdf&lt;/code&gt;) to identify the correct NVMEe device. We then format it with a
+label that can be used mounting during subsequent reboots.&lt;/p&gt;
+&lt;p&gt;Thankfully, AWS documents the the device specified during provisioning (ex. &lt;code&gt;/dev/xvdf&lt;/code&gt;):&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;For Nitro-based instances, the block device mappings that are specified in
+the Amazon EC2 console when you are attaching an EBS volume or during
+AttachVolume or RunInstances API calls are captured in the vendor-specific
+data field of the NVMe controller identification.&lt;/em&gt;
+(&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html&quot; title=&quot;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute Cloud&quot;&gt;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute
+Cloud&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We use SaltStack (&lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot; title=&quot;creativecommons/sre-salt-prime: Site Reliability Engineering / DevOps SaltStack configuration files&quot;&gt;&lt;code&gt;creativecommons/sre-salt-prime&lt;/code&gt;&lt;/a&gt;) to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install the &lt;code&gt;nvme-cli&lt;/code&gt; package&lt;/li&gt;
+&lt;li&gt;Use the &lt;code&gt;nvme&lt;/code&gt; command to detect which &lt;code&gt;/dev/nvme?n?&lt;/code&gt; contains &lt;em&gt;spec&lt;/em&gt; (ex.
+&lt;code&gt;xvdf&lt;/code&gt;) in the NVMe vendor specific data&lt;/li&gt;
+&lt;li&gt;Create a symlink (ex. &lt;code&gt;/dev/xvdf -&amp;gt; /dev/nvme1n1&lt;/code&gt;) so that SaltStack can use
+&lt;code&gt;/dev/xvdf&lt;/code&gt; for the initial setup&lt;/li&gt;
+&lt;li&gt;Perform the intial setup&lt;/li&gt;
+&lt;li&gt;Delete the symlink since:&lt;ol&gt;
+&lt;li&gt;The initial setup formatted the volume with a label that is used to mount
+the filesystem&lt;/li&gt;
+&lt;li&gt;There is no guarantee the symlink will be accurate on subsequent reboots
+and it might cause confusion&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime/blob/master/states/mount/init.sls&quot;&gt;&lt;code&gt;states/mount/init.sls&lt;/code&gt;&lt;/a&gt; state includes a complex shell
+command (with Jinja2 variables) that loops through the NVMe devices and finds
+the correct one:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-shell&quot;&gt;for n in /dev/nvme?n?
+do
+    if nvme id-ctrl -v ${n} | grep -q &amp;#39;^0000:.*{{ spec_short }}&amp;#39;
+    then
+        ln -s ${n} {{ spec_long }}
+    fi
+done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Example variable values:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;&lt;tr&gt;
+&lt;th&gt;Jinja2 Variable&lt;/th&gt;
+&lt;th&gt;Example Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{{ spec_short }}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;xvdf&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;{{ spec_long }}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/dev/xvdf&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;related-links&quot;&gt;Related Links&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.debian.org/Cloud/AmazonEC2Image/Buster&quot; title=&quot;Cloud/AmazonEC2Image/Buster - Debian Wiki&quot;&gt;Cloud/AmazonEC2Image/Buster - Debian Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://packages.debian.org/buster/nvme-cli&quot; title=&quot;Debian -- Details of package nvme-cli in buster&quot;&gt;&lt;code&gt;nvme-cli&lt;/code&gt; package details in Debian buster&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Debian buster — Debian Manpages&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://manpages.debian.org/buster/nvme-cli/nvme.1.en.html&quot;&gt;nvme(1) — nvme-cli&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://manpages.debian.org/buster/nvme-cli/nvme-id-ctrl.1.en.html&quot;&gt;nvme-id-ctrl(1) — nvme-cli&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;other-solutions&quot;&gt;Other Solutions&lt;/h2&gt;&lt;p&gt;While doing additional research for this blog post, I found additional
+solutions to the same problem. They're all good, but I apprecite the simplicity
+of a temporary symlink for setup versus maintaining custom udev rules (maybe I
+can help contribute a udev based solution to Debian or Debian's EC2 image). I
+can also easily imagine a more complex solution being a better fit if/when our
+infrastructure provisioining become more complex.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/oogali/ebs-automatic-nvme-mapping&quot; title=&quot;oogali/ebs-automatic-nvme-mapping: Automatic mapping of EBS volumes via NVMe block devices to standard block device paths&quot;&gt;oogali/ebs-automatic-nvme-mapping&lt;/a&gt;: Automatic mapping of EBS volumes via NVMe block devices to standard block device paths&lt;ul&gt;
+&lt;li&gt;udev rule that invokes a Bash script to create symlinks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CoreOS&lt;ul&gt;
+&lt;li&gt;udev rules that invokes a Bash script to create symlinks&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/coreos/init/blob/master/udev/rules.d/90-cloud-storage.rules&quot;&gt;&lt;code&gt;udev/rules.d/90-cloud-storage.rules&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/coreos/init/blob/master/udev/bin/cloud_aws_ebs_nvme_id&quot;&gt;&lt;code&gt;udev/bin/cloud_aws_ebs_nvme_id&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://gist.github.com/jalaziz/c22c8464cb602bc2b8d0a339b013a9c4&quot;&gt;AWS EBS NVMe udev rules&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;udev rule that invokes a Pyton script to create symlinks&lt;/li&gt;
+&lt;li&gt;this is a copy as Amazon only provides access to the source of Amazon Linux
+from within an Amazon Linux AMI: &lt;em&gt;The yumdownloader --source command line
+tool provided in the Amazon Linux AMI enables viewing of source code inside
+of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-linux-ami/faqs/&quot; title=&quot;Amazon Linux AMI FAQs&quot;&gt;Amazon Linux AMI FAQs&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week9-13/">
     <title type="text">CC Vocabulary - My Internship Ended</title>
     <id>urn:uuid:85900455-54f0-35dd-b689-57e5a399b7e5</id>
@@ -2694,28 +2810,6 @@ summer. Here they are!&lt;/p&gt;
 &lt;p&gt;Please don’t lose heart if you were not accepted! We were amazed at the quality of proposals we got and we had to make some really tough decisions. We appreciate the hard work you put into your proposals and contributing to our code and we wish we could accept more proposals. We hope that you’ll stick around and &lt;a href=&quot;https://creativecommons.github.io/contributing-code/&quot;&gt;be part of the CC developer community&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you’re interested in working on one of our remaining &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/&quot;&gt;project ideas&lt;/a&gt; as a volunteer outside of Google Summer of Code, please reach out to me. These are all things that CC is invested in building and we can provide guidance. We are especially looking for help with &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/#supercharge-our-indexing-engine&quot;&gt;supercharging our search indexer&lt;/a&gt;, improving our tooling around license translations (including &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/#automated-link-checking&quot;&gt;automated license link checking&lt;/a&gt;), and &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/#cc-plugin-generic&quot;&gt;plugins for integrating CC Search with external creation platforms&lt;/a&gt;. If we have multiple volunteers for the same idea, we will ask them to work together.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;A note about availability&lt;/em&gt;: all CC staff have very limited availability over the next week because of&lt;a href=&quot;https://summit.creativecommons.org/&quot;&gt; CC Global Summit&lt;/a&gt; and CC is closed for most of the following week so we won’t be around at all then. Please be patient, we’ll respond to you as soon as we can.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/">
-    <title type="text">Open Source at Creative Commons - 2019 Global Summit Event</title>
-    <id>urn:uuid:c6faa157-f959-3177-a2e2-fc1372621ec7</id>
-    <updated>2019-05-01T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/open-source-at-cc-gs2019-pre-event/" />
-    <author>
-      <name>sclachar</name>
-    </author>
-    <content type="html">&lt;p&gt;Creative Commons has been building free software for over a decade to support its mission of maximizing digital creativity, sharing, and innovation. We would love your assistance in creating and improving that software. Please join us at &lt;a href=&quot;https://summit.creativecommons.org/&quot;&gt;Creative Commons Global Summit 2019&lt;/a&gt; in Lisbon, Portugal May 9-11 2019 where we will host a session entitled &lt;a href=&quot;https://ccglobalsummit2019lisbonportugal.sched.com/event/MiWW/open-source-at-creative-commons&quot;&gt;Open Source at Creative Commons&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Session goals&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Introduce the Creative Commons Engineering Team.&lt;/li&gt;
-&lt;li&gt;Discuss our primary projects and potential collaborations.&lt;/li&gt;
-&lt;li&gt;Network with the attendees to build a vibrant community of developers.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Event Information&lt;/strong&gt;
-&lt;br&gt;Date: Friday May 10, 2019 1:30pm - 2:25pm
-&lt;br&gt;Location: &lt;a href=&quot;http://www.museudooriente.pt/museuoriente/deli-ilhas.php&quot;&gt;New Delhi Room&lt;/a&gt;, 4th Floor, Museu do Oriente Av. Brasília 352, 1350-279 Lisboa, Portugal
-&lt;br&gt;Moderator: &lt;a href=&quot;https://mzeinstra.nl/&quot;&gt;Maarten Zeinstra&lt;/a&gt; Chapter lead for Creative Commons Netherlands&lt;/p&gt;
-&lt;p&gt;We look forward to meeting you at this event and getting your feedback. If you would like to stay updated on our work, join our &lt;a href=&quot;https://groups.google.com/a/creativecommons.org/forum/#!forum/cc-developers&quot;&gt;developer mailing list&lt;/a&gt;, the #creativecommons-dev IRC channel on &lt;a href=&quot;https://freenode.net/&quot;&gt;freenode&lt;/a&gt;, or the #cc-developers channel on our &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack community&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
