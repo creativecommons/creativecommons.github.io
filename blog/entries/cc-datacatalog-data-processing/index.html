@@ -5,6 +5,7 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="Visualize CC Catalog data - data processing" />
 
@@ -168,10 +169,10 @@
 </li>
 </ul>
 <h3 id="formatting-domain-names">Formatting Domain Names</h3><p>In the dataset, we have domain names in the form of URLs. But we want to make the graph looks pretty well. This is why I am going to extract the domain name from the URLs we have in the dataset. For this purpose, I use <a href="https://github.com/john-kurkowski/tldextract">tldextract</a>, which is a simple and complete open source library for extracting the parts of the domains (e.g. suffix, subdomain, domain name). This package is available in conda-forge too. Here is how tldextract works:</p>
-<pre><code class="lang-python">&gt;&gt;&gt; ext = tldextract.extract(&#39;http://forums.bbc.co.uk&#39;)
-&gt;&gt;&gt; (ext.subdomain, ext.domain, ext.suffix)
-(&#39;forums&#39;, &#39;bbc&#39;, &#39;co.uk&#39;) #extract the domain name &quot;bbc&quot;
-</code></pre>
+<div class="hll"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">tldextract</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s1">&#39;http://forums.bbc.co.uk&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="n">ext</span><span class="o">.</span><span class="n">subdomain</span><span class="p">,</span> <span class="n">ext</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">ext</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;forums&#39;</span><span class="p">,</span> <span class="s1">&#39;bbc&#39;</span><span class="p">,</span> <span class="s1">&#39;co.uk&#39;</span><span class="p">)</span> <span class="c1">#extract the domain name &quot;bbc&quot;</span>
+</pre></div>
 <p>The main part is the extraction of the domain name. This will be applied to the _provider_domain_ and <em>links</em> fields in order to build the graph. The domain names will be the ones displayed over the nodes, as depicted in <a href="https://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/">my first blog post</a>.</p>
 <h3 id="license-validation">License Validation</h3><p>Another important aspect is the licenses types. In the dataset, we do not have the exact license name; rather, we have a URL that directs to the license definition on <a href="https://creativecommons.org">creativecommons.org</a>. We have developed a <a href="https://github.com/creativecommons/cccatalog/blob/master/src/providers/api/modules/etlMods.py#L75">function</a> with some regular expressions to validate the correct format of these URls, and extracts from them the license name and version. This information will be shown in the pie chart that appears after the user clicks on a node.</p>
 <pre><code>'https://creativecommons.org/licenses/by/4.0/' #valid license

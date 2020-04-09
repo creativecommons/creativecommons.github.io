@@ -5,6 +5,7 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="CC Vocabulary is a new design system for Creative Commons" />
 
@@ -21,7 +22,7 @@ internationalisation and modularity)." />
 <meta property="og:type" content="article" />
 
       
-<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/cc_vocabulary_github.png" />
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/cc_github.png" />
       
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="CC Vocabulary is a new design system for Creative Commons">
@@ -31,7 +32,7 @@ worldwide reception. With all this development comes one obvious challenge:
 consistency (not to mention a number of other challenges such as 
 internationalisation and modularity).">
       
-<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/cc_vocabulary_github.png">
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-new-design-system/cc_github.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -250,8 +251,8 @@ world-class web component framework that was beginning to have some real
 footing, something I had not even dreamed possible!</p>
 <p><strong>Pro-tip:</strong> If you haven't seen or experienced Vue UI, you should. It will 
 change your opinion of Vue for the better, as it did mine.</p>
-<pre><code class="lang-bash">[user cc-vocabulary]$ vue ui
-</code></pre>
+<div class="hll"><pre><span></span><span class="o">[</span>user cc-vocabulary<span class="o">]</span>$ vue ui
+</pre></div>
 <h3 id="the-bad">The bad</h3><p>In week 2, I had to develop a number of components and incorporate design
 tokens, a practice with origins at Salesforce. Folks wiser than myself at
 Salesforce came up with the idea of using design tokens to keep constants out of
@@ -280,11 +281,11 @@ whole thing would have been an ugly, miserable affair.</p>
 <p><strong>Pro-tip:</strong> This catastrophe could have become ugly were it not for the
 benevolent <code>src</code> attribute supported by some Vue tags. I had known this for
 merely seconds when I found myself breaking my components down using</p>
-<pre><code class="lang-html">&lt;style scoped lang=&quot;stylus&quot; src=&quot;./Component.styl&quot;&gt;&lt;/style&gt;
-</code></pre>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">scoped</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;stylus&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./Component.styl&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
 <p>to store CSS separately and</p>
-<pre><code class="lang-html">&lt;i18n src=&quot;./Component.json&quot;&gt;&lt;/i18n&gt;
-</code></pre>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">i18n</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./Component.json&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i18n</span><span class="p">&gt;</span>
+</pre></div>
 <p>to keep translations outside of my code, thus making the file much more
 manageable. There is still no way to split the JS <code>&lt;script&gt;</code> from the HTML
 <code>&lt;template&gt;</code> without losing all autocompletion features provided by the IDE.</p>
@@ -293,8 +294,8 @@ commands maximum, the Vue website had translations enabled and was working
 perfectly. But the Styleguide would <em>just not render translations at all!</em></p>
 <p>It took close to three days to even figure out why. Once I misinterpreted the
 cause of the error, broke the entire styleguide and had to</p>
-<pre><code class="lang-bash">[user cc-vocabulary]$ git reset --hard HEAD
-</code></pre>
+<div class="hll"><pre><span></span><span class="o">[</span>user cc-vocabulary<span class="o">]</span>$ git reset --hard HEAD
+</pre></div>
 <p>to even get things to work. <em>"Use VCS."</em>, proved one again.</p>
 <p>Finally I had to register the i18n plugin separately for the styleguide, install
 the middleware on all components and add a locale selector to every preview box

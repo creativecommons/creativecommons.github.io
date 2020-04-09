@@ -5,6 +5,7 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="An Introduction to Freesound" />
 
@@ -17,13 +18,13 @@
 <meta property="og:type" content="article" />
 
       
-<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/freesound-intro/diagram.png" />
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/freesound-intro/soundtrap.png" />
       
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="An Introduction to Freesound">
 <meta name="twitter:description" content="About Freesound">
       
-<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/freesound-intro/diagram.png">
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/freesound-intro/soundtrap.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -160,19 +161,19 @@
 </div><p>Freesound has been featured in the Creative Commons blog several times in the past: <a href="https://creativecommons.org/2005/04/12/overinspaincreatinganonlinecollaborativedatabaseofsounds/">here</a>, <a href="https://creativecommons.org/2005/10/01/freesound/">here</a>, <a href="https://creativecommons.org/2006/07/08/freesoundviaccmixter20kfreesounds/">here</a>, <a href="https://creativecommons.org/2007/01/17/freesound-sample-in-children-of-men/">here</a>, <a href="https://creativecommons.org/2008/03/13/freesound-20/">here</a>, <a href="https://creativecommons.org/2008/09/29/freesoundorg/">here</a> and <a href="https://creativecommons.org/2011/09/12/celebrating-freesound-2-0-retiring-sampling-licenses/">here</a>. Also you'll find plenty of information about Freesound, statistics and the like in the <a href="https://blog.freesound.org">Freesound Blog</a>.</p>
 <p style="text-align:center;"><img src="freesound_logo.png" width=1000px/></p><h3 id="the-freesound-api">The Freesound API</h3><p>In 2011 a web API endpoint was added to Freesound and since then it has been evolving and incorporating new functionalities together with the site. The current version of the API, <strong>Freesound APIv2</strong>, can be used by 3rd party developers and researchers to programatically search sounds in Freesound, filter results (including CC license), download audio analysis and the sounds themselves. It can also be used to upload new sounds, describe, rate and comment existing ones. In summary, it provides an alternative interface to that of the web browser so that <strong>Freesound content can be easily integrated in all sorts of projects</strong> outside Freesound itself.</p>
 <p>The Freesound API is a RESTful API that can be used similarly to other web APIs. To facilitate access to the API, we provide clients in <a href="/blog/entries/freesound-intro/(https://github.com/mtg/freesound-python">Python</a>), <a href="https://github.com/g-roma/freesound.js">Javascript</a> and <a href="https://github.com/mtg/freesound-juce">Juce (C++)</a> frameworks, but there are also <a href="https://freesound.org/docs/api/client_libs.html">community-developed clients</a> for other programming languages including Max/MSP, Perl, Supercollider, Objective-C, Scala and QT (C++). As an example, using the Python Freesound API client a search for <em>dog</em> sounds would look like this:</p>
-<pre><code class="lang-python">import freesound
+<div class="hll"><pre><span></span><span class="kn">import</span> <span class="nn">freesound</span>
 
-client = freesound.FreesoundClient()
-client.set_token(&#39;&lt;Your API key obtained from https://freesound.org/apiv2/apply&gt;&#39;, &#39;token&#39;)
+<span class="n">client</span> <span class="o">=</span> <span class="n">freesound</span><span class="o">.</span><span class="n">FreesoundClient</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_token</span><span class="p">(</span><span class="s1">&#39;&lt;Your API key obtained from https://freesound.org/apiv2/apply&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">)</span>
 
-results = client.text_search(query=&#39;dog&#39;)
-</code></pre>
+<span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">text_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;dog&#39;</span><span class="p">)</span>
+</pre></div>
 <p>The query could be further refined and, for instance, include only dog sounds which are shorter than 5 seconds, with a high average rating, and in CC0 license like this:</p>
-<pre><code class="lang-python">results = client.text_search(query=&#39;dog&#39;, filter=&#39;duration:[0.0 TO 15.0] avg_rating:[4.5 TO 5.0] license:&quot;Creative Commons 0&quot;&#39;)
-</code></pre>
+<div class="hll"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">text_search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="s1">&#39;duration:[0.0 TO 15.0] avg_rating:[4.5 TO 5.0] license:&quot;Creative Commons 0&quot;&#39;</span><span class="p">)</span>
+</pre></div>
 <p>Search results can also be easily downloaded:</p>
-<pre><code class="lang-python">results[0].retrieve_preview(&#39;/direcotry/to/save/the/file/&#39;)
-</code></pre>
+<div class="hll"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">retrieve_preview</span><span class="p">(</span><span class="s1">&#39;/direcotry/to/save/the/file/&#39;</span><span class="p">)</span>
+</pre></div>
 <p>One of the features that make the Freesound API unique is the ability to retrieve and filter sounds using <em>audio features</em> extracted with a <strong>computational analysis of the sounds uploaded to Freesound</strong>. For that purpose we use a powerful open source audio analysis library called <a href="https://essentia.upf.edu/">Essentia</a> that is also developed at the Music Technology Group. This allows the implementation of features like audio similarity search (i.e. searching for sounds given another sound as a <em>target</em>), or advanced exploration interfaces in which audio clips are displayed in a space according to some automtically estimated acoustic properties (see the <em>Freesound Explorer</em> example below).</p>
 <p>The Freesound API is a very powerful tool to facilitate the reuse of Freesound content. You can find more information about the API and its features in the <a href="https://freesound.org/docs/api/">Freesound API documentation</a>. The Freesound API is currently being used by companies like Acoustica, AudioGaming, Google, Mozilla, Soundly, Spotify, Waves Audio, Wolfram, and others.</p>
 <h3 id="spreading-cc-content-in-the-world">Spreading CC content in the world</h3><p>The audio content hosted in Freesound has a second life outside the website. It is very hard to track all the projects in which Freesound content is used, but with 50k unique visits per day, the accumulated millions and millions of download records and the integration with 3rd party applications, it becomes clear that <strong>Freesound is spreading Creative Commons audio virtually everywhere</strong>. Some users choose to use the Freesound forums to <a href="https://freesound.org/forum/your-work-made-with-freesounds/">explain the work they do using Freesound sounds</a>, including music, videogames, animations, movies, theater plays, education, etc. Unfortunately this is just a small minority of users. To try to keep track of some of the applications, research proejcts and other initiatives that use Freesound content, the <a href="https://labs.freesound.org">Freesound Labs</a> platform was introduced back in 2015. Currently it lists more than 40 projects and over 50 research papers using Freesound data. Some of these projects include <strong>CTAG's Strämpler</strong>, an eurorack sample streaming and sound synthesis module; <strong>Spotify's Sountrap</strong>, an online DAW with direct integration of Freesound search; <strong>Le Sound's AudioTexture</strong>, a granular synthetizer that transforms Freesound clips; and <strong>Freesound Explorer</strong>, a visual interface for exploring Freesound in a 2-dimensional space and create music at the same time.</p>

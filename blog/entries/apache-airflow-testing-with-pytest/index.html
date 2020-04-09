@@ -5,6 +5,7 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
 <link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="Apache Airflow testing with Pytest" />
 
@@ -184,8 +185,8 @@ used for production in many cases.</p>
 <p>The solution is to choose a directory in your project, and set the environment
 variable <code>$AIRFLOW_HOME</code> whenever you run the tests, or use the <code>airflow</code>
 command on the project DAGs. I recommend you add the command</p>
-<pre><code class="lang-bash">export AIRFLOW_HOME=/your/desired/full/path/
-</code></pre>
+<div class="hll"><pre><span></span><span class="nb">export</span> <span class="nv">AIRFLOW_HOME</span><span class="o">=</span>/your/desired/full/path/
+</pre></div>
 <p>to a script (ours is called <code>env.sh</code>) that will be run in any shell dealing with
 the 'localized' Airflow instance, because forgetting to set the variable for
 even one <code>airflow</code> command will corrupt the DAG states stored in the global
@@ -215,13 +216,13 @@ These files are:</p>
 this.</p>
 <p>The most basic test you'll want is to determine whether your DAGs can load
 without errors. To do this, you can use the following function:</p>
-<pre><code class="lang-python">from airflow.models import DagBag
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DagBag</span>
 
-def test_dags_load_with_no_errors():
-    dag_bag = DagBag(include_examples=False)
-    dag_bag.process_file(&#39;common_api_workflows.py&#39;)
-    assert len(dag_bag.import_errors) == 0
-</code></pre>
+<span class="k">def</span> <span class="nf">test_dags_load_with_no_errors</span><span class="p">():</span>
+    <span class="n">dag_bag</span> <span class="o">=</span> <span class="n">DagBag</span><span class="p">(</span><span class="n">include_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dag_bag</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;common_api_workflows.py&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dag_bag</span><span class="o">.</span><span class="n">import_errors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
 <p>We initialize a <code>DagBag</code> (this loads DAG files). With the <code>process_file</code> method,
 we instruct the Airflow daemon to attempt to load any DAGs defined in the
 <code>common_api_workflows.py</code> file.  We then check to make sure loading the DAGs
@@ -231,67 +232,67 @@ load the DAG into the <code>DagBag</code> (except when you're actually testing t
 <em>can</em> be loaded). This may seem obvious, but none of the Airflow documentation
 uses this pattern. Here is an example of a function that creates a simple dag,
 and a test of the function:</p>
-<pre><code class="lang-python">from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
+<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash_operator</span> <span class="kn">import</span> <span class="n">BashOperator</span>
 
-def create_dag(
-        source,
-        script_location,
-        dag_id,
-        crontab_str=None,
-        default_args=DAG_DEFAULT_ARGS):
+<span class="k">def</span> <span class="nf">create_dag</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">,</span>
+        <span class="n">script_location</span><span class="p">,</span>
+        <span class="n">dag_id</span><span class="p">,</span>
+        <span class="n">crontab_str</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">default_args</span><span class="o">=</span><span class="n">DAG_DEFAULT_ARGS</span><span class="p">):</span>
 
-    dag = DAG(
-        dag_id=dag_id,
-        default_args=default_args,
-        schedule_interval=crontab_str,
-        catchup=False
-    )
+    <span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+        <span class="n">dag_id</span><span class="o">=</span><span class="n">dag_id</span><span class="p">,</span>
+        <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+        <span class="n">schedule_interval</span><span class="o">=</span><span class="n">crontab_str</span><span class="p">,</span>
+        <span class="n">catchup</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
 
-    with dag:
-        start_task = BashOperator(
-            task_id=&#39;{}_{}&#39;.format(source, status),
-            bash_command=&#39;echo Starting {} workflow&#39;.format(status),
-            dag=dag
-        )
+    <span class="k">with</span> <span class="n">dag</span><span class="p">:</span>
+        <span class="n">start_task</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">),</span>
+            <span class="n">bash_command</span><span class="o">=</span><span class="s1">&#39;echo Starting </span><span class="si">{}</span><span class="s1"> workflow&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status</span><span class="p">),</span>
+            <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+        <span class="p">)</span>
 
-        run_task =  BashOperator(
-            task_id=&#39;get_{}_images&#39;.format(source),
-            bash_command=&#39;python {} --mode default&#39;.format(script_location),
-            dag=dag
-        )
+        <span class="n">run_task</span> <span class="o">=</span>  <span class="n">BashOperator</span><span class="p">(</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;get_</span><span class="si">{}</span><span class="s1">_images&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">),</span>
+            <span class="n">bash_command</span><span class="o">=</span><span class="s1">&#39;python </span><span class="si">{}</span><span class="s1"> --mode default&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">script_location</span><span class="p">),</span>
+            <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+        <span class="p">)</span>
 
-        start_task &gt;&gt; run_task
+        <span class="n">start_task</span> <span class="o">&gt;&gt;</span> <span class="n">run_task</span>
 
-    return dag
+    <span class="k">return</span> <span class="n">dag</span>
 
-def test_create_dag_creates_correct_dependencies():
-    dag = create_dag(
-        &#39;test_source&#39;,
-        &#39;test_script_location&#39;,
-        &#39;test_dag_id&#39;
-    )
-    start_id = &#39;test_source_starting&#39;
-    run_id = &#39;get_test_source_images&#39;
-    start_task = dag.get_task(start_id)
-    assert start_task.upstream_task_ids == set()
-    assert start_task.downstream_task_ids == set([run_id])
-    run_task = dag.get_task(run_id)
-    assert run_task.upstream_task_ids == set([start_id])
-    assert run_task.downstream_task_ids == set([])
-</code></pre>
+<span class="k">def</span> <span class="nf">test_create_dag_creates_correct_dependencies</span><span class="p">():</span>
+    <span class="n">dag</span> <span class="o">=</span> <span class="n">create_dag</span><span class="p">(</span>
+        <span class="s1">&#39;test_source&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;test_script_location&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;test_dag_id&#39;</span>
+    <span class="p">)</span>
+    <span class="n">start_id</span> <span class="o">=</span> <span class="s1">&#39;test_source_starting&#39;</span>
+    <span class="n">run_id</span> <span class="o">=</span> <span class="s1">&#39;get_test_source_images&#39;</span>
+    <span class="n">start_task</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">start_id</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">start_task</span><span class="o">.</span><span class="n">upstream_task_ids</span> <span class="o">==</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">start_task</span><span class="o">.</span><span class="n">downstream_task_ids</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([</span><span class="n">run_id</span><span class="p">])</span>
+    <span class="n">run_task</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">run_task</span><span class="o">.</span><span class="n">upstream_task_ids</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([</span><span class="n">start_id</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">run_task</span><span class="o">.</span><span class="n">downstream_task_ids</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([])</span>
+</pre></div>
 <p>Here, we assume that <code>DAG_DEFAULT_ARGS</code> is defined earlier in the file.  See the
 Airflow documentation for details about default DAG arguments. Now, this
 function is testable (great!) but it doesn't acutally make the DAG it creates
 known to the Airflow daemon. To do that, we have to create the created dag into
 the global scope of the module defined by the file, which can be done with the
 following snippet:</p>
-<pre><code class="lang-python">globals()[dag_id] = create_dag(
-    source,
-    script_location,
-    dag_id
-)
-</code></pre>
+<div class="hll"><pre><span></span><span class="nb">globals</span><span class="p">()[</span><span class="n">dag_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_dag</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">,</span>
+    <span class="n">script_location</span><span class="p">,</span>
+    <span class="n">dag_id</span>
+<span class="p">)</span>
+</pre></div>
 <p>Here, it's assumed that <code>source</code>, <code>script_location</code>, and <code>dag_id</code> are defined
 earlier in the python file.</p>
 <p>We hope that these hints are helpful to the reader.  For more, and for the

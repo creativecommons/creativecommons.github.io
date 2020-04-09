@@ -58,14 +58,14 @@ and it might cause confusion&lt;/li&gt;
 &lt;p&gt;The &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime/blob/master/states/mount/init.sls&quot;&gt;&lt;code&gt;states/mount/init.sls&lt;/code&gt;&lt;/a&gt; state includes a complex shell
 command (with Jinja2 variables) that loops through the NVMe devices and finds
 the correct one:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-shell&quot;&gt;for n in /dev/nvme?n?
-do
-    if nvme id-ctrl -v ${n} | grep -q &amp;#39;^0000:.*{{ spec_short }}&amp;#39;
-    then
-        ln -s ${n} {{ spec_long }}
-    fi
-done
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; n in /dev/nvme?n?
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; nvme id-ctrl -v &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep -q &lt;span class=&quot;s1&quot;&gt;&amp;#39;^0000:.*{{ spec_short }}&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+        ln -s &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{{&lt;/span&gt; spec_long &lt;span class=&quot;o&quot;&gt;}}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Example variable values:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;&lt;tr&gt;
@@ -342,8 +342,8 @@ used for production in many cases.&lt;/p&gt;
 &lt;p&gt;The solution is to choose a directory in your project, and set the environment
 variable &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; whenever you run the tests, or use the &lt;code&gt;airflow&lt;/code&gt;
 command on the project DAGs. I recommend you add the command&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;export AIRFLOW_HOME=/your/desired/full/path/
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;AIRFLOW_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/your/desired/full/path/
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;to a script (ours is called &lt;code&gt;env.sh&lt;/code&gt;) that will be run in any shell dealing with
 the 'localized' Airflow instance, because forgetting to set the variable for
 even one &lt;code&gt;airflow&lt;/code&gt; command will corrupt the DAG states stored in the global
@@ -373,13 +373,13 @@ These files are:&lt;/p&gt;
 this.&lt;/p&gt;
 &lt;p&gt;The most basic test you'll want is to determine whether your DAGs can load
 without errors. To do this, you can use the following function:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;from airflow.models import DagBag
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DagBag&lt;/span&gt;
 
-def test_dags_load_with_no_errors():
-    dag_bag = DagBag(include_examples=False)
-    dag_bag.process_file(&amp;#39;common_api_workflows.py&amp;#39;)
-    assert len(dag_bag.import_errors) == 0
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_dags_load_with_no_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dag_bag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DagBag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include_examples&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dag_bag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;common_api_workflows.py&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_bag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;import_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We initialize a &lt;code&gt;DagBag&lt;/code&gt; (this loads DAG files). With the &lt;code&gt;process_file&lt;/code&gt; method,
 we instruct the Airflow daemon to attempt to load any DAGs defined in the
 &lt;code&gt;common_api_workflows.py&lt;/code&gt; file.  We then check to make sure loading the DAGs
@@ -389,67 +389,67 @@ load the DAG into the &lt;code&gt;DagBag&lt;/code&gt; (except when you're actual
 &lt;em&gt;can&lt;/em&gt; be loaded). This may seem obvious, but none of the Airflow documentation
 uses this pattern. Here is an example of a function that creates a simple dag,
 and a test of the function:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.operators.bash_operator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BashOperator&lt;/span&gt;
 
-def create_dag(
-        source,
-        script_location,
-        dag_id,
-        crontab_str=None,
-        default_args=DAG_DEFAULT_ARGS):
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;script_location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;crontab_str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DAG_DEFAULT_ARGS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
-    dag = DAG(
-        dag_id=dag_id,
-        default_args=default_args,
-        schedule_interval=crontab_str,
-        catchup=False
-    )
+    &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;schedule_interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;crontab_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;catchup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-    with dag:
-        start_task = BashOperator(
-            task_id=&amp;#39;{}_{}&amp;#39;.format(source, status),
-            bash_command=&amp;#39;echo Starting {} workflow&amp;#39;.format(status),
-            dag=dag
-        )
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BashOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bash_command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;echo Starting &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; workflow&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-        run_task =  BashOperator(
-            task_id=&amp;#39;get_{}_images&amp;#39;.format(source),
-            bash_command=&amp;#39;python {} --mode default&amp;#39;.format(script_location),
-            dag=dag
-        )
+        &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;BashOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;get_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;_images&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bash_command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;python &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; --mode default&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;script_location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-        start_task &amp;gt;&amp;gt; run_task
+        &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt;
 
-    return dag
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
 
-def test_create_dag_creates_correct_dependencies():
-    dag = create_dag(
-        &amp;#39;test_source&amp;#39;,
-        &amp;#39;test_script_location&amp;#39;,
-        &amp;#39;test_dag_id&amp;#39;
-    )
-    start_id = &amp;#39;test_source_starting&amp;#39;
-    run_id = &amp;#39;get_test_source_images&amp;#39;
-    start_task = dag.get_task(start_id)
-    assert start_task.upstream_task_ids == set()
-    assert start_task.downstream_task_ids == set([run_id])
-    run_task = dag.get_task(run_id)
-    assert run_task.upstream_task_ids == set([start_id])
-    assert run_task.downstream_task_ids == set([])
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_create_dag_creates_correct_dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_source&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_script_location&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_dag_id&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_source_starting&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;run_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;get_test_source_images&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Here, we assume that &lt;code&gt;DAG_DEFAULT_ARGS&lt;/code&gt; is defined earlier in the file.  See the
 Airflow documentation for details about default DAG arguments. Now, this
 function is testable (great!) but it doesn't acutally make the DAG it creates
 known to the Airflow daemon. To do that, we have to create the created dag into
 the global scope of the module defined by the file, which can be done with the
 following snippet:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;globals()[dag_id] = create_dag(
-    source,
-    script_location,
-    dag_id
-)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;script_location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Here, it's assumed that &lt;code&gt;source&lt;/code&gt;, &lt;code&gt;script_location&lt;/code&gt;, and &lt;code&gt;dag_id&lt;/code&gt; are defined
 earlier in the python file.&lt;/p&gt;
 &lt;p&gt;We hope that these hints are helpful to the reader.  For more, and for the
@@ -603,19 +603,19 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;Freesound has been featured in the Creative Commons blog several times in the past: &lt;a href=&quot;https://creativecommons.org/2005/04/12/overinspaincreatinganonlinecollaborativedatabaseofsounds/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2005/10/01/freesound/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2006/07/08/freesoundviaccmixter20kfreesounds/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2007/01/17/freesound-sample-in-children-of-men/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2008/03/13/freesound-20/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2008/09/29/freesoundorg/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/2011/09/12/celebrating-freesound-2-0-retiring-sampling-licenses/&quot;&gt;here&lt;/a&gt;. Also you'll find plenty of information about Freesound, statistics and the like in the &lt;a href=&quot;https://blog.freesound.org&quot;&gt;Freesound Blog&lt;/a&gt;.&lt;/p&gt;
 &lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;freesound_logo.png&quot; width=1000px/&gt;&lt;/p&gt;&lt;h3 id=&quot;the-freesound-api&quot;&gt;The Freesound API&lt;/h3&gt;&lt;p&gt;In 2011 a web API endpoint was added to Freesound and since then it has been evolving and incorporating new functionalities together with the site. The current version of the API, &lt;strong&gt;Freesound APIv2&lt;/strong&gt;, can be used by 3rd party developers and researchers to programatically search sounds in Freesound, filter results (including CC license), download audio analysis and the sounds themselves. It can also be used to upload new sounds, describe, rate and comment existing ones. In summary, it provides an alternative interface to that of the web browser so that &lt;strong&gt;Freesound content can be easily integrated in all sorts of projects&lt;/strong&gt; outside Freesound itself.&lt;/p&gt;
 &lt;p&gt;The Freesound API is a RESTful API that can be used similarly to other web APIs. To facilitate access to the API, we provide clients in &lt;a href=&quot;/blog/entries/freesound-intro/(https://github.com/mtg/freesound-python&quot;&gt;Python&lt;/a&gt;), &lt;a href=&quot;https://github.com/g-roma/freesound.js&quot;&gt;Javascript&lt;/a&gt; and &lt;a href=&quot;https://github.com/mtg/freesound-juce&quot;&gt;Juce (C++)&lt;/a&gt; frameworks, but there are also &lt;a href=&quot;https://freesound.org/docs/api/client_libs.html&quot;&gt;community-developed clients&lt;/a&gt; for other programming languages including Max/MSP, Perl, Supercollider, Objective-C, Scala and QT (C++). As an example, using the Python Freesound API client a search for &lt;em&gt;dog&lt;/em&gt; sounds would look like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;import freesound
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;freesound&lt;/span&gt;
 
-client = freesound.FreesoundClient()
-client.set_token(&amp;#39;&amp;lt;Your API key obtained from https://freesound.org/apiv2/apply&amp;gt;&amp;#39;, &amp;#39;token&amp;#39;)
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;freesound&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FreesoundClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;Your API key obtained from https://freesound.org/apiv2/apply&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-results = client.text_search(query=&amp;#39;dog&amp;#39;)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The query could be further refined and, for instance, include only dog sounds which are shorter than 5 seconds, with a high average rating, and in CC0 license like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;results = client.text_search(query=&amp;#39;dog&amp;#39;, filter=&amp;#39;duration:[0.0 TO 15.0] avg_rating:[4.5 TO 5.0] license:&amp;quot;Creative Commons 0&amp;quot;&amp;#39;)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;duration:[0.0 TO 15.0] avg_rating:[4.5 TO 5.0] license:&amp;quot;Creative Commons 0&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Search results can also be easily downloaded:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;results[0].retrieve_preview(&amp;#39;/direcotry/to/save/the/file/&amp;#39;)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retrieve_preview&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/direcotry/to/save/the/file/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;One of the features that make the Freesound API unique is the ability to retrieve and filter sounds using &lt;em&gt;audio features&lt;/em&gt; extracted with a &lt;strong&gt;computational analysis of the sounds uploaded to Freesound&lt;/strong&gt;. For that purpose we use a powerful open source audio analysis library called &lt;a href=&quot;https://essentia.upf.edu/&quot;&gt;Essentia&lt;/a&gt; that is also developed at the Music Technology Group. This allows the implementation of features like audio similarity search (i.e. searching for sounds given another sound as a &lt;em&gt;target&lt;/em&gt;), or advanced exploration interfaces in which audio clips are displayed in a space according to some automtically estimated acoustic properties (see the &lt;em&gt;Freesound Explorer&lt;/em&gt; example below).&lt;/p&gt;
 &lt;p&gt;The Freesound API is a very powerful tool to facilitate the reuse of Freesound content. You can find more information about the API and its features in the &lt;a href=&quot;https://freesound.org/docs/api/&quot;&gt;Freesound API documentation&lt;/a&gt;. The Freesound API is currently being used by companies like Acoustica, AudioGaming, Google, Mozilla, Soundly, Spotify, Waves Audio, Wolfram, and others.&lt;/p&gt;
 &lt;h3 id=&quot;spreading-cc-content-in-the-world&quot;&gt;Spreading CC content in the world&lt;/h3&gt;&lt;p&gt;The audio content hosted in Freesound has a second life outside the website. It is very hard to track all the projects in which Freesound content is used, but with 50k unique visits per day, the accumulated millions and millions of download records and the integration with 3rd party applications, it becomes clear that &lt;strong&gt;Freesound is spreading Creative Commons audio virtually everywhere&lt;/strong&gt;. Some users choose to use the Freesound forums to &lt;a href=&quot;https://freesound.org/forum/your-work-made-with-freesounds/&quot;&gt;explain the work they do using Freesound sounds&lt;/a&gt;, including music, videogames, animations, movies, theater plays, education, etc. Unfortunately this is just a small minority of users. To try to keep track of some of the applications, research proejcts and other initiatives that use Freesound content, the &lt;a href=&quot;https://labs.freesound.org&quot;&gt;Freesound Labs&lt;/a&gt; platform was introduced back in 2015. Currently it lists more than 40 projects and over 50 research papers using Freesound data. Some of these projects include &lt;strong&gt;CTAG's Strämpler&lt;/strong&gt;, an eurorack sample streaming and sound synthesis module; &lt;strong&gt;Spotify's Sountrap&lt;/strong&gt;, an online DAW with direct integration of Freesound search; &lt;strong&gt;Le Sound's AudioTexture&lt;/strong&gt;, a granular synthetizer that transforms Freesound clips; and &lt;strong&gt;Freesound Explorer&lt;/strong&gt;, a visual interface for exploring Freesound in a 2-dimensional space and create music at the same time.&lt;/p&gt;
@@ -1734,58 +1734,6 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
-    <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
-&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
-&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;
-These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
-&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Improve documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
     <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
@@ -1937,6 +1885,58 @@ See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/
 &lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
+    <title type="text">CC Browser Extension Week 7, 8</title>
+    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
+&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
+&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;
+These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
+&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
+&lt;li&gt;Test and fix bugs.&lt;/li&gt;
+&lt;li&gt;Improve documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
     <title type="text">CC Search Redesign</title>
     <id>urn:uuid:de03abbc-63b0-3427-a446-750f2eb0e34e</id>
@@ -2050,10 +2050,10 @@ Bhumij Gupta&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;formatting-domain-names&quot;&gt;Formatting Domain Names&lt;/h3&gt;&lt;p&gt;In the dataset, we have domain names in the form of URLs. But we want to make the graph looks pretty well. This is why I am going to extract the domain name from the URLs we have in the dataset. For this purpose, I use &lt;a href=&quot;https://github.com/john-kurkowski/tldextract&quot;&gt;tldextract&lt;/a&gt;, which is a simple and complete open source library for extracting the parts of the domains (e.g. suffix, subdomain, domain name). This package is available in conda-forge too. Here is how tldextract works:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-python&quot;&gt;&amp;gt;&amp;gt;&amp;gt; ext = tldextract.extract(&amp;#39;http://forums.bbc.co.uk&amp;#39;)
-&amp;gt;&amp;gt;&amp;gt; (ext.subdomain, ext.domain, ext.suffix)
-(&amp;#39;forums&amp;#39;, &amp;#39;bbc&amp;#39;, &amp;#39;co.uk&amp;#39;) #extract the domain name &amp;quot;bbc&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tldextract&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://forums.bbc.co.uk&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subdomain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;forums&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;bbc&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;co.uk&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#extract the domain name &amp;quot;bbc&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The main part is the extraction of the domain name. This will be applied to the _provider_domain_ and &lt;em&gt;links&lt;/em&gt; fields in order to build the graph. The domain names will be the ones displayed over the nodes, as depicted in &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/&quot;&gt;my first blog post&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;license-validation&quot;&gt;License Validation&lt;/h3&gt;&lt;p&gt;Another important aspect is the licenses types. In the dataset, we do not have the exact license name; rather, we have a URL that directs to the license definition on &lt;a href=&quot;https://creativecommons.org&quot;&gt;creativecommons.org&lt;/a&gt;. We have developed a &lt;a href=&quot;https://github.com/creativecommons/cccatalog/blob/master/src/providers/api/modules/etlMods.py#L75&quot;&gt;function&lt;/a&gt; with some regular expressions to validate the correct format of these URls, and extracts from them the license name and version. This information will be shown in the pie chart that appears after the user clicks on a node.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;'https://creativecommons.org/licenses/by/4.0/' #valid license
@@ -2227,21 +2227,6 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;Next week, I'll be working on getting a new version of the license chooser controls working.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
-    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
-    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
-    <updated>2019-06-20T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
-    <author>
-      <name>ahmadbilaldev</name>
-    </author>
-    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
-&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
-&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
-&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/">
     <title type="text">CC Browser Extension - A GSoC Project</title>
     <id>urn:uuid:a6b57727-90f7-31c1-a01f-94ff017eb17f</id>
@@ -2284,6 +2269,21 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;h3 id=&quot;how-you-can-help&quot;&gt;How you can help&lt;/h3&gt;&lt;p&gt;The development is still in the initial phase but you can check out &lt;strong&gt;a working extension&lt;/strong&gt; at the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github Repository&lt;/a&gt;. There are instructions to help you get started and load it to Firefox.&lt;/p&gt;
 &lt;p&gt;Tell us what you expect the extension to do, or a feature that you wish would be implemented. At this early stage of development, it might help us improve our goals. You can join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://creativecommons.github.io/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; to for their mentorship and providing an experienced perspective and solutions to the problems faced by this naive developer.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
+    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
+    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
+    <updated>2019-06-20T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
+    <author>
+      <name>ahmadbilaldev</name>
+    </author>
+    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
+&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
+&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
+&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/searching-300-million/">
@@ -2467,8 +2467,8 @@ world-class web component framework that was beginning to have some real
 footing, something I had not even dreamed possible!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; If you haven't seen or experienced Vue UI, you should. It will 
 change your opinion of Vue for the better, as it did mine.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[user cc-vocabulary]$ vue ui
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user cc-vocabulary&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;$ vue ui
+&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&quot;the-bad&quot;&gt;The bad&lt;/h3&gt;&lt;p&gt;In week 2, I had to develop a number of components and incorporate design
 tokens, a practice with origins at Salesforce. Folks wiser than myself at
 Salesforce came up with the idea of using design tokens to keep constants out of
@@ -2497,11 +2497,11 @@ whole thing would have been an ugly, miserable affair.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt; This catastrophe could have become ugly were it not for the
 benevolent &lt;code&gt;src&lt;/code&gt; attribute supported by some Vue tags. I had known this for
 merely seconds when I found myself breaking my components down using&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&amp;lt;style scoped lang=&amp;quot;stylus&amp;quot; src=&amp;quot;./Component.styl&amp;quot;&amp;gt;&amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scoped&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylus&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;./Component.styl&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;to store CSS separately and&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&amp;lt;i18n src=&amp;quot;./Component.json&amp;quot;&amp;gt;&amp;lt;/i18n&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;i18n&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;./Component.json&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;i18n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;to keep translations outside of my code, thus making the file much more
 manageable. There is still no way to split the JS &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; from the HTML
 &lt;code&gt;&amp;lt;template&amp;gt;&lt;/code&gt; without losing all autocompletion features provided by the IDE.&lt;/p&gt;
@@ -2510,8 +2510,8 @@ commands maximum, the Vue website had translations enabled and was working
 perfectly. But the Styleguide would &lt;em&gt;just not render translations at all!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;It took close to three days to even figure out why. Once I misinterpreted the
 cause of the error, broke the entire styleguide and had to&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;[user cc-vocabulary]$ git reset --hard HEAD
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user cc-vocabulary&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;$ git reset --hard HEAD
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;to even get things to work. &lt;em&gt;&quot;Use VCS.&quot;&lt;/em&gt;, proved one again.&lt;/p&gt;
 &lt;p&gt;Finally I had to register the i18n plugin separately for the styleguide, install
 the middleware on all components and add a locale selector to every preview box
