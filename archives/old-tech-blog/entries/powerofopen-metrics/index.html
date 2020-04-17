@@ -162,8 +162,8 @@
  select * from ( select ym, sum(atleast) totalcount from (select yahoo.ym, yahoo.license_uri, greatest(yahoo.ct, coalesce(flickr.ct,0)) atleast from (select extract(year_month from timestamp) ym, license_uri,round(avg(count)) ct from simple group by license_uri,extract(year_month from timestamp)) yahoo left join (select extract(year_month from utc_time_stamp) ym, license_uri,round(avg(count)) ct from site_specific group by license_uri,extract(year_month from utc_time_stamp)) flickr on flickr.ym = yahoo.ym and flickr.license_uri = yahoo.license_uri) x group by ym ) x where ym regexp '12$';</p>
 </blockquote>
 <p>Results of above query:</p>
-<table>
-<thead><tr>
+<table class="table table-striped">
+<thead class="thead-dark"><tr>
 <th>Year End</th>
 <th>Total License Count  </th>
 </tr>
@@ -207,8 +207,8 @@
 <blockquote><p><code>select free.ym, freecount, totalcount, freecount/totalcount freeproportion from (select ym, sum(atleast) freecount from (select yahoo.ym, yahoo.license_uri, greatest(yahoo.ct, coalesce(flickr.ct,0)) atleast from (select extract(year_month from timestamp) ym, license_uri,round(avg(count)) ct from simple group by license_uri,extract(year_month from timestamp)) yahoo left join (select extract(year_month from utc_time_stamp) ym, license_uri,round(avg(count)) ct from site_specific group by license_uri,extract(year_month from utc_time_stamp)) flickr on flickr.ym = yahoo.ym and flickr.license_uri = yahoo.license_uri) x where license_uri regexp 'publicdomain' or license_uri regexp 'by/' or license_uri regexp 'by-sa/' group by ym) free, (select ym, sum(atleast) totalcount from (select yahoo.ym, yahoo.license_uri, greatest(yahoo.ct, coalesce(flickr.ct,0)) atleast from (select extract(year_month from timestamp) ym, license_uri,round(avg(count)) ct from simple group by license_uri,extract(year_month from timestamp)) yahoo left join (select extract(year_month from utc_time_stamp) ym, license_uri,round(avg(count)) ct from site_specific group by license_uri,extract(year_month from utc_time_stamp)) flickr on flickr.ym = yahoo.ym and flickr.license_uri = yahoo.license_uri) x group by ym) total where free.ym = total.ym and free.ym regexp '12$';</code></p>
 </blockquote>
 <p>The above query obtains the following:</p>
-<table>
-<thead><tr>
+<table class="table table-striped">
+<thead class="thead-dark"><tr>
 <th>Year End</th>
 <th>Free License Count</th>
 <th>Total License Count</th>
