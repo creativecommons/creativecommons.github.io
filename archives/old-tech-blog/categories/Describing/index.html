@@ -102,6 +102,8 @@
                     
                       <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
                     
+                      <a class="dropdown-item" href="/internships/history/">History</a>
+                    
                   </div>
                 </li>
                 <li class="nav-item dropdown  active">
