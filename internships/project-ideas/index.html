@@ -136,7 +136,7 @@
           <h1 class="page-title pb-3 mb-4">Open Source Internships: Project Ideas</h1>
           
 
-  <p class="lead">This is the project idea list for the <strong><a href="/internships">current round of open source internships at Creative Commons</a></strong>.</p>
+  <p class="lead">This is the project idea list for <strong>Google Season of Docs 2020</strong>.</p>
   <hr/>
   <!-- We display all ideas by default. -->
   
@@ -168,354 +168,203 @@
       </button>
       <ul class="list-unstyled m-3">
       
-        <li class="my-2 filter filter-label difficulty-medium skill-javascript skill-python"><a href="#add-audio">Add Audio to the CC Catalog &amp; CC Search</a></li>
+        <li class="my-2 filter filter-label difficulty-medium skill-python skill-writing"><a href="#api-usage-guide">CC Catalog API usage guide</a></li>
       
-        <li class="my-2 filter filter-label difficulty-easy skill-javascript"><a href="#linked-commons">Add filtering by node to the Linked Commons</a></li>
+        <li class="my-2 filter filter-label difficulty-medium skill-python skill-writing"><a href="#api-contributor-docs">Improve CC Catalog API repo documentation for potential contributors</a></li>
       
-        <li class="my-2 filter filter-label difficulty-easy skill-python"><a href="#catalog-expansion">Add Provider API Scripts to CC Catalog</a></li>
+        <li class="my-2 filter filter-label difficulty-medium skill-javascript skill-writing"><a href="#cc-search-contributor-docs">Improve CC Search documentation for potential contributors</a></li>
       
-        <li class="my-2 filter filter-label difficulty-medium skill-javascript"><a href="#cc-search-accessibility">Improve CC Search Accessibility</a></li>
+        <li class="my-2 filter filter-label difficulty-medium skill-javascript skill-writing"><a href="#vocabulary-usage-guide">Vocabulary usage guide</a></li>
       
-        <li class="my-2 filter filter-label difficulty-medium skill-javascript skill-wordpress"><a href="#wp-plugin">Improvements to the CC WordPress Plugin</a></li>
-      
-        <li class="my-2 filter filter-label difficulty-medium skill-javascript skill-wordpress"><a href="#vocabulary-integration">Integrate Vocabulary with CC Open Source &amp; CCGN websites</a></li>
-      
-        <li class="my-2 filter filter-label difficulty-medium skill-javascript skill-python skill-wordpress"><a href="#legal-database">Reimplement CC’s Legal Database using WordPress or Django</a></li>
-      
-        <li class="my-2 filter filter-label difficulty-hard skill-python"><a href="#metrics-dashboard">Usage &amp; Reuse Metrics Dashboard for CC Search</a></li>
-      
-        <li class="my-2 filter filter-label difficulty-easy skill-writing"><a href="#web-monetization">Web Monetization Research Project</a></li>
+        <li class="my-2 filter filter-label difficulty-medium skill-wordpress skill-writing"><a href="#wp-base-theme-usage-guide">WordPress base theme usage guide</a></li>
       
         <li class="my-2"><a href="#original-ideas">Original Ideas</a></li>
       </ul>
     </div>
     <hr/>
     
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript skill-python">
-        <h2 class="card-header project-idea-header"><a name="add-audio">Add Audio to the CC Catalog &amp; CC Search</a></h5>
+      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-python skill-writing">
+        <h2 class="card-header project-idea-header"><a name="api-usage-guide">CC Catalog API usage guide</a></h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>Currently, <a href="https://search.creativecommons.org/">CC Search</a> and the <a href="https://api.creativecommons.engineering/">CC Catalog API</a> only support image search. We’d like to add more content types, especially audio. This would involve indexing audio sources in the CC Catalog and adding new endpoints to the CC Catalog API (user interface changes are out of scope for this project.)</p>
+          <li class="list-group-item"><strong>The Problem:</strong> <p>The <a href="https://api.creativecommons.engineering/v1/">CC Catalog API documentation</a> is currently entirely auto-generated. While it's good, basic, API documentation, we'd like to make it more user friendly and provide how-tos, examples, and a bit more narrative.</p>
 </li>
           <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
-<li>There would be scripts in the <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a> repository that index metadata related to openly licensed audio files and add it to our database.</li>
-<li>The <a href="https://api.creativecommons.engineering/">CC Catalog API</a> would have a set of endpoints that allowed searching for and browsing audio files.</li>
+<li>Published API documentation should include auto-generated documentation as well as narrative elements.</li>
+<li>API documentation should use Vocabulary, CC's design system if feasible.</li>
 </ul>
 </li>
           <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
-<li>Work with CC’s data engineer to define and implement a database schema for collecting audio file metadata.</li>
-<li>Write scripts to ingest audio file metadata from open repositories such as <a href="https://freesound.org/">Freesound</a>, <a href="https://freemusicarchive.org/">Free Music Archive</a>, etc.</li>
-<li>Implement additional API endpoints on the CC Catalog API to expose audio data.</li>
+<li>Work with CC’s backend engineer to come up with a plan for the documentation.</li>
+<li>Build upon the auto-generated documentation and find a way to include narrative elements.</li>
+<li>Integrate with Vocabulary if feasible.</li>
+<li>Write documentation and create pull requests to get it merged.</li>
+<li>Work with the CC team to deploy the documentation publicly.</li>
 </ul>
 </li>
           <li class="list-group-item"><strong>Application Tips:</strong> <ul>
-<li>Include potential database schemas in your application.</li>
-<li>Include sources that you might want to ingest in your application.</li>
+<li>Demonstrate your familiarity with the codebase and existing documentation.</li>
+<li>Explain how you'd like to refactor or expand the documentation in detail.</li>
 </ul>
 </li>
           <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://github.com/creativecommons/cccatalog">CC Catalog code</a></li>
-<li><a href="https://api.creativecommons.engineering/">CC Catalog API documentation</a></li>
+<li><a href="https://api.creativecommons.engineering/v1/">CC Catalog API documentation</a></li>
 <li><a href="https://github.com/creativecommons/cccatalog-api">CC Catalog API code</a></li>
-<li><a href="https://search.creativecommons.org/">CC Search</a></li>
-<li>Music sources: <a href="https://freesound.org/">Freesound</a>, <a href="https://freemusicarchive.org/">Free Music Archive</a></li>
-<li><a href="https://opensource.creativecommons.org/blog/entries/freesound-intro/">Blog about Freesound on CC Open Source blog</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> CSS, Django, Django REST Framework, HTML, JavaScript, Python, Vue.js</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Alden Page, Brent Moran, Anna Tumadóttir</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-easy skill-javascript">
-        <h2 class="card-header project-idea-header"><a name="linked-commons">Add filtering by node to the Linked Commons</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>For last year’s GSOC, <a href="https://opensource.creativecommons.org/blog/authors/soccerdroid/">María Belén Guaranda Cabezas</a> created a <a href="http://dataviz.creativecommons.engineering/">visualization graph of domains</a> in the Commons, using one month of data from Common Crawl.  For details, please see her posts on the CC Open Source Blog, which you can find at <a href="https://opensource.creativecommons.org/blog/authors/soccerdroid/">her author page</a>.  We’d like to expand on the current state of that project by adding the possibility to filter by domain, and show only nodes within distance 2 (i.e., they can be reached by traveling along no more than two edges from the chosen node).  If that is accomplished in short order, we’d also like to give the user the ability to choose the distance of nodes to show from a given node.</p>
-</li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
-<li>There should be a search box into which the user can type a domain (or part of a domain), and the graph should then show only nodes from that domain, and domains which can be reached with no more than two hops from the original.</li>
-<li>Stretch Goal: It’d be great if the user could choose a distance from the chosen node via some sort of drop-down menu.</li>
-<li>If both of those go well, we’d like to explore some graph-theoretic metrics on the graph.</li>
-<li>We may also add live updating to the data that backs the visualization.</li>
-<li>If these features are completed ahead of schedule, the intern may suggest further features to add to the visualization.</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Internship Tasks:</strong> <p>The intern should implement the first feature above, and if there’s time, implement the second.  It may be useful for the intern to assist with setting up live-updating of the data backing the visualization.</p>
-</li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <p>Interest in and/or experience with graph theory would be useful!</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="http://dataviz.creativecommons.engineering/">The Linked Commons</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-dataviz">The Linked Commons code</a></li>
-<li><a href="https://creativecommons.org/2020/01/23/introducing-the-linked-commons/">Introducing The Linked Commons</a> blog post on CC main blog</li>
-<li><a href="https://opensource.creativecommons.org/blog/authors/soccerdroid/">Maria's technical blog posts</a></li>
-<li><a href="https://github.com/vasturiano/force-graph">force-graph library</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript, Graph Theory</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Brent Moran, María Belén Guaranda Cabezas</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-easy skill-python">
-        <h2 class="card-header project-idea-header"><a name="catalog-expansion">Add Provider API Scripts to CC Catalog</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>The <a href="https://github.com/creativecommons/cccatalog">CC Catalog</a> gets a huge amount of its data by pulling image info from APIs via what we are calling ‘Provider API Scripts’.  We have a <a href="https://github.com/orgs/creativecommons/projects/12">backlog</a> of providers which have been vetted, and we’d like to have scripts that pull data from their public APIs and pass it to our storage class.  This would increase the breadth of material available from <a href="https://search.creativecommons.org/">CC Search</a> and the <a href="https://api.creativecommons.engineering/">CC Catalog API</a>.</p>
-</li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>We would like to have a number of completed, well-tested Provider API Scripts written by the end of this internship, and they should be deployed in production.  Deployment in production implies we’d also have Apache Airflow DAGs (Directed Acyclic Graphs) that run the Provider API Scripts on an appropriate schedule.</p>
-</li>
-          <li class="list-group-item"><strong>Internship Tasks:</strong> <p>The intern should write more Provider API Scripts, taking priorities from the backlog linked above.  Such a script must pull image information from a public API provided by the provider, and pass it along to a function that will validate the information, format it as necessary, and write it to disk.  This validation/storage function is already written, so the intern needs only to write a script that knows how to get the relevant data from the public API of the provider.  For examples of what we are expecting from a Provider API Script, see <code>wikimedia_commons.py</code> and <code>flickr.py</code>in <a href="https://github.com/creativecommons/cccatalog/tree/master/src/cc_catalog_airflow/dags/provider_api_scripts">the repository</a>, as well as their accompanying tests.</p>
-</li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <p>Knowledge or experience with pulling real data from public APIs in JSON format would be helpful.  It would also help if the intern is familiar with Python.</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://github.com/creativecommons/cccatalog">CC Catalog code</a></li>
-<li><a href="https://github.com/orgs/creativecommons/projects/12">Queue of providers waiting to be added</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog/tree/master/src/cc_catalog_airflow/dags/provider_api_scripts">Example scripts</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> Python, JSON, Apache Airflow (optional)</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Brent Moran, Kriti Godey</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript">
-        <h2 class="card-header project-idea-header"><a name="cc-search-accessibility">Improve CC Search Accessibility</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>Creative Commons is a global community, and yet, <a href="https://search.creativecommons.org/">CC Search</a> lacks some accessibility features, including not being very user-friendly to users of screen readers. It's also available only in English, which results in the tool being less accessible to international audiences and reduces our reach. As an open web tool and platform, CC Search should be accessible to the widest audience possible, in as many languages as possible.</p>
-</li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>A release of CC Search which contains:</p>
-<ol>
-<li>Improvements to the HTML of CC Search with regards to accessibility features, including Aria attributes, forms, color contrast ratios, and UI changes that improve usage of CC Search for users with some kind of disability.</li>
-<li>The implementation of i18n using <a href="https://kazupon.github.io/vue-i18n/">vue-i18n</a>, with the currently hardcoded text refactored into the compatible translation resources, localized numbers and dates, and locale detection so that the appropriate language is loaded when the user visits the CC Search website, and build a tool to easily integrate new translations with Transifex.</li>
-</ol>
-</li>
-          <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
-<li>Research and implement accessibility improvements</li>
-<li>Perform usability tests with people with disabilities to identify problems and test solutions to accessibility issues</li>
-<li>Setup <code>vue-i18n</code> in CC Search</li>
-<li>Refactor hardcoded English text into translation resource files</li>
-<li>Localize numbers and dates</li>
-<li>Detect user ideal language and load the appropriate locale data</li>
-<li>Allow users to change the current locale</li>
-<li>Integrate with Transifex</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <ul>
-<li>Good understanding of how to change and refactor code that is under active development</li>
-<li>A plan that's broken into small enough tasks that can be done ideally in one week, and not contain big tasks that can take multiple weeks to complete</li>
-<li>Bonus points for good and innovative ideas on how to integrate the actual translations</li>
-<li>Bonus points for doing research into currently existing accessibility issues on CC Search</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://search.creativecommons.org/">CC Search</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend">CC Search code</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/487">GitHub issue for i18n</a> </li>
-<li><a href="https://www.freecodecamp.org/news/how-to-add-internationalization-to-a-vue-application-d9cfdcabb03b/">How to add Internationalization to a Vue Application</a> </li>
-<li><a href="https://webaccess.berkeley.edu/home">Accessibility at Berkeley</a></li>
-<li><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/">W3C Introduction to Web Accessibility</a></li>
-<li><a href="https://developers.google.com/web/fundamentals/accessibility">Web Fundamentals: Accessibility</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility">Accessibility | MDN Web Docs</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> CSS, HTML, JavaScript, Vue.js</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Breno Ferreira, Ari Madian</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript skill-wordpress">
-        <h2 class="card-header project-idea-header"><a name="wp-plugin">Improvements to the CC WordPress Plugin</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>WordPress powers over 25% of websites on the Internet and we'd like to easily enable those websites to license their content under CC licenses. We <a href="https://creativecommons.org/2019/11/22/updated-cc-wordpress-plugin/">released a stable version of the CC WordPress plugin after Google Summer of Code 2019</a> but we still have a lot of features we would like to add. Major features include internationalization of the plugin, integration with <a href="https://cc-vocabulary.netlify.com/">Vocabulary</a>, classic editor support for licensing content, and perhaps even integrating the <a href="https://api.creativecommons.engineering/v1/">CC Catalog API documentation</a>. We would also like to fix bugs and handle incoming feature requests.</p>
-</li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>At least two new releases of the WordPress plugin during the internship period, with internationalization using Transifex, classic editor support, and Vocabulary integration completed. Ideally we'd also like a few other features built, we are open to suggestions.</p>
-</li>
-          <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
-<li>Building new features according to the plan agreed upon between you and your mentors</li>
-<li>Fixing existing and new bugs and making other improvements to the code</li>
-<li>Releasing the plugin regularly.</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <ul>
-<li>We'd like to know what features you think the WordPress plugin should have other than the ones we've already mentioned</li>
-<li>You'll get bonus points for showing familiarity with the plugin’s interface or code</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://github.com/creativecommons/wp-plugin-creativecommons">WordPress plugin repository</a></li>
-<li><a href="https://github.com/creativecommons/wp-plugin-creativecommons/issues">List of open GitHub issues</a></li>
-<li><a href="https://github.com/creativecommons/wp-plugin-creativecommons/releases">Release notes</a></li>
-<li>Posts on the main Creative Commons blog:<ul>
-<li><a href="https://creativecommons.org/2019/11/22/updated-cc-wordpress-plugin/">Launch post from 2019</a></li>
-<li><a href="https://creativecommons.org/2017/01/18/one-click-wordpress/">Original beta announcement</a></li>
-</ul>
-</li>
-<li><a href="https://opensource.creativecommons.org/blog/authors/ahmadbilaldev/">Posts about the work on the CC Open Source blog</a></li>
-<li><a href="https://cc-vocabulary.netlify.com/">Vocabulary homepage</a></li>
-<li><a href="https://github.com/creativecommons/vocabulary">Vocabulary codebase</a></li>
-<li><a href="https://api.creativecommons.engineering/">CC Catalog API documentation</a></li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> CSS, HTML, JavaScript, PHP, WordPress</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar, Timid Robot Zehta</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
-        </ul>
-      </div>
-    
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript skill-wordpress">
-        <h2 class="card-header project-idea-header"><a name="vocabulary-integration">Integrate Vocabulary with CC Open Source &amp; CCGN websites</a></h5>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>Creative Commons has many different websites (<a href="https://creativecommons.org/">CC.org</a>, <a href="https://summit.creativecommons.org/">CC Global Summit</a>, <a href="https://opensource.creativecommons.org/">CC Open Source</a>, <a href="https://certificates.creativecommons.org/">CC Certificates</a>, <a href="https://network.creativecommons.org/">CC Global Network</a>, <a href="https://de.creativecommons.net/start/">CC Chapter Sites</a>, etc.), all of which have different design elements and styles. One of our 2020 goals is to unify them all using our new web design system, <a href="https://cc-vocabulary.netlify.com/">Vocabulary</a>. We need help updating the CC Open Source and CCGN websites.</p>
-</li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
-<li>Updates to the CC Open Source website replacing all styling with components from Vocabulary.</li>
-<li>Updates to the CC Global Network WordPress theme that build upon our base WordPress theme (this theme is currently in progress) and use components from Vocabulary.</li>
-<li>Updates to our Figma design library (in collaboration with our UX Designer) and Vocabulary itself for any new components that need to be added when redesigning the sites.</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
-<li>Create wireframes for the website redesigns using Vocabulary components in Figma</li>
-<li>Identify new components that need to be added to Vocabulary and work with the UX designer to design and implement them</li>
-<li>Update the WordPress theme for the CC Global Network website to use Vocabulary exclusively</li>
-<li>Update the CC Open Source website styling to use Vocabulary exclusively</li>
-<li>Implement the new components in Vue Vocabulary if time permits</li>
-</ul>
-</li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <p>It is okay if you think you’ll only have time to do one of the two websites. We’d rather you do one of them well than rush.</p>
-</li>
-          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://www.goodrx.com/developer">GoodRx API guide</a> (example API guide)</li>
+<li><a href="https://documentation.divio.com/">Divio's documentation best practices</a></li>
 <li><a href="https://github.com/creativecommons/vocabulary">vocabulary GitHub repo</a></li>
-<li><a href="https://github.com/creativecommons/vue-vocabulary">vue-vocabulary GitHub repo</a></li>
+<li><a href="https://cc-vocabulary.netlify.app/">vocabulary documentation</a></li>
 <li><a href="https://creativecommons.org/2019/12/13/cc-vocabulary-web-design-system/">Introducing Vocabulary blog post on CC blog</a></li>
 <li><a href="https://opensource.creativecommons.org/blog/categories/cc-vocabulary/">Posts about Vocabulary on the CC open source blog</a></li>
-<li><a href="https://opensource.creativecommons.org/">CC Open Source</a></li>
-<li><a href="https://network.creativecommons.org/">CC Global Network</a></li>
-<li><a href="https://github.com/creativecommons/wp-theme-base">CC Base WordPress Theme</a></li>
 </ul>
 </li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> CSS, HTML, JavaScript, PHP, WordPress</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Dhruv Bhanushali, Hugo Solar</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> Python, Writing</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Alden Page, Kriti Godey</li>
           <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
         </ul>
       </div>
     
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript skill-python skill-wordpress">
-        <h2 class="card-header project-idea-header"><a name="legal-database">Reimplement CC’s Legal Database using WordPress or Django</a></h5>
+      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-python skill-writing">
+        <h2 class="card-header project-idea-header"><a name="api-contributor-docs">Improve CC Catalog API repo documentation for potential contributors</a></h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>CC maintains <a href="https://labs.creativecommons.org/caselaw/">a collection of case law and legal scholarship</a> relevant to legal issues around Creative Commons licenses. Users can submit information, which is reviewed by a member of CC’s legal team and edited if necessary before publishing it to the live site. This tool currently has a number of issues:</p>
-<ul>
-<li>publishing new data is a cumbersome manual process for both the legal and tech teams.</li>
-<li>there is no way to browse all resources on the site.</li>
-<li>It does not use <a href="https://cc-vocabulary.netlify.com/">Vocabulary</a>, CC’s new web design system.</li>
-</ul>
+          <li class="list-group-item"><strong>The Problem:</strong> <p>We'd like to improve our documentation for potential contributors in the <code>cccatalog-api</code> repository. This repository includes a few different projects and we'd like to improve documentation for all of them.</p>
 </li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>A new website, built using either WordPress or Django, that supports the following features:</p>
-<ul>
-<li>The general public can submit legal information without a user account (the information collected should be identical to the current implementation).</li>
-<li>The legal team at CC can review and edit incoming information and approve it, at which point it goes live.</li>
-<li>All the legal information on the site should be browseable and searchable by keyword and country.</li>
-<li>The user-facing portion of the website should use <a href="https://cc-vocabulary.netlify.com/">Vocabulary</a> components.</li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
+<li>Detailed code and architecture documentation available in the GitHub repository.</li>
 </ul>
 </li>
           <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
-<li>Architect the backend of the legal database in either WordPress or Django, including researching appropriate plugins or libraries that will make the task easier.</li>
-<li>Code the backend of the legal database.</li>
-<li>Create design mockups for the frontend in collaboration with CC’s UX designer.</li>
-<li>Implement new components to Vocabulary, if necessary, in collaboration with CC’s UX designer.</li>
-<li>Code the frontend of the legal database using Vocabulary.</li>
-<li>Assist CC staff with deployment related tasks, if needed.</li>
+<li>Work with CC’s backend engineer to come up with a plan for the documentation.</li>
+<li>Write documentation and create pull requests to get it merged.</li>
+<li>If the documentation requires deployment, work with the CC team to deploy the documentation publicly.</li>
 </ul>
 </li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <p>Please specify the architecture and plugins/libraries that you’d like to use in your application. We don’t want you to reinvent the wheel; we’d like to use existing libraries as much as possible.</p>
+          <li class="list-group-item"><strong>Application Tips:</strong> <ul>
+<li>Demonstrate your familiarity with the codebase and existing documentation.</li>
+<li>Explain how you'd like to refactor or expand the documentation in detail.</li>
+</ul>
 </li>
           <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://labs.creativecommons.org/caselaw/">Creative Commons Legal Database (beta)</a></li>
-<li><a href="https://github.com/creativecommons/caselaw/">Legal database GitHub repository</a></li>
-<li><a href="https://cc-vocabulary.netlify.com/">Vocabulary</a></li>
+<li><a href="https://api.creativecommons.engineering/v1/">CC Catalog API documentation</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-api">CC Catalog API code</a></li>
+<li><a href="https://documentation.divio.com/">Divio's documentation best practices</a></li>
 </ul>
 </li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> CSS, Django, HTML, JavaScript, PHP, Python, WordPress (either Django/Python or WordPress/PHP, not both)</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Kriti Godey, Timid Robot Zehta</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> Python, Writing</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Alden Page</li>
           <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
         </ul>
       </div>
     
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-hard skill-python">
-        <h2 class="card-header project-idea-header"><a name="metrics-dashboard">Usage &amp; Reuse Metrics Dashboard for CC Search</a></h5>
+      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript skill-writing">
+        <h2 class="card-header project-idea-header"><a name="cc-search-contributor-docs">Improve CC Search documentation for potential contributors</a></h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p><a href="https://search.creativecommons.org/">CC Search</a>, which is CC’s search engine making openly licensed content discoverable, has hundreds of thousands of visitors per month. The catalog powering CC Search contains collections ranging from user-generated content at Flickr to priceless art pieces at the Met, and everywhere in between. The catalog contains a couple of dozen sources at present and is set for significant expansion.</p>
-<p>While we do keep track of certain user actions in our database, and are able to glean other insights with the use of Google Analytics, we do not have a single dashboard to see relevant information.</p>
-<p>This is a problem for two reasons:</p>
-<ul>
-<li>We have a lack of comprehensive understanding of user behavior, as we have to look in multiple places and pull disparate information to paint a picture of overall user behavior.</li>
-<li>Our catalog partners have no way to understand what impact their presence in CC Search is having in terms of discoverability and increased exposure to their collections.<ul>
-<li>In turn we are unable to tell a story about that impact to potential, future partners.</li>
-</ul>
+          <li class="list-group-item"><strong>The Problem:</strong> <p>We'd like to improve our documentation for potential contributors in the <code>cccatalog-frontend</code> repository.</p>
 </li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
+<li>Detailed code and architecture documentation available in the GitHub repository.</li>
 </ul>
-</li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>We’d like the outcome to be an analytics interface, of some kind, where all of these metrics are pulled together into one place. The interface should be both aesthetically pleasing and clear to understand, allowing those accessing it to get the pertinent information they need, whether it is by day, week, month, collection, or any other logical grouping.</p>
 </li>
           <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
-<li>Understand the required data to be displayed as defined by CC HQ</li>
-<li>Research analytics dashboards to provide recommendations on additional data that is valuable</li>
-<li>Document a cohesive plan for structuring an analytics database storing all pertinent data</li>
-<li>Mockup (wireframes only) in what way data could usefully be presented and what (if any) navigational elements will be required</li>
-<li>Research existing analytics UIs</li>
-<li>Present findings and make a recommendation on which one to use</li>
-<li>Implement an analytics UI for CC Search Usage &amp; Reuse data</li>
+<li>Work with CC’s frontend engineer to come up with a plan for the documentation.</li>
+<li>Write documentation and create pull requests to get it merged.</li>
+<li>If the documentation requires deployment, work with the CC team to deploy the documentation publicly.</li>
 </ul>
 </li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <p>This is a complicated problem, but we believe there is an elegant solution. We’d like the intern to show that they understand the stakeholders, can argue for the value of being able to provide this data internally and externally, have a clear picture of how one would structure an analytics database (which could use example data like page views, unique visitors, time on page, bounce rate, by URL, by day, by month, etc.) with a view to flexibility for expansion and rapid querying, and an indication of their comfort level with both design and programming. The most important thing is solid development skills. Support for frontend design, based on proposed wireframes, can be provided by the organization.</p>
+          <li class="list-group-item"><strong>Application Tips:</strong> <ul>
+<li>Demonstrate your familiarity with the codebase and existing documentation.</li>
+<li>Explain how you'd like to refactor or expand the documentation in detail.</li>
+</ul>
 </li>
           <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend">CC Search code</a></li>
 <li><a href="https://search.creativecommons.org/">CC Search</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-api/tree/master/analytics">Custom analytics API code</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/426">Initial analytics requirements and discussion</a></li>
-<li><a href="https://analytics.google.com/analytics/web/">Google Analytics</a></li>
+<li><a href="https://documentation.divio.com/">Divio's documentation best practices</a></li>
 </ul>
 </li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> CSS, design, HTML, Python, PostgreSQL</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Alden Page, Anna Tumadóttir</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Hard</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> JavaScript, Writing</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Breno Ferreira</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
         </ul>
       </div>
     
-      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-easy skill-writing">
-        <h2 class="card-header project-idea-header"><a name="web-monetization">Web Monetization Research Project</a></h5>
+      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-javascript skill-writing">
+        <h2 class="card-header project-idea-header"><a name="vocabulary-usage-guide">Vocabulary usage guide</a></h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>The Problem:</strong> <p>CC is a non-profit supported by donations from foundations, corporations, and individuals. Despite massive traffic to CC’s web products, we do not make use of any mainstream monetization methods on our sites, such as advertising. However, as a non-profit, CC is continuously thinking about ways to fund the important work we do. As one potential avenue, CC wants to carry out in-depth research of web monetization options in order to evaluate which, if any, are appropriate for CC to pursue and integrate for our own web products.</p>
-<p><strong><p class="text-danger">This project is for Outreachy only, since it does not involve code output.</p></strong></p>
+          <li class="list-group-item"><strong>The Problem:</strong> <p><a href="https://cc-vocabulary.netlify.app/">Vocabulary</a> is CC's web design system. We'd like to build a really robust usage guide for Vocabulary so that anyone wanting to build a site using Vocabulary knows what components are available, how to use them, how to manage the build process, etc.</p>
 </li>
-          <li class="list-group-item"><strong>Expected Outcome:</strong> <p>We’d like the outcome of this internship to be a deliverable, in written form, detailing in-depth research regarding the current state of web monetization technology, with recommendations for options for CC. We expect this deliverable to take the form of a CC-licensed research paper, based on which we expect the intern to also write a blog article.</p>
-</li>
-          <li class="list-group-item"><strong>Internship Tasks:</strong> <p>The intern will be expected to create their own detailed work plan, containing activities including but not limited to:</p>
-<ul>
-<li>preliminary research</li>
-<li>user interviews</li>
-<li>preparation of an outline</li>
-<li>research to write the paper, including examples of existing implementations on other sites, of various web monetization technologies</li>
-<li>further user interviews to help inform recommendations</li>
-<li>writing a blog article about their findings</li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
+<li>Published usage guidelines for all components of Vocabulary that complement the existing storybook.</li>
+<li>A better landing page for Vocabulary, Vue Vocabulary, and Fonts.</li>
+<li>Integrated documentation for all three components of Vocabulary.</li>
+<li>Documentation and landing page should also use Vocabulary.</li>
 </ul>
-<p>They will work closely with their mentors, doing frequent check-ins, in order to ensure the direction of the research is on track, and that there aren’t oversights.</p>
 </li>
-          <li class="list-group-item"><strong>Application Tips:</strong> <p>A clear sense that the intern has excellent written skills, understands how to carry out research interviews, and knows how to structure findings, whether they are technical truths or takeaways from interviews. Passion for or existing knowledge of online privacy issues, cryptocurrencies, browser technologies, and other related subject matter.</p>
+          <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
+<li>Work with CC's web/frontend developers and Vocabulary core committers to come up with a plan for the documentation.</li>
+<li>Write documentation.</li>
+<li>Work with the CC team to deploy the documentation publicly.</li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Application Tips:</strong> <ul>
+<li>Demonstrate your familiarity with the codebase and existing documentation.</li>
+<li>Explain how you'd like to refactor or expand the documentation in detail.</li>
+</ul>
 </li>
           <li class="list-group-item"><strong>Resources:</strong> <ul>
-<li><a href="https://webmonetization.org/">Web Monetization homepage</a></li>
-<li><a href="https://interledger.org/">Interledger</a>, the protocol that Web Monetization is built on</li>
-<li><a href="https://www.grantfortheweb.org/">Grant for the Web</a>, a fund for innovation in web monetization</li>
-<li><a href="https://tiffanyhayden.blog/web-monetization-interledger-coil-xrp/">A blog post about using Web Monetization</a></li>
+<li><a href="https://documentation.divio.com/">Divio's documentation best practices</a></li>
+<li><a href="https://github.com/creativecommons/vocabulary">vocabulary GitHub repo</a></li>
+<li><a href="https://cc-vocabulary.netlify.app/">Vocabulary documentation</a></li>
+<li><a href="https://github.com/creativecommons/vue-vocabulary">vue-vocabulary GitHub repo</a></li>
+<li><a href="https://cc-vue-vocabulary.netlify.app/">Vue Vocabulary documentation</a></li>
+<li><a href="https://github.com/creativecommons/fonts">fonts GitHub repo</a></li>
+<li><a href="https://cc-fonts.netlify.app/">Fonts documentation</a></li>
+<li><a href="https://creativecommons.org/2019/12/13/cc-vocabulary-web-design-system/">Introducing Vocabulary blog post on CC blog</a></li>
+<li><a href="https://opensource.creativecommons.org/blog/categories/cc-vocabulary/">Posts about Vocabulary on the CC open source blog</a></li>
 </ul>
 </li>
-          <li class="list-group-item"><strong>Skills recommended:</strong> Research, Writing. In so far as the work is technical, it is understanding how to navigate the world of add-ons and plugins, and being clear enough on the subject matter that they are able to correctly describe how different web monetization technology works to a non-technical person.</li>
-          <li class="list-group-item"><strong>Mentors:</strong> Anna Tumadóttir, Sarah Pearson</li>
-          <li class="list-group-item"><strong>Difficulty:</strong> Easy</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> HTML, CSS, JavaScript, Writing</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
+        </ul>
+      </div>
+    
+      <div class="project-idea-card m-1 mb-4 filter filter-block difficulty-medium skill-wordpress skill-writing">
+        <h2 class="card-header project-idea-header"><a name="wp-base-theme-usage-guide">WordPress base theme usage guide</a></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>The Problem:</strong> <p>We have created a new <a href="https://github.com/creativecommons/wp-theme-base/">WordPress base theme</a> for all CC WordPress websites. We plan to make child themes for each CC WordPress website that uses this theme. We'd like documentation for how to use and customize the WordPress base theme and how to create a new website using a child theme.</p>
+</li>
+          <li class="list-group-item"><strong>Expected Outcome:</strong> <ul>
+<li>Published usage guidelines for the WordPress base theme.</li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Internship Tasks:</strong> <ul>
+<li>Work with CC's web developer to come up with a plan for the documentation.</li>
+<li>Write documentation.</li>
+<li>Work with the CC team to deploy the documentation publicly.</li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Application Tips:</strong> <ul>
+<li>Demonstrate your familiarity with the codebase and existing documentation.</li>
+<li>Explain how you'd like to refactor or expand the documentation in detail.</li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Resources:</strong> <ul>
+<li><a href="https://github.com/creativecommons/wp-theme-base/">WordPress base theme code</a></li>
+<li><a href="https://github.com/creativecommons/wp-theme-creativecommons.org">creativecommons.org theme code</a> (child theme of base theme)</li>
+<li><a href="https://documentation.divio.com/">Divio's documentation best practices</a></li>
+<li><a href="https://github.com/creativecommons/vocabulary">vocabulary GitHub repo</a></li>
+<li><a href="https://cc-vocabulary.netlify.app/">Vocabulary documentation</a></li>
+<li><a href="https://github.com/creativecommons/vue-vocabulary">vue-vocabulary GitHub repo</a></li>
+<li><a href="https://cc-vue-vocabulary.netlify.app/">Vue Vocabulary documentation</a></li>
+<li><a href="https://github.com/creativecommons/fonts">fonts GitHub repo</a></li>
+<li><a href="https://cc-fonts.netlify.app/">Fonts documentation</a></li>
+<li><a href="https://creativecommons.org/2019/12/13/cc-vocabulary-web-design-system/">Introducing Vocabulary blog post on CC blog</a></li>
+<li><a href="https://opensource.creativecommons.org/blog/categories/cc-vocabulary/">Posts about Vocabulary on the CC open source blog</a></li>
+</ul>
+</li>
+          <li class="list-group-item"><strong>Skills recommended:</strong> WordPress, Writing</li>
+          <li class="list-group-item"><strong>Mentors:</strong> Hugo Solar</li>
+          <li class="list-group-item"><strong>Difficulty:</strong> Medium</li>
         </ul>
       </div>
     
@@ -523,7 +372,7 @@
       <h2 class="card-header project-idea-header"><a name="original-ideas">Original Ideas</a></h5>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <p>We are open to original ideas for either new features or improvements to our existing projects or new CC-related plugins for third-party software.</p>
+          <p>We are open to original ideas for documentation improvements.</p>
           <p>Please talk to us on the <code>#cc-gsoc-outreachy</code> channel on Slack or via the mailing list to find a mentor for the project before submitting your proposal.</p>
         </li>
       </ul>
