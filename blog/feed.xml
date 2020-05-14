@@ -2,13 +2,236 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-04-03T00:00:00Z</updated>
+  <updated>2020-05-14T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/date-partitioned-data-reingestion/">
+    <title type="text">Date-Partitioned Data Reingestion</title>
+    <id>urn:uuid:33f5a94f-2510-3c9f-95ad-460fe82c9b1f</id>
+    <updated>2020-05-14T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/date-partitioned-data-reingestion/" />
+    <author>
+      <name>mathemancer</name>
+    </author>
+    <content type="html">&lt;p&gt;CC Catalog is a project that gathers information about images from around the
+internet, and stores the information so that these images can eventually be
+indexed in &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt;. A portion of the process is directed by
+&lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt;, which is a tool commonly used to organize workflows
+and data pipelines.&lt;/p&gt;
+&lt;p&gt;In this blog post, we will explore the way in which we keep information we
+gather about images up-to-date, using metadata pulled from the Flickr API as an
+example case study.&lt;/p&gt;
+&lt;h2 id=&quot;apache-airflow-and-the-execution_date-concept&quot;&gt;Apache Airflow, and the &lt;code&gt;execution_date&lt;/code&gt; concept&lt;/h2&gt;&lt;p&gt;Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
+defined via python files. The DAG is what defines a given workflow. The nodes
+are pieces of jobs that need to be accomplished, and the directed edges of the
+graph define dependencies between the various pieces.&lt;/p&gt;
+&lt;p&gt;A &lt;a href=&quot;https://airflow.apache.org/docs/1.10.9/concepts.html#dag-runs&quot;&gt;DAG Run&lt;/a&gt; is an 'execution' of the overall workflow defined by
+the DAG, and is associated with an &lt;code&gt;execution_date&lt;/code&gt;.  Contrary to what one might
+expect, &lt;code&gt;execution_date&lt;/code&gt; does &lt;em&gt;not&lt;/em&gt; mean the date when the workflow is executed,
+but rather the date 'perspective' from which the workflow is executed.  This
+means one can give a command that instructs Airflow to execute the workflow
+defined by a DAG as if the date were 2019-01-01, regardless of the actual date.&lt;/p&gt;
+&lt;h2 id=&quot;our-use-of-execution_date&quot;&gt;Our Use of &lt;code&gt;execution_date&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Much of the data contained in CC Catalog is pulled from various APIs on the
+internet, and one strategy we use quite regularly is to make a request of the
+form:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&quot;please give me all the metadata for photos uploaded to Flickr on 2019-01-01&quot;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Since we're often requesting metadata about user-sourced content on 3rd-party
+sites, some sort of &lt;code&gt;date_uploaded&lt;/code&gt; parameter is often available for filtering
+results in the API provided by the 3rd-party site.  This allows us to partition
+large data-sets into more manageable pieces.  It also leads naturally to the
+strategy of requesting metadata for yesterday's photos, each day:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&quot;please give me all the metadata for photos uploaded to Flickr &lt;strong&gt;yesterday&lt;/strong&gt;&quot;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Doing this each day lets us keep the metadata in our catalog synced with the
+upstream source (i.e., the Flickr API). This is where the &lt;code&gt;execution_date&lt;/code&gt;
+concept comes in. By default, a workflow which is scheduled to run daily uses
+the previous day's date as its &lt;code&gt;execution_date&lt;/code&gt;, and so an execution that
+happens on the actual date 2020-02-02 will have &lt;code&gt;execution_date&lt;/code&gt; 2020-02-01 by
+default. This matches up naturally with the strategy above, so we have a number
+of workflows that ingest (meta)data into CC Catalog using this default
+&lt;code&gt;execution_date&lt;/code&gt; on a daily basis.&lt;/p&gt;
+&lt;h2 id=&quot;challenge:-data-can-go-stale-over-time&quot;&gt;Challenge:  Data can go stale over time&lt;/h2&gt;&lt;p&gt;There are some problems with the strategy outlined above:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What if a photo changes upstream?&lt;/li&gt;
+&lt;li&gt;What if a photo is deleted upstream?&lt;/li&gt;
+&lt;li&gt;What about metadata that changes over time (e.g., 'views')?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given we're only ingesting metadata about photos the day after they're uploaded,
+we won't be able to capture the relevant data for any of these situations.  So,
+we need to reingest the metadata for images on some schedule over time.&lt;/p&gt;
+&lt;h2 id=&quot;reingestion-schedule&quot;&gt;Reingestion Schedule&lt;/h2&gt;&lt;p&gt;We would prefer to reingest the metadata for newer images more frequently, and
+the metadata for older images less frequently. This is because we assume the
+metadata for newer images will be updated at the source in more interesting ways
+when the image is newer. For example, assume a picture is viewed 100 times per
+month.&lt;/p&gt;
+&lt;table class=&quot;table table-striped&quot;&gt;
+&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;month&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;total views&lt;/th&gt;
+&lt;th style=&quot;text-align:right&quot;&gt;% increase&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   1&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;100&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;infinite&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   2&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;200&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;100% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   3&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;300&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;50% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   4&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;400&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;33% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   5&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;500&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;25% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   6&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;600&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;20% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   7&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;700&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;17% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   8&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;800&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;14% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;   9&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;900&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;13% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;  10&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;1000&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;11% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;  11&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;1100&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;10% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;  12&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;1200&lt;/td&gt;
+&lt;td style=&quot;text-align:right&quot;&gt;9% &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As we see, given consistent monthly views, the 'percent increase' of the total
+views metric drops off as the picture ages (In reality, it appears that in most
+cases, pictures are mostly viewed when they are new).&lt;/p&gt;
+&lt;p&gt;Thus, it makes sense to focus more on keeping the information up-to-date for the
+most recently uploaded images.&lt;/p&gt;
+&lt;h3 id=&quot;real-numbers-for-flickr&quot;&gt;Real numbers for Flickr&lt;/h3&gt;&lt;p&gt;For Flickr, in the worst case, we can ingest about 100 dates' worth of uploaded
+image metadata per day. This was calculated using the year 2016 as an example.
+Because 2016 was around the peak for the number of images uploaded to Flickr per
+day, the actual number if dates' worth of metadata we can ingest per day is
+quite a bit higher, perhaps 150.&lt;/p&gt;
+&lt;p&gt;We'll need to choose around 150 dates for each daily run, and reingest the
+metadata for all images uploaded on each of those dates.  We want to choose
+those dates preferring newer images (for the reasons outlined above), and choose
+them so that if we follow the same date-choosing algorithm each daily run, we'll
+eventually reingest the metadata for &lt;em&gt;all&lt;/em&gt; images on some predictable schedule.&lt;/p&gt;
+&lt;h3 id=&quot;strategy-to-choose-which-dates-to-reingest&quot;&gt;Strategy to choose which dates to reingest&lt;/h3&gt;&lt;p&gt;Assume we'll reingest metadata from some number &lt;code&gt;n&lt;/code&gt; of dates on each daily run.
+We set some maximum number of days &lt;code&gt;D&lt;/code&gt; we're willing to wait between reingestion
+of the data for a given image, subject to the constraint that we need to have
+&lt;code&gt;n * D &amp;gt; T&lt;/code&gt;, where &lt;code&gt;T&lt;/code&gt; is the total number of dates for which data exists. For
+Flickr, there's (at the time of this writing) about 6,000 days for which image
+metadata was uploaded. If we set&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;n = 150&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;D = 180&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;then we have &lt;code&gt;n * D = 150 * 180 = 27,000 &amp;gt; 6,000&lt;/code&gt;, as desired.  In fact, there
+is quite a bit of slack in this calculation. Keep in mind, however, that we add
+one date's worth of metadata as each day passes in real time.  Thus, we want to
+keep some slack here. One option would be to reingest the metadata for each
+image every 90 days, rather than every 180. This would still leave some slack,
+and we'd have generally fresher data.  This means that on each day, we'd ingest
+metadata for photos uploaded on that date, as well as metadata for photos
+uploaded&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;90, 180, 270, 360, ..., 13320, or 13410 days prior to the current date.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is better, but 90 days is still quite a long time to wait to reingest
+metadata for a recently-uploaded photo. So, it'd be better to use the slack
+available to reingest metadata for recently-uploaded photos more often, and back
+off smoothly to reingest metadata for the oldest photos only once every 180
+days. We ended up using a schedule where we ingest metadata for photos uploaded
+on the current &lt;code&gt;execution_date&lt;/code&gt;, as well as metadata for photos uploaded&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1, 2, ..., 6, or 7 days prior;&lt;/li&gt;
+&lt;li&gt;14, 21, ..., 84, or 91 days prior;&lt;/li&gt;
+&lt;li&gt;106, 121, ..., 376, or 391 days prior;&lt;/li&gt;
+&lt;li&gt;421, 451, ..., 1081, or 1111 days prior;&lt;/li&gt;
+&lt;li&gt;1201, 1291, ..., 3181, or 3271 days prior; and&lt;/li&gt;
+&lt;li&gt;3451, 3631, ..., 10291, or 10471 days prior.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These lists can be generated using the following snippet:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_reingestion_day_list_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;get_reingestion_day_list_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This function creates a list of lists of integers based on input pairs
+describing which prior dates to ingest. An approximate interpretation of the
+input pairs in this example would be&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ingest data which is at most a week old daily.&lt;/li&gt;
+&lt;li&gt;Ingest data which is between a week and three months old weekly.&lt;/li&gt;
+&lt;li&gt;Ingest data which is between three months and a year old biweekly.&lt;/li&gt;
+&lt;li&gt;Ingest data which is between one and three years old monthly.&lt;/li&gt;
+&lt;li&gt;Ingest data which is between three and nine years old every three
+months.&lt;/li&gt;
+&lt;li&gt;Ingest data which is between nine and twenty-eight years old every six months.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The astute reader will notice that these lists only define 128 dates (including
+the current date) for which metadata should be reingested.  We prefer to be a
+bit conservative on the total amount we plan to ingest per day, since things can
+happen that put the ingestion workflow DAG out of service for some time on
+occasion.&lt;/p&gt;
+&lt;p&gt;So, using this strategy, we ensure that all metadata is updated at least every 6
+months, with a preference towards metadata about images uploaded recently.
+Because this schedule covers about 28.7 years back in time, this strategy should
+suffice to reingest all relevant Flickr data for the next 12 years or so (the
+current date is 2020).&lt;/p&gt;
+&lt;p&gt;For more context around what we've shown here, please take a look at
+&lt;a href=&quot;https://github.com/creativecommons/cccatalog/&quot;&gt;the CC Catalog repo&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-04-03-nvmee-on-debian-on-aws/">
     <title type="text">NVMEe on Debian on AWS</title>
     <id>urn:uuid:cd3e9db2-b141-3ea1-8cd9-61cd146ec9cd</id>
@@ -1734,6 +1957,58 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
+    <title type="text">CC Browser Extension Week 7, 8</title>
+    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
+    <updated>2019-07-19T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
+&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
+&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div&gt;
+&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
+&lt;/div&gt;
+&lt;br&gt;
+These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
+&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
+&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
+&lt;li&gt;Test and fix bugs.&lt;/li&gt;
+&lt;li&gt;Improve documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
     <title type="text">CC Vocabulary: the main course</title>
     <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
@@ -1883,58 +2158,6 @@ in touch and directing me to the right people to contact whenever in difficulty.
 &lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
 See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
-    <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
-&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
-&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;
-These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
-&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Improve documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-redesign/">
@@ -2227,6 +2450,21 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;p&gt;Next week, I'll be working on getting a new version of the license chooser controls working.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
+    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
+    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
+    <updated>2019-06-20T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
+    <author>
+      <name>ahmadbilaldev</name>
+    </author>
+    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
+&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
+&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
+&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/">
     <title type="text">CC Browser Extension - A GSoC Project</title>
     <id>urn:uuid:a6b57727-90f7-31c1-a01f-94ff017eb17f</id>
@@ -2269,21 +2507,6 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;h3 id=&quot;how-you-can-help&quot;&gt;How you can help&lt;/h3&gt;&lt;p&gt;The development is still in the initial phase but you can check out &lt;strong&gt;a working extension&lt;/strong&gt; at the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github Repository&lt;/a&gt;. There are instructions to help you get started and load it to Firefox.&lt;/p&gt;
 &lt;p&gt;Tell us what you expect the extension to do, or a feature that you wish would be implemented. At this early stage of development, it might help us improve our goals. You can join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://creativecommons.github.io/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; to for their mentorship and providing an experienced perspective and solutions to the problems faced by this naive developer.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/">
-    <title type="text">Reviving and Updating Creative Commons Plugin for WordPress</title>
-    <id>urn:uuid:fa1fd3f8-26f4-3501-8017-5418a52c7c1a</id>
-    <updated>2019-06-20T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-first-phase/" />
-    <author>
-      <name>ahmadbilaldev</name>
-    </author>
-    <content type="html">&lt;p&gt;I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With that said, let's dive into my &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5810039753801728&quot;&gt;CC WordPress Plugin project&lt;/a&gt;. The plugin is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website in a jiffy. However, it had not been updated for over two years and was lacking a bunch of useable features. The following is how I started and what implementation was involved.&lt;/p&gt;
-&lt;h3 id=&quot;first-phase&quot;&gt;First Phase&lt;/h3&gt;&lt;p&gt;The very first target was to make the code streamlined and consistent, which goes hand in hand with better inline documentation. Thankfully, for WordPress we have Coding and Documentation Standards. So I went along finding issues, applying best practices for code and optimization was followed, making it clean and consistent. I was happy with this being my first deliverable because it made me quite familiar with the code. Workflow for setting up these standards was added in the contribution guidelines. We are also working for a continuous integration possibility, that will ensure tests being run at each push.&lt;/p&gt;
-&lt;p&gt;After the first week, eight issues and multiple commits later most of the consistency and bad practice issues had been dealt with. Now, it was time to improve usability. The plugin was based on &quot;Classic Editor&quot; of WordPress, which was replaced by the new Gutenberg Editor in WordPress 5.0. This meant that any user using this plugin now, will not be able to attribute licenses to a post. To solve this issue, we needed React.js based Gutenberg Blocks for all licenses. I created the blocks in the second week and successfully integrated them with the plugin.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-first-phase/cc-blocks.png&quot; alt=&quot;CC Gutenberg Blocks&quot;&gt;&lt;/p&gt;
-&lt;p&gt;A big challenge was my final exams in the third week. Frankly, I couldn't really give time to my studies because of the project. My mentors, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/hugocreativecommons-org/&quot;&gt;Hugo Solar&lt;/a&gt; have been very helpful and supportive throughout. With their understanding, I went on a seven-day break to take care of my finals. Now I am back, excited to resume my project and finishing final touches on the blocks. Looking forward!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/searching-300-million/">
@@ -2787,29 +3010,6 @@ summer. Here they are!&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;&lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This post was originally posted &lt;a href=&quot;https://creativecommons.org/2019/05/30/meet-ccs-2019-google-summer-of-code-students/&quot;&gt;on the primary Creative Commons blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/">
-    <title type="text">CC Google Summer of Code accepted students announced</title>
-    <id>urn:uuid:7377e0a2-3d71-34a4-ae50-b7f7fd9ff043</id>
-    <updated>2019-05-06T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-gsoc-accepted-students/" />
-    <author>
-      <name>kgodey</name>
-    </author>
-    <content type="html">&lt;p&gt;Google Summer of Code has just announced the list of accepted students for 2019. We’d like to congratulate our accepted students Ahmad Bilal, Ari Madian, Dhruv Bhanushali, Maria Belen Guaranda, and Mayank Nader! Your mentors will be in touch with you with next steps.&lt;/p&gt;
-&lt;p&gt;We reshuffled some of the mentors for the projects around (from our original &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/&quot;&gt;Project Ideas list&lt;/a&gt;) so that we could have a dedicated mentor for each project. I will be focusing on the responsibility of organization admin and supporting the projects however I can. Here's the final list of accepted proposals and mentors:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;CC WordPress Plugin&lt;/strong&gt; by Ahmed Bilal (mentor: Timid Robot Zehta, backup: Hugo Solar)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;New CC License Chooser&lt;/strong&gt; by Ari Madian (mentor: Breno Ferreira, backup: Alden Page)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CC Vocabulary&lt;/strong&gt; by dhruvkb (mentor: Hugo Solar, backup: Sophine Clachar)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CC Catalog Visualization&lt;/strong&gt; by Maria Belen Guaranda (mentor: Sophine Clachar, backup: Breno Ferreira)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CC Browser Extension&lt;/strong&gt; by Mayank Nader (mentor: Alden Page, backup: Timid Robot Zehta)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Read more &lt;a href=&quot;https://summerofcode.withgoogle.com/organizations/6514859793973248/#projects&quot;&gt;about the accepted proposals here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Please don’t lose heart if you were not accepted! We were amazed at the quality of proposals we got and we had to make some really tough decisions. We appreciate the hard work you put into your proposals and contributing to our code and we wish we could accept more proposals. We hope that you’ll stick around and &lt;a href=&quot;https://creativecommons.github.io/contributing-code/&quot;&gt;be part of the CC developer community&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If you’re interested in working on one of our remaining &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/&quot;&gt;project ideas&lt;/a&gt; as a volunteer outside of Google Summer of Code, please reach out to me. These are all things that CC is invested in building and we can provide guidance. We are especially looking for help with &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/#supercharge-our-indexing-engine&quot;&gt;supercharging our search indexer&lt;/a&gt;, improving our tooling around license translations (including &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/#automated-link-checking&quot;&gt;automated license link checking&lt;/a&gt;), and &lt;a href=&quot;https://creativecommons.github.io/gsoc-2019/project-ideas/all/#cc-plugin-generic&quot;&gt;plugins for integrating CC Search with external creation platforms&lt;/a&gt;. If we have multiple volunteers for the same idea, we will ask them to work together.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;A note about availability&lt;/em&gt;: all CC staff have very limited availability over the next week because of&lt;a href=&quot;https://summit.creativecommons.org/&quot;&gt; CC Global Summit&lt;/a&gt; and CC is closed for most of the following week so we won’t be around at all then. Please be patient, we’ll respond to you as soon as we can.&lt;/p&gt;
 </content>
   </entry>
 </feed>

@@ -1,0 +1,438 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"> 
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Date-Partitioned Data Reingestion" />
+
+
+
+<meta property="og:description" content="CC Catalog is a project that gathers information about images from around the
+internet, and stores the information so that these images can eventually be
+indexed in [CC Search][cc_search]. A portion of the process is directed by
+[Apache Airflow][airflow], which is a tool commonly used to organize workflows
+and data pipelines." />
+
+
+<meta property="og:url" content="/blog/entries/date-partitioned-data-reingestion/" />
+<meta property="og:type" content="article" />
+
+      
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Date-Partitioned Data Reingestion">
+<meta name="twitter:description" content="CC Catalog is a project that gathers information about images from around the
+internet, and stores the information so that these images can eventually be
+indexed in [CC Search][cc_search]. A portion of the process is directed by
+[Apache Airflow][airflow], which is a tool commonly used to organize workflows
+and data pipelines.">
+      
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>Date-Partitioned Data Reingestion — Creative Commons on GitHub</title>
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+          <nav class="navbar navbar-expand-xl navbar-dark" name="top">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">Blog</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contribute</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Contribution Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/projects/">Project List</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/cc-search/">CC Search</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/community-teams/">Community Teams</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarInternshipsDropdown" role="button">Internships</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarInternshipsDropdown">
+                    
+                      <a class="dropdown-item" href="/internships/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/internships/project-ideas/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/internships/applicant-guide/">Applicant Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/intern-guide/">Intern Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/history/">History</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+                    
+                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">creativecommons.org</a>
+                </li>
+              </ul>
+          </nav>
+        </div>
+        <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">Date-Partitioned Data Reingestion</h2>
+  
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/mathemancer/">
+  Brent Moran
+</a>
+  on Thursday, 2020-05-14</p>
+  
+  <div class="body"><p>CC Catalog is a project that gathers information about images from around the
+internet, and stores the information so that these images can eventually be
+indexed in <a href="https://ccsearch.creativecommons.org/">CC Search</a>. A portion of the process is directed by
+<a href="https://airflow.apache.org/">Apache Airflow</a>, which is a tool commonly used to organize workflows
+and data pipelines.</p>
+<p>In this blog post, we will explore the way in which we keep information we
+gather about images up-to-date, using metadata pulled from the Flickr API as an
+example case study.</p>
+<h2 id="apache-airflow-and-the-execution_date-concept">Apache Airflow, and the <code>execution_date</code> concept</h2><p>Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
+defined via python files. The DAG is what defines a given workflow. The nodes
+are pieces of jobs that need to be accomplished, and the directed edges of the
+graph define dependencies between the various pieces.</p>
+<p>A <a href="https://airflow.apache.org/docs/1.10.9/concepts.html#dag-runs">DAG Run</a> is an 'execution' of the overall workflow defined by
+the DAG, and is associated with an <code>execution_date</code>.  Contrary to what one might
+expect, <code>execution_date</code> does <em>not</em> mean the date when the workflow is executed,
+but rather the date 'perspective' from which the workflow is executed.  This
+means one can give a command that instructs Airflow to execute the workflow
+defined by a DAG as if the date were 2019-01-01, regardless of the actual date.</p>
+<h2 id="our-use-of-execution_date">Our Use of <code>execution_date</code></h2><p>Much of the data contained in CC Catalog is pulled from various APIs on the
+internet, and one strategy we use quite regularly is to make a request of the
+form:</p>
+<p><em>"please give me all the metadata for photos uploaded to Flickr on 2019-01-01"</em>.</p>
+<p>Since we're often requesting metadata about user-sourced content on 3rd-party
+sites, some sort of <code>date_uploaded</code> parameter is often available for filtering
+results in the API provided by the 3rd-party site.  This allows us to partition
+large data-sets into more manageable pieces.  It also leads naturally to the
+strategy of requesting metadata for yesterday's photos, each day:</p>
+<p><em>"please give me all the metadata for photos uploaded to Flickr <strong>yesterday</strong>"</em>.</p>
+<p>Doing this each day lets us keep the metadata in our catalog synced with the
+upstream source (i.e., the Flickr API). This is where the <code>execution_date</code>
+concept comes in. By default, a workflow which is scheduled to run daily uses
+the previous day's date as its <code>execution_date</code>, and so an execution that
+happens on the actual date 2020-02-02 will have <code>execution_date</code> 2020-02-01 by
+default. This matches up naturally with the strategy above, so we have a number
+of workflows that ingest (meta)data into CC Catalog using this default
+<code>execution_date</code> on a daily basis.</p>
+<h2 id="challenge:-data-can-go-stale-over-time">Challenge:  Data can go stale over time</h2><p>There are some problems with the strategy outlined above:</p>
+<ul>
+<li>What if a photo changes upstream?</li>
+<li>What if a photo is deleted upstream?</li>
+<li>What about metadata that changes over time (e.g., 'views')?</li>
+</ul>
+<p>Given we're only ingesting metadata about photos the day after they're uploaded,
+we won't be able to capture the relevant data for any of these situations.  So,
+we need to reingest the metadata for images on some schedule over time.</p>
+<h2 id="reingestion-schedule">Reingestion Schedule</h2><p>We would prefer to reingest the metadata for newer images more frequently, and
+the metadata for older images less frequently. This is because we assume the
+metadata for newer images will be updated at the source in more interesting ways
+when the image is newer. For example, assume a picture is viewed 100 times per
+month.</p>
+<table class="table table-striped">
+<thead class="thead-dark"><tr>
+<th style="text-align:right">month</th>
+<th style="text-align:right">total views</th>
+<th style="text-align:right">% increase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">   1</td>
+<td style="text-align:right">100</td>
+<td style="text-align:right">infinite</td>
+</tr>
+<tr>
+<td style="text-align:right">   2</td>
+<td style="text-align:right">200</td>
+<td style="text-align:right">100% </td>
+</tr>
+<tr>
+<td style="text-align:right">   3</td>
+<td style="text-align:right">300</td>
+<td style="text-align:right">50% </td>
+</tr>
+<tr>
+<td style="text-align:right">   4</td>
+<td style="text-align:right">400</td>
+<td style="text-align:right">33% </td>
+</tr>
+<tr>
+<td style="text-align:right">   5</td>
+<td style="text-align:right">500</td>
+<td style="text-align:right">25% </td>
+</tr>
+<tr>
+<td style="text-align:right">   6</td>
+<td style="text-align:right">600</td>
+<td style="text-align:right">20% </td>
+</tr>
+<tr>
+<td style="text-align:right">   7</td>
+<td style="text-align:right">700</td>
+<td style="text-align:right">17% </td>
+</tr>
+<tr>
+<td style="text-align:right">   8</td>
+<td style="text-align:right">800</td>
+<td style="text-align:right">14% </td>
+</tr>
+<tr>
+<td style="text-align:right">   9</td>
+<td style="text-align:right">900</td>
+<td style="text-align:right">13% </td>
+</tr>
+<tr>
+<td style="text-align:right">  10</td>
+<td style="text-align:right">1000</td>
+<td style="text-align:right">11% </td>
+</tr>
+<tr>
+<td style="text-align:right">  11</td>
+<td style="text-align:right">1100</td>
+<td style="text-align:right">10% </td>
+</tr>
+<tr>
+<td style="text-align:right">  12</td>
+<td style="text-align:right">1200</td>
+<td style="text-align:right">9% </td>
+</tr>
+</tbody>
+</table>
+<p>As we see, given consistent monthly views, the 'percent increase' of the total
+views metric drops off as the picture ages (In reality, it appears that in most
+cases, pictures are mostly viewed when they are new).</p>
+<p>Thus, it makes sense to focus more on keeping the information up-to-date for the
+most recently uploaded images.</p>
+<h3 id="real-numbers-for-flickr">Real numbers for Flickr</h3><p>For Flickr, in the worst case, we can ingest about 100 dates' worth of uploaded
+image metadata per day. This was calculated using the year 2016 as an example.
+Because 2016 was around the peak for the number of images uploaded to Flickr per
+day, the actual number if dates' worth of metadata we can ingest per day is
+quite a bit higher, perhaps 150.</p>
+<p>We'll need to choose around 150 dates for each daily run, and reingest the
+metadata for all images uploaded on each of those dates.  We want to choose
+those dates preferring newer images (for the reasons outlined above), and choose
+them so that if we follow the same date-choosing algorithm each daily run, we'll
+eventually reingest the metadata for <em>all</em> images on some predictable schedule.</p>
+<h3 id="strategy-to-choose-which-dates-to-reingest">Strategy to choose which dates to reingest</h3><p>Assume we'll reingest metadata from some number <code>n</code> of dates on each daily run.
+We set some maximum number of days <code>D</code> we're willing to wait between reingestion
+of the data for a given image, subject to the constraint that we need to have
+<code>n * D &gt; T</code>, where <code>T</code> is the total number of dates for which data exists. For
+Flickr, there's (at the time of this writing) about 6,000 days for which image
+metadata was uploaded. If we set</p>
+<ul>
+<li><code>n = 150</code></li>
+<li><code>D = 180</code></li>
+</ul>
+<p>then we have <code>n * D = 150 * 180 = 27,000 &gt; 6,000</code>, as desired.  In fact, there
+is quite a bit of slack in this calculation. Keep in mind, however, that we add
+one date's worth of metadata as each day passes in real time.  Thus, we want to
+keep some slack here. One option would be to reingest the metadata for each
+image every 90 days, rather than every 180. This would still leave some slack,
+and we'd have generally fresher data.  This means that on each day, we'd ingest
+metadata for photos uploaded on that date, as well as metadata for photos
+uploaded</p>
+<ul>
+<li>90, 180, 270, 360, ..., 13320, or 13410 days prior to the current date.</li>
+</ul>
+<p>This is better, but 90 days is still quite a long time to wait to reingest
+metadata for a recently-uploaded photo. So, it'd be better to use the slack
+available to reingest metadata for recently-uploaded photos more often, and back
+off smoothly to reingest metadata for the oldest photos only once every 180
+days. We ended up using a schedule where we ingest metadata for photos uploaded
+on the current <code>execution_date</code>, as well as metadata for photos uploaded</p>
+<ul>
+<li>1, 2, ..., 6, or 7 days prior;</li>
+<li>14, 21, ..., 84, or 91 days prior;</li>
+<li>106, 121, ..., 376, or 391 days prior;</li>
+<li>421, 451, ..., 1081, or 1111 days prior;</li>
+<li>1201, 1291, ..., 3181, or 3271 days prior; and</li>
+<li>3451, 3631, ..., 10291, or 10471 days prior.</li>
+</ul>
+<p>These lists can be generated using the following snippet:</p>
+<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">get_reingestion_day_list_list</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+    <span class="p">]</span>
+
+<span class="n">get_reingestion_day_list_list</span><span class="p">(</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+<p>This function creates a list of lists of integers based on input pairs
+describing which prior dates to ingest. An approximate interpretation of the
+input pairs in this example would be</p>
+<ul>
+<li>Ingest data which is at most a week old daily.</li>
+<li>Ingest data which is between a week and three months old weekly.</li>
+<li>Ingest data which is between three months and a year old biweekly.</li>
+<li>Ingest data which is between one and three years old monthly.</li>
+<li>Ingest data which is between three and nine years old every three
+months.</li>
+<li>Ingest data which is between nine and twenty-eight years old every six months.</li>
+</ul>
+<p>The astute reader will notice that these lists only define 128 dates (including
+the current date) for which metadata should be reingested.  We prefer to be a
+bit conservative on the total amount we plan to ingest per day, since things can
+happen that put the ingestion workflow DAG out of service for some time on
+occasion.</p>
+<p>So, using this strategy, we ensure that all metadata is updated at least every 6
+months, with a preference towards metadata about images uploaded recently.
+Because this schedule covers about 28.7 years back in time, this strategy should
+suffice to reingest all relevant Flickr data for the next 12 years or so (the
+current date is 2020).</p>
+<p>For more context around what we've shown here, please take a look at
+<a href="https://github.com/creativecommons/cccatalog/">the CC Catalog repo</a>.</p>
+</div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/airflow/ ">airflow</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-catalog/ ">cc-catalog</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-search/ ">cc-search</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/product/ ">product</a>
+          
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/date-partitioned-data-reingestion"; this.page.url = "http://opensource.creativecommons.org/blog/entries/date-partitioned-data-reingestion/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
