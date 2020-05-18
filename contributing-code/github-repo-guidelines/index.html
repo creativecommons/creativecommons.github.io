@@ -221,9 +221,11 @@
     technologies: Python, Django, Django REST Framework, Elasticsearch
     # Whether this repository should be featured on the CC Open Source site's "Projects" page
     featured: false
+    # Slack channel name (optional key)
+    slack: 'cc-dev-catalog'
   </code>
 </pre><p>This metadata file is used in the <a href="/projects">Projects</a> page. Repos that are marked as non-engineering projects are not displayed in the page and repos marked as featured as displayed at the top of the page. Repos should be marked as featured if we are actively looking for community contributions and have the bandwidth to review them quickly.</p>
-<p>Repos without this metadata file are treated as <code>engineering_projects: true</code> and <code>featured: false</code>. A default is necessary since it will take time for us to clean up and add metadata to all our repos.</p>
+<p>Repos without this metadata file are treated as <code>engineering_projects: true</code>, <code>featured: false</code> and <code>slack: ""</code>. A default is necessary since it will take time for us to clean up and add metadata to all our repos.</p>
 
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
