@@ -7,17 +7,20 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Improving CC License Chooser: Outcomes" />
 
 
 
-<meta property="og:url" content="/blog/categories/cc-chooser/" />
+<meta property="og:description" content="During the three months of my Outreachy internship, I worked on improving the new version of the chooser to make it ready for production. You can view the result at chooser-beta.creativecommons.org. (Don&#39;t forget to leave your feedback!). We&#39;ve gone through iterations of design, implementation and user experience testing." />
+
+
+<meta property="og:url" content="/blog/entries/improving-cc-license-chooser-outcomes/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Improving CC License Chooser: Outcomes">
+<meta name="twitter:description" content="During the three months of my Outreachy internship, I worked on improving the new version of the chooser to make it ready for production. You can view the result at chooser-beta.creativecommons.org. (Don&#39;t forget to leave your feedback!). We&#39;ve gone through iterations of design, implementation and user experience testing.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -25,7 +28,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>cc-chooser - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>Improving CC License Chooser: Outcomes — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -140,68 +143,98 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts categorized "cc-chooser"</h2>
+  <h2 class="mb-0">Improving CC License Chooser: Outcomes</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-outcomes/">Improving CC License Chooser: Outcomes</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/obulat/">
   Olga Bulat
 </a>
-          on 2020-05-21</p>
-      </li>
+  on Thursday, 2020-05-21</p>
     
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">Outreachy Dec 2019 round: CC License Chooser</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><p>During the three months of my Outreachy internship, I worked on improving the new version of the chooser to make it ready for production. You can view the result at <a href="https://chooser-beta.creativecommons.org/">chooser-beta.creativecommons.org</a>. (Don't forget to leave your feedback!). We've gone through iterations of design, implementation and user experience testing.</p>
+<h3 id="technical-details">Technical details</h3><p>I implemented a couple of versions of design in line with the insights we've got from UX testing. Francisco Vera created the final design, and I <em>converted  the Figma design into a VueJS app</em>.</p>
+<p>I created custom components for the stepper, and used <a href="https://buefy.org/">Buefy</a> components for more common elements, and <a href="https://fortawesome.com/">Fortawesome</a> library for icons. The downsize of this convenience was a huge bundle size. I performed analysis with <code>webpack-bundle-analyzer</code> and after several rounds of tree shaking, managed to <strong>reduce the size of the bundle almost by half</strong>.</p>
+<p>The license chooser has to keep data about the license properties that the user selects and display any changes on screen. Previously, all data for selected license was passed to components using props. So, when a user added, say,  a 'NonCommercial' clause to their license, or typed in the link to which the work should be attributed, the data was passed through props to the components that displayed the result. This created chains of props passing that were brittle. To make the process more robust, I <strong>added Vuex store</strong> to keep the data that is necessary for more than one component.</p>
+<p>To make chooser accessible for all of our wide multilingual community, I <strong>integrated the vue-i18n plugin</strong>, and made all of the text translatable.  Together with Kriti, we added <strong>Transifex integration</strong> so that the text translation can be crowdsourced.</p>
+<p>I've also updated the code from using Vue webpack templates to <strong>Vue CLI</strong>, and added <strong>Github hooks</strong> to test the code before merging any new pull requests. <strong>Google analytics integration</strong> will help us continue improving the chooser.</p>
+<p>After all of this work, I was really excited to be the person to deploy the new chooser to github pages. And redeploy it many more times after that :)</p>
+<h3 id="working-remotely">Working remotely</h3><p>It has been a great experience to work remotely, before the time of global coronavirus lockdowns when everyone has started to work from home.</p>
+<p>What helped me during this time is the weekly meetings we had with other members of CC team. This made me feel a part of the team, plan and implement the work I needed to do, and stay on track.</p>
+<p>Working remotely also let me have a flexible work schedule. While ensuring that I work at least 40 hours per week (the Outreachy internship requirement), I sometimes worked on weekends or early in the morning, when it was more convenient for me.</p>
+<h3 id="working-together">Working together</h3><p>It's been a pleasure to work with Creative Commons team. My mentors, <a href="https://creativecommons.org/author/kriticreativecommons-org/">Kriti</a> and <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari</a>, together with <a href="https://creativecommons.org/author/annacreativecommons-org/">Anna</a>, Francisco Vera and <a href="https://creativecommons.org/author/brenoferreira/">Breno</a>, were there for me all through the internship, help me feel a part of CC team.</p>
+<p>But the CC community is much wider than that! I've been amazed at the enthusiasm of the users who helped us with the UX testing, and at the speed with which they jumped on the task of translating the website as soon as we published the text on Transifex.</p>
+<h3 id="what-s-next?">What's next?</h3><p>My internship ended more than two months ago, but I continue to be a part of CC open source team. I also hope this experience will help me go on to a career as a developer.</p>
+</div>
+  
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>Outreachy Dec 2019 round: CC License Chooser</em> series</h5>
+    <ul class="toc list-unstyled">
       
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-24</p>
-      </li>
-    
+        <li>
+        
+          <a href="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">Improving CC License Chooser Weeks 1-2: Design</a>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">Improving CC License Chooser Weeks 1-2: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-06</p>
-      </li>
-    
+        <li>
+        
+          <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/cc-chooser-lastweek/">GSoC cc-chooser Final Post</a>
-        <p class="text-muted small">by <a href="/blog/authors/akmadian/">
-  Ari Madian
-</a>
-          on 2019-08-22</p>
-      </li>
-    
+        <li>
+        
+          <strong>Improving CC License Chooser: Outcomes</strong>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/cc-chooser-week4/">GSoC cc-chooser Week 4</a>
-        <p class="text-muted small">by <a href="/blog/authors/akmadian/">
-  Ari Madian
-</a>
-          on 2019-06-24</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-chooser-week2/">GSoC cc-chooser Week 2</a>
-        <p class="text-muted small">by <a href="/blog/authors/akmadian/">
-  Ari Madian
-</a>
-          on 2019-06-14</p>
-      </li>
-    
-  </ul>
+    </ul>
+    <hr/>
+  </div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/outreachy/ ">outreachy</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-chooser/ ">cc-chooser</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
-  <hr>
-  <strong><a href="/blog/categories/">All Categories</a></strong>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/improving-cc-license-chooser-outcomes"; this.page.url = "http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

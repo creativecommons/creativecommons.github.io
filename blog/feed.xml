@@ -2,13 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-05-15T00:00:00Z</updated>
+  <updated>2020-05-21T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/">
+    <title type="text">Improving CC License Chooser: Outcomes</title>
+    <id>urn:uuid:bb5e2374-647f-389c-b535-0fb44d4a3608</id>
+    <updated>2020-05-21T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/" />
+    <author>
+      <name>obulat</name>
+    </author>
+    <content type="html">&lt;p&gt;During the three months of my Outreachy internship, I worked on improving the new version of the chooser to make it ready for production. You can view the result at &lt;a href=&quot;https://chooser-beta.creativecommons.org/&quot;&gt;chooser-beta.creativecommons.org&lt;/a&gt;. (Don't forget to leave your feedback!). We've gone through iterations of design, implementation and user experience testing.&lt;/p&gt;
+&lt;h3 id=&quot;technical-details&quot;&gt;Technical details&lt;/h3&gt;&lt;p&gt;I implemented a couple of versions of design in line with the insights we've got from UX testing. Francisco Vera created the final design, and I &lt;em&gt;converted  the Figma design into a VueJS app&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I created custom components for the stepper, and used &lt;a href=&quot;https://buefy.org/&quot;&gt;Buefy&lt;/a&gt; components for more common elements, and &lt;a href=&quot;https://fortawesome.com/&quot;&gt;Fortawesome&lt;/a&gt; library for icons. The downsize of this convenience was a huge bundle size. I performed analysis with &lt;code&gt;webpack-bundle-analyzer&lt;/code&gt; and after several rounds of tree shaking, managed to &lt;strong&gt;reduce the size of the bundle almost by half&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The license chooser has to keep data about the license properties that the user selects and display any changes on screen. Previously, all data for selected license was passed to components using props. So, when a user added, say,  a 'NonCommercial' clause to their license, or typed in the link to which the work should be attributed, the data was passed through props to the components that displayed the result. This created chains of props passing that were brittle. To make the process more robust, I &lt;strong&gt;added Vuex store&lt;/strong&gt; to keep the data that is necessary for more than one component.&lt;/p&gt;
+&lt;p&gt;To make chooser accessible for all of our wide multilingual community, I &lt;strong&gt;integrated the vue-i18n plugin&lt;/strong&gt;, and made all of the text translatable.  Together with Kriti, we added &lt;strong&gt;Transifex integration&lt;/strong&gt; so that the text translation can be crowdsourced.&lt;/p&gt;
+&lt;p&gt;I've also updated the code from using Vue webpack templates to &lt;strong&gt;Vue CLI&lt;/strong&gt;, and added &lt;strong&gt;Github hooks&lt;/strong&gt; to test the code before merging any new pull requests. &lt;strong&gt;Google analytics integration&lt;/strong&gt; will help us continue improving the chooser.&lt;/p&gt;
+&lt;p&gt;After all of this work, I was really excited to be the person to deploy the new chooser to github pages. And redeploy it many more times after that :)&lt;/p&gt;
+&lt;h3 id=&quot;working-remotely&quot;&gt;Working remotely&lt;/h3&gt;&lt;p&gt;It has been a great experience to work remotely, before the time of global coronavirus lockdowns when everyone has started to work from home.&lt;/p&gt;
+&lt;p&gt;What helped me during this time is the weekly meetings we had with other members of CC team. This made me feel a part of the team, plan and implement the work I needed to do, and stay on track.&lt;/p&gt;
+&lt;p&gt;Working remotely also let me have a flexible work schedule. While ensuring that I work at least 40 hours per week (the Outreachy internship requirement), I sometimes worked on weekends or early in the morning, when it was more convenient for me.&lt;/p&gt;
+&lt;h3 id=&quot;working-together&quot;&gt;Working together&lt;/h3&gt;&lt;p&gt;It's been a pleasure to work with Creative Commons team. My mentors, &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari&lt;/a&gt;, together with &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna&lt;/a&gt;, Francisco Vera and &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno&lt;/a&gt;, were there for me all through the internship, help me feel a part of CC team.&lt;/p&gt;
+&lt;p&gt;But the CC community is much wider than that! I've been amazed at the enthusiasm of the users who helped us with the UX testing, and at the speed with which they jumped on the task of translating the website as soon as we published the text on Transifex.&lt;/p&gt;
+&lt;h3 id=&quot;what-s-next?&quot;&gt;What's next?&lt;/h3&gt;&lt;p&gt;My internship ended more than two months ago, but I continue to be a part of CC open source team. I also hope this experience will help me go on to a career as a developer.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/why-lektor/">
     <title type="text">Why Lektor?</title>
     <id>urn:uuid:2cec5ffc-29a4-3c29-ac42-e928118f3be7</id>
@@ -2873,30 +2896,6 @@ for in-depth logs.&lt;/p&gt;
  and that takes lots of time (something I've never considered to be too scarce before I started college, but it's now a precious commodity!).
  With lots of tea and careful time management, I made it through on schedule.&lt;/p&gt;
 &lt;p&gt;Next week is all about planning code structure and taking steps with dialing the look and feel of the site, and I'm excited to get started.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/">
-    <title type="text">CC Catalog: Leveraging Open Data and Open APIs</title>
-    <id>urn:uuid:762b80c0-ba51-343d-8d65-652f83e599bc</id>
-    <updated>2019-06-07T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-leverage-open-data-1/" />
-    <author>
-      <name>sclachar</name>
-    </author>
-    <content type="html">&lt;p&gt;This post is the first of a three-part series about the underlying infrastructure for Creative Commons (CC) Catalog and the efforts to increase the volume and variety of creative works.&lt;/p&gt;
-&lt;p&gt;The purpose of &lt;a href=&quot;https://github.com/creativecommons/cccatalog&quot;&gt;CC Catalog&lt;/a&gt; is to facilitate the discovery of openly licensed content, that proliferates the web. However, this is a challenging task and it requires a combination of techniques. The initial efforts to catalog the Commons began in 2016. The goal was to identify approximately &lt;a href=&quot;https://hackernoon.com/cc-search-developer-notes-and-reflection-418271194682&quot;&gt;1% of the estimated 1.4 billion works&lt;/a&gt; by harnessing open repositories and open APIs to build a &lt;a href=&quot;https://creativecommons.org/2017/02/07/new-cc-search/&quot;&gt;front door to the Commons&lt;/a&gt;. Since then, there has been an emphasis on including more content and discovering new platforms. While CC Catalog still leverages open data to achieve the above, we needed to develop the appropriate infrastructure to also routinely update the existing data.&lt;/p&gt;
-&lt;p&gt;The development of this infrastructure began in 2018 with the first &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Pipeline_(computing)&quot;&gt;data pipeline&lt;/a&gt;. &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt; was used to streamline the processing of petabytes of web crawl data to identify all domains that link to a Creative Commons license. The first test of this strategy was successful and it was instrumental in increasing the number of images and added 13 new platforms for the &lt;a href=&quot;https://creativecommons.org/2018/09/24/big-changes-for-cc-search-beta-updates-released-today/&quot;&gt;updates to CC Search beta&lt;/a&gt;. It also provided incremental updates to the catalog on a monthly basis. Even though Common Crawl corpus is an invaluable source, it requires us to develop a custom parser for each platform that we integrate. This has its merits, but presents a few challenges.&lt;/p&gt;
-&lt;p&gt;After this, &lt;a href=&quot;https://en.wikipedia.org/wiki/Open_API&quot;&gt;open APIs&lt;/a&gt; were explored and its purpose was not to replace the Common Crawl methodology but to augment it and hopefully increase the volume of data. This approach began with two platforms: 1) Flickr, since it has &lt;a href=&quot;https://blog.flickr.net/en/2019/03/08/update-on-creative-commons-licenses-and-in-memoriam-accounts/&quot;&gt;millions of CC license content&lt;/a&gt; and 2) Thingiverse. At the end of 2018, the exploratory efforts paid off and the catalog grew from 10 million images to over 260 million and the Flickr API was instrumental in achieving this. In early 2019, three new API providers were included: 1) Met Museum, 2) Cleveland Museum, and 3) Brooklyn Museum. This led to the development of our API &lt;a href=&quot;https://en.wikipedia.org/wiki/Extract,_transform,_load&quot;&gt;ETL data pipeline&lt;/a&gt; that is managed by &lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Currently, we have over 305 million images from 25 providers, and we are still working to improve the data infrastructure and solidify our efforts for &lt;a href=&quot;https://creativecommons.org/2017/02/07/new-cc-search/&quot;&gt;building a vibrant, usable Commons&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-catalog-leverage-open-data-1/cc-catalog-growth.jpg&quot; alt=&quot;cc-catalog-img&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The above data is made available to &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; via &lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt;. However, all providers in the catalog are not immediately available in CC Search. Various preprocessing efforts are performed in the back-end by the CC Catalog API to determine which content is deemed ready for publishing. Also, platforms are subject to additional reviews and may be suppressed until that process has completed. Currently, CC Search has 19 of the above providers comprising over &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-search-out-of-beta/&quot;&gt;300 million images&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The goal for 2019 is to increase the catalog to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;325 million images&lt;/li&gt;
-&lt;li&gt;30 providers&lt;/li&gt;
-&lt;li&gt;add new content types&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The next post will discuss the details of the Common Crawl data pipeline and how instrumental this corpus is for identifying potential providers and understanding how people are using the various CC license.&lt;/p&gt;
 </content>
   </entry>
 </feed>
