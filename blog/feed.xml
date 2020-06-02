@@ -2,13 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-05-22T00:00:00Z</updated>
+  <updated>2020-06-01T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-upcoming-improvements/">
+    <title type="text">Upcoming improvements/features in CC Search Extension</title>
+    <id>urn:uuid:cdf59a68-68ac-36b4-85c8-a19bb2848f33</id>
+    <updated>2020-06-01T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-upcoming-improvements/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;https://opensource.creativecommons.org/ccsearch-browser-extension/&quot;&gt;CC Search Extension&lt;/a&gt; is a cross-browser extension, which lets you search for and filter content that is under Creative Commons licenses. It was developed as one of the CC projects during Google Summer of Code program of 2019.&lt;/p&gt;
+&lt;h3 id=&quot;the-story-so-far&quot;&gt;The story so far&lt;/h3&gt;&lt;p&gt;It's release on the extension stores of &lt;a href=&quot;https://chrome.google.com/webstore/detail/cc-search-browser-extensi/agohkbfananbebiaphblgcfhcclklfnh&quot;&gt;Chrome&lt;/a&gt;, &lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/cc-search-extension/&quot;&gt;Firefox&lt;/a&gt;, and &lt;a href=&quot;https://addons.opera.com/en/extensions/details/cc-search/&quot;&gt;Opera&lt;/a&gt; was accompanied by several announcements on twitter, which were well received by the community and thus the number of weekly users (i.e the number of users that have used the extension at least once during last week) drastically increased. After several weeks, the extension reached 22,000+ weekly users. But, now this number fluctuates between 9,000 - 10,000. So, what happened? Well, the majority of initial influx were the &quot;curious&quot; folks who just wanted to check out this new tool and later thought that this was not something that they might find useful. But, there are also users that are looking for a similar tool and the lack of sufficient features and capabilities of the extension made them stop using it and look for better alternatives.&lt;/p&gt;
+&lt;h3 id=&quot;what-s-the-plan&quot;&gt;What's the plan&lt;/h3&gt;&lt;p&gt;The plan is to transform the extension to become competent enough to contribute to the user's workflow and be an important part of their toolkit. This will be done by adding valuable new features in addition to other enhancements and improvements.&lt;/p&gt;
+&lt;p&gt;In this section, I will list several improvements and features that will be added to the extension during the upcoming months.&lt;/p&gt;
+&lt;h4 id=&quot;new-filters&quot;&gt;New Filters&lt;/h4&gt;&lt;p&gt;The extension, currently supports only 3 filters: &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;sources&lt;/code&gt;, and &lt;code&gt;use case&lt;/code&gt;. The support for new filters like &lt;code&gt;image type&lt;/code&gt;, &lt;code&gt;file type&lt;/code&gt;, &lt;code&gt;aspect ratio&lt;/code&gt;,  and &lt;code&gt;image size&lt;/code&gt; will be added. This will give more options to the users and let them be more specific about the content they want.&lt;/p&gt;
+&lt;h4 id=&quot;related-images-and-image-tags&quot;&gt;Related Images and Image tags&lt;/h4&gt;&lt;p&gt;Showing related Images will help users find a variety of images that fit their requirements and also explore the images that would not usally show up on the initial pages of the search result. Whereas, Image tags will let the users incrementally make their queries better and more specific.&lt;/p&gt;
+&lt;h4 id=&quot;adding-browser-by-sources-section&quot;&gt;Adding &quot;Browser by Sources&quot; section&lt;/h4&gt;&lt;p&gt;Even though the users can see the number of sources supported by the extension from the drop-down filter, they might not be familiar with many of them and what kind of content they provide. Adding a &quot;Browse by Source&quot; section would make users appreciate the sources available for them to choose from.&lt;/p&gt;
+&lt;h4 id=&quot;improving-the-bookmarks-section&quot;&gt;Improving the bookmarks section&lt;/h4&gt;&lt;p&gt;Significant improvements will be made to the bookmarks section. First of all, the bookmarks data will be cached so that unnecessary requests to the Catalog API can be avoided. The bookmarks will be organized by the dates and this will also facilitate adding some type of filter mechanism. In addition to this, pagination in the bookmarks section and support for named bookmark file exports will be added&lt;/p&gt;
+&lt;h4 id=&quot;syncing-as-much-data-as-possible&quot;&gt;Syncing as much data as possible&lt;/h4&gt;&lt;p&gt;An effort will be made to sync as much extension data as possible between the user's system. Syncing the user's preference/settings will ensure a familiar experience across systems and syncing the bookmarks data and the previous session search results would make them feel like they are continuing from where they left.&lt;/p&gt;
+&lt;h4 id=&quot;integrating-cc-vocabulary&quot;&gt;Integrating CC Vocabulary&lt;/h4&gt;&lt;p&gt;The extension uses a very outdated version of CC Vocabulary. It will be replaced by the latest version for a refreshing new look.&lt;/p&gt;
+&lt;h4 id=&quot;adding-support-for-microsoft-edge&quot;&gt;Adding support for Microsoft Edge&lt;/h4&gt;&lt;p&gt;The new Microsoft Edge browser is based on chromium. This paves the way to add support for it thanks to the power and flexibility of the WebExtension API. This will then allow us to also officially release on the &lt;a href=&quot;https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home&quot;&gt;Microsoft Edge Addon Store&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;join-the-discussion&quot;&gt;Join the discussion&lt;/h3&gt;&lt;p&gt;If you have any feedback/suggestions or just want to say hi,  please join the &lt;code&gt;#cc-dev-browser-extension&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;. You can also track the progress on the project's &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; Repository.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
     <title type="text">Takeaways from my FOSS journey!</title>
     <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
@@ -2672,59 +2694,6 @@ We predicted that we would have a lot more users after removing the “beta” d
 &lt;h2 id=&quot;managing-infrastructure-with-terraform&quot;&gt;Managing infrastructure with Terraform&lt;/h2&gt;&lt;p&gt;With greater scale comes greater complexity. Since there would be more moving parts in our implementation of CC Search, we would need some kind of infrastructure as code tool to manage zero-downtime deployments, provisioning new virtual machines, configuration management, tracking expenses, and documenting what is actually in production. We considered Kubernetes, but that seemed like massive overkill for a team of our size and a source of too much operational complexity. Instead, we use &lt;a href=&quot;https://www.terraform.io/&quot;&gt;Terraform&lt;/a&gt; to declaratively provision our software to EC2 instances hosted on AWS. Everything is containerized, so we can easily transition to Kubernetes or Nomad if we desire in the future, but Terraform has proven to be more than sufficient so far.&lt;/p&gt;
 &lt;p&gt;With Terraform, we are able to produce deployment plans, see what changes are going to appear in production, and only then pull the trigger. It also provides &lt;a href=&quot;https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure&quot;&gt;immutable infrastructure&lt;/a&gt;:  instead of sshing into servers and fiddling with settings or running bespoke deployment scripts, whenever we want to make a change, we completely re-provision the virtual machine with new settings. The current state of the system is always documented in our Terraform code.&lt;/p&gt;
 &lt;h2 id=&quot;the-future&quot;&gt;The future&lt;/h2&gt;&lt;p&gt;The next step for CC Search is improving the relevance of our search results, which is going to entail performing large scale scraping of some of the catalog, performing AI analysis of the scraped content, and implementing some popularity-based algorithm to boost the most interesting results to the top. We’re also going to start producing thumbnails for at least some subset of our catalog, perhaps on a just-in-time basis or through multiple caching image proxies.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/">
-    <title type="text">Visualize CC Catalog data</title>
-    <id>urn:uuid:5c735e37-45cf-3704-884e-389e17fe42eb</id>
-    <updated>2019-06-17T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-visualization/" />
-    <author>
-      <name>soccerdroid</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;em&gt;“By visualizing information, we turn it into a landscape that you can explore with your eyes.”&lt;/em&gt; – David McCandless.&lt;/p&gt;
-&lt;p&gt;The landscape of licensed content is wide and varied. We have domains linking to other domains, different license types, and some metadata. This information is extracted from the Internet monthly by &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt;. It is fair to mention that we have 250 million works and growing! If you didn't know we had so much licensed content, well then, this is one of the goals of this project: show the users how licensers are connected, their licensed content, and show how the licensing wave is expanding.&lt;/p&gt;
-&lt;h3 id=&quot;hands-to-work&quot;&gt;Hands to work!&lt;/h3&gt;&lt;p&gt;Currently, there are tons of graphs and visualization concepts that have proven to work better with certain data. In addition, because of the huge amount of data we possess, a critical point to keep in mind is that the graph must keep being meaningful (for example, with the classic node-link approach, you can end up having a confusing hairball). Hence, the visualization must be scalable. Finding which visualization would  work the best with the CC catalog dataset was my first task. I reviewed the state-of-art in graphs visualization, but in this post I'm not going to go deep with it. The highlights and conclusions of this review are the following:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Two case studies were reviewed, named &lt;a href=&quot;https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.12395&quot;&gt;Papilio&lt;/a&gt; and &lt;a href=&quot;https://ieeexplore.ieee.org/document/5613445&quot;&gt;GeneaQuilts&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;In both cases, data needs to be hierarchical (or have an attribute to use so to order or group the data) .&lt;/li&gt;
-&lt;li&gt;Benefits are focused on the analysis tasks that are specific to those use cases (and yes, they are not the same for our case).&lt;/li&gt;
-&lt;li&gt;Visualizations are not meaningful when you have thousands of nodes.&lt;/li&gt;
-&lt;li&gt;Both cases needed to build a library from scratch.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Conclusion:&lt;/strong&gt; neither of the solutions reviewed seemed viable for the CC-Catalog visualization project, as they do not show huge improvements in scalability. In addition, they do not fit for our case study.&lt;/p&gt;
-&lt;h3 id=&quot;the-graph&quot;&gt;The graph&lt;/h3&gt;&lt;p&gt;Now that I knew what to draw, the next step was to find HOW to draw the graph. There is a wide range of visualization libraries where to choose from, you might feel overwhelmed at first. &lt;strong&gt;Tip:&lt;/strong&gt; define priorities/ key aspects according to what you want to visualize. Performance with big data, community support and a smooth learning curve were the aspects I checked for making a decision. We finally chose to work with &lt;a href=&quot;https://github.com/vasturiano/force-graph&quot;&gt;force-d3&lt;/a&gt;, an open-source library that uses the d3-force module as the underlying physics engine.  It has a friendly and simple API, as well as documentation and examples.&lt;/p&gt;
-&lt;p&gt;One challenging task was to draw the nodes. The idea here is to show the domains names inside the nodes, and let the nodes size to be data driven. Funny fact: I spent hours before finding out that I received nodes as canvas objects with the API. Once you know how to draw nodes, the styling of the edges is a ride, because in force-d3 they are handled in the same way as the nodes objects. The edges are highlighted and their width increases when the user hovers over them. Another not-so-easy feature I implemented was to highlight a node and its neighbors. Here I have to thank to &lt;a href=&quot;https://github.com/vasturiano&quot;&gt;Mr. Vasturiano&lt;/a&gt;, the author of the library, who directed me to an example he developed with a very similar functionality. He is continuously checking and fixing open issues in his repo. Great library! I recommend you to check it out.&lt;/p&gt;
-&lt;h3 id=&quot;licensed-content-by-types-of-cc-licenses&quot;&gt;Licensed content by types of CC licenses&lt;/h3&gt;&lt;p&gt;Creative Commons has &lt;a href=&quot;https://creativecommons.org/licenses/&quot;&gt;6 license types&lt;/a&gt;. We know which licenses each domain uses for their content, so it would be great if we can show to the public, for example, the most popular license. The idea is then, to display in a simple graph like a pie chart, the licensed content of each domain, classified by their type. The pie chart will be placed inside a modal. The modal will be triggered and showed after the user clicks on a node in the graph. For this visualization, we are using &lt;a href=&quot;https://www.highcharts.com/&quot;&gt;Highcharts&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The final look of the front-end is:&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;cc_graph.png&quot; alt=&quot;CC Data Catalog Visualization&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Current sample graph, developed with force-d3. &lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;cc_graph_zoom.png&quot; alt=&quot;CC Data Catalog Visualization&quot; /&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Nodes with sample domain names. When the user hovers over a node, its neighbors are highlighted. The nodes sizes are data-driven.&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;cc_piechart.png&quot; alt=&quot;Pie chart license types&quot; /&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot; style=&quot;text-align:center;&quot;&gt;Pie chart that shows the proportions of licensed content of a domain, classified by CC license types.&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;PD:&lt;/strong&gt; if the nodes labels are familiar to you, yes, they are the names of the characters of Les Misérables. I'm working with sample data!&lt;/p&gt;
-&lt;h3 id=&quot;coming-soon&quot;&gt;Coming soon&lt;/h3&gt;&lt;p&gt;As the front-end is complete, I am going to get my hands dirty with the data. Future milestones for the next two weeks include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Files conversion in Spark&lt;/li&gt;
-&lt;li&gt;Reviewing of part of the dataset&lt;/li&gt;
-&lt;li&gt;Implementation of a module for cleaning and parsing the data&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can follow the project development in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
-Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-&lt;p&gt;Have a nice week!&lt;/p&gt;
-&lt;p&gt;Maria&lt;/p&gt;
 </content>
   </entry>
 </feed>
