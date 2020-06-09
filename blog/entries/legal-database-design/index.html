@@ -7,17 +7,24 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="CC Legal Database: Design" />
 
 
 
-<meta property="og:url" content="/blog/categories/outreachy/" />
+<meta property="og:description" content="Finishing the third week since the project started (for context see this first post), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database." />
+
+
+<meta property="og:url" content="/blog/entries/legal-database-design/" />
 <meta property="og:type" content="article" />
 
       
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/legal-database-design/cc-caselaw-home.png" />
+      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="CC Legal Database: Design">
+<meta name="twitter:description" content="Finishing the third week since the project started (for context see this first post), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.">
+      
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/legal-database-design/cc-caselaw-home.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -25,7 +32,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>outreachy - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>CC Legal Database: Design — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -142,167 +149,94 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts categorized "outreachy"</h2>
+  <h2 class="mb-0">CC Legal Database: Design</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/legal-database-design/">CC Legal Database: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/krysal/">
   Krystle Salazar
 </a>
-          on 2020-06-09</p>
-      </li>
+  on Tuesday, 2020-06-9</p>
     
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">Outreachy May 2020 round: CC Legal Database</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><p>Finishing the third week since the project started (for context see this <a href="/blog/entries/legal-database-a-new-beginning/">first post</a>), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.</p>
+<h3 id="visual-styles">Visual Styles</h3><p>The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old "Countries" page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.</p>
+<p>The final look for the home site is as follows.</p>
+<div style="text-align: center;">
+    <figure>
+        <img src="cc-caselaw-home.png" alt="New CC Caselaw Home Mockup" style="border: 1px solid black">
+        <figcaption>New Home page design with Vocabulary.</figcaption>
+    </figure>
+</div><p>I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.</p>
+<h3 id="data-model">Data Model</h3><p>The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the <em>business case</em>.</p>
+<p>Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.</p>
+</div>
+  
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>Outreachy May 2020 round: CC Legal Database</em> series</h5>
+    <ul class="toc list-unstyled">
       
-      <li>
-        <a href="/blog/entries/resource-gathering/">Resource Gathering</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-06-09</p>
-      </li>
-    
+        <li>
+        
+          <a href="/blog/entries/legal-database-a-new-beginning/">CC Legal Database: a new beginning</a>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/legal-database-a-new-beginning/">CC Legal Database: a new beginning</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
-  Krystle Salazar
-</a>
-          on 2020-05-22</p>
-      </li>
-    
+        <li>
+        
+          <strong>CC Legal Database: Design</strong>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/takeaways-from-my-FOSS-journey/">Takeaways from my FOSS journey!</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-05-22</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-outcomes/">Improving CC License Chooser: Outcomes</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-05-21</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/why-lektor/">Why Lektor?</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-05-15</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-week9-13/">CC Vocabulary - My Internship Ended</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-04-02</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</a>
-        <p class="text-muted small">by <a href="/blog/authors/hugosolar/">
-  Hugo Solar
-</a>
-          on 2020-03-05</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/2020-03-05-participe-gsoc/">Participe do Google Summer of Code / Outreachy</a>
-        <p class="text-muted small">by <a href="/blog/authors/brenoferreira/">
-  Breno Ferreira
-</a>
-          on 2020-03-05</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-4/">CC Platform Toolkit Revamp - 4</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-03-04</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-week5-8/">CC Vocabulary - Weeks 5-8</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-02-03</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-24</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-3/">CC Platform Toolkit Revamp - 3</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-01-22</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-my-first-four-weeks/">CC Vocabulary - My First Four Weeks</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-01-14</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-2/">CC Platform Toolkit Revamp - 2</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-01-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">Improving CC License Chooser Weeks 1-2: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp/">CC Platform Toolkit Revamp</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2019-12-16</p>
-      </li>
-    
-  </ul>
+    </ul>
+    <hr/>
+  </div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/cc-legal-database/ ">cc-legal-database</a>,
+          
+            
+            
+            <a href=" /blog/categories/product/ ">product</a>,
+          
+            
+            
+            <a href=" /blog/categories/outreachy/ ">outreachy</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
-  <hr>
-  <strong><a href="/blog/categories/">All Categories</a></strong>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/legal-database-design"; this.page.url = "http://opensource.creativecommons.org/blog/entries/legal-database-design/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
