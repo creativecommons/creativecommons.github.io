@@ -7,24 +7,17 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="Improving CC License Chooser Weeks 1-2: Design" />
+<meta property="og:title" content="" />
 
 
 
-<meta property="og:description" content="Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, Ari Madian, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:" />
-
-
-<meta property="og:url" content="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/" />
+<meta property="og:url" content="/blog/authors/srinidhi/" />
 <meta property="og:type" content="article" />
 
       
-<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png" />
-      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Improving CC License Chooser Weeks 1-2: Design">
-<meta name="twitter:description" content="Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, Ari Madian, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:">
-      
-<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -32,7 +25,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>Improving CC License Chooser Weeks 1-2: Design — Creative Commons on GitHub</title>
+<title>
+  K S Srinidhi Krishna
+ - CC Open Source Blog — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -149,134 +144,35 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2 class="mb-0">Improving CC License Chooser Weeks 1-2: Design</h2>
+  <h2>
+  K S Srinidhi Krishna
+</h2>
   
-  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-  on Monday, 2020-01-6</p>
     
-   
-  <div class="card bg-light mb-2">
-    <div class="card-body p-2">
-    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
-       <a href="#series">Outreachy Dec 2019 round: CC License Chooser</a>
-    </p>
-    </div>
-  </div>
- 
-  <div class="body"><p>Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:</p>
-<ul>
-<li>Improving usability of the Chooser and making it easier for licensors to understand the process of selecting the most appropriate license.</li>
-<li>Setting up and automating internalization.</li>
-<li>Extracting License Chooser as a standalone npm package to make integrating Creative Commons licensing in other websites easier.</li>
-</ul>
-<p>During the first two weeks of my internship I mainly worked on redesigning the license selection process based on the usability testing feedback. We decided to set up license selection as a step-by-step process of answering yes/no questions guiding a novice or somewhat experienced user to the CC license that best suits their needs.</p>
-<hr>
-<h3 id="here-is-the-first-draft:"><strong>Here is the first draft:</strong></h3><p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-1.png" alt="draft-1.png"></p>
-<p><em>Features of this draft that stayed in current version:</em></p>
-<ul>
-<li>A card to show the information about currently selected license is prominent on the page.</li>
-<li>Four yes/no questions that help narrow the license choice.</li>
-</ul>
-<p><em>What was changed in final version:</em></p>
-<ul>
-<li>The openness scale (which is drawn incorrectly, by the way) took up too much space on the first screen, not adding as much to the process.</li>
-<li>Toggles as an answer to yes/no questions are confusing for some users.</li>
-<li>Separate Personalization step was moved together with other steps.</li>
-<li>License attribution information was merged with the selected license card, because the card is supposed to contain all the information about selected license, including author/work url/ source url, if they are available.</li>
-</ul>
-<hr>
-<h3 id="draft-2"><strong>Draft 2</strong></h3><p>As a result of continuous communication with my mentors, I this draft to be discussed at our weekly meeting.</p>
-<p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png" alt="draft-2.png"></p>
-<p><em>Features that stayed in the current version:</em></p>
-<ul>
-<li>Two cards: one for the step-by-step process and the other for presenting license information.</li>
-<li>All the information about selected license in the second card.</li>
-<li>Personalization step as the last and optional step of choosing the license.</li>
-</ul>
-<p><em>Features that were suggested during the meeting:</em></p>
-<ul>
-<li>License selection dropdown with all available licenses on the selected license card. This is for experienced users who know what license they want to choose and only need to add details, or copy the attribution text or html.</li>
-<li>A link to a page with more information on how to use the license when sharing on the selected license card: for users who need help with that.</li>
-</ul>
-<hr>
-<h3 id="currently-final-draft-:"><strong>Currently Final Draft :)</strong></h3><p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-3.png" alt="draft-3.png"></p>
-<h4 id="license-chooser-stepper-card"><strong>License Chooser Stepper Card</strong></h4><ul>
-<li>Stepper Card shows five steps to selecting a license, one for each feature of CC licenses and an optional personalization step. The stepper icons show current selection status: selected/unselected features and current feature being displayed. Clicking on an icon opens the corresponding step.</li>
-<li>Each license feature has a yes/no question. A user clicks on a yes or no button to answer, and can immediately see what changed in the license, and the text beneath the buttons shows what current selection of the feature actually means. Default answer for each step besides the first one (attribution - 'BY') is 'no', so if a user simply clicks 'next' on each step, or clicks on the last step icon at the top, they get CC BY 4.0 license.</li>
-</ul>
-<h4 id="selected-license-card"><strong>Selected License Card</strong></h4><ul>
-<li>Current selection dropdown is for experienced users who can quickly select a license that they know they want to use. It also updates when a feature in the license selection process is changed.</li>
-<li>Selected license information displays information about the license and its clauses, as well as its icons. The wording of this part will probably change the most after discussion with the community and legal team.</li>
-<li>Attribution information for the license, with a choice between rich text or html code. These are displayed in tabs to save on space. </li>
-</ul>
-<p>I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.</p>
-<p>Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.</p>
-<p>You can follow my work at <a href="https://github.com/creativecommons/cc-chooser">https://github.com/creativecommons/cc-chooser</a>.</p>
-</div>
-  
-  <div class="mt-3 bg-light" id="series">
-    <hr/>
-    <h5 class="font-weight-bold">Posts in the <em>Outreachy Dec 2019 round: CC License Chooser</em> series</h5>
-    <ul class="toc list-unstyled">
-      
-        <li>
-        
-          <strong>Improving CC License Chooser Weeks 1-2: Design</strong>
-        
-        </li>
-      
-        <li>
-        
-          <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-        
-        </li>
-      
-        <li>
-        
-          <a href="/blog/entries/improving-cc-license-chooser-outcomes/">Improving CC License Chooser: Outcomes</a>
-        
-        </li>
-      
-    </ul>
-    <hr/>
-  </div>
-  
-  <div class="card bg-light">
-    <div class="card-body p-2">
-      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
-        
-          
-            
-            
-            <a href=" /blog/categories/outreachy/ ">outreachy</a>,
-          
-            
-            
-            <a href=" /blog/categories/cc-chooser/ ">cc-chooser</a>
-          
-        
-      </p>
-    </div>
-  </div>
+      <img src="https://secure.gravatar.com/avatar/7E71C293A442A2CF434BFC244BD5F184?size=200" alt="gravatar" style="float:right;" class="px-3 pb-3" />
+    
+    <p>Srinidhi Krishna is a computer science undergraduate student from India and will be interning with Creative Commons during the summer.
+He is working on <a href="https://github.com/creativecommons/cccatalog">cccatalog</a> as a part of GSoC20.
+He is <code>@K S Srinidhi Krishna</code> on slack.</p>
 
-  <div class="comments">
-<div id="disqus_thread"></div>
-<script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/improving-cc-license-chooser-weeks-1-2-design"; this.page.url = "http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/"; };
-  (function() {
-    var d = document, s = d.createElement('script');
-    s.src = '//cc-open-source.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>
-  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
-    rel="nofollow">comments powered by Disqus.</a>
-</noscript>
-</div>
+  
+  <h3>Posts</h3>
+    
+  <ul class="blog-index list-unstyled">
+    
+      
+      <li>
+        <a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
+        <p class="text-muted small">by <a href="/blog/authors/srinidhi/">
+  K S Srinidhi Krishna
+</a>
+          on 2020-06-10</p>
+      </li>
+    
+  </ul>
+
+  <hr/>
+  <p class="text-muted"><strong><a href="/blog/authors/">All Authors</a></strong></p>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

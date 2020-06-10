@@ -7,24 +7,32 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="Improving CC License Chooser Weeks 1-2: Design" />
+<meta property="og:title" content="Science Museum provider implementation" />
 
 
 
-<meta property="og:description" content="Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, Ari Madian, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:" />
+<meta property="og:description" content="IntroductionCC catalog project is responsible for collecting CC licensed images available in the web,  CC licensed images are hosted by different
+sources, these sources that provide the images and its metadata are called providers. Currently, images are collected from providers using two methods
+Common Crawl and API based crawl. Common Crawl data is an open repository of web crawled data and we use that data to get the necessary image metadata 
+for that provider more information. API crawl is implemented using the API endpoint maintained 
+by the providers. The main problem with Common Crawl is that we don&#39;t have control over the data they crawl, and this sometimes results poor 
+data quality whereas with API based crawl we have access to the information available. API based crawl is better when we need to update image
+metadata and reqular intervals." />
 
 
-<meta property="og:url" content="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/" />
+<meta property="og:url" content="/blog/entries/science-museum-implementation/" />
 <meta property="og:type" content="article" />
 
       
-<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png" />
-      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Improving CC License Chooser Weeks 1-2: Design">
-<meta name="twitter:description" content="Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, Ari Madian, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:">
-      
-<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png">
+<meta name="twitter:title" content="Science Museum provider implementation">
+<meta name="twitter:description" content="IntroductionCC catalog project is responsible for collecting CC licensed images available in the web,  CC licensed images are hosted by different
+sources, these sources that provide the images and its metadata are called providers. Currently, images are collected from providers using two methods
+Common Crawl and API based crawl. Common Crawl data is an open repository of web crawled data and we use that data to get the necessary image metadata 
+for that provider more information. API crawl is implemented using the API endpoint maintained 
+by the providers. The main problem with Common Crawl is that we don&#39;t have control over the data they crawl, and this sometimes results poor 
+data quality whereas with API based crawl we have access to the information available. API based crawl is better when we need to update image
+metadata and reqular intervals.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -32,7 +40,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>Improving CC License Chooser Weeks 1-2: Design — Creative Commons on GitHub</title>
+<title>Science Museum provider implementation — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -149,93 +157,123 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2 class="mb-0">Improving CC License Chooser Weeks 1-2: Design</h2>
+  <h2 class="mb-0">Science Museum provider implementation</h2>
   
-  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/obulat/">
-  Olga Bulat
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/srinidhi/">
+  K S Srinidhi Krishna
 </a>
-  on Monday, 2020-01-6</p>
+  on Wednesday, 2020-06-10</p>
     
    
   <div class="card bg-light mb-2">
     <div class="card-body p-2">
     <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
-       <a href="#series">Outreachy Dec 2019 round: CC License Chooser</a>
+       <a href="#series">GSoC 2020: CC catalog</a>
     </p>
     </div>
   </div>
  
-  <div class="body"><p>Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:</p>
+  <div class="body"><h2 id="introduction">Introduction</h2><p>CC catalog project is responsible for collecting CC licensed images available in the web,  CC licensed images are hosted by different
+sources, these sources that provide the images and its metadata are called providers. Currently, images are collected from providers using two methods
+Common Crawl and API based crawl. Common Crawl data is an open repository of web crawled data and we use that data to get the necessary image metadata 
+for that provider <a href="https://commoncrawl.org/the-data/get-started/">more information</a>. API crawl is implemented using the API endpoint maintained 
+by the providers. The main problem with Common Crawl is that we don't have control over the data they crawl, and this sometimes results poor 
+data quality whereas with API based crawl we have access to the information available. API based crawl is better when we need to update image
+metadata and reqular intervals.</p>
+<p>As a part of the internship, I will be working on moving providers from Common Crawl to API based crawl as well as integrate new providers
+to the API crawl. I will be starting with the Science Museum provider.</p>
+<h2 id="science-museum">Science Museum</h2><p>Science museum is a provider with around 80,000 CC licensed images, currently Science museum data is ingested from Common Crawl. 
+Science museum is one such provider where our data is of poor quality and there is need to improve it. This is done by moving 
+Science museum to an API based crawl.</p>
+<h2 id="api-research">API research</h2><p>We want to index metadata using their open API <a href="https://collection.sciencemuseumgroup.org.uk/search/has_image/image_license">endpoint</a>. 
+However, before the implementation we have to ensure that the API provides necessary content and there is a systematic way to get it.
+The first step is to take an object from their collection and check certain criterias.</p>
+<p><a href="https://collection.sciencemuseumgroup.org.uk/api/objects/co8005638">sample object</a></p>
+<p>The criteria are:</p>
 <ul>
-<li>Improving usability of the Chooser and making it easier for licensors to understand the process of selecting the most appropriate license.</li>
-<li>Setting up and automating internalization.</li>
-<li>Extracting License Chooser as a standalone npm package to make integrating Creative Commons licensing in other websites easier.</li>
+<li>parameters available for the API</li>
+<li>Object landing url (frontend link of the object the image is associated with) </li>
+<li>Image url (the url link of the image)</li>
+<li>CC license associated with the image</li>
+<li>creator, title and other metadata info </li>
 </ul>
-<p>During the first two weeks of my internship I mainly worked on redesigning the license selection process based on the usability testing feedback. We decided to set up license selection as a step-by-step process of answering yes/no questions guiding a novice or somewhat experienced user to the CC license that best suits their needs.</p>
-<hr>
-<h3 id="here-is-the-first-draft:"><strong>Here is the first draft:</strong></h3><p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-1.png" alt="draft-1.png"></p>
-<p><em>Features of this draft that stayed in current version:</em></p>
+<p>Once the above checks have been made, we need to find a way to get all the objects, this could be by paging through the records 
+or partition using the parameters, etc. Since their API parameter has <code>page[number]</code> paging would be an appropriate choice with  max size 
+as 100 it would require around 800 pages to get all the objects but then since they don't allow paging a large number of results, and 
+the max number of pages for Science Museum is 50 pages.This would mean we would get only 5000 objects and around 17000 images.</p>
+<p><a href="https://collection.sciencemuseumgroup.org.uk/search/image_license?page[size]=100&amp;page[number]=50">API page-50</a></p>
+<p><a href="https://collection.sciencemuseumgroup.org.uk/search/image_license?page[size]=100&amp;page[number]=51">API page-51</a></p>
+<p>So we need to find a way to divide the collection into subsets such that each subset has less than or equal to 5000 objects.
+Luckily, the API had another set of parameters <code>date[from]</code> and <code>date[to]</code> which represents the time period of the object. 
+Querying the API through different time period at the same time ensuring that records in that time period don't exceed 5000 solves the problem, starting
+from year 0 to year 2020 by trial and error method suitable year range was chosen.</p>
+<pre><code>                                            YEAR_RANGE = [
+                                                (0, 1500),
+                                                (1500, 1750),
+                                                (1750, 1825),
+                                                (1825, 1850),
+                                                (1850, 1875),
+                                                (1875, 1900),
+                                                (1900, 1915),
+                                                (1915, 1940),
+                                                (1940, 1965),
+                                                (1965, 1990),
+                                                (1990, 2020)
+                                            ]
+</code></pre>
+<p>With this we have a method to ingest the desired records, but before writing the script we need to know the different licenses 
+provided by the API.  We need to figure out a consistent way to identify which license and version are attached to each object.<br>
+To do this, we ran a test script to get counts of objects under different licenses.</p>
+<p>The results are:</p>
+<pre><code>+-----------------+----------+
+| license_version | count(1) |
++-----------------+----------+
+| CC-BY-NC-ND 2.0 |      210 |
+| CC-BY-NC-ND 4.0 |     2376 |
+| CC-BY-NC-SA 2.0 |        1 |
+| CC-BY-NC-SA 4.0 |    61694 |
++-----------------+----------+
+</code></pre>
+<p>Since the licenses and their versions are confirmed, we can start the implementation.</p>
+<h2 id="implementation">Implementation</h2><p>The implementation is quite simple in nature: we loop the through the <code>YEAR_RANGE</code> and get all the records for that period and 
+pass it on to an object data handler method that extracts the necessary details from the record and store it in the <code>ImageStore</code>
+instance. ImageStore is a class that stores image information from the provider, it stores the information in a buffer and inserts to tsv
+when the buffer reached threshold limit. Due to overlapping date ranges, the metadata for some objects is collected multiple times.
+So, we keep track of the record/object's id in a global variable <code>RECORD_IDS = []</code>.</p>
+<p>Within the object data handler method before collecting details we check if the <code>id</code> already exists in <code>RECORD_IDS</code>. 
+If it exists we move on to the next record.</p>
+<pre><code>                                            for obj_ in batch_data:
+                                                id_ = obj_.get("id")
+                                                if id_ in RECORD_IDS:
+                                                    continue
+                                                RECORD_IDS.append(id_)
+</code></pre>
+<p><code>id_</code> is the object id and we cannnot use this value as foreign identifier, the reason behind it is that an object could
+have multiple images with it and using object id we cannot determine the image uniquely, so we must use image id that is unique
+for each image. Currently image id is taken from <code>multimedia</code>, multimedia is a field in the json response that lists multiple 
+images and their metadata, for each image data in multimedia, foreign id is in <code>admin.uid</code>.</p>
+<p>The implementation can be found <a href="https://github.com/creativecommons/cccatalog/blob/master/src/cc_catalog_airflow/dags/provider_api_scripts/science_museum.py">here</a>.</p>
+<h3 id="results:">Results:</h3><p>Running the scripts we get:</p>
 <ul>
-<li>A card to show the information about currently selected license is prominent on the page.</li>
-<li>Four yes/no questions that help narrow the license choice.</li>
+<li>Number of records recieved : <code>35584</code></li>
+<li>Number of images collected : <code>62497</code></li>
 </ul>
-<p><em>What was changed in final version:</em></p>
-<ul>
-<li>The openness scale (which is drawn incorrectly, by the way) took up too much space on the first screen, not adding as much to the process.</li>
-<li>Toggles as an answer to yes/no questions are confusing for some users.</li>
-<li>Separate Personalization step was moved together with other steps.</li>
-<li>License attribution information was merged with the selected license card, because the card is supposed to contain all the information about selected license, including author/work url/ source url, if they are available.</li>
+<p>The problem with current implementation is that records with no date would be missed.</p>
+<p>Science Museum provider is the first provider I worked on as a part of the internship and thank my mentor Brent Moran for the help.</p>
+<h3 id="additional-details-:">Additional Details :</h3><ul>
+<li><a href="https://github.com/creativecommons/cccatalog/issues/302">research work</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog/pull/400">implementation</a></li>
 </ul>
-<hr>
-<h3 id="draft-2"><strong>Draft 2</strong></h3><p>As a result of continuous communication with my mentors, I this draft to be discussed at our weekly meeting.</p>
-<p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png" alt="draft-2.png"></p>
-<p><em>Features that stayed in the current version:</em></p>
-<ul>
-<li>Two cards: one for the step-by-step process and the other for presenting license information.</li>
-<li>All the information about selected license in the second card.</li>
-<li>Personalization step as the last and optional step of choosing the license.</li>
-</ul>
-<p><em>Features that were suggested during the meeting:</em></p>
-<ul>
-<li>License selection dropdown with all available licenses on the selected license card. This is for experienced users who know what license they want to choose and only need to add details, or copy the attribution text or html.</li>
-<li>A link to a page with more information on how to use the license when sharing on the selected license card: for users who need help with that.</li>
-</ul>
-<hr>
-<h3 id="currently-final-draft-:"><strong>Currently Final Draft :)</strong></h3><p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-3.png" alt="draft-3.png"></p>
-<h4 id="license-chooser-stepper-card"><strong>License Chooser Stepper Card</strong></h4><ul>
-<li>Stepper Card shows five steps to selecting a license, one for each feature of CC licenses and an optional personalization step. The stepper icons show current selection status: selected/unselected features and current feature being displayed. Clicking on an icon opens the corresponding step.</li>
-<li>Each license feature has a yes/no question. A user clicks on a yes or no button to answer, and can immediately see what changed in the license, and the text beneath the buttons shows what current selection of the feature actually means. Default answer for each step besides the first one (attribution - 'BY') is 'no', so if a user simply clicks 'next' on each step, or clicks on the last step icon at the top, they get CC BY 4.0 license.</li>
-</ul>
-<h4 id="selected-license-card"><strong>Selected License Card</strong></h4><ul>
-<li>Current selection dropdown is for experienced users who can quickly select a license that they know they want to use. It also updates when a feature in the license selection process is changed.</li>
-<li>Selected license information displays information about the license and its clauses, as well as its icons. The wording of this part will probably change the most after discussion with the community and legal team.</li>
-<li>Attribution information for the license, with a choice between rich text or html code. These are displayed in tabs to save on space. </li>
-</ul>
-<p>I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.</p>
-<p>Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.</p>
-<p>You can follow my work at <a href="https://github.com/creativecommons/cc-chooser">https://github.com/creativecommons/cc-chooser</a>.</p>
 </div>
   
   <div class="mt-3 bg-light" id="series">
     <hr/>
-    <h5 class="font-weight-bold">Posts in the <em>Outreachy Dec 2019 round: CC License Chooser</em> series</h5>
+    <h5 class="font-weight-bold">Posts in the <em>GSoC 2020: CC catalog</em> series</h5>
     <ul class="toc list-unstyled">
       
         <li>
         
-          <strong>Improving CC License Chooser Weeks 1-2: Design</strong>
-        
-        </li>
-      
-        <li>
-        
-          <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-        
-        </li>
-      
-        <li>
-        
-          <a href="/blog/entries/improving-cc-license-chooser-outcomes/">Improving CC License Chooser: Outcomes</a>
+          <strong>Science Museum provider implementation</strong>
         
         </li>
       
@@ -250,11 +288,15 @@
           
             
             
-            <a href=" /blog/categories/outreachy/ ">outreachy</a>,
+            <a href=" /blog/categories/cc-catalog/ ">cc-catalog</a>,
           
             
             
-            <a href=" /blog/categories/cc-chooser/ ">cc-chooser</a>
+            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
           
         
       </p>
@@ -264,7 +306,7 @@
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/improving-cc-license-chooser-weeks-1-2-design"; this.page.url = "http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/entries/science-museum-implementation"; this.page.url = "http://opensource.creativecommons.org/blog/entries/science-museum-implementation/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//cc-open-source.disqus.com/embed.js';
