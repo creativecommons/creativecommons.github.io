@@ -168,11 +168,6 @@
                <tbody>
                    
                         <tr>
-                            <th scope="row">OER Planning</th>
-                            <td scope="row">Plan for potential integration of OER into CC Search through research and consideration of potential issues.</td>
-                        </tr>
-                   
-                        <tr>
                             <th scope="row">Improve Search Algorithm with Popularity Data Integration</th>
                             <td scope="row">Make changes to the search algorithm that incorporate image popularity data gathered from sources that provide it. </td>
                         </tr>
@@ -203,18 +198,6 @@
                         </tr>
                    
                         <tr>
-                            <th scope="row">Use Data Dumps for Wikimedia Ingestion</th>
-                            <td scope="row">Switch our Catalog data ingestion for Wikimedia Commons to use the data dumps provided by Wikimedia instead of the MediaWiki API.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Improve Common Crawl Infrastructure</th>
-                            <td scope="row">Update our Common Crawl provider infrastructure to:
-(1) use Apache Airflow instead of AWS tools like Data Pipeline &amp; Glue for processing data
-(2) unify provider processing to use the same base classes as API providers</td>
-                        </tr>
-                   
-                        <tr>
                             <th scope="row">Improve Documentation for Community Contributors</th>
                             <td scope="row">Create better documentation for community contributors by consolidating internal and public documentation and making it available for everyone.</td>
                         </tr>
@@ -225,53 +208,8 @@
                         </tr>
                    
                         <tr>
-                            <th scope="row">User Reporting Strategy &amp; Implementation</th>
-                            <td scope="row">We need a frontend feature where users can report problematic content, backend support, and an internal process for taking action on content that is reported as problematic.</td>
-                        </tr>
-                   
-                        <tr>
                             <th scope="row">Design Sprint: Audio UI for CC Search</th>
                             <td scope="row">Designing and prototyping an upcoming user interface for searching for audio on CC Search.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Audio Support and Integration</th>
-                            <td scope="row">Design and user test UIs for audio. Ingest a pilot collection of audio to the Catalog, build support in the API. Integrate design to frontend to allow users to search for CC licensed audio.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Internationalization Infrastructure</th>
-                            <td scope="row">Build infrastructure necessary for internationalization, to allow CC Search to be accessible in other languages.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Accessibility Improvements</th>
-                            <td scope="row">Make accessibility improvements to the UI.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Integration of Design Sprint: License Language Changes</th>
-                            <td scope="row">Integrate License Language Changes into CC Search frontend, which include tooltips on license filters, and adjustments to the language and CTAs on single result pages.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Design Sprint: Meta Search Integration</th>
-                            <td scope="row">Integrating meta search functionality into CC Search for sources that are not currently indexed, and content types we do not currently support.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Offline old CC Search</th>
-                            <td scope="row">Offline Old Search (oldsearch.creativecommons.org) and redirect traffic to CC Search. Prior to this, build in messaging on Old Search, and support similar functionality on CC Search. See &#34;Meta Search Integration&#34; for related work.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Improved Support Pages</th>
-                            <td scope="row">Improve the support pages on CC Search, which includes the Collections page, for a better experience. Add explanation text for collections, improve flow.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">License Explanation/Compliance Improvements</th>
-                            <td scope="row">Improve how and where we explain licenses, and consider ways to make it easier for reusers to understand and comply with license requirements.</td>
                         </tr>
                    
                </tbody>
@@ -286,6 +224,58 @@
                    </tr>
                </thead>
                <tbody>
+                   
+                        <tr>
+                            <th scope="row">License Explanation/Compliance Improvements</th>
+                            <td scope="row">Improve how and where we explain licenses, and consider ways to make it easier for reusers to understand and comply with license requirements.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Improved Support Pages</th>
+                            <td scope="row">Improve the support pages on CC Search, which includes the Collections page, for a better experience. Add explanation text for collections, improve flow.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Offline old CC Search</th>
+                            <td scope="row">Offline Old Search (oldsearch.creativecommons.org) and redirect traffic to CC Search. Prior to this, build in messaging on Old Search, and support similar functionality on CC Search. See &#34;Meta Search Integration&#34; for related work.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Design Sprint: Meta Search Integration</th>
+                            <td scope="row">Integrating meta search functionality into CC Search for sources that are not currently indexed, and content types we do not currently support.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Accessibility Improvements</th>
+                            <td scope="row">Make accessibility improvements to the UI.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Internationalization Infrastructure</th>
+                            <td scope="row">Build infrastructure necessary for internationalization, to allow CC Search to be accessible in other languages.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Audio Support and Integration</th>
+                            <td scope="row">Design and user test UIs for audio. Ingest a pilot collection of audio to the Catalog, build support in the API. Integrate design to frontend to allow users to search for CC licensed audio.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Improve Common Crawl Infrastructure</th>
+                            <td scope="row">Update our Common Crawl provider infrastructure to:
+(1) use Apache Airflow instead of AWS tools like Data Pipeline &amp; Glue for processing data
+(2) unify provider processing to use the same base classes as API providers</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Use Data Dumps for Wikimedia Ingestion</th>
+                            <td scope="row">Switch our Catalog data ingestion for Wikimedia Commons to use the data dumps provided by Wikimedia instead of the MediaWiki API.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">OER Planning</th>
+                            <td scope="row">Plan for potential integration of OER into CC Search through research and consideration of potential issues.</td>
+                        </tr>
                    
                         <tr>
                             <th scope="row">Web Monetization: Research Phase</th>
