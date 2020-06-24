@@ -2,13 +2,271 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-06-10T00:00:00Z</updated>
+  <updated>2020-06-24T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/flickr-sub-provider-retrieval/">
+    <title type="text">Flickr Sub-provider Retrieval</title>
+    <id>urn:uuid:1fcfc052-0144-3623-9d5f-f16949e32ae1</id>
+    <updated>2020-06-24T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/flickr-sub-provider-retrieval/" />
+    <author>
+      <name>charini</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;The Creative Commons (CC) licensed images made available via CC Search and CC Catalog API tools are retrieved from
+numerous sources (which we refer to as providers) such as Flickr and different museum collections. While the existing
+implementation of the CC Catalog tools enables filtering images in various manners such as based on image tags, the
+provider, and the license type, it does not facilitate searching for images from particularly valuable internal sources
+(referred to as sub-providers). For example, images related to 'NASA' have significant value in the Flickr collection,
+since 'NASA' related pictures are extensively used by a large audience especially for educational purposes. The aim of
+my first task in the GSoC project is to implement required changes in the API script level and in the existing data in
+the database, such that filtering by certain important sub-providers is made possible.&lt;/p&gt;
+&lt;p&gt;While there are several providers such as Flickr, Europeana, and Smithsonian from which we require to extract
+sub-providers, the consensus was to initially focus on Flickr due to that currently being in production, and since a
+substantial amount of images made available via CC Search come from Flickr. Thus, in this initial blog post, I will
+discuss how I addressed the requirement of sub-provider retrieval in Flickr by making the necessary changes in the
+&lt;a href=&quot;https://github.com/creativecommons/cccatalog&quot;&gt;Creative Commons Catalog&lt;/a&gt; repository.&lt;/p&gt;
+&lt;h2 id=&quot;research&quot;&gt;Research&lt;/h2&gt;&lt;p&gt;The primary research involved in the Flickr sub-provider retrieval task was defining which entities to identify as
+sub-providers, and identifying how those sub-providers can be retrieved based on the image related information we
+retain.&lt;/p&gt;
+&lt;h3 id=&quot;definition-of-a-sub-provider&quot;&gt;Definition of a sub-provider&lt;/h3&gt;&lt;p&gt;It was decided that a sub-provider should be a collection of user accounts in Flickr, where this collection corresponded
+to a common entity, and the common entity would reflect the sub-provider. For example, since both Flickr user accounts
+&lt;em&gt;NASA HQ PHOTO&lt;/em&gt; and &lt;em&gt;NASA Johnson&lt;/em&gt; provide images related to NASA, we would represent the NASA sub-provider by those
+two (and other related) user accounts.&lt;/p&gt;
+&lt;p&gt;The next challenge was to determine how to identify which collections of user accounts were important to a wider
+audience. The number of views per user account was an intuitive measure to rely on for this requirement. My supervisor
+Brent Moran executed a query on the existing CC database to obtain the 50 most popular user accounts in Flickr. A
+snippet of the query response is as follows:&lt;/p&gt;
+&lt;table class=&quot;table table-striped&quot;&gt;
+&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
+&lt;th&gt;user_account_name&lt;/th&gt;
+&lt;th&gt;total_views&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Apollo Image Gallery&lt;/td&gt;
+&lt;td&gt;1216297208&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;BioDivLibrary&lt;/td&gt;
+&lt;td&gt;625528813&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;manhhai&lt;/td&gt;
+&lt;td&gt;445714729&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Thomas Hawk&lt;/td&gt;
+&lt;td&gt;300554527&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Sangudo&lt;/td&gt;
+&lt;td&gt;258177509&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;NASA Goddard Photo and Video&lt;/td&gt;
+&lt;td&gt;225143949&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Despite having a significant number of views, some of these user accounts did not appear to be worth being identified
+as belonging to a sub-provider due to their lack of educational importance. Thus, we manually curated this list to
+retain what we believed to be important to a wider audience.&lt;/p&gt;
+&lt;h3 id=&quot;sub-provider-identification&quot;&gt;Sub-provider identification&lt;/h3&gt;&lt;p&gt;In order to identify the sub-provider each image from Flickr belonged to, it was necessary to determine which field in
+the stored image data referred to the user account. Among the various information contained in an API response, only a
+selected set of fields is stored on the CC end, and it was important to use such stored data for the identification of
+sub-providers. We initially decided to rely on the user account name which was reflected by the &lt;em&gt;ownername&lt;/em&gt; field in
+the JSON response and stored as the &lt;em&gt;creator&lt;/em&gt; in the CC database. However, we later realised that the names of accounts
+could potentially change over time, and therefore was not a reliable field for extracting the sub-provider. Another
+field from the JSON response that helped to uniquely identify a user account was the &lt;em&gt;owner&lt;/em&gt; field, which acted like a
+unique user ID. Even though the &lt;em&gt;owner&lt;/em&gt; value was not directly stored in the CC database, it was stored as part of the
+&lt;em&gt;creator URL&lt;/em&gt; field, and fortunately, all creator URLs from Flickr consisted of a common prefix plus the &lt;em&gt;owner&lt;/em&gt; value
+(the user id). Thus, we decided to use the &lt;em&gt;creator URL&lt;/em&gt; value retained in the CC database for identifying sub-providers
+in Flickr.&lt;/p&gt;
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;&lt;p&gt;There are two levels at which sub-provider retrieval needs to be supported, where the first concerns the API scripts
+from which we initially pull the data from different providers to keep the CC collections uptodate. The second is the
+CC database level where the existing data needs to be updated to ensure that those reflect the sub-providers similar to
+the newly added image information.&lt;/p&gt;
+&lt;p&gt;The following sections explain how we represented the sub-provider information in the implementation, the changes made
+at Flickr API script level and the database update logic to support sub-provider retrieval.&lt;/p&gt;
+&lt;h3 id=&quot;representing-the-sub-provider-information&quot;&gt;Representing the sub-provider information&lt;/h3&gt;&lt;p&gt;As previously explained, we define a sub-provider as a collection of user accounts, and it was identified that the
+unique user ID returned in the Flickr JSON response (referred to as the &lt;em&gt;owner&lt;/em&gt;) was a reliable field for uniquely
+identifying each user account. For the time being, we focused on sub-providers NASA, SpaceX, and the Biodiversity
+Heritage Library (BioDivLibrary) based on their considerable importance to the community. Using the top six NASA related
+user accounts, the 'Official SpaceX Photos' user account, and the 'BioDivLibrary' user account as filtered by Brent's
+query, we identified the corresponding user IDs (content of the &lt;em&gt;owner&lt;/em&gt; field) using the
+&lt;strong&gt;flickr.people.findByUsername&lt;/strong&gt; method made available in the Flickr API. The mapping between the sub-provider and the
+corresponding user IDs was stored in a dictionary as follows.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLICKR_SUB_PROVIDERS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;nasa&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;24662369@N07&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# NASA Goddard Photo and Video&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;35067687@N04&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# NASA HQ PHOTO&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;29988733@N04&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# NASA Johnson&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;28634332@N05&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# NASA&amp;#39;s Marshall Space Flight Center&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;108488366@N07&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# NASAKennedy&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;136485307@N06&amp;#39;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Apollo Image Gallery&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;bio_diversity&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;61021753@N02&amp;#39;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# BioDivLibrary&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;spacex&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;130608600@N05&amp;#39;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Official SpaceX Photos&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since this information was required both at the API script level and the database level to retrieve sub-providers, we
+stored it in a common file accessible from both levels.&lt;/p&gt;
+&lt;p&gt;The next challenge was to identify how to reflect the sub-provider of each image using the existing database schema.
+There are two different fields in the database as &lt;em&gt;provider&lt;/em&gt; and the &lt;em&gt;source&lt;/em&gt;. The &lt;em&gt;provider&lt;/em&gt; reflects the main source
+from which the images are retrieved, which happens to be 'Flickr' in this scenario. The &lt;em&gt;source&lt;/em&gt; field reflects an
+organisation or entity that has published the photos using 'Flickr' in this instance (or some other site that we
+recognise as a &lt;em&gt;provider&lt;/em&gt;).The &lt;em&gt;source&lt;/em&gt; field was previously not utilised and was simply set to the value of the
+&lt;em&gt;provider&lt;/em&gt; in the Flickr API script. Based on internal discussions, it was decided that the &lt;em&gt;source&lt;/em&gt; field was to be
+used for reflecting the sub-provider, if the corresponding image belonged to any of the user accounts contained in our
+dictionary &lt;em&gt;FLICKR_SUB_PROVIDERS&lt;/em&gt;. Otherwise the &lt;em&gt;source&lt;/em&gt; was set to the default &lt;em&gt;provider&lt;/em&gt; value 'Flickr'.&lt;/p&gt;
+&lt;h3 id=&quot;sub-provider-retrieval-at-api-script-level&quot;&gt;Sub-provider retrieval at API script level&lt;/h3&gt;&lt;p&gt;Retrieving the sub-provider from the Flickr API script was fairly straightforward. Since the complete JSON response was
+available at the API script level, we did not have to worry about retrieving the user ID (&lt;em&gt;owner&lt;/em&gt; value) from the
+&lt;em&gt;creator URL&lt;/em&gt; field in our data. Rather, we simply get the owner value from the API response, and try to search for it
+in the &lt;em&gt;FLICKR_SUB_PROVIDERS&lt;/em&gt; dictionary as follows.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;owner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;owner&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLICKR_SUB_PROVIDERS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;owner&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLICKR_SUB_PROVIDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Flickr&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since the collection of user IDs corresponding to each sub-provider is represented as a set, the time complexity for
+each sub-provider is O(1) and therefore the total time complexity is linear in the number of sub-providers (that is O(n)
+for n sub-providers). Due to the number of sub-providers of interest being minimal (currently it is 3), this search
+logic is quite efficient.&lt;/p&gt;
+&lt;p&gt;Once we determine whether the &lt;em&gt;source&lt;/em&gt; field should be set to a sub-provider value or the default ‘Flickr’ value with
+the given logic, we set the &lt;em&gt;source&lt;/em&gt; value in the image store likewise.&lt;/p&gt;
+&lt;h3 id=&quot;sub-provider-update-at-the-database-level&quot;&gt;Sub-provider update at the database level&lt;/h3&gt;&lt;p&gt;When updating sub-providers at the database level, we need to rely on the creator URL field to obtain the user ID of
+each image. The creator URL is of the following form.&lt;/p&gt;
+&lt;p&gt;'&lt;a href=&quot;https://www.flickr.com/photos/&quot;&gt;https://www.flickr.com/photos/&lt;/a&gt;' + &lt;em&gt;User ID&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For the purpose of automating the process of updating the database to reflect sub-providers, I added the necessary SQL
+queries and made it accessible via the Apache Airflow UI. The database update logic is as follows.&lt;/p&gt;
+&lt;p&gt;As the first step, I create a temporary table and populate it with the sub-provider values and the corresponding
+creator URLs. This is done by iterating through the sub-provider, user ID value pairs in the &lt;em&gt;FLICKR_SUB_PROVIDERS&lt;/em&gt;
+dictionary, and concatenating the user ID with the prefix '&lt;a href=&quot;https://www.flickr.com/photos/&quot;&gt;https://www.flickr.com/photos/&lt;/a&gt;' to obtain the creator URL.&lt;/p&gt;
+&lt;p&gt;The initial plan was to then perform a join on the CC image table (where all the image related information is stored)
+with the temporary table on the condition that the creator URL from the image table matches that of the temporary table.
+This query which filters all the rows in the image table where we need to update the sub-provider values, looks as
+follows.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOURCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SUB_PROVIDER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CREATOR_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CREATOR_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;However, a major concern with this query, as my supervisor Brent Moran pointed out, was that it locked all the rows
+which matched the 'WHERE' clause at once. With respect to the magnitude of the Flickr data available in the CC image
+table, this meant that the above query would lock millions of rows, thus hindering the execution of other queries on
+the image table. To mitigate this issue, we decided to update the SQL query as follows, such that we perform a 'SELECT'
+query on the rows to be updated by joining the previously created temporary table with the CC image table (a 'SELECT'
+query does not lock the table), and iterate row by row over the query result to set the &lt;em&gt;source&lt;/em&gt; value in the image
+table to the sub-provider value.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SELECT&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FOREIGN_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foreign_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PROVIDER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sub_provider&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ON&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CREATOR_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CREATOR_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PROVIDER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Flickr&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Let us refer to the result produced from the SELECT query as &amp;#39;selected_records&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foreign_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sub_provider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;selected_records&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;UPDATE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SET&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SOURCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{sub_provider}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;WHERE&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PROVIDER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Flickr&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;AND&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;MD5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FOREIGN_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MD5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{foreign_id}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To make this functionality available from the Airflow UI, I have added the Airflow DAG
+&lt;em&gt;flickr_sub_provider_update_workflow&lt;/em&gt;.
+The changes in the source field after updating the image table in the database looks like follows.&lt;/p&gt;
+&lt;table class=&quot;table table-striped&quot;&gt;
+&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;id&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;provider&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;source before the update&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;source after the update&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;14369&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;bio_diversity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;14372&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;bio_diversity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;14375&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;bio_diversity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;14378&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;bio_diversity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;14382&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;bio_diversity&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;40784&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nasa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;47237&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nasa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;47242&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nasa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;47244&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nasa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;47245&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;flickr&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;nasa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;For more information regarding the implementation, please refer to the following PR:
+&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/420&quot;&gt;https://github.com/creativecommons/cccatalog/pull/420&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I express my gratitude to Brent Moran and Anna Tumadóttir for their assistance with my first task in GSoC 2020 by
+helping me to filter the sub-providers of interest and conducting the necessary research.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/science-museum-implementation/">
     <title type="text">Science Museum provider implementation</title>
     <id>urn:uuid:7960ba6c-0bbb-300e-86d8-4744b9b0ee25</id>
@@ -2739,30 +2997,6 @@ I decide to take advantage of this new feature by creating customizations for th
 &lt;li&gt;More post types and widgets&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Also, we're planning on providing the chapters data via the WP-API so it can be used in other CC websites (The CC Global Network for instance), so we can show information from what's going on in the whole network&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/">
-    <title type="text">GSoC cc-chooser Week 4</title>
-    <id>urn:uuid:5f04f948-c01a-39b2-b0cb-b84c15039d61</id>
-    <updated>2019-06-24T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-week4/" />
-    <author>
-      <name>akmadian</name>
-    </author>
-    <content type="html">&lt;p&gt;In case you don't know, my GSoC project involves revamping &lt;a href=&quot;https://creativecommons.org/choose/&quot;&gt;the CC license chooser&lt;/a&gt;.
- I am working with my mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, to visually overhaul the tool, as well as making it more educational, and more usable.&lt;/p&gt;
-&lt;p&gt;This week, I worked on some of the Chooser's JS functionality, and the educational section's layout.&lt;/p&gt;
-&lt;p&gt;Getting the chooser working was lots of fun. It's the first real JS I've written for the site (other than the modal system, which is about 6 lines total).
- The thing I like most is seeing the site take shape. Previously, the chooser was all dummy controls and placeholder text.
- Now, it has a fully working chooser, complete with the license icons being updated, the link to the license page being set, etc.
- The thing that took the longest was getting the code to return the correct license based on the user's inputs. There was some
- temperamental code, and the starting state variables were also a little off.&lt;/p&gt;
-&lt;p&gt;Next up was the educational section. I decided to go from a three column layout, to a to row layout. I moved the question buttons 
- to the top row (now alone), and the license icon descriptions (and example) to the bottom row. This allows the icon descriptions 
- to be longer without looking really weird, and gives a space for an example of how the license name, icons, and permissions are related.
- I also decided to swap the positions of the educational section and the chooser section on the page. This means that the chooser is 
- now at the top of the page, with the educational section (re-labelled as &quot;Confused? Need Help?&quot;) below it.&lt;/p&gt;
-&lt;p&gt;Next week, I'll be working on getting a new version of the license chooser controls working.&lt;/p&gt;
 </content>
   </entry>
 </feed>
