@@ -7,17 +7,20 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="CC Legal Database: Coding and Mid-term status" />
 
 
 
-<meta property="og:url" content="/blog/categories/cc-legal-database/" />
+<meta property="og:description" content="We are already in the second half of the time stipulated for the project and it is time to pause for review the initial plan, celebrate the objectives achieved and think about what remains to be done." />
+
+
+<meta property="og:url" content="/blog/entries/legal-database-coding-mid-term/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="CC Legal Database: Coding and Mid-term status">
+<meta name="twitter:description" content="We are already in the second half of the time stipulated for the project and it is time to pause for review the initial plan, celebrate the objectives achieved and think about what remains to be done.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -25,7 +28,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>cc-legal-database - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>CC Legal Database: Coding and Mid-term status — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -146,41 +149,104 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts categorized "cc-legal-database"</h2>
+  <h2 class="mb-0">CC Legal Database: Coding and Mid-term status</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/legal-database-coding-mid-term/">CC Legal Database: Coding and Mid-term status</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/krysal/">
   Krystle Salazar
 </a>
-          on 2020-07-08</p>
-      </li>
+  on Wednesday, 2020-07-8</p>
     
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">Outreachy May 2020 round: CC Legal Database</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><p>We are already in the second half of the time stipulated for the project and it is time to pause for review the initial plan, celebrate the objectives achieved and think about what remains to be done.</p>
+<h2 id="initial-plan">Initial plan</h2><p>Initially, two weeks were allocated to do the redesign for the new site. I thought there would be plenty of time here, <em>is just design</em> I said to myself, despite not having done any serious project in Figma before beyond a few sketches. Later we will see I was wrong here. This included creating new Vocabulary components if necessary. Between the second and third weeks, I would create the data models (for Django and therefore for the database as well) and from the fourth week onwards it would start to implement all this in code: make the Homepage, listing, details pages and the others.</p>
+<h2 id="issues-in-the-way">Issues in the way</h2><p>One task that took longer than expected was to finish the designs, a key point because the other tasks depended on this. Though the initial scheme was ready on time, as it was discussed with the stakeholders new requirements became evident, so more modifications had to be made. For example, on the <a href="https://labs.creativecommons.org/caselaw/">current site</a>, the way to explore cases and scholarship is by country, and in principle, this would stay the same way and I designed with that in mind, but talking to our internal user (which acts as a <em>product owner</em> here) was better to change this scheme to one for labels or categories that are more related with both entities. Highlighting the case of the Scholarship model, in which the attribute of the country was eliminated because it is not so relevant, and although it seemed somewhat a small thing, this also caused changes in the design of the home page, the listings and how the content of the database will be explored in general. Design for a good user experience is not so easy as a non-designer may think. There were times when there was a lack of ideas but the important thing is to make decisions and move forward, in later iterations it will be improved.</p>
+<p>As in all software development, unexpected things happen and errors will appear no matter how much you plan ahead, for the fourth week I had planned to build a continuous integration system to have a server where anyone can see the progress of my changes, however, there were a few inconveniences that had me googling for a couple of days, publishing a Django project in Heroku can be tricky, specially regarding static files (assets like style sheets and scripts) if they are generated by Heroku at some point in the deployment pipeline, depending on the phase in which it is carried out, they can be lost in the ephemeral file system of Heroku, a process that I will not delve into here but that seems important to me to highlight if anyone else  has similar problems.</p>
+<h2 id="progress-so-far">Progress so far</h2><p>I have managed to finish the main tasks and I would say that even the initially expected result has been improved. So I can list the following achievements:</p>
+<ul>
+<li>Redesigned the entire website using the Figma Design Library</li>
+<li>Built first pages: Home, listing and details pages for both Cases and Scholarship, and one for the FAQs.</li>
+<li>Create a GitHub Action to lint every PR and check if it follows the project's code style</li>
+<li>Deployment of the Django project on Heroku with a CI process linked to a GitHub repository, see the live development site <a href="https://cc-caselaw.herokuapp.com/">here</a>.</li>
+</ul>
+<p>It is said quickly but each task carries its considerable workload. It's been a good result so far, I've learned a lot of things along the way, like basic use of Figma, use of Storybook (related to Vocabulary components), good code security practices, some accessibility details, and more.</p>
+<h2 id="plan-for-the-second-half-of-the-timeline">Plan for the second half of the timeline</h2><p>There are some tasks due from past weeks, such as build forms for Case and Scholarship submissions, but I am confident that now that the project has reached a stable state I can do it quickly in the next days. Other tasks were moved for later: searching records and filtering by tags moved after forms are created, so I can finish the visual parts of the site first and focus on functional work without shifting between types of tasks.</p>
+<p>The tasks and they order have changed, like I mentioned earlier, requirements were modified (a bit) so some tasks I planned for last weeks are not necessary anymore or are done already out-of-box with Django admin (benefits of choosing a batteries included framework!). In general, I don't think the initial plan was wrong, we just went through the natural evolution of a product software. Mentors have also been very helpful in keeping a reasonable scope and adjusting priorities.</p>
+<p>After main functionalities are done we can start making improvements, as we already identified some nice to have features but not so important at the moment. Stay tuned for more to come.</p>
+</div>
+  
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>Outreachy May 2020 round: CC Legal Database</em> series</h5>
+    <ul class="toc list-unstyled">
       
-      <li>
-        <a href="/blog/entries/legal-database-design/">CC Legal Database: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
-  Krystle Salazar
-</a>
-          on 2020-06-09</p>
-      </li>
-    
+        <li>
+        
+          <a href="/blog/entries/legal-database-a-new-beginning/">CC Legal Database: a new beginning</a>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/legal-database-a-new-beginning/">CC Legal Database: a new beginning</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
-  Krystle Salazar
-</a>
-          on 2020-05-22</p>
-      </li>
-    
-  </ul>
+        <li>
+        
+          <a href="/blog/entries/legal-database-design/">CC Legal Database: Design</a>
+        
+        </li>
+      
+        <li>
+        
+          <strong>CC Legal Database: Coding and Mid-term status</strong>
+        
+        </li>
+      
+    </ul>
+    <hr/>
+  </div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/cc-legal-database/ ">cc-legal-database</a>,
+          
+            
+            
+            <a href=" /blog/categories/product/ ">product</a>,
+          
+            
+            
+            <a href=" /blog/categories/outreachy/ ">outreachy</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
-  <hr>
-  <strong><a href="/blog/categories/">All Categories</a></strong>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/legal-database-coding-mid-term"; this.page.url = "http://opensource.creativecommons.org/blog/entries/legal-database-coding-mid-term/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
