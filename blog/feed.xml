@@ -34,6 +34,24 @@
 &lt;p&gt;After main functionalities are done we can start making improvements, as we already identified some nice to have features but not so important at the moment. Stay tuned for more to come.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/">
+    <title type="text">Integration of Vocabulary with CCOS.</title>
+    <id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id>
+    <updated>2020-07-08T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
+&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
+&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
+&lt;h2 id=&quot;the-solution&quot;&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href=&quot;https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals&quot;&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href=&quot;https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516&quot;&gt;link&lt;/a&gt; for that.&lt;/p&gt;
+&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
+&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
+&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/flickr-sub-provider-retrieval/">
     <title type="text">Flickr Sub-provider Retrieval</title>
     <id>urn:uuid:1fcfc052-0144-3623-9d5f-f16949e32ae1</id>
@@ -2964,32 +2982,6 @@ for in-depth logs.&lt;/p&gt;
 &lt;li&gt;Go to point 3&lt;/li&gt;
 &lt;li&gt;Add a dark theme for the entire styleguide (unimportant, non-urgent)&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/">
-    <title type="text">CC Browser Extension Week 5, 6</title>
-    <id>urn:uuid:5119b9c2-67aa-3110-8598-9aadbb19fce9</id>
-    <updated>2019-07-04T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://creativecommons.github.io/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt; &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;These couple weeks were spent on finishing the filter section, setting up infinite-scroll and fixing issues and bugs after some days of testing.&lt;/p&gt;
-&lt;p&gt;Most of the filter section was complete but I missed a tiny detail that the Catalog API &lt;a href=&quot;https://api.creativecommons.engineering/image/search?q=hello&amp;amp;li=cc0&amp;amp;lt=commercial&quot;&gt;does not accept&lt;/a&gt; both the license and use-case filter queries in the same request. I did some changes in the code for generating the valid URL for every filter action and added the relevant UI changes of deselecting and disabling the license drop-down when a use-case is selected.&lt;/p&gt;
-&lt;p&gt;The infinite scroll was set-up by following the classic solution of firing another request to the API when the user scrolls to the bottom and appending the thumbnails of the result in the grid.&lt;/p&gt;
-&lt;p&gt;I tested the extension for a couple of days and made some &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/issues?q=is%3Aissue+is%3Aclosed&quot;&gt;bug reports&lt;/a&gt; on Github. Most of them were pretty easy to fix but the one I struggled with was &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/issues/3&quot;&gt;this&lt;/a&gt; one. After some discussion on slack,  &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno&lt;/a&gt; and &lt;a href=&quot;https://github.com/dhruvkb&quot;&gt;Dhruv&lt;/a&gt; suggested using the &lt;a href=&quot;https://masonry.desandro.com/&quot;&gt;Masonry grid&lt;/a&gt; for the thumbnails (I was previously using the standard float grid of 3 columns). I made the transition but observed some flickering in the images on firefox when a new batch loaded on scrolling. It was working fine on chrome though. I spent a whole day looking for alternatives or doing some silly fix by using a bunch of timeouts. Again, Breno and Druv came to the rescue and suggested that some animations may be causing this. But even after a few hours of hit and trial and removing and fixing animations, I couldn't fix it only because I was looking in the wrong place. By changing the &lt;code&gt;transitionDuration&lt;/code&gt; option of masonry to &lt;code&gt;0&lt;/code&gt; did the trick. In fact, it was the first thing I should have tried. I should maybe take breaks more often to clear my mind :p&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Work on showing relevant image info when we click on the image.&lt;/li&gt;
-&lt;li&gt;Let users copy the rich-text or HTML version of the attribution with one click.&lt;/li&gt;
-&lt;li&gt;Add the download buttons to download the image and the attribution.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;http://creativecommons.github.io/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
