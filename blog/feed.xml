@@ -449,6 +449,61 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;/ul&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
+    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
+    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
+    <updated>2020-06-10T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
+&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
+&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
+    &amp;lt;template v-slot:noted&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:attribution&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
+        {{$t('footer.caption.attribution')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:icons&amp;gt;
+        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
+        {{$t('footer.caption.icons')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+&amp;lt;/i18n&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/resource-gathering/">
     <title type="text">Resource Gathering</title>
     <id>urn:uuid:1b4acbcb-fbab-372c-854f-833a05aafa23</id>
@@ -516,6 +571,26 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;h4 id=&quot;integrating-cc-vocabulary&quot;&gt;Integrating CC Vocabulary&lt;/h4&gt;&lt;p&gt;The extension uses a very outdated version of CC Vocabulary. It will be replaced by the latest version for a refreshing new look.&lt;/p&gt;
 &lt;h4 id=&quot;adding-support-for-microsoft-edge&quot;&gt;Adding support for Microsoft Edge&lt;/h4&gt;&lt;p&gt;The new Microsoft Edge browser is based on chromium. This paves the way to add support for it thanks to the power and flexibility of the WebExtension API. This will then allow us to also officially release on the &lt;a href=&quot;https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home&quot;&gt;Microsoft Edge Addon Store&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;join-the-discussion&quot;&gt;Join the discussion&lt;/h3&gt;&lt;p&gt;If you have any feedback/suggestions or just want to say hi,  please join the &lt;code&gt;#cc-dev-browser-extension&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;. You can also track the progress on the project's &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; Repository.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
+    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
+    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
+While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
+&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
+After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
+Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
+&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
+The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
+&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
+The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
+&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
@@ -2850,102 +2925,6 @@ This is what it looked like back then:&lt;/p&gt;
 &lt;p&gt;As part of our Google Summer of Code initiative, we have a project called &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt; that aims to build a set of reusable UI styles and components that will be used across all CC websites. Soon this will also be integrated into the CC Search website.&lt;/p&gt;
 &lt;p&gt;If you have any feedback, please feel free to send your thoughts and opinions &lt;a href=&quot;https://ccsearch.creativecommons.org/feedback&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you feel like contributing to the CC Search frontend code, please refer to our &lt;a href=&quot;https://opensource.creativecommons.org/contributing-code/&quot;&gt;Contribution guide&lt;/a&gt; and to the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;CC Search frontend codebase&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-link-checker/">
-    <title type="text">Combating dead links with CC Link Checker</title>
-    <id>urn:uuid:50c64e98-b026-3a32-9993-33e3f8f5cd4b</id>
-    <updated>2019-07-15T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-link-checker/" />
-    <author>
-      <name>bhumijgupta</name>
-    </author>
-    <content type="html">&lt;p&gt;Creative Commons provides vast number of public copyright licenses for people who want to enable free distribution of their work. Creative Commons licenses currently covers over &lt;strong&gt;1.6 billion resources&lt;/strong&gt;. These license files are then translated to multiple different languages and ported for &lt;a href=&quot;https://wiki.creativecommons.org/wiki/CC_Ports_by_Jurisdiction&quot;&gt;different jurisdictions&lt;/a&gt; for international usage. People link to the respective licenses along with their licensed works. These license files are in the form of &lt;code&gt;html&lt;/code&gt; files, stored in &lt;a href=&quot;https://github.com/creativecommons/creativecommons.org/tree/master/docroot/legalcode&quot;&gt;creativecommons/creativecommons.org&lt;/a&gt; repo.&lt;/p&gt;
-&lt;h3 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h3&gt;&lt;p&gt;These license files contain links to their deeds, license translated to other languages, internal links, and many more. Sometimes due to errors, these files may contain dead / broken links. These broken links leads to incorrect/ incomplete understanding of the license clauses and permissions by the viewer. This may sometime lead to incorrect usage of the licensed resource.&lt;/p&gt;
-&lt;p&gt;At the time of writing, the repo contains over &lt;strong&gt;930 files&lt;/strong&gt; with an average of &lt;strong&gt;50 links per file&lt;/strong&gt;. New translation of license deeds are regularly added to the repo and the existing license deeds are also updated frequently. Manually testing these files would take a lot of time. Considering the future additions of licenses, translations and jurisdiction ports, the time required for manual testing would increase drastically.&lt;/p&gt;
-&lt;h3 id=&quot;solution-cc-link-checker&quot;&gt;Solution - CC Link Checker&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cc-link-checker&quot;&gt;CC Link Checker&lt;/a&gt; aims to solve the problem by automating the task of checking links in the license and reporting errorneous and broken links. The python script scrapes all the licenses from the repo and checks the status of the links in the files. The script checks the link for &lt;code&gt;40X&lt;/code&gt; errors, &lt;code&gt;timeout errors&lt;/code&gt; and &lt;code&gt;invalid schema&lt;/code&gt; error.&lt;/p&gt;
-&lt;p&gt;Firstly, let's get the features out of the way. The script uses multiprocessing, taking full use of multiple core processors, has 2 modes of output to CLI - default and verbose, and can also print the error links, summary of the result, and mapping of error links to their URLs of occurence in a file.&lt;/p&gt;
-&lt;p&gt;Now let's hop in the nerd train and take a deeper look at development journey.&lt;/p&gt;
-&lt;h3 id=&quot;development-journey&quot;&gt;Development Journey&lt;/h3&gt;&lt;p&gt;I started working on the project a month back i.e. 13 Jun. During this journey there were many ups and downs, with some productive and some totally unproductive days. For better understanding, lets look the journey for each week.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Week 1
-  The approach for the first week was to get the basic functionality done. The script was able to scrape and parse all license and links from the github repo using &lt;code&gt;requests&lt;/code&gt; and &lt;code&gt;BeautifulSoup&lt;/code&gt;. I implemented basic memoization to prevent repeated fetching of already fetched links. This step decreased the execution time of the script by several folds. Parallel to the development of the script, I also had to implement Circle-CI. Since it was my first time using a CI service, it took me quite some time to wrap my head around Circle-CI.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Circle-CI, pipenv, different docstring formats, different code styles and pep8 recommendations - black and flake8&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Week 2
-  With the basic functionality completed, now it was time to implement some advance features. This week I worked on implementing &lt;code&gt;--verbose&lt;/code&gt; flag a.k.a. the verbose mode of output to CLI. The verbose mode would help in debugging and give a deeper look into how the python script was working. Also I worked on &lt;code&gt;--output-errors&lt;/code&gt; flag, which would print error links and summary to a file.&lt;/p&gt;
-&lt;p&gt;Everything was working fine and ahead of schedule, until a major bug was detected i.e. incorrect conversion of relative to absolute links which resulted in several false positive and false negatives. Fixing this required deducing pattern between the URL on which the license file would be displayed from the license name. This step took a lot of time and pushed project below its schedule.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Argument parser and help text&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Week 3
-  The output file consisted only file name and the errorneous links encountered in the file. As per suggestion of &lt;a href=&quot;https://creativecommons.org/author/kgodey&quot;&gt;Kriti Godey&lt;/a&gt;, I worked on adding the summary section to the file which would include information like total error links, number of unique links along with errorneous link and the page URLs on which it is present (since many page consist the same dead link). The next step was optimizing time taken to run the script.&lt;/p&gt;
-&lt;p&gt;Before any optimisation the script took 4+ minutes to run on cloud servers. To reduce the time, I started working on implementing &lt;strong&gt;multithreading&lt;/strong&gt; to reduce the execution time of the script. Implementing multithreading was a big task as it required major refactoring of the code to make it thread safe and compatible with concurrency. After sucessfully refactoring and implementing multithreading, I was able to bring down the execution time to around 3:20.&lt;/p&gt;
-&lt;p&gt;As pointed out by my mentor, this came with its own set of problems. Due to python's &lt;code&gt;Global Interpretor Lock(GIL)&lt;/code&gt; no two threads can run parallely inside the python interpretor and the use of global and lock made the code more complex. Also, the performance increase was not significant. This was a setback as my week long efforts had gone in vain.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Multithreading, locks&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Week 4
-  To aid the situation my mentors suggested using &lt;strong&gt;multiprocessing&lt;/strong&gt; instead. I had no former experience with multiprocessing, but thanks to python's beautiful documentations and examples, I was quickly able to get a hold of it. I finished implementing multiprocessing and to my surprise, there was &lt;strong&gt;49.5% performance increase&lt;/strong&gt;. The script now only took 2:27 to complete.&lt;/p&gt;
-&lt;p&gt;The major functionality of the script were completed, and the optimisations were done. To improve the code quality and improve documentation, it was time to write &lt;strong&gt;unit tests&lt;/strong&gt; for the script. To write the tests I used &lt;code&gt;pytests&lt;/code&gt; framework which provides several benefits and higher level abstraction over the inbuilt &lt;code&gt;unittest&lt;/code&gt; module.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Things I learned:&lt;/strong&gt; Multiprocessing, pytests&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;future-work&quot;&gt;Future work&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Optimising the script for more performace increase&lt;/li&gt;
-&lt;li&gt;Making the script more CI-friendly&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;CC Link Checker is only possible due to the support and guidance of my mentors &lt;a href=&quot;https://creativecommons.org/author/aldenpage&quot;&gt;Alden Page&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/TimidRobot&quot;&gt;Timid Robot Zehta&lt;/a&gt;, who have been very supportive on every step of the project. Also I would like to thank engineering director &lt;a href=&quot;https://creativecommons.org/author/kgodey&quot;&gt;Kriti Godey&lt;/a&gt; for her continuous support.&lt;/p&gt;
-&lt;p&gt;You can follow the project on Github: &lt;a href=&quot;https://github.com/creativecommons/cc-link-checker&quot;&gt;creativecommons/cc-link-checker&lt;/a&gt;. You can also join the discussion on &lt;code&gt;#cc-link-checker&lt;/code&gt; on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;Slack&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The project is approaching its completion. Can't wait to see it in production.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Signing off&lt;br&gt;
-Bhumij Gupta&lt;/em&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/">
-    <title type="text">Visualize CC Catalog data - data processing</title>
-    <id>urn:uuid:ed9e120c-65fb-3c67-8409-d197b629709b</id>
-    <updated>2019-07-10T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/" />
-    <author>
-      <name>soccerdroid</name>
-    </author>
-    <content type="html">&lt;p&gt;Welcome to the data processing part of the GSoC project! In this blog post, I am going to tell you about my first thoughts with the real data, and give you some details of the implementation developed so far.&lt;/p&gt;
-&lt;h3 id=&quot;data-extraction&quot;&gt;Data Extraction&lt;/h3&gt;&lt;p&gt;Each month, Creative Commons uses &lt;a href=&quot;http://commoncrawl.org/&quot;&gt;Common Crawl&lt;/a&gt; data to find all domains that contain CC licensed content. As you might be guessing, the amount of data is very big, so the CC Catalog data is stored in &lt;a href=&quot;http://commoncrawl.org/the-data/get-started/&quot;&gt;S3&lt;/a&gt; buckets and &lt;a href=&quot;https://spark.apache.org/&quot;&gt;Apache Spark&lt;/a&gt; is used to extract the data from Common Crawl.&lt;/p&gt;
-&lt;p&gt;Spark is used again in this project to extract the data, in the form of parquet files, from the buckets. In order to facilitate the analysis and processing of the data, the files are converted to TSV (tab-separated values). The dataset I work on contains the following fields:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;provider_domain&lt;/code&gt;: name of the domain with licensed content.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cc_license&lt;/code&gt;: path to the Creative Commons license deed used by the &lt;code&gt;provider_domain&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;images&lt;/code&gt;: number of images showed in the &lt;code&gt;provider_domain&lt;/code&gt; web page.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;links&lt;/code&gt;: JSON field that contains a dictionary with domains as keys, and number of links as values. A link appears when &lt;code&gt;provider_domain&lt;/code&gt; has an href tag in its web page that points to the domain key.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Each file can easily contain dozens of millions of rows. My first aproach is to load the information in a Pandas Dataframe, but this can become very slow. Therefore, I will test the scripts for the data processing with a portion of the real data. Afterwards, I will use &lt;a href=&quot;https://dask.org/&quot;&gt;Dask&lt;/a&gt; with the entire dataset. Dask provides advanced parallelism for analytics, and has a behaviour similar to Pandas.&lt;/p&gt;
-&lt;h3 id=&quot;cleansing-and-filtering&quot;&gt;Cleansing and Filtering&lt;/h3&gt;&lt;p&gt;This step is about preparing the data for analysis and reducing the amount of data, in order to get a meaningful visualization. The data that comes from the S3 buckets is actually pretty neat (no strange characters for example, or incomplete rows). Nevertheless as a first step, duplicate rows are deleted (given by duplicate URLs). Next I, develop pruning rules. I try to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;exclude cycles (cyclic edges),&lt;/li&gt;
-&lt;li&gt;exclude lonely nodes,&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;avoid duplicates (for example, subdomains which are part of a single domain),&lt;/p&gt;
-&lt;p&gt;These rules are being developed on an on-going basis and new rules will be added based on the insights derived from the data.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;formatting-domain-names&quot;&gt;Formatting Domain Names&lt;/h3&gt;&lt;p&gt;In the dataset, we have domain names in the form of URLs. But we want to make the graph looks pretty well. This is why I am going to extract the domain name from the URLs we have in the dataset. For this purpose, I use &lt;a href=&quot;https://github.com/john-kurkowski/tldextract&quot;&gt;tldextract&lt;/a&gt;, which is a simple and complete open source library for extracting the parts of the domains (e.g. suffix, subdomain, domain name). This package is available in conda-forge too. Here is how tldextract works:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tldextract&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://forums.bbc.co.uk&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subdomain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;forums&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;bbc&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;co.uk&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#extract the domain name &amp;quot;bbc&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The main part is the extraction of the domain name. This will be applied to the _provider_domain_ and &lt;em&gt;links&lt;/em&gt; fields in order to build the graph. The domain names will be the ones displayed over the nodes, as depicted in &lt;a href=&quot;https://creativecommons.github.io/blog/entries/cc-datacatalog-visualization/&quot;&gt;my first blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;license-validation&quot;&gt;License Validation&lt;/h3&gt;&lt;p&gt;Another important aspect is the licenses types. In the dataset, we do not have the exact license name; rather, we have a URL that directs to the license definition on &lt;a href=&quot;https://creativecommons.org&quot;&gt;creativecommons.org&lt;/a&gt;. We have developed a &lt;a href=&quot;https://github.com/creativecommons/cccatalog/blob/master/src/providers/api/modules/etlMods.py#L75&quot;&gt;function&lt;/a&gt; with some regular expressions to validate the correct format of these URls, and extracts from them the license name and version. This information will be shown in the pie chart that appears after the user clicks on a node.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;'https://creativecommons.org/licenses/by/4.0/' #valid license
-'https://creativecommons.org/licenses/zero/' #non-valid license
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;coming-soon&quot;&gt;Coming Soon&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Data aggregation&lt;/li&gt;
-&lt;li&gt;Visualization with the data + perfectioning pruning/filtering rules&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can follow the project development in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
-Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-&lt;p&gt;Have a nice week!&lt;/p&gt;
-&lt;p&gt;Maria&lt;/p&gt;
 </content>
   </entry>
 </feed>

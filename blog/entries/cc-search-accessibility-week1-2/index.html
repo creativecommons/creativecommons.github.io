@@ -7,18 +7,26 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="CC Open Source Blog" />
+<meta property="og:title" content="CC Search, Setting up vue-i18n and internationalizing homepage" />
 
 
-<meta property="og:description" content="Welcome to CC&#39;s new technical blog! The CC technical team writes about what we&#39;re working on, updates about CC&#39;s software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our news feed here." />
 
-<meta property="og:url" content="/blog/entries/page/4/" />
+<meta property="og:description" content="These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them." />
+
+
+<meta property="og:url" content="/blog/entries/cc-search-accessibility-week1-2/" />
 <meta property="og:type" content="article" />
 
       
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/audit.png" />
+      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CC Open Source Blog">
-<meta name="twitter:description" content="Welcome to CC&#39;s new technical blog! The CC technical team writes about what we&#39;re working on, updates about CC&#39;s software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our news feed here.">
+<meta name="twitter:title" content="CC Search, Setting up vue-i18n and internationalizing homepage">
+<meta name="twitter:description" content="These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.">
+      
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/audit.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -26,7 +34,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC Open Source Blog — Creative Commons on GitHub</title>
+<title>CC Search, Setting up vue-i18n and internationalizing homepage — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -147,144 +155,132 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <p>Welcome to CC's new technical blog! The CC technical team writes about what we're working on, updates about CC's software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our <a href="/blog/feed.xml">news feed here</a>.</p>
-
+  <h2 class="mb-0">CC Search, Setting up vue-i18n and internationalizing homepage</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/building-distributed-indexer/">Building a Distributed Indexer for a Search Engine</a>
-        <p class="text-muted small">by <a href="/blog/authors/aldenpage/">
-  Alden Page
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/AyanChoudhary/">
+  Ayan Choudhary
 </a>
-          on 2019-12-11</p>
-      </li>
+  on Wednesday, 2020-06-10</p>
     
-      
-      <li>
-        <a href="/blog/entries/2019-11-25-empowering-collaboration/">Empowering Collaboration in the Commons</a>
-        <p class="text-muted small">by <a href="/blog/authors/TimidRobot/">
-  Timid Robot Zehta
-</a>
-          on 2019-11-25</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/ssr-ccsearch/">Server Side Rendering with Vue.JS on CC Search</a>
-        <p class="text-muted small">by <a href="/blog/authors/brenoferreira/">
-  Breno Ferreira
-</a>
-          on 2019-11-01</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/2019-09-25-ccgn-redesign/">Revamping the Creative Commons Global Network website</a>
-        <p class="text-muted small">by <a href="/blog/authors/hugosolar/">
-  Hugo Solar
-</a>
-          on 2019-09-25</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/2019-09-11-google-docs-plugin/">Creative Commons Google Docs Add-on</a>
-        <p class="text-muted small">by <a href="/blog/authors/brandonopened/">
-  Brandon Dorman
-</a>
-          on 2019-09-11</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-ranking/">Some thoughts on improving the relevance of images in CC Search</a>
-        <p class="text-muted small">by <a href="/blog/authors/aldenpage/">
-  Alden Page
-</a>
-          on 2019-09-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/introducing-cc-search-extension/">Introducing CC Search Extension</a>
-        <p class="text-muted small">by <a href="/blog/authors/makkoncept/">
-  Mayank Nader
-</a>
-          on 2019-09-03</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-datacatalog-data-thelinkedcommons/">The Linked Commons graph: the final vis</a>
-        <p class="text-muted small">by <a href="/blog/authors/soccerdroid/">
-  María Belén Guaranda Cabezas
-</a>
-          on 2019-09-03</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-wp-plugin-final-phase/">Creative Commons WordPress Plugin Final Phase</a>
-        <p class="text-muted small">by <a href="/blog/authors/ahmadbilaldev/">
-  Ahmad Bilal
-</a>
-          on 2019-08-23</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-chooser-lastweek/">GSoC cc-chooser Final Post</a>
-        <p class="text-muted small">by <a href="/blog/authors/akmadian/">
-  Ari Madian
-</a>
-          on 2019-08-22</p>
-      </li>
-    
-  </ul>
-
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">GSoC 2020: CC Search</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><p>These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.</p>
+<p>The accessibility issues are listed here:</p>
+<ol>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/996">Accessibility - Improve labels</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/997">Evaluate keyboard navigation effectiveness</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/998">Fix color contrast problems</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/999">Improve elements markup</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/issues/1000">Evaluate any accessibility linter tools</a></li>
+</ol>
+<p>The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.</p>
+<p>The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:</p>
+<p><img src="/blog/entries/cc-search-accessibility-week1-2/audit.png" alt="audit.png"></p>
+<p>The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type <code>string &lt;tag&gt;string&lt;/tag&gt; string</code> I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.</p>
+<pre><code>&lt;i18n path="footer.caption.label" tag="p" class="caption"&gt;
+    &lt;template v-slot:noted&gt;
+        &lt;a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener"&gt;{{$t('footer.caption.noted')}}&lt;/a&gt;
+    &lt;/template&gt;
+    &lt;template v-slot:attribution&gt;
+        &lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&gt;
+        {{$t('footer.caption.attribution')}}
+        &lt;/a&gt;
+    &lt;/template&gt;
+    &lt;template v-slot:icons&gt;
+        &lt;a href="https://fontawesome.com/" target="_blank" rel="noopener" class="has-text-white"&gt;
+        {{$t('footer.caption.icons')}}
+        &lt;/a&gt;
+    &lt;/template&gt;
+&lt;/i18n&gt;
+</code></pre>
+<p>The final outcome looks pretty good:</p>
+<p><img src="/blog/entries/cc-search-accessibility-week1-2/final.png" alt="final.png"></p>
+<p>And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:</p>
+<ol>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1007">setup internationalization plugin</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1013">Internationalize homepage, header and footer</a></li>
+</ol>
+<p>The progress of the project can be tracked on <a href="https://github.com/creativecommons/cccatalog-frontend">cc-search</a></p>
+<p>CC Search Accessiblity is my GSoC 2020 project under the guidance of <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, who is the primary mentor for this project, <a href="https://creativecommons.org/author/annacreativecommons-org/">Anna Tumadóttir</a> for helping all along and engineering director <a href="https://creativecommons.org/author/kriticreativecommons-org/">Kriti
+Godey</a>, have been very supportive.</p>
+</div>
   
-    
-  <ul class="pagination table-responsive mb-2">
-    
-      <li class="page-item"><a class="page-link" href="/blog/entries/page/3/">Previous</a></li>
-    
-    
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>GSoC 2020: CC Search</em> series</h5>
+    <ul class="toc list-unstyled">
       
-        <li class="page-item"><a class="page-link" href="/blog/entries/">1</a></li>
+        <li>
+        
+          <a href="/blog/entries/cc-search-accessibility-and-internationalization/">CC Search, Proposal Drafting and Community Bonding</a>
+        
+        </li>
       
-    
+        <li>
+        
+          <strong>CC Search, Setting up vue-i18n and internationalizing homepage</strong>
+        
+        </li>
       
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/2/">2</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/3/">3</a></li>
-      
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/entries/page/4/">4</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/5/">5</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/6/">6</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/7/">7</a></li>
-      
-    
-    
-      <li class="page-item"><a class="page-link" href="/blog/entries/page/5/">Next</a></li>
-    
-  </ul>
-
+    </ul>
+    <hr/>
+  </div>
   
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/cc-search/ ">cc-search</a>,
+          
+            
+            
+            <a href=" /blog/categories/community/ ">community</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>
+          
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-week1-2"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
