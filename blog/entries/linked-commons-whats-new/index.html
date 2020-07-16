@@ -7,17 +7,24 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Linked Commons: What&#39;s new?" />
 
 
 
-<meta property="og:url" content="/blog/categories/gsoc-2020/" />
+<meta property="og:description" content="IntroductionLinked Commons is a visualization project which aims to showcase and establish a relationship between millions of data points of licensed content metadata using graphs. Since it is the first blog of this new series, let’s discuss the core ideology of having this project and then about new features. Development of all components mentioned in this blog is complete and has been successfully integrated, so do check out the development version. Happy Reading!" />
+
+
+<meta property="og:url" content="/blog/entries/linked-commons-whats-new/" />
 <meta property="og:type" content="article" />
 
       
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/linked-commons-whats-new/new-design-light.png" />
+      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Linked Commons: What&#39;s new?">
+<meta name="twitter:description" content="IntroductionLinked Commons is a visualization project which aims to showcase and establish a relationship between millions of data points of licensed content metadata using graphs. Since it is the first blog of this new series, let’s discuss the core ideology of having this project and then about new features. Development of all components mentioned in this blog is complete and has been successfully integrated, so do check out the development version. Happy Reading!">
+      
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/linked-commons-whats-new/new-design-light.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -25,7 +32,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>gsoc-2020 - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>Linked Commons: What&#39;s new? — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -146,50 +153,121 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts categorized "gsoc-2020"</h2>
+  <h2 class="mb-0">Linked Commons: What&#39;s new?</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/linked-commons-whats-new/">Linked Commons: What&#39;s new?</a>
-        <p class="text-muted small">by <a href="/blog/authors/subhamX/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/subhamX/">
   Subham Sahu
 </a>
-          on 2020-07-16</p>
-      </li>
+  on Thursday, 2020-07-16</p>
     
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">GSoC 2020: The Linked Commons</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><h2 id="introduction">Introduction</h2><p><strong>Linked Commons</strong> is a visualization project which aims to showcase and establish a relationship between millions of data points of licensed content metadata using graphs. Since it is the first blog of this new series, let’s discuss the core ideology of having this project and then about new features. Development of all components mentioned in this blog is complete and has been successfully integrated, so do check out the development version. Happy Reading!</p>
+<h2 id="motivation-and-why-does-visualization-matter?">Motivation and why does visualization matter?</h2><p>The number of websites using creative commons licensed content is very huge and growing very rapidly. The CC catalog hosts these millions of data points and each node contains information about the URL of the websites and the licenses used. One can surely do rigorous data analysis, but this would only be interpretable by a few people with a technical background.  On the other hand,  by visualizing data, it becomes incredibly easier to identify patterns and trends. As an old saying, a picture is worth a thousand words. That’s the core ideology of the Linked Commons, i.e. to show the millions of licensed content metadata and how these nodes are connected in a visually appealing form on the HTML canvas like a picture.</p>
+<h2 id="task-1:-code-refactoring">Task 1: Code Refactoring</h2><p>My first task was to refactor the code and migrate it to react. The existing codebase had all core functionalities, but we wanted to make it more modular, improve the design, code readability, and reduce complexity. This will help us maintain this project in the long run. Also, it will be easier for the community to contribute and understand the logic.</p>
+<h2 id="task-2:-graph-filtering">Task 2: Graph Filtering</h2><h3 id="need-for-filtering-methods">Need for Filtering Methods</h3><div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="big-graph.png" alt="Large Graph" style="border: 1px solid black">
+        <figcaption style="font-weight: 500;">Pic showing clustors of a Graph with 9982 nodes 5000 links</figcaption>
+    </figure>
+</div><p>The aggregate data that cc catalog has is in hundreds of millions. Rendering a graph with these many nodes will be a nightmare for the browser’s rendering and JavaScript engine. Just like we divide any standard textbook into chapters, we thought about adding filtering options that enable the user to retrieve precise information according to certain criteria selected by them. Hence,  we need to have a way in which we can filter the aggregate data into smaller chunks.</p>
+<h3 id="what-filtering-methods?">What filtering methods?</h3><p>After brainstorming for a while, we converged and agreed to have <strong>filtering based on node name and distance</strong>. The primary reason behind this was, it is kind of basic that a person would like to look for his/her favourite node and its neighbours. This is not the end for sure, and many more filtering methods will be added, maybe with the support of chaining one after another. This is just a baby step!</p>
+<h3 id="server-side-filtering-vs-client-side-filtering?">Server-side Filtering vs Client-Side Filtering?</h3><p>Now that we know on what query params the filter should work, we need to decide where to do the filtering. Should we do it on the client machine or do it on our server and pass the processed and filtered data to the client? In any filtering method, we need to traverse the whole graph. The JS engine in the browser is doing rendering stuff, complex calculation, etc. With all these processes, doing a full traversal of the dataset having more than a million nodes is going to take a lot of time and memory. The above claim assumes that we have a moderately dense graph. On the other hand, another strategy to accomplish graph filtering could be to delegate that load to a server, and the client’s browser can ask for a fresh copy of the filtered data whenever needed. As mentioned above the client-side filtering has serious shortcomings and user experience won’t be very good with browser freezing and frame drops. So, that's why we decided to go with the latter option i.e server-side filtering.</p>
+<div style="text-align: center;">
+    <figure>
+        <img src="filtering-in-action.gif" alt="Filtering In Action" style="border: 1px solid black">
+        <figcaption>Filtering In Action</figcaption>
+    </figure>
+</div><h2 id="task-3:-new-design">Task 3: New Design</h2><p>My third task was to upgrade the front-end design of the project. It now has a very clean and refreshing look along with the support for both light and dark theme. Check out our webpage in dark mode and do let us know if it saves your PC energy consumption (As claimed by some websites). Now you all can visit the Linked Commons webpage at mid-night too, no strain to the eyes. ;)</p>
+<div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="new-design-light.png" alt="Light Theme" style="border: 1px solid black">
+        <figcaption>Linked Commons - Light Theme</figcaption>
+    </figure>
+</div><h2 id="next-steps">Next steps</h2><p>In the next two weeks, I will be working on the following features.</p>
+<ul>
+<li>Implement suggestions API on the server and integrate it with the frontend</li>
+<li>Update the visualization with a more recent and bigger dataset</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2><p>Overall, it was fantastic and rejuvenating experience working on these tasks. Now that you have read this blog till the end, I hope that you enjoyed it. For more information visit our <a href="https://github.com/creativecommons/cccatalog-dataviz/">Github repo</a>. We are looking forward to hearing from you on linked commons. Our <a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz">slack</a> doors are always open to you, see you there. :)</p>
+</div>
+  
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>GSoC 2020: The Linked Commons</em> series</h5>
+    <ul class="toc list-unstyled">
       
-      <li>
-        <a href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a>
-        <p class="text-muted small">by <a href="/blog/authors/charini/">
-  Charini Nanayakkara
-</a>
-          on 2020-06-24</p>
-      </li>
-    
+        <li>
+        
+          <strong>Linked Commons: What&#39;s new?</strong>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
-        <p class="text-muted small">by <a href="/blog/authors/srinidhi/">
-  K S Srinidhi Krishna
-</a>
-          on 2020-06-10</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-browser-extension-upcoming-improvements/">Upcoming improvements/features in CC Search Extension</a>
-        <p class="text-muted small">by <a href="/blog/authors/makkoncept/">
-  Mayank Nader
-</a>
-          on 2020-06-01</p>
-      </li>
-    
-  </ul>
+    </ul>
+    <hr/>
+  </div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/announcements/ ">announcements</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-catalog/ ">cc-catalog</a>,
+          
+            
+            
+            <a href=" /blog/categories/product/ ">product</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-dataviz/ ">cc-dataviz</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
-  <hr>
-  <strong><a href="/blog/categories/">All Categories</a></strong>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/linked-commons-whats-new"; this.page.url = "http://opensource.creativecommons.org/blog/entries/linked-commons-whats-new/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
