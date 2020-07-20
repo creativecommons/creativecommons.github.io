@@ -1105,7 +1105,7 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;li&gt;Still working to improve where I am now &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;whats-next?&quot;&gt;Whats next?&lt;/h2&gt;&lt;p&gt;I will continue to contribute to CC open source projects especially to the Vocabulary project that I have become a part of. I would love to see the application of Vocabulary to the development of other CC platforms and applications.  I also want to apply the skills that I have acquired to get a full-time software developer position.&lt;/p&gt;
-&lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
+&lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb/&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey/&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">
@@ -2825,7 +2825,7 @@ brainchild comes of age.&lt;/p&gt;
 &lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;There are a number of components under construction right now such as cards and social media buttons. They will be
 published on the styleguide very soon. After these, the final month, phase III of of the project's GSoC term will be
 spent continuously polishing the project to suit the needs of all CC apps as discovered during the integration with
-CC Search as mentioned by &lt;a href=&quot;/blog/authors/brenoferreira&quot;&gt;Breno Ferreira&lt;/a&gt; in the 'Next steps' in his post on
+CC Search as mentioned by &lt;a href=&quot;/blog/authors/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt; in the 'Next steps' in his post on
 &lt;a href=&quot;/blog/entries/cc-search-redesign/&quot;&gt;CC Search Redesign&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In keeping with the culinary theme of this post, think of it as sweet sweet dessert.&lt;/p&gt;
 &lt;h3 id=&quot;closing-note&quot;&gt;Closing note&lt;/h3&gt;&lt;p&gt;In closing, I would like to thank my GSoC mentor Hugo Solar as always for always being present to help and refer me to
