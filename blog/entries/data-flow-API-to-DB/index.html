@@ -7,17 +7,34 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Data flow: from API to DB" />
 
 
 
-<meta property="og:url" content="/blog/series/gsoc-2020-cccatalog/" />
+<meta property="og:description" content="Introduction The CCCatalog project  handles the flow of image metadata from the source or provider
+and loads it to the database, which is then surfaced to the CC
+search tool. The workflows are set up for each provider to gather
+metadata about CC licensed images. These workflows are handled with the help of
+Apache Airflow. Airflow is an open source tool that helps us to schedule and
+monitor workflows." />
+
+
+<meta property="og:url" content="/blog/entries/data-flow-API-to-DB/" />
 <meta property="og:type" content="article" />
 
       
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/loader_workflow.png" />
+      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Data flow: from API to DB">
+<meta name="twitter:description" content="Introduction The CCCatalog project  handles the flow of image metadata from the source or provider
+and loads it to the database, which is then surfaced to the CC
+search tool. The workflows are set up for each provider to gather
+metadata about CC licensed images. These workflows are handled with the help of
+Apache Airflow. Airflow is an open source tool that helps us to schedule and
+monitor workflows.">
+      
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/loader_workflow.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -25,7 +42,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>GSoC 2020: CC catalog - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>Data flow: from API to DB — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -146,41 +163,156 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts in series "GSoC 2020: CC catalog"</h2>
+  <h2 class="mb-0">Data flow: from API to DB</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/data-flow-API-to-DB/">Data flow: from API to DB</a>
-        <p class="text-muted small">by <a href="/blog/authors/srinidhi/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/srinidhi/">
   K S Srinidhi Krishna
 </a>
-          on 2020-07-22</p>
-      </li>
+  on Wednesday, 2020-07-22</p>
     
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">GSoC 2020: CC catalog</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><h2 id="introduction-the-cc">Introduction The CC</h2><p>Catalog project  handles the flow of image metadata from the source or provider
+and loads it to the database, which is then surfaced to the <a href="https://ccsearch.creativecommons.org/about">CC
+search</a> tool. The workflows are set up for each provider to gather
+metadata about CC licensed images. These workflows are handled with the help of
+Apache Airflow. Airflow is an open source tool that helps us to schedule and
+monitor workflows.</p>
+<h2 id="airflow-intro">Airflow intro</h2><p>Apache Airflow is an open source tool that helps us to schedule tasks and
+monitor workflows . It provides an easy to use UI that makes managing tasks
+easy.  In Airflow, the tasks we want to schedule are organised in DAGs
+(Directed Acyclic Graphs). DAGs consist of a collection of tasks, and a
+relationship defined among these tasks, so that they run in an organised
+manner. DAGs files are standard python files that are loaded from  the defined
+<code>DAG_FOLDER</code> on a host. Airflow selects all the python files in the
+<code>DAG_FOLDER</code> that have a DAG instance defined globally, and executes them to
+create the DAG objects.</p>
+<h2 id="cc-catalog-workflow">CC Catalog Workflow</h2><p>In the CC catalog, Airflow is set up inside a docker container along with other
+services . The loader and provider workflows are inside the <code>dags</code> directory in
+the repo <a href="https://github.com/creativecommons/cccatalog/tree/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags">dag folder</a>. Provider workflows are set up to pull metadata
+about CC licensed images from the respective providers , the data pulled is
+structured into a standardised format and written into a TSV (Tab Separated
+Values) file locally. These TSV files are then loaded into S3 and then finally
+to PostgreSQL DB by the loader workflow.</p>
+<h2 id="provider-api-workflow">Provider API workflow</h2><p>The provider workflows are usually scheduled in one of two time frequencies,
+daily or monthly.</p>
+<p>Providers such as Flickr or Wikimedia Commons that are filtered using the date
+parameter are usually scheduled for daily jobs. These providers have a large
+volume of continuously changing data, and so daily updates are required to keep
+the data in sync.</p>
+<p>Providers that are scheduled for monthly ingestion are ones with a relativley
+low volume of data, or for which filtering by date is not possible. This means
+we need to ingest the entire collection at once. Examples are museum providers
+like the <a href="https://collection.sciencemuseumgroup.org.uk/">Science museum UK</a> or <a href="https://www.smk.dk/">Statens Museum for
+Kunst</a>. We don’t expect museum providers to change data on a daily basis.</p>
+<p>The scheduling of the DAGs by the scheduler daemons depends on a few
+parameters.</p>
+<ul>
+<li><code>start_date</code> - it denotes the starting date from which the
+task should begin running. </li>
+<li><code>schedule_interval</code> - it denotes the interval between subsequent runs, it
+can be specified with airflow keyword strings like “@daily”, “@weekly”,
+“@monthly”, “@yearly” other than these we can also schedule the interval using
+cron expression.</li>
+</ul>
+<p>Example: Cleveland museum is currently scheduled for a monthly crawl with a
+starting date as <code>2020-01-15</code>. <a href="https://github.com/creativecommons/cccatalog/blob/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags/cleveland_museum_workflow.py">cleveland_museum_workflow</a></p>
+<h2 id="loader-workflow">Loader workflow</h2><p>The data from the provider scripts are not directly loaded into S3. Instead,
+they are stored in a TSV file on the local disk, and the tsv_postgres workflow
+handles loading of data to S3, and eventually PostgreSQL. The DAG starts by
+calling the task to stage the oldest tsv file from the output directory of the
+provider scripts to the staging directory. Next, two tasks run in parallel, one
+loads the tsv file in the staging directory to S3 , while the other creates the
+loading table in the PostgreSQL database. Once the data is loaded to S3 and the
+loading table has been created, the data from S3 is loaded to the intermediate
+loading table and then finally inserted into the image table. If loading from
+S3 fails the data is loaded to PostgreSQL from the locally stored tsv file.
+When the data has been successfully transferred to the image table, the
+intermediate loading table is dropped and the tsv files in the staging
+directory are deleted. If the copying the tsv files to S3 fails or then those
+files are moved to the failure directory for future inspection.</p>
+<div style="text-align:center;">
+    <img src="loader_workflow.png" width="1000px"/>
+    <p> Loader workflow </p>
+</div><h2 id="acknowledgement">Acknowledgement</h2><p>I would like to thank Brent Moran for helping me write this blog post.</p>
+</div>
+  
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>GSoC 2020: CC catalog</em> series</h5>
+    <ul class="toc list-unstyled">
       
-      <li>
-        <a href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a>
-        <p class="text-muted small">by <a href="/blog/authors/charini/">
-  Charini Nanayakkara
-</a>
-          on 2020-06-24</p>
-      </li>
-    
+        <li>
+        
+          <a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
-        <p class="text-muted small">by <a href="/blog/authors/srinidhi/">
-  K S Srinidhi Krishna
-</a>
-          on 2020-06-10</p>
-      </li>
-    
-  </ul>
+        <li>
+        
+          <a href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a>
+        
+        </li>
+      
+        <li>
+        
+          <strong>Data flow: from API to DB</strong>
+        
+        </li>
+      
+    </ul>
+    <hr/>
+  </div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/cc-catalog/ ">cc-catalog</a>,
+          
+            
+            
+            <a href=" /blog/categories/airflow/ ">airflow</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
+          
+            
+            
+            <a href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
-  <hr>
-  <strong><a href="/blog/series/">All Series</a></strong>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/data-flow-API-to-DB"; this.page.url = "http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

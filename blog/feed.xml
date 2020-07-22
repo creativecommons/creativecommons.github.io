@@ -2,13 +2,86 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-07-20T00:00:00Z</updated>
+  <updated>2020-07-22T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/">
+    <title type="text">Data flow: from API to DB</title>
+    <id>urn:uuid:44db39c0-d562-3a62-b5c5-ac4babcbbe40</id>
+    <updated>2020-07-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/" />
+    <author>
+      <name>srinidhi</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;introduction-the-cc&quot;&gt;Introduction The CC&lt;/h2&gt;&lt;p&gt;Catalog project  handles the flow of image metadata from the source or provider
+and loads it to the database, which is then surfaced to the &lt;a href=&quot;https://ccsearch.creativecommons.org/about&quot;&gt;CC
+search&lt;/a&gt; tool. The workflows are set up for each provider to gather
+metadata about CC licensed images. These workflows are handled with the help of
+Apache Airflow. Airflow is an open source tool that helps us to schedule and
+monitor workflows.&lt;/p&gt;
+&lt;h2 id=&quot;airflow-intro&quot;&gt;Airflow intro&lt;/h2&gt;&lt;p&gt;Apache Airflow is an open source tool that helps us to schedule tasks and
+monitor workflows . It provides an easy to use UI that makes managing tasks
+easy.  In Airflow, the tasks we want to schedule are organised in DAGs
+(Directed Acyclic Graphs). DAGs consist of a collection of tasks, and a
+relationship defined among these tasks, so that they run in an organised
+manner. DAGs files are standard python files that are loaded from  the defined
+&lt;code&gt;DAG_FOLDER&lt;/code&gt; on a host. Airflow selects all the python files in the
+&lt;code&gt;DAG_FOLDER&lt;/code&gt; that have a DAG instance defined globally, and executes them to
+create the DAG objects.&lt;/p&gt;
+&lt;h2 id=&quot;cc-catalog-workflow&quot;&gt;CC Catalog Workflow&lt;/h2&gt;&lt;p&gt;In the CC catalog, Airflow is set up inside a docker container along with other
+services . The loader and provider workflows are inside the &lt;code&gt;dags&lt;/code&gt; directory in
+the repo &lt;a href=&quot;https://github.com/creativecommons/cccatalog/tree/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags&quot;&gt;dag folder&lt;/a&gt;. Provider workflows are set up to pull metadata
+about CC licensed images from the respective providers , the data pulled is
+structured into a standardised format and written into a TSV (Tab Separated
+Values) file locally. These TSV files are then loaded into S3 and then finally
+to PostgreSQL DB by the loader workflow.&lt;/p&gt;
+&lt;h2 id=&quot;provider-api-workflow&quot;&gt;Provider API workflow&lt;/h2&gt;&lt;p&gt;The provider workflows are usually scheduled in one of two time frequencies,
+daily or monthly.&lt;/p&gt;
+&lt;p&gt;Providers such as Flickr or Wikimedia Commons that are filtered using the date
+parameter are usually scheduled for daily jobs. These providers have a large
+volume of continuously changing data, and so daily updates are required to keep
+the data in sync.&lt;/p&gt;
+&lt;p&gt;Providers that are scheduled for monthly ingestion are ones with a relativley
+low volume of data, or for which filtering by date is not possible. This means
+we need to ingest the entire collection at once. Examples are museum providers
+like the &lt;a href=&quot;https://collection.sciencemuseumgroup.org.uk/&quot;&gt;Science museum UK&lt;/a&gt; or &lt;a href=&quot;https://www.smk.dk/&quot;&gt;Statens Museum for
+Kunst&lt;/a&gt;. We don’t expect museum providers to change data on a daily basis.&lt;/p&gt;
+&lt;p&gt;The scheduling of the DAGs by the scheduler daemons depends on a few
+parameters.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;start_date&lt;/code&gt; - it denotes the starting date from which the
+task should begin running. &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;schedule_interval&lt;/code&gt; - it denotes the interval between subsequent runs, it
+can be specified with airflow keyword strings like “@daily”, “@weekly”,
+“@monthly”, “@yearly” other than these we can also schedule the interval using
+cron expression.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Example: Cleveland museum is currently scheduled for a monthly crawl with a
+starting date as &lt;code&gt;2020-01-15&lt;/code&gt;. &lt;a href=&quot;https://github.com/creativecommons/cccatalog/blob/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags/cleveland_museum_workflow.py&quot;&gt;cleveland_museum_workflow&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;loader-workflow&quot;&gt;Loader workflow&lt;/h2&gt;&lt;p&gt;The data from the provider scripts are not directly loaded into S3. Instead,
+they are stored in a TSV file on the local disk, and the tsv_postgres workflow
+handles loading of data to S3, and eventually PostgreSQL. The DAG starts by
+calling the task to stage the oldest tsv file from the output directory of the
+provider scripts to the staging directory. Next, two tasks run in parallel, one
+loads the tsv file in the staging directory to S3 , while the other creates the
+loading table in the PostgreSQL database. Once the data is loaded to S3 and the
+loading table has been created, the data from S3 is loaded to the intermediate
+loading table and then finally inserted into the image table. If loading from
+S3 fails the data is loaded to PostgreSQL from the locally stored tsv file.
+When the data has been successfully transferred to the image table, the
+intermediate loading table is dropped and the tsv files in the staging
+directory are deleted. If the copying the tsv files to S3 fails or then those
+files are moved to the failure directory for future inspection.&lt;/p&gt;
+&lt;div style=&quot;text-align:center;&quot;&gt;
+    &lt;img src=&quot;loader_workflow.png&quot; width=&quot;1000px&quot;/&gt;
+    &lt;p&gt; Loader workflow &lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank Brent Moran for helping me write this blog post.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/what-is-up-ccos/">
     <title type="text">What is up? - CCOS Revamp</title>
     <id>urn:uuid:db2b95cd-c221-3f56-9ffb-8b165676fdbe</id>
@@ -2741,168 +2814,6 @@ These workflows work perfectly on chrome. Whereas, Firefox prompts the user to c
 &lt;/ul&gt;
 &lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
-    <title type="text">CC Vocabulary: the main course</title>
-    <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/" />
-    <author>
-      <name>dhruvkb</name>
-    </author>
-    <content type="html">&lt;p&gt;A little over seven weeks ago we initialised CC Vocabulary. It was a simple recipe, a set of components for other apps to
-use for consistency and ease of development.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Week 1:&lt;/strong&gt;    we assembled the ingredients: &lt;em&gt;Vue CLI, Vue Styleguidist, Theo, Lodash, Font Awesome&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Week 2:&lt;/strong&gt;    we cleaned up the kitchen: &lt;em&gt;Dockerised our project and set up CI/CD&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Week 3:&lt;/strong&gt;    we ground spices: &lt;em&gt;developed and incorporated design tokens&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Weeks 4-5:&lt;/strong&gt; we cooked appetizers: &lt;em&gt;our collection of simple Elements&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Weeks 6-7:&lt;/strong&gt; we cooked the main dishes: &lt;em&gt;our collection of very functional Patterns and Layouts&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Last week:&lt;/strong&gt; we garnished these dishes: &lt;em&gt;a splash of styling for the &lt;a href=&quot;https://opensource.creativecommons.org/cc-vocabulary&quot;&gt;styleguide&lt;/a&gt; itself&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Today, main course is served, &lt;em&gt;hot&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Grab your forks, knives and spoons for today we announce that CC Vocabulary is now very stable, has a lot of valuable,
-nay indispensable features such as mobile responsiveness and i18n and, best of all, embodies the vibrancy of Creative
-Commons in its versatile customisability and its collection of 36 hues and 8 greyscale tones usable across dozens of
-elements and patterns.&lt;/p&gt;
-&lt;p&gt;Based on the facts that fewer and fewer changes are being made to the core functionality with every commit, that there
-is a definite coding and nomenclature scheme, that desirable consistency has been achieved across its myriad of
-offerings and that a number of features have been frozen, I am very confident that CC Vocabulary is nearing its public
-release and into version &lt;code&gt;1.0.0&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;As we head into the next phase of Vocabulary, i.e. using it in our very own apps, here is a comprehensive look on where
-we stand right now in terms of what the library provides. The goal of this exercise is to determine what elements and/or
-patterns have been overlooked and to determine additional functionality that may be required in some of them. Since
-every component can be customised tweaked and extended, an interactive exploration is preferable but to get you hyped up
-for the meal, here are some pictures of what to expect.&lt;/p&gt;
-&lt;p&gt;If you are a developer of CC applications, please take the time to visit the styleguide and play around with these
-components so that you may identify shortcomings or ideas for improvement. If you are an explorer, do so for the thrill
-of seeing a design system take shape. Any and all contributions are welcome in this crucial moment as our beloved
-brainchild comes of age.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Presenting to you our special menu of Vue components.&lt;/strong&gt;&lt;/p&gt;
-&lt;table class=&quot;table table-striped&quot;&gt;
-&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
-&lt;th&gt;&lt;strong&gt;Component&lt;/strong&gt;&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;&lt;strong&gt;Image&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Tokens&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Colors&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/colors.png&quot; alt=&quot;colors_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Fonts&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/fonts.png&quot; alt=&quot;fonts_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spaces&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/spaces.png&quot; alt=&quot;spaces_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Elements&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Button&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/button.png&quot; alt=&quot;button_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;InputField&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/inputfield.png&quot; alt=&quot;inputfield_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;SelectField&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/selectfield.png&quot; alt=&quot;selectfield_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Heading&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/heading.png&quot; alt=&quot;heading_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Paragraph&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/paragraph.png&quot; alt=&quot;paragraph_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;LicenseBadge&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/licensebadge.png&quot; alt=&quot;licensebadge_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;LicenseIconography&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/licenseiconography.png&quot; alt=&quot;licenseiconography_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;ProgressBar&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/progressbar.png&quot; alt=&quot;progressbar_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Shield&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/shield.png&quot; alt=&quot;shield_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Layouts&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Container&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/container.png&quot; alt=&quot;container_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Grid&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/grid.png&quot; alt=&quot;grid_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Table&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/table.png&quot; alt=&quot;table_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Patterns&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Header&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/header.png&quot; alt=&quot;header_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Footer&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/footer.png&quot; alt=&quot;footer_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Locale&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/locale.png&quot; alt=&quot;locale_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Hello&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/hello.png&quot; alt=&quot;hello_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Templates&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Index&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;orange.png&quot; onclick=&quot;this.src = 'green.png'&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;There are a number of components under construction right now such as cards and social media buttons. They will be
-published on the styleguide very soon. After these, the final month, phase III of of the project's GSoC term will be
-spent continuously polishing the project to suit the needs of all CC apps as discovered during the integration with
-CC Search as mentioned by &lt;a href=&quot;/blog/authors/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt; in the 'Next steps' in his post on
-&lt;a href=&quot;/blog/entries/cc-search-redesign/&quot;&gt;CC Search Redesign&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In keeping with the culinary theme of this post, think of it as sweet sweet dessert.&lt;/p&gt;
-&lt;h3 id=&quot;closing-note&quot;&gt;Closing note&lt;/h3&gt;&lt;p&gt;In closing, I would like to thank my GSoC mentor Hugo Solar as always for always being present to help and refer me to
-documentation that I would likely never have found myself. Also I extend thanks to Kriti Godey for regularly keeping
-in touch and directing me to the right people to contact whenever in difficulty.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;CC Vocabulary is for, by, inspired from and due to the diverse and active Creative Commons community.&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
-See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
 </content>
   </entry>
 </feed>
