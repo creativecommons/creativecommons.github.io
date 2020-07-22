@@ -7,17 +7,20 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="What is up? - CCOS Revamp" />
 
 
 
-<meta property="og:url" content="/blog/categories/outreachy/" />
+<meta property="og:description" content="In my previous blog, I demonstrated what my Outreachy project was about. Here I will talk about my progress in the past 7 weeks." />
+
+
+<meta property="og:url" content="/blog/entries/what-is-up-ccos/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="What is up? - CCOS Revamp">
+<meta name="twitter:description" content="In my previous blog, I demonstrated what my Outreachy project was about. Here I will talk about my progress in the past 7 weeks.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -25,7 +28,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>outreachy - CC Open Source Blog — Creative Commons on GitHub</title>
+<title>What is up? - CCOS Revamp — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -146,194 +149,89 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2>All posts categorized "outreachy"</h2>
+  <h2 class="mb-0">What is up? - CCOS Revamp</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/what-is-up-ccos/">What is up? - CCOS Revamp</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/dhruvi16/">
   Dhruvi Butti
 </a>
-          on 2020-07-20</p>
-      </li>
+  on Monday, 2020-07-20</p>
     
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">Outreachy May 2020 round: CC Open source</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><p>In my previous blog, I demonstrated what my Outreachy project was about. Here I will talk about my progress in the past 7 weeks.</p>
+<h3 id="the-set-up">The Set-Up -</h3><p>The <a href="https://opensource.creativecommons.org/">Creative Commons Open Source</a> website is built using <a href="https://www.getlektor.com/">Lektor</a>. I was not very familiar with it, so I started by going through the documentation and the official website code. I learned how awesome it is and can also be used by non-coders. I got familiar with the <a href="https://palletsprojects.com/p/jinja/">jinja templates</a> and working of themes in a Lektor app. For integrating new styles from Vocabulary, I replaced <code>templates/</code> folder with a <code>theme/</code> folder. Here is the link to how <a href="https://www.getlektor.com/docs/templates/">templates</a> work in Lektor.</p>
+<p>As the revamping process is gradual, there was a need of setting up a staging environment where we could test the website. Deploying the branch that consists of the ongoing changes was pretty easy, I just followed the official <a href="https://www.netlify.com/blog/2016/05/25/lektor-on-netlify-a-step-by-step-guide/">documentation</a> provided by Netlify and deployed it.</p>
+<h3 id="adding-new-components-to-vocabulary">Adding New Components to Vocabulary -</h3><p>The <a href="https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups">mock-ups</a> for the new CCOS website extensively use Vocabulary components, styles, and patterns, and it had components that were not available in Vocabulary. So, I worked on building them from scratch. I enjoyed this part a bit too much. And also this was a part of the project, I did not think would take up like 2 weeks but it did. I enjoyed questioning the scope, the design, the experience of the components, and getting satisfactory answers. Maintaining the practices, focusing on details were fun things to do. It felt like I own those components. You can check them out <a href="https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page">here</a> and also use them wherever needed.</p>
+<h3 id="updating-templates-of-the-theme">Updating Templates of the Theme -</h3><p>I started by updating the home page template. I try to make the code cleaner and more readable. Going through the <a href="https://www.getlektor.com/">Lektor</a> documentation, I came across different ways to do so. One of them was <a href="/blog/entries/what-is-up-ccos/(https://www.getlektor.com/">flow blocks</a>), I like how it makes a template more modular and readable so I implemented the home page using flow blocks. This one after one, I started updating every template. For now, I have updated 10 templates and I plan to update the remaining in upcoming weeks.</p>
+<h3 id="my-experience-so-far">My Experience so far -</h3><p>This has been one heck of a journey for me. I have never collaborated with such a huge open-source organization and so that was something new for me. I have learned a lot of things both technical and non-technical so far. I have become more alert about the code I write, this journey has helped me improve the questions I ask to myself while writing code or thinking about the solution, I got to learn about new technologies such as <a href="https://www.getlektor.com/">Lektor</a>, <a href="https://webpack.js.org/">Webpack</a>, <a href="https://sass-lang.com/documentation/syntax">SCSS</a> and many more. I am just very glad to be a part of this.</p>
+</div>
+  
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>Outreachy May 2020 round: CC Open source</em> series</h5>
+    <ul class="toc list-unstyled">
       
-      <li>
-        <a href="/blog/entries/legal-database-coding-mid-term/">CC Legal Database: Coding and Mid-term status</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
-  Krystle Salazar
-</a>
-          on 2020-07-08</p>
-      </li>
-    
+        <li>
+        
+          <a href="/blog/entries/integration-vocabulary-ccos/">Integration of Vocabulary with CCOS.</a>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/integration-vocabulary-ccos/">Integration of Vocabulary with CCOS.</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-07-08</p>
-      </li>
-    
+        <li>
+        
+          <strong>What is up? - CCOS Revamp</strong>
+        
+        </li>
       
-      <li>
-        <a href="/blog/entries/legal-database-design/">CC Legal Database: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
-  Krystle Salazar
-</a>
-          on 2020-06-09</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/resource-gathering/">Resource Gathering</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-06-09</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/legal-database-a-new-beginning/">CC Legal Database: a new beginning</a>
-        <p class="text-muted small">by <a href="/blog/authors/krysal/">
-  Krystle Salazar
-</a>
-          on 2020-05-22</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/takeaways-from-my-FOSS-journey/">Takeaways from my FOSS journey!</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-05-22</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-outcomes/">Improving CC License Chooser: Outcomes</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-05-21</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/why-lektor/">Why Lektor?</a>
-        <p class="text-muted small">by <a href="/blog/authors/dhruvi16/">
-  Dhruvi Butti
-</a>
-          on 2020-05-15</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-week9-13/">CC Vocabulary - My Internship Ended</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-04-02</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</a>
-        <p class="text-muted small">by <a href="/blog/authors/hugosolar/">
-  Hugo Solar
-</a>
-          on 2020-03-05</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/2020-03-05-participe-gsoc/">Participe do Google Summer of Code / Outreachy</a>
-        <p class="text-muted small">by <a href="/blog/authors/brenoferreira/">
-  Breno Ferreira
-</a>
-          on 2020-03-05</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-4/">CC Platform Toolkit Revamp - 4</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-03-04</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-week5-8/">CC Vocabulary - Weeks 5-8</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-02-03</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-24</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-3/">CC Platform Toolkit Revamp - 3</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-01-22</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-my-first-four-weeks/">CC Vocabulary - My First Four Weeks</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-01-14</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-2/">CC Platform Toolkit Revamp - 2</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-01-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">Improving CC License Chooser Weeks 1-2: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp/">CC Platform Toolkit Revamp</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2019-12-16</p>
-      </li>
-    
-  </ul>
+    </ul>
+    <hr/>
+  </div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/outreachy/ ">outreachy</a>,
+          
+            
+            
+            <a href=" /blog/categories/tech/ ">tech</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>
+          
+        
+      </p>
+    </div>
+  </div>
 
-  <hr>
-  <strong><a href="/blog/categories/">All Categories</a></strong>
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/what-is-up-ccos"; this.page.url = "http://opensource.creativecommons.org/blog/entries/what-is-up-ccos/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>
