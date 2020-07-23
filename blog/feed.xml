@@ -17,8 +17,8 @@
     <author>
       <name>srinidhi</name>
     </author>
-    <content type="html">&lt;h2 id=&quot;introduction-the-cc&quot;&gt;Introduction The CC&lt;/h2&gt;&lt;p&gt;Catalog project  handles the flow of image metadata from the source or provider
-and loads it to the database, which is then surfaced to the &lt;a href=&quot;https://ccsearch.creativecommons.org/about&quot;&gt;CC
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;The CC Catalog project  handles the flow of image metadata from the source or
+provider and loads it to the database, which is then surfaced to the &lt;a href=&quot;https://ccsearch.creativecommons.org/about&quot;&gt;CC
 search&lt;/a&gt; tool. The workflows are set up for each provider to gather
 metadata about CC licensed images. These workflows are handled with the help of
 Apache Airflow. Airflow is an open source tool that helps us to schedule and
