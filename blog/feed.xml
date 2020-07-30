@@ -593,27 +593,6 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;/ul&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-design/">
-    <title type="text">CC Legal Database: Design</title>
-    <id>urn:uuid:b2a2a092-d722-34fb-bb65-9103c9b4ed48</id>
-    <updated>2020-06-09T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-design/" />
-    <author>
-      <name>krysal</name>
-    </author>
-    <content type="html">&lt;p&gt;Finishing the third week since the project started (for context see this &lt;a href=&quot;/blog/entries/legal-database-a-new-beginning/&quot;&gt;first post&lt;/a&gt;), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.&lt;/p&gt;
-&lt;h3 id=&quot;visual-styles&quot;&gt;Visual Styles&lt;/h3&gt;&lt;p&gt;The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old &quot;Countries&quot; page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.&lt;/p&gt;
-&lt;p&gt;The final look for the home site is as follows.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;cc-caselaw-home.png&quot; alt=&quot;New CC Caselaw Home Mockup&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;New Home page design with Vocabulary.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
-&lt;h3 id=&quot;data-model&quot;&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/resource-gathering/">
     <title type="text">Resource Gathering</title>
     <id>urn:uuid:1b4acbcb-fbab-372c-854f-833a05aafa23</id>
@@ -640,6 +619,27 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;/ol&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-design/">
+    <title type="text">CC Legal Database: Design</title>
+    <id>urn:uuid:b2a2a092-d722-34fb-bb65-9103c9b4ed48</id>
+    <updated>2020-06-09T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-design/" />
+    <author>
+      <name>krysal</name>
+    </author>
+    <content type="html">&lt;p&gt;Finishing the third week since the project started (for context see this &lt;a href=&quot;/blog/entries/legal-database-a-new-beginning/&quot;&gt;first post&lt;/a&gt;), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.&lt;/p&gt;
+&lt;h3 id=&quot;visual-styles&quot;&gt;Visual Styles&lt;/h3&gt;&lt;p&gt;The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old &quot;Countries&quot; page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.&lt;/p&gt;
+&lt;p&gt;The final look for the home site is as follows.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;cc-caselaw-home.png&quot; alt=&quot;New CC Caselaw Home Mockup&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;New Home page design with Vocabulary.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
+&lt;h3 id=&quot;data-model&quot;&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-upcoming-improvements/">
     <title type="text">Upcoming improvements/features in CC Search Extension</title>
     <id>urn:uuid:cdf59a68-68ac-36b4-85c8-a19bb2848f33</id>
@@ -660,59 +660,6 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;h4 id=&quot;integrating-cc-vocabulary&quot;&gt;Integrating CC Vocabulary&lt;/h4&gt;&lt;p&gt;The extension uses a very outdated version of CC Vocabulary. It will be replaced by the latest version for a refreshing new look.&lt;/p&gt;
 &lt;h4 id=&quot;adding-support-for-microsoft-edge&quot;&gt;Adding support for Microsoft Edge&lt;/h4&gt;&lt;p&gt;The new Microsoft Edge browser is based on chromium. This paves the way to add support for it thanks to the power and flexibility of the WebExtension API. This will then allow us to also officially release on the &lt;a href=&quot;https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home&quot;&gt;Microsoft Edge Addon Store&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;join-the-discussion&quot;&gt;Join the discussion&lt;/h3&gt;&lt;p&gt;If you have any feedback/suggestions or just want to say hi,  please join the &lt;code&gt;#cc-dev-browser-extension&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;. You can also track the progress on the project's &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; Repository.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
-    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
-    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
-    <updated>2020-05-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
-    <author>
-      <name>AyanChoudhary</name>
-    </author>
-    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
-While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
-&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
-After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
-Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
-&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
-The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
-&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
-The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
-&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
-    <title type="text">Takeaways from my FOSS journey!</title>
-    <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
-    <updated>2020-05-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/" />
-    <author>
-      <name>dhruvi16</name>
-    </author>
-    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;cover.jpg&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04/14774214687&quot;&gt;&quot;Sky at night&quot;&lt;/a&gt; by &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04&quot;&gt;Rychu92&lt;/a&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&amp;atype=rich&quot;&gt;CC BY-SA 2.0&lt;/a&gt;
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;First let me introduce myself because of course I am not a very famous blogger or writer.&lt;/p&gt;
-&lt;p&gt;I am Dhruvi. I am a third-year undergrad student. I am a designer/developer and also a FOSS enthusiast. I started my opensource journey a year ago (that is around Feb ’19) and now here I am starting my Outreachy internship with this blog (not literally of course). I am consistent, curious, and creative, and below I will tell you how these three C’s have helped me through my journey.&lt;/p&gt;
-&lt;p&gt;Below are the four things that I think might be the ‘takeaways’ from my experience -&lt;/p&gt;
-&lt;h3 id=&quot;now-is-the-time&quot;&gt;NOW is the time -&lt;/h3&gt;&lt;p&gt;There is no better time than now! Let’s accept the fact that most of the students wait for “the time” to start with opensource as most of us want to get into programs like GSoC, Outreachy, and many more. But I figured it is very necessary to know that whether you are interested in opensource or is it only the big internships attracting you. So, to get these answers, you need to explore, and to explore I suggest you start today. I am very fond of asking myself the question ‘Why?’ and to answer those questions I explore, I invest time. So start finding answers to your whys? today.&lt;/p&gt;
-&lt;h3 id=&quot;start-slow&quot;&gt;Start SLOW -&lt;/h3&gt;&lt;p&gt;For me the start was a little overwhelming and that made me push it away. And to avoid that I tried starting small and slow. By small and slow, I mean try the easy things first, like getting aware of the logistics. Personally, general practices or set of rules calm me down when I try to get into some uncomfortable zones. And yes opensource was not a very comfortable zone for me in the beginning (I mean what is *wink). To keep myself motivated, I started with familiar things like contributing to familiar projects or familiar good first issues (the easy ones). Completing a task or two gave me a lot of confidence and made me stick around.&lt;/p&gt;
-&lt;h3 id=&quot;choose-wisely&quot;&gt;Choose WISELY -&lt;/h3&gt;&lt;p&gt;After playing around for some time and getting familiar with the logistics, I went for a project hunt. I listed my areas of interest and areas which seemed exciting to me. Using those filters I found some amazing projects which were actively being worked on. I got my answers to why would I want to work on these projects? by working on them. I believe if you are interested the motivation will be natural. With some projects, I felt connected and I did not feel the need of pushing myself for contributing to them. My only advice for making a wise choice is that “Don’t push yourself too hard”!&lt;/p&gt;
-&lt;h3 id=&quot;speak-through-your-work&quot;&gt;Speak through your WORK -&lt;/h3&gt;&lt;p&gt;When I was sure, I wanted to work on a particular project I started getting familiar with the community (the specifics). I got familiar with the ideas and agendas the community had behind the projects. And fortunately, I got to work with the most amazing and inspiring people who helped me when I was stuck and I plan to keep working with them. I kept doing a few things which I guess might be worth mentioning -&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Try to write the most appropriate and relevant code.&lt;/li&gt;
-&lt;li&gt;Try to break the solution into small understandable parts.&lt;/li&gt;
-&lt;li&gt;Try to take initiatives. Small initiatives like opening issues will also work (Yes! opening relevant and meaningful issues is an initiative.).&lt;/li&gt;
-&lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-a-new-beginning/">
@@ -752,6 +699,59 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;CC Legal Database&lt;/strong&gt; is my Outreachy project for this summer, under the guidance of Director of Engineering &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti Godey&lt;/a&gt; and Core Systems Manager &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot Zehta&lt;/a&gt;, they are very supportive and the CC community is notable welcoming.&lt;/p&gt;
 &lt;p&gt;This is the first post of a series so stay tuned if you're interested to know more.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
+    <title type="text">Takeaways from my FOSS journey!</title>
+    <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;cover.jpg&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04/14774214687&quot;&gt;&quot;Sky at night&quot;&lt;/a&gt; by &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04&quot;&gt;Rychu92&lt;/a&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&amp;atype=rich&quot;&gt;CC BY-SA 2.0&lt;/a&gt;
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;First let me introduce myself because of course I am not a very famous blogger or writer.&lt;/p&gt;
+&lt;p&gt;I am Dhruvi. I am a third-year undergrad student. I am a designer/developer and also a FOSS enthusiast. I started my opensource journey a year ago (that is around Feb ’19) and now here I am starting my Outreachy internship with this blog (not literally of course). I am consistent, curious, and creative, and below I will tell you how these three C’s have helped me through my journey.&lt;/p&gt;
+&lt;p&gt;Below are the four things that I think might be the ‘takeaways’ from my experience -&lt;/p&gt;
+&lt;h3 id=&quot;now-is-the-time&quot;&gt;NOW is the time -&lt;/h3&gt;&lt;p&gt;There is no better time than now! Let’s accept the fact that most of the students wait for “the time” to start with opensource as most of us want to get into programs like GSoC, Outreachy, and many more. But I figured it is very necessary to know that whether you are interested in opensource or is it only the big internships attracting you. So, to get these answers, you need to explore, and to explore I suggest you start today. I am very fond of asking myself the question ‘Why?’ and to answer those questions I explore, I invest time. So start finding answers to your whys? today.&lt;/p&gt;
+&lt;h3 id=&quot;start-slow&quot;&gt;Start SLOW -&lt;/h3&gt;&lt;p&gt;For me the start was a little overwhelming and that made me push it away. And to avoid that I tried starting small and slow. By small and slow, I mean try the easy things first, like getting aware of the logistics. Personally, general practices or set of rules calm me down when I try to get into some uncomfortable zones. And yes opensource was not a very comfortable zone for me in the beginning (I mean what is *wink). To keep myself motivated, I started with familiar things like contributing to familiar projects or familiar good first issues (the easy ones). Completing a task or two gave me a lot of confidence and made me stick around.&lt;/p&gt;
+&lt;h3 id=&quot;choose-wisely&quot;&gt;Choose WISELY -&lt;/h3&gt;&lt;p&gt;After playing around for some time and getting familiar with the logistics, I went for a project hunt. I listed my areas of interest and areas which seemed exciting to me. Using those filters I found some amazing projects which were actively being worked on. I got my answers to why would I want to work on these projects? by working on them. I believe if you are interested the motivation will be natural. With some projects, I felt connected and I did not feel the need of pushing myself for contributing to them. My only advice for making a wise choice is that “Don’t push yourself too hard”!&lt;/p&gt;
+&lt;h3 id=&quot;speak-through-your-work&quot;&gt;Speak through your WORK -&lt;/h3&gt;&lt;p&gt;When I was sure, I wanted to work on a particular project I started getting familiar with the community (the specifics). I got familiar with the ideas and agendas the community had behind the projects. And fortunately, I got to work with the most amazing and inspiring people who helped me when I was stuck and I plan to keep working with them. I kept doing a few things which I guess might be worth mentioning -&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Try to write the most appropriate and relevant code.&lt;/li&gt;
+&lt;li&gt;Try to break the solution into small understandable parts.&lt;/li&gt;
+&lt;li&gt;Try to take initiatives. Small initiatives like opening issues will also work (Yes! opening relevant and meaningful issues is an initiative.).&lt;/li&gt;
+&lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
+    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
+    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
+While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
+&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
+After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
+Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
+&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
+The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
+&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
+The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
+&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/">
@@ -1197,32 +1197,6 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb/&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey/&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
-    <title type="text">Participe do Google Summer of Code / Outreachy</title>
-    <id>urn:uuid:e5616ac8-3b6a-3afa-85f5-eddcd822577e</id>
-    <updated>2020-03-05T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/" />
-    <author>
-      <name>brenoferreira</name>
-    </author>
-    <content type="html">&lt;p&gt;O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.&lt;/p&gt;
-&lt;p&gt;O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.&lt;/p&gt;
-&lt;p&gt;Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.&lt;/p&gt;
-&lt;p&gt;Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.&lt;/p&gt;
-&lt;p&gt;A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas &lt;a href=&quot;https://creativecommons.org/licenses/?lang=pt_BR&quot;&gt;Licenças Creative Commons&lt;/a&gt;, como CC-BY, CC-BY-SA, etc..&lt;/p&gt;
-&lt;p&gt;Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.&lt;/p&gt;
-&lt;p&gt;O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no &lt;a href=&quot;https://developers.google.com/open-source/gsoc/help/student-stipends&quot;&gt;site do programa&lt;/a&gt;. No caso do Outreachy, os valores estão também na &lt;a href=&quot;https://www.outreachy.org&quot;&gt;página do programa&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:&lt;/p&gt;
-&lt;p&gt;Leia o conteúdo disponível online sobre como o programa funciona. &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/&quot;&gt;Google Summer of Code&lt;/a&gt;. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;nossa lista de projetos&lt;/a&gt; que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/applicant-guide/&quot;&gt;nosso guia para candidatos&lt;/a&gt; para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.&lt;/p&gt;
-&lt;p&gt;Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility&quot;&gt;projeto que serei responsável&lt;/a&gt;, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.&lt;/p&gt;
-&lt;p&gt;O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.&lt;/p&gt;
-&lt;p&gt;Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A &lt;a href=&quot;https://help.github.com/pt&quot;&gt;documentação do Github&lt;/a&gt; pode ajudar, principalmente a parte sobre &lt;a href=&quot;https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;como funcionam os Pull Requests&lt;/a&gt; pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.&lt;/p&gt;
-&lt;p&gt;Na nossa página de &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;ideias de projetos&lt;/a&gt; os projetos listam as habilidades recomendadas para quem se interessar (listado em &lt;em&gt;Skills recommended&lt;/em&gt;). Verifique se essas habilidades se alinham com as suas.&lt;/p&gt;
-&lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
-&lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
-&lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">
     <title type="text">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</title>
     <id>urn:uuid:e28cf21f-757a-32de-a7b0-5c02f0083c21</id>
@@ -1271,6 +1245,32 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;h2 id=&quot;destrezas&quot;&gt;Destrezas&lt;/h2&gt;&lt;p&gt;Con respecto al idioma, para participar en estos programas no se exige un manejo del inglés al 100%, solo basta que puedas comunicarte de manera razonable, ya que, si bien, existen algunos proyectos en los cuales yo soy el mentor ( &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#wp-plugin&quot;&gt;WP Plugin&lt;/a&gt; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#vocabulary-integration&quot;&gt;Implementar Vocabulary&lt;/a&gt; ) y podemos tener reuniones en español, la comunicación pública y la documentación debe ser en Inglés.&lt;/p&gt;
 &lt;p&gt;Con respecto a nuestros proyectos, todos se encuentran en &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt; por lo tanto debes saber lo básico de &lt;a href=&quot;https://rogerdudler.github.io/git-guide/index.es.html&quot;&gt;Git&lt;/a&gt;. Te recomiendo consultar la &lt;a href=&quot;https://help.github.com/es&quot;&gt;ayuda de Github&lt;/a&gt; para mayor detalle, sugiero poner atención a la guia sobre como realizar &lt;a href=&quot;https://help.github.com/es/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;Pull Request&lt;/a&gt; ya que es muy necesario para el flujo de trabajo del equipo tecnico de CC y lo será también para tu pasantía.&lt;/p&gt;
 &lt;h2 id=&quot;invitacin&quot;&gt;Invitación&lt;/h2&gt;&lt;p&gt;Desde yá los dejamos invitados a participar en estos programas o a participar directamente en nuestra &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;comunidad de código abierto&lt;/a&gt; o visitar nuestro &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt;, el cual contiene nuestros proyectos. También pueden unirse a nuestra comunidad global en &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack&lt;/a&gt; donde me pueden encontrar como @hugo si tienen alguna duda o comentario.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
+    <title type="text">Participe do Google Summer of Code / Outreachy</title>
+    <id>urn:uuid:e5616ac8-3b6a-3afa-85f5-eddcd822577e</id>
+    <updated>2020-03-05T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/" />
+    <author>
+      <name>brenoferreira</name>
+    </author>
+    <content type="html">&lt;p&gt;O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.&lt;/p&gt;
+&lt;p&gt;O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.&lt;/p&gt;
+&lt;p&gt;Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.&lt;/p&gt;
+&lt;p&gt;Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.&lt;/p&gt;
+&lt;p&gt;A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas &lt;a href=&quot;https://creativecommons.org/licenses/?lang=pt_BR&quot;&gt;Licenças Creative Commons&lt;/a&gt;, como CC-BY, CC-BY-SA, etc..&lt;/p&gt;
+&lt;p&gt;Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.&lt;/p&gt;
+&lt;p&gt;O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no &lt;a href=&quot;https://developers.google.com/open-source/gsoc/help/student-stipends&quot;&gt;site do programa&lt;/a&gt;. No caso do Outreachy, os valores estão também na &lt;a href=&quot;https://www.outreachy.org&quot;&gt;página do programa&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:&lt;/p&gt;
+&lt;p&gt;Leia o conteúdo disponível online sobre como o programa funciona. &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/&quot;&gt;Google Summer of Code&lt;/a&gt;. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;nossa lista de projetos&lt;/a&gt; que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/applicant-guide/&quot;&gt;nosso guia para candidatos&lt;/a&gt; para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.&lt;/p&gt;
+&lt;p&gt;Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility&quot;&gt;projeto que serei responsável&lt;/a&gt;, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.&lt;/p&gt;
+&lt;p&gt;O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.&lt;/p&gt;
+&lt;p&gt;Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A &lt;a href=&quot;https://help.github.com/pt&quot;&gt;documentação do Github&lt;/a&gt; pode ajudar, principalmente a parte sobre &lt;a href=&quot;https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;como funcionam os Pull Requests&lt;/a&gt; pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.&lt;/p&gt;
+&lt;p&gt;Na nossa página de &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;ideias de projetos&lt;/a&gt; os projetos listam as habilidades recomendadas para quem se interessar (listado em &lt;em&gt;Skills recommended&lt;/em&gt;). Verifique se essas habilidades se alinham com as suas.&lt;/p&gt;
+&lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
+&lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
+&lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/">
@@ -1536,20 +1536,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;Well, all said, the past weeks have been great. I will be sharing more in two weeks.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
-    <title type="text">CC Platform Toolkit Revamp - 2</title>
-    <id>urn:uuid:dba4dc6a-e8b6-3f06-9b03-2d58dd440755</id>
-    <updated>2020-01-06T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
-&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
-&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
-&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">
     <title type="text">Improving CC License Chooser Weeks 1-2: Design</title>
     <id>urn:uuid:24a0bec2-ab5d-3990-9d96-1c8d52fe24f1</id>
@@ -1607,6 +1593,20 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.&lt;/p&gt;
 &lt;p&gt;Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.&lt;/p&gt;
 &lt;p&gt;You can follow my work at &lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;https://github.com/creativecommons/cc-chooser&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
+    <title type="text">CC Platform Toolkit Revamp - 2</title>
+    <id>urn:uuid:dba4dc6a-e8b6-3f06-9b03-2d58dd440755</id>
+    <updated>2020-01-06T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
+    <author>
+      <name>apdsrocha</name>
+    </author>
+    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
+&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
+&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
+&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/freesound-intro/">
@@ -2764,56 +2764,166 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/">
-    <title type="text">CC Browser Extension Week 7, 8</title>
-    <id>urn:uuid:4d47a6bc-b015-3c45-8fd8-7b510b9a3b5f</id>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
+    <title type="text">CC Vocabulary: the main course</title>
+    <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
     <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/" />
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/" />
     <author>
-      <name>makkoncept</name>
+      <name>dhruvkb</name>
     </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
+    <content type="html">&lt;p&gt;A little over seven weeks ago we initialised CC Vocabulary. It was a simple recipe, a set of components for other apps to
+use for consistency and ease of development.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 1:&lt;/strong&gt;    we assembled the ingredients: &lt;em&gt;Vue CLI, Vue Styleguidist, Theo, Lodash, Font Awesome&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 2:&lt;/strong&gt;    we cleaned up the kitchen: &lt;em&gt;Dockerised our project and set up CI/CD&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Week 3:&lt;/strong&gt;    we ground spices: &lt;em&gt;developed and incorporated design tokens&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weeks 4-5:&lt;/strong&gt; we cooked appetizers: &lt;em&gt;our collection of simple Elements&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weeks 6-7:&lt;/strong&gt; we cooked the main dishes: &lt;em&gt;our collection of very functional Patterns and Layouts&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Last week:&lt;/strong&gt; we garnished these dishes: &lt;em&gt;a splash of styling for the &lt;a href=&quot;https://opensource.creativecommons.org/cc-vocabulary&quot;&gt;styleguide&lt;/a&gt; itself&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;A couple of major features were added to the browser extension these weeks like image Info and attribution preview and options UI. Also, the extension now has dark mode :)&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;home-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Welcome Screen (dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;Now, when the user clicks on the image thumbnail, a popup with image information (like title, creator link, license, and provider links), attribution (both rich text and HTML version) and social media share links opens.&lt;/p&gt;
-&lt;p&gt;We also tried to figure out a way to let users download the images and attribute the creator with the least possible clicks. Right now there are two user-flows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;If the users need only one image, they can press the &lt;code&gt;Download Image&lt;/code&gt; button and copy the desired attribution to the clipboard.&lt;/li&gt;
-&lt;li&gt;If they need to download multiple images in a single session, they can  press &lt;code&gt;Download Image and Attribution&lt;/code&gt;. This will download both versions (rich text and HTML) of attribution in a text file of the same name as the image file.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-light.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(light)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;info-dark.png&quot; alt&quot;CC Browser Extension Screenshot&quot; height=500 /&gt;&lt;br&gt;
-&lt;small class=&quot;muted&quot;&gt;CC Browser Extension Image Info/Attribution popup(dark)&lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;
-These workflows work perfectly on chrome. Whereas, Firefox prompts the user to confirm the download with a popup (if they have not already set a default option) and this results in termination of the browser-extension session. So, the purpose of the second workflow of letting the user continue the session while also downloading the images fails here. I also had a discussion about this with the mentors and we brainstormed some possible solutions. I have written about a possible solution in the 'Coming Up' section below.&lt;/p&gt;
-&lt;p&gt;I also added an options page to the extension which will open in a new tab and the user can set default filters here. So, now they don't have to apply the filters that they often use again and again for every session.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Add a bookmark feature. A lot of the users may want to save multiple images for later to check out. I think this might also provide a better solution to the problem discussed above.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Improve documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Today, main course is served, &lt;em&gt;hot&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Grab your forks, knives and spoons for today we announce that CC Vocabulary is now very stable, has a lot of valuable,
+nay indispensable features such as mobile responsiveness and i18n and, best of all, embodies the vibrancy of Creative
+Commons in its versatile customisability and its collection of 36 hues and 8 greyscale tones usable across dozens of
+elements and patterns.&lt;/p&gt;
+&lt;p&gt;Based on the facts that fewer and fewer changes are being made to the core functionality with every commit, that there
+is a definite coding and nomenclature scheme, that desirable consistency has been achieved across its myriad of
+offerings and that a number of features have been frozen, I am very confident that CC Vocabulary is nearing its public
+release and into version &lt;code&gt;1.0.0&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As we head into the next phase of Vocabulary, i.e. using it in our very own apps, here is a comprehensive look on where
+we stand right now in terms of what the library provides. The goal of this exercise is to determine what elements and/or
+patterns have been overlooked and to determine additional functionality that may be required in some of them. Since
+every component can be customised tweaked and extended, an interactive exploration is preferable but to get you hyped up
+for the meal, here are some pictures of what to expect.&lt;/p&gt;
+&lt;p&gt;If you are a developer of CC applications, please take the time to visit the styleguide and play around with these
+components so that you may identify shortcomings or ideas for improvement. If you are an explorer, do so for the thrill
+of seeing a design system take shape. Any and all contributions are welcome in this crucial moment as our beloved
+brainchild comes of age.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Presenting to you our special menu of Vue components.&lt;/strong&gt;&lt;/p&gt;
+&lt;table class=&quot;table table-striped&quot;&gt;
+&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Component&lt;/strong&gt;&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;&lt;strong&gt;Image&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Tokens&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Colors&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/colors.png&quot; alt=&quot;colors_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Fonts&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/fonts.png&quot; alt=&quot;fonts_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Spaces&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/spaces.png&quot; alt=&quot;spaces_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Elements&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Button&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/button.png&quot; alt=&quot;button_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;InputField&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/inputfield.png&quot; alt=&quot;inputfield_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SelectField&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/selectfield.png&quot; alt=&quot;selectfield_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Heading&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/heading.png&quot; alt=&quot;heading_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Paragraph&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/paragraph.png&quot; alt=&quot;paragraph_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LicenseBadge&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/licensebadge.png&quot; alt=&quot;licensebadge_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LicenseIconography&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/licenseiconography.png&quot; alt=&quot;licenseiconography_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ProgressBar&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/progressbar.png&quot; alt=&quot;progressbar_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shield&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/shield.png&quot; alt=&quot;shield_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Layouts&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Container&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/container.png&quot; alt=&quot;container_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Grid&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/grid.png&quot; alt=&quot;grid_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Table&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/table.png&quot; alt=&quot;table_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Patterns&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Header&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/header.png&quot; alt=&quot;header_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Footer&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/footer.png&quot; alt=&quot;footer_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Locale&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/locale.png&quot; alt=&quot;locale_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hello&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/hello.png&quot; alt=&quot;hello_image&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Templates&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Index&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;orange.png&quot; onclick=&quot;this.src = 'green.png'&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;There are a number of components under construction right now such as cards and social media buttons. They will be
+published on the styleguide very soon. After these, the final month, phase III of of the project's GSoC term will be
+spent continuously polishing the project to suit the needs of all CC apps as discovered during the integration with
+CC Search as mentioned by &lt;a href=&quot;/blog/authors/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt; in the 'Next steps' in his post on
+&lt;a href=&quot;/blog/entries/cc-search-redesign/&quot;&gt;CC Search Redesign&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In keeping with the culinary theme of this post, think of it as sweet sweet dessert.&lt;/p&gt;
+&lt;h3 id=&quot;closing-note&quot;&gt;Closing note&lt;/h3&gt;&lt;p&gt;In closing, I would like to thank my GSoC mentor Hugo Solar as always for always being present to help and refer me to
+documentation that I would likely never have found myself. Also I extend thanks to Kriti Godey for regularly keeping
+in touch and directing me to the right people to contact whenever in difficulty.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CC Vocabulary is for, by, inspired from and due to the diverse and active Creative Commons community.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
+See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
 </content>
   </entry>
 </feed>
