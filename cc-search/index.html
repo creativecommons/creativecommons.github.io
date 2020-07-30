@@ -180,13 +180,8 @@
                         </tr>
                    
                         <tr>
-                            <th scope="row">Improve Catalog Deployment and Provisioning</th>
-                            <td scope="row">Manage Catalog deployment and provisioning entirely through infrastructure as code.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Improve Documentation for Community Contributors</th>
-                            <td scope="row">Create better documentation for community contributors by consolidating internal and public documentation and making it available for everyone.</td>
+                            <th scope="row">Implement architecture for schema for new metadata [AWS Grant]</th>
+                            <td scope="row">Update Catalog schema to include new metadata generated through AWS Rekognition.</td>
                         </tr>
                    
                         <tr>
@@ -195,28 +190,23 @@
                         </tr>
                    
                         <tr>
-                            <th scope="row">Implement architecture for schema for new metadata [AWS Grant]</th>
-                            <td scope="row">Update Catalog schema to include new metadata generated through AWS Rekognition.</td>
-                        </tr>
-                   
-                        <tr>
                             <th scope="row">License Explanation/Compliance Improvements</th>
                             <td scope="row">Improve how and where we explain licenses, and consider ways to make it easier for reusers to understand and comply with license requirements.</td>
                         </tr>
                    
                         <tr>
-                            <th scope="row">Improved Support Pages</th>
-                            <td scope="row">Improve the support pages on CC Search, which includes the Collections page, for a better experience. Add explanation text for collections, improve flow.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Design Sprint: Meta Search Integration</th>
-                            <td scope="row">Integrating meta search functionality into CC Search for sources that are not currently indexed, and content types we do not currently support.</td>
-                        </tr>
-                   
-                        <tr>
                             <th scope="row">Offline old CC Search</th>
                             <td scope="row">Offline Old Search (oldsearch.creativecommons.org) and redirect traffic to CC Search. Prior to this, build in messaging on Old Search, and support similar functionality on CC Search. See &#34;Meta Search Integration&#34; for related work.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Web Monetization: Phase 1</th>
+                            <td scope="row">Research and test potential integrations for Web Monetization into CC Search and other CC web properties.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Improved Support Pages</th>
+                            <td scope="row">Improve the support pages on CC Search, which includes the Collections page, for a better experience. Add explanation text for collections, improve flow.</td>
                         </tr>
                    
                         <tr>
@@ -230,6 +220,13 @@
                         </tr>
                    
                         <tr>
+                            <th scope="row">Improve Common Crawl Infrastructure</th>
+                            <td scope="row">Update our Common Crawl provider infrastructure to:
+(1) use Apache Airflow instead of AWS tools like Data Pipeline &amp; Glue for processing data
+(2) unify provider processing to use the same base classes as API providers</td>
+                        </tr>
+                   
+                        <tr>
                             <th scope="row">Design Sprint: Audio UI for CC Search</th>
                             <td scope="row">Designing and prototyping an upcoming user interface for searching for audio on CC Search.</td>
                         </tr>
@@ -240,40 +237,8 @@
                         </tr>
                    
                         <tr>
-                            <th scope="row">Improve Common Crawl Infrastructure</th>
-                            <td scope="row">Update our Common Crawl provider infrastructure to:
-(1) use Apache Airflow instead of AWS tools like Data Pipeline &amp; Glue for processing data
-(2) unify provider processing to use the same base classes as API providers</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Use Data Dumps for Wikimedia Ingestion</th>
-                            <td scope="row">Switch our Catalog data ingestion for Wikimedia Commons to use the data dumps provided by Wikimedia instead of the MediaWiki API.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Web Monetization: Phase 1</th>
-                            <td scope="row">Research and test potential integrations for Web Monetization into CC Search and other CC web properties.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Scraping &amp; Resizing Work [AWS Grant]</th>
+                            <th scope="row">Scraping &amp; Resizing Work for Rekognition [AWS Grant]</th>
                             <td scope="row">Store a private copy of all the images in the CC Catalog to analyze via machine learning.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Wikidata integration with Catalog &amp; Search Algorithm</th>
-                            <td scope="row">Collect and use structured data from Wikidata to enhance our search algorithm with semantic search.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Usage/Reuse Metrics Dashboard</th>
-                            <td scope="row">Build an analytics UI that is fed by Google Analytics and our internal analytics database.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Switch from Common Crawl to API</th>
-                            <td scope="row">For all possible providers, use their APIs to ingest data into the CC Catalog instead of scraping websites via Common Crawl data.</td>
                         </tr>
                    
                         <tr>
@@ -282,28 +247,8 @@
                         </tr>
                    
                         <tr>
-                            <th scope="row">Upgrade Catalog:  Data Lake</th>
-                            <td scope="row">Upgrade the CC Catalog database to use a schema-less database instead of the relational database (Postgres) that we currently use.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Provider Review Automation</th>
-                            <td scope="row">Automate the process of finding new providers of CC-licensed content to index into the CC Catalog.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Implement Use of Thumbnails in Search &amp; Catalog [AWS Grant]</th>
-                            <td scope="row">Implement changes to CC Search (frontend) and Catalog to make use of thumbnails, as they become available.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Partnership guidelines for all integration types</th>
-                            <td scope="row">Prepare partnership guidelines for CC Search. Create a page on CC Search publishing these guidelines.</td>
-                        </tr>
-                   
-                        <tr>
-                            <th scope="row">Plan UI Updates in Response to Metadata [AWS Grant]</th>
-                            <td scope="row">Design updates to the CC Search UI in response to new metadata available as a result of applying machine learning to selected images in the Catalog. At a minimum, we expect new filters will be an option. Integration of design will take place subsequently.</td>
+                            <th scope="row">Switch from Common Crawl to API</th>
+                            <td scope="row">For all possible providers, use their APIs to ingest data into the CC Catalog instead of scraping websites via Common Crawl data.</td>
                         </tr>
                    
                </tbody>
@@ -318,6 +263,41 @@
                    </tr>
                </thead>
                <tbody>
+                   
+                        <tr>
+                            <th scope="row">Search Relevance Improvements: Language Analysis, Quality Metrics, Minimums</th>
+                            <td scope="row">None</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Plan UI Updates in Response to Metadata [AWS Grant]</th>
+                            <td scope="row">Design updates to the CC Search UI in response to new metadata available as a result of applying machine learning to selected images in the Catalog. At a minimum, we expect new filters will be an option. Integration of design will take place subsequently.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Provider Review Automation</th>
+                            <td scope="row">Automate the process of finding new providers of CC-licensed content to index into the CC Catalog.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Usage/Reuse Metrics Dashboard</th>
+                            <td scope="row">Build an analytics UI that is fed by Google Analytics and our internal analytics database.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Scrape all images and set up feed for new ones</th>
+                            <td scope="row">Once the Rekognition crawl finishes, we want to crawl the rest of the catalog (but not feed them to rekognition). This will give us useful metadata like dimensions and quality.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Improve Documentation for Community Contributors</th>
+                            <td scope="row">Create better documentation for community contributors by consolidating internal and public documentation and making it available for everyone.</td>
+                        </tr>
+                   
+                        <tr>
+                            <th scope="row">Improve Catalog Deployment and Provisioning</th>
+                            <td scope="row">Manage Catalog deployment and provisioning entirely through infrastructure as code.</td>
+                        </tr>
                    
                         <tr>
                             <th scope="row">API documentation improvements</th>
