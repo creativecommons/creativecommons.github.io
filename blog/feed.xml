@@ -2,13 +2,96 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-07-22T00:00:00Z</updated>
+  <updated>2020-07-31T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-autocomplete-feature/">
+    <title type="text">Linked Commons: Autocomplete Feature</title>
+    <id>urn:uuid:0e278e85-748f-3d35-a640-24daab837875</id>
+    <updated>2020-07-31T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-autocomplete-feature/" />
+    <author>
+      <name>subhamX</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;The following blog intends to explain the very recent feature integrated to the Linked Commons. Be it the giant Google Search or any small website having a form field, everyone wishes to predict what’s on the user’s mind. For every keystroke, a nice search bar always renders some possible options the user could be looking for. The core ideology behind having this feature is — &lt;em&gt;do as much work as possible for the user!&lt;/em&gt;&lt;/p&gt;
+&lt;div style=&quot;text-align: center; width: 100%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;autocomplete-feat-in-action.gif&quot; alt=&quot;autocomplete-feature&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption style=&quot;font-weight: 500;&quot;&gt;Autocomplete feature in action&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;&lt;p&gt;One of the newest features integrated last month into Linked Commons is Filtering by node name. Here a user can search for his/her favourite node and explore all its neighbours. Since the list is very big, it was self-evident for us to have a text box (and not a drop-down) where the user is supposed to type the node name.&lt;/p&gt;
+&lt;p&gt;Some of the reasons why to have a text box or filtering by node option.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Some of the node names are very uncommon and lengthy. There is a high probability of misspelling it.&lt;/li&gt;
+&lt;li&gt;Submitting the form and getting a response of “Node doesn’t exist” isn’t a very good user flow, and we want to minimise such incidents.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also, on a side note giving a search bar to the user and giving no hints is ruthless. We all need recommendations and guess what linked commons got you covered! Now for every keystroke, we load a bunch of node names which you might be looking for. ;)&lt;/p&gt;
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;The autocomplete feature on a very basic level aims to predict the rest of a word the user is typing. A possible implementation is though the linear traversal of all the nodes in the list. It will be having a &lt;strong&gt;linear time complexity&lt;/strong&gt;. It’s not very good and it’s very obvious to look for a faster and more efficient way. Also, even if for once we neglect the &lt;strong&gt;time complexity&lt;/strong&gt;, looking for the best 10 nodes out of these millions on the client's machine is not at all a good idea; it will cause throttling and will result in performance drops. 
+On the other hand, a &lt;strong&gt;trie based solution&lt;/strong&gt; is more efficient for sure but still, we cannot do this indexing on the client machine for the same reasons stated above.
+So far, it is now apparent that we implement this feature on the server and also aim for at least something better than linear time complexity.&lt;/p&gt;
+&lt;h2 id=&quot;a-non-conventional-solution&quot;&gt;A non-conventional solution&lt;/h2&gt;&lt;p&gt;We could have used Elastic Search, which is very powerful and has a ton of functionalities but since our needs are very small we wanted to look for other simple alternatives. Moreover, we didn't want to complicate our current architecture by adding an additional framework and libraries.&lt;/p&gt;
+&lt;p&gt;Taking the above points into consideration we went ahead with the following solution. We store all nodes data into an SQL dB and search for all the nodes whose domain name pattern was matching to the query string. After slicing the query set and other randomization we sent the payload to the client. To make it more robust, we are caching the results in the frontend to avoid multiple calls for the same query. It will surely reduce the load from the server and also give a faster response.&lt;/p&gt;
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;&lt;p&gt;To make sure our solution works well, we performed load tests, checking that any response time does not exceed 1000 ms. We used locust which is a user load testing tool. We simulated with &lt;strong&gt;1000 users&lt;/strong&gt; and &lt;strong&gt;10 as Hatch rate&lt;/strong&gt;. 
+The following test is performed on the local machine to ensure that the server location isn’t affecting the results.&lt;/p&gt;
+&lt;p&gt;Here are some aggregated result statistics.&lt;/p&gt;
+&lt;table class=&quot;table table-striped&quot;&gt;
+&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
+&lt;th&gt;Field Name&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Request Count&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 23323     &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Failure Count&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;  0        &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Median Response Time&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 360 ms    &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Average Response Time&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 586.289 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Min Response Time&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 4.03094 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Max Response Time&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 4216 ms   &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Average Content Size&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 528.667 ms&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Requests/s&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 171.754   &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Max Requests/s&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 214       &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Failures/s&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt; 0         &lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Since SQLlite has a serverless design, disk io usually has a significant impact on the performance. The above results were executed on a server with HDD storage. Linked Commons server is equipped with faster disk io. It will certainly improve the performance but will be countered by the network latency and other factors like the number of nodes in the dB. So the above results to some degree resemble the actual performance.&lt;/p&gt;
+&lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;&lt;p&gt;In the next blog, we will be covering the long awaited data update and the new architecture.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;Overall, I enjoyed working on this feature and it was a great learning experience. This feature has been successfully integrated to the development version, do check it out. Now that you have read this blog till the end, I hope that you enjoyed it. For more information please visit our &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;Github repo&lt;/a&gt;. We are looking forward to hearing from you on linked commons. Our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; doors are always open to you, see you there. :)&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/">
     <title type="text">Data flow: from API to DB</title>
     <id>urn:uuid:44db39c0-d562-3a62-b5c5-ac4babcbbe40</id>
@@ -2762,168 +2845,6 @@ The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&qu
 &lt;/ul&gt;
 &lt;p&gt;For more, see the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/">
-    <title type="text">CC Vocabulary: the main course</title>
-    <id>urn:uuid:7bfdb6e1-17ba-39b2-9908-8f9e44eea3f7</id>
-    <updated>2019-07-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-the-main-course/" />
-    <author>
-      <name>dhruvkb</name>
-    </author>
-    <content type="html">&lt;p&gt;A little over seven weeks ago we initialised CC Vocabulary. It was a simple recipe, a set of components for other apps to
-use for consistency and ease of development.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Week 1:&lt;/strong&gt;    we assembled the ingredients: &lt;em&gt;Vue CLI, Vue Styleguidist, Theo, Lodash, Font Awesome&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Week 2:&lt;/strong&gt;    we cleaned up the kitchen: &lt;em&gt;Dockerised our project and set up CI/CD&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Week 3:&lt;/strong&gt;    we ground spices: &lt;em&gt;developed and incorporated design tokens&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Weeks 4-5:&lt;/strong&gt; we cooked appetizers: &lt;em&gt;our collection of simple Elements&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Weeks 6-7:&lt;/strong&gt; we cooked the main dishes: &lt;em&gt;our collection of very functional Patterns and Layouts&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Last week:&lt;/strong&gt; we garnished these dishes: &lt;em&gt;a splash of styling for the &lt;a href=&quot;https://opensource.creativecommons.org/cc-vocabulary&quot;&gt;styleguide&lt;/a&gt; itself&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Today, main course is served, &lt;em&gt;hot&lt;/em&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Grab your forks, knives and spoons for today we announce that CC Vocabulary is now very stable, has a lot of valuable,
-nay indispensable features such as mobile responsiveness and i18n and, best of all, embodies the vibrancy of Creative
-Commons in its versatile customisability and its collection of 36 hues and 8 greyscale tones usable across dozens of
-elements and patterns.&lt;/p&gt;
-&lt;p&gt;Based on the facts that fewer and fewer changes are being made to the core functionality with every commit, that there
-is a definite coding and nomenclature scheme, that desirable consistency has been achieved across its myriad of
-offerings and that a number of features have been frozen, I am very confident that CC Vocabulary is nearing its public
-release and into version &lt;code&gt;1.0.0&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;As we head into the next phase of Vocabulary, i.e. using it in our very own apps, here is a comprehensive look on where
-we stand right now in terms of what the library provides. The goal of this exercise is to determine what elements and/or
-patterns have been overlooked and to determine additional functionality that may be required in some of them. Since
-every component can be customised tweaked and extended, an interactive exploration is preferable but to get you hyped up
-for the meal, here are some pictures of what to expect.&lt;/p&gt;
-&lt;p&gt;If you are a developer of CC applications, please take the time to visit the styleguide and play around with these
-components so that you may identify shortcomings or ideas for improvement. If you are an explorer, do so for the thrill
-of seeing a design system take shape. Any and all contributions are welcome in this crucial moment as our beloved
-brainchild comes of age.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Presenting to you our special menu of Vue components.&lt;/strong&gt;&lt;/p&gt;
-&lt;table class=&quot;table table-striped&quot;&gt;
-&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
-&lt;th&gt;&lt;strong&gt;Component&lt;/strong&gt;&lt;/th&gt;
-&lt;th style=&quot;text-align:left&quot;&gt;&lt;strong&gt;Image&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Tokens&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Colors&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/colors.png&quot; alt=&quot;colors_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Fonts&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/fonts.png&quot; alt=&quot;fonts_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spaces&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/spaces.png&quot; alt=&quot;spaces_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Elements&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Button&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/button.png&quot; alt=&quot;button_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;InputField&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/inputfield.png&quot; alt=&quot;inputfield_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;SelectField&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/selectfield.png&quot; alt=&quot;selectfield_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Heading&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/heading.png&quot; alt=&quot;heading_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Paragraph&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/paragraph.png&quot; alt=&quot;paragraph_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;LicenseBadge&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/licensebadge.png&quot; alt=&quot;licensebadge_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;LicenseIconography&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/licenseiconography.png&quot; alt=&quot;licenseiconography_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;ProgressBar&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/progressbar.png&quot; alt=&quot;progressbar_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Shield&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/shield.png&quot; alt=&quot;shield_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Layouts&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Container&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/container.png&quot; alt=&quot;container_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Grid&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/grid.png&quot; alt=&quot;grid_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Table&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/table.png&quot; alt=&quot;table_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Patterns&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Header&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/header.png&quot; alt=&quot;header_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Footer&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/footer.png&quot; alt=&quot;footer_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Locale&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/locale.png&quot; alt=&quot;locale_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Hello&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;/blog/entries/cc-vocabulary-the-main-course/hello.png&quot; alt=&quot;hello_image&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;Templates&lt;/strong&gt;&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Index&lt;/td&gt;
-&lt;td style=&quot;text-align:left&quot;&gt;&lt;img src=&quot;orange.png&quot; onclick=&quot;this.src = 'green.png'&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;There are a number of components under construction right now such as cards and social media buttons. They will be
-published on the styleguide very soon. After these, the final month, phase III of of the project's GSoC term will be
-spent continuously polishing the project to suit the needs of all CC apps as discovered during the integration with
-CC Search as mentioned by &lt;a href=&quot;/blog/authors/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt; in the 'Next steps' in his post on
-&lt;a href=&quot;/blog/entries/cc-search-redesign/&quot;&gt;CC Search Redesign&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;In keeping with the culinary theme of this post, think of it as sweet sweet dessert.&lt;/p&gt;
-&lt;h3 id=&quot;closing-note&quot;&gt;Closing note&lt;/h3&gt;&lt;p&gt;In closing, I would like to thank my GSoC mentor Hugo Solar as always for always being present to help and refer me to
-documentation that I would likely never have found myself. Also I extend thanks to Kriti Godey for regularly keeping
-in touch and directing me to the right people to contact whenever in difficulty.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;CC Vocabulary is for, by, inspired from and due to the diverse and active Creative Commons community.&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;oh-and-one-more-thing...&quot;&gt;Oh and one more thing...&lt;/h3&gt;&lt;p&gt;I buried an easter egg inside this article indicative of the fun nature of the library.
-See if you can find it. &lt;em&gt;Looking into the source code is cheating.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;See you in two weeks with more updates (... and the aforementioned dessert).&lt;/p&gt;
 </content>
   </entry>
 </feed>
