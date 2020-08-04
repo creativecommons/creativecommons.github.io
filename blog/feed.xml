@@ -2,13 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-07-31T00:00:00Z</updated>
+  <updated>2020-08-03T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/smithsonian-unit-code-update/">
+    <title type="text">Smithsonian Unit Code Update</title>
+    <id>urn:uuid:23985c56-007a-3707-9f9c-66bde8adae7e</id>
+    <updated>2020-08-03T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/smithsonian-unit-code-update/" />
+    <author>
+      <name>charini</name>
+    </author>
+    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;The Creative Commons (CC) Catalog project collects and stores CC licensed images scattered across the internet, such
+that they can be made accessible to the general public via the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; and &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog API&lt;/a&gt;
+tools. Numerous information associated with each image, which help in the image search and categorisation process are
+stored via CC Catalog in the CC database.&lt;/p&gt;
+&lt;p&gt;In my &lt;a href=&quot;/blog/entries/flickr-sub-provider-retrieval/&quot;&gt;previous blog post&lt;/a&gt; of this series entitled 'Flickr Sub-provider Retrieval', I discussed how
+the images from a certain provider (such as Flickr) can be categorised based on the sub-provider values (which reflects
+the underlying organisation or entity that published the images through the provider). We have similarly implemented
+the sub-provider retrieval logic for Europeana and Smithsonian providers. Unlike in Flickr and Europeana, every single
+image from Smithsonian is categorised under some sub-provider value where the sub-providers are identified based on a
+unit code value as contained in the API response (for more information please refer to the pull request &lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/455&quot;&gt;#455&lt;/a&gt;).
+The unit code values and the corresponding sub provider values are maintained in the dictionary
+&lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt;. However, there is the possibility of the &lt;em&gt;unit code&lt;/em&gt; values being updated at the
+Smithsonian API level, and it is important that we have a mechanism of reflecting those updates in the
+&lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary as well. In this blog post, we discuss how we learn the potential
+changes to the &lt;em&gt;unit code&lt;/em&gt; values and keep the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary up-to-date.&lt;/p&gt;
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;&lt;h3 id=&quot;retrieving-the-latest-unit-codes&quot;&gt;Retrieving the latest unit codes&lt;/h3&gt;&lt;p&gt;We are required to obtain the latest &lt;em&gt;unit codes&lt;/em&gt; supported by the Smithsonian API to achieve this task. Furthermore,
+since we are only interested in image data, the &lt;em&gt;unit codes&lt;/em&gt; which are associated with images alone need to be
+retrieved. The latest Smithsonian &lt;em&gt;unit codes&lt;/em&gt; corresponding to images can be retrieved by calling the end point
+&lt;a href=&quot;https://api.si.edu/openaccess/api/v1.0/terms/unit_code?q=online_media_type:Images&amp;amp;api_key=REDACTED&quot;&gt;https://api.si.edu/openaccess/api/v1.0/terms/unit_code?q=online_media_type:Images&amp;amp;api_key=REDACTED&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;check-for-unit-code-updates&quot;&gt;Check for unit code updates&lt;/h3&gt;&lt;p&gt;In order to identify whether changes have occurred to the collection of &lt;em&gt;unit codes&lt;/em&gt; supported by the Smithsonian API
+(in the form of additions and/or deletions), we compare the values retrieved by calling the previously mentioned
+endpoint, with the values contained in the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary. All changes are reflected in a table
+named &lt;em&gt;smithsonian_new_unit_codes&lt;/em&gt; which contains the two fields, 'new_unit_code' and 'action'. If a new &lt;em&gt;unit code&lt;/em&gt; is
+introduced at the API level, we store that &lt;em&gt;unit code&lt;/em&gt; value with the corresponding action value 'add' in the table.
+This reflects that the given &lt;em&gt;unit code&lt;/em&gt; value needs to be added to the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS dictionary&lt;/em&gt;. If a
+&lt;em&gt;unit code&lt;/em&gt; that appears in the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary does not appear at the API level, we store
+the &lt;em&gt;unit code&lt;/em&gt; value with the corresponding action value 'delete' in the table, reflecting that it needs to be deleted
+from the dictionary.&lt;/p&gt;
+&lt;h3 id=&quot;triggering-the-unit-code-update-workflow&quot;&gt;Triggering the unit code update workflow&lt;/h3&gt;&lt;p&gt;A separate workflow named &lt;em&gt;check_new_smithsonian_unit_codes_workflow&lt;/em&gt; allows executing the logic we discussed via the
+Airflow UI. For each execution, the table &lt;em&gt;smithsonian_new_unit_codes&lt;/em&gt; is completely cleared of previous data, and the
+latest updates to reflect in the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary are stored. Note that the actual updates to
+the dictionary (as reflected in the table) needs to be carried out by a person, since editing the dictionary is not
+automated. Furthermore, this workflow is expected to be executed at-least once a week, preferably prior to running
+the Smithsonian image retrieval script such that the Smithsonian sub-provider retrieval task can be run with no issue.&lt;/p&gt;
+&lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I express my gratitude to my GSoC supervisor Brent Moran for assisting me with this task.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-autocomplete-feature/">
     <title type="text">Linked Commons: Autocomplete Feature</title>
     <id>urn:uuid:0e278e85-748f-3d35-a640-24daab837875</id>
@@ -2819,32 +2864,6 @@ Our main activities in Greek School Network and Networking Technologies Director
 &lt;a href=&quot;https://www.sch.gr/&quot;&gt;https://www.sch.gr/&lt;/a&gt; is the national network of the Ministry of Education and Religious Affairs which safely interconnects all schools of Primary and Secondary education, including educational units abroad, services and entities supervised by the Ministry of Education and Religious Affairs at central and regional level, service providers of lifelong learning, students, teaching staff, other educators and other entities of Ministry of Education and Religious Affairs (&lt;a href=&quot;https://www.minedu.gov.gr/&quot;&gt;www.minedu.gov.gr&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;span id=&quot;footnote-3&quot;&gt;&lt;/span&gt;&lt;strong&gt;[3] &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
 The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;, which is the free blogging platform for all Greek teachers, students, and school units. The blogs.sch.gr is a service of Greek School Network&lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; (&lt;a href=&quot;https://www.sch.gr/en&quot;&gt;https://www.sch.gr/en&lt;/a&gt;). It hosts more than 50.000 blogs and users. It is built and maintained by the Greek School Network and Networking Technologies Directorate of CTI.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/">
-    <title type="text">Creative Commons WordPress Plugin Second Phase</title>
-    <id>urn:uuid:515b418c-a3a9-33d3-8f03-54a5b317c2b6</id>
-    <updated>2019-07-20T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-second-phase/" />
-    <author>
-      <name>ahmadbilaldev</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working with my mentor &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; on Creative Commons WordPress Plugin in GSoC 2019. It is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website. The second phase of the project is now ending, and the plugin has a stable version ready. Following is a summary of the work accomplished during this phase.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Week 5:&lt;/strong&gt; Added customization settings for Gutenberg blocks for backend and front end.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Week 6:&lt;/strong&gt; Fixed and closed 17 existing issues to pave way for a stable release.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Week 7-8:&lt;/strong&gt; Prepped the plugin for the release to WordPress.org directory. Started working on the support to use the new license chooser. For now, removing the integrated chooser (old Partner Interface) and linking to the new chooser is our strategy.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;release-of-v2019.7.1&quot;&gt;Release of v2019.7.1&lt;/h3&gt;&lt;p&gt;We have released the latest stable version of the plugin. &lt;code&gt;v2019.7.1&lt;/code&gt; is out and tagged in the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons/releases&quot;&gt;wp-plugin-creativecommons repository&lt;/a&gt;. Given that a stable release is available, we have submitted it to &lt;a href=&quot;https://en-nz.wordpress.org/plugins/&quot;&gt;WordPress.org plugin directory&lt;/a&gt;. As soon as their team approves it, the plugin will be available to install for all WordPress users, which is substantial.&lt;/p&gt;
-&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;p&gt;Although the current implentation does the job, but we want it to use new &lt;a href=&quot;https://creativecommons.org/choose/&quot;&gt;CC License Chooser&lt;/a&gt; in the future. The existing approach uses an integrated modal of &lt;a href=&quot;https://creativecommons.org/choose/?partner={partner}&quot;&gt;Partner Interface&lt;/a&gt; from 2014. So, currently I am re-writing and re-designing the plugin settings to use the new and improved chooser without integrating it. Other upcoming additions are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Add a button to copy license and author information for content sharing.&lt;/li&gt;
-&lt;li&gt;CC Search integration.&lt;/li&gt;
-&lt;li&gt;Changes in design and features.&lt;/li&gt;
-&lt;li&gt;Improve the documentation.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For more, see the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
 </feed>
