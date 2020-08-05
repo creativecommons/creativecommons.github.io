@@ -137,6 +137,113 @@ The following test is performed on the local machine to ensure that the server l
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;Overall, I enjoyed working on this feature and it was a great learning experience. This feature has been successfully integrated to the development version, do check it out. Now that you have read this blog till the end, I hope that you enjoyed it. For more information please visit our &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;Github repo&lt;/a&gt;. We are looking forward to hearing from you on linked commons. Our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; doors are always open to you, see you there. :)&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week7-8/">
+    <title type="text">CC Search, Initial Accessibility Improvements</title>
+    <id>urn:uuid:b523aa13-3429-3303-b7cb-3c66beeed723</id>
+    <updated>2020-07-25T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week7-8/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;p&gt;These are the seventh and eighth weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make initial accessibility improvements to homepage and the other static pages.&lt;/p&gt;
+&lt;p&gt;With the internationalization work complete, our next target were the accessiblity improvements. So I decided to tackle the homepage and the static pages first.
+The aforementioned pages had the following accessiblity issues:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;No aria-label on links&lt;/li&gt;
+&lt;li&gt;Improper landmarks&lt;/li&gt;
+&lt;li&gt;Improper aria-control nestings&lt;/li&gt;
+&lt;li&gt;Some elements not being read by the screen-reader&lt;/li&gt;
+&lt;li&gt;Color contrast Issues(to be covered later)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;But before working I ran another set of audit tests to exactly pin-point these issues. I used &lt;a href=&quot;https://www.nvaccess.org/&quot;&gt;NVDA&lt;/a&gt; for running these audits.
+Lets go through the fixes one at a time.&lt;/p&gt;
+&lt;p&gt;The first issue of no aria-label was pre-dominantly found in the footer. we had some links such as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a
+    href=&quot;https://www.instagram.com/creativecommons&quot;
+    class=&quot;social has-text-white&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These links did not contain any aria-label and were read as &lt;strong&gt;cc link&lt;/strong&gt;. So the aria-labels had to be added &lt;code&gt;aria-label=&quot;instagram link&quot;&lt;/code&gt; in this case which fixed this problem.&lt;/p&gt;
+&lt;p&gt;The next issue was of improper landmarks. Most of the pages had no &lt;strong&gt;main&lt;/strong&gt; landmark and some had no &lt;strong&gt;complimentary&lt;/strong&gt; or &lt;strong&gt;region&lt;/strong&gt; landmarks even though they were required in those pages.
+These landmarks had to be added after the carefully scrutinising the pages in the audits.&lt;/p&gt;
+&lt;p&gt;The next issue was of improper aria-control nestings. This is interesting as it involves having some deeper understanding of the roles involved. So I will explain this in a little depth.
+The area where we had this issue was in feedback page. The code involved was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+    &amp;lt;li :class=&quot;tabClass(0, 'tab')&quot;&amp;gt;
+        &amp;lt;a
+            href=&quot;#panel0&quot;
+            :aria-selected=&quot;activeTab == 0&quot;
+            @click.prevent=&quot;setActiveTab(0)&quot;
+        &amp;gt;
+        Help us Improve
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li :class=&quot;tabClass(1, 'tab')&quot;&amp;gt;
+        &amp;lt;a
+            href=&quot;#panel1&quot;
+            :aria-selected=&quot;activeTab == 1&quot;
+            @click.prevent=&quot;setActiveTab(1)&quot;
+        &amp;gt;
+        Report a Bug
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The reason why this is an error is because of the &lt;code&gt;aria-selected&lt;/code&gt; attribute can only be applied to an element having the role &lt;strong&gt;tab&lt;/strong&gt; nested inside a &lt;strong&gt;tablist&lt;/strong&gt; element.
+For reference, in the above example the &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt; should have the role &lt;strong&gt;tablist&lt;/strong&gt; and each &lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt; element should have the role &lt;strong&gt;tab&lt;/strong&gt;. And so the &lt;code&gt;aria-selected&lt;/code&gt; attribute should be in the &lt;code&gt;&amp;lt;li&amp;gt;&lt;/code&gt; element instead of the &lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt; tag.&lt;/p&gt;
+&lt;p&gt;The corrected code is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul role=&quot;tablist&quot;&amp;gt;
+    &amp;lt;li role=&quot;tab&quot; :class=&quot;tabClass(0, 'tab')&quot; :aria-selected=&quot;activeTab == 0&quot;&amp;gt;
+        &amp;lt;a 
+            aria-label=&quot;help us improve form&quot; 
+            href=&quot;#panel0&quot;
+            @click.prevent=&quot;setActiveTab(0)&quot;
+        &amp;gt;
+        {{ $t('feedback.improve') }}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li role=&quot;tab&quot; :class=&quot;tabClass(1, 'tab')&quot; :aria-selected=&quot;activeTab == 1&quot;&amp;gt;
+        &amp;lt;a 
+            aria-label=&quot;report a bug form&quot;
+            href=&quot;#panel1&quot;
+            @click.prevent=&quot;setActiveTab(1)&quot;
+        &amp;gt;
+        {{ $t('feedback.bug') }}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Another interesting finding involved the screen readers not reading particular special characters such as &lt;code&gt;~&lt;/code&gt; and &lt;code&gt;|&lt;/code&gt;.
+This issue was quite pronounced in the search guide page where these symbols were used in plenty in both links as well as texts.
+So I had to phonetically write these out in the aria-labels of the links to make the screen reader read them out loud.
+The corresponding changes are:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a
+    aria-label=&quot;dog vertical bar cat&quot;
+    href=&quot;https://search.creativecommons.org/search?q=dog%7Ccat&quot;
+&amp;gt;
+    &amp;lt;em&amp;gt;dog|cat&amp;lt;/em&amp;gt;
+&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After all these changes we had some increase in the accessibility scores(computed from lighthouse):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;About Page: 78 -&amp;gt; 97 | +19&lt;/li&gt;
+&lt;li&gt;Search-Guide Page: 76 -&amp;gt; 97 | +23&lt;/li&gt;
+&lt;li&gt;Feedback Page: 75 -&amp;gt; 97 | +22&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Whoosh!! That was quite a lot. We are done with these two weeks for now. Hope to see you in the next post as well.&lt;/p&gt;
+&lt;p&gt;You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1068&quot;&gt;Accessibility&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1072&quot;&gt;Accessibility Improvements&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/zackcreativecommons-org/&quot;&gt;Zack Krida&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/">
     <title type="text">Data flow: from API to DB</title>
     <id>urn:uuid:44db39c0-d562-3a62-b5c5-ac4babcbbe40</id>
@@ -264,6 +371,66 @@ files are moved to the failure directory for future inspection.&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;Overall, it was fantastic and rejuvenating experience working on these tasks. Now that you have read this blog till the end, I hope that you enjoyed it. For more information visit our &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;Github repo&lt;/a&gt;. We are looking forward to hearing from you on linked commons. Our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; doors are always open to you, see you there. :)&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week5-6/">
+    <title type="text">Internationalization continued: Modifying tests</title>
+    <id>urn:uuid:91d205ed-b94e-3d2a-9c30-5af7f04506ac</id>
+    <updated>2020-07-10T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week5-6/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;p&gt;These are the fifth and sixth weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains yet another important aspect to be taken care of while internationalizing the Vue components, i.e. modifying tests to include the changes.&lt;/p&gt;
+&lt;p&gt;The components which were left are the two pages displaying the most content:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/blob/develop/src/pages/BrowsePage.vue&quot;&gt;Browse page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/blob/develop/src/pages/PhotoDetailPage.vue&quot;&gt;ImageDetail page&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The above two pages too were handled similar to the remaining pages, special care had to be taken in case of ImageDetail page since there are too many components in different files.
+By this point we also have our json structure figured out, mostly and are ready to push the json for fetching further translations.&lt;/p&gt;
+&lt;p&gt;Now let's look at the modifications required in the tests. We generally use &lt;code&gt;$t&lt;/code&gt; to access strings from the locales json, but this method/custom-component is not present in the testing vue instance, so we had to inject this method usin localVue and a custom i18n instance.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const localVue = createLocalVue();
+localVue.use(Vuex);
+localVue.use(VueI18n);
+const messages = require('@/locales/en.json');
+
+const i18n = new VueI18n({
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages,
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we inject this 18n component into our vue instance and we have access to our &lt;code&gt;$t&lt;/code&gt;, but there is still one more step left.
+We still need to mock its functionality in the tests. So we create a mock &lt;code&gt;$t&lt;/code&gt; instance to mock in our component. The final code is given below:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const $t = (key) =&amp;gt; i18n.messages[key];
+
+options = {
+    mocks: {
+        $t,
+    },
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we are ready to render our component using these custom options with mocks for testing.&lt;/p&gt;
+&lt;p&gt;And &lt;em&gt;drum rolls&lt;/em&gt; we have successfully completed Internationalization of the complete cc search. Below are the images for some of the completed pages:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week5-6/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week5-6/finalAbout.png&quot; alt=&quot;finalAbout.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week5-6/finalImageDetail.png&quot; alt=&quot;finalImageDetail.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The issues closed with the completion of Internationalization are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/487&quot;&gt;[META] Internationalisation (i18n) Setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/941&quot;&gt;Set up vue-i18n infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/942&quot;&gt;Create locale messages format JSON structure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/943&quot;&gt;Allow users to change locale on the client&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can track the work done for these weeks through this PR:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1040&quot;&gt;Localize browsepage and single-result page&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/zackcreativecommons-org/&quot;&gt;Zack Krida&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-coding-mid-term/">
     <title type="text">CC Legal Database: Coding and Mid-term status</title>
     <id>urn:uuid:0283bfb3-3e0e-3c6a-a70b-02df13f31235</id>
@@ -305,6 +472,84 @@ files are moved to the failure directory for future inspection.&lt;/p&gt;
 &lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
 &lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
 &lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week3-4/">
+    <title type="text">Internationalization Continued: Handling strings in the store</title>
+    <id>urn:uuid:147fc2ec-5c3d-314b-9cf0-4baa4a84a202</id>
+    <updated>2020-06-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week3-4/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;p&gt;These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store.&lt;/p&gt;
+&lt;p&gt;During this period I removed all the hardcoded strings from the static pages which include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;About Page&lt;/li&gt;
+&lt;li&gt;Collections Page&lt;/li&gt;
+&lt;li&gt;Search Guide Page&lt;/li&gt;
+&lt;li&gt;Feedback Page &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All of the above pages were then internationalized following the same procedure as detailed in the previous post.
+While internationalizing the homepage we ran into an interesting problem:&lt;/p&gt;
+&lt;p&gt;The licenses strings were being accessed from the store and those too had to be internationalized.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;licenseTypes: [
+    { code: 'commercial', name: 'Use commercially', checked: false },
+    { code: 'modification', name: 'Modify or adapt', checked: false },
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The code was used to store the licenses in the store in the ordered format. The challenge was to extract the name strings from each license while keeping the changes and dependencies to a minimum.
+The code which we were using in the templates to load these strings was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;label
+        class=&quot;checkbox margin-right-big&quot;
+        :for=&quot;licenseType.code&quot;
+        :key=&quot;index&quot;
+      &amp;gt;
+        &amp;lt;input
+          :id=&quot;licenseType.code&quot;
+          type=&quot;checkbox&quot;
+          :checked=&quot;licenseType.checked&quot;
+          name=&quot;lt&quot;
+          :value=&quot;licenseType.code&quot;
+          @input=&quot;onFilterChanged(licenseType.code)&quot;
+        /&amp;gt;
+&amp;lt;/ label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So after some discussion and a great insight by @brenoferreira we came up with the idea to change to name field from the store to point to our extracted internationalization strings.
+This proved to be very helpful as we managed to keep changes to a minimum without using any extra dependencies.
+The code after implementing the changes is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;licenseTypes: [
+    { code: 'commercial', name: 'filters.license-types.commercial', checked: false, },
+    { code: 'modification', name: 'filters.license-types.modification', checked: false,},
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;label
+        class=&quot;checkbox margin-right-big&quot;
+        :for=&quot;licenseType.code&quot;
+        :key=&quot;index&quot;
+      &amp;gt;
+        &amp;lt;input
+          :id=&quot;licenseType.code&quot;
+          type=&quot;checkbox&quot;
+          :checked=&quot;licenseType.checked&quot;
+          name=&quot;lt&quot;
+          :value=&quot;licenseType.code&quot;
+          @input=&quot;onFilterChanged(licenseType.code)&quot;
+        /&amp;gt;
+        {{ $t(licenseType.name) }}
+&amp;lt;/label&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The rest of the internationalization stuff was string extractions and template modifications to accomodate the the translated strings.
+And we are done with these two weeks, we be back with another post after two weeks.&lt;/p&gt;
+&lt;p&gt;You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1024&quot;&gt;Internationalize About Page and Search Guide Page&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1031&quot;&gt;Internationalize feedback page, collections page and not found page&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/zackcreativecommons-org/&quot;&gt;Zack Krida&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/flickr-sub-provider-retrieval/">
@@ -2667,203 +2912,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/">
-    <title type="text">Host Classification with SaltStack</title>
-    <id>urn:uuid:7f23aa93-d5a3-354d-8363-13dc2487fe78</id>
-    <updated>2019-07-31T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/saltstack-host-classification/" />
-    <author>
-      <name>TimidRobot</name>
-    </author>
-    <content type="html">&lt;p&gt;Within infrastructure as code, as with all programming, there is a goal to
-reduce redundancy as much as possible. With configuration management,
-duplicated configurations can quickly lead to confusion and unexpected states.
-One of the key ways to reduce configuration duplication is robust host
-classification.&lt;/p&gt;
-&lt;h3 id=&quot;minion-classification&quot;&gt;Minion Classification&lt;/h3&gt;&lt;p&gt;As this post is about SaltStack, the terms &quot;minion classification&quot; for &quot;host
-classification&quot; and &quot;minion&quot; for &quot;host&quot; are used. With Puppet, &quot;node
-classification&quot; and &quot;node&quot; would be used.&lt;/p&gt;
-&lt;p&gt;Minion classification consists of rules that determine what a minion is and
-which states (or configurations) should be applied to it. Good minion
-classification removes or minimizes the necessity of explicitly assigning
-configurations to a minion. Our goal is for the computer to do as much of the
-work as possible.&lt;/p&gt;
-&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;&lt;p&gt;Minions are added and configured from the primary salt server (called the
-salt-master) with the following Minion ID schema: &lt;strong&gt;&lt;code&gt;HST__POD__LOC&lt;/code&gt;&lt;/strong&gt;:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;HST&lt;/code&gt;&lt;/strong&gt; is the hostname or role. It indications what services are running
-on the host or the role that it serves.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;POD&lt;/code&gt;&lt;/strong&gt; is the pod or group. It indicates the logical grouping of the
-host.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;code&gt;LOC&lt;/code&gt;&lt;/strong&gt; is the location. It indicates where the host is.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Examples:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;wordpress__prod__us-east-2&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;wordpress__stage__us-east-2&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The Minion ID parts are matched against the following list. SaltStack pillar
-data, like Apache2, uses a last declared wins model. The following list is
-organized from least-specific to most-specific:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;1_LOC&lt;/code&gt; (location)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;2_POD&lt;/code&gt; (pod/group)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;3_HST&lt;/code&gt; (host/role)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;4_POD__LOC&lt;/code&gt; (pod/group and location)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;5_HST__POD&lt;/code&gt; (host/role and pod/group)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Using our Minion ID examples above, this allows configuration data to be
-specified for both shared data (ex. WordPress security settings that should be
-applied to all WordPress hosts/roles) and specific data (ex. Let's Encrypt
-TLS/SSL settings).&lt;/p&gt;
-&lt;h2 id=&quot;security&quot;&gt;Security&lt;/h2&gt;&lt;p&gt;&lt;em&gt;The only grain which can be safely used is &lt;code&gt;grains['id']&lt;/code&gt; which contains the
-Minion ID.&lt;/em&gt; (&lt;a href=&quot;https://docs.saltstack.com/en/latest/faq.html#is-targeting-using-grain-data-secure&quot;&gt;FAQ Q.21&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;It is important to rely &lt;em&gt;only&lt;/em&gt; on the Minion ID as all other grains can be
-manipulated by the client. This means a compromised client could change its
-grains to collect secrets if a dedicated grain (ex. &lt;code&gt;role&lt;/code&gt;) was used for minion
-classification.&lt;/p&gt;
-&lt;h3 id=&quot;imperfect-work-in-progress&quot;&gt;Imperfect Work in Progress&lt;/h3&gt;&lt;p&gt;This implementation has proven to be robust and helpful. However, there is
-still room for improvement. For example, I will probably refactor &lt;code&gt;HST&lt;/code&gt; to
-&lt;code&gt;ROLE&lt;/code&gt; and &lt;code&gt;POD&lt;/code&gt; to &lt;code&gt;GRP&lt;/code&gt; for added clarity.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Feedback and development is welcomed.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot;&gt;creativecommons/sre-salt-prime&lt;/a&gt; repository is open
-source.&lt;/p&gt;
-&lt;p&gt;This host classification is also documented within it: &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime/blob/master/docs/Host_Classification.md&quot;&gt;sre-salt-prime/Host_Classification.md at master&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/">
-    <title type="text">Visualize CC Catalog data - data processing part 2</title>
-    <id>urn:uuid:4766028d-0afd-3efb-8e6b-bd3bc0f5cc00</id>
-    <updated>2019-07-26T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing-2/" />
-    <author>
-      <name>soccerdroid</name>
-    </author>
-    <content type="html">&lt;p&gt;This is a continuation of my last blog post about the data processing part of the CC-data catalog visualization project. I recommend you to read that &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;last post&lt;/a&gt; for a better understanding of what I'll explain here.&lt;/p&gt;
-&lt;h3 id=&quot;the-data&quot;&gt;The data&lt;/h3&gt;&lt;p&gt;Every dataset needs cleasing and pre processing operations before their analysis. In order to implement validations, I have to know first with what kind of inconsistencies I would deal with. Here are some interesting insights about the dataset:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;There are several cases where the provider_domain has not referenced a correct cc_license path. We might say then, that not everybody has a clear understading of how to give CC license attributions correctly.&lt;/li&gt;
-&lt;li&gt;I found a case where the links json was malformed. It had a huge paragraph as key (instead of a domain). I wasn't expecting something like that hehe.&lt;/li&gt;
-&lt;li&gt;There are both types of entries, a provider domain with a small image quantity and a lot of links, and with a huge amount of images but few links. Some of the domains with a lot of images belong to online shops or news websites.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Aside from the above, I have had to face with almost empty lines(meaning just a single column had information), columns bad separated (not a single but more than one tab between the columns), and some other usual problems of a real and non perfect dataset. I have made validations to catch these inconsistencies.&lt;/p&gt;
-&lt;h3 id=&quot;data-aggregation&quot;&gt;Data aggregation&lt;/h3&gt;&lt;p&gt;It is needed to aggregate the data by provider_domain, in order to get the complete information of every node. Aggregating the images column is simple, as I only have to sum the values in that column. Now the links column is a little bit tricky to be aggregated. We have to remember that this field contains dictionaries, with domains as keys and the times they have been referenced to as values. So for aggregating this column, I need to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create an empty dictionary&lt;/li&gt;
-&lt;li&gt;Loop through every key and save it&lt;/li&gt;
-&lt;li&gt;If I face with a key that is already in the dictionary, just sum the value that I currently hold to the existing value in the dictionary.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Then, I have to extract creativecommons from the final links dictionary, and put the value into another column, called _Licences_qty_. This is because the quantity of links to &lt;a href=&quot;/blog/entries/cc-datacatalog-data-processing-2/creativecommons.org&quot;&gt;creativecommons.org&lt;/a&gt; can tell us how many licenses the provider_domains uses.&lt;/p&gt;
-&lt;p&gt;We also need to aggregate the licences column. The goal is to have a data structure that contains the licenses types the provider_domain uses, and to know how many licenses per each license type the provider_domain has.
-To achieve this, I:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create an empty dictionary of licences&lt;/li&gt;
-&lt;li&gt;For each license, create a tuple (license_name,version), which will be a key in the dictionary&lt;/li&gt;
-&lt;li&gt;Check if the key exists in the dictionary. If it doesn't, the key is added, with an initial value of 1, to the dictionary.&lt;/li&gt;
-&lt;li&gt;If the key exists, increment the value in 1.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;At the end, we will have rows like the following:&lt;/p&gt;
-&lt;p&gt;&lt;div&gt;
-&lt;img src=&quot;row.png&quot; alt=&quot;Example row of the processed dataset&quot;/&gt;&lt;br/&gt;
-&lt;small class=&quot;muted&quot;&gt;Example row, with data aggregated. &lt;/small&gt;
-&lt;/div&gt;
-&lt;br&gt;&lt;/p&gt;
-&lt;h3 id=&quot;considerations-and-future-challenges&quot;&gt;Considerations and future challenges&lt;/h3&gt;&lt;p&gt;I mentioned before that there are provider domains with a lot of images and a few links, and vice versa. As I still have to prune and filter data, I can develop a rule to exclude the domains that are not relevant to the graph. This relevance can be determined by the quantity of images and/or links. My thought with the rules are the following:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Exclude domains that have a lot of images but few links (less than 20 links).&lt;/li&gt;
-&lt;li&gt;Exclude domains that have few images(less than 100) and few links (less than 20)&lt;/li&gt;
-&lt;li&gt;Exclude domains that have no links (is not a targeted node).&lt;/li&gt;
-&lt;li&gt;Exclude domains that are social networks (Facebook, Instagram, Twitter), as they might not give relevant insights. Most of the references to these SN's are found because the provider domain gives the user the option to share a content.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The thresholds for the quantity of images and links are my intuitions from having seen the data and manually checking some provider domains. If it is possible I could validate it with some data analysis (checking average, maximum and minimum values of the columns).&lt;/p&gt;
-&lt;h3 id=&quot;coming-soon&quot;&gt;Coming soon&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Extraction of unique nodes, and links.&lt;/li&gt;
-&lt;li&gt;Visualization with the data. &lt;/li&gt;
-&lt;li&gt;Development or modification of pruning/filtering rules.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can follow the project development in the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz&quot;&gt;Github repo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;CC Data Catalog Visualization is my GSoC 2019 project under the guidance of &lt;a href=&quot;https://creativecommons.org/author/sclachar/&quot;&gt;Sophine
-Clachar&lt;/a&gt;, who has been greatly helpful and considerate since the GSoC application period. Also, my backup mentor, &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno Ferreira&lt;/a&gt;, and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-&lt;p&gt;Have a nice week!&lt;/p&gt;
-&lt;p&gt;Maria&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/">
-    <title type="text">Easy search and use of CC-licensed images for WordPress</title>
-    <id>urn:uuid:ab122e6c-a0e8-39cc-a0de-b0d5f2c444cc</id>
-    <updated>2019-07-24T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2019-07-24-cc-search-wp-plugin/" />
-    <author>
-      <name>lenasterg</name>
-    </author>
-    <content type="html">&lt;h4 id=&quot;inspiration-and-idea-for-the-wordpress-plugin&quot;&gt;Inspiration and idea for the WordPress plugin&lt;/h4&gt;&lt;p&gt;Back in May, I read a blog post about the new Creative Commons search tool CC Search. My colleagues in CTI &lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-1&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; and I were fascinated by its searching power.
-Inspired by this new CC tool, we began thinking, how we could use it, into the Greek School Network’s&lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; blogging platform &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;&lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-3&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; - a WordPress multisite installation, free for all Greek teachers, students, and Greek school units.&lt;/p&gt;
-&lt;p&gt;We decided to make a WordPress plugin, which would “harvest” the images from the Creative Commons Catalog API, in a similar way &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; does, but without the need for the user to leave the WordPress post editor. The plugin should allow the execution of “search, select and import image and CC license data” into the post, while the author was still in WordPress edit page.&lt;/p&gt;
-&lt;h4 id=&quot;our-wordpress-plugin&quot;&gt;Our WordPress plugin&lt;/h4&gt;&lt;p&gt;After a while, our plugin was ready. Its temporary name is “WP CC Search plugin”. It is a WordPress plugin for searching millions of CC-licensed images while the user is still in the post edit page. He/she can select a CC licensed image and insert it into the post content or set as post-featured image very quickly.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/01.png&quot; alt=&quot;Plugin screenshot 1&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The plugin’s features are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Works in WordPress editor and add a button above the content text area and into the “Add Media” pop-up window.&lt;/li&gt;
-&lt;li&gt;Via a pop-up window, allows searching through millions of images using Creative Commons Catalog API power.&lt;/li&gt;
-&lt;li&gt;Allows filtering by a provider&lt;/li&gt;
-&lt;li&gt;Paginated results&lt;/li&gt;
-&lt;li&gt;Quick insert original image or thumbnail with a link to the image URL&lt;/li&gt;
-&lt;li&gt;Use image as a featured image for the blog post&lt;/li&gt;
-&lt;li&gt;WPML compatible&lt;/li&gt;
-&lt;li&gt;Multisite compatible&lt;/li&gt;
-&lt;li&gt;Translation ready (it’s already translated in Greek)&lt;/li&gt;
-&lt;li&gt;Tested up to WordPress 5.2 with Classic Editor plugin&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;As intended, we already use the plugin in &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;, which hosts more than 50.000 blogs. The plugin is available to all its blogs and users since middle May, who has been using it without any issues reported yet.&lt;/p&gt;
-&lt;h4 id=&quot;how-it-works&quot;&gt;How it works&lt;/h4&gt;&lt;p&gt;The plugin needs the WordPress &lt;a href=&quot;https://wordpress.org/plugins/classic-editor/&quot;&gt;Classic Editor&lt;/a&gt; plugin in order to work for WP 5+.&lt;/p&gt;
-&lt;p&gt;After the plugin’s activation, when the user writes a post, an &lt;strong&gt;“Image with CC licence”&lt;/strong&gt; button is added above the post editor area and as an option into the “Add Media” pop-up window.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/02.png&quot; alt=&quot;Plugin screenshot 2&quot;&gt;&lt;/p&gt;
-&lt;p&gt;By pressing the button, a pop-up window allows the user to search using Latin characters for an image.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/03.png&quot; alt=&quot;Plugin screenshot 3&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The user can browse the returned images, preview an image and its license and adjust the image settings:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;use of thumbnail or original image&lt;/li&gt;
-&lt;li&gt;set the image link (if any)&lt;/li&gt;
-&lt;li&gt;insert the image into the post or as the featured image&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/04.png&quot; alt=&quot;Plugin screenshot 4&quot;&gt;&lt;/p&gt;
-&lt;p&gt;After the user selects an image and insert it, into the post, the image code along with its licensing data is pasted into the post body and the user can continue writing the blog post.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-07-24-cc-search-wp-plugin/05.png&quot; alt=&quot;Plugin screenshot 5&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;some-technical-details&quot;&gt;Some technical details&lt;/h4&gt;&lt;p&gt;The plugin uses AJAX requests to communicate with &lt;a href=&quot;https://api.creativecommons.engineering&quot;&gt;https://api.creativecommons.engineering&lt;/a&gt; and get responses in JSON format.&lt;/p&gt;
-&lt;p&gt;Only 2 AJAX requests are sent to &lt;a href=&quot;https://api.creativecommons.engineering&quot;&gt;https://api.creativecommons.engineering&lt;/a&gt;.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://api.creativecommons.engineering/statistics/image?format=json&quot;&gt;https://api.creativecommons.engineering/statistics/image?format=json&lt;/a&gt;, for getting the providers list. Then the JSON response is used as select options, for the provider’s dropdown menu.&lt;/li&gt;
-&lt;li&gt;A call to &lt;a href=&quot;https://api.creativecommons.engineering/image/search&quot;&gt;https://api.creativecommons.engineering/image/search&lt;/a&gt; with the necessary parameters for searching for images based on the given words and the selected provided.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The JSON results, are then transformed via jQuery to images and show up into the popup window. When the user selects an image, jQuery creates a complete HTML &lt;div&gt; tag with all the image info and auto add it into the post editor area or executed the WordPress code to use in as featured image.&lt;/p&gt;
-&lt;h4 id=&quot;still-to-do&quot;&gt;Still to do&lt;/h4&gt;&lt;p&gt;There are still some things that we want to add/change into the plugin and any help on building them is welcome.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Find a different plugin name :-). We believe that the plugin’s name should change since it is not an “official” CC commons plugin.&lt;/li&gt;
-&lt;li&gt;Currently, the plugin needs the Classic Editor plugin in order to work for WP 5+. A main goal is to make it Gutenberg compatible. &lt;/li&gt;
-&lt;li&gt;Add Multiple images select support&lt;/li&gt;
-&lt;li&gt;Add Multi-select options for filtering: providers&lt;/li&gt;
-&lt;li&gt;Add select options for filtering: licenses, creator&lt;/li&gt;
-&lt;li&gt;Find an icon for the 'Image via CC Search' editor button&lt;/li&gt;
-&lt;li&gt;Add plugin’s Info page&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;code-and-test-site&quot;&gt;Code and test site&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;You can find and fork the plugin’s code at: &lt;a href=&quot;https://github.com/lenasterg/wp_ccsearch&quot;&gt;https://github.com/lenasterg/wp_ccsearch&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;You can test the plugin functionality at &lt;a href=&quot;http://users.sch.gr/stergatu/wordpress/&quot;&gt;http://users.sch.gr/stergatu/wordpress/&lt;/a&gt; by login via &lt;a href=&quot;http://users.sch.gr/stergatu/wordpress/wp-login.php&quot;&gt;http://users.sch.gr/stergatu/wordpress/wp-login.php&lt;/a&gt; as username: &lt;code&gt;testuser&lt;/code&gt; password: &lt;code&gt;testuser&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;credits&quot;&gt;Credits&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;The plugin is inspired and based on the &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;https://search.creativecommons.org/&lt;/a&gt; and it couldn’t be possible without the Creative Commons Catalog API &lt;a href=&quot;https://api.creativecommons.engineering/#tag/image&quot;&gt;https://api.creativecommons.engineering/#tag/image&lt;/a&gt; which is the engine.&lt;/li&gt;
-&lt;li&gt;Most of the plugin's code is based on the WP Pexels &lt;a href=&quot;https://wordpress.org/plugins/wp-pexels/&quot;&gt;https://wordpress.org/plugins/wp-pexels/&lt;/a&gt; code by WPclever.net&lt;/li&gt;
-&lt;li&gt;Pointer's code is based on &lt;a href=&quot;https://code.tutsplus.com/articles/integrating-with-wordpress-ui-admin-pointers--wp-26853&quot;&gt;https://code.tutsplus.com/articles/integrating-with-wordpress-ui-admin-pointers--wp-26853&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;more-about-us&quot;&gt;More about us&lt;/h4&gt;&lt;p&gt;&lt;span id=&quot;footnote-1&quot;&gt;&lt;/span&gt;&lt;strong&gt;[1] CTI - Greek School Network and Networking Technologies Directorate&lt;/strong&gt;&lt;br&gt;
-Our main activities in Greek School Network and Networking Technologies Directorate (GSN-NTS) (&lt;a href=&quot;http://nts.cti.gr&quot;&gt;http://nts.cti.gr&lt;/a&gt;) of Computer Technology Institute and Press “Diophantus” (CTI) are the design, implementation, and support of network infrastructures and Internet services. Through its involvement in pioneer National and European research and development projects, GSN-NTS has a major role in the development of network infrastructures and services, and Internet services as well in Greece, especially those concerning school networks and ICT infrastructures at schools.&lt;/p&gt;
-&lt;p&gt;&lt;span id=&quot;footnote-2&quot;&gt;&lt;/span&gt;&lt;strong&gt;[2] Greek School Network (&lt;a href=&quot;https://www.sch.gr/&quot;&gt;https://www.sch.gr/&lt;/a&gt;)&lt;/strong&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.sch.gr/&quot;&gt;https://www.sch.gr/&lt;/a&gt; is the national network of the Ministry of Education and Religious Affairs which safely interconnects all schools of Primary and Secondary education, including educational units abroad, services and entities supervised by the Ministry of Education and Religious Affairs at central and regional level, service providers of lifelong learning, students, teaching staff, other educators and other entities of Ministry of Education and Religious Affairs (&lt;a href=&quot;https://www.minedu.gov.gr/&quot;&gt;www.minedu.gov.gr&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;&lt;span id=&quot;footnote-3&quot;&gt;&lt;/span&gt;&lt;strong&gt;[3] &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-The plugin was originally developed for &lt;a href=&quot;https://blogs.sch.gr&quot;&gt;https://blogs.sch.gr&lt;/a&gt;, which is the free blogging platform for all Greek teachers, students, and school units. The blogs.sch.gr is a service of Greek School Network&lt;strong&gt;&lt;sup&gt;&lt;a href=&quot;#footnote-2&quot;&gt;[2]&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt; (&lt;a href=&quot;https://www.sch.gr/en&quot;&gt;https://www.sch.gr/en&lt;/a&gt;). It hosts more than 50.000 blogs and users. It is built and maintained by the Greek School Network and Networking Technologies Directorate of CTI.&lt;/p&gt;
 </content>
   </entry>
 </feed>

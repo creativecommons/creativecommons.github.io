@@ -7,20 +7,22 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="CC Search, Proposal Drafting and Community Bonding" />
+<meta property="og:title" content="Internationalization Continued: Handling strings in the store" />
 
 
 
-<meta property="og:description" content="Proposal Drafting" />
+<meta property="og:description" content="These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store." />
 
 
-<meta property="og:url" content="/blog/entries/cc-search-accessibility-and-internationalization/" />
+<meta property="og:url" content="/blog/entries/cc-search-accessibility-week3-4/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CC Search, Proposal Drafting and Community Bonding">
-<meta name="twitter:description" content="Proposal Drafting">
+<meta name="twitter:title" content="Internationalization Continued: Handling strings in the store">
+<meta name="twitter:description" content="These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -28,7 +30,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC Search, Proposal Drafting and Community Bonding — Creative Commons on GitHub</title>
+<title>Internationalization Continued: Handling strings in the store — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -149,12 +151,12 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2 class="mb-0">CC Search, Proposal Drafting and Community Bonding</h2>
+  <h2 class="mb-0">Internationalization Continued: Handling strings in the store</h2>
   
   <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/AyanChoudhary/">
   Ayan Choudhary
 </a>
-  on Friday, 2020-05-22</p>
+  on Friday, 2020-06-26</p>
     
    
   <div class="card bg-light mb-2">
@@ -165,16 +167,74 @@
     </div>
   </div>
  
-  <div class="body"><h3 id="proposal-drafting">Proposal Drafting</h3><p>The majority of my time in March was spent on drafting the proposal for my project <strong>Improve CC Search Accessibility</strong>.
-While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.</p>
-<p>So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
-After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
-Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.</p>
-<p>One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
-The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.</p>
-<h3 id="community-bonding">Community Bonding</h3><p>Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
-The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.</p>
-<p>Coming up next will be the progress on the first 2 weeks of the project.</p>
+  <div class="body"><p>These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store.</p>
+<p>During this period I removed all the hardcoded strings from the static pages which include:</p>
+<ol>
+<li>About Page</li>
+<li>Collections Page</li>
+<li>Search Guide Page</li>
+<li>Feedback Page </li>
+</ol>
+<p>All of the above pages were then internationalized following the same procedure as detailed in the previous post.
+While internationalizing the homepage we ran into an interesting problem:</p>
+<p>The licenses strings were being accessed from the store and those too had to be internationalized.</p>
+<pre><code>licenseTypes: [
+    { code: 'commercial', name: 'Use commercially', checked: false },
+    { code: 'modification', name: 'Modify or adapt', checked: false },
+]
+</code></pre>
+<p>The code was used to store the licenses in the store in the ordered format. The challenge was to extract the name strings from each license while keeping the changes and dependencies to a minimum.
+The code which we were using in the templates to load these strings was:</p>
+<pre><code>&lt;label
+        class="checkbox margin-right-big"
+        :for="licenseType.code"
+        :key="index"
+      &gt;
+        &lt;input
+          :id="licenseType.code"
+          type="checkbox"
+          :checked="licenseType.checked"
+          name="lt"
+          :value="licenseType.code"
+          @input="onFilterChanged(licenseType.code)"
+        /&gt;
+&lt;/ label&gt;
+</code></pre>
+<p>So after some discussion and a great insight by @brenoferreira we came up with the idea to change to name field from the store to point to our extracted internationalization strings.
+This proved to be very helpful as we managed to keep changes to a minimum without using any extra dependencies.
+The code after implementing the changes is:</p>
+<pre><code>licenseTypes: [
+    { code: 'commercial', name: 'filters.license-types.commercial', checked: false, },
+    { code: 'modification', name: 'filters.license-types.modification', checked: false,},
+]
+</code></pre>
+<pre><code>&lt;label
+        class="checkbox margin-right-big"
+        :for="licenseType.code"
+        :key="index"
+      &gt;
+        &lt;input
+          :id="licenseType.code"
+          type="checkbox"
+          :checked="licenseType.checked"
+          name="lt"
+          :value="licenseType.code"
+          @input="onFilterChanged(licenseType.code)"
+        /&gt;
+        {{ $t(licenseType.name) }}
+&lt;/label&gt;
+</code></pre>
+<p>The rest of the internationalization stuff was string extractions and template modifications to accomodate the the translated strings.
+And we are done with these two weeks, we be back with another post after two weeks.</p>
+<p>You can track the work done for these weeks through these PRs:</p>
+<ol>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1024">Internationalize About Page and Search Guide Page</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1031">Internationalize feedback page, collections page and not found page</a></li>
+</ol>
+<p>The progress of the project can be tracked on <a href="https://github.com/creativecommons/cccatalog-frontend">cc-search</a></p>
+<p>CC Search Accessiblity is my GSoC 2020 project under the guidance of <a href="https://creativecommons.org/author/zackcreativecommons-org/">Zack Krida</a> and <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, who is the primary mentor for this project, <a href="https://creativecommons.org/author/annacreativecommons-org/">Anna Tumadóttir</a> for helping all along and engineering director <a href="https://creativecommons.org/author/kriticreativecommons-org/">Kriti
+Godey</a>, have been very supportive.</p>
 </div>
   
   <div class="mt-3 bg-light" id="series">
@@ -184,7 +244,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
       
         <li>
         
-          <strong>CC Search, Proposal Drafting and Community Bonding</strong>
+          <a href="/blog/entries/cc-search-accessibility-and-internationalization/">CC Search, Proposal Drafting and Community Bonding</a>
         
         </li>
       
@@ -196,7 +256,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
       
         <li>
         
-          <a href="/blog/entries/cc-search-accessibility-week3-4/">Internationalization Continued: Handling strings in the store</a>
+          <strong>Internationalization Continued: Handling strings in the store</strong>
         
         </li>
       
@@ -245,7 +305,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-and-internationalization"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-week3-4"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week3-4/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//cc-open-source.disqus.com/embed.js';

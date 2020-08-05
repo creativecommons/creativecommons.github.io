@@ -7,20 +7,22 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="CC Search, Proposal Drafting and Community Bonding" />
+<meta property="og:title" content="CC Search, Initial Accessibility Improvements" />
 
 
 
-<meta property="og:description" content="Proposal Drafting" />
+<meta property="og:description" content="These are the seventh and eighth weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make initial accessibility improvements to homepage and the other static pages." />
 
 
-<meta property="og:url" content="/blog/entries/cc-search-accessibility-and-internationalization/" />
+<meta property="og:url" content="/blog/entries/cc-search-accessibility-week7-8/" />
 <meta property="og:type" content="article" />
 
       
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CC Search, Proposal Drafting and Community Bonding">
-<meta name="twitter:description" content="Proposal Drafting">
+<meta name="twitter:title" content="CC Search, Initial Accessibility Improvements">
+<meta name="twitter:description" content="These are the seventh and eighth weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make initial accessibility improvements to homepage and the other static pages.">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -28,7 +30,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC Search, Proposal Drafting and Community Bonding — Creative Commons on GitHub</title>
+<title>CC Search, Initial Accessibility Improvements — Creative Commons on GitHub</title>
 <body>
   <div class="ga-script">
 <div id="ga-script"></div>
@@ -149,12 +151,12 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <h2 class="mb-0">CC Search, Proposal Drafting and Community Bonding</h2>
+  <h2 class="mb-0">CC Search, Initial Accessibility Improvements</h2>
   
   <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/AyanChoudhary/">
   Ayan Choudhary
 </a>
-  on Friday, 2020-05-22</p>
+  on Saturday, 2020-07-25</p>
     
    
   <div class="card bg-light mb-2">
@@ -165,16 +167,103 @@
     </div>
   </div>
  
-  <div class="body"><h3 id="proposal-drafting">Proposal Drafting</h3><p>The majority of my time in March was spent on drafting the proposal for my project <strong>Improve CC Search Accessibility</strong>.
-While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.</p>
-<p>So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
-After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
-Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.</p>
-<p>One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
-The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.</p>
-<h3 id="community-bonding">Community Bonding</h3><p>Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
-The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.</p>
-<p>Coming up next will be the progress on the first 2 weeks of the project.</p>
+  <div class="body"><p>These are the seventh and eighth weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make initial accessibility improvements to homepage and the other static pages.</p>
+<p>With the internationalization work complete, our next target were the accessiblity improvements. So I decided to tackle the homepage and the static pages first.
+The aforementioned pages had the following accessiblity issues:</p>
+<ol>
+<li>No aria-label on links</li>
+<li>Improper landmarks</li>
+<li>Improper aria-control nestings</li>
+<li>Some elements not being read by the screen-reader</li>
+<li>Color contrast Issues(to be covered later)</li>
+</ol>
+<p>But before working I ran another set of audit tests to exactly pin-point these issues. I used <a href="https://www.nvaccess.org/">NVDA</a> for running these audits.
+Lets go through the fixes one at a time.</p>
+<p>The first issue of no aria-label was pre-dominantly found in the footer. we had some links such as:</p>
+<pre><code>&lt;a
+    href="https://www.instagram.com/creativecommons"
+    class="social has-text-white"
+    target="_blank"
+    rel="noopener"
+&gt;
+</code></pre>
+<p>These links did not contain any aria-label and were read as <strong>cc link</strong>. So the aria-labels had to be added <code>aria-label="instagram link"</code> in this case which fixed this problem.</p>
+<p>The next issue was of improper landmarks. Most of the pages had no <strong>main</strong> landmark and some had no <strong>complimentary</strong> or <strong>region</strong> landmarks even though they were required in those pages.
+These landmarks had to be added after the carefully scrutinising the pages in the audits.</p>
+<p>The next issue was of improper aria-control nestings. This is interesting as it involves having some deeper understanding of the roles involved. So I will explain this in a little depth.
+The area where we had this issue was in feedback page. The code involved was:</p>
+<pre><code>&lt;ul&gt;
+    &lt;li :class="tabClass(0, 'tab')"&gt;
+        &lt;a
+            href="#panel0"
+            :aria-selected="activeTab == 0"
+            @click.prevent="setActiveTab(0)"
+        &gt;
+        Help us Improve
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li :class="tabClass(1, 'tab')"&gt;
+        &lt;a
+            href="#panel1"
+            :aria-selected="activeTab == 1"
+            @click.prevent="setActiveTab(1)"
+        &gt;
+        Report a Bug
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>The reason why this is an error is because of the <code>aria-selected</code> attribute can only be applied to an element having the role <strong>tab</strong> nested inside a <strong>tablist</strong> element.
+For reference, in the above example the <code>&lt;ul&gt;</code> should have the role <strong>tablist</strong> and each <code>&lt;li&gt;</code> element should have the role <strong>tab</strong>. And so the <code>aria-selected</code> attribute should be in the <code>&lt;li&gt;</code> element instead of the <code>&lt;a&gt;</code> tag.</p>
+<p>The corrected code is:</p>
+<pre><code>&lt;ul role="tablist"&gt;
+    &lt;li role="tab" :class="tabClass(0, 'tab')" :aria-selected="activeTab == 0"&gt;
+        &lt;a 
+            aria-label="help us improve form" 
+            href="#panel0"
+            @click.prevent="setActiveTab(0)"
+        &gt;
+        {{ $t('feedback.improve') }}
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role="tab" :class="tabClass(1, 'tab')" :aria-selected="activeTab == 1"&gt;
+        &lt;a 
+            aria-label="report a bug form"
+            href="#panel1"
+            @click.prevent="setActiveTab(1)"
+        &gt;
+        {{ $t('feedback.bug') }}
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>Another interesting finding involved the screen readers not reading particular special characters such as <code>~</code> and <code>|</code>.
+This issue was quite pronounced in the search guide page where these symbols were used in plenty in both links as well as texts.
+So I had to phonetically write these out in the aria-labels of the links to make the screen reader read them out loud.
+The corresponding changes are:</p>
+<pre><code>&lt;a
+    aria-label="dog vertical bar cat"
+    href="https://search.creativecommons.org/search?q=dog%7Ccat"
+&gt;
+    &lt;em&gt;dog|cat&lt;/em&gt;
+&lt;/a&gt;
+</code></pre>
+<p>After all these changes we had some increase in the accessibility scores(computed from lighthouse):</p>
+<ol>
+<li>About Page: 78 -&gt; 97 | +19</li>
+<li>Search-Guide Page: 76 -&gt; 97 | +23</li>
+<li>Feedback Page: 75 -&gt; 97 | +22</li>
+</ol>
+<p>Whoosh!! That was quite a lot. We are done with these two weeks for now. Hope to see you in the next post as well.</p>
+<p>You can track the work done for these weeks through these PRs:</p>
+<ol>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1068">Accessibility</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1072">Accessibility Improvements</a></li>
+</ol>
+<p>The progress of the project can be tracked on <a href="https://github.com/creativecommons/cccatalog-frontend">cc-search</a></p>
+<p>CC Search Accessiblity is my GSoC 2020 project under the guidance of <a href="https://creativecommons.org/author/zackcreativecommons-org/">Zack Krida</a> and <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, who is the primary mentor for this project, <a href="https://creativecommons.org/author/annacreativecommons-org/">Anna Tumadóttir</a> for helping all along and engineering director <a href="https://creativecommons.org/author/kriticreativecommons-org/">Kriti
+Godey</a>, have been very supportive.</p>
 </div>
   
   <div class="mt-3 bg-light" id="series">
@@ -184,7 +273,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
       
         <li>
         
-          <strong>CC Search, Proposal Drafting and Community Bonding</strong>
+          <a href="/blog/entries/cc-search-accessibility-and-internationalization/">CC Search, Proposal Drafting and Community Bonding</a>
         
         </li>
       
@@ -208,7 +297,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
       
         <li>
         
-          <a href="/blog/entries/cc-search-accessibility-week7-8/">CC Search, Initial Accessibility Improvements</a>
+          <strong>CC Search, Initial Accessibility Improvements</strong>
         
         </li>
       
@@ -245,7 +334,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
   <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-and-internationalization"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-week7-8"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week7-8/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//cc-open-source.disqus.com/embed.js';
