@@ -7,18 +7,24 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="CC Open Source Blog" />
+<meta property="og:title" content="CC Legal Database: Developing features" />
 
 
-<meta property="og:description" content="Welcome to CC&#39;s new technical blog! The CC technical team writes about what we&#39;re working on, updates about CC&#39;s software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our news feed here." />
 
-<meta property="og:url" content="/blog/entries/page/4/" />
+<meta property="og:description" content="In this post, I want to update the progress on Reimplementing the CC Legal Database site, my Outreachy project. There are several features added over the last month to date." />
+
+
+<meta property="og:url" content="/blog/entries/legal-database-features/" />
 <meta property="og:type" content="article" />
 
       
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/legal-database-features/lighthouse-after.png" />
+      
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CC Open Source Blog">
-<meta name="twitter:description" content="Welcome to CC&#39;s new technical blog! The CC technical team writes about what we&#39;re working on, updates about CC&#39;s software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our news feed here.">
+<meta name="twitter:title" content="CC Legal Database: Developing features">
+<meta name="twitter:description" content="In this post, I want to update the progress on Reimplementing the CC Legal Database site, my Outreachy project. There are several features added over the last month to date.">
+      
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/legal-database-features/lighthouse-after.png">
       
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -26,7 +32,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
-<title>CC Open Source Blog — Creative Commons on GitHub</title>
+<title>CC Legal Database: Developing features — Creative Commons on GitHub</title>
 <body>
   <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub">
     <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
@@ -150,148 +156,119 @@
         <div class="page py-3">
           <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
           
-  <p>Welcome to CC's new technical blog! The CC technical team writes about what we're working on, updates about CC's software projects, engineering related programs and events that CC is participating in, and more. We also feature posts from community members working on CC-related projects. You can subscribe to our <a href="/blog/feed.xml">news feed here</a>.</p>
-
+  <h2 class="mb-0">CC Legal Database: Developing features</h2>
   
-  <ul class="blog-index list-unstyled">
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/krysal/">
+  Krystle Salazar
 </a>
-          on 2020-01-24</p>
-      </li>
+  on Friday, 2020-08-7</p>
     
-      
-      <li>
-        <a href="/blog/entries/apache-airflow-testing-with-pytest/">Apache Airflow testing with Pytest</a>
-        <p class="text-muted small">by <a href="/blog/authors/mathemancer/">
-  Brent Moran
-</a>
-          on 2020-01-23</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-3/">CC Platform Toolkit Revamp - 3</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-01-22</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-vocabulary-my-first-four-weeks/">CC Vocabulary - My First Four Weeks</a>
-        <p class="text-muted small">by <a href="/blog/authors/conye/">
-  Chidiebere Onyegbuchulem
-</a>
-          on 2020-01-14</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp-2/">CC Platform Toolkit Revamp - 2</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2020-01-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">Improving CC License Chooser Weeks 1-2: Design</a>
-        <p class="text-muted small">by <a href="/blog/authors/obulat/">
-  Olga Bulat
-</a>
-          on 2020-01-06</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/freesound-intro/">An Introduction to Freesound</a>
-        <p class="text-muted small">by <a href="/blog/authors/ffont/">
-  Frederic Font
-</a>
-          on 2019-12-19</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/cc-platform-toolkit-revamp/">CC Platform Toolkit Revamp</a>
-        <p class="text-muted small">by <a href="/blog/authors/apdsrocha/">
-  Ana Paula Rocha
-</a>
-          on 2019-12-16</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/aws_grant/">Creative Commons Awarded AWS Imagine Grant</a>
-        <p class="text-muted small">by <a href="/blog/authors/aldenpage/">
-  Alden Page
-</a>
-          on 2019-12-12</p>
-      </li>
-    
-      
-      <li>
-        <a href="/blog/entries/building-distributed-indexer/">Building a Distributed Indexer for a Search Engine</a>
-        <p class="text-muted small">by <a href="/blog/authors/aldenpage/">
-  Alden Page
-</a>
-          on 2019-12-11</p>
-      </li>
-    
-  </ul>
-
+   
+  <div class="card bg-light mb-2">
+    <div class="card-body p-2">
+    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
+       <a href="#series">Outreachy May 2020 round: CC Legal Database</a>
+    </p>
+    </div>
+  </div>
+ 
+  <div class="body"><p>In this post, I want to update the progress on Reimplementing the CC Legal Database site, my Outreachy project. There are several features added over the last month to date.</p>
+<h3 id="submission-forms">Submission forms</h3><p>The first thing I wanted to implement was the respective forms so that anyone can submit a case or article to the database. These forms were slightly modified in the redesign (discussed in the previous articles), so now it has fewer mandatory fields to lower the bar and facilitate the contribution of users.</p>
+<figure style="text-align: center;">
+    <img src="scholarship-form.png" alt="Form to submit an article related to CC licenses" style="border: 1px solid black; width: 60%;">
+    <figcaption>Scholarship form to submit an article.</figcaption>
+</figure><p>For the Scholarship form, for example, it is only needed to share your name, email and a link to propose an article related to any of the CC licenses, although the more information you can provide us the better, in any case, each contribution is reviewed by the staff before publishing.</p>
+<h3 id="search">Search</h3><p>The second important task was to allow searching in each of the listings. A basic function to start making use of the exposed information. In the <a href="https://labs.creativecommons.org/caselaw/">current site</a>, this function is delegated to an external service, a certain famous search engine. Filtering is now performed in the backend based on the keywords entered by the user, thus returning the reduced list. Later this will be combined with filtering by tags or topics that are associated with each entry (case or scholarship).</p>
+<h3 id="automated-tests">Automated tests</h3><p>While developing the mentioned functionalities I was also in charge of adding automatic unit tests, to ensure that future changes to the code base do not damage already functional parts of the site. This, in addition to giving more confidence to future contributors, they provide value immediately, at the time of writing the tests you should think about possible edge cases, so they allowed me to notice a missing validation in a couple of routes and then correct it.</p>
+<figure style="text-align: center;">
+    <img src="404-page.png" alt="404 page" style="border:1px solid black; width:70%;">
+    <figcaption>Example of page obtained when requesting a case detail that is not published or doesn't exist.</figcaption>
+</figure><p>In this process of adding automated tests I wanted them to run on every pull request created, so I learned how to write a GitHub Action with a PostgreSQL service, the DBMS used in this case. Previously, I had already created a job for linting, so I needed to add another one to run in parallel to save time. This service provided by GitHub is pretty cool and useful, it opens up a world of possibilities, from running third party services like <a href="https://github.com/GoogleChrome/lighthouse-ci">Lighthouse test</a> to even <a href="https://github.com/gr2m/twitter-together">send tweets</a>! If you want to see the GitHub Action file configurated for this project, check it out: <a href="https://github.com/creativecommons/caselaw/blob/31c3002a7860d78f3fdb464150c5c1b2f8bb86fc/.github/workflows/main.yml"><code>.github/workflows/main.yml</code></a>.</p>
+<h3 id="accessibility">Accessibility</h3><p>To check if the site had shortcomings I did the Lighthouse test on the homepage, discovering that there were indeed some issues to tackle. In principle the results were these:</p>
+<figure style="text-align: center;">
+    <img src="lighthouse-before.png" alt="" style="border:1px solid black; width:70%;">
+    <figcaption>Initial Lighthouse test measurements.</figcaption>
+</figure><p>The good thing about this test is that it throws up suggestions on how to fix the bugs found, so after adding certain missing attributes and labels, the following results were achieved.</p>
+<figure style="text-align: center;">
+    <img src="lighthouse-after.png" alt="" style="border:1px solid black; width:70%;">
+    <figcaption>Lighthouse test measurements after corrections.</figcaption>
+</figure><p>There is still room for improvement but at least we are within a quite acceptable green range.</p>
+<h3 id="other-features-and-tweaks">Other features and tweaks</h3><p>Some other features were implemented but only relevant to our registered users, that is, the Legal Staff. They consist of Django admin customization, such as filtering records by status, and a particular thing requested, the answers of frequently asked questions need to be displayed formatted, so they are now saved as Markdown text and transformed to HTML with style on the public site, showing lists, bold text, links, etc. The admin can also see a preview while editing.</p>
+<h3 id="conclusion">Conclusion</h3><p>After reviewing all done this last month I see significant progress has been made, I have learned many things along the way: more of what Django and its ecosystem offers, about accessibility, continuous integration in Heroku and GitHub, and more. One of the things that makes me most happy is being able to be contributing and being part of an Open Source organization, knowing how it moves and works inside, something I never imagine before.</p>
+<p>Time flies and there are less than two weeks left to finish, so if you want to follow the project here is the repository to suggest improvements or report bugs, or if you prefer something less technical you can join us on the <a href="https://creativecommons.slack.com/channels/cc-dev-legal-database">slack channel</a>.</p>
+</div>
   
-    
-  <ul class="pagination table-responsive mb-2">
-    
-      <li class="page-item"><a class="page-link" href="/blog/entries/page/3/">Previous</a></li>
-    
-    
+  <div class="mt-3 bg-light" id="series">
+    <hr/>
+    <h5 class="font-weight-bold">Posts in the <em>Outreachy May 2020 round: CC Legal Database</em> series</h5>
+    <ul class="toc list-unstyled">
       
-        <li class="page-item"><a class="page-link" href="/blog/entries/">1</a></li>
+        <li>
+        
+          <a href="/blog/entries/legal-database-a-new-beginning/">CC Legal Database: a new beginning</a>
+        
+        </li>
       
-    
+        <li>
+        
+          <a href="/blog/entries/legal-database-design/">CC Legal Database: Design</a>
+        
+        </li>
       
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/2/">2</a></li>
+        <li>
+        
+          <a href="/blog/entries/legal-database-coding-mid-term/">CC Legal Database: Coding and Mid-term status</a>
+        
+        </li>
       
-    
+        <li>
+        
+          <strong>CC Legal Database: Developing features</strong>
+        
+        </li>
       
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/3/">3</a></li>
-      
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/entries/page/4/">4</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/5/">5</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/6/">6</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/7/">7</a></li>
-      
-    
-      
-        <li class="page-item"><a class="page-link" href="/blog/entries/page/8/">8</a></li>
-      
-    
-    
-      <li class="page-item"><a class="page-link" href="/blog/entries/page/5/">Next</a></li>
-    
-  </ul>
-
+    </ul>
+    <hr/>
+  </div>
   
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/cc-legal-database/ ">cc-legal-database</a>,
+          
+            
+            
+            <a href=" /blog/categories/product/ ">product</a>,
+          
+            
+            
+            <a href=" /blog/categories/outreachy/ ">outreachy</a>
+          
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/legal-database-features"; this.page.url = "http://opensource.creativecommons.org/blog/entries/legal-database-features/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
 
           <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
         </div>

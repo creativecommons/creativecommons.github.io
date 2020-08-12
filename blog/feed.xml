@@ -129,6 +129,40 @@ this ride, it's really easy to &lt;a href=&quot;/community/community-team/&quot;
 internship!&lt;/small&gt;&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-features/">
+    <title type="text">CC Legal Database: Developing features</title>
+    <id>urn:uuid:22d82fa8-ac33-3574-89ba-98937b7365f7</id>
+    <updated>2020-08-07T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-features/" />
+    <author>
+      <name>krysal</name>
+    </author>
+    <content type="html">&lt;p&gt;In this post, I want to update the progress on Reimplementing the CC Legal Database site, my Outreachy project. There are several features added over the last month to date.&lt;/p&gt;
+&lt;h3 id=&quot;submission-forms&quot;&gt;Submission forms&lt;/h3&gt;&lt;p&gt;The first thing I wanted to implement was the respective forms so that anyone can submit a case or article to the database. These forms were slightly modified in the redesign (discussed in the previous articles), so now it has fewer mandatory fields to lower the bar and facilitate the contribution of users.&lt;/p&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+    &lt;img src=&quot;scholarship-form.png&quot; alt=&quot;Form to submit an article related to CC licenses&quot; style=&quot;border: 1px solid black; width: 60%;&quot;&gt;
+    &lt;figcaption&gt;Scholarship form to submit an article.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;For the Scholarship form, for example, it is only needed to share your name, email and a link to propose an article related to any of the CC licenses, although the more information you can provide us the better, in any case, each contribution is reviewed by the staff before publishing.&lt;/p&gt;
+&lt;h3 id=&quot;search&quot;&gt;Search&lt;/h3&gt;&lt;p&gt;The second important task was to allow searching in each of the listings. A basic function to start making use of the exposed information. In the &lt;a href=&quot;https://labs.creativecommons.org/caselaw/&quot;&gt;current site&lt;/a&gt;, this function is delegated to an external service, a certain famous search engine. Filtering is now performed in the backend based on the keywords entered by the user, thus returning the reduced list. Later this will be combined with filtering by tags or topics that are associated with each entry (case or scholarship).&lt;/p&gt;
+&lt;h3 id=&quot;automated-tests&quot;&gt;Automated tests&lt;/h3&gt;&lt;p&gt;While developing the mentioned functionalities I was also in charge of adding automatic unit tests, to ensure that future changes to the code base do not damage already functional parts of the site. This, in addition to giving more confidence to future contributors, they provide value immediately, at the time of writing the tests you should think about possible edge cases, so they allowed me to notice a missing validation in a couple of routes and then correct it.&lt;/p&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+    &lt;img src=&quot;404-page.png&quot; alt=&quot;404 page&quot; style=&quot;border:1px solid black; width:70%;&quot;&gt;
+    &lt;figcaption&gt;Example of page obtained when requesting a case detail that is not published or doesn't exist.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;In this process of adding automated tests I wanted them to run on every pull request created, so I learned how to write a GitHub Action with a PostgreSQL service, the DBMS used in this case. Previously, I had already created a job for linting, so I needed to add another one to run in parallel to save time. This service provided by GitHub is pretty cool and useful, it opens up a world of possibilities, from running third party services like &lt;a href=&quot;https://github.com/GoogleChrome/lighthouse-ci&quot;&gt;Lighthouse test&lt;/a&gt; to even &lt;a href=&quot;https://github.com/gr2m/twitter-together&quot;&gt;send tweets&lt;/a&gt;! If you want to see the GitHub Action file configurated for this project, check it out: &lt;a href=&quot;https://github.com/creativecommons/caselaw/blob/31c3002a7860d78f3fdb464150c5c1b2f8bb86fc/.github/workflows/main.yml&quot;&gt;&lt;code&gt;.github/workflows/main.yml&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;accessibility&quot;&gt;Accessibility&lt;/h3&gt;&lt;p&gt;To check if the site had shortcomings I did the Lighthouse test on the homepage, discovering that there were indeed some issues to tackle. In principle the results were these:&lt;/p&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+    &lt;img src=&quot;lighthouse-before.png&quot; alt=&quot;&quot; style=&quot;border:1px solid black; width:70%;&quot;&gt;
+    &lt;figcaption&gt;Initial Lighthouse test measurements.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;The good thing about this test is that it throws up suggestions on how to fix the bugs found, so after adding certain missing attributes and labels, the following results were achieved.&lt;/p&gt;
+&lt;figure style=&quot;text-align: center;&quot;&gt;
+    &lt;img src=&quot;lighthouse-after.png&quot; alt=&quot;&quot; style=&quot;border:1px solid black; width:70%;&quot;&gt;
+    &lt;figcaption&gt;Lighthouse test measurements after corrections.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;There is still room for improvement but at least we are within a quite acceptable green range.&lt;/p&gt;
+&lt;h3 id=&quot;other-features-and-tweaks&quot;&gt;Other features and tweaks&lt;/h3&gt;&lt;p&gt;Some other features were implemented but only relevant to our registered users, that is, the Legal Staff. They consist of Django admin customization, such as filtering records by status, and a particular thing requested, the answers of frequently asked questions need to be displayed formatted, so they are now saved as Markdown text and transformed to HTML with style on the public site, showing lists, bold text, links, etc. The admin can also see a preview while editing.&lt;/p&gt;
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;&lt;p&gt;After reviewing all done this last month I see significant progress has been made, I have learned many things along the way: more of what Django and its ecosystem offers, about accessibility, continuous integration in Heroku and GitHub, and more. One of the things that makes me most happy is being able to be contributing and being part of an Open Source organization, knowing how it moves and works inside, something I never imagine before.&lt;/p&gt;
+&lt;p&gt;Time flies and there are less than two weeks left to finish, so if you want to follow the project here is the repository to suggest improvements or report bugs, or if you prefer something less technical you can join us on the &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-legal-database&quot;&gt;slack channel&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/smithsonian-unit-code-update/">
     <title type="text">Smithsonian Unit Code Update</title>
     <id>urn:uuid:23985c56-007a-3707-9f9c-66bde8adae7e</id>
@@ -2958,35 +2992,6 @@ the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
     &lt;img src=&quot;letterheart.svg&quot; width=&quot;32&quot;/&gt;
   &lt;/figure&gt;
 &lt;/div&gt;&lt;p&gt;~Signing off, for now~&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/">
-    <title type="text">CC Browser Extension Week 9, 10</title>
-    <id>urn:uuid:48a56854-464e-306f-bf36-7e316a0e496e</id>
-    <updated>2019-08-12T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-week9-10/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working on my GSoC project that is to make a browser-extension to search CC Licensed content in the public domain by interacting with CC Catalog API.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Previous Blogs&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-a-gsoc-project/&quot;&gt;CC Browser Extension - A GSoC Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week5-6/&quot;&gt;CC Browser Extension Week 5, 6&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-browser-extension-week7-8/&quot;&gt;CC Browser Extension Week 7, 8&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;work-done&quot;&gt;Work Done&lt;/h3&gt;&lt;p&gt;These weeks were spent on adding bookmarking feature to the extension and writing some unit tests.&lt;/p&gt;
-&lt;p&gt;On clicking the bookmark icon, that appears when the image thumbnail is hovered on, the image will be bookmarked. Under the hood, the unique image identifier is saved in the local storage of the extension. The images ids are enough to get all the required image and attribution data needed using the &lt;code&gt;/image/{identifier}&lt;/code&gt; endpoint of &lt;a href=&quot;/blog/entries/cc-browser-extension-week9-10/[https://github.com/creativecommons/cccatalog-api](https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Bookmarked images persist even when the extension session terminates. User can view, inspect, delete the bookmarked images in the &lt;em&gt;'Bookmarks'&lt;/em&gt; section. There is also a button to delete all the bookmarks at once.&lt;/p&gt;
-&lt;p&gt;To let the users organize and share bookmarks, importing and exporting feature is also added. The buttons to export and import the bookmarks are in the options page. Simple &lt;code&gt;json&lt;/code&gt; files are used for this feature.&lt;/p&gt;
-&lt;p&gt;The rest of the time was spent on writing tests for the extension. One positive side-effect of this was cleaner and modular code. Finally, the CircleCi config file was modified to let the tests to run in CI pipeline.&lt;/p&gt;
-&lt;h3 id=&quot;coming-up&quot;&gt;Coming Up&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Write more tests.&lt;/li&gt;
-&lt;li&gt;Test and fix bugs.&lt;/li&gt;
-&lt;li&gt;Modifying webpack config to spit out code for production.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;You can check out the project on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; and join the discussion on &lt;code&gt;#gsoc-browser-ext&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
