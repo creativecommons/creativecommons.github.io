@@ -1,0 +1,591 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="How to politely crawl and analyze 500 million images" />
+
+
+
+<meta property="og:description" content="Background" />
+
+
+<meta property="og:url" content="/blog/entries/crawling-500-million/" />
+<meta property="og:type" content="article" />
+
+      
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/crawling-500-million/image_crawler.png" />
+      
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How to politely crawl and analyze 500 million images">
+<meta name="twitter:description" content="Background">
+      
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/crawling-500-million/image_crawler.png">
+      
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<title>How to politely crawl and analyze 500 million images — Creative Commons on GitHub</title>
+<body>
+  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub">
+    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+  </a>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+  <header class="main-header">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12">
+          <nav class="navbar navbar-expand-xl navbar-dark">
+            
+            <a class="navbar-brand" href="/">
+              <img src="/cclogo.svg">
+              <span class="legend">Creative Commons Open Source</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">Blog</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contribute</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
+                    
+                      <a class="dropdown-item" href="/contributing-code/">Contribution Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/projects/">Project List</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/cc-search/">CC Search</a>
+                    
+                      <a class="dropdown-item" href="/contributing-code/usability/">Usability</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
+                    
+                      <a class="dropdown-item" href="/community/">Join the Community</a>
+                    
+                      <a class="dropdown-item" href="/community/community-team/">Community Team</a>
+                    
+                      <a class="dropdown-item" href="/community/community-team/members/">Community Team Members</a>
+                    
+                      <a class="dropdown-item" href="/community/community-team/project-roles/">Project Roles</a>
+                    
+                      <a class="dropdown-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+                    
+                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
+                    
+                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarInternshipsDropdown" role="button">Internships</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarInternshipsDropdown">
+                    
+                      <a class="dropdown-item" href="/internships/">Overview</a>
+                    
+                      <a class="dropdown-item" href="/internships/project-ideas/">Project Ideas</a>
+                    
+                      <a class="dropdown-item" href="/internships/applicant-guide/">Applicant Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/intern-guide/">Intern Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
+                    
+                      <a class="dropdown-item" href="/internships/history/">History</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/cc-search/">CC Search</a>
+                </li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
+                    
+                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+                    
+                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+                    
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://creativecommons.org" target="_blank">creativecommons.org</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid page-content">
+    <div class="row justify-content-md-center">
+      <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
+        <div class="page py-3">
+          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
+          
+  <h2 class="mb-0">How to politely crawl and analyze 500 million images</h2>
+  
+  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/aldenpage/">
+  Alden Page
+</a>
+  on Monday, 2020-08-17</p>
+  
+  <div class="body"><h4 id="background">Background</h4><p>The goal of <a href="https://search.creativecommons.org">CC Search</a> is to index all of the Creative Commons works on the internet, starting with images. We have indexed over 500 million images, which we believe is roughly 36% of all CC licensed content on the internet by <a href="https://creativecommons.org/2018/05/08/state-of-the-commons-2017/">our last count</a>. To further enhance the usefulness of our search tool, we recently started crawling and analyzing images for improved search results. This article will discuss the process of taking a paper design for a large scale crawler, implementing it, and putting it in production, with a few idealized code snippets and diagrams along the way. The full source code can be viewed on <a href="https://github.com/creativecommons/image-crawler">GitHub</a>.</p>
+<p>Originally, when we discovered an image and inserted it into CC Search, we didn't even bother downloading it; we stuck the URL in our database and embedded the image in our search results. This approach has a lot of problems:</p>
+<ol>
+<li>We don't know the dimensions or compression quality of images, which is useful both for relevance purposes (de-ranking low  quality images) and for filtering. For example, some users are only interested in high resolution images and would like to exclude content below a certain size.</li>
+<li>We can't run any type of computer vision analysis on any of the images, which could be useful for enriching search metadata through object recognition.</li>
+<li>Embedding third party content is fraught with problems. What if the other party's server goes down, the images disappear due to link rot, or their TLS certificates expire? Each of these situations results in broken images appearing in the search results or browser alerts about degraded security.</li>
+</ol>
+<p>We solved (3) by setting up a <a href="https://github.com/willnorris/imageproxy">caching thumbnail proxy</a> between images in the search results and their 3rd party origin, as well as some last-minute liveness checks to make sure that the image hasn't 404'd.</p>
+<p>(1) and (2), however, are not possible to solve without actually downloading the image and performing some analysis on the contents of the file. For us to reproduce the features that users take for granted in image search, we're going to need a fairly powerful crawling system.</p>
+<p>On the scale of several thousand images, it would be easy to cobble together a few scripts to spit out this information, but with half a billion images, there are a lot of hurdles to overcome.</p>
+<ul>
+<li>We want to crawl <a href="https://en.wikipedia.org/wiki/Web_crawler#Politeness_policy">politely</a>; however, the concentration and quantity of images means that we have to hit some sources with a high crawl rate in order to have any hope of finishing the crawl in a reasonable period of time. Our data sources range from non-profit museums with a single staff IT person to tech companies with their own data centers and thousands of employees; the crawl rate has to be tailored to download quickly from the big players but not overwhelm small sources. At the same time, we need to be sure that we are not overestimating any source's capacity and watch for signs that our crawler is straining the server.</li>
+<li>We need to keep the time to process each image as low as possible to make it feasible to finish the crawling and analysis task in a reasonable period of time. This means that the crawling and analysis tasks need to be distributed to multiple machines in parallel.</li>
+<li>A lot of metadata will be produced by this crawler. The step of integrating it with our internal systems needs to not block resizing tasks. That suggests that a message bus will be necessary to buffer messages before they are written into our data layer, where writes can be expensive.</li>
+<li>We want to have a basic idea of how the crawl is progressing in the form of summaries of error counts, status codes, and crawl rates for each source.</li>
+</ul>
+<p>In summary, the challenge here isn't so much making a really fast crawler as much as it is tailoring the crawl speed to each source. At a minimum, we'll need to deal with concurrency and parallelism, provisioning and managing the life cycle of crawler infrastructure, pipelines for capturing output data, a way to monitor the progress of the crawl, a suite of tests to make sure the system behaves as expected, and a reliable way to enforce a "politeness" policy. That's not a trivial project, particularly for our tiny three person tech team (of which only one person is available to do all of the crawling work). Can't we just use an off-the-shelf open source crawler?</p>
+<h4 id="what-about-existing-open-source-crawlers?">What about existing open source crawlers?</h4><p>Any decent software engineer will consider existing options before diving into a project and reinventing the wheel. My assessment was that although there are a lot of open source crawling frameworks available, few of them focus on images, some are not actively maintained, and all would require extensive customization to meet the requirements of our crawl strategy. Further, many solutions are more complex than than our use case demands and would significantly expand our use of cloud infrastructure, resulting in higher expenses and more operational headaches. I experimented with Apache Nutch, Scrapy Cluster, and Frontera; none of the existing options looked quite right for our use case.</p>
+<p>As a reminder, we want to eventually crawl every single Creative Commons work on the internet. Effective crawling is central to the capabilities that our search engine is able to provide. In addition to being central to achieving high quality image search, crawling could also be useful for discovering new Creative Commons content of any type on any website. In my view, that's a strong argument for spending some time designing a custom crawling solution where we have complete end-to-end control of the process, as long as the feature set is limited in scope. In the next section, we'll assess the effort required to build a crawler from the ground up.</p>
+<h4 id="designing-the-crawler">Designing the crawler</h4><p>We know we're not going to be able to crawl 500 million images with one virtual machine and a single IP address, so it is obvious from the start that we are going to need a way to distribute the crawling and analysis tasks over multiple machines. A basic queue-worker architecture will do the job here; when we want to crawl an image, we can dispatch the URL to an inbound images queue, and a worker eventually pops that task out and processes it. Kafka will handle all of the hard work of partitioning and distributing the tasks between workers.</p>
+<p>The worker processes do the actual analysis of the images, which essentially entails downloading the image, extracting interesting properties, and sticking the resulting metadata back into a Kafka topic for later downstream processing. The worker will also have to include some instrumentation for conforming to rate limits and error reporting.</p>
+<p>We also know that we will need to share some information about crawl progress between worker processes, such as whether we've exceeded our proscribed rate limit for a website, the number of times we've seen a status code in the last minute, how many images we've processed so far, and so on. Since we're only interested in sharing application state and aggregate statistics, a lightweight key/value store like Redis seems like a good fit.</p>
+<p>Finally, we need a supervising process that centrally controls the crawl. This key governing process will be responsible for making sure our crawler workers are behaving properly by moderating crawl rates for each source, taking action in the face of errors, and reporting statistics to the operators of the crawler. We'll call this process the crawl monitor.</p>
+<p>Here's a rough sketch of how things will work:</p>
+<p><img src="/blog/entries/crawling-500-million/image_crawler_simplified.png" alt="Diagram"></p>
+<p>At a high level, the problem of building a fast crawler seems solvable for our team, even on the scale of several hundred million images. If we can sustain a crawl and analysis rate of 200 images per second, we could crawl all 500 million images in about a month.</p>
+<p>In the next section, we'll examine some of the key components that make up the crawler.</p>
+<h4 id="detailed-breakdown">Detailed breakdown</h4><h5 id="concurrency-with-asyncio">Concurrency with <code>asyncio</code></h5><p>Crawling is a massively IO bound task. The workers need to maintain lots of simultaneous open connections with internal systems like Kafka and Redis as well as 3rd party websites holding the target images. Once we have the image in memory, performing our actual analysis task is easy and cheap. For these reasons, an asynchronous approach seems more attractive than using multiple threads of execution. Even if our image processing task grows in complexity and becomes CPU bound, we can get the best of both worlds by offloading heavyweight tasks to a process pool. See "<a href="https://docs.python.org/3/library/asyncio-dev.html#running-blocking-code">Running Blocking Code</a>" in the <code>asyncio</code> docs for more details.</p>
+<p>Another reason that an asynchronous approach may be desirable is that we have several interlocking components which need to react to events in real-time: our crawl monitoring process needs to simultaneously control the rate limiting process and also interrupt crawling if errors are detected, while our worker processes need to consume crawl events, process images, upload thumbnails, and produce events documenting the metadata of each image. Coordinating all of these components through inter-process communication could be difficult, but breaking up tasks into small pieces and yielding to the event loop is comparatively easy.</p>
+<h5 id="the-resize-task">The resize task</h5><p>This is the most vital part of our crawling system: the part that actually does the work of fetching and processing an image. As established previously, we need to execute this task concurrently, so everything needs to be defined with <code>async</code>/<code>await</code> syntax to allow the event loop to multitask. The actual task itself is otherwise straightforward.</p>
+<ol>
+<li>Download the remote image and load it into memory.</li>
+<li>Extract the resolution and compression quality.</li>
+<li>Thumbnail the image for later computer vision analysis and upload it to S3.</li>
+<li>Write the information we've discovered to a Kafka topic.</li>
+<li>Report success/errors to Redis in aggregate.</li>
+</ol>
+<p>See <a href="https://github.com/creativecommons/image-crawler/blob/master/worker/image.py">image.py</a> for the nitty-gritty details.</p>
+<h4 id="rate-limiting-with-token-buckets-and-error-circuit-breakers">Rate limiting with token buckets and error circuit breakers</h4><h5 id="how-do-we-determine-the-rate-limit?">How do we determine the rate limit?</h5><p>Often times, when designing highly concurrent software, the goal is to maximize the throughput and push servers to their absolute limit. The opposite is true with a web crawler, particularly when you are operating a non-profit organization completely reliant on the goodwill of others to exist. We want to be as certain as reasonably possible that we aren't going to knock a resource off of the internet with an accidental <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">DDoS</a>. At the same time, we need to crawl as quickly as possible against sources with adequate resources to withstand a heavy crawl, or else we'll never finish. How can we match our crawl rate to a site's capabilities?</p>
+<p>Originally, my plan was to determine this through an adaptive rate limiting strategy, where we would start with a low rate limit and use a hill climbing algorithm to determine the optimal rate. In essence, we would start crawling every website at a low rate limit and steadily escalate it until signs of stress appeared (and then back off permanently at a safe rate limit). We could track metrics like <a href="https://en.wikipedia.org/wiki/Time_to_first_byte">time to first byte</a> (TTFB) and bandwidth speed to determine the exact moment that we have started to strain upstream servers. However, there are a lot of drawbacks here:</p>
+<ol>
+<li>It may not be correct to assume that performance will steadily degrade instead of failing all at once.</li>
+<li>We can't detect whether we are the cause of a performance issue or if the host is simply experiencing server trouble due to configuration errors or high traffic. We could get stuck at a suboptimal rate limit due to normal fluctuations in traffic.</li>
+<li>Recording TTFB in Python is difficult because it requires low level access to connection data. We might have to write an extension to <code>aiohttp</code> to get it.</li>
+</ol>
+<p>Eventually I decided that this is too much hassle. Can we get the job done with a simpler strategy?</p>
+<p>It turns out that the size of a website is typically correlated with infrastructure capabilities. The reasoning behind this is that if you are capable of hosting 450MM images, you are probably able to handle at least a couple hundred requests per second for serving traffic. In our case, we already know how many images a source has, so it's easy for us to peg our rate limit between a low minimum for small websites and a reasonable maximum for large websites, and then interpolate the rate limit for everything in between.</p>
+<p>Of course, it's important to note that this is only a rough heuristic that we use to make a reasonable guess about what a website can handle. We have to allow the possibility that we set our rate limit too aggressively in spite of our precautions.</p>
+<h5 id="backing-off-with-circuit-breakers">Backing off with circuit breakers</h5><p>If our heuristic fails to correctly approximate the bandwidth capabilities of a site, we are going to start encountering problems. For one, we might exceed the server-side rate limit, which means we will see <code>429 Rate Limit Exceeded</code> and <code>403 Forbidden</code> errors instead of the images we're trying to crawl. Worse yet, the upstream source might continue to happily serve requests while we suck up all of their traffic capacity, resulting in other users being unable to view the images. Clearly, in either scenario, we need to either reduce our crawl rate or even give up crawling the source entirely if it appears that we are impacting their uptime.</p>
+<p>To handle these situations, we have two tools in our toolbox: a sliding window recording the status code of every request made we've made to each domain in the last 60 seconds, and a list of the last 50 statuses for each website. If the number of errors in our one minute window exceed 10%, something is wrong; we should wait a minute before trying again. If we have encountered many errors in a row, however, that suggests that we're having trouble with a particular site, so we ought to give up crawling the source and raise an alert.</p>
+<p>Workers can keep track of this information in sorted sets in Redis. For the sliding error window, we'll sort each request by its timestamp, which will make it easy and cheap for us to expire status codes beyond the sliding window interval. Maintaining a list of the last N response codes is even easier; we just stick the status code in a list associated with the source.</p>
+<div class="hll"><pre><span></span><span class="k">class</span> <span class="nc">StatsManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redis</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redis</span> <span class="o">=</span> <span class="n">redis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">known_sources</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_record_window_samples</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Insert a status into all sliding windows. &quot;&quot;&quot;</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+        <span class="c1"># Time-based sliding windows</span>
+        <span class="k">for</span> <span class="n">stat_key</span><span class="p">,</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">WINDOW_PAIRS</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">stat_key</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">zadd</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">now</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Delete events from outside the window</span>
+            <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">zremrangebyscore</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;-inf&#39;</span><span class="p">,</span> <span class="n">now</span> <span class="o">-</span> <span class="n">interval</span><span class="p">)</span>
+        <span class="c1"># &quot;Last n requests&quot; window</span>
+        <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">LAST_50_REQUESTS</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">ltrim</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">LAST_50_REQUESTS</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+<p><em><center>Collecting status codes in aggregate</center></em></p>
+<p>Meanwhile, the crawl monitor process can keep tabs on the contents of each error threshold.</p>
+<p>When more than 10% of the requests made to a source in the last minute are errors, we'll set a halt condition in Redis and stop replenishing rate limit tokens (more on that below).</p>
+<div class="hll"><pre><span></span><span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+<span class="n">one_minute_window</span> <span class="o">=</span> <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">zrangebyscore</span><span class="p">(</span>
+    <span class="n">one_minute_window_key</span><span class="p">,</span> <span class="s1">&#39;-inf&#39;</span><span class="p">,</span> <span class="n">now</span> <span class="o">-</span> <span class="mi">60</span>
+<span class="p">)</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">success</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">one_minute_window</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">EXPECTED_STATUSES</span><span class="p">:</span>
+        <span class="n">errors</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">successful</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="n">ERROR_TOLERANCE_PERCENT</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">successful</span> <span class="ow">or</span> <span class="n">errors</span> <span class="o">/</span> <span class="n">successful</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="n">TEMP_HALTED_SET</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+</pre></div>
+<p><em><center>Detecting elevated crawl errors for a source</center></em></p>
+<p>For detecting "serious" errors, where we've seen 50 failed requests in a row, we'll set a permanent halt condition. Someone will have to manually troubleshoot the situation and switch the crawler back on for that source.</p>
+<div class="hll"><pre><span></span><span class="n">last_50_statuses_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;statuslast50req:</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">last_50_statuses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">lrange</span><span class="p">(</span><span class="n">last_50_statuses_key</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_50_statuses</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="ow">and</span> <span class="n">_every_request_failed</span><span class="p">(</span><span class="n">last_50_statuses</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="n">HALTED_SET</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+</pre></div>
+<p><em><center>Detecting persistent crawl errors</center></em></p>
+<p>In practice, keeping a sliding window for tracking error thresholds and setting reasonable minimum and maximum crawl rates has worked well enough that the circuit breaker has never been tripped.</p>
+<h5 id="enforcing-rate-limits-with-token-buckets">Enforcing rate limits with token buckets</h5><p>It's one thing to set a policy for crawling; it's another thing entirely to actually enforce it. How can we coordinate our multiple crawling processes to prevent them from overstepping our rate limit?</p>
+<p>The answer is to implement a distributed token bucket system. The idea behind this is that each crawler has to obtain a token from Redis before making a request. Every second, the crawl monitor sets a variable containing the number of requests that can be made against a source. Each crawler process decrements the counter before making a request. If the decremented result is above zero, the worker is cleared to crawl. Otherwise, the rate limit has been reached and we should wait until a token has been obtained.</p>
+<p>The beauty of token buckets is their simplicity, performance, and resilience against failure. If our crawler monitor process dies, crawling halts completely; making a request is not possible without first acquiring a token. This is a much better alternative to the guard rails completely disappearing with the crawl monitor and allowing unbounded crawling. Further, since decrementing a counter and retrieving the result is an atomic operation in Redis, there's no risk of race conditions and therefore no need for locking. This is a huge boon for performance, as the overhead of coordinating and blocking on every single request would rapidly bog down our crawling system.</p>
+<p>To ensure that all crawling is performed at the correct speed, I wrapped <code>aiohttp.ClientSession</code> with a rate limited version of the class.</p>
+<div class="hll"><pre><span></span><span class="k">class</span> <span class="nc">RateLimitedClientSession</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aioclient</span><span class="p">,</span> <span class="n">redis</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">aioclient</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redis</span> <span class="o">=</span> <span class="n">redis</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="n">token_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CURRTOKEN_PREFIX</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">decr</span><span class="p">(</span><span class="n">token_key</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">tokens</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">token_acquired</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Out of tokens</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">token_acquired</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="n">token_acquired</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="n">token_acquired</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">token_acquired</span><span class="p">:</span>
+            <span class="n">token_acquired</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_token</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+<p>Meanwhile, the crawl monitor process is filling up each bucket every second.</p>
+<h5 id="scheduling-tasks-somewhat-intelligently">Scheduling tasks (somewhat) intelligently</h5><p>The final gotcha in the design of our crawler is that we want to crawl every single website at the same time at its prescribed rate limit. That sounds almost tautological, like something that we should be able to take for granted after implementing all of this logic for preventing our crawler from working too quickly, but it turns out our crawler's processing capacity itself is a limited and contentious resource. We can only schedule so many tasks simultaneously on each worker, and we need to ensure that tasks from a single website aren't starving other sources of crawl capacity.</p>
+<p>For instance, imagine that each worker is able to handle 5000 simultaneous crawling tasks, and every one of those tasks is tied to a tiny website with a very low rate limit. That means that our entire worker, which is capable of handling hundreds of crawl and analysis jobs per second, is stuck making one request per second until some faster tasks appear in the queue.</p>
+<p>In other words, we need to make sure that each worker process isn't jamming itself up with a single source. We have a <a href="https://en.wikipedia.org/wiki/Scheduling_(computing%29">scheduling problem</a>. We've naively implemented first-come-first-serve and need to switch to a different scheduling strategy.</p>
+<p>There are innumerable ways to address scheduling problems. Since there are only a few dozen sources in our system, we can get away with using a stupid scheduling algorithm: give each source equal capacity in every worker. In other words, if there are 5000 tasks to distribute and 30 sources, we can allocate 166 simultaneous tasks to each source per worker. That's plenty for our purposes. There are obvious drawbacks of this approach in that eventually there will be so many sources that we start starving high rate limit sources of work. We'll cross that bridge when we come to it; it's better to use the simplest possible approach we can get away with instead of spending all of our time on solving hypothetical future problems.</p>
+<div class="hll"><pre><span></span>    <span class="k">async</span> <span class="k">def</span> <span class="nf">_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_schedule</span><span class="p">):</span>
+        <span class="n">raw_sources</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">smembers</span><span class="p">(</span><span class="s1">&#39;inbound_sources&#39;</span><span class="p">)</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_sources</span><span class="p">]</span>
+        <span class="n">num_sources</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="c1"># A source never gets more than 1/4th of the worker&#39;s capacity. This</span>
+        <span class="c1"># helps prevent starvation of lower rate limit requests and ensures</span>
+        <span class="c1"># that the first few sources to be discovered don&#39;t get all of the</span>
+        <span class="c1"># initial task slots.</span>
+        <span class="n">max_share</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">MAX_TASKS</span> <span class="o">/</span> <span class="mi">4</span>
+        <span class="n">share</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MAX_TASKS</span> <span class="o">/</span> <span class="n">num_sources</span><span class="p">),</span> <span class="n">max_share</span><span class="p">)</span>
+        <span class="n">to_schedule</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+            <span class="n">num_unfinished</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_unfinished_tasks</span><span class="p">(</span><span class="n">task_schedule</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+            <span class="n">num_to_schedule</span> <span class="o">=</span> <span class="n">share</span> <span class="o">-</span> <span class="n">num_unfinished</span>
+            <span class="n">consumer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_consumer</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+            <span class="n">source_msgs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_consume_n</span><span class="p">(</span><span class="n">consumer</span><span class="p">,</span> <span class="n">num_to_schedule</span><span class="p">)</span>
+            <span class="n">to_schedule</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="n">source_msgs</span>
+        <span class="k">return</span> <span class="n">to_schedule</span>
+</pre></div>
+<p><em><center>Scheduling tasks for every source</center></em></p>
+<p>The one implementation detail to deal with here is that our workers can't draw from a single inbound images queue anymore; we need to partition each source into its own queue so we can pull tasks from each source when we need it. This partitioning process can be handled transparently by the crawl monitor.</p>
+<p><img src="/blog/entries/crawling-500-million/image_crawler.png" alt="A more complete diagram"></p>
+<p><em><center>A more complete diagram showing the system with a queue for each source</center></em></p>
+<h5 id="designing-for-testability">Designing for testability</h5><p>It's quite difficult to test IO-heavy systems because of their need to interact with lots of external dependencies. Often times it is necessary to write complex integration tests or run manual tests to be certain that key functionality works as expected. This is no good because integration tests are much more expensive to maintain and take far longer to execute. We certainly wouldn't go to production without running a smoke test to verify correctness in real-world conditions, but it's still critical to have unit tests in place for catching bugs quickly during the development process.</p>
+<p>The solution to this problem is to use dependency injection, which is a fancy way of saying that we never do IO directly from within our application. Instead, we delegate IO to external objects that can be passed in at run-time. This makes it easy to pass in fake objects that approximate real world behavior without real world consequences.</p>
+<p>For example, the crawl monitor usually has to talk to our CC Search API (for assessing source size), Redis, and Kafka to do its job of regulating the crawl; instead of setting up a brittle and complicated integration test with all of those dependencies, we just instantiate some mock objects and pass them in. Now we can easily test individual components such as the error circuit breaker.</p>
+<p><em><center>Testing our crawl monitor's circuit breaking functionality with mock dependencies</center></em></p>
+<div class="hll"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">source_fixture</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Mocks the /v1/sources endpoint response. &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;source_name&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;image_count&quot;</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
+            <span class="s2">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source_url&quot;</span><span class="p">:</span> <span class="s2">&quot;example.com&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;source_name&quot;</span><span class="p">:</span> <span class="s2">&quot;another&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;image_count&quot;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>
+            <span class="s2">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Another&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source_url&quot;</span><span class="p">:</span> <span class="s2">&quot;whatever&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">create_mock_monitor</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">FakeAioResponse</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">sources</span><span class="p">)</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">FakeAioSession</span><span class="p">(</span><span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">)</span>
+    <span class="n">redis</span> <span class="o">=</span> <span class="n">FakeRedis</span><span class="p">()</span>
+    <span class="n">regulator_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">rate_limit_regulator</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">redis</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">redis</span><span class="p">,</span> <span class="n">regulator_task</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_error_circuit_breaker</span><span class="p">(</span><span class="n">source_fixture</span><span class="p">):</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="n">source_fixture</span>
+    <span class="n">redis</span><span class="p">,</span> <span class="n">monitor</span> <span class="o">=</span> <span class="n">create_mock_monitor</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+    <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;statuslast50req:example&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;500&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
+    <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;statuslast50req:another&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;200&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
+    <span class="k">await</span> <span class="n">run_monitor</span><span class="p">(</span><span class="n">monitor_task</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="sa">b</span><span class="s1">&#39;example&#39;</span> <span class="ow">in</span> <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;halted&#39;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="sa">b</span><span class="s1">&#39;another&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;halted&#39;</span><span class="p">]</span>
+</pre></div>
+<p>The main drawback of dependency injection is that initializing your objects will take some more ceremony. See the <a href="https://github.com/creativecommons/image-crawler/blob/00b59aba9a15faccf203a53d73a98e8c06cb69e8/worker/scheduler.py#L162">initialization of the crawl scheduler</a> for an example of wiring up an object with a lot of dependencies. You might also find that constructors and other functions with a lot of dependencies will have a lot of arguments if care isn't taken to bundle external dependencies together. In my opinion, the price of a few extra lines of initialization code is well worth the benefits gained from testability and modularity.</p>
+<h4 id="smoke-testing">Smoke testing</h4><p>Even with our unit test coverage, we still need to do some basic small-scale manual tests to make sure our assumptions hold up in the real world. We'll need to write <a href="https://www.terraform.io/">Terraform</a> modules that provision a working version of the real system. Sadly, our Terraform infrastructure repository is private for now, but here's a taste of what the infra code looks like.</p>
+<div class="hll"><pre><span></span><span class="kr">module</span> <span class="s">&quot;image-crawler&quot;</span> <span class=" -Punctuation">{</span>
+<span class="na">  source</span> <span class="o">=</span> <span class="s2">&quot;../../modules/services/image-crawler&quot;</span>
+<span class="na">  environment</span> <span class="o">=</span> <span class="s2">&quot;prod&quot;</span>
+<span class="na">  docker_tag</span> <span class="o">=</span> <span class="s2">&quot;0.25.0&quot;</span>
+<span class="na">  aws_access_key_id</span>     <span class="o">=</span> <span class="s2">&quot;${var.aws_access_key_id}&quot;</span>
+<span class="na">  aws_secret_access_key</span> <span class="o">=</span> <span class="s2">&quot;${var.aws_secret_access_key}&quot;</span>
+<span class="na">  zookeeper_endpoint</span> <span class="o">=</span> <span class="s2">&quot;${module.kafka.zookeeper_brokers}&quot;</span>
+<span class="na">  kafka_brokers</span> <span class="o">=</span> <span class="s2">&quot;${module.kafka.kafka_brokers}&quot;</span>
+<span class="na">  worker_instance_type</span> <span class="o">=</span> <span class="s2">&quot;m5.large&quot;</span>
+<span class="na">  worker_count</span> <span class="o">=</span> <span class="m">5</span>
+<span class=" -Punctuation">}</span>
+</pre></div>
+<p><em><center>Initialization of crawler Terraform module in our production environment</center></em></p>
+<div class="hll"><pre><span></span><span class="kr">resource</span> <span class="s">&quot;aws_instance&quot; &quot;crawler-workers&quot;</span> <span class=" -Punctuation">{</span>
+<span class="na">  ami</span>                     <span class="o">=</span> <span class="s2">&quot;${var.ami}&quot;</span>
+<span class="na">  instance_type</span>           <span class="o">=</span> <span class="s2">&quot;${var.worker_instance_type}&quot;</span>
+<span class="na">  user_data</span>               <span class="o">=</span> <span class="s2">&quot;${data.template_file.worker_init.rendered}&quot;</span>
+<span class="na">  subnet_id</span>               <span class="o">=</span> <span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span>
+<span class="na">  vpc_security_group_ids</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span>
+<span class="na">  count</span>                   <span class="o">=</span> <span class="s2">&quot;${var.worker_count}&quot;</span>
+
+  <span class="kd">tags</span> <span class=" -Punctuation">{</span>
+<span class="na">    Name</span>             <span class="o">=</span> <span class="s2">&quot;image-crawler-worker-${var.environment}&quot;</span>
+<span class="na">    environment</span>      <span class="o">=</span> <span class="s2">&quot;${var.environment}&quot;</span>
+<span class="na">    &quot;cc:environment&quot;</span> <span class="o">=</span><span class="na"> &quot;${var.environment</span> <span class="o">==</span> <span class="s2">&quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span>
+<span class="na">    &quot;cc:product&quot;</span>     <span class="o">=</span> <span class="s2">&quot;cccatalog-api&quot;</span>
+<span class="na">    &quot;cc:purpose&quot;</span>     <span class="o">=</span> <span class="s2">&quot;Image crawler worker&quot;</span>
+<span class="na">    &quot;cc:team&quot;</span>        <span class="o">=</span> <span class="s2">&quot;cc-search&quot;</span>
+  <span class=" -Punctuation">}</span>
+<span class=" -Punctuation">}</span>
+
+<span class="kr">resource</span> <span class="s">&quot;aws_instance&quot; &quot;crawler-monitor&quot;</span> <span class=" -Punctuation">{</span>
+<span class="na">  ami</span>                     <span class="o">=</span> <span class="s2">&quot;${var.ami}&quot;</span>
+<span class="na">  instance_type</span>           <span class="o">=</span> <span class="s2">&quot;c5.large&quot;</span>
+<span class="na">  user_data</span>               <span class="o">=</span> <span class="s2">&quot;${data.template_file.monitor_init.rendered}&quot;</span>
+<span class="na">  subnet_id</span>               <span class="o">=</span> <span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span>
+<span class="na">  vpc_security_group_ids</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span>
+
+  <span class="kd">tags</span> <span class=" -Punctuation">{</span>
+<span class="na">    Name</span>             <span class="o">=</span> <span class="s2">&quot;image-crawler-monitor-${var.environment}&quot;</span>
+<span class="na">    environment</span>      <span class="o">=</span> <span class="s2">&quot;${var.environment}&quot;</span>
+<span class="na">    &quot;cc:environment&quot;</span> <span class="o">=</span><span class="na"> &quot;${var.environment</span> <span class="o">==</span> <span class="s2">&quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span>
+<span class="na">    &quot;cc:product&quot;</span>     <span class="o">=</span> <span class="s2">&quot;cccatalog-api&quot;</span>
+<span class="na">    &quot;cc:purpose&quot;</span>     <span class="o">=</span> <span class="s2">&quot;Image crawler monitor&quot;</span>
+<span class="na">    &quot;cc:team&quot;</span>        <span class="o">=</span> <span class="s2">&quot;cc-search&quot;</span>
+  <span class=" -Punctuation">}</span>
+<span class=" -Punctuation">}</span>
+</pre></div>
+<p><em><center>An excerpt of the crawler module definition</center></em></p>
+<p>One <code>terraform plan</code> and <code>terraform apply</code> cycle later, we're ready to feed a few million test URLs to the inbound image queue and see what happens. By my recollection, this uncovered many glaring issues:</p>
+<ul>
+<li>Basic network security configuration problems preventing communication between key components</li>
+<li>The need for our scheduling algorithm to be overhauled (already discussed)</li>
+<li>Workers exceeding Redis maximum connection limit</li>
+<li>Workers crashing due to hitting open file limit due to huge number of concurrent connections</li>
+<li>Probably a half dozen other problems</li>
+</ul>
+<p>After fixing all of those issues and performing a larger smoke test, we're ready to start crawling on a large scale.</p>
+<h5 id="monitoring-the-crawl">Monitoring the crawl</h5><p>Unfortunately, we can't just kick back and relax while the crawler does its thing for a few weeks. We need some transparency about what the crawler is doing so we can be alerted when something breaks.</p>
+<ul>
+<li>How fast are we crawling each website? What's our target rate limit?</li>
+<li>How many errors have occurred? How many images have we successfully processed?</li>
+<li>Are we crawling right now, or are we finished?</li>
+</ul>
+<p>It would be nice to build a reporting dashboard for this, but in the interest of time, we'll dump a giant JSON blob to <code>STDOUT</code> every 5 seconds and call it a day. When we want to check on crawl progress, we <code>ssh</code> into the crawl monitoring virtual machine and <code>tail</code> the logs (we could also use our Graylog instance if we're feeling lazy). Fortunately, JSON is both trivially human and machine readable, so we can build a more sophisticated monitoring system later by parsing the logs.</p>
+<p>Here's an example log line from one of our smoke tests, indicating that we've crawled 13,224 images successfully and nothing else is happening.</p>
+<div class="hll"><pre><span></span><span class="p">{</span>
+   <span class="nt">&quot;event&quot;</span> <span class="p">:</span> <span class="s2">&quot;monitoring_update&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;time&quot;</span> <span class="p">:</span> <span class="s2">&quot;2020-04-17T20:22:56.837232&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;general&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;global_max_rps&quot;</span> <span class="p">:</span> <span class="mf">193.418869804698</span><span class="p">,</span>
+      <span class="nt">&quot;error_rps&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;processing_rate&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;success_rps&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;circuit_breaker_tripped&quot;</span> <span class="p">:</span> <span class="p">[],</span>
+      <span class="nt">&quot;num_resized&quot;</span> <span class="p">:</span> <span class="mi">13224</span><span class="p">,</span>
+      <span class="nt">&quot;resize_errors&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;split_rate&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+   <span class="p">},</span>
+   <span class="nt">&quot;specific&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;flickr&quot;</span> <span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;successful&quot;</span> <span class="p">:</span> <span class="mi">13188</span><span class="p">,</span>
+         <span class="nt">&quot;last_50_statuses&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;200&quot;</span> <span class="p">:</span> <span class="mi">50</span>
+         <span class="p">},</span>
+         <span class="nt">&quot;rate_limit&quot;</span> <span class="p">:</span> <span class="mf">178.375147633876</span><span class="p">,</span>
+         <span class="nt">&quot;error&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;animaldiversity&quot;</span> <span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;last_50_statuses&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;200&quot;</span> <span class="p">:</span> <span class="mi">18</span>
+         <span class="p">},</span>
+         <span class="nt">&quot;successful&quot;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+         <span class="nt">&quot;error&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nt">&quot;rate_limit&quot;</span> <span class="p">:</span> <span class="mf">0.206215440554406</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;phylopic&quot;</span> <span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;rate_limit&quot;</span> <span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+         <span class="nt">&quot;error&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nt">&quot;successful&quot;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+         <span class="nt">&quot;last_50_statuses&quot;</span> <span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;200&quot;</span> <span class="p">:</span> <span class="mi">18</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Now that we can see what the crawler is up to, we can schedule the larger crawl and start collecting production quality data.</p>
+<h4 id="takeaways">Takeaways</h4><p>The result here is that we have a lightweight, modular, highly concurrent, and polite distributed image crawler with only a handful of lines of code.</p>
+<div class="hll"><pre><span></span>alden:~/code/image_crawler$ cloc .
+      <span class="m">48</span> text files.
+      <span class="m">43</span> unique files.                              
+      <span class="m">25</span> files ignored.
+
+github.com/AlDanial/cloc v <span class="m">1</span>.81  <span class="nv">T</span><span class="o">=</span><span class="m">0</span>.02 s <span class="o">(</span><span class="m">1667</span>.4 files/s, <span class="m">130887</span>.8 lines/s<span class="o">)</span>
+------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+------------------------------------------------------------------------------
+Python                          <span class="m">16</span>            <span class="m">244</span>            <span class="m">242</span>           <span class="m">1324</span>
+Markdown                         <span class="m">5</span>             <span class="m">79</span>              <span class="m">0</span>            <span class="m">219</span>
+YAML                             <span class="m">3</span>              <span class="m">2</span>              <span class="m">4</span>             <span class="m">61</span>
+XML                              <span class="m">3</span>              <span class="m">0</span>              <span class="m">0</span>             <span class="m">18</span>
+Bourne Shell                     <span class="m">1</span>              <span class="m">0</span>              <span class="m">1</span>              <span class="m">4</span>
+------------------------------------------------------------------------------
+SUM:                            <span class="m">28</span>            <span class="m">325</span>            <span class="m">247</span>           <span class="m">1626</span>
+------------------------------------------------------------------------------
+
+alden:~/code/image_crawler$ tree .
+.
+├── architecture.png
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── crawl_monitor
+│   ├── __init__.py
+│   ├── monitor.py
+│   ├── rate_limit.py
+│   ├── README.md
+│   ├── settings.py
+│   ├── source_splitter.py
+│   ├── structured_logging.py
+│   └── tsv_producer.py
+├── docker-compose.yml
+├── Dockerfile-monitor
+├── Dockerfile-worker
+├── __init__.py
+├── LICENSE
+├── Pipfile
+├── Pipfile.lock
+├── publish_release.sh
+├── README.md
+├── <span class="nb">test</span>
+│   ├── corrupt.jpg
+│   ├── __init__.py
+│   ├── mocks.py
+│   ├── test_image.jpg
+│   ├── test_monitor.py
+│   └── test_worker.py
+└── worker
+    ├── image.py
+    ├── __init__.py
+    ├── message.py
+    ├── rate_limit.py
+    ├── scheduler.py
+    ├── settings.py
+    ├── stats_reporting.py
+    └── util.py
+
+<span class="m">3</span> directories, <span class="m">34</span> files
+</pre></div>
+<p>We now have a lot of useful information about images that we were lacking before. The next step is to take this metadata and integrate it into our search engine, as well as perform deeper analysis of images using computer vision.</p>
+</div>
+  
+  <div class="card bg-light">
+    <div class="card-body p-2">
+      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
+        
+          
+            
+            
+            <a href=" /blog/categories/community/ ">community</a>,
+          
+            
+            
+            <a href=" /blog/categories/open-source/ ">open-source</a>,
+          
+            
+            
+            <a href=" /blog/categories/cc-search/ ">cc-search</a>
+          
+        
+      </p>
+    </div>
+  </div>
+
+  <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/crawling-500-million"; this.page.url = "http://opensource.creativecommons.org/blog/entries/crawling-500-million/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="main-footer bg-dark">
+    <div class="container-fluid">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-9 col-md-9 col-sm-12 footer text-light py-4 px-3">
+          <small>
+            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
+                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                  License</a></strong> unless otherwise specified.</p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

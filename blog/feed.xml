@@ -2,13 +2,387 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-08-14T00:00:00Z</updated>
+  <updated>2020-08-17T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/crawling-500-million/">
+    <title type="text">How to politely crawl and analyze 500 million images</title>
+    <id>urn:uuid:c4bde8a8-0a5d-324a-b450-571f43e3af02</id>
+    <updated>2020-08-17T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/crawling-500-million/" />
+    <author>
+      <name>aldenpage</name>
+    </author>
+    <content type="html">&lt;h4 id=&quot;background&quot;&gt;Background&lt;/h4&gt;&lt;p&gt;The goal of &lt;a href=&quot;https://search.creativecommons.org&quot;&gt;CC Search&lt;/a&gt; is to index all of the Creative Commons works on the internet, starting with images. We have indexed over 500 million images, which we believe is roughly 36% of all CC licensed content on the internet by &lt;a href=&quot;https://creativecommons.org/2018/05/08/state-of-the-commons-2017/&quot;&gt;our last count&lt;/a&gt;. To further enhance the usefulness of our search tool, we recently started crawling and analyzing images for improved search results. This article will discuss the process of taking a paper design for a large scale crawler, implementing it, and putting it in production, with a few idealized code snippets and diagrams along the way. The full source code can be viewed on &lt;a href=&quot;https://github.com/creativecommons/image-crawler&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Originally, when we discovered an image and inserted it into CC Search, we didn't even bother downloading it; we stuck the URL in our database and embedded the image in our search results. This approach has a lot of problems:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;We don't know the dimensions or compression quality of images, which is useful both for relevance purposes (de-ranking low  quality images) and for filtering. For example, some users are only interested in high resolution images and would like to exclude content below a certain size.&lt;/li&gt;
+&lt;li&gt;We can't run any type of computer vision analysis on any of the images, which could be useful for enriching search metadata through object recognition.&lt;/li&gt;
+&lt;li&gt;Embedding third party content is fraught with problems. What if the other party's server goes down, the images disappear due to link rot, or their TLS certificates expire? Each of these situations results in broken images appearing in the search results or browser alerts about degraded security.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We solved (3) by setting up a &lt;a href=&quot;https://github.com/willnorris/imageproxy&quot;&gt;caching thumbnail proxy&lt;/a&gt; between images in the search results and their 3rd party origin, as well as some last-minute liveness checks to make sure that the image hasn't 404'd.&lt;/p&gt;
+&lt;p&gt;(1) and (2), however, are not possible to solve without actually downloading the image and performing some analysis on the contents of the file. For us to reproduce the features that users take for granted in image search, we're going to need a fairly powerful crawling system.&lt;/p&gt;
+&lt;p&gt;On the scale of several thousand images, it would be easy to cobble together a few scripts to spit out this information, but with half a billion images, there are a lot of hurdles to overcome.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We want to crawl &lt;a href=&quot;https://en.wikipedia.org/wiki/Web_crawler#Politeness_policy&quot;&gt;politely&lt;/a&gt;; however, the concentration and quantity of images means that we have to hit some sources with a high crawl rate in order to have any hope of finishing the crawl in a reasonable period of time. Our data sources range from non-profit museums with a single staff IT person to tech companies with their own data centers and thousands of employees; the crawl rate has to be tailored to download quickly from the big players but not overwhelm small sources. At the same time, we need to be sure that we are not overestimating any source's capacity and watch for signs that our crawler is straining the server.&lt;/li&gt;
+&lt;li&gt;We need to keep the time to process each image as low as possible to make it feasible to finish the crawling and analysis task in a reasonable period of time. This means that the crawling and analysis tasks need to be distributed to multiple machines in parallel.&lt;/li&gt;
+&lt;li&gt;A lot of metadata will be produced by this crawler. The step of integrating it with our internal systems needs to not block resizing tasks. That suggests that a message bus will be necessary to buffer messages before they are written into our data layer, where writes can be expensive.&lt;/li&gt;
+&lt;li&gt;We want to have a basic idea of how the crawl is progressing in the form of summaries of error counts, status codes, and crawl rates for each source.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In summary, the challenge here isn't so much making a really fast crawler as much as it is tailoring the crawl speed to each source. At a minimum, we'll need to deal with concurrency and parallelism, provisioning and managing the life cycle of crawler infrastructure, pipelines for capturing output data, a way to monitor the progress of the crawl, a suite of tests to make sure the system behaves as expected, and a reliable way to enforce a &quot;politeness&quot; policy. That's not a trivial project, particularly for our tiny three person tech team (of which only one person is available to do all of the crawling work). Can't we just use an off-the-shelf open source crawler?&lt;/p&gt;
+&lt;h4 id=&quot;what-about-existing-open-source-crawlers?&quot;&gt;What about existing open source crawlers?&lt;/h4&gt;&lt;p&gt;Any decent software engineer will consider existing options before diving into a project and reinventing the wheel. My assessment was that although there are a lot of open source crawling frameworks available, few of them focus on images, some are not actively maintained, and all would require extensive customization to meet the requirements of our crawl strategy. Further, many solutions are more complex than than our use case demands and would significantly expand our use of cloud infrastructure, resulting in higher expenses and more operational headaches. I experimented with Apache Nutch, Scrapy Cluster, and Frontera; none of the existing options looked quite right for our use case.&lt;/p&gt;
+&lt;p&gt;As a reminder, we want to eventually crawl every single Creative Commons work on the internet. Effective crawling is central to the capabilities that our search engine is able to provide. In addition to being central to achieving high quality image search, crawling could also be useful for discovering new Creative Commons content of any type on any website. In my view, that's a strong argument for spending some time designing a custom crawling solution where we have complete end-to-end control of the process, as long as the feature set is limited in scope. In the next section, we'll assess the effort required to build a crawler from the ground up.&lt;/p&gt;
+&lt;h4 id=&quot;designing-the-crawler&quot;&gt;Designing the crawler&lt;/h4&gt;&lt;p&gt;We know we're not going to be able to crawl 500 million images with one virtual machine and a single IP address, so it is obvious from the start that we are going to need a way to distribute the crawling and analysis tasks over multiple machines. A basic queue-worker architecture will do the job here; when we want to crawl an image, we can dispatch the URL to an inbound images queue, and a worker eventually pops that task out and processes it. Kafka will handle all of the hard work of partitioning and distributing the tasks between workers.&lt;/p&gt;
+&lt;p&gt;The worker processes do the actual analysis of the images, which essentially entails downloading the image, extracting interesting properties, and sticking the resulting metadata back into a Kafka topic for later downstream processing. The worker will also have to include some instrumentation for conforming to rate limits and error reporting.&lt;/p&gt;
+&lt;p&gt;We also know that we will need to share some information about crawl progress between worker processes, such as whether we've exceeded our proscribed rate limit for a website, the number of times we've seen a status code in the last minute, how many images we've processed so far, and so on. Since we're only interested in sharing application state and aggregate statistics, a lightweight key/value store like Redis seems like a good fit.&lt;/p&gt;
+&lt;p&gt;Finally, we need a supervising process that centrally controls the crawl. This key governing process will be responsible for making sure our crawler workers are behaving properly by moderating crawl rates for each source, taking action in the face of errors, and reporting statistics to the operators of the crawler. We'll call this process the crawl monitor.&lt;/p&gt;
+&lt;p&gt;Here's a rough sketch of how things will work:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/crawling-500-million/image_crawler_simplified.png&quot; alt=&quot;Diagram&quot;&gt;&lt;/p&gt;
+&lt;p&gt;At a high level, the problem of building a fast crawler seems solvable for our team, even on the scale of several hundred million images. If we can sustain a crawl and analysis rate of 200 images per second, we could crawl all 500 million images in about a month.&lt;/p&gt;
+&lt;p&gt;In the next section, we'll examine some of the key components that make up the crawler.&lt;/p&gt;
+&lt;h4 id=&quot;detailed-breakdown&quot;&gt;Detailed breakdown&lt;/h4&gt;&lt;h5 id=&quot;concurrency-with-asyncio&quot;&gt;Concurrency with &lt;code&gt;asyncio&lt;/code&gt;&lt;/h5&gt;&lt;p&gt;Crawling is a massively IO bound task. The workers need to maintain lots of simultaneous open connections with internal systems like Kafka and Redis as well as 3rd party websites holding the target images. Once we have the image in memory, performing our actual analysis task is easy and cheap. For these reasons, an asynchronous approach seems more attractive than using multiple threads of execution. Even if our image processing task grows in complexity and becomes CPU bound, we can get the best of both worlds by offloading heavyweight tasks to a process pool. See &quot;&lt;a href=&quot;https://docs.python.org/3/library/asyncio-dev.html#running-blocking-code&quot;&gt;Running Blocking Code&lt;/a&gt;&quot; in the &lt;code&gt;asyncio&lt;/code&gt; docs for more details.&lt;/p&gt;
+&lt;p&gt;Another reason that an asynchronous approach may be desirable is that we have several interlocking components which need to react to events in real-time: our crawl monitoring process needs to simultaneously control the rate limiting process and also interrupt crawling if errors are detected, while our worker processes need to consume crawl events, process images, upload thumbnails, and produce events documenting the metadata of each image. Coordinating all of these components through inter-process communication could be difficult, but breaking up tasks into small pieces and yielding to the event loop is comparatively easy.&lt;/p&gt;
+&lt;h5 id=&quot;the-resize-task&quot;&gt;The resize task&lt;/h5&gt;&lt;p&gt;This is the most vital part of our crawling system: the part that actually does the work of fetching and processing an image. As established previously, we need to execute this task concurrently, so everything needs to be defined with &lt;code&gt;async&lt;/code&gt;/&lt;code&gt;await&lt;/code&gt; syntax to allow the event loop to multitask. The actual task itself is otherwise straightforward.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download the remote image and load it into memory.&lt;/li&gt;
+&lt;li&gt;Extract the resolution and compression quality.&lt;/li&gt;
+&lt;li&gt;Thumbnail the image for later computer vision analysis and upload it to S3.&lt;/li&gt;
+&lt;li&gt;Write the information we've discovered to a Kafka topic.&lt;/li&gt;
+&lt;li&gt;Report success/errors to Redis in aggregate.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;See &lt;a href=&quot;https://github.com/creativecommons/image-crawler/blob/master/worker/image.py&quot;&gt;image.py&lt;/a&gt; for the nitty-gritty details.&lt;/p&gt;
+&lt;h4 id=&quot;rate-limiting-with-token-buckets-and-error-circuit-breakers&quot;&gt;Rate limiting with token buckets and error circuit breakers&lt;/h4&gt;&lt;h5 id=&quot;how-do-we-determine-the-rate-limit?&quot;&gt;How do we determine the rate limit?&lt;/h5&gt;&lt;p&gt;Often times, when designing highly concurrent software, the goal is to maximize the throughput and push servers to their absolute limit. The opposite is true with a web crawler, particularly when you are operating a non-profit organization completely reliant on the goodwill of others to exist. We want to be as certain as reasonably possible that we aren't going to knock a resource off of the internet with an accidental &lt;a href=&quot;https://en.wikipedia.org/wiki/Denial-of-service_attack&quot;&gt;DDoS&lt;/a&gt;. At the same time, we need to crawl as quickly as possible against sources with adequate resources to withstand a heavy crawl, or else we'll never finish. How can we match our crawl rate to a site's capabilities?&lt;/p&gt;
+&lt;p&gt;Originally, my plan was to determine this through an adaptive rate limiting strategy, where we would start with a low rate limit and use a hill climbing algorithm to determine the optimal rate. In essence, we would start crawling every website at a low rate limit and steadily escalate it until signs of stress appeared (and then back off permanently at a safe rate limit). We could track metrics like &lt;a href=&quot;https://en.wikipedia.org/wiki/Time_to_first_byte&quot;&gt;time to first byte&lt;/a&gt; (TTFB) and bandwidth speed to determine the exact moment that we have started to strain upstream servers. However, there are a lot of drawbacks here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;It may not be correct to assume that performance will steadily degrade instead of failing all at once.&lt;/li&gt;
+&lt;li&gt;We can't detect whether we are the cause of a performance issue or if the host is simply experiencing server trouble due to configuration errors or high traffic. We could get stuck at a suboptimal rate limit due to normal fluctuations in traffic.&lt;/li&gt;
+&lt;li&gt;Recording TTFB in Python is difficult because it requires low level access to connection data. We might have to write an extension to &lt;code&gt;aiohttp&lt;/code&gt; to get it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Eventually I decided that this is too much hassle. Can we get the job done with a simpler strategy?&lt;/p&gt;
+&lt;p&gt;It turns out that the size of a website is typically correlated with infrastructure capabilities. The reasoning behind this is that if you are capable of hosting 450MM images, you are probably able to handle at least a couple hundred requests per second for serving traffic. In our case, we already know how many images a source has, so it's easy for us to peg our rate limit between a low minimum for small websites and a reasonable maximum for large websites, and then interpolate the rate limit for everything in between.&lt;/p&gt;
+&lt;p&gt;Of course, it's important to note that this is only a rough heuristic that we use to make a reasonable guess about what a website can handle. We have to allow the possibility that we set our rate limit too aggressively in spite of our precautions.&lt;/p&gt;
+&lt;h5 id=&quot;backing-off-with-circuit-breakers&quot;&gt;Backing off with circuit breakers&lt;/h5&gt;&lt;p&gt;If our heuristic fails to correctly approximate the bandwidth capabilities of a site, we are going to start encountering problems. For one, we might exceed the server-side rate limit, which means we will see &lt;code&gt;429 Rate Limit Exceeded&lt;/code&gt; and &lt;code&gt;403 Forbidden&lt;/code&gt; errors instead of the images we're trying to crawl. Worse yet, the upstream source might continue to happily serve requests while we suck up all of their traffic capacity, resulting in other users being unable to view the images. Clearly, in either scenario, we need to either reduce our crawl rate or even give up crawling the source entirely if it appears that we are impacting their uptime.&lt;/p&gt;
+&lt;p&gt;To handle these situations, we have two tools in our toolbox: a sliding window recording the status code of every request made we've made to each domain in the last 60 seconds, and a list of the last 50 statuses for each website. If the number of errors in our one minute window exceed 10%, something is wrong; we should wait a minute before trying again. If we have encountered many errors in a row, however, that suggests that we're having trouble with a particular site, so we ought to give up crawling the source and raise an alert.&lt;/p&gt;
+&lt;p&gt;Workers can keep track of this information in sorted sets in Redis. For the sliding error window, we'll sort each request by its timestamp, which will make it easy and cheap for us to expire status codes beyond the sliding window interval. Maintaining a list of the last N response codes is even easier; we just stick the status code in a list associated with the source.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StatsManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;fm&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;known_sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@staticmethod&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_record_window_samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot; Insert a status into all sliding windows. &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monotonic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# Time-based sliding windows&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stat_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WINDOW_PAIRS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stat_key&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zadd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monotonic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Delete events from outside the window&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zremrangebyscore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;-inf&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# &amp;quot;Last n requests&amp;quot; window&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rpush&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_50_REQUESTS&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ltrim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_50_REQUESTS&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;Collecting status codes in aggregate&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Meanwhile, the crawl monitor process can keep tabs on the contents of each error threshold.&lt;/p&gt;
+&lt;p&gt;When more than 10% of the requests made to a source in the last minute are errors, we'll set a halt condition in Redis and stop replenishing rate limit tokens (more on that below).&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monotonic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;one_minute_window&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zrangebyscore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;one_minute_window_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;-inf&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;success&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one_minute_window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EXPECTED_STATUSES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;successful&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ERROR_TOLERANCE_PERCENT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;successful&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;successful&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sadd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TEMP_HALTED_SET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;Detecting elevated crawl errors for a source&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For detecting &quot;serious&quot; errors, where we've seen 50 failed requests in a row, we'll set a permanent halt condition. Someone will have to manually troubleshoot the situation and switch the crawler back on for that source.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last_50_statuses_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;statuslast50req:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;last_50_statuses&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lrange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last_50_statuses_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last_50_statuses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_every_request_failed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;last_50_statuses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sadd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HALTED_SET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;Detecting persistent crawl errors&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In practice, keeping a sliding window for tracking error thresholds and setting reasonable minimum and maximum crawl rates has worked well enough that the circuit breaker has never been tripped.&lt;/p&gt;
+&lt;h5 id=&quot;enforcing-rate-limits-with-token-buckets&quot;&gt;Enforcing rate limits with token buckets&lt;/h5&gt;&lt;p&gt;It's one thing to set a policy for crawling; it's another thing entirely to actually enforce it. How can we coordinate our multiple crawling processes to prevent them from overstepping our rate limit?&lt;/p&gt;
+&lt;p&gt;The answer is to implement a distributed token bucket system. The idea behind this is that each crawler has to obtain a token from Redis before making a request. Every second, the crawl monitor sets a variable containing the number of requests that can be made against a source. Each crawler process decrements the counter before making a request. If the decremented result is above zero, the worker is cleared to crawl. Otherwise, the rate limit has been reached and we should wait until a token has been obtained.&lt;/p&gt;
+&lt;p&gt;The beauty of token buckets is their simplicity, performance, and resilience against failure. If our crawler monitor process dies, crawling halts completely; making a request is not possible without first acquiring a token. This is a much better alternative to the guard rails completely disappearing with the crawl monitor and allowing unbounded crawling. Further, since decrementing a counter and retrieving the result is an atomic operation in Redis, there's no risk of race conditions and therefore no need for locking. This is a huge boon for performance, as the overhead of coordinating and blocking on every single request would rapidly bog down our crawling system.&lt;/p&gt;
+&lt;p&gt;To ensure that all crawling is performed at the correct speed, I wrapped &lt;code&gt;aiohttp.ClientSession&lt;/code&gt; with a rate limited version of the class.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RateLimitedClientSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;fm&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aioclient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aioclient&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_get_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;token_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CURRTOKEN_PREFIX&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokens&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;token_acquired&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Out of tokens&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asyncio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;token_acquired&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token_acquired&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;token_acquired&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token_acquired&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;token_acquired&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_get_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Meanwhile, the crawl monitor process is filling up each bucket every second.&lt;/p&gt;
+&lt;h5 id=&quot;scheduling-tasks-somewhat-intelligently&quot;&gt;Scheduling tasks (somewhat) intelligently&lt;/h5&gt;&lt;p&gt;The final gotcha in the design of our crawler is that we want to crawl every single website at the same time at its prescribed rate limit. That sounds almost tautological, like something that we should be able to take for granted after implementing all of this logic for preventing our crawler from working too quickly, but it turns out our crawler's processing capacity itself is a limited and contentious resource. We can only schedule so many tasks simultaneously on each worker, and we need to ensure that tasks from a single website aren't starving other sources of crawl capacity.&lt;/p&gt;
+&lt;p&gt;For instance, imagine that each worker is able to handle 5000 simultaneous crawling tasks, and every one of those tasks is tied to a tiny website with a very low rate limit. That means that our entire worker, which is capable of handling hundreds of crawl and analysis jobs per second, is stuck making one request per second until some faster tasks appear in the queue.&lt;/p&gt;
+&lt;p&gt;In other words, we need to make sure that each worker process isn't jamming itself up with a single source. We have a &lt;a href=&quot;https://en.wikipedia.org/wiki/Scheduling_(computing%29&quot;&gt;scheduling problem&lt;/a&gt;. We've naively implemented first-come-first-serve and need to switch to a different scheduling strategy.&lt;/p&gt;
+&lt;p&gt;There are innumerable ways to address scheduling problems. Since there are only a few dozen sources in our system, we can get away with using a stupid scheduling algorithm: give each source equal capacity in every worker. In other words, if there are 5000 tasks to distribute and 30 sources, we can allocate 166 simultaneous tasks to each source per worker. That's plenty for our purposes. There are obvious drawbacks of this approach in that eventually there will be so many sources that we start starving high rate limit sources of work. We'll cross that bridge when we come to it; it's better to use the simplest possible approach we can get away with instead of spending all of our time on solving hypothetical future problems.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task_schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;raw_sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;smembers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;inbound_sources&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;raw_sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;num_sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# A source never gets more than 1/4th of the worker&amp;#39;s capacity. This&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# helps prevent starvation of lower rate limit requests and ensures&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# that the first few sources to be discovered don&amp;#39;t get all of the&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# initial task slots.&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;max_share&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX_TASKS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;share&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX_TASKS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;max_share&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;to_schedule&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;num_unfinished&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_get_unfinished_tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;num_to_schedule&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;share&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_unfinished&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;consumer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_get_consumer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;source_msgs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_consume_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;consumer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_to_schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;to_schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source_msgs&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to_schedule&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;Scheduling tasks for every source&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The one implementation detail to deal with here is that our workers can't draw from a single inbound images queue anymore; we need to partition each source into its own queue so we can pull tasks from each source when we need it. This partitioning process can be handled transparently by the crawl monitor.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/crawling-500-million/image_crawler.png&quot; alt=&quot;A more complete diagram&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;A more complete diagram showing the system with a queue for each source&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h5 id=&quot;designing-for-testability&quot;&gt;Designing for testability&lt;/h5&gt;&lt;p&gt;It's quite difficult to test IO-heavy systems because of their need to interact with lots of external dependencies. Often times it is necessary to write complex integration tests or run manual tests to be certain that key functionality works as expected. This is no good because integration tests are much more expensive to maintain and take far longer to execute. We certainly wouldn't go to production without running a smoke test to verify correctness in real-world conditions, but it's still critical to have unit tests in place for catching bugs quickly during the development process.&lt;/p&gt;
+&lt;p&gt;The solution to this problem is to use dependency injection, which is a fancy way of saying that we never do IO directly from within our application. Instead, we delegate IO to external objects that can be passed in at run-time. This makes it easy to pass in fake objects that approximate real world behavior without real world consequences.&lt;/p&gt;
+&lt;p&gt;For example, the crawl monitor usually has to talk to our CC Search API (for assessing source size), Redis, and Kafka to do its job of regulating the crawl; instead of setting up a brittle and complicated integration test with all of those dependencies, we just instantiate some mock objects and pass them in. Now we can easily test individual components such as the error circuit breaker.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;Testing our crawl monitor's circuit breaking functionality with mock dependencies&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;@pytest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fixture&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;source_fixture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot; Mocks the /v1/sources endpoint response. &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;source_name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;example&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;image_count&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;display_name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Example&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;source_url&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;example.com&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;source_name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;another&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;image_count&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;display_name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Another&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s2&quot;&gt;&amp;quot;source_url&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;whatever&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_mock_monitor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FakeAioResponse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;session&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FakeAioSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FakeRedis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;regulator_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asyncio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rate_limit_regulator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;regulator_task&lt;/span&gt;
+
+
+&lt;span class=&quot;nd&quot;&gt;@pytest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asyncio&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_error_circuit_breaker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source_fixture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;source_fixture&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;monitor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_mock_monitor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;statuslast50req:example&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;500&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;statuslast50req:another&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;200&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_monitor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;monitor_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;example&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;halted&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;another&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;halted&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The main drawback of dependency injection is that initializing your objects will take some more ceremony. See the &lt;a href=&quot;https://github.com/creativecommons/image-crawler/blob/00b59aba9a15faccf203a53d73a98e8c06cb69e8/worker/scheduler.py#L162&quot;&gt;initialization of the crawl scheduler&lt;/a&gt; for an example of wiring up an object with a lot of dependencies. You might also find that constructors and other functions with a lot of dependencies will have a lot of arguments if care isn't taken to bundle external dependencies together. In my opinion, the price of a few extra lines of initialization code is well worth the benefits gained from testability and modularity.&lt;/p&gt;
+&lt;h4 id=&quot;smoke-testing&quot;&gt;Smoke testing&lt;/h4&gt;&lt;p&gt;Even with our unit test coverage, we still need to do some basic small-scale manual tests to make sure our assumptions hold up in the real world. We'll need to write &lt;a href=&quot;https://www.terraform.io/&quot;&gt;Terraform&lt;/a&gt; modules that provision a working version of the real system. Sadly, our Terraform infrastructure repository is private for now, but here's a taste of what the infra code looks like.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;image-crawler&amp;quot;&lt;/span&gt; &lt;span class=&quot; -Punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;../../modules/services/image-crawler&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  environment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;prod&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  docker_tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.25.0&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  aws_access_key_id&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.aws_access_key_id}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  aws_secret_access_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.aws_secret_access_key}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  zookeeper_endpoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${module.kafka.zookeeper_brokers}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  kafka_brokers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${module.kafka.kafka_brokers}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  worker_instance_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;m5.large&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  worker_count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot; -Punctuation&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;Initialization of crawler Terraform module in our production environment&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;aws_instance&amp;quot; &amp;quot;crawler-workers&amp;quot;&lt;/span&gt; &lt;span class=&quot; -Punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  ami&lt;/span&gt;                     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.ami}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  instance_type&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.worker_instance_type}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  user_data&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${data.template_file.worker_init.rendered}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  subnet_id&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  vpc_security_group_ids&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${aws_security_group.image-crawler-sg.id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  count&lt;/span&gt;                   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.worker_count}&amp;quot;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot; -Punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    Name&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;image-crawler-worker-${var.environment}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    environment&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:environment&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; &amp;quot;${var.environment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;dev&amp;quot; ? &amp;quot;staging&amp;quot; : &amp;quot;production&amp;quot;}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:product&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cccatalog-api&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:purpose&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Image crawler worker&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:team&amp;quot;&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc-search&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot; -Punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot; -Punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;aws_instance&amp;quot; &amp;quot;crawler-monitor&amp;quot;&lt;/span&gt; &lt;span class=&quot; -Punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  ami&lt;/span&gt;                     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.ami}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  instance_type&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;c5.large&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  user_data&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${data.template_file.monitor_init.rendered}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  subnet_id&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;  vpc_security_group_ids&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${aws_security_group.image-crawler-sg.id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot; -Punctuation&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    Name&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;image-crawler-monitor-${var.environment}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    environment&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:environment&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; &amp;quot;${var.environment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;dev&amp;quot; ? &amp;quot;staging&amp;quot; : &amp;quot;production&amp;quot;}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:product&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cccatalog-api&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:purpose&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Image crawler monitor&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;    &amp;quot;cc:team&amp;quot;&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc-search&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot; -Punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot; -Punctuation&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;&lt;center&gt;An excerpt of the crawler module definition&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;One &lt;code&gt;terraform plan&lt;/code&gt; and &lt;code&gt;terraform apply&lt;/code&gt; cycle later, we're ready to feed a few million test URLs to the inbound image queue and see what happens. By my recollection, this uncovered many glaring issues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic network security configuration problems preventing communication between key components&lt;/li&gt;
+&lt;li&gt;The need for our scheduling algorithm to be overhauled (already discussed)&lt;/li&gt;
+&lt;li&gt;Workers exceeding Redis maximum connection limit&lt;/li&gt;
+&lt;li&gt;Workers crashing due to hitting open file limit due to huge number of concurrent connections&lt;/li&gt;
+&lt;li&gt;Probably a half dozen other problems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After fixing all of those issues and performing a larger smoke test, we're ready to start crawling on a large scale.&lt;/p&gt;
+&lt;h5 id=&quot;monitoring-the-crawl&quot;&gt;Monitoring the crawl&lt;/h5&gt;&lt;p&gt;Unfortunately, we can't just kick back and relax while the crawler does its thing for a few weeks. We need some transparency about what the crawler is doing so we can be alerted when something breaks.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How fast are we crawling each website? What's our target rate limit?&lt;/li&gt;
+&lt;li&gt;How many errors have occurred? How many images have we successfully processed?&lt;/li&gt;
+&lt;li&gt;Are we crawling right now, or are we finished?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It would be nice to build a reporting dashboard for this, but in the interest of time, we'll dump a giant JSON blob to &lt;code&gt;STDOUT&lt;/code&gt; every 5 seconds and call it a day. When we want to check on crawl progress, we &lt;code&gt;ssh&lt;/code&gt; into the crawl monitoring virtual machine and &lt;code&gt;tail&lt;/code&gt; the logs (we could also use our Graylog instance if we're feeling lazy). Fortunately, JSON is both trivially human and machine readable, so we can build a more sophisticated monitoring system later by parsing the logs.&lt;/p&gt;
+&lt;p&gt;Here's an example log line from one of our smoke tests, indicating that we've crawled 13,224 images successfully and nothing else is happening.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;&amp;quot;event&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;monitoring_update&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2020-04-17T20:22:56.837232&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;&amp;quot;general&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;global_max_rps&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;193.418869804698&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;error_rps&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;processing_rate&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;success_rps&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;circuit_breaker_tripped&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_resized&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;resize_errors&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;split_rate&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+   &lt;span class=&quot;nt&quot;&gt;&amp;quot;specific&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;flickr&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13188&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;178.375147633876&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;animaldiversity&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.206215440554406&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;quot;phylopic&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+         &lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now that we can see what the crawler is up to, we can schedule the larger crawl and start collecting production quality data.&lt;/p&gt;
+&lt;h4 id=&quot;takeaways&quot;&gt;Takeaways&lt;/h4&gt;&lt;p&gt;The result here is that we have a lightweight, modular, highly concurrent, and polite distributed image crawler with only a handful of lines of code.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;alden:~/code/image_crawler$ cloc .
+      &lt;span class=&quot;m&quot;&gt;48&lt;/span&gt; text files.
+      &lt;span class=&quot;m&quot;&gt;43&lt;/span&gt; unique files.                              
+      &lt;span class=&quot;m&quot;&gt;25&lt;/span&gt; files ignored.
+
+github.com/AlDanial/cloc v &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;.81  &lt;span class=&quot;nv&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.02 s &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1667&lt;/span&gt;.4 files/s, &lt;span class=&quot;m&quot;&gt;130887&lt;/span&gt;.8 lines/s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+------------------------------------------------------------------------------
+Python                          &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;            &lt;span class=&quot;m&quot;&gt;244&lt;/span&gt;            &lt;span class=&quot;m&quot;&gt;242&lt;/span&gt;           &lt;span class=&quot;m&quot;&gt;1324&lt;/span&gt;
+Markdown                         &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;             &lt;span class=&quot;m&quot;&gt;79&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;            &lt;span class=&quot;m&quot;&gt;219&lt;/span&gt;
+YAML                             &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;             &lt;span class=&quot;m&quot;&gt;61&lt;/span&gt;
+XML                              &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;             &lt;span class=&quot;m&quot;&gt;18&lt;/span&gt;
+Bourne Shell                     &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;              &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+------------------------------------------------------------------------------
+SUM:                            &lt;span class=&quot;m&quot;&gt;28&lt;/span&gt;            &lt;span class=&quot;m&quot;&gt;325&lt;/span&gt;            &lt;span class=&quot;m&quot;&gt;247&lt;/span&gt;           &lt;span class=&quot;m&quot;&gt;1626&lt;/span&gt;
+------------------------------------------------------------------------------
+
+alden:~/code/image_crawler$ tree .
+.
+├── architecture.png
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── crawl_monitor
+│   ├── __init__.py
+│   ├── monitor.py
+│   ├── rate_limit.py
+│   ├── README.md
+│   ├── settings.py
+│   ├── source_splitter.py
+│   ├── structured_logging.py
+│   └── tsv_producer.py
+├── docker-compose.yml
+├── Dockerfile-monitor
+├── Dockerfile-worker
+├── __init__.py
+├── LICENSE
+├── Pipfile
+├── Pipfile.lock
+├── publish_release.sh
+├── README.md
+├── &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+│   ├── corrupt.jpg
+│   ├── __init__.py
+│   ├── mocks.py
+│   ├── test_image.jpg
+│   ├── test_monitor.py
+│   └── test_worker.py
+└── worker
+    ├── image.py
+    ├── __init__.py
+    ├── message.py
+    ├── rate_limit.py
+    ├── scheduler.py
+    ├── settings.py
+    ├── stats_reporting.py
+    └── util.py
+
+&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; directories, &lt;span class=&quot;m&quot;&gt;34&lt;/span&gt; files
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We now have a lot of useful information about images that we were lacking before. The next step is to take this metadata and integrate it into our search engine, as well as perform deeper analysis of images using computer vision.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/say_hello_to_ct/">
     <title type="text">Say Hello To Our Community Team</title>
     <id>urn:uuid:ddeb63da-7771-357d-8299-ad51defeaf4a</id>
@@ -2720,278 +3094,6 @@ option, which is much better than previous footer implementation.&lt;/p&gt;
 &lt;p&gt;I plan to have #24 done and merged by Monday, August 26, and I hope to continue my work on the chooser project either in my free time, or by moving into a mentor type role.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/">
-    <title type="text">CC Vocabulary: Care for dessert?</title>
-    <id>urn:uuid:fadb492f-cfe1-309e-bb0e-18854ec25020</id>
-    <updated>2019-08-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/vocabulary-so-long/" />
-    <author>
-      <name>dhruvkb</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;em&gt;&quot;Three months?!&quot;&lt;/em&gt;&lt;br/&gt;
-&lt;em&gt;&quot;Can't be that soon, right?&quot;&lt;/em&gt;&lt;br/&gt;
-&lt;em&gt;&quot;Right?!&quot;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Damn.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Hi, it's me again. It's been long since I last sat down to write. I haven't been
-punctual with my posts and my only hope of redemption is that my punctuality
-with code makes up for it somehow.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;graph.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        All that green makes 
-        &lt;a href=&quot;https://github.com/dhruvkb&quot;&gt;me&lt;/a&gt; very happy.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;With GSoC deadlines drawing to a close, it makes sense to have a post describing
-the fruits of this quarter-year of labour. Let's start with two big news pieces.&lt;/p&gt;
-&lt;p&gt;If this feels like a self-congratulatory piece patting myself on the back, I 
-apologise. It's also my GSoC final submission work product report.&lt;/p&gt;
-&lt;h3 id=&quot;vocabulary-is-ready-for-consumption&quot;&gt;🎉 Vocabulary is ready for consumption!&lt;/h3&gt;&lt;p&gt;It's been that way for almost a couple of weeks, actually. I just wasn't able to
-take time out for a blog post.&lt;/p&gt;
-&lt;p&gt;The rate at which Vocabulary components have received compatibility-breaking
-changes has continuously gone down week after week. Code has been refactored,
-&lt;em&gt;yes&lt;/em&gt;. Stylesheets have been cleaned up, &lt;em&gt;yes&lt;/em&gt;. Documentation has been updated
-and at times even rewritten, &lt;em&gt;yes&lt;/em&gt;. But in terms of functionality, the
-components are stable and solid enough to act as a foundation for the apps to
-come. The external API for the components has matured considerably.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;scott.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;&quot;It's every parent's dream.&quot;&lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;It's been about twelve weeks since the first commit to CC Vocabulary way back in
-May. As with everything else in software, Vocabulary has moved fast. Under the
-mentorship of &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and over the course of
-&lt;strong&gt;300+ commits&lt;/strong&gt; and &lt;strong&gt;17+ alpha releases&lt;/strong&gt;, Vocabulary has gone from 1
-component that just said &lt;em&gt;&quot;Hello World!&quot;&lt;/em&gt; to &lt;strong&gt;over 33 components&lt;/strong&gt; that are
-capable of replacing over half the entire codebase of the frontend for CC
-Search. Talk about kids growing fast!&lt;/p&gt;
-&lt;p&gt;You get all the components a typical web application needs, and then some. It's
-got the standards like &lt;code&gt;InputField&lt;/code&gt; and &lt;code&gt;Button&lt;/code&gt;, some unconventional ones like
-&lt;code&gt;Definition&lt;/code&gt; and &lt;code&gt;Quote&lt;/code&gt;, and some components that only our own tailored design
-library could afford like &lt;code&gt;Header&lt;/code&gt; and &lt;code&gt;Footer&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Here's a list and &lt;a href=&quot;https://creativecommons.github.io/cc-vocabulary&quot;&gt;there's&lt;/a&gt; 
-a living styleguide.&lt;/p&gt;
-&lt;details&gt;
-  &lt;summary&gt;Elements&lt;/summary&gt;
-  &lt;div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Heading&lt;/li&gt;
-      &lt;li&gt;Paragraph&lt;/li&gt;
-      &lt;li&gt;ImageView&lt;/li&gt;
-      &lt;li&gt;Button&lt;/li&gt;
-      &lt;li&gt;ChoiceField&lt;/li&gt;
-      &lt;li&gt;InputField&lt;/li&gt;
-      &lt;li&gt;SelectField&lt;/li&gt;
-      &lt;li&gt;SwitchField&lt;/li&gt;
-      &lt;li&gt;Rating&lt;/li&gt;
-      &lt;li&gt;ProgressBar&lt;/li&gt;
-      &lt;li&gt;Statistic&lt;/li&gt;
-      &lt;li&gt;LicenseIconography&lt;/li&gt;
-      &lt;li&gt;Shield&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;div style=&quot;text-align: center;&quot;&gt;
-      &lt;figure&gt;
-        &lt;img src=&quot;button.png&quot;/&gt;
-        &lt;figcaption&gt;
-          &lt;em&gt;&lt;code&gt;Button&lt;/code&gt;&lt;/em&gt;
-        &lt;/figcaption&gt;
-      &lt;/figure&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/details&gt;
-&lt;details&gt;
-  &lt;summary&gt;Layouts&lt;/summary&gt;
-  &lt;div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Container&lt;/li&gt;
-      &lt;li&gt;Section&lt;/li&gt;
-      &lt;li&gt;Grid
-        &lt;ul&gt;&lt;li&gt;GridCell&lt;/li&gt;&lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Tabbed
-        &lt;ul&gt;&lt;li&gt;TabbedPane&lt;/li&gt;&lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Table
-        &lt;ul&gt;&lt;li&gt;TableCell&lt;/li&gt;&lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;div style=&quot;text-align: center;&quot;&gt;
-      &lt;figure&gt;
-        &lt;img src=&quot;tabbed.png&quot;/&gt;
-        &lt;figcaption&gt;
-          &lt;em&gt;&lt;code&gt;Tabbed&lt;/code&gt;&lt;/em&gt;
-        &lt;/figcaption&gt;
-      &lt;/figure&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/details&gt;
-&lt;details&gt;
-  &lt;summary&gt;Patterns&lt;/summary&gt;
-  &lt;div&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Card&lt;/li&gt;
-      &lt;li&gt;Definition&lt;/li&gt;
-      &lt;li&gt;Header&lt;/li&gt;
-      &lt;li&gt;Footer&lt;/li&gt;
-      &lt;li&gt;LicenseBadge&lt;/li&gt;
-      &lt;li&gt;BrandImagery&lt;/li&gt;
-      &lt;li&gt;Quote&lt;/li&gt;
-      &lt;li&gt;Locale&lt;/li&gt;
-      &lt;li&gt;NavigationLink
-        &lt;ul&gt;&lt;li&gt;NavigationLink&lt;/li&gt;&lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Trail
-        &lt;ul&gt;&lt;li&gt;TrailCrumb&lt;/li&gt;&lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;div style=&quot;text-align: center;&quot;&gt;
-      &lt;figure&gt;
-        &lt;img src=&quot;card.png&quot;/&gt;
-        &lt;figcaption&gt;
-          &lt;em&gt;&lt;code&gt;Card&lt;/code&gt;&lt;/em&gt;
-        &lt;/figcaption&gt;
-      &lt;/figure&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;Button
-&lt;/details&gt;&lt;p&gt;Vocabulary also offers some Stylus mixins, token collection in Stylus, SASS and 
-JSON and some handy utils too. That's about it.&lt;/p&gt;
-&lt;p&gt;I know what you are thinking and &lt;em&gt;yes, all of that, including
-the designs and revisions, was accomplished in two months and a half&lt;/em&gt;.&lt;/p&gt;
-&lt;h4 id=&quot;quality&quot;&gt;Quality&lt;/h4&gt;&lt;p&gt;The code follows the &lt;a href=&quot;https://standardjs.com/&quot;&gt;Standard code style&lt;/a&gt; and the &lt;a href=&quot;https://vuejs.org/v2/style-guide/&quot;&gt;Vue
-official style guide&lt;/a&gt;. In addition,
-Vocabulary has &lt;a href=&quot;https://opensource.creativecommons.org/cc-vocabulary/#/Vocabulary/Code%20style&quot;&gt;its own style
-guide&lt;/a&gt;
-that has rules right down to the order of rules in the CSS. This ensures that
-code is sensibly written, easily understandable and as little in debt as
-possible.&lt;/p&gt;
-&lt;h4 id=&quot;usage&quot;&gt;Usage&lt;/h4&gt;&lt;p&gt;CC Vocabulary can be installed via &lt;code&gt;npm&lt;/code&gt; and used with a build process...&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install @creativecommons/vocabulary
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;...or used directly in the browser inside &lt;code&gt;script&lt;/code&gt; tags.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&quot;text/javascript&quot;
-        src=&quot;https://unpkg.com/@creativecommons/vocabulary&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Even JS is optional (may break in some cases, horrifying so).&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;link rel=&quot;stylesheet&quot;
-      type=&quot;text/css&quot;
-      href=&quot;https://unpkg.com/@creativecommons/vocabulary/vocabulary.css&quot;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&quot;demo&quot;&gt;Demo&lt;/h4&gt;&lt;p&gt;Of course I'm not going to hype you up and leave you hanging! Here's a pen to
-show you what's possible. Actually, since the pen uses the UMD version, what it
-shows is the lower end of what's possible.&lt;/p&gt;
-&lt;p&gt;&lt;p class=&quot;codepen&quot; data-height=&quot;265&quot; data-theme-id=&quot;dark&quot; data-default-tab=&quot;result&quot; data-user=&quot;dhruvkb&quot; data-slug-hash=&quot;dxRJYV&quot; data-preview=&quot;true&quot; style=&quot;height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;&quot; data-pen-title=&quot;CC Vocabulary UMD demo&quot;&gt;
-  &lt;span&gt;See the Pen &lt;a href=&quot;https://codepen.io/dhruvkb/pen/dxRJYV/&quot;&gt;
-  CC Vocabulary UMD demo&lt;/a&gt; by Dhruv Bhanushali (&lt;a href=&quot;https://codepen.io/dhruvkb&quot;&gt;@dhruvkb&lt;/a&gt;)
-  on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/span&gt;
-&lt;/p&gt;&lt;/p&gt;
-&lt;script async src=&quot;https://static.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;&lt;h4 id=&quot;contributions-invited&quot;&gt;Contributions invited&lt;/h4&gt;&lt;p&gt;Also to make the repository friendlier to incoming developers a number of issues
-have been dug out, reported and labelled. This provides incomers, like myself
-three months ago, a channel to familiarise themselves with the codebase well
-before Outreachy and the next Summer of Code.&lt;/p&gt;
-&lt;h4 id=&quot;gsoc-work-product&quot;&gt;GSoC work product&lt;/h4&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;contributions.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;That's over half a million changes!&lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Repository:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/&quot;&gt;https://github.com/creativecommons/cc-vocabulary/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Commits:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/commits/master&quot;&gt;https://github.com/creativecommons/cc-vocabulary/commits/master&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Issues:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/issues&quot;&gt;https://github.com/creativecommons/cc-vocabulary/issues&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary/graphs/contributors&quot;&gt;https://github.com/creativecommons/cc-vocabulary/graphs/contributors&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The proposal listed a number of components to be developed as a part of the 
-program. Over twice that number of components have been implemented.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;In other news...&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&quot;search-is-largely-integrated-with-vocabulary&quot;&gt;🎉 Search is largely integrated with Vocabulary!&lt;/h3&gt;&lt;p&gt;This was the subordinate goal of my Summer of Code proposal. Surprisingly
-enough, once the components were ready it was only a matter of finding code in
-CC Search's frontend and swapping it out with Vocabulary components. &lt;em&gt;Oh, the
-tests have pained me so.&lt;/em&gt; Literally every single test broke down and had to be
-manually updated.&lt;/p&gt;
-&lt;p&gt;The end result of the toil under the guidance and review of &lt;a href=&quot;http://localhost:5000/blog/authors/brenoferreira/&quot;&gt;Breno
-Ferreira&lt;/a&gt; is a search
-experience that &lt;strong&gt;feels polished&lt;/strong&gt; and &lt;strong&gt;looks beautiful&lt;/strong&gt; and &lt;strong&gt;works
-elegantly&lt;/strong&gt;. It also enables another &lt;strong&gt;half a billion&lt;/strong&gt; people to use the
-platform and sets the groundwork to take that number higher.&lt;/p&gt;
-&lt;p&gt;The bundle size is lower and code manageability is higher thanks to decoupling
-of low level components from the high level experience. Can you ask for more?
-How about more consistent icons?&lt;/p&gt;
-&lt;p&gt;The least I can do is attach screenshots of the new CC Search to give you a 
-sneak peek into what Creative Commons apps, starting with Search of course, will
-look like in the future. These are screenshots, &lt;em&gt;not mockups&lt;/em&gt;.&lt;/p&gt;
-&lt;h4 id=&quot;sneak-peek&quot;&gt;Sneak peek&lt;/h4&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;homepage.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;A very minor change to the homepage...&lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;homepage_hi.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;...is a door to a new world of possibilities.&lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;Yes, CC Search has largely also been translated to Hindi, making it accessible
-to the Internet-savvy chunk of the half a billion people who speak the language
-in the country with the second-largest Internet enabled populace (first if you
-factor in democracy and freedom).&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;about.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;Statistics were never this beautiful...&lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;collections.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;...and neither were collections.&lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;These pages too have been internationalised.&lt;/p&gt;
-&lt;p&gt;Did you spot the new icons? I made a choice to adopt Font Awesome for Vocabulary
-as it is a modern, scalable and lightweight alternative to finding a cohesive
-set of icons from the trove of the Noun Project and bundling them ourselves.
-Plus Font Awesome provides Vue components! What's not to like.&lt;/p&gt;
-&lt;h4 id=&quot;status&quot;&gt;Status&lt;/h4&gt;&lt;p&gt;I'm not sure if there is enough time in the GSoC period for the integration PR
-to be reviewed and merged but I'm not going anywhere and neither are you. You
-can follow the integration as it happens
-&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If you're enthusiastic you can clone the branch and run the setup on your 
-machine. Experience it for yourself, how about that?&lt;/p&gt;
-&lt;h4 id=&quot;gsoc-work-product&quot;&gt;GSoC work product&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Repository:&lt;/strong&gt; &lt;a href=&quot;https://github.com/dhruvkb/cccatalog-frontend/&quot;&gt;https://github.com/dhruvkb/cccatalog-frontend/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;PR&lt;/strong&gt;: &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413/&quot;&gt;https://github.com/creativecommons/cccatalog-frontend/pull/413/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Commits:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413/commits&quot;&gt;https://github.com/creativecommons/cccatalog-frontend/pull/413/commits&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The proposal aimed to replace a lot of indigenous components with Vocabulary
-counterparts. Internationalisation and a consistent icon system are just me
-going above and beyond.&lt;/p&gt;
-&lt;h3 id=&quot;tl;dr?&quot;&gt;😴 TL;DR?&lt;/h3&gt;&lt;p&gt;Summarising, &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt;
-is now mature and &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/413&quot;&gt;is getting
-married&lt;/a&gt; to &lt;a href=&quot;https://github.com/creativecommons/cc-vocabulary&quot;&gt;CC
-Search&lt;/a&gt;. GSoC was a successful
-matchmaker.&lt;/p&gt;
-&lt;h3 id=&quot;postremo&quot;&gt;❤️ Postremo&lt;/h3&gt;&lt;p&gt;&lt;em&gt;&quot;I think... I feel good about it.&quot;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;GSoC has been a thoroughly refreshing, enriching and educating experience.
-Without a shred of doubt I am taking away a lot from this exercise (notably, the
-knowledge of the existence of CSS custom properties). My only hope is that I
-have given back a comparable amount of output to the community that gave an
-outsider like me a chance to work on something this impactful in the long-term.&lt;/p&gt;
-&lt;p&gt;I can't wait to continue my journey post-GSoC and see what the core team and
-the next batch of interns creates for, and using, Vocabulary.&lt;/p&gt;
-&lt;p&gt;GSoC may be over, but &lt;strong&gt;CC and I have a long way to go&lt;/strong&gt;.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;letterheart.svg&quot; width=&quot;32&quot;/&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;~Signing off, for now~&lt;/p&gt;
 </content>
   </entry>
 </feed>
