@@ -157,7 +157,7 @@
   <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/nathan/">
   nathan
 </a>
-  on Monday, 2009-04-13</p>
+  on 2009-04-13</p>
   
   <div class="body"><p>We received a couple bug reports over the weekend about the CC Network OpenID provider. Users were seeing a situation where they were asked to log into the CC Network with a username that was <em>similar</em> to their's, but not quite right -- specifically, the final character was omitted. When they put in their correct username and password they were just redirected to the login screen again and again.</p>
 <p>After some digging we arrived at <a href="http://code.creativecommons.org/issues/issue308">Issue 308</a>. The problem occurs when a non-compliant OpenID-enabled site asks for the OpenID URL and the user supplies something that <em>should</em> work, but isn't canonical. For example, my CC Network profile is at <code>https://creativecommons.net/nathan/</code>. I should be able to use any of the following as my OpenID and have the site get to the canonical version:</p>

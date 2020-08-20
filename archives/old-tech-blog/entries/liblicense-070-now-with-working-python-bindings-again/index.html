@@ -157,7 +157,7 @@
   <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/asheesh/">
   asheesh
 </a>
-  on Friday, 2008-05-16</p>
+  on 2008-05-16</p>
   
   <div class="body"><p>I just released liblicense 0.7.0 on SourceForge. It fixes the Python bindings. They've been broken since the 0.6 release, it seems. Some functionality in them probably worked between 0.6 and 0.7, but (read on for more)...</p>
 <p>LL_LICENSE and other constants were "extern const char" arrays before. Now they're just lousy old #defines. This way, even though the strings might appear more than once in memory, it's very simple for the IO modules like exempi.so to refer to those constants.</p>

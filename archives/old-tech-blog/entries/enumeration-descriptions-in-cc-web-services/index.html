@@ -157,7 +157,7 @@
   <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/nathan/">
   nathan
 </a>
-  on Thursday, 2009-04-2</p>
+  on 2009-04-02</p>
   
   <div class="body"><p>We had a request come in from a developer using the <a href="http://api.creativecommons.org/">CC web services</a> for better contextual information about the choices users make when selecting a license. In particular, they wanted to present users with information about what <em>"ShareAlike"</em> means. As I dug into it I realized that the existing <code>&lt;description&gt;</code> we provided for the questions themselves are... well, bad. I can only imagine how hard it'd be to craft a user interface using <strong>those</strong> as help text.</p>
 <p>I just pushed an update to the <a href="https://api.creativecommons.org/docs/readme_dev.html">development version</a> of the API that adds <code>&lt;description&gt;</code> elements to the individual <code>&lt;enum&gt;</code> elements. These map to the help pop-ups we use on the main license chooser. If all seems well we'll push this down to <a href="https://api.creativecommons.org/docs/readme_15.html">1.5</a> as well.</p>

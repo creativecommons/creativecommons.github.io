@@ -157,7 +157,7 @@
   <p class="meta text-muted mt-0 mb-2">by <a href="/archives/old-tech-blog/authors/nkinkade/">
   nkinkade
 </a>
-  on Friday, 2011-03-18</p>
+  on 2011-03-18</p>
   
   <div class="body"><p>We run a few instances of Mediawiki, most notably the <a href="http://wiki.creativecommons.org/">CC wiki</a>. The machine that runs the CC wiki is not a powerhouse, but should certainly have enough to handle the amount of traffic the CC wiki receives. However, for quite some time I've noted that the CPU usage on the machine is fairly high, and from time to time the system will bog down and become nearly (sometimes totally) unresponsive. It has been somewhat hard to pinpoint the exact cause of the intermittent issues, first, because they are so intermittent, and secondly because there has never been a trace of evidence in the logs as to what might have happened.</p>
 <p>Since the CC wiki is the main service that runs on that machine, I decided to start there. We run <a href="http://www.varnish-cache.org/">Varnish</a> on all our servers, so I took a look at some Varnish stats using-- <em>ta-da</em> --<a href="http://www.varnish-cache.org/docs/2.1/reference/varnishstat.html">varnishstat</a>. It turned out that Varnish was mostly useless on that machine, with a hit-rate ratio of maybe 1 or 2 percent, sometimes approaching 0. This makes sense, since by default Varnish doesn't cache requests that arrive with cookies, and at the very least Google Analytics cookies will arrive with virtually every request to a CC site. Varnish shouldn't have to care about Analytics cookies, but it definitely needs to care about any login or session-related cookies from Mediawiki.</p>

@@ -161,7 +161,7 @@
   <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/aldenpage/">
   Alden Page
 </a>
-  on Monday, 2020-08-17</p>
+  on 2020-08-17</p>
   
   <div class="body"><h4 id="background">Background</h4><p>The goal of <a href="https://search.creativecommons.org">CC Search</a> is to index all of the Creative Commons works on the internet, starting with images. We have indexed over 500 million images, which we believe is roughly 36% of all CC licensed content on the internet by <a href="https://creativecommons.org/2018/05/08/state-of-the-commons-2017/">our last count</a>. To further enhance the usefulness of our search tool, we recently started crawling and analyzing images for improved search results. This article will discuss the process of taking a paper design for a large scale crawler, implementing it, and putting it in production, with a few idealized code snippets and diagrams along the way. The full source code can be viewed on <a href="https://github.com/creativecommons/image-crawler">GitHub</a>.</p>
 <p>Originally, when we discovered an image and inserted it into CC Search, we didn't even bother downloading it; we stuck the URL in our database and embedded the image in our search results. This approach has a lot of problems:</p>
