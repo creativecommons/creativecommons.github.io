@@ -2,8 +2,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
@@ -20,27 +18,30 @@ stored via CC Catalog in the CC database." />
 <meta property="og:url" content="/blog/entries/smithsonian-unit-code-update/" />
 <meta property="og:type" content="article" />
 
-      
+
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Smithsonian Unit Code Update">
 <meta name="twitter:description" content="IntroductionThe Creative Commons (CC) Catalog project collects and stores CC licensed images scattered across the internet, such
 that they can be made accessible to the general public via the [CC Search][cc_search] and [CC Catalog API][cc_api]
 tools. Numerous information associated with each image, which help in the image search and categorisation process are
 stored via CC Catalog in the CC database.">
-      
+
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
 <title>Smithsonian Unit Code Update — Creative Commons on GitHub</title>
+
 <body>
-  <a href="https://github.com/creativecommons/creativecommons.github.io-source" target="_blank" class="github-corner" aria-label="View source on GitHub">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
-      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-    </svg>
-  </a>
   <div class="ga-script">
 <div id="ga-script"></div>
 <script type="text/javascript">
@@ -52,129 +53,233 @@ stored via CC Catalog in the CC database.">
         ga('send', 'pageview');
 </script>
 </div>
-  <header class="main-header">
-    <div class="container-fluid">
-      <div class="row justify-content-md-center">
-        <div class="col-lg-9 col-md-9 col-sm-12">
-          <nav class="navbar navbar-expand-xl navbar-dark">
-            
-            <a class="navbar-brand" href="/">
-              <img src="/cclogo.svg">
-              <span class="legend">Creative Commons Open Source</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="/blog/">Blog</a>
-                </li>
-                <li class="nav-item dropdown ">
-                  <a class="nav-link" href="#" id="navbarContributingCodeDropdown" role="button">Contribute</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarContributingCodeDropdown">
-                    
-                      <a class="dropdown-item" href="/contributing-code/">Contribution Guidelines</a>
-                    
-                      <a class="dropdown-item" href="/contributing-code/projects/">Project List</a>
-                    
-                      <a class="dropdown-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
-                    
-                      <a class="dropdown-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
-                    
-                      <a class="dropdown-item" href="/contributing-code/cc-search/">CC Search</a>
-                    
-                      <a class="dropdown-item" href="/contributing-code/usability/">Usability</a>
-                    
-                  </div>
-                </li>
-                <li class="nav-item dropdown ">
-                  <a class="nav-link" href="#" id="navbarCommunityDropdown" role="button">Community</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarCommunityDropdown">
-                    
-                      <a class="dropdown-item" href="/community/">Join the Community</a>
-                    
-                      <a class="dropdown-item" href="/community/community-team/">Community Team</a>
-                    
-                      <a class="dropdown-item" href="/community/community-team/members/">Community Team Members</a>
-                    
-                      <a class="dropdown-item" href="/community/community-team/project-roles/">Project Roles</a>
-                    
-                      <a class="dropdown-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
-                    
-                      <a class="dropdown-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
-                    
-                      <a class="dropdown-item" href="/community/code-of-conduct/">Code of Conduct</a>
-                    
-                      <a class="dropdown-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
-                    
-                  </div>
-                </li>
-                <li class="nav-item dropdown ">
-                  <a class="nav-link" href="#" id="navbarInternshipsDropdown" role="button">Internships</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarInternshipsDropdown">
-                    
-                      <a class="dropdown-item" href="/internships/">Overview</a>
-                    
-                      <a class="dropdown-item" href="/internships/project-ideas/">Project Ideas</a>
-                    
-                      <a class="dropdown-item" href="/internships/applicant-guide/">Applicant Guide</a>
-                    
-                      <a class="dropdown-item" href="/internships/intern-guide/">Intern Guide</a>
-                    
-                      <a class="dropdown-item" href="/internships/mentor-guide/">Mentor Guide</a>
-                    
-                      <a class="dropdown-item" href="/internships/history/">History</a>
-                    
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/cc-search/">CC Search</a>
-                </li>
-                <li class="nav-item dropdown ">
-                  <a class="nav-link" href="#" id="navbarArchivesDropdown" role="button">Archives</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarArchivesDropdown">
-                    
-                      <a class="dropdown-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
-                    
-                      <a class="dropdown-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
-                    
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://creativecommons.org" target="_blank">creativecommons.org</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
-    </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/cc-search/">CC Search</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Internships<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/internships/">Overview</a>
+              
+                <a class="navbar-item" href="/internships/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/internships/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/internships/intern-guide/">Intern Guide</a>
+              
+                <a class="navbar-item" href="/internships/mentor-guide/">Mentor Guide</a>
+              
+                <a class="navbar-item" href="/internships/history/">History</a>
+              
+            </div>
+          </div>
+          <a class="navbar-item "
+            href="/cc-search/">
+            CC Search
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">Archives<i
+                class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-right">
+              
+              <a class="navbar-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+              
+              <a class="navbar-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+              
+            </div>
+          </div>
+        </div> 
+      </div>
+    </nav>
   </header>
-  <div class="container-fluid page-content">
-    <div class="row justify-content-md-center">
-      <div class="col-lg-9 col-md-9 col-sm-12 content-wrap">
-        <div class="page py-3">
-          <h1 class="page-title pb-3 mb-4">CC Open Source Blog</h1>
-          
-  <h2 class="mb-0">Smithsonian Unit Code Update</h2>
+
+  <!-- Breadcrumb -->
   
-  <p class="meta text-muted mt-0 mb-2">by <a href="/blog/authors/charini/">
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Smithsonian Unit Code Update</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Smithsonian Unit Code Update</h2>
+        
+        <div class="author columns is-marginless">
+          
+            <figure class="image profile">
+              <img src="https://secure.gravatar.com/avatar/e9440a4f3196442dd46ba8eca21041c8?size=200" alt="gravatar" class="profile" />
+            </figure>
+          
+          <p class="column">by <a href="/blog/authors/charini/">
   Charini Nanayakkara
 </a>
-  on 2020-08-03</p>
-    
-   
-  <div class="card bg-light mb-2">
-    <div class="card-body p-2">
-    <p class="meta my-0"><span class="mr-2"><strong>This blog is part of the series:</strong></span>
-       <a href="#series">GSoC 2020: CC catalog</a>
-    </p>
-    </div>
-  </div>
- 
-  <div class="body"><h2 id="introduction">Introduction</h2><p>The Creative Commons (CC) Catalog project collects and stores CC licensed images scattered across the internet, such
+          on 2020-08-03</p>
+        </div>
+        
+          
+          <div class="series-header">
+            <span>This blog is part of the series:</span>
+            <a href="#series">GSoC 2020: CC catalog</a>
+          </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <h2 id="introduction">Introduction</h2><p>The Creative Commons (CC) Catalog project collects and stores CC licensed images scattered across the internet, such
 that they can be made accessible to the general public via the <a href="https://ccsearch.creativecommons.org/">CC Search</a> and <a href="https://api.creativecommons.engineering/v1/">CC Catalog API</a>
 tools. Numerous information associated with each image, which help in the image search and categorisation process are
 stored via CC Catalog in the CC database.</p>
@@ -209,64 +314,54 @@ the dictionary (as reflected in the table) needs to be carried out by a person, 
 automated. Furthermore, this workflow is expected to be executed at-least once a week, preferably prior to running
 the Smithsonian image retrieval script such that the Smithsonian sub-provider retrieval task can be run with no issue.</p>
 <h2 id="acknowledgement">Acknowledgement</h2><p>I express my gratitude to my GSoC supervisor Brent Moran for assisting me with this task.</p>
-</div>
-  
-  <div class="mt-3 bg-light" id="series">
-    <hr/>
-    <h5 class="font-weight-bold">Posts in the <em>GSoC 2020: CC catalog</em> series</h5>
-    <ul class="toc list-unstyled">
-      
-        <li>
-        
-          <a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
-        
-        </li>
-      
-        <li>
-        
-          <a href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a>
-        
-        </li>
-      
-        <li>
-        
-          <a href="/blog/entries/data-flow-API-to-DB/">Data flow: from API to DB</a>
-        
-        </li>
-      
-        <li>
-        
-          <strong>Smithsonian Unit Code Update</strong>
-        
-        </li>
-      
-    </ul>
-    <hr/>
-  </div>
-  
-  <div class="card bg-light">
-    <div class="card-body p-2">
-      <p class="meta my-0"><span class="mr-2"><strong>Categories:</strong></span>
-        
-          
-            
-            
-            <a href=" /blog/categories/cc-catalog/ ">cc-catalog</a>,
-          
-            
-            
-            <a href=" /blog/categories/gsoc/ ">gsoc</a>,
-          
-            
-            
-            <a href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
-          
-        
-      </p>
-    </div>
-  </div>
 
-  <div class="comments">
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-catalog/ ">cc-catalog</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc/ ">gsoc</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
+            
+          
+        </div>
+      </div>
+      
+        <div class="series-posts" id="series">
+          <h5 class="title">Posts in the GSoC 2020: CC catalog series</h5>
+          <ul class="posts">
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/data-flow-API-to-DB/">Data flow: from API to DB</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/smithsonian-unit-code-update/">Smithsonian Unit Code Update</a>
+              </li>
+            
+          </ul>
+        </div>
+      
+      <div class="comments">
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function() { this.page.identifier = "/blog/entries/smithsonian-unit-code-update"; this.page.url = "http://opensource.creativecommons.org/blog/entries/smithsonian-unit-code-update/"; };
@@ -282,23 +377,107 @@ the Smithsonian image retrieval script such that the Smithsonian sub-provider re
     rel="nofollow">comments powered by Disqus.</a>
 </noscript>
 </div>
-
-          <a id="back-to-top" href="#top" class="btn btn-dark btn-sm" role="button">Back to top</a>
-        </div>
-      </div>
-    </div>
+    </footer>
   </div>
-  <footer class="main-footer bg-dark">
-    <div class="container-fluid">
-      <div class="row justify-content-md-center">
-        <div class="col-lg-9 col-md-9 col-sm-12 footer text-light py-4 px-3">
-          <small>
-            <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
-                  style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
-            <p class="text-muted">All the content on this website is licensed under a <strong><a rel="license"
-                  href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
-                  License</a></strong> unless otherwise specified.</p>
-          </small>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/" class="menu-item">Contribution Guidelines</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Teams</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="http://creativecommons.org/donate">
+                  <i class="icon cc-letterheart margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
         </div>
       </div>
     </div>
