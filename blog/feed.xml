@@ -2,13 +2,29 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-08-17T00:00:00Z</updated>
+  <updated>2020-08-24T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/">
+    <title type="text">X5GON Using CC Catalog API for Image Results</title>
+    <id>urn:uuid:ffcc37e0-31ad-3231-b583-73749555ba0b</id>
+    <updated>2020-08-24T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/" />
+    <author>
+      <name>annatuma</name>
+    </author>
+    <content type="html">&lt;p&gt;A few months ago, the Open Education team at Creative Commons made an introduction between the folks working on X5GON and CC Search.&lt;/p&gt;
+&lt;p&gt;Throughout a few conversations, we quickly discovered that there are many parallels to how we're approaching our work, and some important differences that would allow each of us to benefit from cooperation.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.x5gon.org/&quot;&gt;X5GON&lt;/a&gt; is building an AI-driven platform, focused on delivery of open education resources (OER). At its core, it is building a catalog of OER, upon which other &lt;a href=&quot;https://www.x5gon.org/platforms/services/&quot;&gt;services&lt;/a&gt; are based, such as analytics for personalized recommendations, and a discovery engine. By aggregating relevant content, curating it with the use of artificial intelligence and machine learning, and personalizing the experience to each learner, they're making OER more accessible and relevant.&lt;/p&gt;
+&lt;p&gt;CC Search is not yet ready to ingest content types beyond images, but when we are able to do so, we plan to integrate via API with X5GON in order to serve OER that is made available in formats we will support in the future, starting with audio.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://discovery.x5gon.org/&quot;&gt;X5GON Discovery search engine&lt;/a&gt; allows users to find OER in video, audio, and text formats - and now, with the integration of results powered by the CC Catalog API, which also powers CC Search, users can also find openly licensed images for relevant educational queries. This is a great resource for educators and learners from all over the world.&lt;/p&gt;
+&lt;p&gt;Try it for yourself, or look at these results for making &lt;a href=&quot;https://discovery.x5gon.org/search?q=geometry&amp;amp;type=Image&quot;&gt;geometry&lt;/a&gt; visual and fun!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/crawling-500-million/">
     <title type="text">How to politely crawl and analyze 500 million images</title>
     <id>urn:uuid:c4bde8a8-0a5d-324a-b450-571f43e3af02</id>
@@ -3062,30 +3078,6 @@ option, which is much better than previous footer implementation.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Thank you for reading. For more, see the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/">
-    <title type="text">GSoC cc-chooser Final Post</title>
-    <id>urn:uuid:4a9b45fd-e1a7-3613-bfba-21928b8ee42c</id>
-    <updated>2019-08-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-chooser-lastweek/" />
-    <author>
-      <name>akmadian</name>
-    </author>
-    <content type="html">&lt;p&gt;Summer of Code is drawing to a close, and so is my work on the chooser project (well, sort of, I'll continue to help build and support the project for some time). These have easily been some of the best months of my life for a number of reasons. I remember vividly getting my first Slack message from my mentor, Breno, and being in utter disbelief that I was chosen. I have been fortunate enough to have this project be my own, complete with a whole Git repo just for this project!&lt;/p&gt;
-&lt;p&gt;My work started with an empty GitHub repository, and bunch of planning: layout, wireframes, usability testing, etc. It wasn't until week 3 when I could start on actually building the site. To reflect on this time, I thought it would be cool to take a look back at the most significant PRs of the last three months.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;My first PR with anything of substance was &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/9&quot;&gt;#9 - Refactor Modal System&lt;/a&gt;. This changed the site's modal system from using a cooler approach to one not quite as flashy, but the old method was lacking some critical features.&lt;/li&gt;
-&lt;li&gt;Then came &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/10&quot;&gt;#10 - Add Chooser Functionality&lt;/a&gt;. This was a pretty big deal, as this brought the functionality behind the main point of the page: the License Chooser.&lt;/li&gt;
-&lt;li&gt;Next up, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/11&quot;&gt;#11&lt;/a&gt;: a big change to page layout. This changed the layout of the help section itself, and the layout of the page as a whole.&lt;/li&gt;
-&lt;li&gt;Another big design change: &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/14&quot;&gt;#14&lt;/a&gt;. This PR changed the method of displaying the chosen license from the legacy look that was essentially just copied over from the legacy chooser, to a newer, more modern, and more informative card.&lt;/li&gt;
-&lt;li&gt;Then, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/23&quot;&gt;#23 - Add HTML Generator Functionality&lt;/a&gt;. This added functionality to the HTML Generator, previously just a collection of dummy controls and fields.&lt;/li&gt;
-&lt;li&gt;Currently still open, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/18&quot;&gt;#18&lt;/a&gt;. This PR changes the look and functionality of the chooser controls. Previously they were just some standard switches. Now, they are (in my opinion) more modern, and more informative, although maybe more difficult for the average user to grasp.&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Lastly, and most recently, &lt;a href=&quot;https://github.com/creativecommons/cc-chooser/pull/24&quot;&gt;#24 - Refactor Site to Vue Components&lt;/a&gt;. This is a complete rewrite of the entire site to shift from a standard HTML5/ CSS/ JS toolset to Vue.js.&lt;/p&gt;
-&lt;p&gt;For all of these merged PRs, there is still work to be done: more usability testing, ensuring that all content on the page meets the proper legal requirments, localization, adding CSS for mobile and tablet breakpoints, and deployment!&lt;/p&gt;
-&lt;p&gt;I plan to have #24 done and merged by Monday, August 26, and I hope to continue my work on the chooser project either in my free time, or by moving into a mentor type role.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 </content>
   </entry>
 </feed>
