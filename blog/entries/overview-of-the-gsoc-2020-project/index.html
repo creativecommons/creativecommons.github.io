@@ -5,17 +5,30 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Overview of the GSoC 2020 Project" />
 
 
 
-<meta property="og:url" content="/blog/authors/charini/" />
+<meta property="og:description" content="This is my final blog post under the [GSoC 2020: CC catalog][cc_catalog_series] series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the [CC Search][cc_search] and [CC Catalog API][cc_api] tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows." />
+
+
+<meta property="og:url" content="/blog/entries/overview-of-the-gsoc-2020-project/" />
 <meta property="og:type" content="article" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Overview of the GSoC 2020 Project">
+<meta name="twitter:description" content="This is my final blog post under the [GSoC 2020: CC catalog][cc_catalog_series] series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the [CC Search][cc_search] and [CC Catalog API][cc_api] tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -30,9 +43,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>
-  Charini Nanayakkara
- — Creative Commons on GitHub</title>
+<title>Overview of the GSoC 2020 Project — Creative Commons on GitHub</title>
 
 <body>
   <div class="ga-script">
@@ -231,16 +242,16 @@
               
                 
               
-              <li><a class="link" href="/blog/authors/">
+              <li><a class="link" href="/blog/entries/">
               
-                Authors
+                Entries
               
               </a></li>
             
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed">Charini</a></li>
+              <li class="is-active"><a aria-current="page displayed">Overview Of The Gsoc 2020 Project</a></li>
             
           
         </ul>
@@ -250,84 +261,163 @@
 
   <!-- Body -->
   
-<div class="author-posts">
-  <div class="header">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-2">
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Overview of the GSoC 2020 Project</h2>
+        
+        <div class="author columns is-marginless">
           
-            
-              <figure class="image profile">
-                <img class="profile" src="https://secure.gravatar.com/avatar/e9440a4f3196442dd46ba8eca21041c8?size=200">
-              </figure>
-            
+            <figure class="image profile">
+              <img src="https://secure.gravatar.com/avatar/e9440a4f3196442dd46ba8eca21041c8?size=200" alt="gravatar" class="profile" />
+            </figure>
           
-        </div>
-        <div class="column is-8">
-          <h2>
+          <p class="column">by <a href="/blog/authors/charini/">
   Charini Nanayakkara
-</h2>
+</a>
+          on 2020-08-26</p>
+        </div>
+        
           
-            <div class="about"><p>Charini is a PhD student from the Australian National University, who is working on
-the <a href="https://github.com/creativecommons/cccatalog">cccatalog</a> repository as a part of GSoC 2020.
-She is <code>@Charini Nanayakkara</code> on slack.</p>
-</div>
+          <div class="series-header">
+            <span>This blog is part of the series:</span>
+            <a href="#series">GSoC 2020: CC catalog</a>
+          </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>This is my final blog post under the <a href="/blog/entries/overview-of-the-gsoc-2020-project/#series">GSoC 2020: CC catalog</a> series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the <a href="https://ccsearch.creativecommons.org/">CC Search</a> and <a href="https://api.creativecommons.engineering/v1/">CC Catalog API</a> tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.</p>
+<ol>
+<li><p><strong>Sub-provider retrieval</strong>: The first task I completed as part of my GSoC project was the retrieval of sub-providers
+(also known as <em>source</em>) such that images could be categorised under these sources, ensuring an enhanced search
+experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
+Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
+<a href="/blog/entries/flickr-sub-provider-retrieval/">initial blog post</a> of this series. The PRs related to this task are as follows.</p>
+<ul>
+<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/420">420</a>: Retrieve sub-providers within Flickr</li>
+<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/442">442</a>: Retrieve sub-providers within Europeana</li>
+<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/455">455</a>: Retrieve sub-providers within Smithsonian</li>
+<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/461">461</a>: Add new source as a sub-provider of Flickr</li>
+</ul>
+</li>
+<li><p><strong>Alert updates to Smithsonian unit codes</strong>: For the Smithsonian provider, we rely on the field known as <em>unit code</em>
+to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
+the <em>unit code</em> values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
+successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
+mechanism of alerting the CC code maintainers of potential changes to <em>unit code</em> values at the upstream. More
+information is provided in my <a href="/blog/entries/smithsonian-unit-code-update/">second blog post</a> of this series. The PR related to this task
+is #<a href="https://github.com/creativecommons/cccatalog/pull/465">465</a>.</p>
+</li>
+<li><p><strong>Improvements to the Smithsonian provider API script</strong>: Smithsonian is an important provider which aggregates images
+from 19 museums. However, due to the fact that the different museums have different data models and the resultant
+incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
+fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
+information. As part of my GSoC project, I improved the completeness of <em>creator</em> and <em>description</em> information, by
+identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
+result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
+some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
+#<a href="https://github.com/creativecommons/cccatalog/issues/397">397</a>. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
+Smithsonian technical team of these issues and they are highlighted in ticket #<a href="https://github.com/creativecommons/cccatalog/issues/397">397</a> as well. The PRs related
+to this task are as follows.</p>
+<ul>
+<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/474">474</a>: Improve the creator and description information of the Smithsonian source <em>National Museum of
+Natural History</em> (NMNH). This is the largest museum (source) under the Smithsonian provider.</li>
+<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/476">476</a>: Improve the <em>creator</em> and <em>description</em> information of other sources coming under the Smithsonian
+provider.</li>
+</ul>
+</li>
+<li><p><strong>Expiration of outdated images</strong>: The final task I completed as part of my GSoC project was implementing a strategy
+for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
+providers up-to-date, based on how old an image is. This is called the <a href="/blog/entries/date-partitioned-data-reingestion/">re-ingestion strategy</a>,
+where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
+detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
+database are obsolete, which could result in broken links being presented via the <a href="https://ccsearch.creativecommons.org/">CC Search</a> tool. As a
+solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
+<em>updated_on</em> column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
+the oldest <em>updated_on</em> value, an image can assume. If the <em>updated_on</em> value is older than the oldest valid value, we
+flag the corresponding image record  as obsolete.  The PR related to this task is #<a href="https://github.com/creativecommons/cccatalog/pull/483">483</a>.</p>
+</li>
+</ol>
+<p>I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
+contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
+Brent for his guidance.</p>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
           
-          <a class="button small" href="/blog/authors/">See all authors</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-catalog/ ">cc-catalog</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc/ ">gsoc</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
+            
+          
         </div>
       </div>
-    </div>
-  </div>
-  <div class="posts container">
-    
-  <div class="columns is-multiline">
-    
       
-      <article class="card entry-post horizontal no-border blog-entry column is-one-third">
-        <div class="blog-content">
-          <h4 class="b-header"><a class="blog-title has-color-dark-slate-gray" href="/blog/entries/overview-of-the-gsoc-2020-project/">Overview of the GSoC 2020 Project</a></h4>
-          <span class="blog-author">by <a href="/blog/authors/charini/">
-  Charini Nanayakkara
-</a>
-          on 2020-08-26</span>
-          <div class="excerpt">
-            This is my final blog post under the [GSoC 2020: CC catalog][cc_catalog_series] series, where I...
-          </div>
+        <div class="series-posts" id="series">
+          <h5 class="title">Posts in the GSoC 2020: CC catalog series</h5>
+          <ul class="posts">
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/science-museum-implementation/">Science Museum provider implementation</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/data-flow-API-to-DB/">Data flow: from API to DB</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/smithsonian-unit-code-update/">Smithsonian Unit Code Update</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/overview-of-the-gsoc-2020-project/">Overview of the GSoC 2020 Project</a>
+              </li>
+            
+          </ul>
         </div>
-      </article>
-    
       
-      <article class="card entry-post horizontal no-border blog-entry column is-one-third">
-        <div class="blog-content">
-          <h4 class="b-header"><a class="blog-title has-color-dark-slate-gray" href="/blog/entries/smithsonian-unit-code-update/">Smithsonian Unit Code Update</a></h4>
-          <span class="blog-author">by <a href="/blog/authors/charini/">
-  Charini Nanayakkara
-</a>
-          on 2020-08-03</span>
-          <div class="excerpt">
-            IntroductionThe Creative Commons (CC) Catalog project collects and stores CC licensed images...
-          </div>
-        </div>
-      </article>
-    
-      
-      <article class="card entry-post horizontal no-border blog-entry column is-one-third">
-        <div class="blog-content">
-          <h4 class="b-header"><a class="blog-title has-color-dark-slate-gray" href="/blog/entries/flickr-sub-provider-retrieval/">Flickr Sub-provider Retrieval</a></h4>
-          <span class="blog-author">by <a href="/blog/authors/charini/">
-  Charini Nanayakkara
-</a>
-          on 2020-06-24</span>
-          <div class="excerpt">
-            IntroductionThe Creative Commons (CC) licensed images made available via CC Search and CC...
-          </div>
-        </div>
-      </article>
-    
-  </div>
-
-  </div>
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/overview-of-the-gsoc-2020-project"; this.page.url = "http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
 </div>
+    </footer>
+  </div>
 
 
   <!-- Footer -->

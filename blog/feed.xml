@@ -2,13 +2,84 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-08-24T00:00:00Z</updated>
+  <updated>2020-08-26T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
+    <title type="text">Overview of the GSoC 2020 Project</title>
+    <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
+    <updated>2020-08-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" />
+    <author>
+      <name>charini</name>
+    </author>
+    <content type="html">&lt;p&gt;This is my final blog post under the &lt;a href=&quot;/blog/entries/overview-of-the-gsoc-2020-project/#series&quot;&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; and &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
+(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
+experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
+Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
+&lt;a href=&quot;/blog/entries/flickr-sub-provider-retrieval/&quot;&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/420&quot;&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/442&quot;&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/455&quot;&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/461&quot;&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
+to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
+the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
+successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
+mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
+information is provided in my &lt;a href=&quot;/blog/entries/smithsonian-unit-code-update/&quot;&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
+is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/465&quot;&gt;465&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
+from 19 museums. However, due to the fact that the different museums have different data models and the resultant
+incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
+fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
+information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
+identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
+result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
+some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
+#&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
+Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt; as well. The PRs related
+to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/474&quot;&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
+Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/476&quot;&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
+provider.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
+for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
+providers up-to-date, based on how old an image is. This is called the &lt;a href=&quot;/blog/entries/date-partitioned-data-reingestion/&quot;&gt;re-ingestion strategy&lt;/a&gt;,
+where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
+detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
+database are obsolete, which could result in broken links being presented via the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; tool. As a
+solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
+&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
+the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
+flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/483&quot;&gt;483&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
+contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
+Brent for his guidance.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/">
     <title type="text">X5GON Using CC Catalog API for Image Results</title>
     <id>urn:uuid:ffcc37e0-31ad-3231-b583-73749555ba0b</id>
@@ -3021,63 +3092,6 @@ Because everyone loves dark mode! Save battery and go easy on your eyes.&lt;/li&
 &lt;p&gt;You can check out the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;project on Github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Come and say hi to us on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt; and tell about your experience with CC Search extension. The slack channel is &lt;code&gt;#gsoc-browser-ext&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/">
-    <title type="text">Creative Commons WordPress Plugin Final Phase</title>
-    <id>urn:uuid:bd8f5195-c23f-3aab-8233-2d4cfe53580c</id>
-    <updated>2019-08-23T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-final-phase/" />
-    <author>
-      <name>ahmadbilaldev</name>
-    </author>
-    <content type="html">&lt;p&gt;For the context, I am working with my mentor &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot&lt;/a&gt; on Creative Commons WordPress Plugin in GSoC 2019. It is basically an attribution tool, allowing users to attribute their content and include a CC license on their WordPress website.&lt;/p&gt;
-&lt;p&gt;GSoC is about to end, and I am excited that we have the plugin ready with all the possible attribution features.
- We had a stable version of the plugin up and running in the last phase. This allowed us to use it and
-look for possible improvements and increments. We managed to get a handful of suggestions and feedback
-from some users, which turned out quite applicable. First, let's take a quick look at the releases in
-this phase and their changelogs.&lt;/p&gt;
-&lt;h3 id=&quot;releases&quot;&gt;Releases&lt;/h3&gt;&lt;h4 id=&quot;v2019.7.2&quot;&gt;v2019.7.2&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Bug fixes.&lt;/li&gt;
-&lt;li&gt;New license selection settings.&lt;/li&gt;
-&lt;li&gt;Old license chooser removed and plugin linked to the &lt;a href=&quot;https://creativecommons.org/choose/&quot;&gt;current chooser&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Plugin settings page redesigned for better user experience.&lt;/li&gt;
-&lt;li&gt;New feature to add additional text after the license.&lt;/li&gt;
-&lt;li&gt;Gutenberg blocks for CC licenses redesigned.&lt;/li&gt;
-&lt;li&gt;Added customization settings for Gutenberg blocks for backend and front end.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;v2019.8.1&quot;&gt;v2019.8.1&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Re-wrote license widget for the plugin. Added option to display the default license
-as a widget or in the footer.&lt;/li&gt;
-&lt;li&gt;Refactored and improved code quality.&lt;/li&gt;
-&lt;li&gt;Submitted plugin to WordPress.org for review.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;v2019.8.2&quot;&gt;v2019.8.2&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;All necessary Default/Site license settings added.&lt;/li&gt;
-&lt;li&gt;Plugin settings page design completed.&lt;/li&gt;
-&lt;li&gt;Rich-text components added to previously static Gutenberg blocks converted to allow attribution of any content.&lt;/li&gt;
-&lt;li&gt;Gutenberg blocks redesigned to include settings.&lt;/li&gt;
-&lt;li&gt;Security improvements.&lt;/li&gt;
-&lt;li&gt;i18n improvements.&lt;/li&gt;
-&lt;li&gt;Minor bug fixes and refinements.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;blocks&quot;&gt;Blocks&lt;/h3&gt;&lt;p&gt;The CC blocks are now editable with a bunch of options. We integrated rich-text in each block, which
- renders a rich content-editable input, providing users with the option to format the content.
- This makes sure that the requirements of describing the title, author and the source
- while using a CC licensed content can be met..&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-final-phase/cc-block.png&quot; alt=&quot;CC License Block&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;re-designed-settings&quot;&gt;Re-designed Settings&lt;/h3&gt;&lt;p&gt;The redesigned plugin settings are straightforward and have every required field. We have added widget as a display
-option, which is much better than previous footer implementation.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-final-phase/settings-1.png&quot; alt=&quot;Plugin Settings&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Selecting a license is simple and quick with a link to the chooser&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-plugin-final-phase/settings-2.png&quot; alt=&quot;Plugin Settings&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;what-s-next&quot;&gt;What's next&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Implement GitHub Actions or similar for automated deployment on release from GitHub to WordPress SVN directory.&lt;/li&gt;
-&lt;li&gt;Integrate WPGulp workflow and improve i18n.&lt;/li&gt;
-&lt;li&gt;Improve documentation with a visual walk-around of every feature.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Thank you for reading. For more, see the &lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;GitHub repository&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If you have any feedback or suggestions, let us know in the discussion on &lt;code&gt;#cc-dev-wordpress&lt;/code&gt; Slack channel. Looking forward!&lt;/p&gt;
 </content>
   </entry>
 </feed>
