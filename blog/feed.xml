@@ -80,6 +80,48 @@ contributing to the CC codebase. It has been a wonderful GSoC journey for me and
 Brent for his guidance.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
+    <title type="text">Linked Commons: Data Update</title>
+    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
+    <updated>2020-08-25T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
+    <author>
+      <name>subhamX</name>
+    </author>
+    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
+&lt;h2 id=&quot;where-does-it-fit?&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
+&lt;h3 id=&quot;what-is-distance-list-?&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
+&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
+&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
+&lt;h3 id=&quot;key-points-of-the-sequential-db-build:&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
+&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
+&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
+&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
+&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/">
     <title type="text">X5GON Using CC Catalog API for Image Results</title>
     <id>urn:uuid:ffcc37e0-31ad-3231-b583-73749555ba0b</id>
@@ -676,7 +718,7 @@ the Smithsonian image retrieval script such that the Smithsonian sub-provider re
         &lt;figcaption style=&quot;font-weight: 500;&quot;&gt;Autocomplete feature in action&lt;/figcaption&gt;
     &lt;/figure&gt;
 &lt;/div&gt;&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;&lt;p&gt;One of the newest features integrated last month into Linked Commons is Filtering by node name. Here a user can search for his/her favourite node and explore all its neighbours. Since the list is very big, it was self-evident for us to have a text box (and not a drop-down) where the user is supposed to type the node name.&lt;/p&gt;
-&lt;p&gt;Some of the reasons why to have a text box or filtering by node option.&lt;/p&gt;
+&lt;p&gt;Some of the reasons why to have &quot;autocomplete feature&quot; in the filtering by node name -&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Some of the node names are very uncommon and lengthy. There is a high probability of misspelling it.&lt;/li&gt;
 &lt;li&gt;Submitting the form and getting a response of “Node doesn’t exist” isn’t a very good user flow, and we want to minimise such incidents.&lt;/li&gt;
@@ -739,7 +781,6 @@ The following test is performed on the local machine to ensure that the server l
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Since SQLlite has a serverless design, disk io usually has a significant impact on the performance. The above results were executed on a server with HDD storage. Linked Commons server is equipped with faster disk io. It will certainly improve the performance but will be countered by the network latency and other factors like the number of nodes in the dB. So the above results to some degree resemble the actual performance.&lt;/p&gt;
 &lt;h2 id=&quot;next-steps&quot;&gt;Next steps&lt;/h2&gt;&lt;p&gt;In the next blog, we will be covering the long awaited data update and the new architecture.&lt;/p&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;Overall, I enjoyed working on this feature and it was a great learning experience. This feature has been successfully integrated to the development version, do check it out. Now that you have read this blog till the end, I hope that you enjoyed it. For more information please visit our &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;Github repo&lt;/a&gt;. We are looking forward to hearing from you on linked commons. Our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; doors are always open to you, see you there. :)&lt;/p&gt;
 </content>
@@ -2964,134 +3005,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;I had a great time working with Creative Commons. I hope you like the final product as much as I do. Thank you for following the development of this project.&lt;/p&gt;
 &lt;p&gt;Have a nice week!&lt;/p&gt;
 &lt;p&gt;Maria&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/">
-    <title type="text">Introducing CC Search Extension</title>
-    <id>urn:uuid:1d9e2dcd-6ee5-3ee2-a330-7acf4858af05</id>
-    <updated>2019-09-03T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/introducing-cc-search-extension/" />
-    <author>
-      <name>makkoncept</name>
-    </author>
-    <content type="html">&lt;p&gt;The past three months of Google summer of code has been an amazing learning experience to say the least. I am thrilled to announce that &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;my GSoC project&lt;/a&gt; was successfully completed and we were able to achieve more than we aimed for!&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;light-dark-mode.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        CC Search Browser Extension
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;h3 id=&quot;installation&quot;&gt;Installation&lt;/h3&gt;&lt;p&gt;The three extension stores of the browsers we were building support for have approved the extension 🎉&lt;/p&gt;
-&lt;p&gt;Install the extension on your favorite browser from the following links:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/cc-search-extension/&quot;&gt;Firefox Addon Store&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://chrome.google.com/webstore/detail/cc-search/agohkbfananbebiaphblgcfhcclklfnh&quot;&gt;Google Chrome store&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://addons.opera.com/en/extensions/details/cc-search/&quot;&gt;Opera Addon Store&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Checkout &lt;a href=&quot;/blog/entries/introducing-cc-search-extension/#join-the-community&quot;&gt;Join the community&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;&lt;p&gt;At inception, we thought that the extension would become a complementary plugin to the amazing &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; but now I can say with confidence that the extension has the potential to sketch an identity of itself.
-In this section, I will go through all the major features(exclusive of any technical jargon) of the extension.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Search and filter CC Licensed content&lt;/strong&gt;&lt;br&gt;
-This feature is at the core and the extension does a good job. The searching and filtering is powered by &lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt; which exposes various endpoints to get search results and apply filters for providers, licenses, and use-case. This makes sure that you will find exactly what are you looking for.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;minimal-ui.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Bunch of features. Minimal interface.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;One-click easy attribution:&lt;/strong&gt;&lt;br&gt;
-Attributing the owner of the image is as easy as it can get with one-click attribution. You can copy either the Rich-text or HTML version of the attribution to your clipboard by one-click.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;search-images-attribution.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Search CC License Images. Easy one-click attribution, image info, and share options.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Download images (and attribution):&lt;/strong&gt;&lt;br&gt;
-Download the image to use it in your works from the extension itself. You also have the option to download the attribution as a text file along with the image. This can be helpful when you want to download multiple images in a single session.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Bookmark images:&lt;/strong&gt;&lt;br&gt;
-Hovering over the image thumbnails and clicking the bookmark icon will save the images. This is perfect for shortlisting the images that you might find usefull in the future. You can view and remove your bookmarks from the bookmarks section.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;bookmarks.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        View saved images in Bookmark Section. Export and import bookmarks from the &quot;Bookmarks&quot; tab in the options page.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Export and import bookmarks.&lt;/strong&gt;&lt;br&gt;
-As a user, you might want to easily archive and/or transfer your bookmarks. The extension goes one step ahead and gives you the feature of exporting and importing bookmarks.  This makes sure that the solution to archiving and transfer of bookmarks is uncomplicated and straightforward.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sync your custom setting and bookmarks across devices.&lt;/strong&gt;&lt;br&gt;
-The extension uses the in-build feature of chrome and firefox to sync your custom settings and bookmarks.  So you can be sure to have a familiar user experience across your devices.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Options-UI for custom settings.&lt;/strong&gt;&lt;br&gt;
-The extension also has an options page where you can set default filters and settings. The options page helps in decluttering and making sure that the main popup of the extension remains minimal and holds only the most necessary information. This page will host most of the future features too.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;custom-filters.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Add custom defaults from the options page.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Dark Mode.&lt;/strong&gt;&lt;br&gt;
-Because everyone loves dark mode! Save battery and go easy on your eyes.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;opera-light.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Light mode.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;opera-dark.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Dark Mode. Looks more cool if the browser is also in dark mode!
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;about-page.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        About page of the extension.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;h3 id=&quot;join-the-community&quot;&gt;Join The Community&lt;/h3&gt;&lt;p&gt;We hope that you will give this a shot and maybe use it as your daily driver to search for images. There is so much more that we can do to improve and expand this project. Your help in form of &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#reporting-bugs&quot;&gt;bug reports&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#feature-requests&quot;&gt;feature requests&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/blob/master/INSTRUCTIONS.md#contributing-code&quot;&gt;code contribution&lt;/a&gt; will be of great importance in shaping the future of the extension.&lt;/p&gt;
-&lt;p&gt;You can check out the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;project on Github&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Come and say hi to us on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt; and tell about your experience with CC Search extension. The slack channel is &lt;code&gt;#gsoc-browser-ext&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Special Thanks&lt;/em&gt;:  &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>

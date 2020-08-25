@@ -289,7 +289,7 @@
         <figcaption style="font-weight: 500;">Autocomplete feature in action</figcaption>
     </figure>
 </div><h2 id="motivation">Motivation</h2><p>One of the newest features integrated last month into Linked Commons is Filtering by node name. Here a user can search for his/her favourite node and explore all its neighbours. Since the list is very big, it was self-evident for us to have a text box (and not a drop-down) where the user is supposed to type the node name.</p>
-<p>Some of the reasons why to have a text box or filtering by node option.</p>
+<p>Some of the reasons why to have "autocomplete feature" in the filtering by node name -</p>
 <ul>
 <li>Some of the node names are very uncommon and lengthy. There is a high probability of misspelling it.</li>
 <li>Submitting the form and getting a response of “Node doesn’t exist” isn’t a very good user flow, and we want to minimise such incidents.</li>
@@ -352,7 +352,6 @@ The following test is performed on the local machine to ensure that the server l
 </tr>
 </tbody>
 </table>
-<p>Since SQLlite has a serverless design, disk io usually has a significant impact on the performance. The above results were executed on a server with HDD storage. Linked Commons server is equipped with faster disk io. It will certainly improve the performance but will be countered by the network latency and other factors like the number of nodes in the dB. So the above results to some degree resemble the actual performance.</p>
 <h2 id="next-steps">Next steps</h2><p>In the next blog, we will be covering the long awaited data update and the new architecture.</p>
 <h2 id="conclusion">Conclusion</h2><p>Overall, I enjoyed working on this feature and it was a great learning experience. This feature has been successfully integrated to the development version, do check it out. Now that you have read this blog till the end, I hope that you enjoyed it. For more information please visit our <a href="https://github.com/creativecommons/cccatalog-dataviz/">Github repo</a>. We are looking forward to hearing from you on linked commons. Our <a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz">slack</a> doors are always open to you, see you there. :)</p>
 
@@ -405,6 +404,10 @@ The following test is performed on the local machine to ensure that the server l
             
               <li>
                 <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-autocomplete-feature/">Linked Commons: Autocomplete Feature</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-data-update/">Linked Commons: Data Update</a>
               </li>
             
           </ul>

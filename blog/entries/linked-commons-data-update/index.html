@@ -5,17 +5,24 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Linked Commons: Data Update" />
 
 
 
-<meta property="og:url" content="/blog/categories/cc-dataviz/" />
+<meta property="og:description" content="In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change." />
+
+
+<meta property="og:url" content="/blog/entries/linked-commons-data-update/" />
 <meta property="og:type" content="article" />
 
 
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/distance-list.png" />
+
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Linked Commons: Data Update">
+<meta name="twitter:description" content="In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.">
+
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/distance-list.png">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -30,7 +37,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>cc-dataviz — Creative Commons on GitHub</title>
+<title>Linked Commons: Data Update — Creative Commons on GitHub</title>
 
 <body>
   <div class="ga-script">
@@ -229,16 +236,16 @@
               
                 
               
-              <li><a class="link" href="/blog/categories/">
+              <li><a class="link" href="/blog/entries/">
               
-                Categories
+                Entries
               
               </a></li>
             
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed">Cc Dataviz</a></li>
+              <li class="is-active"><a aria-current="page displayed">Linked Commons Data Update</a></li>
             
           
         </ul>
@@ -248,96 +255,142 @@
 
   <!-- Body -->
   
-<div class="all-categories">
-  <div class="header">
-    <div class="container">
-      <h1>All posts categorized "cc-dataviz"</h1>
-      <a class="button small margin-top-bigger" href="/blog/categories/">See all categories</a>
-    </div>
-  </div>
-  <div class="categories-list container">
-    
-  <div class="columns is-multiline blog-entries">
-    
-      
-      <div class="column is-one-third">
-        <article class="card entry-post horizontal no-border blog-entry">
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Linked Commons: Data Update</h2>
+        
+        <div class="author columns is-marginless">
           
-            
-              <header>
-                <figure class="image blog-image">
-                  <img class="profile" src="https://secure.gravatar.com/avatar/1ca2562f3046509e3273fe5afd3fdab2?size=200" alt="gravatar" />
-                </figure>
-              </header>
-              
+            <figure class="image profile">
+              <img src="https://secure.gravatar.com/avatar/1ca2562f3046509e3273fe5afd3fdab2?size=200" alt="gravatar" class="profile" />
+            </figure>
           
-          <div class="blog-content">
-            <h4 class="b-header"><a class="blog-title" href="/blog/entries/linked-commons-data-update/">Linked Commons: Data Update</a></h4>
-            <span class="blog-author">by <a href="/blog/authors/subhamX/">
+          <p class="column">by <a href="/blog/authors/subhamX/">
   Subham Sahu
 </a>
-            on 2020-08-25</span>
-            <div class="excerpt">
-              In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will...
-            </div>
+          on 2020-08-25</p>
+        </div>
+        
+          
+          <div class="series-header">
+            <span>This blog is part of the series:</span>
+            <a href="#series">GSoC 2020: The Linked Commons</a>
           </div>
-        </article>
+        
       </div>
-    
-      
-      <div class="column is-one-third">
-        <article class="card entry-post horizontal no-border blog-entry">
-          
-            
-              <header>
-                <figure class="image blog-image">
-                  <img class="profile" src="https://secure.gravatar.com/avatar/1ca2562f3046509e3273fe5afd3fdab2?size=200" alt="gravatar" />
-                </figure>
-              </header>
-              
-          
-          <div class="blog-content">
-            <h4 class="b-header"><a class="blog-title" href="/blog/entries/linked-commons-autocomplete-feature/">Linked Commons: Autocomplete Feature</a></h4>
-            <span class="blog-author">by <a href="/blog/authors/subhamX/">
-  Subham Sahu
-</a>
-            on 2020-07-31</span>
-            <div class="excerpt">
-              IntroductionThe following blog intends to explain the very recent feature integrated to the...
-            </div>
-          </div>
-        </article>
-      </div>
-    
-      
-      <div class="column is-one-third">
-        <article class="card entry-post horizontal no-border blog-entry">
-          
-            
-              <header>
-                <figure class="image blog-image">
-                  <img class="profile" src="https://secure.gravatar.com/avatar/1ca2562f3046509e3273fe5afd3fdab2?size=200" alt="gravatar" />
-                </figure>
-              </header>
-              
-          
-          <div class="blog-content">
-            <h4 class="b-header"><a class="blog-title" href="/blog/entries/linked-commons-whats-new/">Linked Commons: What&#39;s new?</a></h4>
-            <span class="blog-author">by <a href="/blog/authors/subhamX/">
-  Subham Sahu
-</a>
-            on 2020-07-16</span>
-            <div class="excerpt">
-              IntroductionLinked Commons is a visualization project which aims to showcase and establish a...
-            </div>
-          </div>
-        </article>
-      </div>
-    
-  </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.</p>
+<h2 id="where-does-it-fit?">Where does it fit?</h2><p>So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding "Graph Filtering Methods" to "Autocomplete Feature". These were actually bringing us closer towards this task. i.e. the much-awaited <strong>"Scale the Data of Linked Commons"</strong>. We aim to add around <strong>235k nodes and 4.14 million links</strong> into the Linked Commons project from around <strong>400 nodes and 500 links</strong> in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.</p>
+<h2 id="pilot">Pilot</h2><p>The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series <a href="https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/">blog</a> written by my mentor Maria. After this, we need to build a database which stores the <strong>"distance list"</strong> of all the nodes.</p>
+<h3 id="what-is-distance-list-?">What is "distance list"?</h3><div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="distance-list.png" alt="Distance List" style="border: 1px solid black">
+        <figcaption>Distance list representation* of the node 'icij' part of a hypothetical graph</figcaption>
+    </figure>
+</div><hr>
+<p><strong>Distance List</strong> is a method of graph representation. It is similar to <a href="https://en.wikipedia.org/wiki/Adjacency_list">Adjacency List</a> representation of graphs but instead of storing data of just immediate neighbouring nodes, "distance list" groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, "distance list" is a more general form of the Adjacency List representation.</p>
+<p>To build this "distance list", we created a script for this, let’s name it <strong>build-dB-script.py</strong>, which uses the <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth-First Search(BFS)</a> algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.</p>
+<h2 id="problem">Problem</h2><p>Now that we know where the <em>build-dB-script</em> is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than <strong>15 days</strong> to complete the computations. <strong>It is scary, and thus, optimizations in the <em>build-dB-script</em> are the need of the hour!!</strong></p>
+<h2 id="optimizations">Optimizations</h2><p>In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.</p>
+<p>The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - <strong>"Sequential dB Build"</strong>.</p>
+<p>To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.</p>
+<h3 id="key-points-of-the-sequential-db-build:">Key points of the Sequential dB Build:</h3><ul>
+<li>It was the fastest of all the predecessors and reduced the script timing significantly.</li>
+<li>In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.</li>
+</ul>
+<p>Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around <strong>4 hours</strong>, and <strong>distance three list</strong> computation was taking <strong>20+ hours</strong>. It shows that all these optimizations were not enough and were incapable of handling this big dataset.</p>
+<h2 id="new-architecture">New Architecture</h2><p>As the optimizations in "build-dB-scripts" weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in <strong>Linked Commons 3.0</strong>. 😎</p>
+<p>For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the <a href="https://en.wikipedia.org/wiki/Transpose_graph">transpose graph</a>).</p>
+<p>This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from <strong>shelve to MongoDB</strong> where the build time is further reduced. 🔥🔥</p>
+<div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="graph.png" alt="Light Theme" style="border: 1px solid black">
+        <figcaption>Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.</figcaption>
+    </figure>
+</div><h2 id="conclusion">Conclusion</h2><p>This task was really challenging and I learnt a lot. It was really mesmerizing to see the <strong>Linked Commons grow and evolve</strong>. I hope you enjoyed reading this blog. You can follow the project development <a href="https://github.com/creativecommons/cccatalog-dataviz/">here</a>, and access the stable version of linked commons <a href="http://dataviz.creativecommons.engineering/">here</a>.</p>
+<p>Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our <a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz">slack</a> channel. Read more about our community teams <a href="https://opensource.creativecommons.org/community/">here</a>. See you in my next blog! 🚀</p>
+<hr>
+<p>*<em>Linked Commons uses a more complex schema. The picture is just for illustration.</em></p>
 
-  </div>
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/announcements/ ">announcements</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-catalog/ ">cc-catalog</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/product/ ">product</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc/ ">gsoc</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-dataviz/ ">cc-dataviz</a>
+            
+          
+        </div>
+      </div>
+      
+        <div class="series-posts" id="series">
+          <h5 class="title">Posts in the GSoC 2020: The Linked Commons series</h5>
+          <ul class="posts">
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-whats-new/">Linked Commons: What&#39;s new?</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-autocomplete-feature/">Linked Commons: Autocomplete Feature</a>
+              </li>
+            
+              <li>
+                <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-data-update/">Linked Commons: Data Update</a>
+              </li>
+            
+          </ul>
+        </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/linked-commons-data-update"; this.page.url = "http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
 </div>
+    </footer>
+  </div>
 
 
   <!-- Footer -->
