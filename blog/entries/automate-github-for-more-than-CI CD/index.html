@@ -1,0 +1,519 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Automate GitHub for more than CI/CD" />
+
+
+
+<meta property="og:description" content="Get started using GitHub bots and actions for community management and repository health." />
+
+
+<meta property="og:url" content="/blog/entries/automate-github-for-more-than-CI CD/" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/release-notes-screenshot.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Automate GitHub for more than CI/CD">
+<meta name="twitter:description" content="Get started using GitHub bots and actions for community management and repository health.">
+
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/release-notes-screenshot.png">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Automate GitHub for more than CI/CD — Creative Commons on GitHub</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Internships<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/internships/">Overview</a>
+              
+                <a class="navbar-item" href="/internships/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/internships/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/internships/intern-guide/">Intern Guide</a>
+              
+                <a class="navbar-item" href="/internships/mentor-guide/">Mentor Guide</a>
+              
+                <a class="navbar-item" href="/internships/history/">History</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              CC Search<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/cc-search/">Overview &amp; Roadmap</a>
+              
+                <a class="navbar-item" href="/cc-search/contribution-guide/">Contribution Guide</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">Archives<i
+                class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-right">
+              
+              <a class="navbar-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+              
+              <a class="navbar-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+              
+            </div>
+          </div>
+        </div> 
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Automate Github For More Than Ci Cd</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Automate GitHub for more than CI/CD</h2>
+        
+        <div class="author columns is-marginless">
+          
+            <figure class="image profile">
+              <img src="https://secure.gravatar.com/avatar/9b97b0b4796e00b366a3855f46659a77?size=200" alt="gravatar" class="profile" />
+            </figure>
+          
+          <p class="column">by <a href="/blog/authors/zackkrida/">
+  Zack Krida
+</a>
+          on 2020-08-26</p>
+        </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <blockquote><p><em>Get started using GitHub bots and actions for community management and repository health.</em></p>
+</blockquote>
+<p>In late 2018, in the midst of being acquired by Microsoft, GitHub <a href="https://github.blog/2018-10-16-future-of-software/">launched Github Actions</a> into public beta, allowing users to run code on the popular development platform for the first time. With a straightforward <code>YAML</code> configuration syntax and the power of Microsoft's Azure cloud, GitHub Actions quickly rose to compete with existing Continuous Integration (CI) and Continuous Deployment (CD) platforms like <strong>Circle CI</strong> and <strong>Travis CI</strong>. GitHub Actions made it easier than ever for developers to test and deploy software in the cloud, but from the beginning GitHub had bigger plans for the service.</p>
+<p>In a <a href="https://techcrunch.com/2018/10/16/github-launches-actions-its-workflow-automation-tool/">2018 TechCrunch interview</a>, GitHub's then head of platform acknowledged the usefulness of actions for more than CI/CD. "I see CI/CD as one narrow use case of actions. It’s so, so much more,” Lambert stressed. “And I think it’s going to revolutionize DevOps because people are now going to build best in breed deployment workflows for specific applications and frameworks, and those become the de facto standard shared on GitHub. […] It’s going to do everything we did for open source again for the DevOps space and for all those different parts of that workflow ecosystem."</p>
+<p>At Creative Commons, we use Github Actions and Bots on many of <a href="https://github.com/creativecommons?type=source">our open-source projects</a> for more than CI/CD—to manage our <a href="http://localhost:5000/community/community-team/">community team</a>; to automate repository health; and to automate tedious but frequent tasks. The following examples are just a small snapshot of our existing and in-progress automations.</p>
+<h2 id="example-automations">Example automations</h2><p><!-- no toc --></p>
+<ul>
+<li><a href="/blog/entries/automate-github-for-more-than-CI CD/#automatic-release-note-generation">Release note generation</a></li>
+<li><a href="/blog/entries/automate-github-for-more-than-CI CD/#repository-normalization">Repository normalization</a></li>
+<li><a href="/blog/entries/automate-github-for-more-than-CI CD/#automatic-dependency-updates">Dependency updates</a></li>
+</ul>
+<h3 id="release-note-generation">Release note generation</h3><p>Our frontend Vue.js application for CC Search gets released weekly, and is subject to constant pull requests from myself, one-time volunteers making their first open source contribution, and long-term, dedicated community members who frequently contribute. It's important for us to highlight <em>all</em> of these contributions in our release notes, regardless of size or scope. Additionally, we find it useful to group changes into categories, so our users have a clear sense of what kinds of updates we've made.</p>
+<div style="text-align: center;">
+  <figure class="margin-bottom-large">
+    <img src="release-notes-screenshot.png" alt="GitHub screenshot of release notes for CC Search" />
+    <figcaption>
+      <em>
+        An example of CC Search release notes generated by the <a href="https://github.com/marketplace/actions/release-drafter">Release Drafter</a> GitHub Action.
+      </em>
+    </figcaption>
+  </figure>
+</div><p>The quality of these release notes made them quite tedious to generate manually. With the <a href="https://github.com/marketplace/actions/release-drafter">release drafter action</a>, we're able to automatically update a draft release note on every pull request to CC Search. The action lets us configure the line added for each pull request with some basic templating which includes variables for the pr number, title, and author (among others):</p>
+<div class="hll"><pre><span></span><span class="nt">change-template</span><span class="p">:</span> <span class="s">&#39;-</span><span class="nv"> </span><span class="s">$TITLE:</span><span class="nv"> </span><span class="s">#$NUMBER</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">@$AUTHOR&#39;</span>
+</pre></div>
+<p><br />This means each pull request gets a line like this in our release notes:</p>
+<blockquote><p>Enable web monetization on single result pages: <strong>#1191</strong> by <strong>@zackkrida</strong></p>
+</blockquote>
+<p>Perfect! We can also map GitHub labels on our pull requests to the sections of our generated release notes, like so:</p>
+<div class="hll"><pre><span></span><span class="nt">categories</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;New</span><span class="nv"> </span><span class="s">Features&#39;</span>
+    <span class="nt">label</span><span class="p">:</span> <span class="s">&#39;feature&#39;</span>
+  <span class="p p-Indicator">-</span> <span class="nt">title</span><span class="p">:</span> <span class="s">&#39;Bug</span><span class="nv"> </span><span class="s">Fixes&#39;</span>
+    <span class="nt">label</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;bug&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;critical&#39;</span>
+</pre></div>
+<p>The resulting release notes require no manual editing at release time, and has saved us hours over time and allows our developers to focus on DevOps work instead of copywriting on release days. We also never miss a contribution or expression of gratitude to one of our contributors. You can read the <a href="https://github.com/creativecommons/cccatalog-frontend/releases/latest">latest CC Search release notes</a> or <a href="https://github.com/creativecommons/cccatalog-frontend/blob/develop/.github/release-drafter.yml">see our full release-drafter.yml file here</a>.</p>
+<h3 id="repository-normalization">Repository Normalization</h3><p>Within a private repository of internal helper scripts, the CC technical team has a number of Github Actions which trigger Python scripts to keep configuration standardized across our repositories. We casually call this process "repository normalization". One such script ensures that we use a standard set of GitHub labels across all of our projects. This consistency helps us do things like direct users to <a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22help+wanted%22+state%3Aopen&amp;type=Issues">open issues in need of assistance</a> across the organization, or issues <a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22good+first+issue%22+state%3Aopen&amp;type=Issues">good for first-time open source contributors</a>. With GitHub Actions, its easy to set up scheduled tasks with only a few lines of human-readable configuration. Here's the gist of running a Python script daily, for example:</p>
+<div class="hll"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example scheduled python action</span>
+<span class="nt">on</span><span class="p">:</span>
+  <span class="nt">schedule</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">cron</span><span class="p">:</span> <span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+  <span class="nt">push</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="nt">build</span><span class="p">:</span>
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+    <span class="nt">steps</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python 3.7</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v1</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.7</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">python -m pip install --upgrade pip</span>
+        <span class="no">python -m pip install pipenv</span>
+        <span class="no">pipenv install</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Export token to env and run our script</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">pipenv run python our-script.py</span>
+      <span class="nt">env</span><span class="p">:</span>
+        <span class="nt">ADMIN_GITHUB_TOKEN</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span>
+</pre></div>
+<p>Internally and publicly, we use <a href="https://github.com/orgs/creativecommons/projects">GitHub Projects</a> to manage our bi-weekly sprints and backlogs. The <a href="https://github.com/subhamX/github-project-bot">GitHub Project Bot</a> action was built by <a href="https://github.com/subhamX">one of our community contributors</a> and allows us to add pull requests to our project columns. Here's an example step in such a job:</p>
+<div class="hll"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Handle cccatalog-frontend Repo</span>
+  <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">subhamX/github-project-bot@v1.0.0</span>
+  <span class="nt">with</span><span class="p">:</span>
+    <span class="nt">ACCESS_TOKEN</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span>
+    <span class="nt">COLUMN_NAME</span><span class="p">:</span> <span class="s">&quot;In</span><span class="nv"> </span><span class="s">Progress</span><span class="nv"> </span><span class="s">(Community)&quot;</span>
+    <span class="nt">PROJECT_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/orgs/creativecommons/projects/7</span>
+    <span class="nt">REPO_URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/creativecommons/cccatalog-frontend</span>
+</pre></div>
+<p>We have additional scripts that sync our community team members across our open source website and GitHub, and several others that do even more of this cross-platform synchronization work. All of these scripts relive significant burden off of our engineering manager and open source community coordinator.</p>
+<h3 id="dependency-updates">Dependency Updates</h3><p>Modern JavaScript projects are built atop piles of 3rd party dependencies. This frees developers to focus on product code instead of writing the same utility code over and over again, but exposes projects to issues of security and dependency management. To help alleviate these issues, GitHub <a href="https://github.blog/2019-05-23-introducing-new-ways-to-keep-your-code-secure/#automated-security-fixes-with-dependabot">acquired a startup called Dependabot</a> which initially focused on automatic security updates for repositories. Dependabot creates pull requests that update third-party code  with known security vulnerabilities to the latest safe and stable versions.</p>
+<p>This summer (June 2020), GitHub <a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/">expanded dependabot's scope</a> to keep <em>all</em> third-party code up to date, regardless of security. By adding a <code>dependabot-config.yml</code> file to any repo, developers no longer need to keep track of dependency updates on their own.</p>
+<div style="text-align: center;">
+  <figure class="margin-bottom-large">
+    <img src="dependabot-example.png" alt="GitHub screenshot of a Dependabot PR message" />
+    <figcaption>
+      <em>
+        Dependabot writes pull requests to bump JavaScript dependencies and will automatically resolve merge conflicts and keep the PR up to date.
+      </em>
+    </figcaption>
+  </figure>
+</div><p>If your project has strong test coverage and a solid quality control process for release management, Dependabot pull requests can be made even more powerful with the <a href="https://github.com/ridedott/merge-me-action">Merge Me Action.</a> Merge Me can be added to the end of any series of Github Actions to automatically merge pull requests that pass all CI tests which were authored by a particular user (the action assumes <code>dependabot</code> by default). This means your repository can have highly-configurable, fully-automated dependency updates in just a few lines of <code>YAML</code>.</p>
+<h2 id="here-s-a-few-more">Here's a few more</h2><p>Here's some smaller and simpler automations that can make a huge difference in your workflows.</p>
+<ul>
+<li><a href="https://github.com/probot/stale">Automatically close old PRs after a period of inactivity</a></li>
+<li><a href="https://github.blog/2020-08-24-automate-releases-and-more-with-the-new-sentry-release-github-action/">Automate security releases on Sentry</a></li>
+<li><a href="https://github.com/probot/reminders">Add reminders to issues and pull requests</a></li>
+</ul>
+<p>These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the <code>.github/</code> directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.</p>
+<p>If you're interested in learning more about GitHub Actions, GitHub has a wonderful <a href="https://github.com/marketplace?type=actions">marketplace</a> of avaliable actionsn you can explore, and the <a href="https://docs.github.com/actions">documentation for actions</a> is avaliable in several languages.</p>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/community/ ">community</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-search/ ">cc-search</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+          
+        </div>
+      </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/automate-github-for-more-than-CI CD"; this.page.url = "http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+    </footer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/" class="menu-item">Contribution Guidelines</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="http://creativecommons.org/donate">
+                  <i class="icon cc-letterheart margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
