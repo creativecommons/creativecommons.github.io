@@ -2,13 +2,126 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-08-26T00:00:00Z</updated>
+  <updated>2020-08-27T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-extension-wrapping-up-gsoc-2020/">
+    <title type="text">CC Search Extension: Wrapping up GSoC 2020</title>
+    <id>urn:uuid:a836222c-bec0-3f28-a8cd-9699e8ba778f</id>
+    <updated>2020-08-27T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-extension-wrapping-up-gsoc-2020/" />
+    <author>
+      <name>makkoncept</name>
+    </author>
+    <content type="html">&lt;p&gt;In this post, I'll give an overview of the improvements and features that were added to the CC Search browser extension. I am delighted to state that the goals that were set for Google Summer of Code 2020 have been successfully completed.&lt;/p&gt;
+&lt;h2 id=&quot;widen-the-integration-with-cc-catalog-api&quot;&gt;Widen the integration with CC Catalog API&lt;/h2&gt;&lt;p&gt;Both &lt;a href=&quot;/blog/entries/cc-search-extension-wrapping-up-gsoc-2020/search.creativecommons.org&quot;&gt;CC Search&lt;/a&gt; and CC Search Extension are powered by &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog REST API&lt;/a&gt;. The API allows programmatic access to search for CC-licensed and public domain digital media. Better integration with the API was one of the major targets during this internship because it significantly improves and adds new searching workflows to the extension.&lt;/p&gt;
+&lt;p&gt;This can be sub-divided into &lt;em&gt;New Filters&lt;/em&gt;, &lt;em&gt;Browse By Sources&lt;/em&gt;, &lt;em&gt;search by tags&lt;/em&gt;, and &lt;em&gt;related images&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;new-filters&quot;&gt;New Filters&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;/image&lt;/code&gt; endpoint of the API is used for searching. We can also provide several query parameters that can filter the result. Previously, the extension only supported filtering the content using &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;sources&lt;/code&gt;, and &lt;code&gt;use case&lt;/code&gt;. Now, besides these filters, the extension also supports filtering by &lt;code&gt;image type&lt;/code&gt;, &lt;code&gt;file type&lt;/code&gt;, &lt;code&gt;aspect ratio&lt;/code&gt;, and &lt;code&gt;image size&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;old-extension-filters.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Filters in the old version&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;figure&gt;
+    &lt;img src=&quot;new-extension-filters.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Filters in the new version&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;&lt;em&gt;Rationale&lt;/em&gt;: This will allow users to be more precise in their queries when searching.&lt;/p&gt;
+&lt;h3 id=&quot;browsing-by-source&quot;&gt;Browsing by source&lt;/h3&gt;&lt;p&gt;The extension now has a dynamically updated &quot;sources&quot; section. Clicking a source link triggers a request to the &lt;code&gt;/image&lt;/code&gt; endpoint to get the images associated with it.&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;source-section-light.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Source section&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;figure&gt;
+    &lt;img src=&quot;source-section-dark.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Source section in dark mode&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;&lt;em&gt;Rationale&lt;/em&gt;: This opens an avenue for exploration of all the different sources which are available in the catalog. This is advantageous for the users who are not familiar with the type of content a particular source provides. They might run into a source that has a huge catalog of high-quality images that they are looking for.&lt;/p&gt;
+&lt;h3 id=&quot;search-by-tags&quot;&gt;Search by tags&lt;/h3&gt;&lt;p&gt;Most of the images have some tags associated with them, which are also sent along with the image data by the API. This, and the flexibility of the &lt;code&gt;/image&lt;/code&gt; endpoint, paved the way for the addition of searching for images using image-tags.&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;search-by-image-tag.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Search by image tag&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Rational&lt;/em&gt; - Image tags will allow users to incrementally make their queries better and more specific.&lt;/p&gt;
+&lt;h3 id=&quot;related-images&quot;&gt;Related images&lt;/h3&gt;&lt;p&gt;In the image detail section of any particular image, you can now see several recommendations. This has been made possible by adding support for the &lt;a href=&quot;https://api.creativecommons.engineering/v1/#tag/recommendations&quot;&gt;&lt;code&gt;/recommendations/images/{identifier}&lt;/code&gt;&lt;/a&gt; endpoint of the API.&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;related-images.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Image recommendations&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Rationale&lt;/em&gt; -  This will help users find a variety of images that fit their requirements and also explore the images that would not usually show up on the initial pages of the search result.&lt;/p&gt;
+&lt;h2 id=&quot;improvements-to-bookmarks-section&quot;&gt;Improvements to bookmarks section&lt;/h2&gt;&lt;p&gt;The bookmark section has great prominence in CC Search Extension because the export/import workflow is tied to it and unlike the search result data, the bookmarks data is preserved across user sessions (closing the extension does not wipe out the bookmarks). It has undergone some crucial improvements like caching, voluntary loading and increase in the number bookmarks that it can hold (the limit now is 300 which earlier was ~50).&lt;/p&gt;
+&lt;p&gt;The bookmarks section is significantly faster now as caching has eliminated the need to make many simultaneous network requests to the API when bookmarks are loaded. Voluntary loading also helps reduce perceived lag by reducing the number of bookmarks that load at once.&lt;/p&gt;
+&lt;p&gt;Though the improvement in performance is better recognized when you are using the extension, I tried to demonstrate that by comparing the rendering of the bookmarked images.&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;bookmarks-in-old-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Bookmark section in the old version&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;bookmarks-in-new-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Bookmarks section in the new version&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;a-better-use-of-sync-storage&quot;&gt;A better use of sync storage&lt;/h2&gt;&lt;p&gt;The bookmarks and the user settings are synced between user systems. There are very tight write limits and bytes quotas associated with this storage(&lt;a href=&quot;https://developer.chrome.com/apps/storage#properties&quot;&gt;documentation link&lt;/a&gt;). Due to this, the way the extension used this storage, and the assumptions it made about its schema was improved multiple times. Since the extension was already in production, and had around 5,000 weekly users, the code for migrating the user's sync storage was pushed along with these updates. Also, the support was added for legacy bookmark files that some users might still be using.&lt;/p&gt;
+&lt;h2 id=&quot;integration-with-vocabulary&quot;&gt;Integration with Vocabulary&lt;/h2&gt;&lt;p&gt;The extension now supports the latest version of &lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;CC vocabulary&lt;/a&gt;. The challenging part of this was to rethink, mold, and update each and every workflow of the extension according to the new design.&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;image-detail-old-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Old version — Image detail&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;image-detail-new-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;New version — Image detail&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;deletion-in-old-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Old version — Deleting bookmarks&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;deletion-in-new-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;New version — Deleting bookmarks&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;dark-mode-old-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;Old version — Dark mode&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure &gt;
+    &lt;img src=&quot;dark-mode-new-version.gif&quot; style=&quot;width: 70%&quot;&gt;
+    &lt;figcaption&gt;
+        &lt;em&gt;New version — Dark mode&lt;/em&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;release-on-microsoft-edge&quot;&gt;Release on Microsoft Edge&lt;/h2&gt;&lt;p&gt;I am also testing the extension on Microsoft Edge. We also have it &lt;a href=&quot;https://microsoftedge.microsoft.com/addons/detail/cc-search/djolilnbndifmlfmcdnifdfjfbglipgc&quot;&gt;listed&lt;/a&gt; on the Edge store. You can soon expect the latest version of CC Search Extension available for install there.&lt;/p&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;&lt;p&gt;The project repository is hosted on &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt;. During this period, I have made &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/compare/v1.3.0...master&quot;&gt;more than 320&lt;/a&gt; commits.&lt;/p&gt;
+&lt;p&gt;The Major pull requests: &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/249&quot;&gt;#249&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/255&quot;&gt;#255&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/268&quot;&gt;#268&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/270&quot;&gt;#270&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/271&quot;&gt;#271&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/272&quot;&gt;#272&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/275&quot;&gt;#275&lt;/a&gt;, &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/pull/276&quot;&gt;#276&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Also, during this period, 5 updates of the extension were pushed to the extension stores. You can check out the &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension/releases&quot;&gt;releases page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href=&quot;https://github.com/panchovm&quot;&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
     <title type="text">Overview of the GSoC 2020 Project</title>
     <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
@@ -3056,40 +3169,6 @@ One of our organizational goals regarding the global network is to “create val
 &lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/chapters-map.png&quot; alt=&quot;Map from chapters around the world&quot;&gt;
 &lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/chapters-list.png&quot; alt=&quot;Chapters list with details&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;keeping-forward-the-global-network-website&quot;&gt;Keeping forward the global network website&lt;/h2&gt;&lt;p&gt;This is certainly not the end of our revamp of the CC Global Network website, we're always working on giving the members a better experience by fixing bugs and updating the interface. If you have any feedback, feature request, or bug report please feel free to &lt;a href=&quot;https://github.com/creativecommons/commoners/issues&quot;&gt;open an issue&lt;/a&gt; in the &lt;a href=&quot;https://github.com/creativecommons/commoners&quot;&gt;Commoners repository&lt;/a&gt; on Github or reach out to us on Slack.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/">
-    <title type="text">Creative Commons Google Docs Add-on</title>
-    <id>urn:uuid:ba029f48-4750-335c-b171-9d4a4f73f956</id>
-    <updated>2019-09-11T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2019-09-11-google-docs-plugin/" />
-    <author>
-      <name>brandonopened</name>
-    </author>
-    <content type="html">&lt;p&gt;A few years ago I published a &lt;a href=&quot;https://gsuite.google.com/marketplace/app/creative_commons_license_chooser/803008856330&quot;&gt;Google Docs Add-on that allowed users to insert a Creative Commons license image and link into their Google doc&lt;/a&gt;. Since then it’s been used thousands of times and I’ve gotten some great feedback from teachers about how nice it is to teach their students about digital literacy.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image1.png&quot; alt=&quot;Plugin screenshot 1&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;why&quot;&gt;Why&lt;/h3&gt;&lt;p&gt;I created the add-on after inspiration from students in one of the classes I teach at &lt;a href=&quot;http://www.fresno.edu/&quot;&gt;Fresno Pacific University’s Graduate School of Education&lt;/a&gt;. I was teaching a course on digital literacy, and open licenses and fair use was a large portion of the course.&lt;/p&gt;
-&lt;p&gt;To get started, I used the &lt;a href=&quot;https://developers.google.com/apps-script/overview&quot;&gt;templates Google provided about building an addon&lt;/a&gt;, took a look at the html etc on the Creative Commons License Chooser page itself, and eventually got something working! It took a couple of days off and on and mostly was me remembering javascriptI admit I had to pay a guy on Upwork to help clean up the code before I published it because sometimes the chooser would keep selecting hundreds of license images… of course, this was also before I was a bona fide contributor to the open source project I Product Manage, &lt;a href=&quot;http://www.github.com/opensalt/opensalt&quot;&gt;OpenSALT&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;My hope is that folks are able to normalize the idea of putting a Creative Commons license on their public documents, as well as when &lt;a href=&quot;https://support.google.com/youtube/answer/2797468?hl=en&quot;&gt;uploading creative content to Youtube&lt;/a&gt; etc. Teachers in particular would be served by publishing a license so that if their work shows up unauthorized on &lt;a href=&quot;https://www.edweek.org/ew/articles/2018/12/19/on-teachers-pay-teachers-some-sellers-are.html&quot;&gt;Teachers Pay Teachers without attribution or for commercial purposes&lt;/a&gt;, they have a legal avenue to pursue it to be taken down. Even &lt;a href=&quot;https://creativecommons.org/2015/05/06/medium-embraces-cc-licenses/&quot;&gt;Medium has an option to publish documents with a CC license&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;My nine year teaching career in Fresno Unified School District plus my career in Edtech (OpenEd.com, ACT) have opened my eyes to the need for a more open Web. Creative Commons licenses allow ‘free’ to not just be free, but able to conform to the five &lt;a href=&quot;https://opencontent.org/definition/&quot;&gt;R’s of open content&lt;/a&gt;(retained, reused, revised, remixed, and redistributed) and enable greater opportunities for innovation and equity.&lt;/p&gt;
-&lt;h3 id=&quot;what&quot;&gt;What&lt;/h3&gt;&lt;p&gt;This month I’ve finally updated it from the old Google Docs add-on store to the Gsuite Marketplace and updated some links. I’ve also updated the &lt;a href=&quot;https://github.com/brandonopened/creativecommons_gdocs&quot;&gt;Github sit&lt;/a&gt;e as the main website for the app and hope to implement some changes based on the work in&lt;a href=&quot;https://github.com/creativecommons/cc-license-chooser&quot;&gt; this Github repo&lt;/a&gt; with an updated license chooser process etc. The add-on has been installed thousands of times and usually has couple of hundred uses a month based on statistics.&lt;/p&gt;
-&lt;p&gt;I hope in the future to use an API call to support different languages, and perhaps embed RDF into the Google doc if that is possible to make the license machine-searchable. This is a fun project that is useful and helping teach me more about coding and best practices for open source software.&lt;/p&gt;
-&lt;h3 id=&quot;how&quot;&gt;How&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;In Google Docs, select “Get Add-ons” &lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image2.png&quot; alt=&quot;How-to screenshot 1&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Input Creative Commons and press enter&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image3.png&quot; alt=&quot;How-to screenshot 2&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Install and use!&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-11-google-docs-plugin/image4.png&quot; alt=&quot;How-to screenshot 3&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;video-tutorial&quot;&gt;Video tutorial&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://youtu.be/sQZFlNXEVZ4&quot;&gt;A video tutorial is available here&lt;/a&gt; or by clicking on the image below.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.youtube.com/watch?feature=player_embedded&amp;v=sQZFlNXEVZ4
-&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://img.youtube.com/vi/sQZFlNXEVZ4/0.jpg&quot; 
-alt=&quot;Video tutorial&quot; border=&quot;10&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
