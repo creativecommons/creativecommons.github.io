@@ -182,7 +182,7 @@ Brent for his guidance.&lt;/p&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/probot/reminders&quot;&gt;Add reminders to issues and pull requests&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
-&lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actionsn you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
+&lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/">
