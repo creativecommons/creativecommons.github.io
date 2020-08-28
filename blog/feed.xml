@@ -2,13 +2,119 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-08-27T00:00:00Z</updated>
+  <updated>2020-08-28T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/">
+    <title type="text">Linked Commons: GSoC'20 Wrap Up</title>
+    <id>urn:uuid:511904ae-a464-335a-bcdf-76f80c5309d1</id>
+    <updated>2020-08-28T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/" />
+    <author>
+      <name>subhamX</name>
+    </author>
+    <content type="html">&lt;p&gt;Time flies faster when you are having fun! I didn't believe it back then. But now I do after experiencing it. It couldn't have been more accurate that here I am writing my concluding blog of the &lt;strong&gt;GSoC 2020: The Linked Commons series&lt;/strong&gt; when I just started enjoying things.&lt;/p&gt;
+&lt;p&gt;In this post, I will give a brief overview of the linked commons and my GSoC contributions. It was an exciting journey, and I loved working on this project.&lt;/p&gt;
+&lt;p&gt;Before I begin any further just for ritual, let me share a one liner on &lt;strong&gt;what The Linked Commons is&lt;/strong&gt;, although I highly recommend reading the other posts in this series, who knows you might join our team.😉&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The CC catalog data visualization or linked commons is a web application which finds and explores relationships between Creative Commons licensed content on the web.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;My primary contributions to the project during the GSoC timeline were threefold.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Firstly&lt;/strong&gt;, revamp the design and migrate the project to react.js for a fast and scalable rendering performance.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Secondly&lt;/strong&gt;, add graph filtering methods and scale the data to enable users to visualize massive data more efficiently.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;At last&lt;/strong&gt;, make the developer onboarding easy by dockerizing the project and bring more application portability.&lt;/p&gt;
+&lt;h2 id=&quot;gsoc-work-product&quot;&gt;GSoC Work Product&lt;/h2&gt;&lt;p&gt;The live version of the linked commons can be found &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;. You can interact with it and &lt;strong&gt;&quot;explore the creative commons in graphs&quot;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;If you wish to access the raw or filtered data, then here is a brief documentation of our new API.&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/graph-data&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns a randomized graph having around 500 nodes and links.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/graph-data/?name={node_name}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/suggestions/?q={query}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt; 
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns a set of nodes which contains the {query} pattern in their nodeid&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;demo&quot;&gt;Demo&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;graph-filtering.gif&quot; alt=&quot;demo&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Linked Commons: Filtering the Graph 🔥&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h3 id=&quot;my-code-contributions&quot;&gt;My Code Contributions&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Repository:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;https://github.com/creativecommons/cccatalog-dataviz/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Commits:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/commits/master&quot;&gt;https://github.com/creativecommons/cccatalog-dataviz/commits/master&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt; &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/graphs/contributors&quot;&gt;https://github.com/creativecommons/cccatalog-dataviz/graphs/contributors&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/28&quot;&gt;&lt;strong&gt;Migrate frontend to React #28&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Migrated the frontend to a web application using React.js for smooth rendering performance.&lt;/li&gt;
+&lt;li&gt;Add client-side graph filtering method to enable users to interact with the loaded graph.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/29&quot;&gt;&lt;strong&gt;Add server-side filtering #29&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We realized that the client-side graph filtering method is not very scalable. This PR adds the basic structure for the backend server and adds server-side graph filtering logic.&lt;/li&gt;
+&lt;li&gt;Added a parser to convert the input JSON file from &lt;code&gt;{nodes:[], links:[]}&lt;/code&gt; schema to the distance list format. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;api-call.png&quot; alt=&quot;API call&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;API call to filter graph data&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/33&quot;&gt;&lt;strong&gt;Design upgrade #33&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It revamped the design of the frontend.&lt;/li&gt;
+&lt;li&gt;Added both primary light theme and secondary dark theme&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center; font-style: normal; width: 80%; margin-left: 10%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;design-dark.png&quot; alt=&quot;Dark Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;&lt;em&gt;Linked Commons: Dark Theme&lt;/em&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/35&quot;&gt;&lt;strong&gt;Add node suggestions feature #35&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added query autocomplete feature, to enable users to explore all the nodes in the database.&lt;/li&gt;
+&lt;li&gt;This functionality aims to minimize the number of misspelt filtering tries from the client. &lt;/li&gt;
+&lt;li&gt;Refer to &lt;a href=&quot;/blog/entries/linked-commons-autocomplete-feature/&quot;&gt;this blog&lt;/a&gt; for the motivation and detailed report on why we added autocomplete aka node suggestions feature.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/38&quot;&gt;&lt;strong&gt;Fix filtering module #38&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Optimizes the build-dB-script to run efficiently on the larger and newer dataset of the cc-catalog.&lt;/li&gt;
+&lt;li&gt;Added the basic form of the randomized graph filtering method.&lt;/li&gt;
+&lt;li&gt;Refer to &lt;a href=&quot;/blog/entries/linked-commons-data-update/&quot;&gt;this blog&lt;/a&gt; for a piece of detailed information on data update.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/39&quot;&gt;&lt;strong&gt;Database upgrade and core enhancements #39&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It upgrades the primary database from shelve to MongoDB for higher performance.&lt;/li&gt;
+&lt;li&gt;Dockerizes the frontend and backend for both dev and prod environments for higher application portability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/pull/40&quot;&gt;&lt;strong&gt;Frontend enhancements #40&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fixes common UI bugs, updates the frontend design and enhances the mobile and smaller devices experience with the linked commons&lt;/li&gt;
+&lt;li&gt;Modularizes and updates the code documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&quot;text-align: center; width: 80%; margin-left: 10%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;design-light.png&quot; alt=&quot;Theme Light&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Linked Commons: Light Theme&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;lighthouse-audit.png&quot; alt=&quot;Lighthouse Audit&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Lighthouse Stats of the latest version of the Linked Commons&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h3 id=&quot;whats-next?&quot;&gt;What’s Next?&lt;/h3&gt;&lt;p&gt;Throughout this internship period, we, the Linked Commons team, aimed to make this version the best among all. But there is still scope for improvement.&lt;/p&gt;
+&lt;p&gt;Just to give you some insights; currently, the complete graph contains 235k nodes and 4.14million links. During the preprocessing, we dropped a lot of the nodes. Additionally, we removed more than 3 million nodes which didn't have cc_licenses information. So, in general, the current version shows only those nodes which are soundly linked with other domains and their licenses information is available. To give a complete picture of the massive &quot;cc-catalog&quot;, the linked commons need to &quot;gird up his loins&quot;.&lt;/p&gt;
+&lt;p&gt;After seeing the tremendous potential it has, I will undoubtedly continue working on it and help the linked commons in this quest. ⚡&lt;/p&gt;
+&lt;h3 id=&quot;ending-note&quot;&gt;Ending Note&lt;/h3&gt;&lt;p&gt;In the end, I would like to thank my mentors Maria and Brent, for their unconditional guidance throughout this internship period. The insights I got from them will truly help me in the days to come.&lt;/p&gt;
+&lt;p&gt;Special thanks to Francisco, Anna and Kriti for the awesome brainstorming ideas in the UX meet which helped us build an increment superior version of the Linked Commons.&lt;/p&gt;
+&lt;p&gt;It is not the end, rather a new beginning. Cheers! 🚀🚀🚀&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-extension-wrapping-up-gsoc-2020/">
     <title type="text">CC Search Extension: Wrapping up GSoC 2020</title>
     <id>urn:uuid:a836222c-bec0-3f28-a8cd-9699e8ba778f</id>
@@ -1003,7 +1109,7 @@ the Smithsonian image retrieval script such that the Smithsonian sub-provider re
     <author>
       <name>subhamX</name>
     </author>
-    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;The following blog intends to explain the very recent feature integrated to the Linked Commons. Be it the giant Google Search or any small website having a form field, everyone wishes to predict what’s on the user’s mind. For every keystroke, a nice search bar always renders some possible options the user could be looking for. The core ideology behind having this feature is — &lt;em&gt;do as much work as possible for the user!&lt;/em&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;The following blog intends to explain the very recent feature integrated to the Linked Commons. Be it the giant Google Search or any small website having a form field, everyone wishes to predict what’s on the user’s mind. For every keystroke, a nice search bar always renders some possible options the user could be looking for. The core ideology behind having this feature is — &lt;em&gt;do as much work as possible for the user!&lt;/em&gt;&lt;/p&gt;
 &lt;div style=&quot;text-align: center; width: 100%;&quot;&gt;
     &lt;figure&gt;
         &lt;img src=&quot;autocomplete-feat-in-action.gif&quot; alt=&quot;autocomplete-feature&quot; style=&quot;border: 1px solid black&quot;&gt;
@@ -1281,7 +1387,7 @@ files are moved to the failure directory for future inspection.&lt;/p&gt;
     <author>
       <name>subhamX</name>
     </author>
-    <content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Linked Commons&lt;/strong&gt; is a visualization project which aims to showcase and establish a relationship between millions of data points of licensed content metadata using graphs. Since it is the first blog of this new series, let’s discuss the core ideology of having this project and then about new features. Development of all components mentioned in this blog is complete and has been successfully integrated, so do check out the development version. Happy Reading!&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;strong&gt;Linked Commons&lt;/strong&gt; is a visualization project which aims to showcase and establish a relationship between millions of data points of licensed content metadata using graphs. Since it is the first blog of this new series, let’s discuss the core ideology of having this project and then about new features. Development of all components mentioned in this blog is complete and has been successfully integrated, so do check out the development version. Happy Reading!&lt;/p&gt;
 &lt;h2 id=&quot;motivation-and-why-does-visualization-matter?&quot;&gt;Motivation and why does visualization matter?&lt;/h2&gt;&lt;p&gt;The number of websites using creative commons licensed content is very huge and growing very rapidly. The CC catalog hosts these millions of data points and each node contains information about the URL of the websites and the licenses used. One can surely do rigorous data analysis, but this would only be interpretable by a few people with a technical background.  On the other hand,  by visualizing data, it becomes incredibly easier to identify patterns and trends. As an old saying, a picture is worth a thousand words. That’s the core ideology of the Linked Commons, i.e. to show the millions of licensed content metadata and how these nodes are connected in a visually appealing form on the HTML canvas like a picture.&lt;/p&gt;
 &lt;h2 id=&quot;task-1:-code-refactoring&quot;&gt;Task 1: Code Refactoring&lt;/h2&gt;&lt;p&gt;My first task was to refactor the code and migrate it to react. The existing codebase had all core functionalities, but we wanted to make it more modular, improve the design, code readability, and reduce complexity. This will help us maintain this project in the long run. Also, it will be easier for the community to contribute and understand the logic.&lt;/p&gt;
 &lt;h2 id=&quot;task-2:-graph-filtering&quot;&gt;Task 2: Graph Filtering&lt;/h2&gt;&lt;h3 id=&quot;need-for-filtering-methods&quot;&gt;Need for Filtering Methods&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
@@ -3141,34 +3247,6 @@ One example is the &lt;a href=&quot;https://ccsearch.creativecommons.org/photos/
 &lt;p&gt;We did this by using the &lt;code&gt;serverPrefetch&lt;/code&gt; method to load the data on the server, but on the client, in the &lt;code&gt;mounted&lt;/code&gt; method, we check if the data isn't already available before making the request. You can see how that works &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/411/files#diff-e33cf6c2e6f63a3ac958ac500eeabcaaR87&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;future-improvements&quot;&gt;Future improvements&lt;/h2&gt;&lt;p&gt;As said before, we have a dependency on a component that uses browser APIs which doesn't work on the server side. That dependency is &lt;a href=&quot;https://github.com/shershen08/vue-masonry&quot;&gt;Masonry Layout&lt;/a&gt;. And because of that, we had to split components and router into server and client versions.&lt;/p&gt;
 &lt;p&gt;To remove that complexity, we will probably try to use a pure-CSS approach to generate the responsive grid, as described in &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/489&quot;&gt;this issue on Github&lt;/a&gt;. If that doesn't work, we'll use something like &lt;a href=&quot;https://github.com/egoist/vue-client-only&quot;&gt;vue-client-only&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2019-09-25-ccgn-redesign/">
-    <title type="text">Revamping the Creative Commons Global Network website</title>
-    <id>urn:uuid:f7cf9cf1-939f-397e-981f-87ad4e9c50d5</id>
-    <updated>2019-09-25T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2019-09-25-ccgn-redesign/" />
-    <author>
-      <name>hugosolar</name>
-    </author>
-    <content type="html">&lt;p&gt;The &lt;a href=&quot;https://network.creativecommons.org&quot;&gt;CC Global Network&lt;/a&gt; website is the face of our global community; it is the home for a community of advocates, activists, scholars, artists, and users working to strengthen the Commons worldwide.
-One of our organizational goals regarding the global network is to “create value for members, toward impact at global scale” and that’s why we plan on redesigning the Global Network website.&lt;/p&gt;
-&lt;h2 id=&quot;increase-value-for-members&quot;&gt;Increase value for members&lt;/h2&gt;&lt;p&gt;When we think of a website focused on members and their possible needs, we have to think about how different users interact with the website. We established three differents users/personas:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Not logged in users:&lt;/em&gt; users looking for global network general information or how to begin the sign up process&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Logged in but not approved yet&lt;/em&gt;: users looking for information about their membership approval status&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Logged in and approved members&lt;/em&gt;: users utilizing the site’s search function and contacting other members&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Keeping this in mind, three differents homepages were designed according to each identified profile.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/blog-ccgn-home.png&quot; alt=&quot;CCGN differents homepages&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;improved-user-search&quot;&gt;Improved user search&lt;/h2&gt;&lt;p&gt;We listened to the community feedback and developed a major revamp of the member section. We improved the member list and the search section by adding useful filters to help identify specific people or groups of people based on a range of factors, such as nationality or language.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/user-search.png&quot; alt=&quot;User search filters&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;member-profiles&quot;&gt;Member profiles&lt;/h2&gt;&lt;p&gt;Member profiles were redesigned to take advantage of the current metadata of users so we can show the information in a better way. In addition, the profile shows more/less information if you are/aren’t approved as a member.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/member-profile.png&quot; alt=&quot;Member profile&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;chapters-section&quot;&gt;Chapters section&lt;/h2&gt;&lt;p&gt;Giving more visibility for the local chapters’ infrastructure, this entire section was redesigned considering the network’s global reach and the necessity of easily searching for details and specific chapters. The new interface supports switching between the map and the sortable list.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/chapters-map.png&quot; alt=&quot;Map from chapters around the world&quot;&gt;
-&lt;img src=&quot;/blog/entries/2019-09-25-ccgn-redesign/chapters-list.png&quot; alt=&quot;Chapters list with details&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;keeping-forward-the-global-network-website&quot;&gt;Keeping forward the global network website&lt;/h2&gt;&lt;p&gt;This is certainly not the end of our revamp of the CC Global Network website, we're always working on giving the members a better experience by fixing bugs and updating the interface. If you have any feedback, feature request, or bug report please feel free to &lt;a href=&quot;https://github.com/creativecommons/commoners/issues&quot;&gt;open an issue&lt;/a&gt; in the &lt;a href=&quot;https://github.com/creativecommons/commoners&quot;&gt;Commoners repository&lt;/a&gt; on Github or reach out to us on Slack.&lt;/p&gt;
 </content>
   </entry>
 </feed>

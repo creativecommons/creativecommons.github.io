@@ -1,0 +1,572 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Linked Commons: GSoC&#39;20 Wrap Up" />
+
+
+
+<meta property="og:description" content="Time flies faster when you are having fun! I didn&#39;t believe it back then. But now I do after experiencing it. It couldn&#39;t have been more accurate that here I am writing my concluding blog of the GSoC 2020: The Linked Commons series when I just started enjoying things." />
+
+
+<meta property="og:url" content="/blog/entries/linked-commons-gsoc-wrap-up/" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/lighthouse-audit.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Linked Commons: GSoC&#39;20 Wrap Up">
+<meta name="twitter:description" content="Time flies faster when you are having fun! I didn&#39;t believe it back then. But now I do after experiencing it. It couldn&#39;t have been more accurate that here I am writing my concluding blog of the GSoC 2020: The Linked Commons series when I just started enjoying things.">
+
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/lighthouse-audit.png">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Linked Commons: GSoC&#39;20 Wrap Up — Creative Commons on GitHub</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Internships<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/internships/">Overview</a>
+              
+                <a class="navbar-item" href="/internships/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/internships/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/internships/intern-guide/">Intern Guide</a>
+              
+                <a class="navbar-item" href="/internships/mentor-guide/">Mentor Guide</a>
+              
+                <a class="navbar-item" href="/internships/history/">History</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              CC Search<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/cc-search/">Overview &amp; Roadmap</a>
+              
+                <a class="navbar-item" href="/cc-search/contribution-guide/">Contribution Guide</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">Archives<i
+                class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-right">
+              
+              <a class="navbar-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+              
+              <a class="navbar-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+              
+            </div>
+          </div>
+        </div> 
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Linked Commons Gsoc Wrap Up</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Linked Commons: GSoC&#39;20 Wrap Up</h2>
+        
+        <div class="author columns is-marginless">
+          <figure class="image profile">
+            <img src="https://secure.gravatar.com/avatar/1ca2562f3046509e3273fe5afd3fdab2?size=200&d=mp" alt="gravatar" class="profile" />
+          </figure>
+          <p class="column">by <a href="/blog/authors/subhamX/">
+  Subham Sahu
+</a>
+          on 2020-08-28</p>
+        </div>
+        
+          
+          <div class="series-header">
+            <span>This blog is part of the series:</span>
+            <a href="#series">GSoC 2020: The Linked Commons</a>
+          </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>Time flies faster when you are having fun! I didn't believe it back then. But now I do after experiencing it. It couldn't have been more accurate that here I am writing my concluding blog of the <strong>GSoC 2020: The Linked Commons series</strong> when I just started enjoying things.</p>
+<p>In this post, I will give a brief overview of the linked commons and my GSoC contributions. It was an exciting journey, and I loved working on this project.</p>
+<p>Before I begin any further just for ritual, let me share a one liner on <strong>what The Linked Commons is</strong>, although I highly recommend reading the other posts in this series, who knows you might join our team.😉</p>
+<blockquote><p>The CC catalog data visualization or linked commons is a web application which finds and explores relationships between Creative Commons licensed content on the web.</p>
+</blockquote>
+<p>My primary contributions to the project during the GSoC timeline were threefold.</p>
+<p><strong>Firstly</strong>, revamp the design and migrate the project to react.js for a fast and scalable rendering performance.</p>
+<p><strong>Secondly</strong>, add graph filtering methods and scale the data to enable users to visualize massive data more efficiently.</p>
+<p><strong>At last</strong>, make the developer onboarding easy by dockerizing the project and bring more application portability.</p>
+<h2 id="gsoc-work-product">GSoC Work Product</h2><p>The live version of the linked commons can be found <a href="http://dataviz.creativecommons.engineering/">here</a>. You can interact with it and <strong>"explore the creative commons in graphs"</strong>.</p>
+<p>If you wish to access the raw or filtered data, then here is a brief documentation of our new API.</p>
+<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/api/graph-data</span>
+<span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span> 
+<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Returns a randomized graph having around 500 nodes and links.</span>
+</pre></div>
+<p>&nbsp;</p>
+<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/api/graph-data/?name={node_name}</span>
+<span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span> 
+<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.</span>
+</pre></div>
+<p>&nbsp;</p>
+<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/api/suggestions/?q={query}</span>
+<span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span> 
+<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Returns a set of nodes which contains the {query} pattern in their nodeid</span>
+</pre></div>
+<h3 id="demo">Demo</h3><div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="graph-filtering.gif" alt="demo" style="border: 1px solid black">
+        <figcaption>Linked Commons: Filtering the Graph 🔥</figcaption>
+    </figure>
+</div><h3 id="my-code-contributions">My Code Contributions</h3><p><strong>Repository:</strong> <a href="https://github.com/creativecommons/cccatalog-dataviz/">https://github.com/creativecommons/cccatalog-dataviz/</a></p>
+<p><strong>Commits:</strong> <a href="https://github.com/creativecommons/cccatalog-dataviz/commits/master">https://github.com/creativecommons/cccatalog-dataviz/commits/master</a></p>
+<p><strong>Contributors:</strong> <a href="https://github.com/creativecommons/cccatalog-dataviz/graphs/contributors">https://github.com/creativecommons/cccatalog-dataviz/graphs/contributors</a></p>
+<p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/28"><strong>Migrate frontend to React #28</strong></a></p>
+<ul>
+<li>Migrated the frontend to a web application using React.js for smooth rendering performance.</li>
+<li>Add client-side graph filtering method to enable users to interact with the loaded graph.</li>
+</ul>
+<p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/29"><strong>Add server-side filtering #29</strong></a></p>
+<ul>
+<li>We realized that the client-side graph filtering method is not very scalable. This PR adds the basic structure for the backend server and adds server-side graph filtering logic.</li>
+<li>Added a parser to convert the input JSON file from <code>{nodes:[], links:[]}</code> schema to the distance list format. </li>
+</ul>
+<div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="api-call.png" alt="API call" style="border: 1px solid black">
+        <figcaption>API call to filter graph data</figcaption>
+    </figure>
+</div><p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/33"><strong>Design upgrade #33</strong></a></p>
+<ul>
+<li>It revamped the design of the frontend.</li>
+<li>Added both primary light theme and secondary dark theme</li>
+</ul>
+<div style="text-align: center; font-style: normal; width: 80%; margin-left: 10%;">
+    <figure>
+        <img src="design-dark.png" alt="Dark Theme" style="border: 1px solid black">
+        <figcaption><em>Linked Commons: Dark Theme</em></figcaption>
+    </figure>
+</div><p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/35"><strong>Add node suggestions feature #35</strong></a></p>
+<ul>
+<li>Added query autocomplete feature, to enable users to explore all the nodes in the database.</li>
+<li>This functionality aims to minimize the number of misspelt filtering tries from the client. </li>
+<li>Refer to <a href="/blog/entries/linked-commons-autocomplete-feature/">this blog</a> for the motivation and detailed report on why we added autocomplete aka node suggestions feature.</li>
+</ul>
+<p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/38"><strong>Fix filtering module #38</strong></a></p>
+<ul>
+<li>Optimizes the build-dB-script to run efficiently on the larger and newer dataset of the cc-catalog.</li>
+<li>Added the basic form of the randomized graph filtering method.</li>
+<li>Refer to <a href="/blog/entries/linked-commons-data-update/">this blog</a> for a piece of detailed information on data update.</li>
+</ul>
+<p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/39"><strong>Database upgrade and core enhancements #39</strong></a></p>
+<ul>
+<li>It upgrades the primary database from shelve to MongoDB for higher performance.</li>
+<li>Dockerizes the frontend and backend for both dev and prod environments for higher application portability.</li>
+</ul>
+<p><a href="https://github.com/creativecommons/cccatalog-dataviz/pull/40"><strong>Frontend enhancements #40</strong></a></p>
+<ul>
+<li>Fixes common UI bugs, updates the frontend design and enhances the mobile and smaller devices experience with the linked commons</li>
+<li>Modularizes and updates the code documentation</li>
+</ul>
+<div style="text-align: center; width: 80%; margin-left: 10%;">
+    <figure>
+        <img src="design-light.png" alt="Theme Light" style="border: 1px solid black">
+        <figcaption>Linked Commons: Light Theme</figcaption>
+    </figure>
+</div><div style="text-align: center; width: 90%; margin-left: 5%;">
+    <figure>
+        <img src="lighthouse-audit.png" alt="Lighthouse Audit" style="border: 1px solid black">
+        <figcaption>Lighthouse Stats of the latest version of the Linked Commons</figcaption>
+    </figure>
+</div><h3 id="whats-next?">What’s Next?</h3><p>Throughout this internship period, we, the Linked Commons team, aimed to make this version the best among all. But there is still scope for improvement.</p>
+<p>Just to give you some insights; currently, the complete graph contains 235k nodes and 4.14million links. During the preprocessing, we dropped a lot of the nodes. Additionally, we removed more than 3 million nodes which didn't have cc_licenses information. So, in general, the current version shows only those nodes which are soundly linked with other domains and their licenses information is available. To give a complete picture of the massive "cc-catalog", the linked commons need to "gird up his loins".</p>
+<p>After seeing the tremendous potential it has, I will undoubtedly continue working on it and help the linked commons in this quest. ⚡</p>
+<h3 id="ending-note">Ending Note</h3><p>In the end, I would like to thank my mentors Maria and Brent, for their unconditional guidance throughout this internship period. The insights I got from them will truly help me in the days to come.</p>
+<p>Special thanks to Francisco, Anna and Kriti for the awesome brainstorming ideas in the UX meet which helped us build an increment superior version of the Linked Commons.</p>
+<p>It is not the end, rather a new beginning. Cheers! 🚀🚀🚀</p>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/announcements/ ">announcements</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-catalog/ ">cc-catalog</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/product/ ">product</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc/ ">gsoc</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2020/ ">gsoc-2020</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-dataviz/ ">cc-dataviz</a>
+            
+          
+        </div>
+      </div>
+      
+        <div class="series-posts" id="series">
+          <h5 class="title">Posts in the GSoC 2020: The Linked Commons series</h5>
+          <ul class="posts">
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-whats-new/">Linked Commons: What&#39;s new?</a>
+                </li>
+              
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-autocomplete-feature/">Linked Commons: Autocomplete Feature</a>
+                </li>
+              
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/linked-commons-data-update/">Linked Commons: Data Update</a>
+                </li>
+              
+            
+              
+                <li class="has-color-dark-slate-gray">
+                  <i class="icon circle-filled"></i>Linked Commons: GSoC&#39;20 Wrap Up
+                </li>
+              
+            
+          </ul>
+        </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/linked-commons-gsoc-wrap-up"; this.page.url = "http://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+    </footer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/" class="menu-item">Contribution Guidelines</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="http://creativecommons.org/donate">
+                  <i class="icon cc-letterheart margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
