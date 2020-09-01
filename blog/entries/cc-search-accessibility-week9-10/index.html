@@ -5,22 +5,22 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="Internationalization Continued: Handling strings in the store" />
+<meta property="og:title" content="Accessibility Improvements: Final Changes and Modal Accessilibity" />
 
 
 
-<meta property="og:description" content="These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store." />
+<meta property="og:description" content="These are the last two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make accessibility improvements to the search result page and the image detail page and also covers some advanced accessiblity improvement details." />
 
 
-<meta property="og:url" content="/blog/entries/cc-search-accessibility-week3-4/" />
+<meta property="og:url" content="/blog/entries/cc-search-accessibility-week9-10/" />
 <meta property="og:type" content="article" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Internationalization Continued: Handling strings in the store">
-<meta name="twitter:description" content="These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store.">
+<meta name="twitter:title" content="Accessibility Improvements: Final Changes and Modal Accessilibity">
+<meta name="twitter:description" content="These are the last two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make accessibility improvements to the search result page and the image detail page and also covers some advanced accessiblity improvement details.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -36,7 +36,7 @@ The internationalization work from the previous post is continued here and we al
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>Internationalization Continued: Handling strings in the store — Creative Commons on GitHub</title>
+<title>Accessibility Improvements: Final Changes and Modal Accessilibity — Creative Commons on GitHub</title>
 
 <body>
   <div class="ga-script">
@@ -244,7 +244,7 @@ The internationalization work from the previous post is continued here and we al
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed">Cc Search Accessibility Week3 4</a></li>
+              <li class="is-active"><a aria-current="page displayed">Cc Search Accessibility Week9 10</a></li>
             
           
         </ul>
@@ -258,7 +258,7 @@ The internationalization work from the previous post is continued here and we al
     <header class="single-post-header">
       <div class="container">
         <h4>CC Open Source Blog</h4>
-        <h2 class="title">Internationalization Continued: Handling strings in the store</h2>
+        <h2 class="title">Accessibility Improvements: Final Changes and Modal Accessilibity</h2>
         
         <div class="author columns is-marginless">
           <figure class="image profile">
@@ -267,7 +267,7 @@ The internationalization work from the previous post is continued here and we al
           <p class="column">by <a href="/blog/authors/AyanChoudhary/">
   Ayan Choudhary
 </a>
-          on 2020-06-26</p>
+          on 2020-08-12</p>
         </div>
         
           
@@ -279,70 +279,100 @@ The internationalization work from the previous post is continued here and we al
       </div>
     </header>
     <div class="single-post-body content container">
-      <p>These are the second two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-The internationalization work from the previous post is continued here and we also solve an interesting issue of translating strings from the Vuex store.</p>
-<p>During this period I removed all the hardcoded strings from the static pages which include:</p>
+      <p>These are the last two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+This post contains details of my work done to make accessibility improvements to the search result page and the image detail page and also covers some advanced accessiblity improvement details.</p>
+<p>The topics included in this post cover:</p>
 <ol>
-<li>About Page</li>
-<li>Collections Page</li>
-<li>Search Guide Page</li>
-<li>Feedback Page </li>
+<li>Tooltip accessibility and keyboard interactions</li>
+<li>Improve modal accessibility and implement trap focus</li>
+<li>Fix <code>&lt;label&gt;</code> for form elements</li>
 </ol>
-<p>All of the above pages were then internationalized following the same procedure as detailed in the previous post.
-While internationalizing the homepage we ran into an interesting problem:</p>
-<p>The licenses strings were being accessed from the store and those too had to be internationalized.</p>
-<pre><code>licenseTypes: [
-    { code: 'commercial', name: 'Use commercially', checked: false },
-    { code: 'modification', name: 'Modify or adapt', checked: false },
-]
-</code></pre>
-<p>The code was used to store the licenses in the store in the ordered format. The challenge was to extract the name strings from each license while keeping the changes and dependencies to a minimum.
-The code which we were using in the templates to load these strings was:</p>
-<pre><code>&lt;label
-        class="checkbox margin-right-big"
-        :for="licenseType.code"
-        :key="index"
-      &gt;
-        &lt;input
-          :id="licenseType.code"
-          type="checkbox"
-          :checked="licenseType.checked"
-          name="lt"
-          :value="licenseType.code"
-          @input="onFilterChanged(licenseType.code)"
-        /&gt;
-&lt;/ label&gt;
-</code></pre>
-<p>So after some discussion and a great insight by @brenoferreira we came up with the idea to change to name field from the store to point to our extracted internationalization strings.
-This proved to be very helpful as we managed to keep changes to a minimum without using any extra dependencies.
-The code after implementing the changes is:</p>
-<pre><code>licenseTypes: [
-    { code: 'commercial', name: 'filters.license-types.commercial', checked: false, },
-    { code: 'modification', name: 'filters.license-types.modification', checked: false,},
-]
-</code></pre>
-<pre><code>&lt;label
-        class="checkbox margin-right-big"
-        :for="licenseType.code"
-        :key="index"
-      &gt;
-        &lt;input
-          :id="licenseType.code"
-          type="checkbox"
-          :checked="licenseType.checked"
-          name="lt"
-          :value="licenseType.code"
-          @input="onFilterChanged(licenseType.code)"
-        /&gt;
-        {{ $t(licenseType.name) }}
-&lt;/label&gt;
-</code></pre>
-<p>The rest of the internationalization stuff was string extractions and template modifications to accomodate the the translated strings.
-And we are done with these two weeks, we be back with another post after two weeks.</p>
+<p>The first stage involved fixing the license explanation tooltips. These tooltips worked fine on click but did not respond to keypress events.
+The solution to overcome this was to use an event listener on the element which would would execute the <code>showLicenseExplanation</code> function onClick.
+Luckily <code>VueJS</code> provides this function inbuilt via the <code>v-on:keyup</code> attribute. So after change the code looks as follows:</p>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span>
+    <span class="na">:aria-label</span><span class="o">=</span><span class="s">&quot;$t(&#39;browse-page.aria.license-explanation&#39;)&quot;</span>
+    <span class="na">tabindex</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+    <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;filterType == &#39;licenses&#39;&quot;</span>
+    <span class="na">src</span><span class="o">=</span><span class="s">&quot;@/assets/help_icon.svg&quot;</span>
+    <span class="na">alt</span><span class="o">=</span><span class="s">&quot;help&quot;</span>
+    <span class="na">class</span><span class="o">=</span><span class="s">&quot;license-help is-pulled-right padding-top-smallest padding-right-smaller&quot;</span>
+    <span class="err">@</span><span class="na">click</span><span class="err">.</span><span class="na">stop</span><span class="o">=</span><span class="s">&quot;toggleLicenseExplanationVisibility(item.code)&quot;</span>
+    <span class="na">v-on:keyup</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&quot;toggleLicenseExplanationVisibility(item.code)&quot;</span>
+<span class="p">/&gt;</span>
+</pre></div>
+<p>Similar change was made to all the tooltips. The reason behind this error was that non-semantic element representation
+(i.e. using <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code> or <code>&lt;img&gt;</code> instead of a <code>&lt;button&gt;</code>) does not register a keypress listener for these tags and hence they don't respond on keypress.</p>
+<p>The second change is related to modals. Modals have some stringent accessilibity parameters that have to be carefully handled.
+The criteria are:</p>
+<ol>
+<li>On opening the modal the remaining elements should get disabled.</li>
+<li>The modal should have trap-focus(the user should not exit the modal when using tab to navigate).</li>
+<li>The modal should close on pressing <strong>esc</strong> or on clicking the overlay.</li>
+</ol>
+<p>To meet the criteria we developed a new <a href="https://github.com/creativecommons/cccatalog-frontend/blob/develop/src/components/AppModal.vue">modal component</a>.
+This modal has an overlay and closes when we press the <strong>esc</strong> key or click on the overlay. The modal also disables other elements when it is opened.</p>
+<p>The final task achieved in the modal was the implementation of trap focus. For this we used the <a href="https://github.com/posva/focus-trap-vue">vue-trap-focus library</a>
+The library exposes a <code>&lt;focus-trap&gt;</code> component which acts as wrapper to enable focus-trap. The implementation we used was:</p>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">focus-trap</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal relative&quot;</span> <span class="na">aria-modal</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;dialog&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span>
+        <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;title&quot;</span>
+        <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-header padding-top-bigger padding-left-bigger padding-right-normal padding-bottom-small&quot;</span>
+    <span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ title }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span>
+            <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span>
+            <span class="na">class</span><span class="o">=</span><span class="s">&quot;close-button has-color-gray is-size-6 is-size-4-touch&quot;</span>
+            <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;$emit(&#39;close&#39;)&quot;</span>
+            <span class="na">:aria-label</span><span class="o">=</span><span class="s">&quot;$t(&#39;browse-page.aria.close&#39;)&quot;</span>
+        <span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon cross&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">default</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">focus-trap</span><span class="p">&gt;</span>
+</pre></div>
+<p>Apart from these the modal also has the <code>aria-modal</code> attribute and the <code>role="dialog"</code> attribute.
+These attributes direct our screen readers to recognise this component as a modal and declare it whenever the modal opens.</p>
+<p>The last improvement involves using appropriate label tags for the form elements. A lot of elements did not have proper labels or were nested in wrong way.
+These elements were fixed and after the fixing the nestings the elements had proper labels which the screen readers were able to identify.
+An example a proper input elements with correct label nesting is:</p>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">:for</span><span class="o">=</span><span class="s">&quot;item.code&quot;</span> <span class="na">:disabled</span><span class="o">=</span><span class="s">&quot;block(item)&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span>
+        <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span>
+        <span class="na">class</span><span class="o">=</span><span class="s">&quot;filter-checkbox margin-right-small&quot;</span>
+        <span class="na">:id</span><span class="o">=</span><span class="s">&quot;item.code&quot;</span>
+        <span class="na">:key</span><span class="o">=</span><span class="s">&quot;index&quot;</span>
+        <span class="na">:checked</span><span class="o">=</span><span class="s">&quot;item.checked&quot;</span>
+        <span class="na">:disabled</span><span class="o">=</span><span class="s">&quot;block(item)&quot;</span>
+        <span class="err">@</span><span class="na">change</span><span class="o">=</span><span class="s">&quot;onValueChange&quot;</span>
+    <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">license-icons</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;filterType == &#39;licenses&#39;&quot;</span> <span class="na">:license</span><span class="o">=</span><span class="s">&quot;item.code&quot;</span> <span class="p">/&gt;</span>
+    {{ $t(item.name) }}
+<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</pre></div>
+<p>Notice how the input is a child of the <code>&lt;label&gt;</code> tag which has the <code>for</code> attribute to point which element it labels.</p>
+<p>Apart from these changes, the eslint configuration of the project were also changed to include a11y-linting for the elments.
+We used the <a href="https://github.com/maranran/eslint-plugin-vue-a11y">eslint-plugin-vue-a11y</a> to enforce accessibility guidelines for our components via lint checks. 
+Furthermore all the aria-labels were internationalized to enforce the i18n standard in our repo that we had setup earlier this summer.</p>
+<p>After all these changes we had the following inprovements in the accessibility scores(computed from lighthouse):</p>
+<ol>
+<li>Browse Page: 76 -&gt; 98 | +22</li>
+<li>Collections Browse Page: 86 -&gt; 96 | +10</li>
+<li>Photo Detail Page: 75 -&gt; 95 | +20</li>
+</ol>
+<p>And we are officially done with our work for the summer internship. The next blog will be the culmination of this series.</p>
 <p>You can track the work done for these weeks through these PRs:</p>
 <ol>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1024">Internationalize About Page and Search Guide Page</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1031">Internationalize feedback page, collections page and not found page</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1072">Accessibility Improvements</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1121">setup vue-a11y for eslint</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1123">Aria labels and internationalization</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1120">internationalize aria-labels for about page and feedback page</a></li>
+<li><a href="https://github.com/creativecommons/cccatalog-frontend/pull/1153">add trap focus to modals</a></li>
 </ol>
 <p>The progress of the project can be tracked on <a href="https://github.com/creativecommons/cccatalog-frontend">cc-search</a></p>
 <p>CC Search Accessiblity is my GSoC 2020 project under the guidance of <a href="https://creativecommons.org/author/zackcreativecommons-org/">Zack Krida</a> and <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, who is the primary mentor for this project, <a href="https://creativecommons.org/author/annacreativecommons-org/">Anna Tumadóttir</a> for helping all along and engineering director <a href="https://creativecommons.org/author/kriticreativecommons-org/">Kriti
@@ -392,8 +422,8 @@ Godey</a>, have been very supportive.</p>
               
             
               
-                <li class="has-color-dark-slate-gray">
-                  <i class="icon circle-filled"></i>Internationalization Continued: Handling strings in the store
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/cc-search-accessibility-week3-4/">Internationalization Continued: Handling strings in the store</a>
                 </li>
               
             
@@ -410,8 +440,8 @@ Godey</a>, have been very supportive.</p>
               
             
               
-                <li>
-                  <i class="icon circle-filled"></i><a href="/blog/entries/cc-search-accessibility-week9-10/">Accessibility Improvements: Final Changes and Modal Accessilibity</a>
+                <li class="has-color-dark-slate-gray">
+                  <i class="icon circle-filled"></i>Accessibility Improvements: Final Changes and Modal Accessilibity
                 </li>
               
             
@@ -427,7 +457,7 @@ Godey</a>, have been very supportive.</p>
       <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-week3-4"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week3-4/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/entries/cc-search-accessibility-week9-10"; this.page.url = "http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week9-10/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//cc-open-source.disqus.com/embed.js';
