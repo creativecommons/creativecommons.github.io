@@ -2,13 +2,251 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-08-31T00:00:00Z</updated>
+  <updated>2020-09-02T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/the-specifics-revamping-CCOS/">
+    <title type="text">The specifics - Revamping CCOS</title>
+    <id>urn:uuid:013d291c-a7ee-3a05-8aef-87f357322155</id>
+    <updated>2020-09-02T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/the-specifics-revamping-CCOS/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;p&gt;In this blog, I will be talking about how I managed to use Vocabulary ( Creative Commons's Design Library ) efficiently in our Open Source website.&lt;/p&gt;
+&lt;h3 id=&quot;what-is-vocabulary?&quot;&gt;What is Vocabulary?&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/story/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt; is a cohesive design system to unite the web-facing Creative Commons. In essence Vocabulary is a component library that uses and extends Bulma CSS library. Vocabulary makes it easier to develop Creative Commons apps while ensuring a consistently familiar experience. This project is still under development.&lt;/p&gt;
+&lt;h3 id=&quot;why-vocabulary?&quot;&gt;Why Vocabulary?&lt;/h3&gt;&lt;p&gt;Vocabulary is used to describe the overall visual design of our digital products. At first glance, it appears to be: an amalgamation of component designs with a consistent visual aesthetic and brand, typically accompanied by usage guidelines in the form of online documentation. But there is a lot more to it.
+When it comes to a large software community with a huge range of products, certain problems come along. One of those problems is maintaining the level of harmony across all the products of the network. So, there comes a need for a unified visual language that heightens the level of harmony in a digital ecosystem. And in our case, Vocabulary solves this problem.
+This design system is well built and helps us bring the following aspects to the table -&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Recognizability&lt;/li&gt;
+&lt;li&gt;Consistency&lt;/li&gt;
+&lt;li&gt;Authenticity&lt;/li&gt;
+&lt;li&gt;Efficiency&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And many more.&lt;/p&gt;
+&lt;h3 id=&quot;how-did-i-use-it?-examples&quot;&gt;How did I use it? — Examples&lt;/h3&gt;&lt;p&gt;As I stated before, I have added Vocabulary by updating all the Templates in the CCOS &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt; project.&lt;/p&gt;
+&lt;p&gt;As far as components are concerned, I just had to paste the code snippets given on the Vocabulary’s website with the requires changes -&lt;/p&gt;
+&lt;h4 id=&quot;integration-of-breadcrumb&quot;&gt;Integration of Breadcrumb -&lt;/h4&gt;&lt;figure style=&quot;text-align: center;&quot;&gt;
+    &lt;img src=&quot;breadcrumb.png&quot; alt=&quot;Breadcrumb&quot;&gt;
+    &lt;figcaption&gt;Screenshot — &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/navigation-breadcrumb--default-story&quot;&gt;Breadcrumb&lt;/a&gt; (Vocabulary)&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;The code for integration —&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- Breadcrumb --&amp;gt;
+  {% if this._path !=  '/'%}
+    &amp;lt;div class=&quot;breadcrumb-container&quot;&amp;gt;
+      &amp;lt;nav class=&quot;container breadcrumb caption bold&quot; aria-label=&quot;breadcrumbs&quot;&amp;gt;
+        &amp;lt;ul&amp;gt;
+          {% set crumbs = [] %}
+          {% set current = {'crumb': this} %}
+          &amp;lt;!-- Extracting the slugs of URL --&amp;gt;
+          {% for i in this._path.split(&quot;/&quot;) %}
+            {% if current.crumb is not none %}
+              {% if crumbs.insert(0, current.crumb._slug) %}{% endif %}
+              {% if current.update({&quot;crumb&quot;: current.crumb.parent}) %}{% endif %}
+            {% endif %}
+          {% endfor %}
+          {% for crumb in crumbs %}
+            &amp;lt;!-- Active link --&amp;gt;
+            {% if this._slug == crumb %}
+              &amp;lt;li class=&quot;is-active&quot;&amp;gt;&amp;lt;a aria-current=&quot;page displayed&quot;&amp;gt;{{ crumb | title | replace('-', ' ') }}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            {% else %}
+              &amp;lt;!-- Forming the URL using extracted slugs --&amp;gt;
+              {% set i = loop.index %}
+              {% set ns = namespace (link = '') %}
+              {% for j in range(i) %}
+                {% set ns.link = ns.link + crumbs[j] + '/' %}
+              {% endfor %}
+              &amp;lt;li&amp;gt;&amp;lt;a class=&quot;link&quot; href=&quot;{{ ns.link|url }}&quot;&amp;gt;
+              {% if crumb != '' %}
+                {{ crumb | title | replace('-', ' ') }}
+              {% else %}
+                Home
+              {% endif %}
+              &amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+            {% endif %}
+          {% endfor %}
+        &amp;lt;/ul&amp;gt;
+      &amp;lt;/nav&amp;gt;
+    &amp;lt;/div&amp;gt;
+  {% endif %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Other than the components, there are other visual elements like typography, colors, spacing, and others that are extensively used in CCOS.&lt;/p&gt;
+&lt;p&gt;This is code for the Hero section of the home page.&lt;/p&gt;
+&lt;h5 id=&quot;the-block-template&quot;&gt;The block template -&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;section class=&quot;hero&quot;&amp;gt;
+  &amp;lt;div class=&quot;container&quot;&amp;gt;
+    &amp;lt;div class=&quot;hero-title column is-12 is-paddingless&quot;&amp;gt;
+      &amp;lt;h1&amp;gt;
+        {{ this.title }}
+      &amp;lt;/h1&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;columns&quot;&amp;gt;
+      &amp;lt;div class=&quot;column is-5&quot;&amp;gt;
+        &amp;lt;p class=&quot;hero-description&quot;&amp;gt;
+          {{ this.description }}
+        &amp;lt;/p&amp;gt;
+        {{ this.links }}
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+  &amp;lt;div class=&quot;level-right hero-image&quot;&amp;gt;
+    &amp;lt;img class=&quot;image&quot; src=&quot;./github.svg&quot; /&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&quot;the-block-styling&quot;&gt;The block styling -&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;// Hero section - Home page
+.hero {
+  @extend .margin-top-large;
+
+  .hero-title {
+    @extend .padding-horizontal-big;
+  }
+
+  .hero-description {
+    @extend .body-bigger;
+    @extend .padding-top-big;
+    @extend .padding-horizontal-big;
+  }
+
+  .hero-links {
+    @extend .margin-vertical-normal;
+    @extend .padding-horizontal-big;
+
+    .button {
+      @extend .margin-top-normal;
+      text-decoration: none;
+
+      .icon {
+        @extend .margin-right-small;
+        @extend .padding-vertical-smaller;
+      }
+    }
+  }
+
+  .hero-image {
+    @include from($fullhd) {
+      margin-top: -20rem;
+      .image {
+        width: 50%;
+      }
+    }
+    @include until($fullhd) {
+      .image {
+        width: 100%;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure&gt;
+    &lt;img src=&quot;output.png&quot; alt=&quot;Output&quot;&gt;
+    &lt;figcaption&gt;Output&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;h3 id=&quot;improvements-in-the-lektor-project&quot;&gt;Improvements in the Lektor project -&lt;/h3&gt;&lt;p&gt;I tried to write the perfect code that is cleaner and readable. I would try to demonstrate my effort using the home page code where I used &lt;a href=&quot;https://www.getlektor.com/docs/models/flow/&quot;&gt;Lektor Flowblocks&lt;/a&gt;. The new homepage design have four sections where each section communicated something and I realized they were all independent and building the whole page through one single template would become a bit messy and hard to handle. So I did some research and found a way where I could build sub-templates and use them all to develop a single page and Lektor’s flowblocks allowed me to do so. Here is one of the flowblock and if you want to check out the whole working you can go to — &lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source&quot;&gt;CCOS Repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h4 id=&quot;recent-blog-post-block&quot;&gt;Recent Blog Post block -&lt;/h4&gt;&lt;h5 id=&quot;the-block-template&quot;&gt;The block Template -&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;{% from &quot;macros/author_name.html&quot; import render_author_name %}
+
+&amp;lt;section class=&quot;recent-posts&quot;&amp;gt;
+  &amp;lt;div class=&quot;container&quot;&amp;gt;
+    &amp;lt;div class=&quot;level&quot;&amp;gt;
+      &amp;lt;h2 class=&quot;is-paddingless level-left&quot;&amp;gt;
+        {{ this.title }}
+      &amp;lt;/h2&amp;gt;
+      &amp;lt;span class=&quot;level-right&quot;&amp;gt;
+        &amp;lt;a class=&quot;posts-link&quot; href=&quot;/blog&quot;&amp;gt;See all posts &amp;lt;i class=&quot;icon angle-right&quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/a&amp;gt;
+      &amp;lt;/span&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;columns&quot;&amp;gt;
+      {% for post in site.query('/blog/entries') %}
+        {% if loop.index &amp;lt;= 3 %}
+          {% set author = post.parent.parent.children.get('authors').children.get(post.author) %}
+          &amp;lt;div class=&quot;column is-one-third is-paddingless padding-horizontal-big padding-top-bigger&quot;&amp;gt;
+            &amp;lt;article class=&quot;card entry-post horizontal no-border blog-entry&quot;&amp;gt;
+              &amp;lt;header&amp;gt;
+                &amp;lt;figure class=&quot;image blog-image&quot;&amp;gt;
+                {% if author.about %}
+                  {% if author.md5_hashed_email %}
+                    &amp;lt;img class=&quot;profile&quot; src=&quot;https://secure.gravatar.com/avatar/{{ author.md5_hashed_email }}?size=200&quot;
+                    alt=&quot;gravatar&quot; /&amp;gt;
+                  {% endif %}
+                {% endif %}
+                &amp;lt;/figure&amp;gt;
+              &amp;lt;/header&amp;gt;
+              &amp;lt;div class=&quot;blog-content&quot;&amp;gt;
+                &amp;lt;h4 class=&quot;b-header&quot;&amp;gt;&amp;lt;a class=&quot;blog-title&quot; href=&quot;{{ post|url }}&quot;&amp;gt;{{ post.title }}&amp;lt;/a&amp;gt;&amp;lt;/h4&amp;gt;
+                &amp;lt;span class=&quot;blog-author&quot;&amp;gt;by &amp;lt;a class=&quot;author-name&quot; href=&quot;{{ author|url }}&quot;&amp;gt;{{ render_author_name(author) }}&amp;lt;/a&amp;gt;
+                on {{ post.pub_date|dateformat(&quot;YYYY-MM-dd&quot;) }}&amp;lt;/span&amp;gt;
+                &amp;lt;div class=&quot;excerpt&quot;&amp;gt;
+                  {{ post.body | excerpt | string | striptags() | truncate(100) }}
+                &amp;lt;/div&amp;gt;
+              &amp;lt;/div&amp;gt;
+            &amp;lt;/article&amp;gt;
+          &amp;lt;/div&amp;gt;
+        {% endif %}
+      {% endfor %}
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&quot;the-block-model&quot;&gt;The block Model -&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;[block]
+name = Recent Posts
+
+[fields.title]
+label = Title
+type = string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&quot;the-block-styling&quot;&gt;The block styling -&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;// Recent-posts section - Home page
+.recent-posts {
+  background-color: rgba(4, 166, 53, 0.1);
+
+  .container {
+    @extend .padding-vertical-xl;
+    @extend .padding-horizontal-big;
+
+    .columns {
+      @extend .padding-top-bigger;
+      @extend .padding-bottom-xl;
+    }
+  }
+
+  .blog-title {
+    @extend .has-color-dark-slate-gray;
+  }
+
+  .posts-link {
+    @extend .has-color-forest-green;
+    @extend .body-normal;
+
+    font-weight: bold;
+    line-height: 1.5;
+    text-decoration: none;
+
+    .icon {
+      @extend .has-color-forest-green;
+      @extend .padding-left-small;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure&gt;
+    &lt;img src=&quot;output2.png&quot; alt=&quot;Output&quot;&gt;
+    &lt;figcaption&gt;Output — Recent blog posts.&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;p&gt;I would also like to point out the amazing Query functionality provided by Lektor where you can access the child pages of the root. Here I am accessing blog posts from our Blog page and limiting the count of posts to three.&lt;/p&gt;
+&lt;h3 id=&quot;difference-in-experience&quot;&gt;Difference in Experience&lt;/h3&gt;&lt;p&gt;The level of user experience has been significantly elevated due to the use of Vocabulary. I would like to point one of the major experience change here. The major part of the website is guidelines — we have guidelines for contributing, guidelines for how to join a community, guidelines for how to write a blog and many more. The new website has cleaner and readable guideline with a proper hierarchy and every piece of information is made accessible using secondary navigation.&lt;/p&gt;
+&lt;h5 id=&quot;below-are-the-images-of-some-guidelines-pages-from-new-website.&quot;&gt;Below are the images of some guidelines pages from new website.&lt;/h5&gt;&lt;figure&gt;
+    &lt;img width=&quot;300&quot; height=&quot;300&quot; src=&quot;new1.png&quot; alt=&quot;Screenshot&quot;&gt;
+    &lt;img width=&quot;300&quot; height=&quot;300&quot; src=&quot;new2.png&quot; alt=&quot;Screenshot&quot;&gt;
+    &lt;img width=&quot;300&quot; height=&quot;300&quot; src=&quot;new3.png&quot; alt=&quot;Screenshot&quot;&gt;
+    &lt;figcaption&gt;Screenshots from new website&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;h5 id=&quot;below-are-the-images-of-some-guidelines-pages-from-old-website.-you-can-see-the-difference-of-experience-in-both-cases.&quot;&gt;Below are the images of some guidelines pages from old website. You can see the difference of experience in both cases.&lt;/h5&gt;&lt;figure&gt;
+    &lt;img width=&quot;400&quot; src=&quot;old1.png&quot; alt=&quot;Screenshot&quot;&gt;
+    &lt;img width=&quot;400&quot; src=&quot;old2.png&quot; alt=&quot;Screenshot&quot;&gt;
+    &lt;figcaption&gt;Screenshots from old website&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;h3 id=&quot;how-you-can-use-vocabulary-and-also-contribute-to-it?&quot;&gt;How you can use Vocabulary and also contribute to it?&lt;/h3&gt;&lt;p&gt;Vocabulary is very easy to use. It is intuitive, consistent and highly reusable. Vocabulary uses Storybook to present each visual element that makes it very convenient for a user to integrate Vocabulary in their project. The code snippets attached with every element can be copied as it is and can be used. The code snippets above indicate how the library can be used and how easily you can achieve desired web pages. For more details, you can visit &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-usage--page&quot;&gt;usage guidelines&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Vocabulary is still under development, feedback and bug reports are welcome, fixes and patches even more so. Here is the link to &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-contribution--page&quot;&gt;contribution guidelines&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-wrapup/">
     <title type="text">Accessibility and Internationalization: WrapUp GSoC 2020</title>
     <id>urn:uuid:8dd9da39-50da-34b2-91ac-bbe3eee35aee</id>
@@ -253,77 +491,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href=&quot;https://github.com/panchovm&quot;&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
-    <title type="text">Overview of the GSoC 2020 Project</title>
-    <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
-    <updated>2020-08-26T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" />
-    <author>
-      <name>charini</name>
-    </author>
-    <content type="html">&lt;p&gt;This is my final blog post under the &lt;a href=&quot;/blog/entries/overview-of-the-gsoc-2020-project/#series&quot;&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
-summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
-stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
-the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; and &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
-CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
-primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
-(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
-experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
-Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
-&lt;a href=&quot;/blog/entries/flickr-sub-provider-retrieval/&quot;&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/420&quot;&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/442&quot;&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/455&quot;&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/461&quot;&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
-to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
-the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
-successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
-mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
-information is provided in my &lt;a href=&quot;/blog/entries/smithsonian-unit-code-update/&quot;&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
-is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/465&quot;&gt;465&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
-from 19 museums. However, due to the fact that the different museums have different data models and the resultant
-incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
-fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
-information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
-identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
-result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
-some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
-#&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
-Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
-Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt; as well. The PRs related
-to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/474&quot;&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
-Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/476&quot;&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
-provider.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
-for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
-providers up-to-date, based on how old an image is. This is called the &lt;a href=&quot;/blog/entries/date-partitioned-data-reingestion/&quot;&gt;re-ingestion strategy&lt;/a&gt;,
-where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
-detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
-database are obsolete, which could result in broken links being presented via the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; tool. As a
-solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
-&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
-the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
-flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/483&quot;&gt;483&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
-contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
-Brent for his guidance.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/">
     <title type="text">Automate GitHub for more than CI/CD</title>
     <id>urn:uuid:1f2b4dad-de07-33ab-b1c7-394778548e55</id>
@@ -429,6 +596,119 @@ Brent for his guidance.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
+    <title type="text">Overview of the GSoC 2020 Project</title>
+    <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
+    <updated>2020-08-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" />
+    <author>
+      <name>charini</name>
+    </author>
+    <content type="html">&lt;p&gt;This is my final blog post under the &lt;a href=&quot;/blog/entries/overview-of-the-gsoc-2020-project/#series&quot;&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; and &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
+(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
+experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
+Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
+&lt;a href=&quot;/blog/entries/flickr-sub-provider-retrieval/&quot;&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/420&quot;&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/442&quot;&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/455&quot;&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/461&quot;&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
+to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
+the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
+successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
+mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
+information is provided in my &lt;a href=&quot;/blog/entries/smithsonian-unit-code-update/&quot;&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
+is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/465&quot;&gt;465&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
+from 19 museums. However, due to the fact that the different museums have different data models and the resultant
+incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
+fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
+information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
+identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
+result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
+some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
+#&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
+Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt; as well. The PRs related
+to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/474&quot;&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
+Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/476&quot;&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
+provider.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
+for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
+providers up-to-date, based on how old an image is. This is called the &lt;a href=&quot;/blog/entries/date-partitioned-data-reingestion/&quot;&gt;re-ingestion strategy&lt;/a&gt;,
+where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
+detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
+database are obsolete, which could result in broken links being presented via the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; tool. As a
+solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
+&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
+the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
+flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/483&quot;&gt;483&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
+contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
+Brent for his guidance.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
+    <title type="text">Linked Commons: Data Update</title>
+    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
+    <updated>2020-08-25T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
+    <author>
+      <name>subhamX</name>
+    </author>
+    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
+&lt;h2 id=&quot;where-does-it-fit?&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
+&lt;h3 id=&quot;what-is-distance-list-?&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
+&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
+&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
+&lt;h3 id=&quot;key-points-of-the-sequential-db-build:&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
+&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
+&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
+&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
+&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/">
     <title type="text">CC Catalog: wrapping up GSoC20</title>
     <id>urn:uuid:ba947438-0d00-32ec-8ba7-acf6f5f15eb5</id>
@@ -501,48 +781,6 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;Related PR: &lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/478&quot;&gt;https://github.com/creativecommons/cccatalog/pull/478&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank my mentors Brent and Anna for their guidance throughout the internship.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
-    <title type="text">Linked Commons: Data Update</title>
-    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
-    <updated>2020-08-25T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
-    <author>
-      <name>subhamX</name>
-    </author>
-    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id=&quot;where-does-it-fit?&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
-&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id=&quot;what-is-distance-list-?&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
-&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
-&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
-&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id=&quot;key-points-of-the-sequential-db-build:&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
-&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
-&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
-&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
-&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/">
@@ -1610,6 +1848,24 @@ options = {
 Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/">
+    <title type="text">Integration of Vocabulary with CCOS.</title>
+    <id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id>
+    <updated>2020-07-08T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
+&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
+&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
+&lt;h2 id=&quot;the-solution&quot;&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href=&quot;https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals&quot;&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href=&quot;https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516&quot;&gt;link&lt;/a&gt; for that.&lt;/p&gt;
+&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
+&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
+&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-coding-mid-term/">
     <title type="text">CC Legal Database: Coding and Mid-term status</title>
     <id>urn:uuid:0283bfb3-3e0e-3c6a-a70b-02df13f31235</id>
@@ -1633,24 +1889,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id=&quot;plan-for-the-second-half-of-the-timeline&quot;&gt;Plan for the second half of the timeline&lt;/h2&gt;&lt;p&gt;There are some tasks due from past weeks, such as build forms for Case and Scholarship submissions, but I am confident that now that the project has reached a stable state I can do it quickly in the next days. Other tasks were moved for later: searching records and filtering by tags moved after forms are created, so I can finish the visual parts of the site first and focus on functional work without shifting between types of tasks.&lt;/p&gt;
 &lt;p&gt;The tasks and they order have changed, like I mentioned earlier, requirements were modified (a bit) so some tasks I planned for last weeks are not necessary anymore or are done already out-of-box with Django admin (benefits of choosing a batteries included framework!). In general, I don't think the initial plan was wrong, we just went through the natural evolution of a product software. Mentors have also been very helpful in keeping a reasonable scope and adjusting priorities.&lt;/p&gt;
 &lt;p&gt;After main functionalities are done we can start making improvements, as we already identified some nice to have features but not so important at the moment. Stay tuned for more to come.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/">
-    <title type="text">Integration of Vocabulary with CCOS.</title>
-    <id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id>
-    <updated>2020-07-08T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" />
-    <author>
-      <name>dhruvi16</name>
-    </author>
-    <content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
-&lt;h2 id=&quot;the-problem&quot;&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
-&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
-&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
-&lt;h2 id=&quot;the-solution&quot;&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href=&quot;https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals&quot;&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href=&quot;https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516&quot;&gt;link&lt;/a&gt; for that.&lt;/p&gt;
-&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
-&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
-&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week3-4/">
@@ -1989,61 +2227,6 @@ The changes in the source field after updating the image table in the database l
 helping me to filter the sub-providers of interest and conducting the necessary research.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
-    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
-    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
-    <updated>2020-06-10T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
-    <author>
-      <name>AyanChoudhary</name>
-    </author>
-    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
-&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
-The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
-&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
-The tab index adit for homepage is displayed:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
-For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
-Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
-    &amp;lt;template v-slot:noted&amp;gt;
-        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:attribution&amp;gt;
-        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
-        {{$t('footer.caption.attribution')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:icons&amp;gt;
-        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
-        {{$t('footer.caption.icons')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-&amp;lt;/i18n&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
-You can track the work done for these weeks through these PRs:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/science-museum-implementation/">
     <title type="text">Science Museum provider implementation</title>
     <id>urn:uuid:7960ba6c-0bbb-300e-86d8-4744b9b0ee25</id>
@@ -2143,6 +2326,61 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/302&quot;&gt;research work&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/400&quot;&gt;implementation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
+    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
+    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
+    <updated>2020-06-10T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
+&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
+&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
+    &amp;lt;template v-slot:noted&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:attribution&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
+        {{$t('footer.caption.attribution')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:icons&amp;gt;
+        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
+        {{$t('footer.caption.icons')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+&amp;lt;/i18n&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/resource-gathering/">
@@ -2247,26 +2485,6 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
-    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
-    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
-    <updated>2020-05-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
-    <author>
-      <name>AyanChoudhary</name>
-    </author>
-    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
-While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
-&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
-After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
-Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
-&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
-The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
-&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
-The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
-&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-a-new-beginning/">
     <title type="text">CC Legal Database: a new beginning</title>
     <id>urn:uuid:0ca867d0-f061-3202-9da4-7e89977781ce</id>
@@ -2304,6 +2522,26 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;CC Legal Database&lt;/strong&gt; is my Outreachy project for this summer, under the guidance of Director of Engineering &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti Godey&lt;/a&gt; and Core Systems Manager &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot Zehta&lt;/a&gt;, they are very supportive and the CC community is notable welcoming.&lt;/p&gt;
 &lt;p&gt;This is the first post of a series so stay tuned if you're interested to know more.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
+    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
+    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
+While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
+&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
+After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
+Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
+&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
+The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
+&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
+The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
+&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/">
@@ -2749,32 +2987,6 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb/&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey/&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
-    <title type="text">Participe do Google Summer of Code / Outreachy</title>
-    <id>urn:uuid:e5616ac8-3b6a-3afa-85f5-eddcd822577e</id>
-    <updated>2020-03-05T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/" />
-    <author>
-      <name>brenoferreira</name>
-    </author>
-    <content type="html">&lt;p&gt;O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.&lt;/p&gt;
-&lt;p&gt;O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.&lt;/p&gt;
-&lt;p&gt;Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.&lt;/p&gt;
-&lt;p&gt;Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.&lt;/p&gt;
-&lt;p&gt;A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas &lt;a href=&quot;https://creativecommons.org/licenses/?lang=pt_BR&quot;&gt;Licenças Creative Commons&lt;/a&gt;, como CC-BY, CC-BY-SA, etc..&lt;/p&gt;
-&lt;p&gt;Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.&lt;/p&gt;
-&lt;p&gt;O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no &lt;a href=&quot;https://developers.google.com/open-source/gsoc/help/student-stipends&quot;&gt;site do programa&lt;/a&gt;. No caso do Outreachy, os valores estão também na &lt;a href=&quot;https://www.outreachy.org&quot;&gt;página do programa&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:&lt;/p&gt;
-&lt;p&gt;Leia o conteúdo disponível online sobre como o programa funciona. &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/&quot;&gt;Google Summer of Code&lt;/a&gt;. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;nossa lista de projetos&lt;/a&gt; que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/applicant-guide/&quot;&gt;nosso guia para candidatos&lt;/a&gt; para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.&lt;/p&gt;
-&lt;p&gt;Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility&quot;&gt;projeto que serei responsável&lt;/a&gt;, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.&lt;/p&gt;
-&lt;p&gt;O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.&lt;/p&gt;
-&lt;p&gt;Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A &lt;a href=&quot;https://help.github.com/pt&quot;&gt;documentação do Github&lt;/a&gt; pode ajudar, principalmente a parte sobre &lt;a href=&quot;https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;como funcionam os Pull Requests&lt;/a&gt; pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.&lt;/p&gt;
-&lt;p&gt;Na nossa página de &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;ideias de projetos&lt;/a&gt; os projetos listam as habilidades recomendadas para quem se interessar (listado em &lt;em&gt;Skills recommended&lt;/em&gt;). Verifique se essas habilidades se alinham com as suas.&lt;/p&gt;
-&lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
-&lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
-&lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-involucrate-gsoc-outreachy-es/">
     <title type="text">Involúcrate con nuestra comunidad de código abierto a través del  Google Summer of Code y Outreachy</title>
     <id>urn:uuid:e28cf21f-757a-32de-a7b0-5c02f0083c21</id>
@@ -2823,6 +3035,32 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;h2 id=&quot;destrezas&quot;&gt;Destrezas&lt;/h2&gt;&lt;p&gt;Con respecto al idioma, para participar en estos programas no se exige un manejo del inglés al 100%, solo basta que puedas comunicarte de manera razonable, ya que, si bien, existen algunos proyectos en los cuales yo soy el mentor ( &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#wp-plugin&quot;&gt;WP Plugin&lt;/a&gt; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#vocabulary-integration&quot;&gt;Implementar Vocabulary&lt;/a&gt; ) y podemos tener reuniones en español, la comunicación pública y la documentación debe ser en Inglés.&lt;/p&gt;
 &lt;p&gt;Con respecto a nuestros proyectos, todos se encuentran en &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt; por lo tanto debes saber lo básico de &lt;a href=&quot;https://rogerdudler.github.io/git-guide/index.es.html&quot;&gt;Git&lt;/a&gt;. Te recomiendo consultar la &lt;a href=&quot;https://help.github.com/es&quot;&gt;ayuda de Github&lt;/a&gt; para mayor detalle, sugiero poner atención a la guia sobre como realizar &lt;a href=&quot;https://help.github.com/es/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;Pull Request&lt;/a&gt; ya que es muy necesario para el flujo de trabajo del equipo tecnico de CC y lo será también para tu pasantía.&lt;/p&gt;
 &lt;h2 id=&quot;invitacin&quot;&gt;Invitación&lt;/h2&gt;&lt;p&gt;Desde yá los dejamos invitados a participar en estos programas o a participar directamente en nuestra &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;comunidad de código abierto&lt;/a&gt; o visitar nuestro &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt;, el cual contiene nuestros proyectos. También pueden unirse a nuestra comunidad global en &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack&lt;/a&gt; donde me pueden encontrar como @hugo si tienen alguna duda o comentario.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
+    <title type="text">Participe do Google Summer of Code / Outreachy</title>
+    <id>urn:uuid:e5616ac8-3b6a-3afa-85f5-eddcd822577e</id>
+    <updated>2020-03-05T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/" />
+    <author>
+      <name>brenoferreira</name>
+    </author>
+    <content type="html">&lt;p&gt;O Google Summer of Code (GSoC) é uma iniciativa global do Google com o objetivo de incentivar a participação de estudantes com interesse em tecnologia a contribuírem com projetos de software de código aberto. Programa que existe desde 2005, que incentivou mais de 15.000 estudantes de mais de 118 países a se envolverem com várias organizações que defendem o código aberto.&lt;/p&gt;
+&lt;p&gt;O Outreachy promove estágios para pessoas em organizações que trabalham com código aberto. O foco da participação no programa está nas comunidades com pouca representação, viés sistêmico ou discriminação na área de tecnologia.&lt;/p&gt;
+&lt;p&gt;Os estudantes trabalham com uma organização responsável por algum projeto e durante um período de estágio de 3 meses, e estarão sob tutoria de um(a) mentor(a) que será responsável por ajudar o estudante e guiá-lo(a) a encontrar a melhor maneira de concluir o projeto.&lt;/p&gt;
+&lt;p&gt;Em 2020 a Creative Commons está novamente participando do GSoC e Outreachy, e estagiários participando conosco terão a oportunidade de trabalhar em projetos relacionados à cultura de acesso livre de impacto global, dentre eles o nosso principal produto de tecnologia, o CC Search, que é um site de busca de conteúdo livre licenciados com as licenças da CC ou sob domínio público.&lt;/p&gt;
+&lt;p&gt;A Creative Commons é uma organização não governamental sem fins lucrativos que criou licenças que permitem a cópia e compartilhamento com menos restrições que o tradicional todos direitos reservados (copyright), as chamadas &lt;a href=&quot;https://creativecommons.org/licenses/?lang=pt_BR&quot;&gt;Licenças Creative Commons&lt;/a&gt;, como CC-BY, CC-BY-SA, etc..&lt;/p&gt;
+&lt;p&gt;Muitas das organizações que participam do programa do Google e Outreachy trabalham em projetos de código livre utilizados globalmente em diversas aplicações. É uma oportunidade única de contribuir com um projeto que gera um impacto positivo na comunidade internacional de tecnologia. Além disso, os estudantes terão um mentor exclusivo para ajudar no desenvolvimento do projeto. Não é um daqueles estágios onde os estudantes ficam desamparados nos momentos de dificuldade.&lt;/p&gt;
+&lt;p&gt;O estágio é remunerado naturalmente. Os valores pagos aos estagiários pelo Google variam com a localização onde o estudante mora e mais informações podem ser encontradas no &lt;a href=&quot;https://developers.google.com/open-source/gsoc/help/student-stipends&quot;&gt;site do programa&lt;/a&gt;. No caso do Outreachy, os valores estão também na &lt;a href=&quot;https://www.outreachy.org&quot;&gt;página do programa&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Caso voce se interesse em participar do GSoC ou Outreachy esse ano, seguem algumas dicas que poderão te ajudar no seu processo de aplicação e submissão de projeto:&lt;/p&gt;
+&lt;p&gt;Leia o conteúdo disponível online sobre como o programa funciona. &lt;a href=&quot;https://summerofcode.withgoogle.com/how-it-works] e [Outreachy](https://www.outreachy.org/docs/applicant/&quot;&gt;Google Summer of Code&lt;/a&gt;. Assim voce irá poder entender a proposta do programa, sua estrutura e tirar suas dúvidas; &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;nossa lista de projetos&lt;/a&gt; que estamos sugerindo esse ano para os estudantes trabalhar e ver qual projeto está melhor alinhado com seus interesses e habilidades; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/applicant-guide/&quot;&gt;nosso guia para candidatos&lt;/a&gt; para entender o passo a passo de como nós iremos trabalhar com candidatos e estudantes selecionados para participar do programa. Esse conteúdo está todo em inglês.&lt;/p&gt;
+&lt;p&gt;Sobre inglês, para ser selecionado para trabalhar conosco, é necessário que voce consiga se comunicar razoavelmente bem em inglês. A Creative Commons é uma organização internacional e voce precisará se comunicar com pessoas da organização e da comunidade que não falam português. Eu, Breno Ferreira, autor desse post, falo portugues então caso voce se interesse pelo &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#cc-search-accessibility&quot;&gt;projeto que serei responsável&lt;/a&gt;, eu poderei me comunicar em privado em portugues, mas toda comunicação dos estudantes em canais públicos deverá ser em inglês. Voce não precisa ser 100% fluente, mas precisa conseguir entender e se fazer entender no idioma.&lt;/p&gt;
+&lt;p&gt;O GSoC é um programa focado em contribuições de código, afinal, chama-se Google Summer of Code. Então, voce precisa ter alguns conhecimentos básicos de algumas ferramentas para uma boa participação no programa.&lt;/p&gt;
+&lt;p&gt;Voce precisará saber usar Git e Github. Todos os projetos da Creative Commons estão no Github e o conhecimento básico dessas ferramentas é fundamental. A &lt;a href=&quot;https://help.github.com/pt&quot;&gt;documentação do Github&lt;/a&gt; pode ajudar, principalmente a parte sobre &lt;a href=&quot;https://help.github.com/pt/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;como funcionam os Pull Requests&lt;/a&gt; pois é um recurso bem particular do Github e é normal algumas pessoas não saberem utilizar esse recurso muito importante.&lt;/p&gt;
+&lt;p&gt;Na nossa página de &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/&quot;&gt;ideias de projetos&lt;/a&gt; os projetos listam as habilidades recomendadas para quem se interessar (listado em &lt;em&gt;Skills recommended&lt;/em&gt;). Verifique se essas habilidades se alinham com as suas.&lt;/p&gt;
+&lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
+&lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
+&lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/">
@@ -3088,6 +3326,20 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;Well, all said, the past weeks have been great. I will be sharing more in two weeks.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
+    <title type="text">CC Platform Toolkit Revamp - 2</title>
+    <id>urn:uuid:dba4dc6a-e8b6-3f06-9b03-2d58dd440755</id>
+    <updated>2020-01-06T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
+    <author>
+      <name>apdsrocha</name>
+    </author>
+    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
+&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
+&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
+&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">
     <title type="text">Improving CC License Chooser Weeks 1-2: Design</title>
     <id>urn:uuid:24a0bec2-ab5d-3990-9d96-1c8d52fe24f1</id>
@@ -3145,20 +3397,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.&lt;/p&gt;
 &lt;p&gt;Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.&lt;/p&gt;
 &lt;p&gt;You can follow my work at &lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;https://github.com/creativecommons/cc-chooser&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/">
-    <title type="text">CC Platform Toolkit Revamp - 2</title>
-    <id>urn:uuid:dba4dc6a-e8b6-3f06-9b03-2d58dd440755</id>
-    <updated>2020-01-06T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-2/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;Time is really flying! I can hardly believe this is already week 5 as of my internship with CC (I'm part of the Outreachy program for the 2019-2020 round). I've been having a wonderful time working on this project (I'm helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;) and I'm excited to report on what's been going on for the past couple of weeks.&lt;/p&gt;
-&lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
-&lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
-&lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/freesound-intro/">
@@ -3245,39 +3483,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/blog/entries/aws_grant/scraping_cluster.png&quot; alt=&quot;Image scraping and thumbnailing system&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Image recognition pipeline:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/blog/entries/aws_grant/object_recognition.jpg&quot; alt=&quot;Object recognition pipeline&quot;&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/">
-    <title type="text">Building a Distributed Indexer for a Search Engine</title>
-    <id>urn:uuid:707d616c-8953-3a17-925b-02567a4c9516</id>
-    <updated>2019-12-11T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/building-distributed-indexer/" />
-    <author>
-      <name>aldenpage</name>
-    </author>
-    <content type="html">&lt;p&gt;With &lt;a href=&quot;https://search.creativecommons.org&quot;&gt;CC Search&lt;/a&gt;, we want to make it possible to search all of the estimated 1.6 billion Creative Commons works on the internet. In order to make it possible for thousands of people to search billions of records in a reasonable period of time, we have to build a big inverted index (a data structure similar to the index in the back of a textbook), which allows very fast lookups of documents related to the user’s search query. To populate this index, we have to build a large database of Creative Commons works and then replicate it to our search index, which is powered by Elasticsearch.&lt;/p&gt;
-&lt;p&gt;It turns out that, once your search index contains more than just a few million documents, maintaining the index is a non-trivial problem. Some of the concerns we had for our implementation:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;How often do we update the index as new Creative Commons licensed works are discovered? What if we need to make a change to every single document in the index, such as when we modify our search algorithm?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;How can we rebuild the entire index quickly?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Can we rebuild the index without users noticing degraded search performance or, worse yet, not being able to serve results while reindexing?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Can we make this a completely automated process and avoid further operations tedium?&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;There is no off-the-shelf solution for this, particularly when performance is of concern; anybody in the business of writing a large search engine is going to have to write a custom indexer at some point.&lt;/p&gt;
-&lt;p&gt;In the end, given the size of our dataset was in the range of a few hundred gigabytes, it turned out that bulk reindexing every week would be good enough for our purposes; our current upstream data sources don’t update much more frequently than that anyway. We wrote a program that automated the procedure of refreshing our database with the latest upstream data and pushing it to Elasticsearch, all completely online and without negative impact to production performance. A single server was responsible for moving all of our image data around to the appropriate data stores and juggling temporary tables and indices to hide the indexing process from the end user. I wrote a little bit about the design of this piece in &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/searching-300-million/&quot;&gt;a previous blog post&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/building-distributed-indexer/one_server_indexing.png&quot; alt=&quot;Ingestion Server architecture&quot;&gt;&lt;/p&gt;
-&lt;p&gt;At this point, we could reindex all 325 million images in about 1.5 days. That’s not exactly fast, but it could be scheduled to run over the weekend in a “set and forget” manner. That was good enough for about a year.&lt;/p&gt;
-&lt;p&gt;However, in practice, we need to refresh our data more than once a week. For instance, if something went wrong with the indexing job (as often does while new search features are being tested on real data), we would have to start the process all over again, which means that the cost of even a small bug in indexing logic can dramatically lengthen the time it takes to deliver a new feature. More importantly, we wanted to iterate on our search algorithm, which meant we had to reindex our data quite frequently. We hoped to avoid this by performing tests on mock data or smaller subsets of the real data, but this ends up being only weakly correlated with search quality in the complete production dataset (in my experience, search result quality is inseparable from the quality of the underlying data). It became clear that indexing performance was slowing down the software development lifecycle, and further optimization was needed.&lt;/p&gt;
-&lt;p&gt;Our single-node indexer had a throughput of about 2,500 records per second, which is far below Elasticsearch’s advertised indexing rates (although there are &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-indexing-speed.html&quot;&gt;numerous factors unique to each workload&lt;/a&gt; that affect indexing speed). Further profiling revealed that in our case we were likely bottlenecked by our Python code rather than I/O to the cluster: writing to the search index was reasonably fast (7,000 per second), but the indexer spent a ton of CPU time on deserializing records pulled in from database chunks, accounting for 2/3rds of the indexing process. A possible solution would be rewriting the indexer in a faster language, but there are a lot of drawbacks to this approach in that rewrites are costly, the likely performance improvement is not foreseeable, and we had already sunk plenty of time into writing the logic in Python. Instead, we decided to distribute the existing process across multiple machines, which would allow us to reuse existing code and scale up to an arbitrary number of nodes as our indexing performance requirements inevitably increase with the size of our data set.&lt;/p&gt;
-&lt;p&gt;A few weeks of coding later, we had a solution in place that increased throughput to 15,000 records per second, or a 6-fold increase in performance, by splitting the work across 6 nodes. Indexing responsibilities are offloaded from Ingestion Server, which instead acts as a central point for coordinating the multiple indexing workers through a simple RPC API.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/building-distributed-indexer/indexing1.jpg&quot; alt=&quot;Partitioning the data&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/building-distributed-indexer/indexing2.jpg&quot; alt=&quot;Simultaneous indexing&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/building-distributed-indexer/indexing3.jpg&quot; alt=&quot;Notification and promotion&quot;&gt;&lt;/p&gt;
-&lt;p&gt;There appears to be ample room for us to increase the node count before we become I/O bound by the database or Elasticsearch. I’m assuming doubling our node count would approximately halve our indexing time. Eventually, if our search index becomes as big as we anticipate it will, we are going to have to make the indexer workers better utilize the underlying hardware somehow, perhaps by rewriting the “hot” parts in a lower level language than Python, but that seems to be a distant concern as of today. Additionally, since workers only run when indexing is in progress, the cost of maintaining these additional nodes is low; it costs about $10 in cloud time to perform a full reindex of all 325MM images.&lt;/p&gt;
 </content>
   </entry>
 </feed>

@@ -5,24 +5,24 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="Improving CC License Chooser Weeks 1-2: Design" />
+<meta property="og:title" content="The specifics - Revamping CCOS" />
 
 
 
-<meta property="og:description" content="Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, Ari Madian, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:" />
+<meta property="og:description" content="In this blog, I will be talking about how I managed to use Vocabulary ( Creative Commons&#39;s Design Library ) efficiently in our Open Source website." />
 
 
-<meta property="og:url" content="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/" />
+<meta property="og:url" content="/blog/entries/the-specifics-revamping-CCOS/" />
 <meta property="og:type" content="article" />
 
 
-<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png" />
+<meta property="og:image" content="http://opensource.creativecommons.org/blog/entries/the-specifics-revamping-CCOS/new1.png" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Improving CC License Chooser Weeks 1-2: Design">
-<meta name="twitter:description" content="Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, Ari Madian, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:">
+<meta name="twitter:title" content="The specifics - Revamping CCOS">
+<meta name="twitter:description" content="In this blog, I will be talking about how I managed to use Vocabulary ( Creative Commons&#39;s Design Library ) efficiently in our Open Source website.">
 
-<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png">
+<meta name="twitter:image" content="http://opensource.creativecommons.org/blog/entries/the-specifics-revamping-CCOS/new1.png">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -38,7 +38,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>Improving CC License Chooser Weeks 1-2: Design — Creative Commons on GitHub</title>
+<title>The specifics - Revamping CCOS — Creative Commons on GitHub</title>
 
 <body>
   <div class="ga-script">
@@ -246,7 +246,7 @@
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed">Improving Cc License Chooser Weeks 1 2 Design</a></li>
+              <li class="is-active"><a aria-current="page displayed">The Specifics Revamping Ccos</a></li>
             
           
         </ul>
@@ -260,76 +260,255 @@
     <header class="single-post-header">
       <div class="container">
         <h4>CC Open Source Blog</h4>
-        <h2 class="title">Improving CC License Chooser Weeks 1-2: Design</h2>
+        <h2 class="title">The specifics - Revamping CCOS</h2>
         
         <div class="author columns is-marginless">
           <figure class="image profile">
-            <img src="https://secure.gravatar.com/avatar/acd34b5434369aeaf31de8ea94368bf0?size=200&d=mp" alt="gravatar" class="profile" />
+            <img src="https://secure.gravatar.com/avatar/4a38c3c8acacc9bc097b2a28580cca04?size=200&d=mp" alt="gravatar" class="profile" />
           </figure>
-          <p class="column">by <a href="/blog/authors/obulat/">
-  Olga Bulat
+          <p class="column">by <a href="/blog/authors/dhruvi16/">
+  Dhruvi Butti
 </a>
-          on 2020-01-06</p>
+          on 2020-09-02</p>
         </div>
         
           
           <div class="series-header">
             <span>This blog is part of the series:</span>
-            <a href="#series">Outreachy Dec 2019 round: CC License Chooser</a>
+            <a href="#series">Outreachy May 2020 round: CC Open source</a>
           </div>
         
       </div>
     </header>
     <div class="single-post-body content container">
-      <p>Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, <a href="https://opensource.creativecommons.org/blog/authors/akmadian/">Ari Madian</a>, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:</p>
-<ul>
-<li>Improving usability of the Chooser and making it easier for licensors to understand the process of selecting the most appropriate license.</li>
-<li>Setting up and automating internalization.</li>
-<li>Extracting License Chooser as a standalone npm package to make integrating Creative Commons licensing in other websites easier.</li>
-</ul>
-<p>During the first two weeks of my internship I mainly worked on redesigning the license selection process based on the usability testing feedback. We decided to set up license selection as a step-by-step process of answering yes/no questions guiding a novice or somewhat experienced user to the CC license that best suits their needs.</p>
-<hr>
-<h3 id="here-is-the-first-draft:"><strong>Here is the first draft:</strong></h3><p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-1.png" alt="draft-1.png"></p>
-<p><em>Features of this draft that stayed in current version:</em></p>
-<ul>
-<li>A card to show the information about currently selected license is prominent on the page.</li>
-<li>Four yes/no questions that help narrow the license choice.</li>
-</ul>
-<p><em>What was changed in final version:</em></p>
-<ul>
-<li>The openness scale (which is drawn incorrectly, by the way) took up too much space on the first screen, not adding as much to the process.</li>
-<li>Toggles as an answer to yes/no questions are confusing for some users.</li>
-<li>Separate Personalization step was moved together with other steps.</li>
-<li>License attribution information was merged with the selected license card, because the card is supposed to contain all the information about selected license, including author/work url/ source url, if they are available.</li>
-</ul>
-<hr>
-<h3 id="draft-2"><strong>Draft 2</strong></h3><p>As a result of continuous communication with my mentors, I this draft to be discussed at our weekly meeting.</p>
-<p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png" alt="draft-2.png"></p>
-<p><em>Features that stayed in the current version:</em></p>
-<ul>
-<li>Two cards: one for the step-by-step process and the other for presenting license information.</li>
-<li>All the information about selected license in the second card.</li>
-<li>Personalization step as the last and optional step of choosing the license.</li>
-</ul>
-<p><em>Features that were suggested during the meeting:</em></p>
-<ul>
-<li>License selection dropdown with all available licenses on the selected license card. This is for experienced users who know what license they want to choose and only need to add details, or copy the attribution text or html.</li>
-<li>A link to a page with more information on how to use the license when sharing on the selected license card: for users who need help with that.</li>
-</ul>
-<hr>
-<h3 id="currently-final-draft-:"><strong>Currently Final Draft :)</strong></h3><p><img src="/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-3.png" alt="draft-3.png"></p>
-<h4 id="license-chooser-stepper-card"><strong>License Chooser Stepper Card</strong></h4><ul>
-<li>Stepper Card shows five steps to selecting a license, one for each feature of CC licenses and an optional personalization step. The stepper icons show current selection status: selected/unselected features and current feature being displayed. Clicking on an icon opens the corresponding step.</li>
-<li>Each license feature has a yes/no question. A user clicks on a yes or no button to answer, and can immediately see what changed in the license, and the text beneath the buttons shows what current selection of the feature actually means. Default answer for each step besides the first one (attribution - 'BY') is 'no', so if a user simply clicks 'next' on each step, or clicks on the last step icon at the top, they get CC BY 4.0 license.</li>
-</ul>
-<h4 id="selected-license-card"><strong>Selected License Card</strong></h4><ul>
-<li>Current selection dropdown is for experienced users who can quickly select a license that they know they want to use. It also updates when a feature in the license selection process is changed.</li>
-<li>Selected license information displays information about the license and its clauses, as well as its icons. The wording of this part will probably change the most after discussion with the community and legal team.</li>
-<li>Attribution information for the license, with a choice between rich text or html code. These are displayed in tabs to save on space. </li>
-</ul>
-<p>I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.</p>
-<p>Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.</p>
-<p>You can follow my work at <a href="https://github.com/creativecommons/cc-chooser">https://github.com/creativecommons/cc-chooser</a>.</p>
+      <p>In this blog, I will be talking about how I managed to use Vocabulary ( Creative Commons's Design Library ) efficiently in our Open Source website.</p>
+<h3 id="what-is-vocabulary?">What is Vocabulary?</h3><p><a href="https://cc-vocabulary.netlify.app/?path=/story/vocabulary-introduction--page">Vocabulary</a> is a cohesive design system to unite the web-facing Creative Commons. In essence Vocabulary is a component library that uses and extends Bulma CSS library. Vocabulary makes it easier to develop Creative Commons apps while ensuring a consistently familiar experience. This project is still under development.</p>
+<h3 id="why-vocabulary?">Why Vocabulary?</h3><p>Vocabulary is used to describe the overall visual design of our digital products. At first glance, it appears to be: an amalgamation of component designs with a consistent visual aesthetic and brand, typically accompanied by usage guidelines in the form of online documentation. But there is a lot more to it.
+When it comes to a large software community with a huge range of products, certain problems come along. One of those problems is maintaining the level of harmony across all the products of the network. So, there comes a need for a unified visual language that heightens the level of harmony in a digital ecosystem. And in our case, Vocabulary solves this problem.
+This design system is well built and helps us bring the following aspects to the table -</p>
+<ol>
+<li>Recognizability</li>
+<li>Consistency</li>
+<li>Authenticity</li>
+<li>Efficiency</li>
+</ol>
+<p>And many more.</p>
+<h3 id="how-did-i-use-it?-examples">How did I use it? — Examples</h3><p>As I stated before, I have added Vocabulary by updating all the Templates in the CCOS <a href="https://www.getlektor.com/">Lektor</a> project.</p>
+<p>As far as components are concerned, I just had to paste the code snippets given on the Vocabulary’s website with the requires changes -</p>
+<h4 id="integration-of-breadcrumb">Integration of Breadcrumb -</h4><figure style="text-align: center;">
+    <img src="breadcrumb.png" alt="Breadcrumb">
+    <figcaption>Screenshot — <a href="https://cc-vocabulary.netlify.app/?path=/docs/navigation-breadcrumb--default-story">Breadcrumb</a> (Vocabulary)</figcaption>
+</figure><p>The code for integration —</p>
+<pre><code>&lt;!-- Breadcrumb --&gt;
+  {% if this._path !=  '/'%}
+    &lt;div class="breadcrumb-container"&gt;
+      &lt;nav class="container breadcrumb caption bold" aria-label="breadcrumbs"&gt;
+        &lt;ul&gt;
+          {% set crumbs = [] %}
+          {% set current = {'crumb': this} %}
+          &lt;!-- Extracting the slugs of URL --&gt;
+          {% for i in this._path.split("/") %}
+            {% if current.crumb is not none %}
+              {% if crumbs.insert(0, current.crumb._slug) %}{% endif %}
+              {% if current.update({"crumb": current.crumb.parent}) %}{% endif %}
+            {% endif %}
+          {% endfor %}
+          {% for crumb in crumbs %}
+            &lt;!-- Active link --&gt;
+            {% if this._slug == crumb %}
+              &lt;li class="is-active"&gt;&lt;a aria-current="page displayed"&gt;{{ crumb | title | replace('-', ' ') }}&lt;/a&gt;&lt;/li&gt;
+            {% else %}
+              &lt;!-- Forming the URL using extracted slugs --&gt;
+              {% set i = loop.index %}
+              {% set ns = namespace (link = '') %}
+              {% for j in range(i) %}
+                {% set ns.link = ns.link + crumbs[j] + '/' %}
+              {% endfor %}
+              &lt;li&gt;&lt;a class="link" href="{{ ns.link|url }}"&gt;
+              {% if crumb != '' %}
+                {{ crumb | title | replace('-', ' ') }}
+              {% else %}
+                Home
+              {% endif %}
+              &lt;/a&gt;&lt;/li&gt;
+            {% endif %}
+          {% endfor %}
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  {% endif %}
+</code></pre>
+<p>Other than the components, there are other visual elements like typography, colors, spacing, and others that are extensively used in CCOS.</p>
+<p>This is code for the Hero section of the home page.</p>
+<h5 id="the-block-template">The block template -</h5><pre><code>&lt;section class="hero"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="hero-title column is-12 is-paddingless"&gt;
+      &lt;h1&gt;
+        {{ this.title }}
+      &lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class="columns"&gt;
+      &lt;div class="column is-5"&gt;
+        &lt;p class="hero-description"&gt;
+          {{ this.description }}
+        &lt;/p&gt;
+        {{ this.links }}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="level-right hero-image"&gt;
+    &lt;img class="image" src="./github.svg" /&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+<h5 id="the-block-styling">The block styling -</h5><pre><code>// Hero section - Home page
+.hero {
+  @extend .margin-top-large;
+
+  .hero-title {
+    @extend .padding-horizontal-big;
+  }
+
+  .hero-description {
+    @extend .body-bigger;
+    @extend .padding-top-big;
+    @extend .padding-horizontal-big;
+  }
+
+  .hero-links {
+    @extend .margin-vertical-normal;
+    @extend .padding-horizontal-big;
+
+    .button {
+      @extend .margin-top-normal;
+      text-decoration: none;
+
+      .icon {
+        @extend .margin-right-small;
+        @extend .padding-vertical-smaller;
+      }
+    }
+  }
+
+  .hero-image {
+    @include from($fullhd) {
+      margin-top: -20rem;
+      .image {
+        width: 50%;
+      }
+    }
+    @include until($fullhd) {
+      .image {
+        width: 100%;
+      }
+    }
+  }
+}
+</code></pre>
+<figure>
+    <img src="output.png" alt="Output">
+    <figcaption>Output</figcaption>
+</figure><h3 id="improvements-in-the-lektor-project">Improvements in the Lektor project -</h3><p>I tried to write the perfect code that is cleaner and readable. I would try to demonstrate my effort using the home page code where I used <a href="https://www.getlektor.com/docs/models/flow/">Lektor Flowblocks</a>. The new homepage design have four sections where each section communicated something and I realized they were all independent and building the whole page through one single template would become a bit messy and hard to handle. So I did some research and found a way where I could build sub-templates and use them all to develop a single page and Lektor’s flowblocks allowed me to do so. Here is one of the flowblock and if you want to check out the whole working you can go to — <a href="https://github.com/creativecommons/creativecommons.github.io-source">CCOS Repository</a>.</p>
+<h4 id="recent-blog-post-block">Recent Blog Post block -</h4><h5 id="the-block-template">The block Template -</h5><pre><code>{% from "macros/author_name.html" import render_author_name %}
+
+&lt;section class="recent-posts"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="level"&gt;
+      &lt;h2 class="is-paddingless level-left"&gt;
+        {{ this.title }}
+      &lt;/h2&gt;
+      &lt;span class="level-right"&gt;
+        &lt;a class="posts-link" href="/blog"&gt;See all posts &lt;i class="icon angle-right"&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="columns"&gt;
+      {% for post in site.query('/blog/entries') %}
+        {% if loop.index &lt;= 3 %}
+          {% set author = post.parent.parent.children.get('authors').children.get(post.author) %}
+          &lt;div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger"&gt;
+            &lt;article class="card entry-post horizontal no-border blog-entry"&gt;
+              &lt;header&gt;
+                &lt;figure class="image blog-image"&gt;
+                {% if author.about %}
+                  {% if author.md5_hashed_email %}
+                    &lt;img class="profile" src="https://secure.gravatar.com/avatar/{{ author.md5_hashed_email }}?size=200"
+                    alt="gravatar" /&gt;
+                  {% endif %}
+                {% endif %}
+                &lt;/figure&gt;
+              &lt;/header&gt;
+              &lt;div class="blog-content"&gt;
+                &lt;h4 class="b-header"&gt;&lt;a class="blog-title" href="{{ post|url }}"&gt;{{ post.title }}&lt;/a&gt;&lt;/h4&gt;
+                &lt;span class="blog-author"&gt;by &lt;a class="author-name" href="{{ author|url }}"&gt;{{ render_author_name(author) }}&lt;/a&gt;
+                on {{ post.pub_date|dateformat("YYYY-MM-dd") }}&lt;/span&gt;
+                &lt;div class="excerpt"&gt;
+                  {{ post.body | excerpt | string | striptags() | truncate(100) }}
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/article&gt;
+          &lt;/div&gt;
+        {% endif %}
+      {% endfor %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+<h5 id="the-block-model">The block Model -</h5><pre><code>[block]
+name = Recent Posts
+
+[fields.title]
+label = Title
+type = string
+</code></pre>
+<h5 id="the-block-styling">The block styling -</h5><pre><code>// Recent-posts section - Home page
+.recent-posts {
+  background-color: rgba(4, 166, 53, 0.1);
+
+  .container {
+    @extend .padding-vertical-xl;
+    @extend .padding-horizontal-big;
+
+    .columns {
+      @extend .padding-top-bigger;
+      @extend .padding-bottom-xl;
+    }
+  }
+
+  .blog-title {
+    @extend .has-color-dark-slate-gray;
+  }
+
+  .posts-link {
+    @extend .has-color-forest-green;
+    @extend .body-normal;
+
+    font-weight: bold;
+    line-height: 1.5;
+    text-decoration: none;
+
+    .icon {
+      @extend .has-color-forest-green;
+      @extend .padding-left-small;
+    }
+  }
+}
+</code></pre>
+<figure>
+    <img src="output2.png" alt="Output">
+    <figcaption>Output — Recent blog posts.</figcaption>
+</figure><p>I would also like to point out the amazing Query functionality provided by Lektor where you can access the child pages of the root. Here I am accessing blog posts from our Blog page and limiting the count of posts to three.</p>
+<h3 id="difference-in-experience">Difference in Experience</h3><p>The level of user experience has been significantly elevated due to the use of Vocabulary. I would like to point one of the major experience change here. The major part of the website is guidelines — we have guidelines for contributing, guidelines for how to join a community, guidelines for how to write a blog and many more. The new website has cleaner and readable guideline with a proper hierarchy and every piece of information is made accessible using secondary navigation.</p>
+<h5 id="below-are-the-images-of-some-guidelines-pages-from-new-website.">Below are the images of some guidelines pages from new website.</h5><figure>
+    <img width="300" height="300" src="new1.png" alt="Screenshot">
+    <img width="300" height="300" src="new2.png" alt="Screenshot">
+    <img width="300" height="300" src="new3.png" alt="Screenshot">
+    <figcaption>Screenshots from new website</figcaption>
+</figure><h5 id="below-are-the-images-of-some-guidelines-pages-from-old-website.-you-can-see-the-difference-of-experience-in-both-cases.">Below are the images of some guidelines pages from old website. You can see the difference of experience in both cases.</h5><figure>
+    <img width="400" src="old1.png" alt="Screenshot">
+    <img width="400" src="old2.png" alt="Screenshot">
+    <figcaption>Screenshots from old website</figcaption>
+</figure><h3 id="how-you-can-use-vocabulary-and-also-contribute-to-it?">How you can use Vocabulary and also contribute to it?</h3><p>Vocabulary is very easy to use. It is intuitive, consistent and highly reusable. Vocabulary uses Storybook to present each visual element that makes it very convenient for a user to integrate Vocabulary in their project. The code snippets attached with every element can be copied as it is and can be used. The code snippets above indicate how the library can be used and how easily you can achieve desired web pages. For more details, you can visit <a href="https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-usage--page">usage guidelines</a>.</p>
+<p>Vocabulary is still under development, feedback and bug reports are welcome, fixes and patches even more so. Here is the link to <a href="https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-contribution--page">contribution guidelines</a>.</p>
 
     </div>
     <footer class="single-post-footer container">
@@ -344,35 +523,35 @@
             
               
               
-              <a class="button tag" href=" /blog/categories/outreachy-2019-20/ ">outreachy-2019-20</a>
+              <a class="button tag" href=" /blog/categories/tech/ ">tech</a>
             
               
               
-              <a class="button tag" href=" /blog/categories/cc-chooser/ ">cc-chooser</a>
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
             
           
         </div>
       </div>
       
         <div class="series-posts" id="series">
-          <h5 class="title">Posts in the Outreachy Dec 2019 round: CC License Chooser series</h5>
+          <h5 class="title">Posts in the Outreachy May 2020 round: CC Open source series</h5>
           <ul class="posts">
             
               
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/integration-vocabulary-ccos/">Integration of Vocabulary with CCOS.</a>
+                </li>
+              
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/what-is-up-ccos/">What is up? - CCOS Revamp</a>
+                </li>
+              
+            
+              
                 <li class="has-color-dark-slate-gray">
-                  <i class="icon circle-filled"></i>Improving CC License Chooser Weeks 1-2: Design
-                </li>
-              
-            
-              
-                <li>
-                  <i class="icon circle-filled"></i><a href="/blog/entries/improving-cc-license-chooser-coding/">Improving CC License Chooser: Coding</a>
-                </li>
-              
-            
-              
-                <li>
-                  <i class="icon circle-filled"></i><a href="/blog/entries/improving-cc-license-chooser-outcomes/">Improving CC License Chooser: Outcomes</a>
+                  <i class="icon circle-filled"></i>The specifics - Revamping CCOS
                 </li>
               
             
@@ -382,7 +561,7 @@
       <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/improving-cc-license-chooser-weeks-1-2-design"; this.page.url = "http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/entries/the-specifics-revamping-CCOS"; this.page.url = "http://opensource.creativecommons.org/blog/entries/the-specifics-revamping-CCOS/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//cc-open-source.disqus.com/embed.js';
