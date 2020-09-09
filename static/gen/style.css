@@ -7549,6 +7549,28 @@ pre {
   .all-authors .author .desktop {
     display: none; } }
 
+.code-guidelines .code-guidelines-body .gh-label {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0 1em;
+  border: 1px solid #eeeeee;
+  border-radius: 999em; }
+  .code-guidelines .code-guidelines-body .gh-label.goal {
+    background-color: #ffffff;
+    color: #000000; }
+  .code-guidelines .code-guidelines-body .gh-label.aspect {
+    background-color: #04338c;
+    color: #ffffff; }
+  .code-guidelines .code-guidelines-body .gh-label.skill {
+    background-color: #5ff1f5;
+    color: #000000; }
+  .code-guidelines .code-guidelines-body .gh-label.talk {
+    background-color: #f9bbe5;
+    color: #000000; }
+  .code-guidelines .code-guidelines-body .gh-label.friendliness {
+    background-color: #7f0799;
+    color: #ffffff; }
+
 .project-list .body {
   line-height: 1.8125; }
 

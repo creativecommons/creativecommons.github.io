@@ -1,0 +1,656 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Repository Labels" />
+
+
+<meta property="og:description" content="To facilitate the community in finding ways to contribute that match their experiences and skillsets, we have developed a comprehensive system for labelling issues and PRs. This is an introduction to this standard labelling scheme." />
+
+<meta property="og:url" content="/contributing-code/repo-labels/" />
+<meta property="og:type" content="article" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Repository Labels">
+<meta name="twitter:description" content="To facilitate the community in finding ways to contribute that match their experiences and skillsets, we have developed a comprehensive system for labelling issues and PRs. This is an introduction to this standard labelling scheme.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Repository Labels — Creative Commons on GitHub</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item " href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless  is-active">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Internships<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/internships/">Overview</a>
+              
+                <a class="navbar-item" href="/internships/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/internships/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/internships/intern-guide/">Intern Guide</a>
+              
+                <a class="navbar-item" href="/internships/mentor-guide/">Mentor Guide</a>
+              
+                <a class="navbar-item" href="/internships/history/">History</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              CC Search<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/cc-search/">Overview &amp; Roadmap</a>
+              
+                <a class="navbar-item" href="/cc-search/contribution-guide/">Contribution Guide</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">Archives<i
+                class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-right">
+              
+              <a class="navbar-item" href="/archives/old-tech-blog">CC Tech Blog (2007-2014)</a>
+              
+              <a class="navbar-item" href="https://lists.ibiblio.org/pipermail/cc-devel/">cc-devel mailing list (2005-2015)</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/contributing-code/">
+              
+                Contributing Code
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Repo Labels</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="code-guidelines">
+    <header class="header">
+      <div class="container is-paddingless">
+        <h1>Repository Labels</h1>
+        <div class="description column is-9 is-paddingless">
+          <p>To facilitate the community in finding ways to contribute that match their experiences and skillsets, we have developed a comprehensive system for labelling issues and PRs. This is an introduction to this standard labelling scheme.</p>
+
+        </div>
+      </div>
+    </header>
+    <div class="container code-guidelines-body">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="row">
+            
+              <aside class="menu sidebar-menu">
+                <ul class="menu-list">
+                  <li>
+                    <a class=" link" href="/contributing-code/">Contribution Guidelines</a>
+                    <ul>
+                      <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>Pull Request Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/github-repo-guidelines/"><i class="icon circle-filled"></i>Github Repo Guidelines</a></li>
+                      <li><a class=" is-active  link" href="/contributing-code/repo-labels/"><i class="icon circle-filled"></i>Repository Labels</a></li>
+                    </ul>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/projects/">Project List</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/usability/">Usability</a>
+                  </li>
+                </ul>
+              </aside>
+            
+          </div>
+          <div class="row padding-bottom-normal sticky-top">
+            <h4 class="b-header">On this page</h4>
+            <aside class="menu table-of-contents">
+              <ul class="menu-list">
+                
+                  <li>
+                    <a class="link" href="#list-of-labels">List of labels</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#priority"><i class="icon circle-filled"></i>*Priority</a></li>
+                        
+                          <li><a class="link" href="#status"><i class="icon circle-filled"></i>*Status</a></li>
+                        
+                          <li><a class="link" href="#goal"><i class="icon circle-filled"></i>*Goal</a></li>
+                        
+                          <li><a class="link" href="#aspect"><i class="icon circle-filled"></i>*Aspect</a></li>
+                        
+                          <li><a class="link" href="#skill"><i class="icon circle-filled"></i>Skill</a></li>
+                        
+                          <li><a class="link" href="#talk"><i class="icon circle-filled"></i>Talk</a></li>
+                        
+                          <li><a class="link" href="#friendliness"><i class="icon circle-filled"></i>Friendliness</a></li>
+                        
+                          <li><a class="link" href="#miscellaneous"><i class="icon circle-filled"></i>Miscellaneous</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#usage-rules">Usage rules</a>
+                    
+                  </li>
+                
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div class="column content">
+          <p>Labels consist of three fields, viz. name, description and color. Label names 
+should have a consistent format to aid both filtering within the github UI as 
+well as scanning visually through the list. The following format is the most 
+suited to this task (where <code>⎵</code> denotes a single space):</p>
+<pre><code>&lt;emoji&gt;⎵&lt;category&gt;:⎵&lt;name&gt;
+</code></pre>
+<p>Even label names with more than two words in the text should be separated by a
+single space <code>⎵</code>.</p>
+<h2 id="list-of-labels">List of labels</h2><p>An issue has many different attributes:</p>
+<ul>
+<li>Priority</li>
+<li>Status</li>
+<li>Goal</li>
+<li>Aspect</li>
+<li>Skill</li>
+<li>Talk</li>
+<li>Friendliness</li>
+</ul>
+<h3 id="priority">*Priority</h3><div class="table-container">
+  <table class="table is-bordered" style="table-layout: fixed;">
+  <thead>
+    <tr>
+      <td colspan="5"><strong>Priority color chart</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="has-text-white" style="background-color: #b60205;">Unfavourable</td>
+      <td class="has-text-black" style="background-color: #ff9f1c;">Negative</td>
+      <td class="has-text-black" style="background-color: #ffcc00;">Neutral</td>
+      <td class="has-text-black" style="background-color: #cfda2c;">Positive</td>
+      <td class="has-text-white" style="background-color: #008672;">Favourable</td>
+    </tr>
+    <tr>
+      <td class="has-text-white" style="background-color: #b60205;">#b60205</td>
+      <td class="has-text-black" style="background-color: #ff9f1c;">#ff9f1c</td>
+      <td class="has-text-black" style="background-color: #ffcc00;">#ffcc00</td>
+      <td class="has-text-black" style="background-color: #cfda2c;">#cfda2c</td>
+      <td class="has-text-white" style="background-color: #008672;">#008672</td>
+    </tr>
+  </tbody>
+  </table>
+</div><p>The priority of an issue is based on its impact, derived from a combination of 
+urgency and importance. This determines the importance of the issue when sprint 
+planning or deciding which issues to tackle next.</p>
+<ul>
+<li><span class="gh-label has-text-white" style="background-color: #b60205;">
+  🟥 priority: critical
+</span><ul>
+<li><strong>Description:</strong> Must be fixed ASAP</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-black" style="background-color: #ff9f1c;">
+  🟧 priority: high
+</span><ul>
+<li><strong>Description:</strong> Stalls work on the project or its dependents</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-black" style="background-color: #ffcc00;">
+  🟨 priority: medium
+</span><ul>
+<li><strong>Description:</strong> Not blocking but should be fixed soon</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-black" style="background-color: #cfda2c;">
+  🟩 priority: low
+</span><ul>
+<li><strong>Description:</strong> Low priority and doesn't need to be rushed</li>
+</ul>
+</li>
+</ul>
+<h3 id="status">*Status</h3><div class="table-container">
+  <table class="table is-bordered" style="table-layout: fixed;">
+  <thead>
+    <tr>
+      <td colspan="5"><strong>Status color chart</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="has-text-black" style="background-color: #eeeeee;">Lighter</td>
+      <td class="has-text-black" style="background-color: #cccccc;">Light</td>
+      <td class="has-text-black" style="background-color: #999999;">Medium</td>
+      <td class="has-text-white" style="background-color: #666666;">Dark</td>
+      <td class="has-text-white" style="background-color: #333333;">Darker</td>
+    </tr>
+    <tr>
+      <td class="has-text-black" style="background-color: #eeeeee;">#eeeeee</td>
+      <td class="has-text-black" style="background-color: #cccccc;">#cccccc</td>
+      <td class="has-text-black" style="background-color: #999999;">#999999</td>
+      <td class="has-text-white" style="background-color: #666666;">#666666</td>
+      <td class="has-text-white" style="background-color: #333333;">#333333</td>
+    </tr>
+  </tbody>
+  </table>
+</div><p>The status of the issue determines whether it is ready for work or not. Issues
+may not be ready to be worked on for a number of reasons and the maintainers
+must keep updating the labels as the situation evolves.</p>
+<p>An issue, at the time of closing can have either the 
+<span class="gh-label has-text-black" style="background-color: #cccccc;">
+  🏁 status: ready for dev
+</span>
+or the 
+<span class="gh-label has-text-black" style="background-color: #eeeeee;">
+  ⛔️ status: discarded
+</span>
+label based on whether it was closed with or without resolution, respectively.</p>
+<ul>
+<li><span class="gh-label has-text-black" style="background-color: #cccccc;">
+  🏁 status: ready for dev
+</span><ul>
+<li><strong>Description:</strong> Ready for work</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-black" style="background-color: #999999;">
+  🚧 status: blocked
+</span><ul>
+<li><strong>Description:</strong> Blocked &amp; therefore, not ready for work</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-white" style="background-color: #666666;">
+  🧹 status: ticket work required
+</span><ul>
+<li><strong>Description:</strong> Needs more details before it can be worked on</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-black" style="background-color: #eeeeee;">
+  ⛔️ status: discarded
+</span><ul>
+<li><strong>Description:</strong> Will not be worked on</li>
+</ul>
+</li>
+<li><span class="gh-label has-text-white" style="background-color: #333333;">
+  🚦 status: awaiting triage
+</span><ul>
+<li><strong>Description:</strong> Has not been triaged &amp; therefore, not ready for work</li>
+</ul>
+</li>
+</ul>
+<h3 id="goal">*Goal</h3><p>The goal of an issue is the end-result achieved when the issue is resolved. This
+represents the impact of the issue on the scope of the software.</p>
+<ul>
+<li><span class="gh-label goal">⭐ goal: addition</span><ul>
+<li><strong>Description:</strong> Addition of new feature</li>
+</ul>
+</li>
+<li><span class="gh-label goal">✨ goal: improvement</span><ul>
+<li><strong>Description:</strong> Improvement to an existing feature</li>
+</ul>
+</li>
+<li><span class="gh-label goal">🛠 goal: fix</span><ul>
+<li><strong>Description:</strong> Bug fix</li>
+</ul>
+</li>
+</ul>
+<h3 id="aspect">*Aspect</h3><p>The aspect of an issue is the side of the project that the issue deals with. A
+single codebase can have multiple aspects to it and knowing which ones will be
+touched helps contributors find relevant issues.</p>
+<ul>
+<li><span class="gh-label aspect">📄 aspect: text</span><ul>
+<li><strong>Description:</strong> Concerns the textual material in the repository</li>
+</ul>
+</li>
+<li><span class="gh-label aspect">💻 aspect: code</span><ul>
+<li><strong>Description:</strong> Concerns the software code in the repository</li>
+</ul>
+</li>
+<li><span class="gh-label aspect">🕹 aspect: interface</span><ul>
+<li><strong>Description:</strong> Concerns end-users' experience with the software</li>
+</ul>
+</li>
+<li><span class="gh-label aspect">🤖 aspect: dx</span><ul>
+<li><strong>Description:</strong> Concerns developers' experience with the codebase</li>
+</ul>
+</li>
+</ul>
+<h3 id="skill">Skill</h3><p>The technical skills a person is required to possess to work on the issue. 
+Skills are a special type of label that vary by repository. Issues may not have
+a skill tag if no special skills are required.</p>
+<ul>
+<li><span class="gh-label skill">💪 skill: &lt;skill name&gt;</span><ul>
+<li><strong>Description:</strong> Requires proficiency in '&lt;skill name&gt;'</li>
+</ul>
+</li>
+</ul>
+<h3 id="talk">Talk</h3><p>Issues with interaction labels do not entail any work to be done on the
+repository. They are for Q&amp;A, RFCs and any other form of discussions. While both
+of these may appear to be too similar, triage permissions are granted to
+collaborators who might not have the answers to questions but by labelling them
+as such, they might draw a faster response from an experienced contributor who
+does. <em>In the future this category might be rendered redundant by GitHub 
+Discussions and will be removed.</em></p>
+<ul>
+<li><span class="gh-label talk">❓ talk: question</span><ul>
+<li><strong>Description:</strong> Can be resolved with an answer</li>
+</ul>
+</li>
+<li><span class="gh-label talk">💬 talk: discussion</span><ul>
+<li><strong>Description:</strong> Open for discussions and feedback</li>
+</ul>
+</li>
+</ul>
+<h3 id="friendliness">Friendliness</h3><p>The level of friendliness a particular issue is the valency of the issue 
+towards contributions from the community. Some issues provide a great 
+introduction while others require a little more familiarity with the codebase.
+<em>These issues do not have the category prefix as two of them are special labels
+recognized by GitHub. The special ones don't have emojis either.</em></p>
+<ul>
+<li><span class="gh-label friendliness">good first issue</span><ul>
+<li><strong>Description:</strong> New-contributor friendly</li>
+</ul>
+</li>
+<li><span class="gh-label friendliness">help wanted</span><ul>
+<li><strong>Description:</strong> Open to participation from the community</li>
+</ul>
+</li>
+<li><span class="gh-label friendliness">🔒 staff only</span><ul>
+<li><strong>Description:</strong> Restricted to CC staff members</li>
+</ul>
+</li>
+</ul>
+<h3 id="miscellaneous">Miscellaneous</h3><ul>
+<li><span class="gh-label has-background-black has-text-white">
+  🤯 ノಠ益ಠノ彡┻━┻
+</span><ul>
+<li><strong>Description:</strong> Aaargh!</li>
+</ul>
+</li>
+</ul>
+<h2 id="usage-rules">Usage rules</h2><p>In the above categories, some are marked with an <code>*</code> sign. Those are mandatory
+categories and every issue is required to have at least one label from those
+categories.</p>
+<p>Only issues labelled with 
+<span class="gh-label has-text-white" style="background-color: #333333;">
+  🚦 status: awaiting triage
+</span>
+are allowed to not have all mandatory labels (seeing as they have not been
+triaged yet).</p>
+<p>Categories not marked with an <code>*</code> are optional and it is upto the discretion of
+the maintainers to have apply labels from those categories to issues.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/" class="menu-item">Contribution Guidelines</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="http://creativecommons.org/donate">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

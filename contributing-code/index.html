@@ -78,11 +78,13 @@
               
                 <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
               
-                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
-              
                 <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
               
                 <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
               
                 <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
               
@@ -222,19 +224,16 @@
               <aside class="menu sidebar-menu">
                 <ul class="menu-list">
                   <li>
-                    <a class=" link" href="/contributing-code/projects/">Project List</a>
-                  </li>
-                  <hr class="divider">
-                  <li>
                     <a class=" is-active  link" href="/contributing-code/">Contribution Guidelines</a>
                     <ul>
-                      <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>PR Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>Pull Request Guidelines</a></li>
                       <li><a class=" link" href="/contributing-code/github-repo-guidelines/"><i class="icon circle-filled"></i>Github Repo Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/repo-labels/"><i class="icon circle-filled"></i>Repository Labels</a></li>
                     </ul>
                   </li>
                   <hr class="divider">
                   <li>
-                    <a class="link" href="/contributing-code/cc-search/">CC Search</a>
+                    <a class=" link" href="/contributing-code/projects/">Project List</a>
                   </li>
                   <hr class="divider">
                   <li>
@@ -270,38 +269,52 @@
         </div>
         <div class="column content">
           <h2 id="finding-an-issue">Finding an issue</h2><p>Here's a list of <a href="/projects/">all our current projects</a>. We use GitHub issues associated with each project to track the work associated with that project. That's where you can find things to work on.</p>
-<p>We make extensive use of issue labels to desginate the status of various issues. We have a standard set of labels across all projects, <a href="https://github.com/creativecommons/ccos-scripts/blob/master/normalize_repos/labels.py">documented here</a>. Here are some of the ones that are most relevant to finding a good issue to work on:</p>
+<p>We make extensive use of issue labels to designate the priority, status and beginner-friendliness of various issues. We have a standard set of labels across all projects, <a href="/contributing-code/repo-labels/">documented here</a>. Here are some of the ones that are most relevant to finding a good issue to work on:</p>
 <ul>
-<li><strong>Issues tagged <code>help wanted</code> or <code>good first issue</code></strong> are available for community contribution**<ul>
-<li>These issues are available for community contribution and you do not need our permission to work on one of these.</li>
+<li><strong>Issues available for community contribution:</strong><ul>
+<li>The following tags mark issues that are open for community contribution:<ul>
+<li><code>help wanted</code>: Open to participation from the community but not necessarily beginner-friendly</li>
+<li><code>good first issue</code>: Open to participation from the community and friendly towards new contributors</li>
+</ul>
+</li>
+<li>You do not need our permission to work on one of these issues.</li>
 <li>You may work on an issue labeled <code>good first issue</code> even if it's not your first issue.</li>
-<li>Check the issue comments/labels to see whether someone else has indicated that they are working on it. If someone is already working on it and there has been activity within the last 7 days, you may want to find a different issue to work on.</li>
 </ul>
 </li>
-<li><strong>Issues tagged with one of these labels: <code>blocked</code>, <code>not ready for work</code>, <code>ticket work required</code>, <code>CC staff only</code> are not available to the community. Do not work on these.</strong><ul>
-<li>Issues tagged <code>blocked</code> are blocked by other work that needs to be done first.</li>
-<li>Issues tagged <code>not ready for work</code> or <code>ticket work required</code> need additional work done on the issue before they can be opened to community contributors.</li>
-<li>Issues tagged <code>CC staff only</code> are not suitable for community contribution, usually because it requires infrastructure access or institutional knowledge that would be impractical to provide to the community.</li>
+<li><strong>Issues not available for community contribution:</strong><ul>
+<li>The following tags mark issues that are <em>not</em> open for community contribution:<ul>
+<li><code>🔒 staff only</code>: Requires infrastructure access or institutional knowledge that would be impractical to provide to the community</li>
 </ul>
 </li>
-<li><strong>Issues without any of the above labels <em>may</em> be open for contribution.</strong><ul>
-<li>Please add a comment to ask whether the issue is available before starting work.</li>
+<li>Do not work on these.</li>
+</ul>
+</li>
+<li><strong>Issues not ready for work:</strong><ul>
+<li>The following tags mark issues that are <em>not</em> open for community contribution:<ul>
+<li><code>🚧 blocked</code>: Blocked by other work that needs to be done first</li>
+<li><code>🧹 ticket work required</code>: Needs additional work before it is ready to be taken up</li>
+<li><code>🚦 awaiting triage</code>: Has not been triaged by a maintainer</li>
+</ul>
+</li>
+<li>Do not work on these.</li>
+</ul>
+</li>
+<li><strong>Issues without any of the above labels:</strong><ul>
+<li>These issues <em>may</em> (or may not) be open for contribution.</li>
+<li>Please add a comment asking one of the maintainers to triage the issue and label it as appropriate.</li>
 </ul>
 </li>
 </ul>
 <p>Some helpful saved searches on GitHub than can assist with finding an issue:</p>
 <ul>
-<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">issues labeled "good first issue"</a></li>
-<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Aissue+is%3Aopen+label%3A%22help+wanted%22">issues labeled "help wanted"</a></li>
-<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+-label%3A%22in+progress%22">issues labeled "help wanted", and not labeled as "in progress"</a></li>
-<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Apr+is%3Aopen+label%3A%22help+wanted%22">incomplete pull requests labeled "help wanted"</a></li>
+<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+-linked%3Apr">issues labeled "good first issue"</a></li>
+<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+-linked%3Apr">issues labeled "help wanted"</a></li>
+<li><a href="https://github.com/search?q=org%3Acreativecommons+is%3Apr+is%3Aopen+label%3A%22help+wanted%22">PRs labeled "help wanted"</a></li>
 </ul>
+<p>Check the issue comments/labels to see whether someone else has indicated that they are working on it. If someone is already working on it and there has been activity within the last 7 days, you may want to find a different issue to work on.</p>
 <h2 id="contribution-process">Contribution process</h2><p>Once you've found an issue you'd like to work on, please follow these steps to make your contribution:</p>
 <ol>
-<li>Comment on it and say you're working on that issue. This is to avoid conflicts with others also working on the issue.<ul>
-<li>A project maintainer may mark the issue with an <code>in progress</code> label at this point, but we don't always get around to that.</li>
-</ul>
-</li>
+<li>Comment on it and say you're working on that issue. This is to avoid conflicts with others also working on the issue.</li>
 <li>Write your code and submit your pull request. Be sure to read and follow our <strong><a href="/contributing-code/pr-guidelines/">pull request guidelines</a></strong>!</li>
 <li>Wait for code review and address any issues raised as soon as you can.</li>
 </ol>
