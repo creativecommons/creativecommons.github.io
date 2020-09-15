@@ -83,7 +83,8 @@ th {
 .has-color-orange {
   color: #fb7729; }
 
-.has-background-gold, .project-ideas .header .container .filter-labels .btn-dark, .project-ideas .header .container .filter-labels :hover {
+.has-background-gold, .project-ideas .header .container .filter-labels .btn-dark,
+.project-ideas .header .container .filter-labels :hover {
   background-color: #efbe00; }
 
 .has-text-gold,
@@ -96,12 +97,12 @@ th {
 .has-text-forest-green, .card.entry-post.project-index .card-content .site-link,
 .has-color-forest-green,
 .card.entry-post.project-index .card-content .site-link .icon,
-.breadcrumb-container .breadcrumb .link,
 .get-involved .get-involved-links .list .link-heading :hover,
 .recent-posts .posts-link,
 .recent-posts .posts-link .icon,
 .featured-projects .project-page-link,
-.code-guidelines .code-guidelines-body .link {
+.code-guidelines .code-guidelines-body .link,
+.breadcrumb-container .breadcrumb .link {
   color: #04a635; }
 
 .has-background-dark-turquoise {
@@ -122,7 +123,7 @@ th {
 .has-background-dark-slate-gray {
   background-color: #333333; }
 
-.has-text-dark-slate-gray, .header .container .description, .single-post .single-post-body,
+.has-text-dark-slate-gray, .single-post .single-post-body, .header .container .description,
 .has-color-dark-slate-gray,
 .card.blog-entry .blog-content .excerpt,
 .table-of-progress .step .link,
@@ -199,7 +200,7 @@ th {
   line-height: 1.6;
   font-size: 1.43rem; }
 
-.body-big, .content, .single-post .single-post-header .author, .author-posts .header .container .about, .project-list .body, .project-ideas .body {
+.body-big, .single-post .single-post-header .author, .author-posts .header .container .about, .project-list .body, .project-ideas .body, .content {
   line-height: 1.6;
   font-size: 1.12rem; }
 
@@ -960,7 +961,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important; }
 
-.padding-top-normal, .sidebar-menu, .get-involved .get-involved-description, .get-involved .get-involved-links .list, .header .container .description, .blog-page .blog-page-posts, .blog-page .blog-page-posts .pagination-wrapper, .project-ideas .header .container .project-ideas {
+.padding-top-normal, .sidebar-menu, .get-involved .get-involved-description, .get-involved .get-involved-links .list, .blog-page .blog-page-posts, .blog-page .blog-page-posts .pagination-wrapper, .project-ideas .header .container .project-ideas, .header .container .description {
   padding-top: 1rem !important; }
 
 .padding-right-normal {
@@ -986,13 +987,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .padding-right-big, .project-ideas .header .container .project-ideas .column {
   padding-right: 1.5rem !important; }
 
-.padding-bottom-big, .sidebar-menu, .all-series .series-list .series-link, .cc-search-guide .body .content h5, .project-ideas .header .container .project-ideas .column {
+.padding-bottom-big, .sidebar-menu, .all-series .series-list .series-link, .project-ideas .header .container .project-ideas .column, .cc-search-guide .body .content h5 {
   padding-bottom: 1.5rem !important; }
 
 .padding-left-big {
   padding-left: 1.5rem !important; }
 
-.padding-horizontal-big, .sidebar-menu .menu-list .link, .breadcrumb-container .breadcrumb, .hero .hero-title, .hero .hero-description, .hero .hero-links, .get-involved .container, .recent-posts .container, .featured-projects .container, .blog-entries .blog-entry, .header .container, .single-post .single-post-header .series-header, .all-series .series-list, .all-categories .categories-list, .all-authors .authors-list .container, .code-guidelines .code-guidelines-body, .project-list .body, .cc-search-guide .body, .project-ideas .body, .cc-search-roadmap .body {
+.padding-horizontal-big, .sidebar-menu .menu-list .link, .hero .hero-title, .hero .hero-description, .hero .hero-links, .get-involved .container, .recent-posts .container, .featured-projects .container, .blog-entries .blog-entry, .single-post .single-post-header .series-header, .all-series .series-list, .all-categories .categories-list, .all-authors .authors-list .container, .code-guidelines .code-guidelines-body, .project-list .body, .project-ideas .body, .cc-search-guide .body, .cc-search-roadmap .body, .breadcrumb-container .breadcrumb, .header .container {
   padding-left: 1.5rem !important;
   padding-right: 1.5rem !important; }
 
@@ -1060,13 +1061,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important; }
 
-.padding-top-xl, .get-involved .get-involved-links, .author-posts .posts, .all-series .series-list, .all-categories .categories-list, .code-guidelines .code-guidelines-body .content, .cc-search-guide .body, .project-ideas .header .container .filter-labels, .cc-search-roadmap .body {
+.padding-top-xl, .get-involved .get-involved-links, .author-posts .posts, .all-series .series-list, .all-categories .categories-list, .code-guidelines .code-guidelines-body .content, .project-ideas .header .container .filter-labels, .cc-search-guide .body, .cc-search-roadmap .body {
   padding-top: 4rem !important; }
 
 .padding-right-xl {
   padding-right: 4rem !important; }
 
-.padding-bottom-xl, .recent-posts .container .columns, .header .container, .project-ideas .body .project-idea {
+.padding-bottom-xl, .recent-posts .container .columns, .project-ideas .body .project-idea, .header .container {
   padding-bottom: 4rem !important; }
 
 .padding-left-xl {
@@ -1086,7 +1087,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .padding-right-xxl {
   padding-right: 6rem !important; }
 
-.padding-bottom-xxl, .blog-page .blog-page-posts .pagination-wrapper, .single-post .comments, .author-posts .posts, .all-series .series-list, .all-categories .categories-list, .all-authors .authors-list, .code-guidelines .code-guidelines-body .content, .project-list .body, .cc-search-guide .body, .project-ideas .body, .cc-search-roadmap .body {
+.padding-bottom-xxl, .blog-page .blog-page-posts .pagination-wrapper, .single-post .comments, .author-posts .posts, .all-series .series-list, .all-categories .categories-list, .all-authors .authors-list, .code-guidelines .code-guidelines-body .content, .project-list .body, .project-ideas .body, .cc-search-guide .body, .cc-search-roadmap .body {
   padding-bottom: 6rem !important; }
 
 .padding-left-xxl {
@@ -5108,7 +5109,8 @@ table th {
       color: white; }
       .card.entry-post.link a.has-background-orange .card-content .card-title {
         color: white; }
-    .card.entry-post.link a.has-background-gold, .card.entry-post.link .project-ideas .header .container .filter-labels a.btn-dark, .project-ideas .header .container .filter-labels .card.entry-post.link a.btn-dark, .card.entry-post.link .project-ideas .header .container .filter-labels a:hover, .project-ideas .header .container .filter-labels .card.entry-post.link a:hover {
+    .card.entry-post.link a.has-background-gold, .card.entry-post.link .project-ideas .header .container .filter-labels a.btn-dark, .project-ideas .header .container .filter-labels .card.entry-post.link a.btn-dark,
+    .card.entry-post.link .project-ideas .header .container .filter-labels a:hover, .project-ideas .header .container .filter-labels .card.entry-post.link a:hover {
       color: black; }
     .card.entry-post.link a.has-background-forest-green {
       color: white; }
@@ -5150,7 +5152,8 @@ table th {
         background-color: #f17e5e !important; }
       .card.entry-post.link a:hover.has-background-orange {
         background-color: #fc975b !important; }
-      .card.entry-post.link a:hover.has-background-gold, .card.entry-post.link .project-ideas .header .container .filter-labels a:hover, .project-ideas .header .container .filter-labels .card.entry-post.link a:hover {
+      .card.entry-post.link a:hover.has-background-gold,
+      .card.entry-post.link .project-ideas .header .container .filter-labels a:hover, .project-ideas .header .container .filter-labels .card.entry-post.link a:hover {
         background-color: #ffd223 !important; }
       .card.entry-post.link a:hover.has-background-forest-green {
         background-color: #05d845 !important; }
@@ -7397,40 +7400,6 @@ a.navbar-item,
 .content.is-large {
   font-size: 1.43rem; }
 
-a {
-  color: #04a635;
-  text-decoration: none; }
-
-a:hover {
-  color: #04a635; }
-
-code {
-  color: #333333;
-  background-color: whitesmoke;
-  border: 0.0625rem solid #d8d8d8;
-  border-radius: 0.25rem; }
-
-pre {
-  color: #333333;
-  background-color: whitesmoke;
-  border: 0.0625rem solid #d8d8d8;
-  border-radius: 0.25rem; }
-  pre code {
-    border: none; }
-
-.content {
-  line-height: 1.6875; }
-
-.navbar-item.has-dropdown .navbar-dropdown {
-  display: none; }
-
-.navbar-item.has-dropdown.is-active .navbar-dropdown, .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-dropdown {
-  display: block; }
-
-.breadcrumb-container {
-  border-top: 4px solid #04a635;
-  background-color: whitesmoke; }
-
 .hero .hero-links .button {
   text-decoration: none; }
 
@@ -7470,13 +7439,6 @@ pre {
   .blog-entries .column:nth-last-child(-n + 3):nth-child(3n + 1),
   .blog-entries .column:nth-last-child(-n + 3):nth-child(3n + 1) ~ .column {
     border-bottom: none; }
-
-.header {
-  background-color: whitesmoke; }
-  .header .container {
-    word-wrap: break-word; }
-    .header .container .description {
-      line-height: 1.8125; }
 
 @media screen and (min-width: 1024px) {
   .single-post .container {
@@ -7549,35 +7511,11 @@ pre {
   .all-authors .author .desktop {
     display: none; } }
 
-.code-guidelines .code-guidelines-body .gh-label {
-  display: inline-block;
-  font-size: 1rem;
-  padding: 0 1em;
-  border: 1px solid #eeeeee;
-  border-radius: 999em; }
-  .code-guidelines .code-guidelines-body .gh-label.goal {
-    background-color: #ffffff;
-    color: #000000; }
-  .code-guidelines .code-guidelines-body .gh-label.aspect {
-    background-color: #04338c;
-    color: #ffffff; }
-  .code-guidelines .code-guidelines-body .gh-label.skill {
-    background-color: #5ff1f5;
-    color: #000000; }
-  .code-guidelines .code-guidelines-body .gh-label.talk {
-    background-color: #f9bbe5;
-    color: #000000; }
-  .code-guidelines .code-guidelines-body .gh-label.friendliness {
-    background-color: #7f0799;
-    color: #ffffff; }
-
 .project-list .body {
   line-height: 1.8125; }
 
-.cc-search-guide .body .content h4 {
-  color: #b0b0b0; }
-
-.project-ideas .header .container .filter-labels .btn-dark, .project-ideas .header .container .filter-labels :hover {
+.project-ideas .header .container .filter-labels .btn-dark,
+.project-ideas .header .container .filter-labels :hover {
   border: none; }
 
 .project-ideas .header .container .project-ideas .card {
@@ -7589,8 +7527,8 @@ pre {
     border: 0.1875rem solid #767676; }
 
 .project-ideas .body .project-idea .column li:before {
-  content: "\ea02";
-  font-family: "Vocabulary Icons";
+  content: '\ea02';
+  font-family: 'Vocabulary Icons';
   display: inline-block;
   font-size: 0.375rem;
   color: #b0b0b0; }
@@ -7602,6 +7540,50 @@ pre {
 
 .project-ideas .body .back-to-list {
   text-decoration: none; }
+
+.cc-search-guide .body .content h4 {
+  color: #b0b0b0; }
+
+a {
+  color: #04a635;
+  text-decoration: none; }
+
+a:hover {
+  color: #04a635; }
+
+code {
+  color: #333333;
+  background-color: whitesmoke;
+  border: 0.0625rem solid #d8d8d8;
+  border-radius: 0.25rem; }
+
+pre {
+  color: #333333;
+  background-color: whitesmoke;
+  border: 0.0625rem solid #d8d8d8;
+  border-radius: 0.25rem; }
+  pre code {
+    border: none; }
+
+.content {
+  line-height: 1.6875; }
+
+.navbar-item.has-dropdown .navbar-dropdown {
+  display: none; }
+
+.navbar-item.has-dropdown.is-active .navbar-dropdown, .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-dropdown {
+  display: block; }
+
+.breadcrumb-container {
+  border-top: 4px solid #04a635;
+  background-color: whitesmoke; }
+
+.header {
+  background-color: whitesmoke; }
+  .header .container {
+    word-wrap: break-word; }
+    .header .container .description {
+      line-height: 1.8125; }
 
 .sticky-top {
   position: -webkit-sticky;
