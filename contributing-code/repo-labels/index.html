@@ -78,13 +78,15 @@
               
                 <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
               
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
                 <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
               
                 <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
               
                 <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
-              
-                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
               
                 <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
               
@@ -235,16 +237,20 @@
               <aside class="menu sidebar-menu">
                 <ul class="menu-list">
                   <li>
+                    <a class=" link" href="/contributing-code/projects/">Project List</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/issue-finder/">Issue Finder</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
                     <a class=" link" href="/contributing-code/">Contribution Guidelines</a>
                     <ul>
                       <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>Pull Request Guidelines</a></li>
                       <li><a class=" link" href="/contributing-code/github-repo-guidelines/"><i class="icon circle-filled"></i>Github Repo Guidelines</a></li>
                       <li><a class=" is-active  link" href="/contributing-code/repo-labels/"><i class="icon circle-filled"></i>Repository Labels</a></li>
                     </ul>
-                  </li>
-                  <hr class="divider">
-                  <li>
-                    <a class=" link" href="/contributing-code/projects/">Project List</a>
                   </li>
                   <hr class="divider">
                   <li>
@@ -340,25 +346,25 @@ single space <code>⎵</code>.</p>
 urgency and importance. This determines the importance of the issue when sprint 
 planning or deciding which issues to tackle next.</p>
 <ul>
-<li><span class="gh-label has-text-white" style="background-color: #b60205;">
+<li><span class="gh-label priority-unfavourable">
   🟥 priority: critical
 </span><ul>
 <li><strong>Description:</strong> Must be fixed ASAP</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-black" style="background-color: #ff9f1c;">
+<li><span class="gh-label priority-negative">
   🟧 priority: high
 </span><ul>
 <li><strong>Description:</strong> Stalls work on the project or its dependents</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-black" style="background-color: #ffcc00;">
+<li><span class="gh-label priority-neutral">
   🟨 priority: medium
 </span><ul>
 <li><strong>Description:</strong> Not blocking but should be fixed soon</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-black" style="background-color: #cfda2c;">
+<li><span class="gh-label priority-positive">
   🟩 priority: low
 </span><ul>
 <li><strong>Description:</strong> Low priority and doesn't need to be rushed</li>
@@ -393,40 +399,40 @@ planning or deciding which issues to tackle next.</p>
 may not be ready to be worked on for a number of reasons and the maintainers
 must keep updating the labels as the situation evolves.</p>
 <p>An issue, at the time of closing can have either the 
-<span class="gh-label has-text-black" style="background-color: #cccccc;">
+<span class="gh-label status-light">
   🏁 status: ready for dev
 </span>
 or the 
-<span class="gh-label has-text-black" style="background-color: #eeeeee;">
+<span class="gh-label status-lighter">
   ⛔️ status: discarded
 </span>
 label based on whether it was closed with or without resolution, respectively.</p>
 <ul>
-<li><span class="gh-label has-text-black" style="background-color: #cccccc;">
+<li><span class="gh-label status-light">
   🏁 status: ready for dev
 </span><ul>
 <li><strong>Description:</strong> Ready for work</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-black" style="background-color: #999999;">
+<li><span class="gh-label status-neutral">
   🚧 status: blocked
 </span><ul>
 <li><strong>Description:</strong> Blocked &amp; therefore, not ready for work</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-white" style="background-color: #666666;">
+<li><span class="gh-label status-dark">
   🧹 status: ticket work required
 </span><ul>
 <li><strong>Description:</strong> Needs more details before it can be worked on</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-black" style="background-color: #eeeeee;">
+<li><span class="gh-label status-lighter">
   ⛔️ status: discarded
 </span><ul>
 <li><strong>Description:</strong> Will not be worked on</li>
 </ul>
 </li>
-<li><span class="gh-label has-text-white" style="background-color: #333333;">
+<li><span class="gh-label status-darker">
   🚦 status: awaiting triage
 </span><ul>
 <li><strong>Description:</strong> Has not been triaged &amp; therefore, not ready for work</li>
