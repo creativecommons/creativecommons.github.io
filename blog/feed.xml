@@ -2,13 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-09-02T00:00:00Z</updated>
+  <updated>2020-09-25T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/add-query-using-curl-command-and-provide-response-samples/">
+    <title type="text">Add Query Using curl Command and Provide Response Samples</title>
+    <id>urn:uuid:2841326a-a1a6-3593-8236-10fc75b59aa0</id>
+    <updated>2020-09-25T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/add-query-using-curl-command-and-provide-response-samples/" />
+    <author>
+      <name>ariessa</name>
+    </author>
+    <content type="html">&lt;p&gt;First of all, I’m very thankful to get selected as a Google Season of Docs participant under Creative Commons. My project name is Improve CC Catalog API Usage Guide. The project aims to revamp the existing CC Catalog API documentation to include more narrative elements and increase user friendliness. As the focal point of this project will potentially be delivered before the end of the GSOD period, this project will also improve the CC Catalog API repo documentation for potential contributors. This project will also produce guidelines for contributing to documentation. For this project, my mentor is Alden Page.&lt;/p&gt;
+&lt;h3 id=&quot;week-1&quot;&gt;Week 1&lt;/h3&gt;&lt;p&gt;So, the first two weeks of Google Season of Docs have passed. For the first week, I added examples to perform the query using curl command. I hit some problem with a Forbidden error. Turns out my access key got expired. My problem was solved after obtaining a new access key.&lt;/p&gt;
+&lt;h3 id=&quot;week-2&quot;&gt;Week 2&lt;/h3&gt;&lt;p&gt;For the second week, I started to write response samples. It was tough as I have a hard time understanding &lt;a href=&quot;https://github.com/axnsan12/drf-yasg&quot;&gt;drf-yasg&lt;/a&gt;, which is an automatic Swagger generator. It can produce Swagger / OpenAPI 2.0 specifications from a Django Rest Framework API. I tried to find as many examples as I could to increase my understanding. Funny, but it took me awhile to realise that drf-yasg is not made up of random letters. The DRF part stands for Django Rest Framework while YASG stands for Yet Another Swagger Generator.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;That’s all!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/the-specifics-revamping-CCOS/">
     <title type="text">The specifics - Revamping CCOS</title>
     <id>urn:uuid:013d291c-a7ee-3a05-8aef-87f357322155</id>
@@ -3459,30 +3474,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;Before we get into what I've been doing, I wanted to quickly explain why I think this is such a cool project - maybe you'll think it's cool too and want to collaborate as well at some point :) See, the better this toolkit is, the more we increase our chances of having really great, user-friendly implementations in partner platforms. Providing a helpful toolkit is one of the ways we can guide users towards finding better information, understanding licenses, and making better use of content -- not to mention that getting this right ensures we reach a ton of people.&lt;/p&gt;
 &lt;p&gt;So in order to start, we began by taking a step back and  studying in detail how platforms are addressing licenses today. These first weeks I went through a lot of user flows, seeing what works, and what were possible points to address and improve. The greatest challenge so far was trying to break down what were good UX/UI practices that could benefit any platform -- regardless of the type of content or current layout. Once I analyzed the material through this point of view, it was easier to filter the kind of information that must be addressed in our new version of the toolkit. This first study also gave me a lot of material to begin thinking about our next step: user research. It's important to find out how much of this process is intuitive to users and what flies under the radar -- having more answers is crucial so that we can be assertive when making suggestions.&lt;/p&gt;
 &lt;p&gt;I'll keep checking in every two weeks with updates on how this project is going. Trust me, there's still a lot of really exciting tasks to be done in the following months :)&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/aws_grant/">
-    <title type="text">Creative Commons Awarded AWS Imagine Grant</title>
-    <id>urn:uuid:4d147a26-5b4d-3f51-a551-0df926143964</id>
-    <updated>2019-12-12T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/aws_grant/" />
-    <author>
-      <name>aldenpage</name>
-    </author>
-    <content type="html">&lt;p&gt;Creative Commons was recently awarded a $125,000 AWS Imagine grant, which will cover infrastructure costs associated with some of the key features we intend to add to CC Search in 2020. In particular, some of the key outcomes we hope to have achieved at the end of the year are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Machine-generated tags using cutting edge computer vision technology produced by Amazon Rekognition. In addition to surfacing metadata-sparse images in our catalog, we may be able to offer features like filtering by artistic medium (painting, photo, pencil sketch, etc).&lt;/li&gt;
-&lt;li&gt;Produce CC-hosted thumbnails for every image instead of relying on third-party images, which are often suffer from unreliable availability, are resistant to embedding, or are otherwise too low quality for our purposes.&lt;/li&gt;
-&lt;li&gt;Acquire knowledge of other features of images, such as their resolution or filesize. Since we often scrape links to images without any further processing, we rely on the data upstream providers give us, which is often missing this information.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Because cutting-edge computer vision typically requires specialized hardware and expertise, outsourcing this task to AWS ends up being economical in comparison to implementing it ourselves. Nonetheless, due to the volume of images we need to classify, this will take up a significant amount of the grant budget; we intend to hand-pick which data sources get tagged in order to make the best use of the resources available to us.&lt;/p&gt;
-&lt;p&gt;When we’re discussing computer vision, generating thumbnails and collecting resolution sounds  comparatively mundane, but it is actually a significant technical challenge that will require a serious investment in infrastructure as well. For one thing, in order to feed images to Rekognition, we need to have a copy of the image in the first place, which you may be surprised to find that we currently do not! All of our content is hosted by the original third party sources and embedded in the search results page. Sometimes, we will sneakily proxy images through our own infrastructure (in cases where the source does not offer HTTPS or an appropriately sized thumbnail), but in most instances, we have to place complete trust in what the source makes available to us. This has lead to problems with availability. Nobody likes it when the images in their search results are inexplicably broken because a third-party datacenter is having issues. Using the funds from the grant, we will at the very least be able to generate thumbnails just before they are served to the user, and possibly even bulk thumbnail our catalog of 325 million images. That’s a huge task - there may very well be petabytes of image data to scrape.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;In order to thumbnail and label our entire catalog, we are going to need to build some additional infrastructure. For the thumbnailing component, we intend to use Scrapy Cluster (composed of an MSK queue, an Elasticache instance, some utility EC2 instances for controlling the cluster and communicating between components, and a large cluster of EC2 instances running web scrapers) to build a distributed system for rapidly downloading and resizing images. A controller instance will feed image URLs into the job queue. Once the destination image URLs have been fed to the cluster, Scrapy Cluster dispatches the URLs to a scalable group of crawler bots, which fetch the image, collect some metadata (such as dimensions), resize the images, and then upload the thumbnails to S3 while pushing the new image metadata back to our image database on RDS. We will then be able to start serving up the thumbnails to our end users. While we initially plan to only use this cluster for producing thumbnails, we expect it could be valuable for discovering and indexing additional CC licensed content in the future. See below for a visualization of the distributed scraping and thumbnailing system.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Scraping and thumbnailing system:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/aws_grant/scraping_cluster.png&quot; alt=&quot;Image scraping and thumbnailing system&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Image recognition pipeline:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/aws_grant/object_recognition.jpg&quot; alt=&quot;Object recognition pipeline&quot;&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
