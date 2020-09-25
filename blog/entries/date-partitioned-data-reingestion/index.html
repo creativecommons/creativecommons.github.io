@@ -280,7 +280,7 @@ and data pipelines.</p>
 <p>In this blog post, we will explore the way in which we keep information we
 gather about images up-to-date, using metadata pulled from the Flickr API as an
 example case study.</p>
-<h2 id="apache-airflow-and-the-execution_date-concept">Apache Airflow, and the <code>execution_date</code> concept</h2><p>Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
+<h2 id="apache-airflow-and-the-execution-date-concept">Apache Airflow, and the <code>execution_date</code> concept</h2><p>Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
 defined via python files. The DAG is what defines a given workflow. The nodes
 are pieces of jobs that need to be accomplished, and the directed edges of the
 graph define dependencies between the various pieces.</p>
@@ -290,7 +290,7 @@ expect, <code>execution_date</code> does <em>not</em> mean the date when the wor
 but rather the date 'perspective' from which the workflow is executed.  This
 means one can give a command that instructs Airflow to execute the workflow
 defined by a DAG as if the date were 2019-01-01, regardless of the actual date.</p>
-<h2 id="our-use-of-execution_date">Our Use of <code>execution_date</code></h2><p>Much of the data contained in CC Catalog is pulled from various APIs on the
+<h2 id="our-use-of-execution-date">Our Use of <code>execution_date</code></h2><p>Much of the data contained in CC Catalog is pulled from various APIs on the
 internet, and one strategy we use quite regularly is to make a request of the
 form:</p>
 <p><em>"please give me all the metadata for photos uploaded to Flickr on 2019-01-01"</em>.</p>
@@ -308,7 +308,7 @@ happens on the actual date 2020-02-02 will have <code>execution_date</code> 2020
 default. This matches up naturally with the strategy above, so we have a number
 of workflows that ingest (meta)data into CC Catalog using this default
 <code>execution_date</code> on a daily basis.</p>
-<h2 id="challenge:-data-can-go-stale-over-time">Challenge:  Data can go stale over time</h2><p>There are some problems with the strategy outlined above:</p>
+<h2 id="challenge-data-can-go-stale-over-time">Challenge:  Data can go stale over time</h2><p>There are some problems with the strategy outlined above:</p>
 <ul>
 <li>What if a photo changes upstream?</li>
 <li>What if a photo is deleted upstream?</li>

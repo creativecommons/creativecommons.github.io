@@ -293,7 +293,7 @@ the directed edges of the DAG, the Airflow daemon stores information about the
 dag run in <code>~/airflow/</code>.  The daemon also stores general information about what
 DAGs exist on the system, and all of their current statuses in that directory.
 For more details, please see <a href="https://airflow.apache.org/docs/stable/">the documentation</a></p>
-<h2 id="challenge:-localize-airflow-to-the-project-directory">Challenge:  Localize Airflow to the project directory</h2><p>Even when installed using <code>pip</code> within a <a href="https://github.com/pypa/virtualenv"><code>virtualenv</code></a> environment,
+<h2 id="challenge-localize-airflow-to-the-project-directory">Challenge:  Localize Airflow to the project directory</h2><p>Even when installed using <code>pip</code> within a <a href="https://github.com/pypa/virtualenv"><code>virtualenv</code></a> environment,
 all airflow commands will be run against the default locations in the user's
 home directory. In particular, if you want to test a DAG from your project
 directory, the method given in the <a href="https://airflow.apache.org/docs/stable/tutorial.html#testing">Airflow documentation</a> is to
@@ -335,7 +335,7 @@ These files are:</p>
 <li><code>$AIRFLOW_HOME/unittests.cfg</code></li>
 </ul>
 <p>Add these files to <code>.gitignore</code> or the equivalent.</p>
-<h2 id="smoketesting:-can-the-airflow-daemon-load-the-dags?">Smoketesting:  Can the Airflow daemon load the DAGs?</h2><p>Note that we're using <code>pytest</code> for our unit testing, and so most examples assume
+<h2 id="smoketesting-can-the-airflow-daemon-load-the-dags">Smoketesting:  Can the Airflow daemon load the DAGs?</h2><p>Note that we're using <code>pytest</code> for our unit testing, and so most examples assume
 this.</p>
 <p>The most basic test you'll want is to determine whether your DAGs can load
 without errors. To do this, you can use the following function:</p>
@@ -350,7 +350,7 @@ without errors. To do this, you can use the following function:</p>
 we instruct the Airflow daemon to attempt to load any DAGs defined in the
 <code>common_api_workflows.py</code> file.  We then check to make sure loading the DAGs
 didn't produce any errors.</p>
-<h2 id="hint:-use-functions-to-create-dags.">Hint: Use functions to create DAGs.</h2><p>This will increase testability. You can test the function, bypassing the need to
+<h2 id="hint-use-functions-to-create-dags">Hint: Use functions to create DAGs.</h2><p>This will increase testability. You can test the function, bypassing the need to
 load the DAG into the <code>DagBag</code> (except when you're actually testing that it
 <em>can</em> be loaded). This may seem obvious, but none of the Airflow documentation
 uses this pattern. Here is an example of a function that creates a simple dag,

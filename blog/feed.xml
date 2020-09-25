@@ -33,8 +33,8 @@
       <name>dhruvi16</name>
     </author>
     <content type="html">&lt;p&gt;In this blog, I will be talking about how I managed to use Vocabulary ( Creative Commons's Design Library ) efficiently in our Open Source website.&lt;/p&gt;
-&lt;h3 id=&quot;what-is-vocabulary?&quot;&gt;What is Vocabulary?&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/story/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt; is a cohesive design system to unite the web-facing Creative Commons. In essence Vocabulary is a component library that uses and extends Bulma CSS library. Vocabulary makes it easier to develop Creative Commons apps while ensuring a consistently familiar experience. This project is still under development.&lt;/p&gt;
-&lt;h3 id=&quot;why-vocabulary?&quot;&gt;Why Vocabulary?&lt;/h3&gt;&lt;p&gt;Vocabulary is used to describe the overall visual design of our digital products. At first glance, it appears to be: an amalgamation of component designs with a consistent visual aesthetic and brand, typically accompanied by usage guidelines in the form of online documentation. But there is a lot more to it.
+&lt;h3 id=&quot;what-is-vocabulary&quot;&gt;What is Vocabulary?&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/story/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt; is a cohesive design system to unite the web-facing Creative Commons. In essence Vocabulary is a component library that uses and extends Bulma CSS library. Vocabulary makes it easier to develop Creative Commons apps while ensuring a consistently familiar experience. This project is still under development.&lt;/p&gt;
+&lt;h3 id=&quot;why-vocabulary&quot;&gt;Why Vocabulary?&lt;/h3&gt;&lt;p&gt;Vocabulary is used to describe the overall visual design of our digital products. At first glance, it appears to be: an amalgamation of component designs with a consistent visual aesthetic and brand, typically accompanied by usage guidelines in the form of online documentation. But there is a lot more to it.
 When it comes to a large software community with a huge range of products, certain problems come along. One of those problems is maintaining the level of harmony across all the products of the network. So, there comes a need for a unified visual language that heightens the level of harmony in a digital ecosystem. And in our case, Vocabulary solves this problem.
 This design system is well built and helps us bring the following aspects to the table -&lt;/p&gt;
 &lt;ol&gt;
@@ -44,7 +44,7 @@ This design system is well built and helps us bring the following aspects to the
 &lt;li&gt;Efficiency&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;And many more.&lt;/p&gt;
-&lt;h3 id=&quot;how-did-i-use-it?-examples&quot;&gt;How did I use it? — Examples&lt;/h3&gt;&lt;p&gt;As I stated before, I have added Vocabulary by updating all the Templates in the CCOS &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt; project.&lt;/p&gt;
+&lt;h3 id=&quot;how-did-i-use-it-examples&quot;&gt;How did I use it? — Examples&lt;/h3&gt;&lt;p&gt;As I stated before, I have added Vocabulary by updating all the Templates in the CCOS &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt; project.&lt;/p&gt;
 &lt;p&gt;As far as components are concerned, I just had to paste the code snippets given on the Vocabulary’s website with the requires changes -&lt;/p&gt;
 &lt;h4 id=&quot;integration-of-breadcrumb&quot;&gt;Integration of Breadcrumb -&lt;/h4&gt;&lt;figure style=&quot;text-align: center;&quot;&gt;
     &lt;img src=&quot;breadcrumb.png&quot; alt=&quot;Breadcrumb&quot;&gt;
@@ -249,16 +249,16 @@ type = string
     &lt;figcaption&gt;Output — Recent blog posts.&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;p&gt;I would also like to point out the amazing Query functionality provided by Lektor where you can access the child pages of the root. Here I am accessing blog posts from our Blog page and limiting the count of posts to three.&lt;/p&gt;
 &lt;h3 id=&quot;difference-in-experience&quot;&gt;Difference in Experience&lt;/h3&gt;&lt;p&gt;The level of user experience has been significantly elevated due to the use of Vocabulary. I would like to point one of the major experience change here. The major part of the website is guidelines — we have guidelines for contributing, guidelines for how to join a community, guidelines for how to write a blog and many more. The new website has cleaner and readable guideline with a proper hierarchy and every piece of information is made accessible using secondary navigation.&lt;/p&gt;
-&lt;h5 id=&quot;below-are-the-images-of-some-guidelines-pages-from-new-website.&quot;&gt;Below are the images of some guidelines pages from new website.&lt;/h5&gt;&lt;figure&gt;
+&lt;h5 id=&quot;below-are-the-images-of-some-guidelines-pages-from-new-website&quot;&gt;Below are the images of some guidelines pages from new website.&lt;/h5&gt;&lt;figure&gt;
     &lt;img width=&quot;300&quot; height=&quot;300&quot; src=&quot;new1.png&quot; alt=&quot;Screenshot&quot;&gt;
     &lt;img width=&quot;300&quot; height=&quot;300&quot; src=&quot;new2.png&quot; alt=&quot;Screenshot&quot;&gt;
     &lt;img width=&quot;300&quot; height=&quot;300&quot; src=&quot;new3.png&quot; alt=&quot;Screenshot&quot;&gt;
     &lt;figcaption&gt;Screenshots from new website&lt;/figcaption&gt;
-&lt;/figure&gt;&lt;h5 id=&quot;below-are-the-images-of-some-guidelines-pages-from-old-website.-you-can-see-the-difference-of-experience-in-both-cases.&quot;&gt;Below are the images of some guidelines pages from old website. You can see the difference of experience in both cases.&lt;/h5&gt;&lt;figure&gt;
+&lt;/figure&gt;&lt;h5 id=&quot;below-are-the-images-of-some-guidelines-pages-from-old-website-you-can-see-the-difference-of-experience-in-both-cases&quot;&gt;Below are the images of some guidelines pages from old website. You can see the difference of experience in both cases.&lt;/h5&gt;&lt;figure&gt;
     &lt;img width=&quot;400&quot; src=&quot;old1.png&quot; alt=&quot;Screenshot&quot;&gt;
     &lt;img width=&quot;400&quot; src=&quot;old2.png&quot; alt=&quot;Screenshot&quot;&gt;
     &lt;figcaption&gt;Screenshots from old website&lt;/figcaption&gt;
-&lt;/figure&gt;&lt;h3 id=&quot;how-you-can-use-vocabulary-and-also-contribute-to-it?&quot;&gt;How you can use Vocabulary and also contribute to it?&lt;/h3&gt;&lt;p&gt;Vocabulary is very easy to use. It is intuitive, consistent and highly reusable. Vocabulary uses Storybook to present each visual element that makes it very convenient for a user to integrate Vocabulary in their project. The code snippets attached with every element can be copied as it is and can be used. The code snippets above indicate how the library can be used and how easily you can achieve desired web pages. For more details, you can visit &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-usage--page&quot;&gt;usage guidelines&lt;/a&gt;.&lt;/p&gt;
+&lt;/figure&gt;&lt;h3 id=&quot;how-you-can-use-vocabulary-and-also-contribute-to-it&quot;&gt;How you can use Vocabulary and also contribute to it?&lt;/h3&gt;&lt;p&gt;Vocabulary is very easy to use. It is intuitive, consistent and highly reusable. Vocabulary uses Storybook to present each visual element that makes it very convenient for a user to integrate Vocabulary in their project. The code snippets attached with every element can be copied as it is and can be used. The code snippets above indicate how the library can be used and how easily you can achieve desired web pages. For more details, you can visit &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-usage--page&quot;&gt;usage guidelines&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Vocabulary is still under development, feedback and bug reports are welcome, fixes and patches even more so. Here is the link to &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-contribution--page&quot;&gt;contribution guidelines&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
@@ -385,7 +385,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
         &lt;img src=&quot;lighthouse-audit.png&quot; alt=&quot;Lighthouse Audit&quot; style=&quot;border: 1px solid black&quot;&gt;
         &lt;figcaption&gt;Lighthouse Stats of the latest version of the Linked Commons&lt;/figcaption&gt;
     &lt;/figure&gt;
-&lt;/div&gt;&lt;h3 id=&quot;whats-next?&quot;&gt;What’s Next?&lt;/h3&gt;&lt;p&gt;Throughout this internship period, we, the Linked Commons team, aimed to make this version the best among all. But there is still scope for improvement.&lt;/p&gt;
+&lt;/div&gt;&lt;h3 id=&quot;whats-next&quot;&gt;What’s Next?&lt;/h3&gt;&lt;p&gt;Throughout this internship period, we, the Linked Commons team, aimed to make this version the best among all. But there is still scope for improvement.&lt;/p&gt;
 &lt;p&gt;Just to give you some insights; currently, the complete graph contains 235k nodes and 4.14million links. During the preprocessing, we dropped a lot of the nodes. Additionally, we removed more than 3 million nodes which didn't have cc_licenses information. So, in general, the current version shows only those nodes which are soundly linked with other domains and their licenses information is available. To give a complete picture of the massive &quot;cc-catalog&quot;, the linked commons need to &quot;gird up his loins&quot;.&lt;/p&gt;
 &lt;p&gt;After seeing the tremendous potential it has, I will undoubtedly continue working on it and help the linked commons in this quest. ⚡&lt;/p&gt;
 &lt;h3 id=&quot;ending-note&quot;&gt;Ending Note&lt;/h3&gt;&lt;p&gt;In the end, I would like to thank my mentors Maria and Brent, for their unconditional guidance throughout this internship period. The insights I got from them will truly help me in the days to come.&lt;/p&gt;
@@ -691,9 +691,9 @@ Brent for his guidance.&lt;/p&gt;
       <name>subhamX</name>
     </author>
     <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id=&quot;where-does-it-fit?&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id=&quot;where-does-it-fit&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
 &lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id=&quot;what-is-distance-list-?&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+&lt;h3 id=&quot;what-is-distance-list&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
     &lt;figure&gt;
         &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
         &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
@@ -705,7 +705,7 @@ Brent for his guidance.&lt;/p&gt;
 &lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
 &lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id=&quot;key-points-of-the-sequential-db-build:&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;key-points-of-the-sequential-db-build&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
 &lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
 &lt;/ul&gt;
@@ -839,7 +839,7 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;We want to have a basic idea of how the crawl is progressing in the form of summaries of error counts, status codes, and crawl rates for each source.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;In summary, the challenge here isn't so much making a really fast crawler as much as it is tailoring the crawl speed to each source. At a minimum, we'll need to deal with concurrency and parallelism, provisioning and managing the life cycle of crawler infrastructure, pipelines for capturing output data, a way to monitor the progress of the crawl, a suite of tests to make sure the system behaves as expected, and a reliable way to enforce a &quot;politeness&quot; policy. That's not a trivial project, particularly for our tiny three person tech team (of which only one person is available to do all of the crawling work). Can't we just use an off-the-shelf open source crawler?&lt;/p&gt;
-&lt;h4 id=&quot;what-about-existing-open-source-crawlers?&quot;&gt;What about existing open source crawlers?&lt;/h4&gt;&lt;p&gt;Any decent software engineer will consider existing options before diving into a project and reinventing the wheel. My assessment was that although there are a lot of open source crawling frameworks available, few of them focus on images, some are not actively maintained, and all would require extensive customization to meet the requirements of our crawl strategy. Further, many solutions are more complex than than our use case demands and would significantly expand our use of cloud infrastructure, resulting in higher expenses and more operational headaches. I experimented with Apache Nutch, Scrapy Cluster, and Frontera; none of the existing options looked quite right for our use case.&lt;/p&gt;
+&lt;h4 id=&quot;what-about-existing-open-source-crawlers&quot;&gt;What about existing open source crawlers?&lt;/h4&gt;&lt;p&gt;Any decent software engineer will consider existing options before diving into a project and reinventing the wheel. My assessment was that although there are a lot of open source crawling frameworks available, few of them focus on images, some are not actively maintained, and all would require extensive customization to meet the requirements of our crawl strategy. Further, many solutions are more complex than than our use case demands and would significantly expand our use of cloud infrastructure, resulting in higher expenses and more operational headaches. I experimented with Apache Nutch, Scrapy Cluster, and Frontera; none of the existing options looked quite right for our use case.&lt;/p&gt;
 &lt;p&gt;As a reminder, we want to eventually crawl every single Creative Commons work on the internet. Effective crawling is central to the capabilities that our search engine is able to provide. In addition to being central to achieving high quality image search, crawling could also be useful for discovering new Creative Commons content of any type on any website. In my view, that's a strong argument for spending some time designing a custom crawling solution where we have complete end-to-end control of the process, as long as the feature set is limited in scope. In the next section, we'll assess the effort required to build a crawler from the ground up.&lt;/p&gt;
 &lt;h4 id=&quot;designing-the-crawler&quot;&gt;Designing the crawler&lt;/h4&gt;&lt;p&gt;We know we're not going to be able to crawl 500 million images with one virtual machine and a single IP address, so it is obvious from the start that we are going to need a way to distribute the crawling and analysis tasks over multiple machines. A basic queue-worker architecture will do the job here; when we want to crawl an image, we can dispatch the URL to an inbound images queue, and a worker eventually pops that task out and processes it. Kafka will handle all of the hard work of partitioning and distributing the tasks between workers.&lt;/p&gt;
 &lt;p&gt;The worker processes do the actual analysis of the images, which essentially entails downloading the image, extracting interesting properties, and sticking the resulting metadata back into a Kafka topic for later downstream processing. The worker will also have to include some instrumentation for conforming to rate limits and error reporting.&lt;/p&gt;
@@ -860,7 +860,7 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;Report success/errors to Redis in aggregate.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;See &lt;a href=&quot;https://github.com/creativecommons/image-crawler/blob/master/worker/image.py&quot;&gt;image.py&lt;/a&gt; for the nitty-gritty details.&lt;/p&gt;
-&lt;h4 id=&quot;rate-limiting-with-token-buckets-and-error-circuit-breakers&quot;&gt;Rate limiting with token buckets and error circuit breakers&lt;/h4&gt;&lt;h5 id=&quot;how-do-we-determine-the-rate-limit?&quot;&gt;How do we determine the rate limit?&lt;/h5&gt;&lt;p&gt;Often times, when designing highly concurrent software, the goal is to maximize the throughput and push servers to their absolute limit. The opposite is true with a web crawler, particularly when you are operating a non-profit organization completely reliant on the goodwill of others to exist. We want to be as certain as reasonably possible that we aren't going to knock a resource off of the internet with an accidental &lt;a href=&quot;https://en.wikipedia.org/wiki/Denial-of-service_attack&quot;&gt;DDoS&lt;/a&gt;. At the same time, we need to crawl as quickly as possible against sources with adequate resources to withstand a heavy crawl, or else we'll never finish. How can we match our crawl rate to a site's capabilities?&lt;/p&gt;
+&lt;h4 id=&quot;rate-limiting-with-token-buckets-and-error-circuit-breakers&quot;&gt;Rate limiting with token buckets and error circuit breakers&lt;/h4&gt;&lt;h5 id=&quot;how-do-we-determine-the-rate-limit&quot;&gt;How do we determine the rate limit?&lt;/h5&gt;&lt;p&gt;Often times, when designing highly concurrent software, the goal is to maximize the throughput and push servers to their absolute limit. The opposite is true with a web crawler, particularly when you are operating a non-profit organization completely reliant on the goodwill of others to exist. We want to be as certain as reasonably possible that we aren't going to knock a resource off of the internet with an accidental &lt;a href=&quot;https://en.wikipedia.org/wiki/Denial-of-service_attack&quot;&gt;DDoS&lt;/a&gt;. At the same time, we need to crawl as quickly as possible against sources with adequate resources to withstand a heavy crawl, or else we'll never finish. How can we match our crawl rate to a site's capabilities?&lt;/p&gt;
 &lt;p&gt;Originally, my plan was to determine this through an adaptive rate limiting strategy, where we would start with a low rate limit and use a hill climbing algorithm to determine the optimal rate. We could track metrics like &lt;a href=&quot;https://en.wikipedia.org/wiki/Time_to_first_byte&quot;&gt;time to first byte&lt;/a&gt; (TTFB) and bandwidth speed to determine the exact moment that we have started to strain upstream servers. However, there are a lot of drawbacks here:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;It may not be correct to assume that performance will steadily degrade instead of failing all at once.&lt;/li&gt;
@@ -1203,7 +1203,7 @@ employees working on these projects, it is vital that we enable members from the
 community to take increased responsibility in developing and maintaining them,
 and growing the community of which they are a part.&lt;/p&gt;
 &lt;p&gt;With that goal in mind, we've launched our Community Team initiative.&lt;/p&gt;
-&lt;h3 id=&quot;what-is-the-community-team?&quot;&gt;What is the Community Team?&lt;/h3&gt;&lt;p&gt;Communities that grow organically around open source projects tend to be a bit
+&lt;h3 id=&quot;what-is-the-community-team&quot;&gt;What is the Community Team?&lt;/h3&gt;&lt;p&gt;Communities that grow organically around open source projects tend to be a bit
 disorganised and the frequency of contributions and degree of involvement tends
 to vary from member to member. Our goal is to identify contributors who are
 actively involved within their communities and give them increased permissions
@@ -1222,7 +1222,7 @@ and permissions, to help them execute these responsibilities.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Roles also progressively include members in our roadmaps and planning meetings
 to ensure that the community is aligned with our long-term goals.&lt;/p&gt;
-&lt;h3 id=&quot;what-s-in-it-for-me?&quot;&gt;What's in it for me?&lt;/h3&gt;&lt;p&gt;The Community Team is not just a one-sided deal. Your membership in the
+&lt;h3 id=&quot;what-s-in-it-for-me&quot;&gt;What's in it for me?&lt;/h3&gt;&lt;p&gt;The Community Team is not just a one-sided deal. Your membership in the
 Community Team is just as beneficial for the you as it is for us. While there is
 a &lt;a href=&quot;/community/community-team/#benefits-of-joining-the-community-team&quot;&gt;laundry list of benefits&lt;/a&gt; that you're entitled to, I'll just
 mention some notable ones here.&lt;/p&gt;
@@ -1248,7 +1248,7 @@ community, you get priority in internship applications*.&lt;/li&gt;
   Mayank Nader (@MayankNader)
   &lt;a href=&quot;https://twitter.com/MayankNader/status/1137995920866390016?ref_src=twsrc%5Etfw&quot;&gt;June 10, 2019&lt;/a&gt;
 &lt;/blockquote&gt;&lt;/p&gt;
-&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;h3 id=&quot;what-are-these-roles-?&quot;&gt;What are these 'roles'?&lt;/h3&gt;&lt;p&gt;If you've reached this point, I assume you see the potential of the Community
+&lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;h3 id=&quot;what-are-these-roles&quot;&gt;What are these 'roles'?&lt;/h3&gt;&lt;p&gt;If you've reached this point, I assume you see the potential of the Community
 Team. Let's see where you'd fit in them.&lt;/p&gt;
 &lt;p&gt;We have two kinds of roles, code-oriented &lt;a href=&quot;/community/community-team/project-roles/&quot;&gt;Project roles&lt;/a&gt;, that
 give you responsibilities and permissions related to one CC project, and
@@ -1260,7 +1260,7 @@ own. While your eligibility for any role depends on how involved you have been
 in the past, the role you choose reflects how involved you would like to be in
 the future.&lt;/p&gt;
 &lt;p&gt;Start by asking yourself a simple question, &quot;Do I code?&quot;&lt;/p&gt;
-&lt;h4 id=&quot;sure-i-can-code...&quot;&gt;&quot;Sure, I can code...&quot;&lt;/h4&gt;&lt;p&gt;&lt;em&gt;That's awesome!&lt;/em&gt; We have projects in a diverse array of languages, using myriad
+&lt;h4 id=&quot;sure-i-can-code..&quot;&quot;&gt;&quot;Sure, I can code...&quot;&lt;/h4&gt;&lt;p&gt;&lt;em&gt;That's awesome!&lt;/em&gt; We have projects in a diverse array of languages, using myriad
 tools and frameworks. Depending on the skills you have, or are planning to
 acquire, you can pick a project and start contributing to it. Based on your
 contributions and your familiarity with the codebase, you can then apply for the
@@ -1273,7 +1273,7 @@ mentorship as you start your FOSS journey.&lt;/p&gt;
 incoming issues or block certain PRs that you've reviewed. You could escalate
 your role to Project Collaborator. Want to me more involved? You can apply to be
 a Project Core Committer, or even a Project Maintainer.&lt;/p&gt;
-&lt;h4 id=&quot;no-i-can-t-code...&quot;&gt;&quot;No, I can't code...&quot;&lt;/h4&gt;&lt;p&gt;&lt;em&gt;That's cool too!&lt;/em&gt; We realise that open source communities are never just about
+&lt;h4 id=&quot;no-i-can-t-code..&quot;&quot;&gt;&quot;No, I can't code...&quot;&lt;/h4&gt;&lt;p&gt;&lt;em&gt;That's cool too!&lt;/em&gt; We realise that open source communities are never just about
 the code. If you're passionate about growing the CC community by enabling new
 contributors to get started or by spreading the word, you can apply for one of
 the Community Building roles. Like the Project roles, there are a couple of
@@ -1289,7 +1289,7 @@ journey with FOSS.&lt;/p&gt;
 tweets for our Twitter account, or pariticipate in long-term community building
 tasks from Asana. You could escalate your role to Community Collaborator. Want
 to me more involved? You can even apply to be a Community Maintainer.&lt;/p&gt;
-&lt;h3 id=&quot;what-s-next?&quot;&gt;What's next?&lt;/h3&gt;&lt;p&gt;The Community Team is a fairly novel idea for us and we're still tweaking things
+&lt;h3 id=&quot;what-s-next&quot;&gt;What's next?&lt;/h3&gt;&lt;p&gt;The Community Team is a fairly novel idea for us and we're still tweaking things
 along the way. For example, we recently merged of two Project roles, namely
 Project Member and Project Collaborator, when we realised they weren't so
 different. As we internalise these roles more and more, we'll find more scope
@@ -1774,22 +1774,22 @@ files are moved to the failure directory for future inspection.&lt;/p&gt;
       <name>subhamX</name>
     </author>
     <content type="html">&lt;p&gt;&lt;strong&gt;Linked Commons&lt;/strong&gt; is a visualization project which aims to showcase and establish a relationship between millions of data points of licensed content metadata using graphs. Since it is the first blog of this new series, let’s discuss the core ideology of having this project and then about new features. Development of all components mentioned in this blog is complete and has been successfully integrated, so do check out the development version. Happy Reading!&lt;/p&gt;
-&lt;h2 id=&quot;motivation-and-why-does-visualization-matter?&quot;&gt;Motivation and why does visualization matter?&lt;/h2&gt;&lt;p&gt;The number of websites using creative commons licensed content is very huge and growing very rapidly. The CC catalog hosts these millions of data points and each node contains information about the URL of the websites and the licenses used. One can surely do rigorous data analysis, but this would only be interpretable by a few people with a technical background.  On the other hand,  by visualizing data, it becomes incredibly easier to identify patterns and trends. As an old saying, a picture is worth a thousand words. That’s the core ideology of the Linked Commons, i.e. to show the millions of licensed content metadata and how these nodes are connected in a visually appealing form on the HTML canvas like a picture.&lt;/p&gt;
-&lt;h2 id=&quot;task-1:-code-refactoring&quot;&gt;Task 1: Code Refactoring&lt;/h2&gt;&lt;p&gt;My first task was to refactor the code and migrate it to react. The existing codebase had all core functionalities, but we wanted to make it more modular, improve the design, code readability, and reduce complexity. This will help us maintain this project in the long run. Also, it will be easier for the community to contribute and understand the logic.&lt;/p&gt;
-&lt;h2 id=&quot;task-2:-graph-filtering&quot;&gt;Task 2: Graph Filtering&lt;/h2&gt;&lt;h3 id=&quot;need-for-filtering-methods&quot;&gt;Need for Filtering Methods&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+&lt;h2 id=&quot;motivation-and-why-does-visualization-matter&quot;&gt;Motivation and why does visualization matter?&lt;/h2&gt;&lt;p&gt;The number of websites using creative commons licensed content is very huge and growing very rapidly. The CC catalog hosts these millions of data points and each node contains information about the URL of the websites and the licenses used. One can surely do rigorous data analysis, but this would only be interpretable by a few people with a technical background.  On the other hand,  by visualizing data, it becomes incredibly easier to identify patterns and trends. As an old saying, a picture is worth a thousand words. That’s the core ideology of the Linked Commons, i.e. to show the millions of licensed content metadata and how these nodes are connected in a visually appealing form on the HTML canvas like a picture.&lt;/p&gt;
+&lt;h2 id=&quot;task-1-code-refactoring&quot;&gt;Task 1: Code Refactoring&lt;/h2&gt;&lt;p&gt;My first task was to refactor the code and migrate it to react. The existing codebase had all core functionalities, but we wanted to make it more modular, improve the design, code readability, and reduce complexity. This will help us maintain this project in the long run. Also, it will be easier for the community to contribute and understand the logic.&lt;/p&gt;
+&lt;h2 id=&quot;task-2-graph-filtering&quot;&gt;Task 2: Graph Filtering&lt;/h2&gt;&lt;h3 id=&quot;need-for-filtering-methods&quot;&gt;Need for Filtering Methods&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
     &lt;figure&gt;
         &lt;img src=&quot;big-graph.png&quot; alt=&quot;Large Graph&quot; style=&quot;border: 1px solid black&quot;&gt;
         &lt;figcaption style=&quot;font-weight: 500;&quot;&gt;Pic showing clustors of a Graph with 9982 nodes 5000 links&lt;/figcaption&gt;
     &lt;/figure&gt;
 &lt;/div&gt;&lt;p&gt;The aggregate data that cc catalog has is in hundreds of millions. Rendering a graph with these many nodes will be a nightmare for the browser’s rendering and JavaScript engine. Just like we divide any standard textbook into chapters, we thought about adding filtering options that enable the user to retrieve precise information according to certain criteria selected by them. Hence,  we need to have a way in which we can filter the aggregate data into smaller chunks.&lt;/p&gt;
-&lt;h3 id=&quot;what-filtering-methods?&quot;&gt;What filtering methods?&lt;/h3&gt;&lt;p&gt;After brainstorming for a while, we converged and agreed to have &lt;strong&gt;filtering based on node name and distance&lt;/strong&gt;. The primary reason behind this was, it is kind of basic that a person would like to look for his/her favourite node and its neighbours. This is not the end for sure, and many more filtering methods will be added, maybe with the support of chaining one after another. This is just a baby step!&lt;/p&gt;
-&lt;h3 id=&quot;server-side-filtering-vs-client-side-filtering?&quot;&gt;Server-side Filtering vs Client-Side Filtering?&lt;/h3&gt;&lt;p&gt;Now that we know on what query params the filter should work, we need to decide where to do the filtering. Should we do it on the client machine or do it on our server and pass the processed and filtered data to the client? In any filtering method, we need to traverse the whole graph. The JS engine in the browser is doing rendering stuff, complex calculation, etc. With all these processes, doing a full traversal of the dataset having more than a million nodes is going to take a lot of time and memory. The above claim assumes that we have a moderately dense graph. On the other hand, another strategy to accomplish graph filtering could be to delegate that load to a server, and the client’s browser can ask for a fresh copy of the filtered data whenever needed. As mentioned above the client-side filtering has serious shortcomings and user experience won’t be very good with browser freezing and frame drops. So, that's why we decided to go with the latter option i.e server-side filtering.&lt;/p&gt;
+&lt;h3 id=&quot;what-filtering-methods&quot;&gt;What filtering methods?&lt;/h3&gt;&lt;p&gt;After brainstorming for a while, we converged and agreed to have &lt;strong&gt;filtering based on node name and distance&lt;/strong&gt;. The primary reason behind this was, it is kind of basic that a person would like to look for his/her favourite node and its neighbours. This is not the end for sure, and many more filtering methods will be added, maybe with the support of chaining one after another. This is just a baby step!&lt;/p&gt;
+&lt;h3 id=&quot;server-side-filtering-vs-client-side-filtering&quot;&gt;Server-side Filtering vs Client-Side Filtering?&lt;/h3&gt;&lt;p&gt;Now that we know on what query params the filter should work, we need to decide where to do the filtering. Should we do it on the client machine or do it on our server and pass the processed and filtered data to the client? In any filtering method, we need to traverse the whole graph. The JS engine in the browser is doing rendering stuff, complex calculation, etc. With all these processes, doing a full traversal of the dataset having more than a million nodes is going to take a lot of time and memory. The above claim assumes that we have a moderately dense graph. On the other hand, another strategy to accomplish graph filtering could be to delegate that load to a server, and the client’s browser can ask for a fresh copy of the filtered data whenever needed. As mentioned above the client-side filtering has serious shortcomings and user experience won’t be very good with browser freezing and frame drops. So, that's why we decided to go with the latter option i.e server-side filtering.&lt;/p&gt;
 &lt;div style=&quot;text-align: center;&quot;&gt;
     &lt;figure&gt;
         &lt;img src=&quot;filtering-in-action.gif&quot; alt=&quot;Filtering In Action&quot; style=&quot;border: 1px solid black&quot;&gt;
         &lt;figcaption&gt;Filtering In Action&lt;/figcaption&gt;
     &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id=&quot;task-3:-new-design&quot;&gt;Task 3: New Design&lt;/h2&gt;&lt;p&gt;My third task was to upgrade the front-end design of the project. It now has a very clean and refreshing look along with the support for both light and dark theme. Check out our webpage in dark mode and do let us know if it saves your PC energy consumption (As claimed by some websites). Now you all can visit the Linked Commons webpage at mid-night too, no strain to the eyes. ;)&lt;/p&gt;
+&lt;/div&gt;&lt;h2 id=&quot;task-3-new-design&quot;&gt;Task 3: New Design&lt;/h2&gt;&lt;p&gt;My third task was to upgrade the front-end design of the project. It now has a very clean and refreshing look along with the support for both light and dark theme. Check out our webpage in dark mode and do let us know if it saves your PC energy consumption (As claimed by some websites). Now you all can visit the Linked Commons webpage at mid-night too, no strain to the eyes. ;)&lt;/p&gt;
 &lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
     &lt;figure&gt;
         &lt;img src=&quot;new-design-light.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
@@ -2385,14 +2385,14 @@ have multiple images with it and using object id we cannot determine the image u
 for each image. Currently image id is taken from &lt;code&gt;multimedia&lt;/code&gt;, multimedia is a field in the json response that lists multiple 
 images and their metadata, for each image data in multimedia, foreign id is in &lt;code&gt;admin.uid&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The implementation can be found &lt;a href=&quot;https://github.com/creativecommons/cccatalog/blob/master/src/cc_catalog_airflow/dags/provider_api_scripts/science_museum.py&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;results:&quot;&gt;Results:&lt;/h3&gt;&lt;p&gt;Running the scripts we get:&lt;/p&gt;
+&lt;h3 id=&quot;results&quot;&gt;Results:&lt;/h3&gt;&lt;p&gt;Running the scripts we get:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Number of records recieved : &lt;code&gt;35584&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Number of images collected : &lt;code&gt;62497&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The problem with current implementation is that records with no date would be missed.&lt;/p&gt;
 &lt;p&gt;Science Museum provider is the first provider I worked on as a part of the internship and thank my mentor Brent Moran for the help.&lt;/p&gt;
-&lt;h3 id=&quot;additional-details-:&quot;&gt;Additional Details :&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;additional-details&quot;&gt;Additional Details :&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/302&quot;&gt;research work&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/400&quot;&gt;implementation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2540,7 +2540,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;/figure&gt;
 &lt;/div&gt;&lt;!-- ![New Creative Commons Legal Database logo](legal_database.svg) --&gt;
 
-&lt;h3 id=&quot;why-django?&quot;&gt;Why Django?&lt;/h3&gt;&lt;p&gt;Before I briefly mentioned the use of Django, a framework of Python, for the implementation, so I will state some reasons that led to this decision.&lt;/p&gt;
+&lt;h3 id=&quot;why-django&quot;&gt;Why Django?&lt;/h3&gt;&lt;p&gt;Before I briefly mentioned the use of Django, a framework of Python, for the implementation, so I will state some reasons that led to this decision.&lt;/p&gt;
 &lt;p&gt;Two options were given for the backend development: WordPress or Django. WordPress is a nice tool to build sites like blogs and e-commerce, it gives a lot of functionalities to end-users (usually not technical) out of the box and can be extended with a wide ecosystem of plugins, but I identified some cons for this particular case. It will bring many not necessary features to the system initially planned and will take considerable work to customize both, the frontend with Vocabulary and the database in the backend. Building a Wordpress theme with Vocabulary was already considered for another project apart, so that should be done first. As for the DB,  deal with Wordpress tables may not be the best developer experience and could be a real mess.&lt;/p&gt;
 &lt;p&gt;Looking at Django with Python, we can start in a greenfield ready to customize, like Wordpress, is a mature technology with a large number of libraries to extend its functionalities. For maintenance, the engineering team will be responsible and since Django is already used to back the &lt;a href=&quot;https://search.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt;, currently the most ambitious products of the organization, then there should be no problem with this point. Given all this it seemed obvious to me to choose Django for this project.&lt;/p&gt;
 &lt;h3 id=&quot;next-steps&quot;&gt;Next steps&lt;/h3&gt;&lt;p&gt;It has only been a week so we're just starting, so next task to do sooner are:&lt;/p&gt;
@@ -2579,7 +2579,7 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;p&gt;Working remotely also let me have a flexible work schedule. While ensuring that I work at least 40 hours per week (the Outreachy internship requirement), I sometimes worked on weekends or early in the morning, when it was more convenient for me.&lt;/p&gt;
 &lt;h3 id=&quot;working-together&quot;&gt;Working together&lt;/h3&gt;&lt;p&gt;It's been a pleasure to work with Creative Commons team. My mentors, &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari&lt;/a&gt;, together with &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna&lt;/a&gt;, Francisco Vera and &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno&lt;/a&gt;, were there for me all through the internship, help me feel a part of CC team.&lt;/p&gt;
 &lt;p&gt;But the CC community is much wider than that! I've been amazed at the enthusiasm of the users who helped us with the UX testing, and at the speed with which they jumped on the task of translating the website as soon as we published the text on Transifex.&lt;/p&gt;
-&lt;h3 id=&quot;what-s-next?&quot;&gt;What's next?&lt;/h3&gt;&lt;p&gt;My internship ended more than two months ago, but I continue to be a part of CC open source team. I also hope this experience will help me go on to a career as a developer.&lt;/p&gt;
+&lt;h3 id=&quot;what-s-next&quot;&gt;What's next?&lt;/h3&gt;&lt;p&gt;My internship ended more than two months ago, but I continue to be a part of CC open source team. I also hope this experience will help me go on to a career as a developer.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/why-lektor/">
@@ -2637,7 +2637,7 @@ and data pipelines.&lt;/p&gt;
 &lt;p&gt;In this blog post, we will explore the way in which we keep information we
 gather about images up-to-date, using metadata pulled from the Flickr API as an
 example case study.&lt;/p&gt;
-&lt;h2 id=&quot;apache-airflow-and-the-execution_date-concept&quot;&gt;Apache Airflow, and the &lt;code&gt;execution_date&lt;/code&gt; concept&lt;/h2&gt;&lt;p&gt;Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
+&lt;h2 id=&quot;apache-airflow-and-the-execution-date-concept&quot;&gt;Apache Airflow, and the &lt;code&gt;execution_date&lt;/code&gt; concept&lt;/h2&gt;&lt;p&gt;Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
 defined via python files. The DAG is what defines a given workflow. The nodes
 are pieces of jobs that need to be accomplished, and the directed edges of the
 graph define dependencies between the various pieces.&lt;/p&gt;
@@ -2647,7 +2647,7 @@ expect, &lt;code&gt;execution_date&lt;/code&gt; does &lt;em&gt;not&lt;/em&gt; me
 but rather the date 'perspective' from which the workflow is executed.  This
 means one can give a command that instructs Airflow to execute the workflow
 defined by a DAG as if the date were 2019-01-01, regardless of the actual date.&lt;/p&gt;
-&lt;h2 id=&quot;our-use-of-execution_date&quot;&gt;Our Use of &lt;code&gt;execution_date&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Much of the data contained in CC Catalog is pulled from various APIs on the
+&lt;h2 id=&quot;our-use-of-execution-date&quot;&gt;Our Use of &lt;code&gt;execution_date&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Much of the data contained in CC Catalog is pulled from various APIs on the
 internet, and one strategy we use quite regularly is to make a request of the
 form:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&quot;please give me all the metadata for photos uploaded to Flickr on 2019-01-01&quot;&lt;/em&gt;.&lt;/p&gt;
@@ -2665,7 +2665,7 @@ happens on the actual date 2020-02-02 will have &lt;code&gt;execution_date&lt;/c
 default. This matches up naturally with the strategy above, so we have a number
 of workflows that ingest (meta)data into CC Catalog using this default
 &lt;code&gt;execution_date&lt;/code&gt; on a daily basis.&lt;/p&gt;
-&lt;h2 id=&quot;challenge:-data-can-go-stale-over-time&quot;&gt;Challenge:  Data can go stale over time&lt;/h2&gt;&lt;p&gt;There are some problems with the strategy outlined above:&lt;/p&gt;
+&lt;h2 id=&quot;challenge-data-can-go-stale-over-time&quot;&gt;Challenge:  Data can go stale over time&lt;/h2&gt;&lt;p&gt;There are some problems with the strategy outlined above:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;What if a photo changes upstream?&lt;/li&gt;
 &lt;li&gt;What if a photo is deleted upstream?&lt;/li&gt;
@@ -2970,12 +2970,12 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
     </author>
     <content type="html">&lt;p&gt;This will be my last blog as an Outreachy intern. My watch as an intern has come to an end.  I am glad I chose the Creative Commons community or rather am glad Creative Commons chose me (am not the chosen one). I have gained a lot of valuable knowledge, skills and I am more confident in my abilities.&lt;/p&gt;
 &lt;h2 id=&quot;summary-of-my-internship-with-vocabulary&quot;&gt;Summary of  My Internship with Vocabulary&lt;/h2&gt;&lt;p&gt;I have been more involved with the Vocabulary project during my internship and am happy with the work that has been done so far. I made 24 pull requests with 17 merged. My last contribution was adding a &lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/145&quot;&gt;header component&lt;/a&gt; to the revamped Vocabulary. Here is a summary of my time with Vocabulary.&lt;/p&gt;
-&lt;h3 id=&quot;when-i-started-my-internship-vocabulary-comprised-of:&quot;&gt;When I started my Internship, Vocabulary comprised of:&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;when-i-started-my-internship-vocabulary-comprised-of&quot;&gt;When I started my Internship, Vocabulary comprised of:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;UI components built with Vue &lt;/li&gt;
 &lt;li&gt;Styling was written with Stylus&lt;/li&gt;
 &lt;li&gt;live style guide built with Styleguidist&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;currently:&quot;&gt;Currently:&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;currently&quot;&gt;Currently:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;UI components built with extending Bulma library components. &lt;/li&gt;
 &lt;li&gt;Styling extended with SASS.&lt;/li&gt;
 &lt;li&gt;An interactive playground experience built with Storybook that provides a live style guide and documentation.&lt;/li&gt;
@@ -2998,7 +2998,7 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;li&gt;Improved time management&lt;/li&gt;
 &lt;li&gt;Still working to improve where I am now &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;whats-next?&quot;&gt;Whats next?&lt;/h2&gt;&lt;p&gt;I will continue to contribute to CC open source projects especially to the Vocabulary project that I have become a part of. I would love to see the application of Vocabulary to the development of other CC platforms and applications.  I also want to apply the skills that I have acquired to get a full-time software developer position.&lt;/p&gt;
+&lt;h2 id=&quot;whats-next&quot;&gt;Whats next?&lt;/h2&gt;&lt;p&gt;I will continue to contribute to CC open source projects especially to the Vocabulary project that I have become a part of. I would love to see the application of Vocabulary to the development of other CC platforms and applications.  I also want to apply the skills that I have acquired to get a full-time software developer position.&lt;/p&gt;
 &lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb/&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey/&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
 </content>
   </entry>
@@ -3049,7 +3049,7 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;p&gt;Además, estos programas consideran un estipendio por los 3 meses que dura la pasantía. Valores que son variables según la ubicación que quien desea postular.&lt;/p&gt;
 &lt;h2 id=&quot;destrezas&quot;&gt;Destrezas&lt;/h2&gt;&lt;p&gt;Con respecto al idioma, para participar en estos programas no se exige un manejo del inglés al 100%, solo basta que puedas comunicarte de manera razonable, ya que, si bien, existen algunos proyectos en los cuales yo soy el mentor ( &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#wp-plugin&quot;&gt;WP Plugin&lt;/a&gt; e &lt;a href=&quot;https://opensource.creativecommons.org/internships/project-ideas/all/#vocabulary-integration&quot;&gt;Implementar Vocabulary&lt;/a&gt; ) y podemos tener reuniones en español, la comunicación pública y la documentación debe ser en Inglés.&lt;/p&gt;
 &lt;p&gt;Con respecto a nuestros proyectos, todos se encuentran en &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt; por lo tanto debes saber lo básico de &lt;a href=&quot;https://rogerdudler.github.io/git-guide/index.es.html&quot;&gt;Git&lt;/a&gt;. Te recomiendo consultar la &lt;a href=&quot;https://help.github.com/es&quot;&gt;ayuda de Github&lt;/a&gt; para mayor detalle, sugiero poner atención a la guia sobre como realizar &lt;a href=&quot;https://help.github.com/es/github/collaborating-with-issues-and-pull-requests/about-pull-requests&quot;&gt;Pull Request&lt;/a&gt; ya que es muy necesario para el flujo de trabajo del equipo tecnico de CC y lo será también para tu pasantía.&lt;/p&gt;
-&lt;h2 id=&quot;invitacin&quot;&gt;Invitación&lt;/h2&gt;&lt;p&gt;Desde yá los dejamos invitados a participar en estos programas o a participar directamente en nuestra &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;comunidad de código abierto&lt;/a&gt; o visitar nuestro &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt;, el cual contiene nuestros proyectos. También pueden unirse a nuestra comunidad global en &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack&lt;/a&gt; donde me pueden encontrar como @hugo si tienen alguna duda o comentario.&lt;/p&gt;
+&lt;h2 id=&quot;invitacion&quot;&gt;Invitación&lt;/h2&gt;&lt;p&gt;Desde yá los dejamos invitados a participar en estos programas o a participar directamente en nuestra &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;comunidad de código abierto&lt;/a&gt; o visitar nuestro &lt;a href=&quot;https://github.com/creativecommons&quot;&gt;Github&lt;/a&gt;, el cual contiene nuestros proyectos. También pueden unirse a nuestra comunidad global en &lt;a href=&quot;https://slack-signup.creativecommons.org/&quot;&gt;Slack&lt;/a&gt; donde me pueden encontrar como @hugo si tienen alguna duda o comentario.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-03-05-participe-gsoc/">
@@ -3102,7 +3102,7 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
       <name>conye</name>
     </author>
     <content type="html">&lt;p&gt;A lot of time and effort have been put in to re-work Vocabulary since my last post and the changes are still ongoing. To understand why these changes are important, we have to better understand Vocabulary.&lt;/p&gt;
-&lt;h2 id=&quot;so-why-all-the-changes?&quot;&gt;So Why All The Changes?&lt;/h2&gt;&lt;p&gt;Vocabulary is CC's new design system. This means its design is meant to affect all of CC's websites, applications, and platforms. It is designed to be independent of any language or framework. Its styling will be used by its subsets like Vue-Vocabulary to maintain consistency. The majority of CC's websites and platforms are built with Wordpress, Lektor, and Vue. This means Vue-Vocabulary will inherit its styling from Vocabulary and the same will follow for other subsets of Vocabulary for Wordpress and Lektor which would possibly be developed soon.&lt;/p&gt;
+&lt;h2 id=&quot;so-why-all-the-changes&quot;&gt;So Why All The Changes?&lt;/h2&gt;&lt;p&gt;Vocabulary is CC's new design system. This means its design is meant to affect all of CC's websites, applications, and platforms. It is designed to be independent of any language or framework. Its styling will be used by its subsets like Vue-Vocabulary to maintain consistency. The majority of CC's websites and platforms are built with Wordpress, Lektor, and Vue. This means Vue-Vocabulary will inherit its styling from Vocabulary and the same will follow for other subsets of Vocabulary for Wordpress and Lektor which would possibly be developed soon.&lt;/p&gt;
 &lt;h2 id=&quot;the-major-change&quot;&gt;The Major Change&lt;/h2&gt;&lt;p&gt;Vocabulary currently uses stylus to easily write the CSS and Webpack as a build system. Stylus will be changed to SASS (actually SCSS). This is because SASS is easier to maintain and the majority of CC's websites are already built with SASS.&lt;/p&gt;
 &lt;h2 id=&quot;my-contributions-in-the-past-four-weeks&quot;&gt;My Contributions in the past four weeks&lt;/h2&gt;&lt;p&gt;In the past four weeks, I have been contributing majorly to the re-work of Vocabulary. Some of my contributions include:&lt;/p&gt;
 &lt;ul&gt;
@@ -3162,7 +3162,7 @@ the directed edges of the DAG, the Airflow daemon stores information about the
 dag run in &lt;code&gt;~/airflow/&lt;/code&gt;.  The daemon also stores general information about what
 DAGs exist on the system, and all of their current statuses in that directory.
 For more details, please see &lt;a href=&quot;https://airflow.apache.org/docs/stable/&quot;&gt;the documentation&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;challenge:-localize-airflow-to-the-project-directory&quot;&gt;Challenge:  Localize Airflow to the project directory&lt;/h2&gt;&lt;p&gt;Even when installed using &lt;code&gt;pip&lt;/code&gt; within a &lt;a href=&quot;https://github.com/pypa/virtualenv&quot;&gt;&lt;code&gt;virtualenv&lt;/code&gt;&lt;/a&gt; environment,
+&lt;h2 id=&quot;challenge-localize-airflow-to-the-project-directory&quot;&gt;Challenge:  Localize Airflow to the project directory&lt;/h2&gt;&lt;p&gt;Even when installed using &lt;code&gt;pip&lt;/code&gt; within a &lt;a href=&quot;https://github.com/pypa/virtualenv&quot;&gt;&lt;code&gt;virtualenv&lt;/code&gt;&lt;/a&gt; environment,
 all airflow commands will be run against the default locations in the user's
 home directory. In particular, if you want to test a DAG from your project
 directory, the method given in the &lt;a href=&quot;https://airflow.apache.org/docs/stable/tutorial.html#testing&quot;&gt;Airflow documentation&lt;/a&gt; is to
@@ -3204,7 +3204,7 @@ These files are:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/unittests.cfg&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Add these files to &lt;code&gt;.gitignore&lt;/code&gt; or the equivalent.&lt;/p&gt;
-&lt;h2 id=&quot;smoketesting:-can-the-airflow-daemon-load-the-dags?&quot;&gt;Smoketesting:  Can the Airflow daemon load the DAGs?&lt;/h2&gt;&lt;p&gt;Note that we're using &lt;code&gt;pytest&lt;/code&gt; for our unit testing, and so most examples assume
+&lt;h2 id=&quot;smoketesting-can-the-airflow-daemon-load-the-dags&quot;&gt;Smoketesting:  Can the Airflow daemon load the DAGs?&lt;/h2&gt;&lt;p&gt;Note that we're using &lt;code&gt;pytest&lt;/code&gt; for our unit testing, and so most examples assume
 this.&lt;/p&gt;
 &lt;p&gt;The most basic test you'll want is to determine whether your DAGs can load
 without errors. To do this, you can use the following function:&lt;/p&gt;
@@ -3219,7 +3219,7 @@ without errors. To do this, you can use the following function:&lt;/p&gt;
 we instruct the Airflow daemon to attempt to load any DAGs defined in the
 &lt;code&gt;common_api_workflows.py&lt;/code&gt; file.  We then check to make sure loading the DAGs
 didn't produce any errors.&lt;/p&gt;
-&lt;h2 id=&quot;hint:-use-functions-to-create-dags.&quot;&gt;Hint: Use functions to create DAGs.&lt;/h2&gt;&lt;p&gt;This will increase testability. You can test the function, bypassing the need to
+&lt;h2 id=&quot;hint-use-functions-to-create-dags&quot;&gt;Hint: Use functions to create DAGs.&lt;/h2&gt;&lt;p&gt;This will increase testability. You can test the function, bypassing the need to
 load the DAG into the &lt;code&gt;DagBag&lt;/code&gt; (except when you're actually testing that it
 &lt;em&gt;can&lt;/em&gt; be loaded). This may seem obvious, but none of the Airflow documentation
 uses this pattern. Here is an example of a function that creates a simple dag,
@@ -3320,7 +3320,7 @@ for the web. This project was originally started by my mentors &lt;a href=&quot;
 and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/hugosolar&quot;&gt;Hugo Solar&lt;/a&gt; to unify all of CC websites and applications. 
 Vocabulary has been undergoing a lot of changes lately. As part of my Outreachy internship, 
 I will be contributing to extending its scope and usage.&lt;/p&gt;
-&lt;h2 id=&quot;my-progress-so-far...&quot;&gt;My Progress so far...&lt;/h2&gt;&lt;p&gt;Before my first contribution, Vocabulary comprised of reusable UI components built with Vue.js and a live styleguide built with Styleguidist. 
+&lt;h2 id=&quot;my-progress-so-far..&quot;&gt;My Progress so far...&lt;/h2&gt;&lt;p&gt;Before my first contribution, Vocabulary comprised of reusable UI components built with Vue.js and a live styleguide built with Styleguidist. 
 My first task was to create an interactive playground experience with Storybook which would eventually replace that built with Styleguidist. 
 Storybook was chosen for obvious reasons:&lt;/p&gt;
 &lt;ul&gt;
@@ -3334,7 +3334,7 @@ the task and created a pull request. A live version of the interactive playgroun
 &lt;a href=&quot;https://cc-vue-vocabulary.netlify.com/storybook/?path=/story/vocabulary-welcome--welcome&quot;&gt;here&lt;/a&gt;. 
 Please feel free to play around with it and give a feedback.&lt;/p&gt;
 &lt;p&gt;The following week, I worked on updating some Vue Vocabulary components with the CC Vocabulary design library.&lt;/p&gt;
-&lt;h2 id=&quot;what-s-next...&quot;&gt;What's Next...&lt;/h2&gt;&lt;p&gt;This week, I will be working on extending the usage of vocabulary to other CC websites that are not built with Vue. 
+&lt;h2 id=&quot;what-s-next..&quot;&gt;What's Next...&lt;/h2&gt;&lt;p&gt;This week, I will be working on extending the usage of vocabulary to other CC websites that are not built with Vue. 
 What I worked on previously was &lt;a href=&quot;https://cc-vue-vocabulary.netlify.com/&quot;&gt;Vue-Vocabulary&lt;/a&gt; for CC websites and 
 platforms that support Vue. The goal is to use the already developed stylesheets in Vocabulary to build the 
 same functional components with vanilla JavaScript.&lt;/p&gt;
@@ -3371,7 +3371,7 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;During the first two weeks of my internship I mainly worked on redesigning the license selection process based on the usability testing feedback. We decided to set up license selection as a step-by-step process of answering yes/no questions guiding a novice or somewhat experienced user to the CC license that best suits their needs.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&quot;here-is-the-first-draft:&quot;&gt;&lt;strong&gt;Here is the first draft:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-1.png&quot; alt=&quot;draft-1.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;here-is-the-first-draft&quot;&gt;&lt;strong&gt;Here is the first draft:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-1.png&quot; alt=&quot;draft-1.png&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Features of this draft that stayed in current version:&lt;/em&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;A card to show the information about currently selected license is prominent on the page.&lt;/li&gt;
@@ -3399,7 +3399,7 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;li&gt;A link to a page with more information on how to use the license when sharing on the selected license card: for users who need help with that.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&quot;currently-final-draft-:&quot;&gt;&lt;strong&gt;Currently Final Draft :)&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-3.png&quot; alt=&quot;draft-3.png&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;currently-final-draft&quot;&gt;&lt;strong&gt;Currently Final Draft :)&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-3.png&quot; alt=&quot;draft-3.png&quot;&gt;&lt;/p&gt;
 &lt;h4 id=&quot;license-chooser-stepper-card&quot;&gt;&lt;strong&gt;License Chooser Stepper Card&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Stepper Card shows five steps to selecting a license, one for each feature of CC licenses and an optional personalization step. The stepper icons show current selection status: selected/unselected features and current feature being displayed. Clicking on an icon opens the corresponding step.&lt;/li&gt;
 &lt;li&gt;Each license feature has a yes/no question. A user clicks on a yes or no button to answer, and can immediately see what changed in the license, and the text beneath the buttons shows what current selection of the feature actually means. Default answer for each step besides the first one (attribution - 'BY') is 'no', so if a user simply clicks 'next' on each step, or clicks on the last step icon at the top, they get CC BY 4.0 license.&lt;/li&gt;
