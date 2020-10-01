@@ -2,13 +2,61 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-09-30T00:00:00Z</updated>
+  <updated>2020-10-01T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-attribution-for-images/">
+    <title type="text">Creative Commons WordPress plugin: attribution for images</title>
+    <id>urn:uuid:818016d3-7344-3937-9fd6-7e5ffad98071</id>
+    <updated>2020-10-01T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-attribution-for-images/" />
+    <author>
+      <name>rczajka</name>
+    </author>
+    <content type="html">&lt;p&gt;As a part of &lt;a href=&quot;https://centrumcyfrowe.pl&quot;&gt;Centrum Cyfrowe&lt;/a&gt;'s &lt;a href=&quot;/blog/entries/cc-wp-plugin-attribution-for-images/&quot;&gt;#NoWorries&lt;/a&gt; project funded by EUIPO, 
+I have had the pleasure of enhancing the Creative Commons Wordpress plugin. 
+The new version of CC's Wordpress plugin has a feature called
+“attribution information for images”. It works like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;you upload an image to the Wordpress Media Library and fill out the
+correct attribution information there.&lt;/li&gt;
+&lt;li&gt;You then insert the image into a page using the Image Gutenberg block.&lt;/li&gt;
+&lt;li&gt;When the image is then displayed on site, the plugin will show the
+attribution information – the name of the author, the image's title
+and link to source, and the CC license used – right there, in a nice
+semi-transparent overlay over the image.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;how-does-it-work&quot;&gt;How does it work?&lt;/h2&gt;&lt;p&gt;To find the relevant information from the Media Library, the plugin
+reuses the information already provided by Gutenberg Image Blocks.
+Each time an image is inserted using such a block, Wordpress adds a
+special CSS class to it, in the form of &lt;code&gt;wp-image-{id}&lt;/code&gt;, containing
+the image's identifier in the Media Library. It can be used to add
+individual styles to a specific image – we're using it to find the
+relevant entry in the Media Library and add individual attribution
+information. With this approach, we avoid the need for any custom
+markup – while also only hitting the database with a query when an
+actual image from the Media Library is found on the page.&lt;/p&gt;
+&lt;p&gt;All you need to do is make sure the licensing information is there in
+the Media Library, and that the images are inserted using the Image
+block.&lt;/p&gt;
+&lt;p&gt;This wasn't the first attempt at adding a similar function to the CC
+Wordpress plugin. The previous attempt used a &lt;code&gt;[license]&lt;/code&gt; shortcode
+wrapping the image – which it's unwieldy with the current Wordpress
+Gutenberg editor. It also used multiple calls to
+&lt;code&gt;attachment_url_to_postid&lt;/code&gt; to locate the image in the Media Library, which
+meant executing more database queries for each image. With the new
+approach, the user doesn't have to change their posts at all – all
+they need to do is install the plugin and add attribution information
+in the Media Library, and it will automatically start working for
+their normally inserted images.&lt;/p&gt;
+&lt;p&gt;See here how to install the plugin:&lt;/p&gt;
+&lt;video src=&quot;install.mp4&quot; controls&gt;&lt;/video&gt;&lt;p&gt;See here how to use the image attribution function:&lt;/p&gt;
+&lt;video src=&quot;use.mp4&quot; controls&gt;&lt;/video&gt;</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-intro/">
     <title type="text">WordPress Base Theme Usage Guide (GSOD-2020): Hello World!</title>
     <id>urn:uuid:8ca33f24-33d1-3bdb-a55d-5fb6381316f5</id>
@@ -3434,54 +3482,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.&lt;/p&gt;
 &lt;p&gt;Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.&lt;/p&gt;
 &lt;p&gt;You can follow my work at &lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;https://github.com/creativecommons/cc-chooser&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/freesound-intro/">
-    <title type="text">An Introduction to Freesound</title>
-    <id>urn:uuid:9d8021b4-7645-3213-a8ff-ced7633a4488</id>
-    <updated>2019-12-19T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/freesound-intro/" />
-    <author>
-      <name>ffont</name>
-    </author>
-    <content type="html">&lt;h3 id=&quot;about-freesound&quot;&gt;About Freesound&lt;/h3&gt;&lt;p&gt;To the best of our knowledge, &lt;a href=&quot;https://freesound.org&quot;&gt;Freesound&lt;/a&gt; is the biggest website for sharing Creative Commons audio clips in the &lt;em&gt;observable universe&lt;/em&gt;. It was started in 2005 as a research effort of the &lt;a href=&quot;https://www.upf.edu/web/mtg/&quot;&gt;Music Technology Group&lt;/a&gt; in &lt;a href=&quot;https://upf.edu&quot;&gt;Universitat Pompeu Fabra&lt;/a&gt;, Barcelona. The initial goal was to gather a collection of audio clips that could be shared among researchers to carry out computational analysis of sounds and learn about them. Creative Commons licenses had been introduced to the world only a couple of years before, and it seemed a perfect fit for the goals of the Freesound platform. Currently Freesound hosts more than &lt;strong&gt;430k audio clips&lt;/strong&gt; uploaded by more than &lt;strong&gt;20k contributors&lt;/strong&gt;. Freesound sounds have been &lt;strong&gt;downloaded more than 145M times&lt;/strong&gt; by &lt;strong&gt;9M users&lt;/strong&gt; all over the world. It contains all sorts of sounds, from field recordings to music instrument samples, foley, speech and music loops; but not &lt;em&gt;songs&lt;/em&gt; in the traditional sense of &lt;em&gt;finished music compositions&lt;/em&gt;. The aim of Freesound is to provide audio &lt;em&gt;building blocks&lt;/em&gt; to be transformed and combined into other sounds, and reused elsewhere. Here are some nice examples of the variety of sounds to be found in Freesound:&lt;/p&gt;
-&lt;div style=&quot;text-align:center;&quot;&gt;
-  &lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://freesound.org/embed/sound/iframe/264287/simple/full_size/&quot; style=&quot;width:800px;height:245px;&quot;&gt;&lt;/iframe&gt;
-
-  &lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://freesound.org/embed/sound/iframe/261328/simple/full_size/&quot; style=&quot;width:800px;height:245px;&quot;&gt;&lt;/iframe&gt;
-
-  &lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://freesound.org/embed/sound/iframe/392090/simple/full_size/&quot; style=&quot;width:800px;height:245px;&quot;&gt;&lt;/iframe&gt;
-
-  &lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://freesound.org/embed/sound/iframe/447776/simple/full_size/&quot; style=&quot;width:800px;height:245px;&quot;&gt;&lt;/iframe&gt;
-
-  &lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://freesound.org/embed/sound/iframe/161478/simple/full_size/&quot; style=&quot;width:800px;height:245px;&quot;&gt;&lt;/iframe&gt;
-
-  &lt;iframe frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;https://freesound.org/embed/sound/iframe/416984/simple/full_size/&quot; style=&quot;width:800px;height:245px;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;&lt;p&gt;Freesound has been featured in the Creative Commons blog several times in the past: &lt;a href=&quot;https://creativecommons.org/2005/04/12/overinspaincreatinganonlinecollaborativedatabaseofsounds/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2005/10/01/freesound/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2006/07/08/freesoundviaccmixter20kfreesounds/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2007/01/17/freesound-sample-in-children-of-men/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2008/03/13/freesound-20/&quot;&gt;here&lt;/a&gt;, &lt;a href=&quot;https://creativecommons.org/2008/09/29/freesoundorg/&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/2011/09/12/celebrating-freesound-2-0-retiring-sampling-licenses/&quot;&gt;here&lt;/a&gt;. Also you'll find plenty of information about Freesound, statistics and the like in the &lt;a href=&quot;https://blog.freesound.org&quot;&gt;Freesound Blog&lt;/a&gt;.&lt;/p&gt;
-&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;freesound_logo.png&quot; width=1000px/&gt;&lt;/p&gt;&lt;h3 id=&quot;the-freesound-api&quot;&gt;The Freesound API&lt;/h3&gt;&lt;p&gt;In 2011 a web API endpoint was added to Freesound and since then it has been evolving and incorporating new functionalities together with the site. The current version of the API, &lt;strong&gt;Freesound APIv2&lt;/strong&gt;, can be used by 3rd party developers and researchers to programatically search sounds in Freesound, filter results (including CC license), download audio analysis and the sounds themselves. It can also be used to upload new sounds, describe, rate and comment existing ones. In summary, it provides an alternative interface to that of the web browser so that &lt;strong&gt;Freesound content can be easily integrated in all sorts of projects&lt;/strong&gt; outside Freesound itself.&lt;/p&gt;
-&lt;p&gt;The Freesound API is a RESTful API that can be used similarly to other web APIs. To facilitate access to the API, we provide clients in &lt;a href=&quot;/blog/entries/freesound-intro/(https://github.com/mtg/freesound-python&quot;&gt;Python&lt;/a&gt;), &lt;a href=&quot;https://github.com/g-roma/freesound.js&quot;&gt;Javascript&lt;/a&gt; and &lt;a href=&quot;https://github.com/mtg/freesound-juce&quot;&gt;Juce (C++)&lt;/a&gt; frameworks, but there are also &lt;a href=&quot;https://freesound.org/docs/api/client_libs.html&quot;&gt;community-developed clients&lt;/a&gt; for other programming languages including Max/MSP, Perl, Supercollider, Objective-C, Scala and QT (C++). As an example, using the Python Freesound API client a search for &lt;em&gt;dog&lt;/em&gt; sounds would look like this:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;freesound&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;freesound&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FreesoundClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;Your API key obtained from https://freesound.org/apiv2/apply&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;token&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The query could be further refined and, for instance, include only dog sounds which are shorter than 5 seconds, with a high average rating, and in CC0 license like this:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;dog&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;duration:[0.0 TO 15.0] avg_rating:[4.5 TO 5.0] license:&amp;quot;Creative Commons 0&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Search results can also be easily downloaded:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retrieve_preview&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/direcotry/to/save/the/file/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;One of the features that make the Freesound API unique is the ability to retrieve and filter sounds using &lt;em&gt;audio features&lt;/em&gt; extracted with a &lt;strong&gt;computational analysis of the sounds uploaded to Freesound&lt;/strong&gt;. For that purpose we use a powerful open source audio analysis library called &lt;a href=&quot;https://essentia.upf.edu/&quot;&gt;Essentia&lt;/a&gt; that is also developed at the Music Technology Group. This allows the implementation of features like audio similarity search (i.e. searching for sounds given another sound as a &lt;em&gt;target&lt;/em&gt;), or advanced exploration interfaces in which audio clips are displayed in a space according to some automtically estimated acoustic properties (see the &lt;em&gt;Freesound Explorer&lt;/em&gt; example below).&lt;/p&gt;
-&lt;p&gt;The Freesound API is a very powerful tool to facilitate the reuse of Freesound content. You can find more information about the API and its features in the &lt;a href=&quot;https://freesound.org/docs/api/&quot;&gt;Freesound API documentation&lt;/a&gt;. The Freesound API is currently being used by companies like Acoustica, AudioGaming, Google, Mozilla, Soundly, Spotify, Waves Audio, Wolfram, and others.&lt;/p&gt;
-&lt;h3 id=&quot;spreading-cc-content-in-the-world&quot;&gt;Spreading CC content in the world&lt;/h3&gt;&lt;p&gt;The audio content hosted in Freesound has a second life outside the website. It is very hard to track all the projects in which Freesound content is used, but with 50k unique visits per day, the accumulated millions and millions of download records and the integration with 3rd party applications, it becomes clear that &lt;strong&gt;Freesound is spreading Creative Commons audio virtually everywhere&lt;/strong&gt;. Some users choose to use the Freesound forums to &lt;a href=&quot;https://freesound.org/forum/your-work-made-with-freesounds/&quot;&gt;explain the work they do using Freesound sounds&lt;/a&gt;, including music, videogames, animations, movies, theater plays, education, etc. Unfortunately this is just a small minority of users. To try to keep track of some of the applications, research proejcts and other initiatives that use Freesound content, the &lt;a href=&quot;https://labs.freesound.org&quot;&gt;Freesound Labs&lt;/a&gt; platform was introduced back in 2015. Currently it lists more than 40 projects and over 50 research papers using Freesound data. Some of these projects include &lt;strong&gt;CTAG's Strämpler&lt;/strong&gt;, an eurorack sample streaming and sound synthesis module; &lt;strong&gt;Spotify's Sountrap&lt;/strong&gt;, an online DAW with direct integration of Freesound search; &lt;strong&gt;Le Sound's AudioTexture&lt;/strong&gt;, a granular synthetizer that transforms Freesound clips; and &lt;strong&gt;Freesound Explorer&lt;/strong&gt;, a visual interface for exploring Freesound in a 2-dimensional space and create music at the same time.&lt;/p&gt;
-&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;strampler.png&quot; width=500px/&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.creative-technologies.de/ctag-strampler-a-eurorack-sample-streaming-and-sound-synthesis-module/&quot;&gt;Strämpler&lt;/a&gt; (see &lt;a href=&quot;https://www.youtube.com/watch?v=zmj8tKPHV8g&quot;&gt;video here&lt;/a&gt;)&lt;/p&gt;&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;soundtrap.png&quot; width=500px/&gt;&lt;br&gt;
-&lt;a href=&quot;https://www.soundtrap.com&quot;&gt;Soundtrap&lt;/a&gt;&lt;/p&gt;&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;audiotexturefree.png&quot; width=500px/&gt;&lt;br&gt;
-&lt;a href=&quot;https://lesound.io/product/audiotexture-free/&quot;&gt;Audio Texture&lt;/a&gt; (see &lt;a href=&quot;https://www.youtube.com/watch?v=pv1ozaJ3K2o&quot;&gt;video here&lt;/a&gt;)&lt;/p&gt;&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;freesound_explorer2.png&quot; width=500px/&gt;&lt;br&gt;
-&lt;a href=&quot;http://labs.freesound.org/fse/&quot;&gt;Freesound Explorer&lt;/a&gt;&lt;/p&gt;&lt;h3 id=&quot;under-the-hood&quot;&gt;Under the hood&lt;/h3&gt;&lt;p&gt;Both the Freesound website and API run on a modern technology stack which was built with high load and scalability in mind. Below is a diagram with the main blocks of the architecture. The main website consists of a &lt;a href=&quot;https://www.djangoproject.com&quot;&gt;Django&lt;/a&gt; application and HTML/CSS/JS frontend connected to a &lt;a href=&quot;https://www.postgresql.org&quot;&gt;PostgreSQL&lt;/a&gt; database. This implements sound browsing and basic social interaction features (forum, sound comments, sound ratings, private messaging, etc.). Text indexing is supported by an Apache &lt;a href=&quot;https://lucene.apache.org/solr/&quot;&gt;Solr&lt;/a&gt; server including text descriptions and tags, which allows for sophisticated sound text queries using the Solr query syntax. A distributed architecture is used for processing incoming sounds, producing compressed previews and waveform/spectrogram images (using Python's &lt;a href=&quot;https://pillow.readthedocs.io/en/stable/&quot;&gt;Pillow&lt;/a&gt; package), as well as for audio feature extraction. Feature extraction and the similarity search service are supported with the abovementioned Essentia library. Finally, Freesound uses &lt;a href=&quot;https://www.nginx.com&quot;&gt;NGINX&lt;/a&gt; webserver to serve the Django app and static content in the appservers, and &lt;a href=&quot;http://www.haproxy.org&quot;&gt;HAProxy&lt;/a&gt; loadbalancers to balance the load of incoming requests across the appservers.&lt;/p&gt;
-&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;diagram.png&quot; width=600px/&gt;&lt;/p&gt;&lt;p&gt;The code of the Freesound website is &lt;strong&gt;open source&lt;/strong&gt;, and all development happens in our &lt;a href=&quot;https://github.com/mtg/freesound/&quot;&gt;public source code repository&lt;/a&gt;. External contributions are welcome so if you want to participate don't hesitate to get in touch with us. Of course if you're not interested in devleopment but still want to contribute to Freesound you can upload sounds or &lt;a href=&quot;https://freesound.org/donations/donate/&quot;&gt;consider making a donation&lt;/a&gt; :)&lt;/p&gt;
 </content>
   </entry>
 </feed>
