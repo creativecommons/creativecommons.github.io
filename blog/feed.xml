@@ -2,13 +2,35 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-09-25T00:00:00Z</updated>
+  <updated>2020-09-30T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-intro/">
+    <title type="text">WordPress Base Theme Usage Guide (GSOD-2020): Hello World!</title>
+    <id>urn:uuid:8ca33f24-33d1-3bdb-a55d-5fb6381316f5</id>
+    <updated>2020-09-30T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-intro/" />
+    <author>
+      <name>JackieBinya</name>
+    </author>
+    <content type="html">&lt;p&gt;My name is Jacqueline Binya. I am a software developer and technical writer from Zimbabwe. I am going to write a series of blog posts documenting my experience and lessons as I contribute to the &lt;a href=&quot;https://github.com/creativecommons/wp-theme-base&quot;&gt;Creative Commons WordPress Base Theme(CC WP Base Theme)&lt;/a&gt; during the &lt;a href=&quot;https://developers.google.com/season-of-docs&quot;&gt;Google Season of Docs (GSOD-2020)&lt;/a&gt; as a technical writer.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-google-season-of-docs&quot;&gt;What is Google Season of Docs?&lt;/h2&gt;&lt;p&gt;The Google Season of the Docs was born out of a need to improve the quality of open-source documentation as well as to advocate for open source, for documentation, and for technical writing. Annually during the GSOD, technical writers are invited to contribute to open-source projects through a highly intensive process geared at ensuring that the technical writers and the projects they contribute to during GSOD are a good fit, after that has been determined GSOD then resumes.&lt;/p&gt;
+&lt;h2 id=&quot;building-the-docs&quot;&gt;Building the docs&lt;/h2&gt;&lt;p&gt;The CC WP Base theme is a WordPress theme used to create front-facing Creative Commons (CC) websites. My task is to collaborate with the engineering team to create community facing docs for the theme.&lt;/p&gt;
+&lt;h3 id=&quot;guiding-principles&quot;&gt;Guiding principles&lt;/h3&gt;&lt;p&gt;The docs should be inclusive meaning: they should be written in an easy-to-understand manner taking care to avoid the use of excessive technical jargon, they should be accessible and they should have support for internationalization. We hope to provide our users with a smooth and memorable experience whilst using the docs hence the docs site should be fast and easy to navigate.&lt;/p&gt;
+&lt;h3 id=&quot;technical-stack-of-the-project&quot;&gt;Technical stack of the project&lt;/h3&gt;&lt;p&gt;We decided to build the docs using &lt;a href=&quot;https://jamstack.org/&quot;&gt;Jamstack&lt;/a&gt;, to be specific we are using  &lt;a href=&quot;https://gridsome.org/&quot;&gt;Gridsome&lt;/a&gt; a static generator for &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vuejs&lt;/a&gt;. We are using Gridsome as it is highly performant, and it also integrates smoothly with the &lt;a href=&quot;https://cc-vocabulary.netlify.app/&quot;&gt;CC Vocabulary&lt;/a&gt;. Gridsome also has out-of-the-box support for important features like Google Analytics and &lt;a href=&quot;https://www.algolia.com/&quot;&gt;Angolia&lt;/a&gt;, these features will obviously be useful in future iterations of the docs. To quickly scaffold the docs we used a Gridsome theme called &lt;a href=&quot;https://gridsome.org/starters/jamdocs/&quot;&gt;JamDocs&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;progress&quot;&gt;Progress&lt;/h3&gt;&lt;p&gt;Currently, the project is on track. As it's been stated we are creating the docs collaboratively. The very first step in our workflow is to create draft content using Google docs. That task is assigned to me, it involves doing lots of research, reading and also testing out the theme. Afterwards, my mentors Hugo Solar and Timid Robot Zehta then give me feedback on the draft. Then I implement the feedback and continuously work on improvements. The final step is migrating the approved draft content to the docs projects in markdown format.&lt;/p&gt;
+&lt;h3 id=&quot;my-lessons-so-far&quot;&gt;My lessons so far:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Always ask questions: frankly, the only way you can create good content is when you have a solid understanding of the subject matter.&lt;/li&gt;
+&lt;li&gt;It's better to over-communicate than under-communicate especially when working in a remotely, this is especially more important if you encounter blockers whilst executing your work.&lt;/li&gt;
+&lt;li&gt;Push that code and open PR quickly and then go ahead and ask for a review don't procrastinate this will ensure  fast turnover you get feedback quickly and can work on improvements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Thank you for reading, watch out for the next update which will be posted soon.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/add-query-using-curl-command-and-provide-response-samples/">
     <title type="text">Add Query Using curl Command and Provide Response Samples</title>
     <id>urn:uuid:2841326a-a1a6-3593-8236-10fc75b59aa0</id>
@@ -3460,20 +3482,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;a href=&quot;https://lesound.io/product/audiotexture-free/&quot;&gt;Audio Texture&lt;/a&gt; (see &lt;a href=&quot;https://www.youtube.com/watch?v=pv1ozaJ3K2o&quot;&gt;video here&lt;/a&gt;)&lt;/p&gt;&lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;freesound_explorer2.png&quot; width=500px/&gt;&lt;br&gt;
 &lt;a href=&quot;http://labs.freesound.org/fse/&quot;&gt;Freesound Explorer&lt;/a&gt;&lt;/p&gt;&lt;h3 id=&quot;under-the-hood&quot;&gt;Under the hood&lt;/h3&gt;&lt;p&gt;Both the Freesound website and API run on a modern technology stack which was built with high load and scalability in mind. Below is a diagram with the main blocks of the architecture. The main website consists of a &lt;a href=&quot;https://www.djangoproject.com&quot;&gt;Django&lt;/a&gt; application and HTML/CSS/JS frontend connected to a &lt;a href=&quot;https://www.postgresql.org&quot;&gt;PostgreSQL&lt;/a&gt; database. This implements sound browsing and basic social interaction features (forum, sound comments, sound ratings, private messaging, etc.). Text indexing is supported by an Apache &lt;a href=&quot;https://lucene.apache.org/solr/&quot;&gt;Solr&lt;/a&gt; server including text descriptions and tags, which allows for sophisticated sound text queries using the Solr query syntax. A distributed architecture is used for processing incoming sounds, producing compressed previews and waveform/spectrogram images (using Python's &lt;a href=&quot;https://pillow.readthedocs.io/en/stable/&quot;&gt;Pillow&lt;/a&gt; package), as well as for audio feature extraction. Feature extraction and the similarity search service are supported with the abovementioned Essentia library. Finally, Freesound uses &lt;a href=&quot;https://www.nginx.com&quot;&gt;NGINX&lt;/a&gt; webserver to serve the Django app and static content in the appservers, and &lt;a href=&quot;http://www.haproxy.org&quot;&gt;HAProxy&lt;/a&gt; loadbalancers to balance the load of incoming requests across the appservers.&lt;/p&gt;
 &lt;p style=&quot;text-align:center;&quot;&gt;&lt;img src=&quot;diagram.png&quot; width=600px/&gt;&lt;/p&gt;&lt;p&gt;The code of the Freesound website is &lt;strong&gt;open source&lt;/strong&gt;, and all development happens in our &lt;a href=&quot;https://github.com/mtg/freesound/&quot;&gt;public source code repository&lt;/a&gt;. External contributions are welcome so if you want to participate don't hesitate to get in touch with us. Of course if you're not interested in devleopment but still want to contribute to Freesound you can upload sounds or &lt;a href=&quot;https://freesound.org/donations/donate/&quot;&gt;consider making a donation&lt;/a&gt; :)&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/">
-    <title type="text">CC Platform Toolkit Revamp</title>
-    <id>urn:uuid:076e809b-c084-3977-8ca5-7bbd76064c50</id>
-    <updated>2019-12-16T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;I've just finished my second week as an intern for CC (part of the Outreachy program 2019-2020 round), helping revamp the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt; and it's been a great learning experience so far.&lt;/p&gt;
-&lt;p&gt;Before we get into what I've been doing, I wanted to quickly explain why I think this is such a cool project - maybe you'll think it's cool too and want to collaborate as well at some point :) See, the better this toolkit is, the more we increase our chances of having really great, user-friendly implementations in partner platforms. Providing a helpful toolkit is one of the ways we can guide users towards finding better information, understanding licenses, and making better use of content -- not to mention that getting this right ensures we reach a ton of people.&lt;/p&gt;
-&lt;p&gt;So in order to start, we began by taking a step back and  studying in detail how platforms are addressing licenses today. These first weeks I went through a lot of user flows, seeing what works, and what were possible points to address and improve. The greatest challenge so far was trying to break down what were good UX/UI practices that could benefit any platform -- regardless of the type of content or current layout. Once I analyzed the material through this point of view, it was easier to filter the kind of information that must be addressed in our new version of the toolkit. This first study also gave me a lot of material to begin thinking about our next step: user research. It's important to find out how much of this process is intuitive to users and what flies under the radar -- having more answers is crucial so that we can be assertive when making suggestions.&lt;/p&gt;
-&lt;p&gt;I'll keep checking in every two weeks with updates on how this project is going. Trust me, there's still a lot of really exciting tasks to be done in the following months :)&lt;/p&gt;
 </content>
   </entry>
 </feed>
