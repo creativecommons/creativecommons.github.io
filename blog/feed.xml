@@ -2,13 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-10-01T00:00:00Z</updated>
+  <updated>2020-10-02T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-intro/">
+    <title type="text">Vocabulary Site &amp; Usage Guide Introduction (GSoD'20)</title>
+    <id>urn:uuid:4974b78b-a4f9-3bbc-8875-d595042b954c</id>
+    <updated>2020-10-02T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-intro/" />
+    <author>
+      <name>nimishbongale</name>
+    </author>
+    <content type="html">&lt;p&gt;Hey there! I'm Nimish Bongale, a Technical Writer &amp;amp; Software Developer based out of Bangalore, India. My other hobbies include playing chess and the guitar. I look forward to build the CC Vocabulary site and usage guides as a part of GSoD'20.&lt;/p&gt;
+&lt;h2 id=&quot;but-what-is-gsod&quot;&gt;But what is GSoD?&lt;/h2&gt;&lt;p&gt;GSoD, or Google Season of Docs, is a program that stresses on the importance of the documentation aspect of Open Source projects. It invites technical writers from across the world to submit proposals based on projects floated in by the participating Open Source Organisations. The selected technical writers then work with the their respective organisations and look to complete their work by the end of their internship period. More information about the same can be found &lt;a href=&quot;https://developers.google.com/season-of-docs&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let's talk a bit about my project, shall we?&lt;/p&gt;
+&lt;h2 id=&quot;vocabulary-site-usage-guide&quot;&gt;Vocabulary Site &amp;amp; Usage Guide&lt;/h2&gt;&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt; is a cohesive design system &amp;amp; Vue component library to unify the web-facing Creative Commons. It's currently comprised of 3 packages, namely Vocabulary, Vue-Vocabulary &amp;amp; Fonts. My contribution to this project would majorly involve building the landing site for CC Vocabulary, and refactor the documentation wherever necessary.&lt;/p&gt;
+&lt;h3 id=&quot;what-drives-me&quot;&gt;What drives me&lt;/h3&gt;&lt;p&gt;Documentation is one of the primary reasons which determines how successful a certain open source library will be. The major question that developers think of while choosing a suitable tech stack to build their applications is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Is the library &lt;em&gt;well documented&lt;/em&gt;? &lt;/li&gt;
+&lt;li&gt;Is it &lt;em&gt;well maintained&lt;/em&gt;? &lt;/li&gt;
+&lt;li&gt;Does it have some &lt;em&gt;considerable usage and error support&lt;/em&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are exactly the questions I should be asking myself while going about this project idea.&lt;/p&gt;
+&lt;p&gt;As aforementioned, there is an immanent need to have a concise and consolidated documentation. The lack of documentation hurts the future perspectives of open source applications, and is by far, an essential and non-negligible component. Linking to these documentations should be an appealing home page, which captures the interest of the people in an instant. The documentation should be well organised, thereby enabling a seamless flow through it.&lt;/p&gt;
+&lt;h3 id=&quot;tech-stack-of-the-project&quot;&gt;Tech stack of the project&lt;/h3&gt;&lt;p&gt;We have decided to move forward with &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vuejs&lt;/a&gt; for building the site, and continue work on the existing &lt;a href=&quot;https://storybook.js.org/&quot;&gt;storybooks&lt;/a&gt; of Vocabulary, Vue-Vocabulary and Fonts. Storybookjs has had some great improvements in recent times, and the new addons that are offered will greatly support my work. Besides these, I will also be using &lt;a href=&quot;https://stackedit.io/&quot;&gt;StackEdit&lt;/a&gt; to write and share Markdown files of my writings.&lt;/p&gt;
+&lt;h3 id=&quot;progress-baby-steps&quot;&gt;Progress - Baby Steps&lt;/h3&gt;&lt;p&gt;I have contributed to CC in the past. It would now be my first time contributing to a specific project within CC, while being a member of CC Open Source. Some tasks that I've been able to initiate/accomplish so far:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Look at Open Source documentation conventions, and see if we violate any.&lt;/li&gt;
+&lt;li&gt;Understand the level of existing documentation currently present in our storybooks.&lt;/li&gt;
+&lt;li&gt;Discuss about the Monorepo migration and help out with the implementation.&lt;/li&gt;
+&lt;li&gt;Migrate &lt;code&gt;storybookjs&lt;/code&gt; to the latest version.&lt;/li&gt;
+&lt;li&gt;Implement &lt;code&gt;addon-controls&lt;/code&gt; for vocabulary.&lt;/li&gt;
+&lt;li&gt;Design the vocabulary site.&lt;/li&gt;
+&lt;li&gt;Promote the involvement of CC Open Source in &lt;a href=&quot;https://hacktoberfest.digitalocean.com/&quot;&gt;Hacktoberfest&lt;/a&gt; 2020.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;what-did-i-learn&quot;&gt;What did I learn?&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Design is more than just picking colors and placing components on a grey screen.&lt;/li&gt;
+&lt;li&gt;It's important to read your own writings from an unbiased perspective to actually understand how well it would be perceived.&lt;/li&gt;
+&lt;li&gt;Interacting with your mentor on a regular basis is of the absolute essence.&lt;/li&gt;
+&lt;li&gt;Publishing to &lt;a href=&quot;/blog/entries/cc-vocabulary-docs-intro/npmjs.com&quot;&gt;npmjs&lt;/a&gt; is not difficult!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;strong&gt;Thank you for your time!&lt;/strong&gt;
+&lt;/p&gt;</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-attribution-for-images/">
     <title type="text">Creative Commons WordPress plugin: attribution for images</title>
     <id>urn:uuid:818016d3-7344-3937-9fd6-7e5ffad98071</id>
@@ -3423,65 +3464,6 @@ same functional components with vanilla JavaScript.&lt;/p&gt;
 &lt;p&gt;Since the holidays got a bit in the way of user testing existing platform implementations, my mentors and I slightly altered the schedule. These past weeks have been dedicated to reworking the content that is currently online (revisiting writing and format) and suggesting an entirely new structure. I've been documenting that process &lt;a href=&quot;https://drive.google.com/open?id=1g7_76zFmgtqq7khb_aBS-l2Wx8tScMgR1NPBO0vOdkM&quot;&gt;here&lt;/a&gt; as I tackle each section.&lt;/p&gt;
 &lt;p&gt;What I really loved about this process is the fact that I'm able to see the platform toolkit through a holistic lens: I'm thinking about how the user is currently interacting with this content, how the information could be made more palatable, how that can be achieved visually, and finally, how to do it in a way that won't be impossible to implement.&lt;/p&gt;
 &lt;p&gt;I'm excited about the questions and answers that have been coming up during this process. Even though I'm far from delivering a final version, I believe this first rough draft already brings important improvements. My focus has been on diminishing cognitive load. That means taking very dense content and delivering the same amount of information with an approach that steps away from full copy and comes closer to a UI format. I've been learning a lot with each step of this project and I'm eager to make a positive contribution by the end of the internship. Soon enough I'll be checking in again soon to give a new follow up!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/">
-    <title type="text">Improving CC License Chooser Weeks 1-2: Design</title>
-    <id>urn:uuid:24a0bec2-ab5d-3990-9d96-1c8d52fe24f1</id>
-    <updated>2020-01-06T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-weeks-1-2-design/" />
-    <author>
-      <name>obulat</name>
-    </author>
-    <content type="html">&lt;p&gt;Creative Commons License Chooser has been helping creators to choose the most appropriate license for their work for a long time. As anything on the web, it needs updating. One of my mentors, &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, has created the new version of this chooser as part of his 2019 GSoC Project. As a 2019-2020 Outreachy intern, I will be working on making it production-ready. The goals of my internship include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Improving usability of the Chooser and making it easier for licensors to understand the process of selecting the most appropriate license.&lt;/li&gt;
-&lt;li&gt;Setting up and automating internalization.&lt;/li&gt;
-&lt;li&gt;Extracting License Chooser as a standalone npm package to make integrating Creative Commons licensing in other websites easier.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;During the first two weeks of my internship I mainly worked on redesigning the license selection process based on the usability testing feedback. We decided to set up license selection as a step-by-step process of answering yes/no questions guiding a novice or somewhat experienced user to the CC license that best suits their needs.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;here-is-the-first-draft&quot;&gt;&lt;strong&gt;Here is the first draft:&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-1.png&quot; alt=&quot;draft-1.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Features of this draft that stayed in current version:&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;A card to show the information about currently selected license is prominent on the page.&lt;/li&gt;
-&lt;li&gt;Four yes/no questions that help narrow the license choice.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;What was changed in final version:&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The openness scale (which is drawn incorrectly, by the way) took up too much space on the first screen, not adding as much to the process.&lt;/li&gt;
-&lt;li&gt;Toggles as an answer to yes/no questions are confusing for some users.&lt;/li&gt;
-&lt;li&gt;Separate Personalization step was moved together with other steps.&lt;/li&gt;
-&lt;li&gt;License attribution information was merged with the selected license card, because the card is supposed to contain all the information about selected license, including author/work url/ source url, if they are available.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;draft-2&quot;&gt;&lt;strong&gt;Draft 2&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;As a result of continuous communication with my mentors, I this draft to be discussed at our weekly meeting.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-2.png&quot; alt=&quot;draft-2.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Features that stayed in the current version:&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Two cards: one for the step-by-step process and the other for presenting license information.&lt;/li&gt;
-&lt;li&gt;All the information about selected license in the second card.&lt;/li&gt;
-&lt;li&gt;Personalization step as the last and optional step of choosing the license.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;Features that were suggested during the meeting:&lt;/em&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;License selection dropdown with all available licenses on the selected license card. This is for experienced users who know what license they want to choose and only need to add details, or copy the attribution text or html.&lt;/li&gt;
-&lt;li&gt;A link to a page with more information on how to use the license when sharing on the selected license card: for users who need help with that.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&quot;currently-final-draft&quot;&gt;&lt;strong&gt;Currently Final Draft :)&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/blog/entries/improving-cc-license-chooser-weeks-1-2-design/draft-3.png&quot; alt=&quot;draft-3.png&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;license-chooser-stepper-card&quot;&gt;&lt;strong&gt;License Chooser Stepper Card&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Stepper Card shows five steps to selecting a license, one for each feature of CC licenses and an optional personalization step. The stepper icons show current selection status: selected/unselected features and current feature being displayed. Clicking on an icon opens the corresponding step.&lt;/li&gt;
-&lt;li&gt;Each license feature has a yes/no question. A user clicks on a yes or no button to answer, and can immediately see what changed in the license, and the text beneath the buttons shows what current selection of the feature actually means. Default answer for each step besides the first one (attribution - 'BY') is 'no', so if a user simply clicks 'next' on each step, or clicks on the last step icon at the top, they get CC BY 4.0 license.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;selected-license-card&quot;&gt;&lt;strong&gt;Selected License Card&lt;/strong&gt;&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Current selection dropdown is for experienced users who can quickly select a license that they know they want to use. It also updates when a feature in the license selection process is changed.&lt;/li&gt;
-&lt;li&gt;Selected license information displays information about the license and its clauses, as well as its icons. The wording of this part will probably change the most after discussion with the community and legal team.&lt;/li&gt;
-&lt;li&gt;Attribution information for the license, with a choice between rich text or html code. These are displayed in tabs to save on space. &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I created the wireframes in Figma, and I tried to integrate CC Vocabulary elements as much as possible.&lt;/p&gt;
-&lt;p&gt;Next steps for my project will include coding to update the license chooser Vue.js project, and iterating over the design based on community feedback.&lt;/p&gt;
-&lt;p&gt;You can follow my work at &lt;a href=&quot;https://github.com/creativecommons/cc-chooser&quot;&gt;https://github.com/creativecommons/cc-chooser&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
