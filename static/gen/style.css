@@ -801,7 +801,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   margin-top: 1.5rem !important;
   margin-bottom: 1.5rem !important; }
 
-.margin-top-bigger, .card.entry-post.project-index .card-content .content, .author-posts .header .container .button {
+.margin-top-bigger, .card.entry-post.project-index .card-content .content, .author-posts .header .container .button, .issue-finder .body .disclaimer {
   margin-top: 2rem !important; }
 
 .margin-right-bigger {
@@ -7834,6 +7834,8 @@ a.navbar-item,
   .issue-finder .body ul.gh-links {
     list-style: disc;
     padding-left: 2em; }
+  .issue-finder .body .disclaimer {
+    font-size: smaller; }
 
 .project-list .body {
   line-height: 1.8125; }
