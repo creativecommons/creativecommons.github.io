@@ -1,0 +1,473 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Python Guidelines" />
+
+
+<meta property="og:description" content="These Python Guidelines (style guide) empower the community to
+focus on the intent of the code and work together with a minimum of friction." />
+
+<meta property="og:url" content="/contributing-code/python-guidelines/" />
+<meta property="og:type" content="article" />
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Python Guidelines">
+<meta name="twitter:description" content="These Python Guidelines (style guide) empower the community to
+focus on the intent of the code and work together with a minimum of friction.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Python Guidelines — Creative Commons on GitHub</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item " href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless  is-active">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Internships<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/internships/">Overview</a>
+              
+                <a class="navbar-item" href="/internships/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/internships/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/internships/intern-guide/">Intern Guide</a>
+              
+                <a class="navbar-item" href="/internships/mentor-guide/">Mentor Guide</a>
+              
+                <a class="navbar-item" href="/internships/history/">History</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              CC Search<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/cc-search/">Overview &amp; Roadmap</a>
+              
+                <a class="navbar-item" href="/cc-search/contribution-guide/">Contribution Guide</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/contributing-code/">
+              
+                Contributing Code
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Python Guidelines</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="code-guidelines">
+    <header class="header">
+      <div class="container is-paddingless">
+        <h1>Python Guidelines</h1>
+        <div class="description column is-9 is-paddingless">
+          <p>These Python Guidelines (style guide) empower the community to
+focus on the intent of the code and work together with a minimum of friction.</p>
+
+        </div>
+      </div>
+    </header>
+    <div class="container code-guidelines-body">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="row">
+            
+              <aside class="menu sidebar-menu">
+                <ul class="menu-list">
+                  <li>
+                    <a class=" link" href="/contributing-code/projects/">Project List</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/issue-finder/">Issue Finder</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/">Contribution Guidelines</a>
+                    <ul>
+                      <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>Pull Request Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/github-repo-guidelines/"><i class="icon circle-filled"></i>Github Repo Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/repo-labels/"><i class="icon circle-filled"></i>Repository Labels</a></li>
+                      <li><a class=" is-active  link" href="/contributing-code/python-guidelines/"><i class="icon circle-filled"></i>Python Guidelines</a></li>
+                    </ul>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/usability/">Usability</a>
+                  </li>
+                </ul>
+              </aside>
+            
+          </div>
+          <div class="row padding-bottom-normal sticky-top">
+            <h4 class="b-header">On this page</h4>
+            <aside class="menu table-of-contents">
+              <ul class="menu-list">
+                
+                  <li>
+                    <a class="link" href="#code-formatting">Code Formatting</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
+                        
+                          <li><a class="link" href="#examples"><i class="icon circle-filled"></i>Examples</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#style-and-quality">Style and Quality</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
+                        
+                          <li><a class="link" href="#conflicts-with-black"><i class="icon circle-filled"></i>Conflicts with Black</a></li>
+                        
+                          <li><a class="link" href="#examples"><i class="icon circle-filled"></i>Examples</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#development-environment">Development Environment</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
+                        
+                          <li><a class="link" href="#examples"><i class="icon circle-filled"></i>Examples</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#additional-guidance">Additional Guidance</a>
+                    
+                  </li>
+                
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div class="column content">
+          <h2 id="code-formatting">Code Formatting</h2><h3 id="overview">Overview</h3><p>All Python code must be formatted using <a href="https://github.com/psf/black">Black</a>, <em>the uncompromising
+Python code formatter</em>. Each project should contain a <code>pyproject.toml</code>
+configuration file that limits line length to 79 characters.</p>
+<h3 id="examples">Examples</h3><ul>
+<li>Black configuration (<code>pyproject.toml</code>): <a href="https://github.com/search?q=org%3Acreativecommons+filename:pyproject.toml">GitHub Search · org:creativecommons
+filename:pyproject.toml</a></li>
+<li>GitHub Actions workflow: <a href="https://github.com/search?q=org%3Acreativecommons+%22pipenv+run+black%22&amp;type=code">GitHub Search · org:creativecommons "pipenv run
+black"</a></li>
+</ul>
+<h2 id="style-and-quality">Style and Quality</h2><h3 id="overview">Overview</h3><p>All Python code must be checked using <a href="https://gitlab.com/pycqa/flake8">flake8</a>, <em>a python tool that
+glues together pep8, pyflakes, mccabe, and third-party plugins to check
+the style and quality of some python code.</em></p>
+<h3 id="conflicts-with-black">Conflicts with Black</h3><p>Where flake8 conflicts with Black, the flake8 check should be skipped. For
+example, there are instances where black formats code that generates flake8
+warning for <a href="https://www.flake8rules.com/rules/E203.html">Whitespace before ':' (E203)</a>.</p>
+<h3 id="examples">Examples</h3><ul>
+<li>flake8 configuration (<code>.flake8</code>): <a href="https://github.com/search?q=org%3Acreativecommons+filename:.flake8">GitHub Search · org:creativecommons
+filename:.flake8</a></li>
+<li>flake8 skip E203 warning: <a href="https://github.com/search?q=org%3Acreativecommons+%22noqa%3A+E203%22&amp;type=code">GitHub Search · org:creativecommons "noqa:
+E203"</a></li>
+<li>GitHub Actions workflow: <a href="https://github.com/search?q=org%3Acreativecommons+%22pipenv+run+flake8%22&amp;type=code">GitHub Search · org:creativecommons "pipenv run
+flake8"</a></li>
+</ul>
+<h2 id="development-environment">Development Environment</h2><h3 id="overview">Overview</h3><p>Please work to minimize the number of development related technologies. This
+helps minimize the overhead of contributing to multiple projects. Most of our
+projects use either <a href="https://github.com/pypa/pipenv">Pipenv</a>, the Python Development Workflow for
+Humans, or <a href="https://docs.docker.com/compose/">docker-compose</a>, a tool for defining and running
+multi-container Docker applications.</p>
+<h3 id="examples">Examples</h3><ul>
+<li>Pipenv configuration: <a href="https://github.com/search?q=org%3Acreativecommons+filename:Pipfile">GitHub Search · org:creativecommons
+filename:Pipfile</a></li>
+<li>Docker-compose example: <a href="https://github.com/creativecommons/cccatalog/blob/master/src/cc_catalog_airflow/docker-compose.yml">docker-compose.yml for cccatalog</a>
+and the <a href="https://github.com/creativecommons/cccatalog#development-setup-for-airflow-and-api-puller-scripts">related README.md</a></li>
+</ul>
+<h2 id="additional-guidance">Additional Guidance</h2><p>Thankfully, Black removes a lot of style work and worry. Where there is room
+for developer discretion, the following guides are excellent resources:</p>
+<ul>
+<li><a href="https://google.github.io/styleguide/pyguide.html">Google Python Style Guide</a></li>
+<li><a href="https://docs.python-guide.org/writing/style/">Code Style — The Hitchhiker's Guide to Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="http://creativecommons.org/donate">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

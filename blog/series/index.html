@@ -87,6 +87,8 @@
               
                 <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
               
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
                 <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
               
             </div>
