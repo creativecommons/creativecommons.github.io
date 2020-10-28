@@ -2,13 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-10-21T00:00:00Z</updated>
+  <updated>2020-10-26T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-1/">
+    <title type="text">Vocabulary Site Updates (v1)</title>
+    <id>urn:uuid:51a44307-9725-3d59-bfcd-9badc7cce229</id>
+    <updated>2020-10-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-1/" />
+    <author>
+      <name>nimishbongale</name>
+    </author>
+    <content type="html">&lt;p&gt;Hello there! Well well well. It has been an eventful first few weeks, to say the least! Let's gauge my progress, shall we?&lt;/p&gt;
+&lt;h2 id=&quot;vocabulary-site-updates-edition-1/many-more-to-come&quot;&gt;Vocabulary Site Updates (Edition 1/many more to come)&lt;/h2&gt;&lt;h3 id=&quot;what-i-ve-been-upto&quot;&gt;What I've been upto&lt;/h3&gt;&lt;p&gt;I've mainly got myself invested in a survey of the existing documentation that vocabulary currently possesses, and find places where it could be made better. After clearing those issues out, I began building the main landing site for &lt;code&gt;Vocabulary&lt;/code&gt;, &lt;code&gt;Vue-vocabulary&lt;/code&gt; and &lt;code&gt;Fonts&lt;/code&gt;. It wasn't particularly difficult to establish the necessary workflows as I had done something similar before. During the process of designing the basic structure of the site, I came across a few instances where I felt we needed new/improved components &amp;amp; I discussed the same with my team over on the sprint calls. The design of the site is nearly done. I'm also building the site parallelly &amp;amp; seeking approval from the CC Design Team. I've gotten myself involved in multiple other community contributions to CC as well across multiple of our repositories.&lt;/p&gt;
+&lt;h3 id=&quot;what-i-ve-learnt&quot;&gt;What I've learnt&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Knowing the previously existing code in your project is of serious essence. It's important to understand the code styles, structure &amp;amp; activity of the code that you are dealing with.&lt;/li&gt;
+&lt;li&gt;Be patient! Its fine to delay something if it makes sense to have it logically accomplished only after certain other tasks are done &amp;amp; dusted with.&lt;/li&gt;
+&lt;li&gt;How essential it is to write &lt;em&gt;neat code&lt;/em&gt; is something that's not spoken too often. (I wonder why...)&lt;/li&gt;
+&lt;li&gt;I always thought VueJS sets up SPA's by default. I'm surprised you need to configure it additionally to do just that!&lt;/li&gt;
+&lt;li&gt;Storybook is just a really nifty OSS with great community support! &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;other-community-work-tidbits&quot;&gt;Other community work tidbits&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;I've been working on the Dark Mode (a much awaited feature, at least for me!) for our storybooks with some support from our community. It should be up and running shortly!&lt;/li&gt;
+&lt;li&gt;Fixed some formatting bugs in the &lt;code&gt;README.md&lt;/code&gt; &amp;amp; suggested changes wrt to &lt;code&gt;npm v7&lt;/code&gt; considerations.&lt;/li&gt;
+&lt;li&gt;Fixed storybook components docs for 2 features.&lt;/li&gt;
+&lt;li&gt;Raised a ticket for a component to render markdown text within vocabulary itself.&lt;/li&gt;
+&lt;li&gt;Raised a few other issues for potential hacktoberfest contributions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;strong&gt;Thank you for your time! To be continued...&lt;/strong&gt;
+&lt;/p&gt;</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/add-new-sections-descriptions-help-texts-code-examples-schemas-and-serializers/">
     <title type="text">Add New Sections, Descriptions, Help Texts, Code Examples, Schemas, and Serializers</title>
     <id>urn:uuid:b832956d-0c04-37e5-bde6-eb53722a4ba3</id>
@@ -3445,20 +3473,6 @@ earlier in the python file.&lt;/p&gt;
 &lt;p&gt;We hope that these hints are helpful to the reader.  For more, and for the
 context around the snippets shown here, please take a look at
 &lt;a href=&quot;https://github.com/creativecommons/cccatalog/tree/c4b80600eb5695cc294e1791ba90bdc3a408b7b9/src/cc_catalog_airflow&quot;&gt;the repo&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-3/">
-    <title type="text">CC Platform Toolkit Revamp - 3</title>
-    <id>urn:uuid:297bf32e-1761-3ec6-967a-4cb76007305c</id>
-    <updated>2020-01-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-3/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;Last time I checked-in, I was working on revisiting the current &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt; and making a first draft suggesting changes in both content and structure.&lt;/p&gt;
-&lt;p&gt;It was a lot of work, but I'm finally happy with the wire-frame that came out after all the research and experimentation. The original material went through quite a few modifications, with text rewrites and changes in the order and organization of the content. But now comes the important part: making sure that these changes make sense to the users. My vision is already a little skewed, since I've been immersed in this project for the past 7 weeks. From now on, the process of validating this material needs fresh eyes. That way, improvements can be made based on user feedback, and reflect the best possible version when it the time comes to implement.&lt;/p&gt;
-&lt;p&gt;For the next two weeks my schedule is focusing on two different activities: I'll be going over a round of user interviews where I intend to show my wireframe and present a few tasks. The idea is to see how both content and usability perform in this new format. In parallel, I've also began taking these wire-framed components and sketching them out in a more refined UI format by experimenting with color, type, and so on. I really wanted to get an early start on this task—even if it's subject to change as the research gives me further insights—because I feel making the visual part come together will be the hardest part for me.&lt;/p&gt;
-&lt;p&gt;Thankfully, I have very supportive mentors and help all-around from the CC staff and community. I'm really happy with how this project is coming together and I hope in two weeks I can come back here and report on great progress!&lt;/p&gt;
 </content>
   </entry>
 </feed>
