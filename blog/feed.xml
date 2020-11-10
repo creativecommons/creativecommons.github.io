@@ -2,13 +2,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-10-26T00:00:00Z</updated>
+  <updated>2020-11-10T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-content-creation/">
+    <title type="text">Content Creation Phase: WordPress Base Theme Usage Guide</title>
+    <id>urn:uuid:bb3168cf-7243-320e-a8e2-0586030dc3a7</id>
+    <updated>2020-11-10T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-content-creation/" />
+    <author>
+      <name>JackieBinya</name>
+    </author>
+    <content type="html">&lt;p&gt;For the past couple of weeks we have been actively creating content for the Creative Commons WordPress Base Theme Usage Guide. Currently the draft content is under final review before it is migrated to the main docs site.&lt;/p&gt;
+&lt;h2 id=&quot;our-strategy&quot;&gt;Our Strategy&lt;/h2&gt;&lt;p&gt;Our main goal in creating the docs is to create rich, intuitive, engaging, and beautifully presented community facing documentation for the Creative Commons WordPress Base Theme.&lt;/p&gt;
+&lt;p&gt;In alignment with the defined goal, our core focus is to create the docs collaboratively.&lt;/p&gt;
+&lt;p&gt;The CC WordPress team consists of I, Jacqueline Binya, Hugo Solar and Timid Robot Zehta. Although our team is small it is quite diverse. It consists of a diverse mix of technical skills: I am a junior developer whereas Hugo and Timid are way senior. We also have non-native and native English speakers.&lt;/p&gt;
+&lt;p&gt;Diversity is important as we hope to create a high quality product that caters for everyone.&lt;/p&gt;
+&lt;p&gt;My role as the tech writer/frontend developer is to create the content: write the documentation, build the docs site and also to create all illustrative media.&lt;/p&gt;
+&lt;p&gt;During the content creation phase, the first step involved creating the skeleton of the actual docs site. We created a git branch called &lt;em&gt;docs&lt;/em&gt; within the &lt;a href=&quot;https://github.com/creativecommons/wp-theme-base&quot;&gt;creative-commons/wp-base-theme&lt;/a&gt; repository. All content related to the documentation is persisted in that branch. So,please feel free to contribute. We then used &lt;a href=&quot;https://gridsome.org/starters/jamdocs/&quot;&gt;JamDocs&lt;/a&gt;, a &lt;a href=&quot;https://gridsome.org/&quot;&gt;Gridsome&lt;/a&gt; theme to quickly scaffold the site. We had to adapt the theme so as to make it meet our own specific needs, this involved overhauling the styles and changing the functionality of some of the features in the theme. After that was completed, we then created a &lt;a href=&quot;https://docs.google.com/document/d/1yfAQGG70T8BUhZYWglAlQ_lTo4_tYpyjhPN5FsZnSvI/edit?usp=sharing&quot;&gt;Google Doc&lt;/a&gt; we use for collaboratively writing the draft content for the docs site.&lt;/p&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech Stack&lt;/h2&gt;&lt;p&gt;As it was mentioned we used &lt;a href=&quot;https://gridsome.org/&quot;&gt;Gridsome&lt;/a&gt; a static generator for &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vuejs&lt;/a&gt;. We chose Gridsome because:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;We wanted to lower the barrier of entry to contributing:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Gridsome/Vuejs community is very active, help is but a click away.&lt;/li&gt;
+&lt;li&gt;The Gridsome official documentation is very resourceful and well maintained.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Gridsome is highly flexible: The content for the actual documentation is written in &lt;a href=&quot;https://www.markdownguide.org/getting-started/&quot;&gt;Markdown&lt;/a&gt; but using &lt;a href=&quot;https://gridsome.org/plugins/@gridsome/vue-remark&quot;&gt;@gridsome/vue-remark&lt;/a&gt;, which is a Gridsome plugin, we are able to use javascript in Markdown. We intend to include a copy to the clipboard Vuejs component in the site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Time Constraint: This project is a short running project which has to be completed in a 3 month period. Through the use of JamDocs, a Gridsome templating theme as well various plugins it was easy and fast to get started we were able to add more functionality to the theme with minimal effort.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ease of integrating &lt;a href=&quot;https://cc-vocabulary.netlify.app/&quot;&gt;CC Vocabulary&lt;/a&gt; with Gridsome: it is a requirement that the general aesthetics of all front facing Creative Commons applications is derived from the CC Vocabulary Design System. Major cons for using a design system include the ensuring uniformity in design for all front facing CC products.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tools-used&quot;&gt;Tools Used&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.figma.com/&quot;&gt;Figma&lt;/a&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-wp-base-theme-docs-content-creation/image.png&quot; alt=&quot;An example of illustrative media&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Figma was used to make assets(banners, logos and illustrations) in the theme. The illustrative media was created with accessibility in mind and all the topography used in the illustrative assets was derived from the CC Vocabulary.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html&quot;&gt;VokoScreenNG&lt;/a&gt;: an open source screencast recording tool used to record all the screen cast demos available in the docs site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://shotcut.org/&quot;&gt;ShortCut&lt;/a&gt;: an open source video editing tool.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;what-comes-next&quot;&gt;What comes next ?&lt;/h2&gt;&lt;p&gt;After the final review is completed and all feedback implemented we will migrate all the content to the main docs site.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Stay tuned for an update about the launch of the CC WP Base Theme Docs site.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-1/">
     <title type="text">Vocabulary Site Updates (v1)</title>
     <id>urn:uuid:51a44307-9725-3d59-bfcd-9badc7cce229</id>
@@ -3314,165 +3359,6 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;p&gt;While coding the site, I also tried to extract all the text to a separate file so that it would be easier to integrate it into translation workflow later during my internship.&lt;/p&gt;
 &lt;p&gt;After several weeks of work, 2 large PRs merged, we are finally ready to conduct usability tests to better understand how users interact with the License Chooser, and what changes we still need to implement to make it easy both for beginners and for advanced users of Creative Commons Licenses to choose the best license for their needs, and help to use the chosen license.&lt;/p&gt;
 &lt;p&gt;A new &lt;a href=&quot;https://chooser-beta.creativecommons.org/&quot;&gt;beta version of the License Chooser&lt;/a&gt; is deployed!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/">
-    <title type="text">Apache Airflow testing with Pytest</title>
-    <id>urn:uuid:c59eaf57-778e-3d75-8929-537949d119fd</id>
-    <updated>2020-01-23T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/apache-airflow-testing-with-pytest/" />
-    <author>
-      <name>mathemancer</name>
-    </author>
-    <content type="html">&lt;p&gt;CC Catalog is a project that gathers information about images from around the
-internet, and stores the information so that these images can eventually be
-indexed in &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt;. A portion of the process is directed by
-&lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt;, which is a tool commonly used to organize workflows
-and data pipelines.&lt;/p&gt;
-&lt;p&gt;The nature of Airflow leads to some particular challenges when it comes to
-testing, and special care must be taken to make tests independent from the
-global state of the system where they are run.  This blog post will describe a
-few of the challenges we faced when writing tests for Airflow jobs, and some
-tricks we used to solve those challenges.&lt;/p&gt;
-&lt;h2 id=&quot;brief-description-of-apache-airflow&quot;&gt;Brief description of Apache Airflow&lt;/h2&gt;&lt;p&gt;Apache Airflow is an open source piece of software that loads Directed Acyclic
-Graphs (DAGs) defined via python files.  The DAG is what defines a given
-workflow.  The nodes are pieces of jobs that need to be accomplished, and the
-directed edges of the graph define dependencies between the various pieces.  By
-default, the Airflow daemon only looks for DAGs to load from a global location
-in the user's home folder: &lt;code&gt;~/airflow/dags/&lt;/code&gt;. When a DAG is 'run', i.e., the
-tasks defined by the nodes of the DAG are each performed in the order defined by
-the directed edges of the DAG, the Airflow daemon stores information about the
-dag run in &lt;code&gt;~/airflow/&lt;/code&gt;.  The daemon also stores general information about what
-DAGs exist on the system, and all of their current statuses in that directory.
-For more details, please see &lt;a href=&quot;https://airflow.apache.org/docs/stable/&quot;&gt;the documentation&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;challenge-localize-airflow-to-the-project-directory&quot;&gt;Challenge:  Localize Airflow to the project directory&lt;/h2&gt;&lt;p&gt;Even when installed using &lt;code&gt;pip&lt;/code&gt; within a &lt;a href=&quot;https://github.com/pypa/virtualenv&quot;&gt;&lt;code&gt;virtualenv&lt;/code&gt;&lt;/a&gt; environment,
-all airflow commands will be run against the default locations in the user's
-home directory. In particular, if you want to test a DAG from your project
-directory, the method given in the &lt;a href=&quot;https://airflow.apache.org/docs/stable/tutorial.html#testing&quot;&gt;Airflow documentation&lt;/a&gt; is to
-copy the dag into the default location &lt;code&gt;~/airflow/dags/&lt;/code&gt;, and use the
-command-line &lt;code&gt;airflow&lt;/code&gt; tool to run the tasks defined by the nodes.  The
-information about success and failure of the tests will be stored by the Airflow
-daemon in the &lt;code&gt;~/airflow/&lt;/code&gt; directory.  We'd rather keep all input and output
-from our tests to the project directory instead.  This helps avoid any side
-effects which might arise by running tests for different projects, and also
-ensures that tests can't affect anything in the default directory, which may be
-used for production in many cases.&lt;/p&gt;
-&lt;p&gt;The solution is to choose a directory in your project, and set the environment
-variable &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; whenever you run the tests, or use the &lt;code&gt;airflow&lt;/code&gt;
-command on the project DAGs. I recommend you add the command&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;AIRFLOW_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/your/desired/full/path/
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;to a script (ours is called &lt;code&gt;env.sh&lt;/code&gt;) that will be run in any shell dealing with
-the 'localized' Airflow instance, because forgetting to set the variable for
-even one &lt;code&gt;airflow&lt;/code&gt; command will corrupt the DAG states stored in the global
-area. Note that setting this variable is necessary even when running in a
-&lt;code&gt;virtualenv&lt;/code&gt; environment.&lt;/p&gt;
-&lt;p&gt;Now that you have &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; set, you'll likely want to load some DAGs that
-you've written.  This is made easier if you put the files defining them into a
-&lt;code&gt;dags&lt;/code&gt; directory in the directory denoted by &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt;.  I.e., it's wise
-to structure the project sub-directory dealing with Airflow and Airflow DAGs
-similarly to the default location, but in your project directory.  At this
-point, you should have some &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; directory as a subdirectory of your
-project directory, and then some &lt;code&gt;$AIRFLOW_HOME/dags&lt;/code&gt; directory, where you keep
-any python files defining Airflow DAGs, and their dependencies.  Another
-advantage of this structure is it's likely the directory structure you'll use in
-production, and replicating simplifies deployment.&lt;/p&gt;
-&lt;p&gt;Finally, Airflow will leave a number of files in the &lt;code&gt;$AIRFLOW_HOME&lt;/code&gt; directory
-which you are not likely to want to track in source control (e.g., &lt;code&gt;git&lt;/code&gt;).
-These files are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/airflow.cfg&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/airflow.db&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/logs/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$AIRFLOW_HOME/unittests.cfg&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Add these files to &lt;code&gt;.gitignore&lt;/code&gt; or the equivalent.&lt;/p&gt;
-&lt;h2 id=&quot;smoketesting-can-the-airflow-daemon-load-the-dags&quot;&gt;Smoketesting:  Can the Airflow daemon load the DAGs?&lt;/h2&gt;&lt;p&gt;Note that we're using &lt;code&gt;pytest&lt;/code&gt; for our unit testing, and so most examples assume
-this.&lt;/p&gt;
-&lt;p&gt;The most basic test you'll want is to determine whether your DAGs can load
-without errors. To do this, you can use the following function:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DagBag&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_dags_load_with_no_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;dag_bag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DagBag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include_examples&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;dag_bag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;common_api_workflows.py&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_bag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;import_errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We initialize a &lt;code&gt;DagBag&lt;/code&gt; (this loads DAG files). With the &lt;code&gt;process_file&lt;/code&gt; method,
-we instruct the Airflow daemon to attempt to load any DAGs defined in the
-&lt;code&gt;common_api_workflows.py&lt;/code&gt; file.  We then check to make sure loading the DAGs
-didn't produce any errors.&lt;/p&gt;
-&lt;h2 id=&quot;hint-use-functions-to-create-dags&quot;&gt;Hint: Use functions to create DAGs.&lt;/h2&gt;&lt;p&gt;This will increase testability. You can test the function, bypassing the need to
-load the DAG into the &lt;code&gt;DagBag&lt;/code&gt; (except when you're actually testing that it
-&lt;em&gt;can&lt;/em&gt; be loaded). This may seem obvious, but none of the Airflow documentation
-uses this pattern. Here is an example of a function that creates a simple dag,
-and a test of the function:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;airflow.operators.bash_operator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BashOperator&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;script_location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;crontab_str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DAG_DEFAULT_ARGS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;schedule_interval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;crontab_str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;catchup&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BashOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;bash_command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;echo Starting &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; workflow&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;BashOperator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;task_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;get_&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;_images&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;bash_command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;python &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; --mode default&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;script_location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_create_dag_creates_correct_dependencies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_source&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_script_location&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_dag_id&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;start_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;test_source_starting&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;run_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;get_test_source_images&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downstream_task_ids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Here, we assume that &lt;code&gt;DAG_DEFAULT_ARGS&lt;/code&gt; is defined earlier in the file.  See the
-Airflow documentation for details about default DAG arguments. Now, this
-function is testable (great!) but it doesn't acutally make the DAG it creates
-known to the Airflow daemon. To do that, we have to create the created dag into
-the global scope of the module defined by the file, which can be done with the
-following snippet:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;globals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_dag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;script_location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;dag_id&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Here, it's assumed that &lt;code&gt;source&lt;/code&gt;, &lt;code&gt;script_location&lt;/code&gt;, and &lt;code&gt;dag_id&lt;/code&gt; are defined
-earlier in the python file.&lt;/p&gt;
-&lt;p&gt;We hope that these hints are helpful to the reader.  For more, and for the
-context around the snippets shown here, please take a look at
-&lt;a href=&quot;https://github.com/creativecommons/cccatalog/tree/c4b80600eb5695cc294e1791ba90bdc3a408b7b9/src/cc_catalog_airflow&quot;&gt;the repo&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
