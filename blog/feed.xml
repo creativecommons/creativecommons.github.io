@@ -2,13 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-11-10T00:00:00Z</updated>
+  <updated>2020-11-20T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/finish-gsod-tasks-and-explore-cc-catalog-documentation/">
+    <title type="text">Finish GSoD Tasks and Explore CC Catalog Documentation</title>
+    <id>urn:uuid:d5ea49f0-63f2-3466-93e0-7c513b4dc2d6</id>
+    <updated>2020-11-20T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/finish-gsod-tasks-and-explore-cc-catalog-documentation/" />
+    <author>
+      <name>ariessa</name>
+    </author>
+    <content type="html">&lt;p&gt;Today marks my fifth blog entry on Creative Commons. 
+For week 9 and 10, I explored CC Catalog documentation and began improving the documentation by removing keys and generalizing instructions.&lt;/p&gt;
+&lt;h3 id=&quot;week-9&quot;&gt;Week 9&lt;/h3&gt;&lt;p&gt;I had completed all GSoD tasks by week 9. 
+So, I took a couple of days off and fixed last week's PR. 
+Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository. 
+Brent, the CC Catalog maintainer explained to me about what needs to be done.&lt;/p&gt;
+&lt;h3 id=&quot;week-10&quot;&gt;Week 10&lt;/h3&gt;&lt;p&gt;For week 10, I started exploring CC Catalog and its documentation. 
+Reminds me a lot about the first and second weeks of GSoD. 
+Trying to understand new stuff and having an &quot;aha&quot; moment when the dots finally connect. 
+I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository. 
+I also wrote and published this blog post.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;End of blog entry.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-content-creation/">
     <title type="text">Content Creation Phase: WordPress Base Theme Usage Guide</title>
     <id>urn:uuid:bb3168cf-7243-320e-a8e2-0586030dc3a7</id>
@@ -52,6 +75,25 @@
 &lt;/ul&gt;
 &lt;h2 id=&quot;what-comes-next&quot;&gt;What comes next ?&lt;/h2&gt;&lt;p&gt;After the final review is completed and all feedback implemented we will migrate all the content to the main docs site.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Stay tuned for an update about the launch of the CC WP Base Theme Docs site.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/restructure-readme-and-add-documentation-guidelines/">
+    <title type="text">Restructure README and Add Documentation Guidelines</title>
+    <id>urn:uuid:98db0051-b46f-3e4b-ae18-a56418565d50</id>
+    <updated>2020-11-05T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/restructure-readme-and-add-documentation-guidelines/" />
+    <author>
+      <name>ariessa</name>
+    </author>
+    <content type="html">&lt;p&gt;This is my fourth blog entry on Creative Commons. 
+For week 7 and 8, I restructured the file README to be more digestible to new users and created Documentation Guidelines for CC Catalog API documentation.&lt;/p&gt;
+&lt;h3 id=&quot;week-7&quot;&gt;Week 7&lt;/h3&gt;&lt;p&gt;For this week, I restructured the file README in CC Catalog API repository. 
+I added a step by step guide on how to run the server locally. 
+I hope new users will be less intimidated to contribute to this project with the updated guide on how to run the server locally.&lt;/p&gt;
+&lt;h3 id=&quot;week-8&quot;&gt;Week 8&lt;/h3&gt;&lt;p&gt;For week 8, I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg. 
+I also wrote and published this blog post.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Finis.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-1/">
@@ -3319,46 +3361,6 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;p&gt;The second round of user interviews was done with a UI prototype, and was meant to take away some of my doubts regarding a few choices in this project. For instance, would it be best for the user to have the information in a single page, or would that be too much, and best to split in separate pages? There were pros and cons to both scenarios, but in the end we decided to stick with the single-page format because of a particular behavior: one of the ways users search for content is to ctrl+F and look for keywords. That would be drastically less effective with multiple pages.&lt;/p&gt;
 &lt;p&gt;After all the feedback (and adjustments) were done, it was time to make things come to life. I built the page from scratch with HTML/CSS/JS, making use of the Vocabulary library - it should be live soon, so yay!&lt;/p&gt;
 &lt;p&gt;The last three months have been incredible and this was a wonderful opportunity to tackle a project from start to finish. I feel very grateful for all the time and dedication my mentors put into this project, they guided me every step of the way and made sure I was supported throughout the internship. I plan on staying involved in the CC community, so hopefully soon I will have more to contribute.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week5-8/">
-    <title type="text">CC Vocabulary - Weeks 5-8</title>
-    <id>urn:uuid:b30bf3b1-be65-3f4d-a3c5-5ac5c7c9f626</id>
-    <updated>2020-02-03T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week5-8/" />
-    <author>
-      <name>conye</name>
-    </author>
-    <content type="html">&lt;p&gt;A lot of time and effort have been put in to re-work Vocabulary since my last post and the changes are still ongoing. To understand why these changes are important, we have to better understand Vocabulary.&lt;/p&gt;
-&lt;h2 id=&quot;so-why-all-the-changes&quot;&gt;So Why All The Changes?&lt;/h2&gt;&lt;p&gt;Vocabulary is CC's new design system. This means its design is meant to affect all of CC's websites, applications, and platforms. It is designed to be independent of any language or framework. Its styling will be used by its subsets like Vue-Vocabulary to maintain consistency. The majority of CC's websites and platforms are built with Wordpress, Lektor, and Vue. This means Vue-Vocabulary will inherit its styling from Vocabulary and the same will follow for other subsets of Vocabulary for Wordpress and Lektor which would possibly be developed soon.&lt;/p&gt;
-&lt;h2 id=&quot;the-major-change&quot;&gt;The Major Change&lt;/h2&gt;&lt;p&gt;Vocabulary currently uses stylus to easily write the CSS and Webpack as a build system. Stylus will be changed to SASS (actually SCSS). This is because SASS is easier to maintain and the majority of CC's websites are already built with SASS.&lt;/p&gt;
-&lt;h2 id=&quot;my-contributions-in-the-past-four-weeks&quot;&gt;My Contributions in the past four weeks&lt;/h2&gt;&lt;p&gt;In the past four weeks, I have been contributing majorly to the re-work of Vocabulary. Some of my contributions include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Adding vendor prefixes to compiled CSS using autoprefixer&lt;/li&gt;
-&lt;li&gt;Updating build script for output CSS token to include CSS custom properties format&lt;/li&gt;
-&lt;li&gt;Restyling some components as specified in the new design&lt;/li&gt;
-&lt;li&gt;Minifying and cleaning SVGs with SVGOMG&lt;/li&gt;
-&lt;li&gt;Removing some components and features not required in the new design&lt;/li&gt;
-&lt;li&gt;Fixing broken links&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;There has also been a lot of learning for me too. For example, I have been learning better how Webpack and Docker are used in this project.&lt;/p&gt;
-&lt;p&gt;Yeah, I said I would share more in two weeks from my last post but it turned out in four weeks but I will try to make in two weeks for my next post.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-coding/">
-    <title type="text">Improving CC License Chooser: Coding</title>
-    <id>urn:uuid:bda5e013-2b29-3207-8041-cff3bfab0c22</id>
-    <updated>2020-01-24T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-coding/" />
-    <author>
-      <name>obulat</name>
-    </author>
-    <content type="html">&lt;p&gt;During the last several weeks I have been busy with coding the redesigned version of the License Chooser.&lt;/p&gt;
-&lt;p&gt;When I just started working on coding the License Chooser, it wouldn't compile due to some dependency problems. This became a great opportunity to update the project from a Webpack based Vue.js template to a Vue-cli project, which makes managing dependencies much simpler. I also updated the project to a newer version of Creative Commons Vue Vocabulary for styling.&lt;/p&gt;
-&lt;p&gt;For the visual styles, we use Buefy component library (based on Bulma and Vue.js), namely, stepper and tabs components. It has been an interesting journey customizing them to our specific use cases.&lt;/p&gt;
-&lt;p&gt;While coding the site, I also tried to extract all the text to a separate file so that it would be easier to integrate it into translation workflow later during my internship.&lt;/p&gt;
-&lt;p&gt;After several weeks of work, 2 large PRs merged, we are finally ready to conduct usability tests to better understand how users interact with the License Chooser, and what changes we still need to implement to make it easy both for beginners and for advanced users of Creative Commons Licenses to choose the best license for their needs, and help to use the chosen license.&lt;/p&gt;
-&lt;p&gt;A new &lt;a href=&quot;https://chooser-beta.creativecommons.org/&quot;&gt;beta version of the License Chooser&lt;/a&gt; is deployed!&lt;/p&gt;
 </content>
   </entry>
 </feed>
