@@ -77,6 +77,65 @@ I also wrote and published this blog post.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Stay tuned for an update about the launch of the CC WP Base Theme Docs site.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-2/">
+    <title type="text">Vocabulary Site Mid-Internship Update (v2)</title>
+    <id>urn:uuid:9d7836e4-5dca-3b69-b77e-ba196ec923cc</id>
+    <updated>2020-11-09T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-2/" />
+    <author>
+      <name>nimishbongale</name>
+    </author>
+    <content type="html">&lt;p&gt;This is a mid-internship blog post. Wait. what!? Already? Let's glance over my progress, shall we?&lt;/p&gt;
+&lt;h2 id=&quot;vocabulary-site-updates-edition-2/many-more-to-come&quot;&gt;Vocabulary Site Updates (Edition 2/many more to come)&lt;/h2&gt;&lt;p&gt;Oh boy! 1.5 months have passed since I've been investing time in building a landing site &amp;amp; usage guide for CC Vocabulary. A lot has changed since the time of posting my last blog post. &lt;strong&gt;A lot&lt;/strong&gt;.&lt;/p&gt;
+&lt;center&gt;
+&lt;img alt&quot;Halfway There&quot; src=&quot;speed.gif&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Hitting &quot;the point of no return&quot; has never been this exciting! Time to step on the throttle! Source: &lt;a href=&quot;https://cliply.co&quot;&gt;Cliply&lt;/a&gt;&lt;/small&gt;
+&lt;/center&gt;&lt;h3 id=&quot;what-i-ve-been-up-to&quot;&gt;What I've been up to&lt;/h3&gt;&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;Designing&lt;/strong&gt; ⇨ &lt;strong&gt;Drafting&lt;/strong&gt; ⇨ &lt;strong&gt;Developing&lt;/strong&gt; ⇨ &lt;strong&gt;Debugging&lt;/strong&gt; ⇨ &lt;strong&gt;Deploying&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And the cycle contrinues. I guess it sums it all up very nicely. &lt;em&gt;Can somebody appreciate the alliteration though?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Here's a gist of what I've achieved so far:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I've gone through &lt;strong&gt;2&lt;/strong&gt; iterations of the design. I'm happy with how the new site looks (and I genuinely hope the design team does too!).&lt;/li&gt;
+&lt;li&gt;I've drafted around &lt;strong&gt;5+&lt;/strong&gt; writeups dealing with Monorepo Migration, Getting Started guide, Vocabulary Overview and of course these blog posts.&lt;/li&gt;
+&lt;li&gt;My branch on the vocabulary repository now has over &lt;strong&gt;50+&lt;/strong&gt; commits &amp;amp; over &lt;strong&gt;13,000&lt;/strong&gt; lines of code (not that I've written all of them, but you know, just for the stats)&lt;/li&gt;
+&lt;li&gt;The first draft of the vocabulary site is now live! I'm expecting a whole bunch of changes still, but here it is if you want to have a sneak peek: &lt;a href=&quot;https://cc-vocab-draft.surge.sh&quot;&gt;https://cc-vocab-draft.surge.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I've consumed the &lt;a href=&quot;https://docs.github.com/en/free-pro-team@latest/rest&quot;&gt;Github API&lt;/a&gt; to get live release history, forks and starrers count. I think it adds a really nice touch to the site in general.&lt;/li&gt;
+&lt;li&gt;I've used &lt;a href=&quot;https://surge.sh&quot;&gt;surge.sh&lt;/a&gt; to deploy the draft site. I believe it's a really simple tool to have your site deployed within seconds!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;
+&lt;img alt&quot;Github commit gif&quot; src=&quot;github.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;My github contribution chart is filling up!&lt;/small&gt;
+&lt;/center&gt;&lt;h3 id=&quot;what-i-ve-learnt&quot;&gt;What I've learnt&lt;/h3&gt;&lt;p&gt;Some say it's hard to learn through virtual internships. Well, let me prove you wrong. Here are my leanings in the past few weeks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It's surprising how subjective (&amp;amp; yet objective) designing really is.&lt;/li&gt;
+&lt;li&gt;Vue.js is &lt;em&gt;fantastic&lt;/em&gt;. Maybe I'm a Vue.js fan now. Should I remain loyal to React? I don't know.&lt;/li&gt;
+&lt;li&gt;Making a site responsive isn't the &lt;em&gt;easiest&lt;/em&gt; of tasks, but it's certainly doable after a lot of stretching &amp;amp; compressing; lets say that.&lt;/li&gt;
+&lt;li&gt;&quot;Code formatting is essential&quot; would be an &lt;em&gt;understatement&lt;/em&gt; to make.&lt;/li&gt;
+&lt;li&gt;Monorepo's have their own pro's and con's. But in our case the con's were negligible, thankfully! &lt;/li&gt;
+&lt;li&gt;I'll be following up with some performance &amp;amp; accessibility testing this coming week, so let's see how that plays out!&lt;/li&gt;
+&lt;li&gt;A mentor plays a vital role in any project. My mentor &lt;code&gt;@dhruvkb&lt;/code&gt; has been very supportive and has made sure I stick to my timeline!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;other-community-work-tidbits&quot;&gt;Other community work tidbits&lt;/h3&gt;&lt;p&gt;I believe apart from the internship work that I'm engaged in, I should also help around with some community PR work. I've been told I'm always welcome to, which is great!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I got the opportunity to speak at a CCOS event alongwith fellow speakers &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/dhruvkb/&quot;&gt;dhruvkb&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/dhruvi16/&quot;&gt;dhruvi16&lt;/a&gt;. I had a blast talking to budding students from DSC-IIT Surat &amp;amp; DSC-RIT.&lt;/li&gt;
+&lt;li&gt;The dark mode (as promised) should be out before my next blog post.&lt;/li&gt;
+&lt;li&gt;Deployed the vocabulary storybook on &lt;a href=&quot;https://chromatic.com&quot;&gt;Chromatic&lt;/a&gt; and compared &amp;amp; contrasted the pros &amp;amp; cons. Snapshot testing in the near future maybe? &lt;/li&gt;
+&lt;li&gt;Completed the hacktoberfest challenge. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;bonus-content&quot;&gt;Bonus content&lt;/h3&gt;&lt;p&gt;Not many of you may know this, but this site uses the &lt;a href=&quot;https://getlektor.com&quot;&gt;Lektor&lt;/a&gt; CMS. I needed to have it installed on my system (windows 10 OS) to run the code in our site repository. 
+Lektor suggests running the following code in powershell as an installation step:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;new-object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;webclient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DownloadString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;https://www.getlektor.com/installer.py&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I just didn't think this is a very elegant way. Being an ardent &lt;a href=&quot;/blog/entries/cc-vocabulary-docs-updates-2/chocolatey.org&quot;&gt;chocolatey.org&lt;/a&gt; fan, I just had to have it up on there! Now the installation step for lektor is simply:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lektor&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;on the Windows PowerShell!&lt;/p&gt;
+&lt;p&gt;Have a look at the package here:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://chocolatey.org/packages/lektor&quot;&gt;https://chocolatey.org/packages/lektor&lt;/a&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;strong&gt;Thank you for your time! Stay put for the next Vocabulary site update!&lt;/strong&gt;
+&lt;/p&gt;</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/restructure-readme-and-add-documentation-guidelines/">
     <title type="text">Restructure README and Add Documentation Guidelines</title>
     <id>urn:uuid:98db0051-b46f-3e4b-ae18-a56418565d50</id>
@@ -3346,21 +3405,6 @@ of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-lin
 &lt;p&gt;Nessa fase inicial, o ideal é voce começar a fazer algumas contribuições nos projetos que te interessam. Por exemplo, se voce se interessou pelo projeto de Acessibilidade e Internacionalização do CC Search, o repositório no Github relacionado é &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/a&gt;. De uma olhada na &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues&quot;&gt;lista de issues&lt;/a&gt; que estão marcadas com os labels &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&quot;&gt;&quot;Good First Issue&quot;&lt;/a&gt; e &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22&quot;&gt;&quot;Help Wanted&quot;&lt;/a&gt;. Essas são as tarefas que nós consideramos as melhores para quem quer começar a contribuir para o projeto. Os nossos principais repositórios tem todos issues marcadas com esses labels. É muito importante também ler a documentação do projeto. Leia o arquivo README no repositório. Nossos projetos também possuem um arquivo CONTRIBUTING.md que contém o código de conduta para quem for contribuir com o projeto, e também um guia sobre como contribuir com aquele projeto em específico. Além disso, é interessante também voce &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;participar da comunidade&lt;/a&gt;. Entre no nosso Slack e participe dos canais abertos. As pessoas estão lá interagindo, postando comentarios e tirando dúvidas conosco e outros membros em um ambiente respeitoso e cordial.&lt;/p&gt;
 &lt;p&gt;Durante o periodo de submissão de projetos voce irá escrever sua proposta de projeto. É bastante importante que voce compartilhe o rascunho da sua proposta o mais cedo possível conosco para que possamos dar feedback e lhe dizer o que precisa ser melhorado. Se voce só compartilhar sua proposta no final do período de submissão, não teremos a oportunidade de dizer o que está bom e ruim e voce não poderá fazer nenhuma melhoria. Então recomendamos que voce compartilhe seus rascunhos com os mentores cedo e frequentemente.&lt;/p&gt;
 &lt;p&gt;Espero que essas dicas lhe ajudem. Caso voce não seja selecionado(a), o GSoC é um programa anual, e ano que vem acontece novamente. E no segundo semestre participaremos também do programa Outreachy, que acontece duas vezes por ano. Caso voce acabe sendo selecionado(a), será um prazer trabalhar com voce durante esses meses.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/">
-    <title type="text">CC Platform Toolkit Revamp - 4</title>
-    <id>urn:uuid:99b50998-4560-3b3f-80bd-b03b892c84ab</id>
-    <updated>2020-03-04T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp-4/" />
-    <author>
-      <name>apdsrocha</name>
-    </author>
-    <content type="html">&lt;p&gt;Phew, how is it possible that we're already in March? Between my last check-in and today, there was a lot of work and effort into revamping the &lt;a href=&quot;https://creativecommons.org/platform/toolkit/&quot;&gt;Platform Toolkit&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;There were two rounds of user interviews: the first one was done looking only at the wireframe, focusing exclusively on usability and content. This provided a lot of important feedback to adjust the structure and move forward with the UI.  I tried my best to apply the design standards already mapped out by the &lt;a href=&quot;https://github.com/creativecommons/vocabulary/&quot;&gt;Vocabulary&lt;/a&gt; project, so that in the future this wouldn't stand out from other CC materials.&lt;/p&gt;
-&lt;p&gt;The second round of user interviews was done with a UI prototype, and was meant to take away some of my doubts regarding a few choices in this project. For instance, would it be best for the user to have the information in a single page, or would that be too much, and best to split in separate pages? There were pros and cons to both scenarios, but in the end we decided to stick with the single-page format because of a particular behavior: one of the ways users search for content is to ctrl+F and look for keywords. That would be drastically less effective with multiple pages.&lt;/p&gt;
-&lt;p&gt;After all the feedback (and adjustments) were done, it was time to make things come to life. I built the page from scratch with HTML/CSS/JS, making use of the Vocabulary library - it should be live soon, so yay!&lt;/p&gt;
-&lt;p&gt;The last three months have been incredible and this was a wonderful opportunity to tackle a project from start to finish. I feel very grateful for all the time and dedication my mentors put into this project, they guided me every step of the way and made sure I was supported throughout the internship. I plan on staying involved in the CC community, so hopefully soon I will have more to contribute.&lt;/p&gt;
 </content>
   </entry>
 </feed>
