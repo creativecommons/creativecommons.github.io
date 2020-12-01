@@ -2,13 +2,104 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-11-27T00:00:00Z</updated>
+  <updated>2020-12-02T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/summary-my-gsod-2020-journey/">
+    <title type="text">Summary: My GSoD 2020 Journey</title>
+    <id>urn:uuid:8ef2254d-edd9-37d9-a144-5b539249b19f</id>
+    <updated>2020-12-02T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/summary-my-gsod-2020-journey/" />
+    <author>
+      <name>ariessa</name>
+    </author>
+    <content type="html">&lt;p&gt;Thank you for the wonderful experience, Creative Commons!&lt;/p&gt;
+&lt;p&gt;This blog post serves as a project report for ‘Improve CC Catalog API Usage Guide’. 
+It describes the work that I’ve done during my Google Season Of Docs (GSOD) 2020. 
+My mentors for this project are Alden Page and Kriti Godey from Creative Commons.&lt;/p&gt;
+&lt;p&gt;In total, there are 12 weeks in the Doc Development Phase. 
+Every 2 weeks, I would publish a blog post to update my progress to my mentors and organization.&lt;/p&gt;
+&lt;h3 id=&quot;week-1&quot;&gt;Week 1&lt;/h3&gt;&lt;p&gt;So, the first two weeks of Google Season of Docs have passed. 
+For the first week, I added examples to perform the query using curl command. 
+I hit some problem with a Forbidden error. Turns out my access key got expired. 
+My problem was solved after obtaining a new access key.&lt;/p&gt;
+&lt;h3 id=&quot;week-2&quot;&gt;Week 2&lt;/h3&gt;&lt;p&gt;For the second week, I started to write response samples. 
+It was tough as I have a hard time understanding drf-yasg, which is an automatic Swagger generator. 
+It can produce Swagger / OpenAPI 2.0 specifications from a Django Rest Framework API. 
+I tried to find as many examples as I could to increase my understanding. 
+Funny, but it took me awhile to realise that drf-yasg is not made up of random letters. 
+The DRF part stands for Django Rest Framework while YASG stands for Yet Another Swagger Generator.&lt;/p&gt;
+&lt;h3 id=&quot;week-3&quot;&gt;Week 3&lt;/h3&gt;&lt;p&gt;Week 3 was quite hectic. 
+I moved back to my hometown during week 3. 
+Took 3 days off to settle my stuff and set up a workspace. 
+I worked on my GSoD project for only 2 days, Monday and Tuesday. 
+I managed to create response samples for most API endpoints. 
+Had a monthly video call with Kriti this week.&lt;/p&gt;
+&lt;h3 id=&quot;week-4&quot;&gt;Week 4&lt;/h3&gt;&lt;p&gt;I reviewed what I’ve done and what I haven’t to estimate new completion time. 
+Thank god, I have a buffer week in my GSoD timeline and deliverables. 
+So yeah, all is good in terms of completion time. 
+I started to write descriptions for API endpoints. 
+Submitted first PR and published blog entry.&lt;/p&gt;
+&lt;h3 id=&quot;week-5&quot;&gt;Week 5&lt;/h3&gt;&lt;p&gt;I managed to add a lot of stuff into the documentation. 
+I figured out how to add help texts to classes and how to create serializers. 
+I also managed to move all code examples under response samples. 
+In order to do this, I created a new class called CustomAutoSchema to add x-code-samples. 
+Other stuff that I did include creating new sections such as “Register and Authenticate” and “Glossary”. 
+The hardest part of this week is probably trying to figure out how to add request body examples and move code examples.&lt;/p&gt;
+&lt;h3 id=&quot;week-6&quot;&gt;Week 6&lt;/h3&gt;&lt;p&gt;I added another section called Contribute that provides a todolist to start contributing on Github. 
+I also wrote and published this blog post.&lt;/p&gt;
+&lt;h3 id=&quot;week-7&quot;&gt;Week 7&lt;/h3&gt;&lt;p&gt;I restructured the file README in CC Catalog API repository. 
+I added a step by step guide on how to run the server locally. 
+I hope new users will be less intimidated to contribute to this project with the updated guide on how to run the server locally.&lt;/p&gt;
+&lt;h3 id=&quot;week-8&quot;&gt;Week 8&lt;/h3&gt;&lt;p&gt;I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg. 
+I also wrote and published this blog post.&lt;/p&gt;
+&lt;h3 id=&quot;week-9&quot;&gt;Week 9&lt;/h3&gt;&lt;p&gt;I had completed all GSoD tasks by week 9. 
+So, I took a couple of days off and fixed last week's PR. 
+Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository. 
+Brent, the CC Catalog maintainer explained to me about what needs to be done.&lt;/p&gt;
+&lt;h3 id=&quot;week-10&quot;&gt;Week 10&lt;/h3&gt;&lt;p&gt;I started exploring CC Catalog and its documentation. 
+Reminds me a lot about the first and second weeks of GSoD. 
+Trying to understand new stuff and having an &quot;aha&quot; moment when the dots finally connect. 
+I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository. 
+I also wrote and published this blog post.&lt;/p&gt;
+&lt;h3 id=&quot;week-11&quot;&gt;Week 11&lt;/h3&gt;&lt;p&gt;I finished working on porting CC Catalog documentation from internal wiki to CC Catalog’s GitHub repository.
+Kriti told me that there would be a meeting in which I have to present what I've done for GSoD.
+Since the meeting will take place at 1AM in my local time, Kriti told me that I should send a video presentation instead.&lt;/p&gt;
+&lt;h3 id=&quot;week-12&quot;&gt;Week 12&lt;/h3&gt;&lt;p&gt;I submitted a video presentation to Kriti.
+Finished writing project report and evaluation for GSoD.
+I published 2 blog posts this week.
+One for updates on Week 11 and Week 12.
+Another one is this blog post.&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;You can view the latest CC Catalog API documentation &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/finish-video-presentation-project-report-and-evaluation-form/">
+    <title type="text">Finish Video Presentation, Project Report and Evaluation Form</title>
+    <id>urn:uuid:3c10027c-ae79-392a-961f-ef9a2362be2a</id>
+    <updated>2020-12-01T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/finish-video-presentation-project-report-and-evaluation-form/" />
+    <author>
+      <name>ariessa</name>
+    </author>
+    <content type="html">&lt;p&gt;For week 10 and 11, I finished porting CC Catalog documentation, submitted a video presentation, and wrapped up my GSoD 2020 journey.&lt;/p&gt;
+&lt;h3 id=&quot;week-11&quot;&gt;Week 11&lt;/h3&gt;&lt;p&gt;For Week 11, I finished working on porting CC Catalog documentation from internal wiki to CC Catalog’s GitHub repository.
+Kriti told me that there would be a meeting in which I have to present what I've done for GSoD.
+Since the meeting will take place at 1AM in my local time, Kriti told me that I should send a video presentation instead.&lt;/p&gt;
+&lt;h3 id=&quot;week-12&quot;&gt;Week 12&lt;/h3&gt;&lt;p&gt;For this week, I submitted a video presentation to Kriti.
+Finished writing project report and evaluation for GSoD.
+I published 2 blog posts this week.
+One for updates on Week 11 and Week 12.
+Another one is a summary of my GSoD 2020 journey, which also serves as a project report.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Signing off.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-wp-base-theme-docs-launch/">
     <title type="text">Presenting CC Base docs - A WordPress Base Theme Usage Guide for the CC Base Theme</title>
     <id>urn:uuid:c27f3a10-a8a1-3cd9-8c66-89cb70d26f58</id>
@@ -3239,164 +3330,6 @@ suffice to reingest all relevant Flickr data for the next 12 years or so (the
 current date is 2020).&lt;/p&gt;
 &lt;p&gt;For more context around what we've shown here, please take a look at
 &lt;a href=&quot;https://github.com/creativecommons/cccatalog/&quot;&gt;the CC Catalog repo&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-04-03-nvmee-on-debian-on-aws/">
-    <title type="text">NVMEe on Debian on AWS</title>
-    <id>urn:uuid:cd3e9db2-b141-3ea1-8cd9-61cd146ec9cd</id>
-    <updated>2020-04-03T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/2020-04-03-nvmee-on-debian-on-aws/" />
-    <author>
-      <name>TimidRobot</name>
-    </author>
-    <content type="html">&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;The current Creative Commons infrastructure buildouts use Debian GNU/Linux AWS
-EC2 instances with EBS volumes. Depending on chance (or race conditions), the
-mapping of block devices can be different from one host to another or between
-reboots.&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Occasionally, devices can respond to discovery in a different order in
-subsequent instance starts, which causes the device name to change.&lt;/em&gt;
-(&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html&quot; title=&quot;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute Cloud&quot;&gt;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute
-Cloud&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;our-solution&quot;&gt;Our Solution&lt;/h2&gt;&lt;p&gt;Modern Amazon Linux AMIs resolve this by providing a &lt;code&gt;udev&lt;/code&gt; rule, but Debian
-GNU/Linux does not yet do this. To ensure our systems are configured correctly,
-At Creative Commons, we use the device specified during provisioning (ex.
-&lt;code&gt;/dev/xvdf&lt;/code&gt;) to identify the correct NVMEe device. We then format it with a
-label that can be used mounting during subsequent reboots.&lt;/p&gt;
-&lt;p&gt;Thankfully, AWS documents the the device specified during provisioning (ex. &lt;code&gt;/dev/xvdf&lt;/code&gt;):&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;For Nitro-based instances, the block device mappings that are specified in
-the Amazon EC2 console when you are attaching an EBS volume or during
-AttachVolume or RunInstances API calls are captured in the vendor-specific
-data field of the NVMe controller identification.&lt;/em&gt;
-(&lt;a href=&quot;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html&quot; title=&quot;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute Cloud&quot;&gt;Amazon EBS and NVMe on Linux Instances - Amazon Elastic Compute
-Cloud&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;We use SaltStack (&lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime&quot; title=&quot;creativecommons/sre-salt-prime: Site Reliability Engineering / DevOps SaltStack configuration files&quot;&gt;&lt;code&gt;creativecommons/sre-salt-prime&lt;/code&gt;&lt;/a&gt;) to:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Install the &lt;code&gt;nvme-cli&lt;/code&gt; package&lt;/li&gt;
-&lt;li&gt;Use the &lt;code&gt;nvme&lt;/code&gt; command to detect which &lt;code&gt;/dev/nvme?n?&lt;/code&gt; contains &lt;em&gt;spec&lt;/em&gt; (ex.
-&lt;code&gt;xvdf&lt;/code&gt;) in the NVMe vendor specific data&lt;/li&gt;
-&lt;li&gt;Create a symlink (ex. &lt;code&gt;/dev/xvdf -&amp;gt; /dev/nvme1n1&lt;/code&gt;) so that SaltStack can use
-&lt;code&gt;/dev/xvdf&lt;/code&gt; for the initial setup&lt;/li&gt;
-&lt;li&gt;Perform the intial setup&lt;/li&gt;
-&lt;li&gt;Delete the symlink since:&lt;ol&gt;
-&lt;li&gt;The initial setup formatted the volume with a label that is used to mount
-the filesystem&lt;/li&gt;
-&lt;li&gt;There is no guarantee the symlink will be accurate on subsequent reboots
-and it might cause confusion&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The &lt;a href=&quot;https://github.com/creativecommons/sre-salt-prime/blob/master/states/mount/init.sls&quot;&gt;&lt;code&gt;states/mount/init.sls&lt;/code&gt;&lt;/a&gt; state includes a complex shell
-command (with Jinja2 variables) that loops through the NVMe devices and finds
-the correct one:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; n in /dev/nvme?n?
-&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; nvme id-ctrl -v &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep -q &lt;span class=&quot;s1&quot;&gt;&amp;#39;^0000:.*{{ spec_short }}&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-        ln -s &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{{&lt;/span&gt; spec_long &lt;span class=&quot;o&quot;&gt;}}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Example variable values:&lt;/p&gt;
-&lt;table class=&quot;table table-striped&quot;&gt;
-&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
-&lt;th&gt;Jinja2 Variable&lt;/th&gt;
-&lt;th&gt;Example Value&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;{{ spec_short }}&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;xvdf&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;{{ spec_long }}&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;/dev/xvdf&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&quot;related-links&quot;&gt;Related Links&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://wiki.debian.org/Cloud/AmazonEC2Image/Buster&quot; title=&quot;Cloud/AmazonEC2Image/Buster - Debian Wiki&quot;&gt;Cloud/AmazonEC2Image/Buster - Debian Wiki&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://packages.debian.org/buster/nvme-cli&quot; title=&quot;Debian -- Details of package nvme-cli in buster&quot;&gt;&lt;code&gt;nvme-cli&lt;/code&gt; package details in Debian buster&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Debian buster — Debian Manpages&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://manpages.debian.org/buster/nvme-cli/nvme.1.en.html&quot;&gt;nvme(1) — nvme-cli&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://manpages.debian.org/buster/nvme-cli/nvme-id-ctrl.1.en.html&quot;&gt;nvme-id-ctrl(1) — nvme-cli&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;other-solutions&quot;&gt;Other Solutions&lt;/h2&gt;&lt;p&gt;While doing additional research for this blog post, I found additional
-solutions to the same problem. They're all good, but I apprecite the simplicity
-of a temporary symlink for setup versus maintaining custom udev rules (maybe I
-can help contribute a udev based solution to Debian or Debian's EC2 image). I
-can also easily imagine a more complex solution being a better fit if/when our
-infrastructure provisioining become more complex.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/oogali/ebs-automatic-nvme-mapping&quot; title=&quot;oogali/ebs-automatic-nvme-mapping: Automatic mapping of EBS volumes via NVMe block devices to standard block device paths&quot;&gt;oogali/ebs-automatic-nvme-mapping&lt;/a&gt;: Automatic mapping of EBS volumes via NVMe block devices to standard block device paths&lt;ul&gt;
-&lt;li&gt;udev rule that invokes a Bash script to create symlinks&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;CoreOS&lt;ul&gt;
-&lt;li&gt;udev rules that invokes a Bash script to create symlinks&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/coreos/init/blob/master/udev/rules.d/90-cloud-storage.rules&quot;&gt;&lt;code&gt;udev/rules.d/90-cloud-storage.rules&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/coreos/init/blob/master/udev/bin/cloud_aws_ebs_nvme_id&quot;&gt;&lt;code&gt;udev/bin/cloud_aws_ebs_nvme_id&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://gist.github.com/jalaziz/c22c8464cb602bc2b8d0a339b013a9c4&quot;&gt;AWS EBS NVMe udev rules&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;udev rule that invokes a Pyton script to create symlinks&lt;/li&gt;
-&lt;li&gt;this is a copy as Amazon only provides access to the source of Amazon Linux
-from within an Amazon Linux AMI: &lt;em&gt;The yumdownloader --source command line
-tool provided in the Amazon Linux AMI enables viewing of source code inside
-of an Amazon EC2.&lt;/em&gt; (&lt;a href=&quot;https://aws.amazon.com/amazon-linux-ami/faqs/&quot; title=&quot;Amazon Linux AMI FAQs&quot;&gt;Amazon Linux AMI FAQs&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week9-13/">
-    <title type="text">CC Vocabulary - My Internship Ended</title>
-    <id>urn:uuid:85900455-54f0-35dd-b689-57e5a399b7e5</id>
-    <updated>2020-04-02T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-week9-13/" />
-    <author>
-      <name>conye</name>
-    </author>
-    <content type="html">&lt;p&gt;This will be my last blog as an Outreachy intern. My watch as an intern has come to an end.  I am glad I chose the Creative Commons community or rather am glad Creative Commons chose me (am not the chosen one). I have gained a lot of valuable knowledge, skills and I am more confident in my abilities.&lt;/p&gt;
-&lt;h2 id=&quot;summary-of-my-internship-with-vocabulary&quot;&gt;Summary of  My Internship with Vocabulary&lt;/h2&gt;&lt;p&gt;I have been more involved with the Vocabulary project during my internship and am happy with the work that has been done so far. I made 24 pull requests with 17 merged. My last contribution was adding a &lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/145&quot;&gt;header component&lt;/a&gt; to the revamped Vocabulary. Here is a summary of my time with Vocabulary.&lt;/p&gt;
-&lt;h3 id=&quot;when-i-started-my-internship-vocabulary-comprised-of&quot;&gt;When I started my Internship, Vocabulary comprised of:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;UI components built with Vue &lt;/li&gt;
-&lt;li&gt;Styling was written with Stylus&lt;/li&gt;
-&lt;li&gt;live style guide built with Styleguidist&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;currently&quot;&gt;Currently:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;UI components built with extending Bulma library components. &lt;/li&gt;
-&lt;li&gt;Styling extended with SASS.&lt;/li&gt;
-&lt;li&gt;An interactive playground experience built with Storybook that provides a live style guide and documentation.&lt;/li&gt;
-&lt;li&gt;A subset Vue-Vocabulary with the same styling but to support platforms built with Vue&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To use the Vocabulary components, check out its &lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;Github repository&lt;/a&gt;. You can also have a playground experience on &lt;a href=&quot;https://cc-vocabulary.netlify.com&quot;&gt;storybook&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;my-progress&quot;&gt;My Progress&lt;/h2&gt;&lt;p&gt;Before this internship, I had just switched careers from Network engineering to Software development and this experience came at the time needed.&lt;/p&gt;
-&lt;h3 id=&quot;where-i-was-before-the-internship&quot;&gt;Where I was before the Internship&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;No experience working on open source project (or any free open source project)&lt;/li&gt;
-&lt;li&gt;My technical skills were basically on the front end (HTML, CSSS and JavaScript with little React) &lt;/li&gt;
-&lt;li&gt;No experience working remotely as a Software developer&lt;/li&gt;
-&lt;li&gt;Had only written one blog post on medium&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;where-i-am-now&quot;&gt;Where I am now&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;4 months experience working on open source project &lt;/li&gt;
-&lt;li&gt;Improved on my previous technical skills, adding new ones (added Vue, Storybook, Webpack, Docker)&lt;/li&gt;
-&lt;li&gt;4 months of experience working with a team remotely as a Software developer&lt;/li&gt;
-&lt;li&gt;Written additional 6 more blog post; 3 here and 3 for Outreachy&lt;/li&gt;
-&lt;li&gt;Improved communication skills &lt;/li&gt;
-&lt;li&gt;Improved time management&lt;/li&gt;
-&lt;li&gt;Still working to improve where I am now &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;whats-next&quot;&gt;Whats next?&lt;/h2&gt;&lt;p&gt;I will continue to contribute to CC open source projects especially to the Vocabulary project that I have become a part of. I would love to see the application of Vocabulary to the development of other CC platforms and applications.  I also want to apply the skills that I have acquired to get a full-time software developer position.&lt;/p&gt;
-&lt;p&gt;My special appreciation to Outreachy for this opportunity, the entire CC team especially those I worked with, My mentors &lt;a href=&quot;/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt; and &lt;a href=&quot;/blog/authors/dhruvkb/&quot;&gt;Dhruv Bhanushali&lt;/a&gt; for their guidance, direction, and help whenever I got stuck, also to the Director of Engineering &lt;a href=&quot;/blog/authors/kgodey/&quot;&gt;Kriti Godey&lt;/a&gt; for always checking up on me ensuring I had a wonderful internship experience.&lt;/p&gt;
 </content>
   </entry>
 </feed>

@@ -5,22 +5,20 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="Restructure README and Add Documentation Guidelines" />
+<meta property="og:title" content="Summary: My GSoD 2020 Journey" />
 
 
 
-<meta property="og:description" content="This is my fourth blog entry on Creative Commons. 
-For week 7 and 8, I restructured the file README to be more digestible to new users and created Documentation Guidelines for CC Catalog API documentation." />
+<meta property="og:description" content="Thank you for the wonderful experience, Creative Commons!" />
 
 
-<meta property="og:url" content="/blog/entries/restructure-readme-and-add-documentation-guidelines/" />
+<meta property="og:url" content="/blog/entries/summary-my-gsod-2020-journey/" />
 <meta property="og:type" content="article" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Restructure README and Add Documentation Guidelines">
-<meta name="twitter:description" content="This is my fourth blog entry on Creative Commons. 
-For week 7 and 8, I restructured the file README to be more digestible to new users and created Documentation Guidelines for CC Catalog API documentation.">
+<meta name="twitter:title" content="Summary: My GSoD 2020 Journey">
+<meta name="twitter:description" content="Thank you for the wonderful experience, Creative Commons!">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -36,7 +34,7 @@ For week 7 and 8, I restructured the file README to be more digestible to new us
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>Restructure README and Add Documentation Guidelines — Creative Commons on GitHub</title>
+<title>Summary: My GSoD 2020 Journey — Creative Commons on GitHub</title>
 
 <body>
   <div class="ga-script">
@@ -239,7 +237,7 @@ For week 7 and 8, I restructured the file README to be more digestible to new us
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed">Restructure README and Add Documentation Guidelines</a></li>
+              <li class="is-active"><a aria-current="page displayed">Summary: My GSoD 2020 Journey</a></li>
             
           
         </ul>
@@ -253,7 +251,7 @@ For week 7 and 8, I restructured the file README to be more digestible to new us
     <header class="single-post-header">
       <div class="container">
         <h4>CC Open Source Blog</h4>
-        <h2 class="title">Restructure README and Add Documentation Guidelines</h2>
+        <h2 class="title">Summary: My GSoD 2020 Journey</h2>
         
         <div class="author columns is-marginless">
           <figure class="image profile">
@@ -262,7 +260,7 @@ For week 7 and 8, I restructured the file README to be more digestible to new us
           <p class="column">by <a href="/blog/authors/ariessa/">
   Ariessa Norramli
 </a>
-          on 2020-11-05</p>
+          on 2020-12-02</p>
         </div>
         
           
@@ -274,15 +272,66 @@ For week 7 and 8, I restructured the file README to be more digestible to new us
       </div>
     </header>
     <div class="single-post-body content container">
-      <p>This is my fourth blog entry on Creative Commons. 
-For week 7 and 8, I restructured the file README to be more digestible to new users and created Documentation Guidelines for CC Catalog API documentation.</p>
-<h3 id="week-7">Week 7</h3><p>For this week, I restructured the file README in CC Catalog API repository. 
+      <p>Thank you for the wonderful experience, Creative Commons!</p>
+<p>This blog post serves as a project report for ‘Improve CC Catalog API Usage Guide’. 
+It describes the work that I’ve done during my Google Season Of Docs (GSOD) 2020. 
+My mentors for this project are Alden Page and Kriti Godey from Creative Commons.</p>
+<p>In total, there are 12 weeks in the Doc Development Phase. 
+Every 2 weeks, I would publish a blog post to update my progress to my mentors and organization.</p>
+<h3 id="week-1">Week 1</h3><p>So, the first two weeks of Google Season of Docs have passed. 
+For the first week, I added examples to perform the query using curl command. 
+I hit some problem with a Forbidden error. Turns out my access key got expired. 
+My problem was solved after obtaining a new access key.</p>
+<h3 id="week-2">Week 2</h3><p>For the second week, I started to write response samples. 
+It was tough as I have a hard time understanding drf-yasg, which is an automatic Swagger generator. 
+It can produce Swagger / OpenAPI 2.0 specifications from a Django Rest Framework API. 
+I tried to find as many examples as I could to increase my understanding. 
+Funny, but it took me awhile to realise that drf-yasg is not made up of random letters. 
+The DRF part stands for Django Rest Framework while YASG stands for Yet Another Swagger Generator.</p>
+<h3 id="week-3">Week 3</h3><p>Week 3 was quite hectic. 
+I moved back to my hometown during week 3. 
+Took 3 days off to settle my stuff and set up a workspace. 
+I worked on my GSoD project for only 2 days, Monday and Tuesday. 
+I managed to create response samples for most API endpoints. 
+Had a monthly video call with Kriti this week.</p>
+<h3 id="week-4">Week 4</h3><p>I reviewed what I’ve done and what I haven’t to estimate new completion time. 
+Thank god, I have a buffer week in my GSoD timeline and deliverables. 
+So yeah, all is good in terms of completion time. 
+I started to write descriptions for API endpoints. 
+Submitted first PR and published blog entry.</p>
+<h3 id="week-5">Week 5</h3><p>I managed to add a lot of stuff into the documentation. 
+I figured out how to add help texts to classes and how to create serializers. 
+I also managed to move all code examples under response samples. 
+In order to do this, I created a new class called CustomAutoSchema to add x-code-samples. 
+Other stuff that I did include creating new sections such as “Register and Authenticate” and “Glossary”. 
+The hardest part of this week is probably trying to figure out how to add request body examples and move code examples.</p>
+<h3 id="week-6">Week 6</h3><p>I added another section called Contribute that provides a todolist to start contributing on Github. 
+I also wrote and published this blog post.</p>
+<h3 id="week-7">Week 7</h3><p>I restructured the file README in CC Catalog API repository. 
 I added a step by step guide on how to run the server locally. 
 I hope new users will be less intimidated to contribute to this project with the updated guide on how to run the server locally.</p>
-<h3 id="week-8">Week 8</h3><p>For week 8, I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg. 
+<h3 id="week-8">Week 8</h3><p>I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg. 
 I also wrote and published this blog post.</p>
+<h3 id="week-9">Week 9</h3><p>I had completed all GSoD tasks by week 9. 
+So, I took a couple of days off and fixed last week's PR. 
+Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository. 
+Brent, the CC Catalog maintainer explained to me about what needs to be done.</p>
+<h3 id="week-10">Week 10</h3><p>I started exploring CC Catalog and its documentation. 
+Reminds me a lot about the first and second weeks of GSoD. 
+Trying to understand new stuff and having an "aha" moment when the dots finally connect. 
+I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository. 
+I also wrote and published this blog post.</p>
+<h3 id="week-11">Week 11</h3><p>I finished working on porting CC Catalog documentation from internal wiki to CC Catalog’s GitHub repository.
+Kriti told me that there would be a meeting in which I have to present what I've done for GSoD.
+Since the meeting will take place at 1AM in my local time, Kriti told me that I should send a video presentation instead.</p>
+<h3 id="week-12">Week 12</h3><p>I submitted a video presentation to Kriti.
+Finished writing project report and evaluation for GSoD.
+I published 2 blog posts this week.
+One for updates on Week 11 and Week 12.
+Another one is this blog post.</p>
+<p><br/></p>
 <hr>
-<p>Finis.</p>
+<p>You can view the latest CC Catalog API documentation <a href="https://api.creativecommons.engineering/v1/">here</a>.</p>
 
     </div>
     <footer class="single-post-footer container">
@@ -293,7 +342,7 @@ I also wrote and published this blog post.</p>
             
               
               
-              <a class="button tag" href=" /blog/categories/cc-catalog-api/ ">cc-catalog-api</a>
+              <a class="button tag" href=" /blog/categories/cc-catalog/ ">cc-catalog</a>
             
               
               
@@ -338,8 +387,8 @@ I also wrote and published this blog post.</p>
               
             
               
-                <li class="has-color-dark-slate-gray">
-                  <i class="icon circle-filled"></i>Restructure README and Add Documentation Guidelines
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/restructure-readme-and-add-documentation-guidelines/">Restructure README and Add Documentation Guidelines</a>
                 </li>
               
             
@@ -356,8 +405,8 @@ I also wrote and published this blog post.</p>
               
             
               
-                <li>
-                  <i class="icon circle-filled"></i><a href="/blog/entries/summary-my-gsod-2020-journey/">Summary: My GSoD 2020 Journey</a>
+                <li class="has-color-dark-slate-gray">
+                  <i class="icon circle-filled"></i>Summary: My GSoD 2020 Journey
                 </li>
               
             
@@ -367,7 +416,7 @@ I also wrote and published this blog post.</p>
       <div class="comments">
 <div id="disqus_thread"></div>
 <script>
-  var disqus_config = function() { this.page.identifier = "/blog/entries/restructure-readme-and-add-documentation-guidelines"; this.page.url = "http://opensource.creativecommons.org/blog/entries/restructure-readme-and-add-documentation-guidelines/"; };
+  var disqus_config = function() { this.page.identifier = "/blog/entries/summary-my-gsod-2020-journey"; this.page.url = "http://opensource.creativecommons.org/blog/entries/summary-my-gsod-2020-journey/"; };
   (function() {
     var d = document, s = d.createElement('script');
     s.src = '//cc-open-source.disqus.com/embed.js';
