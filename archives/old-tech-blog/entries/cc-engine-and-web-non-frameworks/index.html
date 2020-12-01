@@ -16,6 +16,22 @@
 <meta property="og:type" content="article" />
 
 
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/cc.engine and web non-frameworks.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="cc.engine and web non-frameworks">
 <meta name="twitter:description" content="The sanity overhaul has included a number of reworkings, one of them being a rewrite of cc.engine, which in its previous form was a Zope 3 application. Zope is a full featured framework and we already knew we weren&#39;t using many of its features (most notably the ZODB); we suspected that something simpler would serve us better, but weren&#39;t certain what. Nathan suggested one of two directions: either we go with Django (although it wasn&#39;t clear this was &#34;simpler&#34;, it did seem to be where a large portion of the python knowledge and effort in the web world is pooling), or we go with repoze.bfg, a minimalist WSGI framework that pulls in some Zope components. After some discussion we both agreed: repoze.bfg seemed like the better choice for a couple of reasons: for one, Django seemed like it would be providing quite a bit more than necessary... in cc.engine we don&#39;t have a traditional database (we do have an RDF store that we query, but no SQL), we don&#39;t have a need for a user model, etc... the application is simple: show some pages and apply some specialized logic. Second, repoze.bfg built upon and reworked Zope infrastructure and paradigms, and so in that sense it looked like an easier transition. So we went forward with that.">
@@ -34,7 +50,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>cc.engine and web non-frameworks — Creative Commons on GitHub</title>
+<title>cc.engine and web non-frameworks — Creative Commons Open Source</title>
 
 <body>
   <div class="ga-script">
