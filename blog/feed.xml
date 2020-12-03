@@ -994,6 +994,77 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href=&quot;https://github.com/panchovm&quot;&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
+    <title type="text">Overview of the GSoC 2020 Project</title>
+    <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
+    <updated>2020-08-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" />
+    <author>
+      <name>charini</name>
+    </author>
+    <content type="html">&lt;p&gt;This is my final blog post under the &lt;a href=&quot;/blog/entries/overview-of-the-gsoc-2020-project/#series&quot;&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; and &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
+(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
+experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
+Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
+&lt;a href=&quot;/blog/entries/flickr-sub-provider-retrieval/&quot;&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/420&quot;&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/442&quot;&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/455&quot;&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/461&quot;&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
+to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
+the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
+successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
+mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
+information is provided in my &lt;a href=&quot;/blog/entries/smithsonian-unit-code-update/&quot;&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
+is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/465&quot;&gt;465&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
+from 19 museums. However, due to the fact that the different museums have different data models and the resultant
+incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
+fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
+information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
+identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
+result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
+some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
+#&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
+Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt; as well. The PRs related
+to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/474&quot;&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
+Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/476&quot;&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
+provider.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
+for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
+providers up-to-date, based on how old an image is. This is called the &lt;a href=&quot;/blog/entries/date-partitioned-data-reingestion/&quot;&gt;re-ingestion strategy&lt;/a&gt;,
+where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
+detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
+database are obsolete, which could result in broken links being presented via the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; tool. As a
+solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
+&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
+the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
+flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/483&quot;&gt;483&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
+contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
+Brent for his guidance.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/">
     <title type="text">Automate GitHub for more than CI/CD</title>
     <id>urn:uuid:1f2b4dad-de07-33ab-b1c7-394778548e55</id>
@@ -1097,77 +1168,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
-    <title type="text">Overview of the GSoC 2020 Project</title>
-    <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
-    <updated>2020-08-26T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" />
-    <author>
-      <name>charini</name>
-    </author>
-    <content type="html">&lt;p&gt;This is my final blog post under the &lt;a href=&quot;/blog/entries/overview-of-the-gsoc-2020-project/#series&quot;&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
-summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
-stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
-the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; and &lt;a href=&quot;https://api.creativecommons.engineering/v1/&quot;&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
-CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
-primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
-(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
-experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
-Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
-&lt;a href=&quot;/blog/entries/flickr-sub-provider-retrieval/&quot;&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/420&quot;&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/442&quot;&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/455&quot;&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/461&quot;&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
-to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
-the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
-successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
-mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
-information is provided in my &lt;a href=&quot;/blog/entries/smithsonian-unit-code-update/&quot;&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
-is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/465&quot;&gt;465&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
-from 19 museums. However, due to the fact that the different museums have different data models and the resultant
-incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
-fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
-information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
-identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
-result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
-some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
-#&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
-Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
-Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/issues/397&quot;&gt;397&lt;/a&gt; as well. The PRs related
-to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/474&quot;&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
-Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/476&quot;&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
-provider.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
-for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
-providers up-to-date, based on how old an image is. This is called the &lt;a href=&quot;/blog/entries/date-partitioned-data-reingestion/&quot;&gt;re-ingestion strategy&lt;/a&gt;,
-where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
-detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
-database are obsolete, which could result in broken links being presented via the &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt; tool. As a
-solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
-&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
-the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
-flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/483&quot;&gt;483&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
-contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
-Brent for his guidance.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
@@ -2730,61 +2730,6 @@ The changes in the source field after updating the image table in the database l
 helping me to filter the sub-providers of interest and conducting the necessary research.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
-    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
-    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
-    <updated>2020-06-10T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
-    <author>
-      <name>AyanChoudhary</name>
-    </author>
-    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
-&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
-The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
-&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
-The tab index adit for homepage is displayed:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
-For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
-Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
-    &amp;lt;template v-slot:noted&amp;gt;
-        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:attribution&amp;gt;
-        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
-        {{$t('footer.caption.attribution')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:icons&amp;gt;
-        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
-        {{$t('footer.caption.icons')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-&amp;lt;/i18n&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
-You can track the work done for these weeks through these PRs:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/science-museum-implementation/">
     <title type="text">Science Museum provider implementation</title>
     <id>urn:uuid:7960ba6c-0bbb-300e-86d8-4744b9b0ee25</id>
@@ -2886,6 +2831,82 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;/ul&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
+    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
+    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
+    <updated>2020-06-10T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
+&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
+&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
+    &amp;lt;template v-slot:noted&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:attribution&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
+        {{$t('footer.caption.attribution')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:icons&amp;gt;
+        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
+        {{$t('footer.caption.icons')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+&amp;lt;/i18n&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-design/">
+    <title type="text">CC Legal Database: Design</title>
+    <id>urn:uuid:b2a2a092-d722-34fb-bb65-9103c9b4ed48</id>
+    <updated>2020-06-09T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-design/" />
+    <author>
+      <name>krysal</name>
+    </author>
+    <content type="html">&lt;p&gt;Finishing the third week since the project started (for context see this &lt;a href=&quot;/blog/entries/legal-database-a-new-beginning/&quot;&gt;first post&lt;/a&gt;), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.&lt;/p&gt;
+&lt;h3 id=&quot;visual-styles&quot;&gt;Visual Styles&lt;/h3&gt;&lt;p&gt;The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old &quot;Countries&quot; page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.&lt;/p&gt;
+&lt;p&gt;The final look for the home site is as follows.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;cc-caselaw-home.png&quot; alt=&quot;New CC Caselaw Home Mockup&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;New Home page design with Vocabulary.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
+&lt;h3 id=&quot;data-model&quot;&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/resource-gathering/">
     <title type="text">Resource Gathering</title>
     <id>urn:uuid:1b4acbcb-fbab-372c-854f-833a05aafa23</id>
@@ -2912,27 +2933,6 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;/ol&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-design/">
-    <title type="text">CC Legal Database: Design</title>
-    <id>urn:uuid:b2a2a092-d722-34fb-bb65-9103c9b4ed48</id>
-    <updated>2020-06-09T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-design/" />
-    <author>
-      <name>krysal</name>
-    </author>
-    <content type="html">&lt;p&gt;Finishing the third week since the project started (for context see this &lt;a href=&quot;/blog/entries/legal-database-a-new-beginning/&quot;&gt;first post&lt;/a&gt;), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.&lt;/p&gt;
-&lt;h3 id=&quot;visual-styles&quot;&gt;Visual Styles&lt;/h3&gt;&lt;p&gt;The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old &quot;Countries&quot; page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.&lt;/p&gt;
-&lt;p&gt;The final look for the home site is as follows.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;cc-caselaw-home.png&quot; alt=&quot;New CC Caselaw Home Mockup&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;New Home page design with Vocabulary.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
-&lt;h3 id=&quot;data-model&quot;&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-upcoming-improvements/">
     <title type="text">Upcoming improvements/features in CC Search Extension</title>
     <id>urn:uuid:cdf59a68-68ac-36b4-85c8-a19bb2848f33</id>
@@ -2953,6 +2953,26 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;h4 id=&quot;integrating-cc-vocabulary&quot;&gt;Integrating CC Vocabulary&lt;/h4&gt;&lt;p&gt;The extension uses a very outdated version of CC Vocabulary. It will be replaced by the latest version for a refreshing new look.&lt;/p&gt;
 &lt;h4 id=&quot;adding-support-for-microsoft-edge&quot;&gt;Adding support for Microsoft Edge&lt;/h4&gt;&lt;p&gt;The new Microsoft Edge browser is based on chromium. This paves the way to add support for it thanks to the power and flexibility of the WebExtension API. This will then allow us to also officially release on the &lt;a href=&quot;https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home&quot;&gt;Microsoft Edge Addon Store&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;join-the-discussion&quot;&gt;Join the discussion&lt;/h3&gt;&lt;p&gt;If you have any feedback/suggestions or just want to say hi,  please join the &lt;code&gt;#cc-dev-browser-extension&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;. You can also track the progress on the project's &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; Repository.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
+    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
+    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
+    <author>
+      <name>AyanChoudhary</name>
+    </author>
+    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
+While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
+&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
+After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
+Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
+&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
+The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
+&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
+The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
+&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-a-new-beginning/">
@@ -3025,26 +3045,6 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/">
-    <title type="text">CC Search, Proposal Drafting and Community Bonding</title>
-    <id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id>
-    <updated>2020-05-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" />
-    <author>
-      <name>AyanChoudhary</name>
-    </author>
-    <content type="html">&lt;h3 id=&quot;proposal-drafting&quot;&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
-While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
-&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
-After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
-Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
-&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
-The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
-&lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
-The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
-&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/">
