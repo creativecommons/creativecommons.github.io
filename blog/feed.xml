@@ -2,13 +2,307 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-12-02T00:00:00Z</updated>
+  <updated>2020-12-03T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-closing/">
+    <title type="text">Vocabulary Landing Page &amp; Usage Guide Final Report</title>
+    <id>urn:uuid:9c4ce7a3-30fa-397d-bbcd-c2b9ba3658c3</id>
+    <updated>2020-12-03T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-closing/" />
+    <author>
+      <name>nimishbongale</name>
+    </author>
+    <content type="html">&lt;p&gt;We have reached the end of this wonderful journey. Let's comprehensively recap all my contributions during the GSoD internship period!&lt;/p&gt;
+&lt;h2 id=&quot;vocabulary-site-updates-edition-4/4&quot;&gt;Vocabulary Site Updates (Edition 4/4)&lt;/h2&gt;&lt;p&gt;After securing acceptance, I received the necessary github invites. I was given write access to the &lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;Vocabulary GitHub repository&lt;/a&gt; as a &lt;strong&gt;CC Vocabulary Core Committer&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;proposed-initial-plan&quot;&gt;Proposed Initial Plan&lt;/h3&gt;&lt;h4 id=&quot;project-synopsis&quot;&gt;Project Synopsis&lt;/h4&gt;&lt;p&gt;Vocabulary has immense potential to be used as a primary UI component library for website building. What it needs is a robust yet layman-friendly how-to guide. Important developer information such as component guides, usage specifications and configuration tweaks form an essential part of any documentation. This will not only encourage existing users to get a feel of how vocabulary continues to grow and reach new milestones, but also promote the usage of Vocabulary in comparatively newer projects. The desired outcomes of my stint as an intern would not only involve penning out a no-nonsense guide to using the pre-existing components but also the designing and developing of a home page (leading to an integrated documentation for each) for Vocabulary, Vue-Vocabulary and Fonts.&lt;/p&gt;
+&lt;h3 id=&quot;proposed-improvised-timelines-deliverables&quot;&gt;Proposed &amp;amp; Improvised Timelines &amp;amp; Deliverables&lt;/h3&gt;&lt;p&gt;Here's a list of all the weekly goals that I met:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pre-Internship&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Understood Creative Commons as an organisation, its work and related ethics.&lt;/li&gt;
+&lt;li&gt;Had a look at CC’s github repositories and understand the code structure.&lt;/li&gt;
+&lt;li&gt;Opened Issues and PR’s to get acquainted with the repository workflows.&lt;/li&gt;
+&lt;li&gt;Interacted with my mentor and established the basic ideas regarding the project in question.&lt;/li&gt;
+&lt;li&gt;Further researched about the needs of the project, and ponder over its potential impact after implementation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 1&lt;/strong&gt;
+(09/14 - 09/21)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Understood Vocabulary, Vue-Vocabulary and Fonts in greater depth, and their existing components.&lt;/li&gt;
+&lt;li&gt;Designed a first look unified landing page for Vocabulary, Vue-Vocabulary and Fonts based on Vocabulary components.&lt;/li&gt;
+&lt;li&gt;Interacted with my mentor and other team members and established a rapport.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 2&lt;/strong&gt;
+(09/22 - 09/28)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tackled queries regarding the choice of design, page structure etc. , and sought approval from CC’s UX Designer.&lt;/li&gt;
+&lt;li&gt;Began to write the content which will need to fill up the main landing page.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 3&lt;/strong&gt;
+(09/29 - 10/06)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Finalized the headings, sub-headings and other sections which will need to be present in the landing site &amp;amp; documentation.&lt;/li&gt;
+&lt;li&gt;Kept the code ready for accepting documentation contents. Have github pages/netlify/surge configured for continuous integration and deployment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 4&lt;/strong&gt;
+(10/07 - 10/14)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Began to write under “Introduction”, “Getting Started” and ”Grid Components” sub-headings of the documentation.&lt;/li&gt;
+&lt;li&gt;Started developing the main landing page using Vocabulary components.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 5&lt;/strong&gt;
+(10/15 - 10/22)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Got complete approval for the main page contents.&lt;/li&gt;
+&lt;li&gt;Worked on coding the “Dark Theme”.&lt;/li&gt;
+&lt;li&gt;Facilitated hacktoberfest contributors and spoke at a CCOS event.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 6&lt;/strong&gt;
+(10/23 - 10/30)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wrote a mid-internship blog post describing work done and how the experience has been so far with CC.&lt;/li&gt;
+&lt;li&gt;Started compiling the document guides for all the components in Vocabulary. Made revamps where necessary.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 7&lt;/strong&gt;
+(10/31 - 11/07)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Integrated the main page contents and the main landing page itself, had it up and running.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 8&lt;/strong&gt;
+(11/08 - 11/15)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Finished writing the Vocabulary usage guide and seek initial approval.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 9&lt;/strong&gt;
+(11/16 - 11/23)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Finalized on the guides and the main page contents.&lt;/li&gt;
+&lt;li&gt;Carried out the necessary landing page to doc integration.&lt;/li&gt;
+&lt;li&gt;Published a sample build using surge for viewing and surveying purposes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 10&lt;/strong&gt;
+(11/24 - 11/30)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Surveyed development builds for Accessibility using WAVE and Accessibility Insights for Web.&lt;/li&gt;
+&lt;li&gt;Surveyed the site for responsiveness using Chrome Dev Tools.&lt;/li&gt;
+&lt;li&gt;Generated Lighthouse reports.&lt;/li&gt;
+&lt;li&gt;Optimised for Search Engines using meta tags and external links.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 11&lt;/strong&gt;
+(11/30 - 12/05)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Worked towards improving the report statistics until they reach a respectable target.&lt;/li&gt;
+&lt;li&gt;Wrote a blog post summarizing everything, and about my performance cum involvement in CC.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 12&lt;/strong&gt;
+(12/06 - 12/12)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sought daily approvals until everything is finalised.&lt;/li&gt;
+&lt;li&gt;Go through my writings and code upteen times for any miniscule errors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Week 13&lt;/strong&gt;
+(12/13 - 12/19)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cleaned code, make sure everything is properly linted and ready before the final closing commits.    &lt;/li&gt;
+&lt;li&gt;Published the “Concluding Internship” blog post, rounding up my wholesome journey.    &lt;/li&gt;
+&lt;li&gt;Sought final closing approval.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Post-Internship&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Promote the use of CC attributed works.&lt;/li&gt;
+&lt;li&gt;Interact with the community, answer queries or doubts regarding CC.&lt;/li&gt;
+&lt;li&gt;Carry out community work of the repositories I’ve contributed to.&lt;/li&gt;
+&lt;li&gt;Leverage experience gained during this internship for future endeavours.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;the-vocabulary-site&quot;&gt;The Vocabulary Site&lt;/h3&gt;&lt;p&gt;Here's the link to &lt;a href=&quot;https://cc-vocab-draft.web.app&quot;&gt;the landing site&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Went through &lt;strong&gt;3&lt;/strong&gt; Design Iterations&lt;/li&gt;
+&lt;li&gt;Designed the mockups in &lt;a href=&quot;https://figma.com&quot;&gt;Figma&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Wrote the content filling up the landing page.&lt;/li&gt;
+&lt;li&gt;After approval from the UX Designer, waited for an approval from the Frontend Engineer.&lt;/li&gt;
+&lt;li&gt;Sought continuous approval from my mentor&lt;/li&gt;
+&lt;li&gt;Used &lt;a href=&quot;https://vuejs.org&quot;&gt;Vue.js&lt;/a&gt; + &lt;a href=&quot;https://www.npmjs.com/package/@creativecommons/vocabulary&quot;&gt;CC Vocabulary&lt;/a&gt; to build a highly modularised site.&lt;/li&gt;
+&lt;li&gt;Went through a couple of iterations of the website itself.&lt;/li&gt;
+&lt;li&gt;Made about &lt;strong&gt;112&lt;/strong&gt; commits (&lt;strong&gt;15,000&lt;/strong&gt; lines of code) in my &lt;em&gt;gsod-nimish&lt;/em&gt; branch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;Contributions to CC&quot; src=&quot;github.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;All my contributions to Creative Commons!&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Used Github API to display repository statistics.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;Fetch stats from Github API&quot; src=&quot;stats.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Fetching dynamic stats from the GitHub API&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;PR was reviewed and merged on the &lt;strong&gt;25th of November&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;The final website!&quot; src=&quot;website.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Snapshot of the final website!&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Used &lt;a href=&quot;https://surge.sh&quot;&gt;surge&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://web.app&quot;&gt;firebase&lt;/a&gt; for draft deploys.&lt;/li&gt;
+&lt;li&gt;Carried out &lt;a href=&quot;https://developers.google.com/web/tools/lighthouse&quot;&gt;lighthouse&lt;/a&gt; testing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt=&quot;Lighthouse reports&quot; src=&quot;light.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Lighthouse reports for our live site&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Prompted changes to improve accessibility, SEO and PWA characteristics.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;core-documentation&quot;&gt;Core Documentation&lt;/h3&gt;&lt;p&gt;Here's the link to the &lt;a href=&quot;https://cc-vocabulary.netlify.app&quot;&gt;documentation site&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Used &lt;a href=&quot;https://storybook.js.org/&quot;&gt;StorybookJS&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Modified the existing overview page.&lt;/li&gt;
+&lt;li&gt;Removed highly verbose sections from the docs. &lt;/li&gt;
+&lt;li&gt;Documented Vocabulary sprint planning workflow.&lt;/li&gt;
+&lt;li&gt;Documents how to use a markdown component with CC Vocabulary&lt;/li&gt;
+&lt;li&gt;Embedded hyperlink to other open source projects to improve SEO.&lt;/li&gt;
+&lt;li&gt;Increased uniformity across documentation present in the storybooks&lt;/li&gt;
+&lt;li&gt;Adds alt descriptions &amp;amp; aria labels for certain images to improve accessibility.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;issues-pr-s-raised-during-gsod-period&quot;&gt;Issues &amp;amp; PR's raised during GSoD period&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Repository&lt;/th&gt; 
+&lt;th&gt;Contribution&lt;/th&gt;
+&lt;th&gt;Relevant links&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td rowspan=14&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;@creativecommons/vocabulary&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Developed the CC Vocabulary Landing Page&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/747&quot;&gt;https://github.com/creativecommons/vocabulary/pull/747&lt;br&gt;&lt;a href=&quot;https://cc-vocab-draft.web.app&quot;&gt;https://cc-vocab-draft.web.app&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Implemented dark mode for our storybooks&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/806&quot;&gt;https://github.com/creativecommons/vocabulary/pull/806&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app&quot;&gt;https://cc-vocabulary.netlify.app&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Carried out a monorepo wide documentation revamp&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/813&quot;&gt;https://github.com/creativecommons/vocabulary/pull/813&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wrote the Monorepo Documentation Story&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/785&quot;&gt;https://github.com/creativecommons/vocabulary/pull/785&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-structure--page#why-is-vocabulary-a-monorepo&quot;&gt;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-structure--page#why-is-vocabulary-a-monorepo&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wrote the Grid Documentation Story&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/802&quot;&gt;https://github.com/creativecommons/vocabulary/pull/802&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/layouts-grid--fullhd#grid-system&quot;&gt;https://cc-vocabulary.netlify.app/?path=/docs/layouts-grid--fullhd#grid-system&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Wrote the &quot;Getting Started&quot; Usage Guide&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/774&quot;&gt;https://github.com/creativecommons/vocabulary/pull/774&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/story/vocabulary-getting-started--page#getting-started&quot;&gt;https://cc-vocabulary.netlify.app/?path=/story/vocabulary-getting-started--page#getting-started&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Added a CHANGELOG.md to adhere to OSS conventions&lt;/td&gt;
+&lt;td&gt;&lt;a href=https://github.com/creativecommons/vocabulary/pull/671&quot;&gt;https://github.com/creativecommons/vocabulary/pull/671&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/blob/master/CHANGELOG.md&quot;&gt;https://github.com/creativecommons/vocabulary/blob/master/CHANGELOG.md&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Unified README.md and updated monorepo build process&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/649&quot;&gt;https://github.com/creativecommons/vocabulary/pull/649&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.npmjs.com/package/@creativecommons/vocabulary&quot;&gt;https://www.npmjs.com/package/@creativecommons/vocabulary&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.npmjs.com/package/@creativecommons/fonts&quot;&gt;https://www.npmjs.com/package/@creativecommons/fonts&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.npmjs.com/package/@creativecommons/vue-vocabulary&quot;&gt;https://www.npmjs.com/package/@creativecommons/vue-vocabulary&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Configured GitHub native dependabot&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/452&quot;&gt;https://github.com/creativecommons/vocabulary/pull/452&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Added phone screen backgrounds&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/pull/445&quot;&gt;https://github.com/creativecommons/vocabulary/pull/445&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Introduce Snapshot Testing to Vocabulary using Chromatic&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/issues/735&quot;&gt;https://github.com/creativecommons/vocabulary/issues/735&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Add a maintained with Lerna badge&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/issues/807&quot;&gt;https://github.com/creativecommons/vocabulary/issues/807&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/blob/master/README.md&quot;&gt;https://github.com/creativecommons/vocabulary/blob/master/README.md&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Add new install size badges for our packages&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/issues/776&quot;&gt;https://github.com/creativecommons/vocabulary/issues/776&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/blob/master/README.md&quot;&gt;https://github.com/creativecommons/vocabulary/blob/master/README.md&lt;/a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Customise individual README's for our packages&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary/issues/736&quot;&gt;https://github.com/creativecommons/vocabulary/issues/736&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=5&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source&quot;&gt;@creativecommons/creativecommons.github.io-source&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Introductory First Blog Post&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source/pull/530&quot;&gt;https://github.com/creativecommons/creativecommons.github.io-source/pull/530&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-intro/&quot;&gt;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-intro/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vocabulary Site Update v1&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source/pull/549&quot;&gt;https://github.com/creativecommons/creativecommons.github.io-source/pull/549&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-1/&quot;&gt;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-1/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vocabulary Mid Internship Update v2&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source/pull/555&quot;&gt;https://github.com/creativecommons/creativecommons.github.io-source/pull/555&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-2/&quot;&gt;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-2/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vocabulary Site Update v3&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source/pull/561&quot;&gt;https://github.com/creativecommons/creativecommons.github.io-source/pull/561&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-3/&quot;&gt;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-3/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Vocabulary Site Final Update&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source/pull/564&quot;&gt;https://github.com/creativecommons/creativecommons.github.io-source/pull/564&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;/&quot;&gt;https://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-closing/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;@creativecommons/cccatalog-api&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Configured GitHub native dependabot&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-api/pull/53&quot;&gt;https://github.com/creativecommons/cccatalog-api/pull/53&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/ccos-scripts&quot;&gt;@creativecommons/ccos-scripts&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Fix file extension in README.md docs&lt;/td&gt;
+&lt;td&gt;&lt;a href=&quot;https://github.com/creativecommons/ccos-scripts/pull/100&quot;&gt;https://github.com/creativecommons/ccos-scripts/pull/100&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;p&gt;Follow along my complete GSoD journey through &lt;a href=&quot;https://opensource.creativecommons.org/blog/series/gsod-2020-vocabulary-usage-guide/&quot;&gt;these series of posts&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;memorable-milestones-screenshots&quot;&gt;Memorable Milestones Screenshots&lt;/h3&gt;&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;Merged!&quot; src=&quot;merged747.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;GSoD PR merged!&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;
+&lt;br&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;Dark Mode&quot; src=&quot;darkmode.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Behold the dark theme!&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;
+&lt;br&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;Grid Docs&quot; src=&quot;grid.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Grid Documenation Story&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;
+&lt;br&gt;
+&lt;pre&gt;
+&lt;center&gt;
+&lt;img alt&quot;Monorepo Document Story&quot; src=&quot;structure.png&quot;/&gt;&lt;br&gt;
+&lt;small class=&quot;muted&quot;&gt;Monorepo Structure Story&lt;/small&gt;
+&lt;/center&gt;
+&lt;/pre&gt;&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;&lt;p&gt;My GSoD internship has been by far, a very successful and a fruitful one. I thank the the GSoD team for all their efforts in oragnising it this year. I would also like to thank the entire Creative Commons team for all their motivation and support. The onboarding &amp;amp; see-off was very smooth indeed!&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;
+    &lt;strong&gt;Thank you for all your time! This was the final blog post under the Vocabulary docs series. I'll be around for times to come, but until then, sayonara!&lt;/strong&gt;
+&lt;/p&gt;</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/summary-my-gsod-2020-journey/">
     <title type="text">Summary: My GSoD 2020 Journey</title>
     <id>urn:uuid:8ef2254d-edd9-37d9-a144-5b539249b19f</id>
@@ -3107,229 +3401,6 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;/ol&gt;
 &lt;p&gt;Due to such capabilities, I find this framework amazing and I am excited about using it. Though there are many points untouched in this blog I would try to write a more in-depth blog when I learn about it more during my internship.&lt;/p&gt;
 &lt;p&gt;Credits — This blog is inspired by &lt;a href=&quot;https://2016.ploneconf.org/talks/static-websites-with-lektor.html&quot;&gt;Static websites with Lektor&lt;/a&gt; and also for more details you can check out &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektorpython&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/date-partitioned-data-reingestion/">
-    <title type="text">Date-Partitioned Data Reingestion</title>
-    <id>urn:uuid:33f5a94f-2510-3c9f-95ad-460fe82c9b1f</id>
-    <updated>2020-05-14T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/date-partitioned-data-reingestion/" />
-    <author>
-      <name>mathemancer</name>
-    </author>
-    <content type="html">&lt;p&gt;CC Catalog is a project that gathers information about images from around the
-internet, and stores the information so that these images can eventually be
-indexed in &lt;a href=&quot;https://ccsearch.creativecommons.org/&quot;&gt;CC Search&lt;/a&gt;. A portion of the process is directed by
-&lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Apache Airflow&lt;/a&gt;, which is a tool commonly used to organize workflows
-and data pipelines.&lt;/p&gt;
-&lt;p&gt;In this blog post, we will explore the way in which we keep information we
-gather about images up-to-date, using metadata pulled from the Flickr API as an
-example case study.&lt;/p&gt;
-&lt;h2 id=&quot;apache-airflow-and-the-execution-date-concept&quot;&gt;Apache Airflow, and the &lt;code&gt;execution_date&lt;/code&gt; concept&lt;/h2&gt;&lt;p&gt;Apache Airflow is open source software that loads Directed Acyclic Graphs (DAGs)
-defined via python files. The DAG is what defines a given workflow. The nodes
-are pieces of jobs that need to be accomplished, and the directed edges of the
-graph define dependencies between the various pieces.&lt;/p&gt;
-&lt;p&gt;A &lt;a href=&quot;https://airflow.apache.org/docs/1.10.9/concepts.html#dag-runs&quot;&gt;DAG Run&lt;/a&gt; is an 'execution' of the overall workflow defined by
-the DAG, and is associated with an &lt;code&gt;execution_date&lt;/code&gt;.  Contrary to what one might
-expect, &lt;code&gt;execution_date&lt;/code&gt; does &lt;em&gt;not&lt;/em&gt; mean the date when the workflow is executed,
-but rather the date 'perspective' from which the workflow is executed.  This
-means one can give a command that instructs Airflow to execute the workflow
-defined by a DAG as if the date were 2019-01-01, regardless of the actual date.&lt;/p&gt;
-&lt;h2 id=&quot;our-use-of-execution-date&quot;&gt;Our Use of &lt;code&gt;execution_date&lt;/code&gt;&lt;/h2&gt;&lt;p&gt;Much of the data contained in CC Catalog is pulled from various APIs on the
-internet, and one strategy we use quite regularly is to make a request of the
-form:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&quot;please give me all the metadata for photos uploaded to Flickr on 2019-01-01&quot;&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Since we're often requesting metadata about user-sourced content on 3rd-party
-sites, some sort of &lt;code&gt;date_uploaded&lt;/code&gt; parameter is often available for filtering
-results in the API provided by the 3rd-party site.  This allows us to partition
-large data-sets into more manageable pieces.  It also leads naturally to the
-strategy of requesting metadata for yesterday's photos, each day:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&quot;please give me all the metadata for photos uploaded to Flickr &lt;strong&gt;yesterday&lt;/strong&gt;&quot;&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Doing this each day lets us keep the metadata in our catalog synced with the
-upstream source (i.e., the Flickr API). This is where the &lt;code&gt;execution_date&lt;/code&gt;
-concept comes in. By default, a workflow which is scheduled to run daily uses
-the previous day's date as its &lt;code&gt;execution_date&lt;/code&gt;, and so an execution that
-happens on the actual date 2020-02-02 will have &lt;code&gt;execution_date&lt;/code&gt; 2020-02-01 by
-default. This matches up naturally with the strategy above, so we have a number
-of workflows that ingest (meta)data into CC Catalog using this default
-&lt;code&gt;execution_date&lt;/code&gt; on a daily basis.&lt;/p&gt;
-&lt;h2 id=&quot;challenge-data-can-go-stale-over-time&quot;&gt;Challenge:  Data can go stale over time&lt;/h2&gt;&lt;p&gt;There are some problems with the strategy outlined above:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;What if a photo changes upstream?&lt;/li&gt;
-&lt;li&gt;What if a photo is deleted upstream?&lt;/li&gt;
-&lt;li&gt;What about metadata that changes over time (e.g., 'views')?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Given we're only ingesting metadata about photos the day after they're uploaded,
-we won't be able to capture the relevant data for any of these situations.  So,
-we need to reingest the metadata for images on some schedule over time.&lt;/p&gt;
-&lt;h2 id=&quot;reingestion-schedule&quot;&gt;Reingestion Schedule&lt;/h2&gt;&lt;p&gt;We would prefer to reingest the metadata for newer images more frequently, and
-the metadata for older images less frequently. This is because we assume the
-metadata for newer images will be updated at the source in more interesting ways
-when the image is newer. For example, assume a picture is viewed 100 times per
-month.&lt;/p&gt;
-&lt;table class=&quot;table table-striped&quot;&gt;
-&lt;thead class=&quot;thead-dark&quot;&gt;&lt;tr&gt;
-&lt;th style=&quot;text-align:right&quot;&gt;month&lt;/th&gt;
-&lt;th style=&quot;text-align:right&quot;&gt;total views&lt;/th&gt;
-&lt;th style=&quot;text-align:right&quot;&gt;% increase&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   1&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;100&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;infinite&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   2&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;200&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;100% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   3&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;300&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;50% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   4&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;400&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;33% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   5&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;500&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;25% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   6&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;600&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;20% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   7&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;700&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;17% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   8&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;800&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;14% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;   9&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;900&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;13% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;  10&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;1000&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;11% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;  11&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;1100&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;10% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;  12&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;1200&lt;/td&gt;
-&lt;td style=&quot;text-align:right&quot;&gt;9% &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;As we see, given consistent monthly views, the 'percent increase' of the total
-views metric drops off as the picture ages (In reality, it appears that in most
-cases, pictures are mostly viewed when they are new).&lt;/p&gt;
-&lt;p&gt;Thus, it makes sense to focus more on keeping the information up-to-date for the
-most recently uploaded images.&lt;/p&gt;
-&lt;h3 id=&quot;real-numbers-for-flickr&quot;&gt;Real numbers for Flickr&lt;/h3&gt;&lt;p&gt;For Flickr, in the worst case, we can ingest about 100 dates' worth of uploaded
-image metadata per day. This was calculated using the year 2016 as an example.
-Because 2016 was around the peak for the number of images uploaded to Flickr per
-day, the actual number if dates' worth of metadata we can ingest per day is
-quite a bit higher, perhaps 150.&lt;/p&gt;
-&lt;p&gt;We'll need to choose around 150 dates for each daily run, and reingest the
-metadata for all images uploaded on each of those dates.  We want to choose
-those dates preferring newer images (for the reasons outlined above), and choose
-them so that if we follow the same date-choosing algorithm each daily run, we'll
-eventually reingest the metadata for &lt;em&gt;all&lt;/em&gt; images on some predictable schedule.&lt;/p&gt;
-&lt;h3 id=&quot;strategy-to-choose-which-dates-to-reingest&quot;&gt;Strategy to choose which dates to reingest&lt;/h3&gt;&lt;p&gt;Assume we'll reingest metadata from some number &lt;code&gt;n&lt;/code&gt; of dates on each daily run.
-We set some maximum number of days &lt;code&gt;D&lt;/code&gt; we're willing to wait between reingestion
-of the data for a given image, subject to the constraint that we need to have
-&lt;code&gt;n * D &amp;gt; T&lt;/code&gt;, where &lt;code&gt;T&lt;/code&gt; is the total number of dates for which data exists. For
-Flickr, there's (at the time of this writing) about 6,000 days for which image
-metadata was uploaded. If we set&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;n = 150&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;D = 180&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;then we have &lt;code&gt;n * D = 150 * 180 = 27,000 &amp;gt; 6,000&lt;/code&gt;, as desired.  In fact, there
-is quite a bit of slack in this calculation. Keep in mind, however, that we add
-one date's worth of metadata as each day passes in real time.  Thus, we want to
-keep some slack here. One option would be to reingest the metadata for each
-image every 90 days, rather than every 180. This would still leave some slack,
-and we'd have generally fresher data.  This means that on each day, we'd ingest
-metadata for photos uploaded on that date, as well as metadata for photos
-uploaded&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;90, 180, 270, 360, ..., 13320, or 13410 days prior to the current date.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This is better, but 90 days is still quite a long time to wait to reingest
-metadata for a recently-uploaded photo. So, it'd be better to use the slack
-available to reingest metadata for recently-uploaded photos more often, and back
-off smoothly to reingest metadata for the oldest photos only once every 180
-days. We ended up using a schedule where we ingest metadata for photos uploaded
-on the current &lt;code&gt;execution_date&lt;/code&gt;, as well as metadata for photos uploaded&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1, 2, ..., 6, or 7 days prior;&lt;/li&gt;
-&lt;li&gt;14, 21, ..., 84, or 91 days prior;&lt;/li&gt;
-&lt;li&gt;106, 121, ..., 376, or 391 days prior;&lt;/li&gt;
-&lt;li&gt;421, 451, ..., 1081, or 1111 days prior;&lt;/li&gt;
-&lt;li&gt;1201, 1291, ..., 3181, or 3271 days prior; and&lt;/li&gt;
-&lt;li&gt;3451, 3631, ..., 10291, or 10471 days prior.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These lists can be generated using the following snippet:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_reingestion_day_list_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arg&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;get_reingestion_day_list_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This function creates a list of lists of integers based on input pairs
-describing which prior dates to ingest. An approximate interpretation of the
-input pairs in this example would be&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Ingest data which is at most a week old daily.&lt;/li&gt;
-&lt;li&gt;Ingest data which is between a week and three months old weekly.&lt;/li&gt;
-&lt;li&gt;Ingest data which is between three months and a year old biweekly.&lt;/li&gt;
-&lt;li&gt;Ingest data which is between one and three years old monthly.&lt;/li&gt;
-&lt;li&gt;Ingest data which is between three and nine years old every three
-months.&lt;/li&gt;
-&lt;li&gt;Ingest data which is between nine and twenty-eight years old every six months.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The astute reader will notice that these lists only define 128 dates (including
-the current date) for which metadata should be reingested.  We prefer to be a
-bit conservative on the total amount we plan to ingest per day, since things can
-happen that put the ingestion workflow DAG out of service for some time on
-occasion.&lt;/p&gt;
-&lt;p&gt;So, using this strategy, we ensure that all metadata is updated at least every 6
-months, with a preference towards metadata about images uploaded recently.
-Because this schedule covers about 28.7 years back in time, this strategy should
-suffice to reingest all relevant Flickr data for the next 12 years or so (the
-current date is 2020).&lt;/p&gt;
-&lt;p&gt;For more context around what we've shown here, please take a look at
-&lt;a href=&quot;https://github.com/creativecommons/cccatalog/&quot;&gt;the CC Catalog repo&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
