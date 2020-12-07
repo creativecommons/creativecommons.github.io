@@ -2,13 +2,59 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">CC technical blog</title>
   <id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id>
-  <updated>2020-12-03T00:00:00Z</updated>
+  <updated>2020-12-07T00:00:00Z</updated>
   <link href="http://opensource.creativecommons.org/" />
   <link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.3">Lektor Atom Plugin</generator>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-12-07-upcoming-changes-to-community/">
+    <title type="text">Upcoming Changes to the CC Open Source Community</title>
+    <id>urn:uuid:f2584ce6-4f24-3ccb-97d8-9f68e62bc65a</id>
+    <updated>2020-12-07T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/2020-12-07-upcoming-changes-to-community/" />
+    <author>
+      <name>kgodey</name>
+    </author>
+    <content type="html">&lt;p&gt;Creative Commons (CC) is adopting a brand new organizational strategy in 2021, just in time for our 20th anniversary. As part of the organization's evolution in alignment with the new strategy, &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/aldenpage/&quot;&gt;Alden Page&lt;/a&gt;, &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/mathemancer/&quot;&gt;Brent Moran&lt;/a&gt;, &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/hugosolar/&quot;&gt;Hugo Solar&lt;/a&gt;, and I (&lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/kgodey/&quot;&gt;Kriti Godey&lt;/a&gt;) will have departed Creative Commons by the end of December. Moving forward, the CC staff engineering team of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/TimidRobot/&quot;&gt;Timid Robot Zehta&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/zackkrida/&quot;&gt;Zack Krida&lt;/a&gt; will focus on supporting a smaller set of core projects.&lt;/p&gt;
+&lt;p&gt;We are extremely proud of the work we have done together to build CC's vibrant open source community over the past two years. And of course, we're thankful for all the amazing contributions that all our community members have made. We've made significant improvements to existing tools, and launched entirely new projects with your help. &lt;a href=&quot;https://opensource.creativecommons.org/blog/categories/cc-vocabulary/&quot;&gt;We created Vocabulary,&lt;/a&gt; a design system for Creative Commons and launched half a dozen sites using it.  We added &lt;a href=&quot;https://opensource.creativecommons.org/blog/categories/cc-catalog/&quot;&gt;dozens of new sources to CC Search&lt;/a&gt; and improved &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/AyanChoudhary/&quot;&gt;its accessibility&lt;/a&gt;. We released tools such as the &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/ahmadbilaldev/&quot;&gt;CC WordPress plugin&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/makkoncept/&quot;&gt;CC Search browser extension&lt;/a&gt; that integrated CC licensing with widely used software. And, there's so much more.&lt;/p&gt;
+&lt;h3 id=&quot;community-changes&quot;&gt;Community Changes&lt;/h3&gt;&lt;p&gt;The CC Open Source community remains central to our engineering work, and we will continue to support you in every way we can. However, based on the new staff capacity, we will be making a few changes to our community processes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Community Team members will no longer have access to CC's Asana. Most tasks are tracked on GitHub, and managing Asana adds unnecessary complexity to the community team.&lt;/li&gt;
+&lt;li&gt;We will invite all Community Team members to meetings and documents open to the community, regardless of role.&lt;/li&gt;
+&lt;li&gt;We will deprecate the  &quot;community-team-core&quot; mailing list in favor of a single &quot;community-team&quot; mailing list.&lt;/li&gt;
+&lt;li&gt;We will have a new monthly Open Source Community meeting and cancel the existing biweekly Engineering Meeting.&lt;/li&gt;
+&lt;li&gt;We will no longer have a paid Open Source Community Coordinator, &lt;a href=&quot;https://opensource.creativecommons.org/community/community-team/community-building-roles/&quot;&gt;relying instead on volunteers&lt;/a&gt; to help assist new community members, maintain our Twitter account, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We welcome new Community Team members and we will continue to participate in internship programs such as Google Summer of Code.&lt;/p&gt;
+&lt;h3 id=&quot;project-changes&quot;&gt;Project Changes&lt;/h3&gt;&lt;p&gt;With a smaller engineering team, we will need to support fewer projects. Please see below for the current status of all projects with at least one Community Team member.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Active Development&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We will continue to actively develop the following projects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;CC Search Browser Extension&lt;/a&gt; (maintainer: Mayank Nader)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons.github.io-source&quot;&gt;CC Open Source website&lt;/a&gt; (maintainers: Zack Krida &amp;amp; Timid Robot Zehta)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/creativecommons-base&quot;&gt;CC WordPress base&lt;/a&gt; &amp;amp; child themes (new maintainer: Zack Krida)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/legaldb&quot;&gt;CC Legal Database&lt;/a&gt; (maintainer: Timid Robot Zehta)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/chooser&quot;&gt;CC Chooser&lt;/a&gt; (maintainer: Zack Krida)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cc-link-checker/&quot;&gt;CC Link Checker&lt;/a&gt; (maintainer: Timid Robot Zehta)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/licensebuttons/&quot;&gt;License Buttons&lt;/a&gt; (maintainer: Timid Robot Zehta)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/mp/&quot;&gt;Platform Toolkit&lt;/a&gt; (maintainer: Timid Robot Zehta)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;Vocabulary&lt;/a&gt; (maintainers: Zack Krida &amp;amp; Dhruv Bhanushali)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/wp-plugin-creativecommons&quot;&gt;WordPress Plugin&lt;/a&gt; (new maintainer: Zack Krida)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Maintenance Mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The following projects are entering maintenance mode. The services will remain online, but we will not accept any new pull requests or deploy new code after Dec 15, 2020.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog&quot;&gt;CC Catalog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-api&quot;&gt;CC Catalog API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/&quot;&gt;CC Search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;Linked Commons&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Catalog, API, and Linked Commons contributors are encouraged to contribute  to our other Python projects such as the &lt;a href=&quot;https://github.com/creativecommons/legaldb&quot;&gt;CC Legal Database&lt;/a&gt; or the upcoming &lt;a href=&quot;https://github.com/creativecommons/cc-licenses&quot;&gt;CC Licenses&lt;/a&gt; project. If you are a CC Search contributor, we recommend checking out frontend projects such as the &lt;a href=&quot;https://github.com/creativecommons/chooser&quot;&gt;CC Chooser&lt;/a&gt; or &lt;a href=&quot;https://github.com/creativecommons/vocabulary&quot;&gt;Vocabulary&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;thank-you&quot;&gt;Thank You!&lt;/h3&gt;&lt;p&gt;We cannot express our gratitude for our community enough. You are all an absolute pleasure to work with, and we're looking forward to continuing to collaborate with you for years to come.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-vocabulary-docs-updates-closing/">
     <title type="text">Vocabulary Landing Page &amp; Usage Guide Final Report</title>
     <id>urn:uuid:9c4ce7a3-30fa-397d-bbcd-c2b9ba3658c3</id>
@@ -3382,45 +3428,6 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;h3 id=&quot;working-together&quot;&gt;Working together&lt;/h3&gt;&lt;p&gt;It's been a pleasure to work with Creative Commons team. My mentors, &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; and &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari&lt;/a&gt;, together with &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna&lt;/a&gt;, Francisco Vera and &lt;a href=&quot;https://creativecommons.org/author/brenoferreira/&quot;&gt;Breno&lt;/a&gt;, were there for me all through the internship, help me feel a part of CC team.&lt;/p&gt;
 &lt;p&gt;But the CC community is much wider than that! I've been amazed at the enthusiasm of the users who helped us with the UX testing, and at the speed with which they jumped on the task of translating the website as soon as we published the text on Transifex.&lt;/p&gt;
 &lt;h3 id=&quot;what-s-next&quot;&gt;What's next?&lt;/h3&gt;&lt;p&gt;My internship ended more than two months ago, but I continue to be a part of CC open source team. I also hope this experience will help me go on to a career as a developer.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/why-lektor/">
-    <title type="text">Why Lektor?</title>
-    <id>urn:uuid:2cec5ffc-29a4-3c29-ac42-e928118f3be7</id>
-    <updated>2020-05-15T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/why-lektor/" />
-    <author>
-      <name>dhruvi16</name>
-    </author>
-    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;cover.png&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        why?why?why? &lt;a href=&quot;https://creativecommons.org/publicdomain/zero/1.0/&quot;&gt;(CC0 1.0)&lt;/a&gt;
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;I wrote this article while prepping for my Outreachy internship. I was trying to find out why Lektor is being used for the project and found out really convincing reasons for the same.&lt;/p&gt;
-&lt;p&gt;Let’s start with basic types of website -&lt;/p&gt;
-&lt;p&gt;Static website: Here the webpages are pre-loaded to the server and when the request is made, these pages are served to the client as it is. These webpages can use HTML, CSS, and Javascript. By static, it does not mean that these webpages are devoid of user interactivity. These pages can be highly reactive (because of course JS) but yes they are not generated on the server and are static in that manner.&lt;/p&gt;
-&lt;p&gt;Dynamic website: Here the webpages are generated by the server. It is connected to a database and all the data is fetched from there. It uses server-side scripting and also client-side scripting (if necessary). It is called dynamic because the webpages are processed by the server.&lt;/p&gt;
-&lt;p&gt;So why go static? — Because the vast, vast majority of websites will be read many more times than they will be updated. This is crucial because dynamic content does not come for free. It needs server resources and because program code is running there it needs to be kept up to date to ensure there are no security problems that are left unpatched. Also when a website gets a sudden spike of traffic a static website will stay up for longer on the same server than a dynamic one that needs to execute code.&lt;/p&gt;
-&lt;p&gt;There are certain drawbacks of static websites we are going to focus on here and how Lektor helps us to combat those.&lt;/p&gt;
-&lt;p&gt;Drawbacks -&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Multi-page websites are really hard to manage — Updating the content can be a cumbersome task here.&lt;/li&gt;
-&lt;li&gt;Lack of dynamic content.&lt;/li&gt;
-&lt;li&gt;Unavailability of the admin side of the website — This makes hard for non-technical people to edit the website.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Lektor helps to combat all the shortcomings listed above. It is built using Node.js and Python and is very easy to understand and use.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;The first drawback has a very common solution that is templates. Lektor has a file structure that consists of — content, models, and templates. This structure helps us to manage multi-page websites without any cumbersome copy-pasting.&lt;/li&gt;
-&lt;li&gt;This drawback can be overcome by using external services or in house micro-services. These services can easily be integrated into your Lektor project. This will save time and give efficient results.&lt;/li&gt;
-&lt;li&gt;This is the most amazing thing that Lektor does. Combating this shortcoming makes Lektor stand out. Lektor takes from content management systems like WordPress and provides a flexible browser-based admin interface from which you can edit your website’s contents. Unlike traditional CMS solutions, however, it runs entirely on your computer. This means you can give a Lektor website to people that have no understanding of programming and they can still modify the content and update the website.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Due to such capabilities, I find this framework amazing and I am excited about using it. Though there are many points untouched in this blog I would try to write a more in-depth blog when I learn about it more during my internship.&lt;/p&gt;
-&lt;p&gt;Credits — This blog is inspired by &lt;a href=&quot;https://2016.ploneconf.org/talks/static-websites-with-lektor.html&quot;&gt;Static websites with Lektor&lt;/a&gt; and also for more details you can check out &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektorpython&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
