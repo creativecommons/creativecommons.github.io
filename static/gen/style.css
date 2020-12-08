@@ -7946,6 +7946,12 @@ pre {
   .gh-label.miscellaneous {
     background-color: #000000;
     color: #ffffff; }
+  .gh-label.hacktoberfest {
+    background-color: #883255;
+    color: #ffffff; }
+  .gh-label.invalid {
+    background-color: #eeeeee;
+    color: #000000; }
 
 .content {
   line-height: 1.6875; }
