@@ -1,0 +1,618 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Translation Guide" />
+
+
+<meta property="og:description" content="Our translation files are hosted and managed on Transifex. It&#39;s very easy to sign up for an account and start translation CC services into another language." />
+
+<meta property="og:url" content="/contributing-code/translation-guide/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Translation Guide.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Translation Guide">
+<meta name="twitter:description" content="Our translation files are hosted and managed on Transifex. It&#39;s very easy to sign up for an account and start translation CC services into another language.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Translation Guide — Creative Commons Open Source</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item " href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless  is-active">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              Internships<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/internships/">Overview</a>
+              
+                <a class="navbar-item" href="/internships/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/internships/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/internships/intern-guide/">Intern Guide</a>
+              
+                <a class="navbar-item" href="/internships/mentor-guide/">Mentor Guide</a>
+              
+                <a class="navbar-item" href="/internships/history/">History</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless ">
+              CC Search<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/cc-search/">Overview &amp; Roadmap</a>
+              
+                <a class="navbar-item" href="/cc-search/contribution-guide/">Contribution Guide</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/contributing-code/">
+              
+                Contributing Code
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Translation Guide</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="code-guidelines">
+    <header class="header">
+      <div class="container is-paddingless">
+        <h1>Translation Guide</h1>
+        <div class="description column is-9 is-paddingless">
+          <p>Our translation files are hosted and managed on <a href="https://www.transifex.com">Transifex</a>. It's very easy to sign up for an account and start translation CC services into another language.</p>
+
+        </div>
+      </div>
+    </header>
+    <div class="container code-guidelines-body">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="row">
+            
+              <aside class="menu sidebar-menu">
+                <ul class="menu-list">
+                  <li>
+                    <a class=" link" href="/contributing-code/projects/">Project List</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/issue-finder/">Issue Finder</a>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/">Contribution Guidelines</a>
+                    <ul>
+                      <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>Pull Request Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/github-repo-guidelines/"><i class="icon circle-filled"></i>Github Repo Guidelines</a></li>
+                      <li><a class=" link" href="/contributing-code/repo-labels/"><i class="icon circle-filled"></i>Repository Labels</a></li>
+                      <li><a class=" link" href="/contributing-code/python-guidelines/"><i class="icon circle-filled"></i>Python Guidelines</a></li>
+                      <li><a class=" is-active  link" href="/contributing-code/translation-guide/"><i class="icon circle-filled"></i>Translation Guide</a></li>
+                    </ul>
+                  </li>
+                  <hr class="divider">
+                  <li>
+                    <a class=" link" href="/contributing-code/usability/">Usability</a>
+                  </li>
+                </ul>
+              </aside>
+            
+          </div>
+          <div class="row padding-bottom-normal sticky-top">
+            <h4 class="b-header">On this page</h4>
+            <aside class="menu table-of-contents">
+              <ul class="menu-list">
+                
+                  <li>
+                    <a class="link" href="#for-translators">For translators</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#for-admins">For admins</a>
+                    
+                  </li>
+                
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div class="column content is-three-quarters">
+          <p>CC applications such as CC Search and the CC License Chooser are used by
+millions of users worldwide. Translating these services into the languages our
+users speak and read is integral to making these services accessible to our
+diverse user base.</p>
+<p>We use Transifex to manage our translation files. It provides an intuitive UI
+and many useful tools. Let's see how you can join us there and get started.</p>
+<p>TL;DR: We have a <a href="https://www.youtube.com/watch?v=Rta2AlPww8M">video version</a>
+of this tutorial if you prefer that as the medium of instruction.</p>
+<h2 id="for-translators">For translators</h2><ul>
+<li><strong>Sign up on Transifex</strong><ul>
+<li>Visit the Transifex <a href="https://www.transifex.com/signup/">sign up page</a> and
+fill out the form to create an account.</li>
+<li>You can create a new account using your email address, a username and a
+password.</li>
+<li>Alternatively you can link an existing account from GitHub, Google or
+LinkedIn to avoid having to remember another password.</li>
+<li>During the sign up process, you will be asked for the languages you speak.
+Remember to fill it as comprehensively as possible.</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 508px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex sign up page"
+  src="./transifex_signup.png">
+</p><ul>
+<li><p><strong>Verify your email</strong><br>
+You will receive an email from Transifex on the email address you signed up.
+Clicking the link in the email will verify that you used an authentic email to
+sign up and enable all the features on your account.</p>
+</li>
+<li><p><strong>Visit the CC Organisation page</strong><br>
+The <a href="https://www.transifex.com/creativecommons/public/">organisation page</a>
+contains links to all CC projects currently in translation.</p>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 508px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex 'CC' organisation page"
+  src="./transifex_org_page.png">
+</p><ul>
+<li><strong>Choose a project</strong><br>
+Choose any project from the list that you would like to translate. Click on
+the project name to go to the project page.</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 508px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex 'Summit website' project page"
+  src="./transifex_summit.png">
+</p><ul>
+<li><strong>Join the team</strong><ul>
+<li>You can see a list of languages that each project has been translated into.
+Not all languages are visible. Click on the 'Display all languages' button
+to see them all.</li>
+<li>If your language isn't present in the list, you can request for it by
+clicking the 'Request language' button. You will have to go to the previous
+step and find a different project till your language request is approved.</li>
+<li>If your language is present, click on the 'Join team' button to join the
+team that's translating this project.</li>
+<li>In the modal choose your language and click the 'Join' button. You'll
+receive a notification that a request has been submitted. Wait for an
+administrator to add you to the team.</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex 'Join project' modal"
+  src="./transifex_modal.png">
+</p><ul>
+<li><strong>Getting around</strong><ul>
+<li>You'll receive an email when your request has been accepted.</li>
+<li>When you log back in to Transifex, you'll see some changes in the UI.<ul>
+<li>You'll have Creative Commons mentioned in the organisation dropdown.</li>
+<li>You'll see CC projects in the left sidebar.</li>
+</ul>
+</li>
+<li>Click on the project of your choice from the sidebar.</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 508px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex 'Summit website' member view"
+  src="./transifex_member_view.png">
+</p><ul>
+<li><strong>Translate the strings</strong><ul>
+<li>Find your language from the list of languages. Hovering over the name will
+reveal a 'View resource' button.</li>
+<li>Click on the 'View resource' button. That should take you to the page of
+that particular language. It contains the resources that you need to
+translate.</li>
+<li>Clicking on the resource opens a modal describing the words and strings that
+remain to be translated. Here onwards you have three paths for translating
+the site.<ul>
+<li>Transifex editor UI, by clicking the 'Translate' button</li>
+<li>Transifex live UI, by clicking the 'Live' button</li>
+<li>Local string translation, by clicking the download and upload buttons</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex resource modal"
+  src="./transifex_resource_modal.png">
+</p><ul>
+<li><ul>
+<li><strong>Method 1: Translating using the Transifex editor UI</strong><ul>
+<li>To do this, click on the 'Translate' button from the resource modal. You
+will be taken to a list of all the strings from the website.</li>
+<li>Switch the language to your target language using the menu bar on the
+upper side of the screen.</li>
+<li>Click on any string, enter the translation in the lower box and click
+the 'Save Translation' button to commit the change.</li>
+<li>Some text has HTML tags in it. In those cases you can click on the tags in
+the source text to copy them over in the translated text. You can also
+drag to move them around as needed.</li>
+<li>Keep <a href="https://wiki.creativecommons.org/wiki/Translating_CC_Deeds#General_Notes_About_Translating">these instructions</a>
+in mind.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 508px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex editor UI"
+  src="transifex_editor_ui.png">
+</p><ul>
+<li><ul>
+<li><strong>Method 2: Translating using the Transifex live UI</strong><ul>
+<li>To do this, click on the 'Live' button from the resource modal. You will
+be taken to the website rendered in the Transifex page and you can edit
+the text directly.</li>
+<li>Switch the language to your target language using the sidebar on the right
+side of the screen.</li>
+<li>All the text is green boxes can be translated. Click on the pencil icon
+that appears when you move your mouse over the green boxes.</li>
+<li>Enter your translated string in the lower box and press the 'Save' button
+to confirm the translation.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 508px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex live UI"
+  src="transifex_live_ui.png">
+</p><ul>
+<li><ul>
+<li><strong>Method 3: Translating strings locally</strong><ul>
+<li>To do this, you can download the JSON file that maps English strings to
+their counterparts in your language by clicking the 'Download file to
+translate' button.</li>
+<li>For the untranslated strings, both key and value will be the same.<div class="hll"><pre><span></span><span class="p">{</span> <span class="nt">&quot;Hello, World!&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World!&quot;</span> <span class="p">}</span>
+</pre></div>
+</li>
+<li>Change the JSON values to the translated text.<div class="hll"><pre><span></span><span class="p">{</span> <span class="nt">&quot;Hello World&quot;</span><span class="p">:</span> <span class="s2">&quot;नमस्ते, दुनिया!&quot;</span> <span class="p">}</span>
+</pre></div>
+</li>
+<li>Upload the translated JSON file using the 'Upload file' button.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Your translations will go live as soon as they are approved by the admins.</p>
+<h2 id="for-admins">For admins</h2><ul>
+<li><strong>Approve team join requests</strong><ul>
+<li>Click on the person's name to see their profile. That could help in
+determining the credibility of the candidate.</li>
+<li>Click the 'Accept' button if you want to add the collaborator to the team.
+You'll receive a notification confirming the acceptance of the translator.</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 503px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex 'Join requests' page"
+  src="./transifex_join_request.png">
+</p><ul>
+<li><strong>Review translations</strong><ul>
+<li>Navigate to the resource as described for translators in the 'Translate the
+strings' section.</li>
+<li>In the resource modal that appears, click on the 'View strings online'
+button. You will be taken to the strings page.</li>
+<li>Click on the 'Unreviewed' tab. Approve or decline the translation as
+applicable.</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: center;">
+<img
+  style="max-height: 503px; border: 1px solid #ccc;"
+  alt="Screenshot of the Transifex 'Unreviewed translations' page"
+  src="./transifex_review_translation.png">
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
