@@ -129,7 +129,7 @@ eval("$(document).ready(function(){\n    // Class for active buttons\n    const 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm.js\");\n/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components */ \"./js/components.js\");\n\n\n\n$(document).ready(function () {\n  window.app = new vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_components__WEBPACK_IMPORTED_MODULE_1__[\"App\"])\n})\n\n\n//# sourceURL=webpack:///./js/issue-finder.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.esm.js\");\n/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components */ \"./js/components.js\");\n\n\n\n$(document).ready(function () {\n  if (window.location.pathname == '/contributing-code/issue-finder/')\n    window.app = new vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_components__WEBPACK_IMPORTED_MODULE_1__[\"App\"])\n})\n\n\n//# sourceURL=webpack:///./js/issue-finder.js?");
 
 /***/ }),
 
