@@ -7060,9 +7060,6 @@ a.navbar-item,
       .main-footer .subscription .newsletter .input::-moz-placeholder {
         color: #767676;
         opacity: 0.8; }
-      .main-footer .subscription .newsletter .input:-ms-input-placeholder {
-        color: #767676;
-        opacity: 0.8; }
       .main-footer .subscription .newsletter .input::-ms-input-placeholder {
         color: #767676;
         opacity: 0.8; }
@@ -7669,9 +7666,6 @@ a.navbar-item,
   color: inherit; }
 
 .vs__search::-moz-placeholder {
-  color: inherit; }
-
-.vs__search:-ms-input-placeholder {
   color: inherit; }
 
 .vs__search::-ms-input-placeholder {
