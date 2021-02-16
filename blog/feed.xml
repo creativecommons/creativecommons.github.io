@@ -1530,6 +1530,48 @@ Brent for his guidance.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
+    <title type="text">Linked Commons: Data Update</title>
+    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
+    <updated>2020-08-25T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
+    <author>
+      <name>subhamX</name>
+    </author>
+    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
+&lt;h2 id=&quot;where-does-it-fit&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
+&lt;h3 id=&quot;what-is-distance-list&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
+&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
+&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
+&lt;h3 id=&quot;key-points-of-the-sequential-db-build&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
+&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
+&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
+&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
+&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/">
     <title type="text">CC Catalog: wrapping up GSoC20</title>
     <id>urn:uuid:ba947438-0d00-32ec-8ba7-acf6f5f15eb5</id>
@@ -1602,48 +1644,6 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;Related PR: &lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/478&quot;&gt;https://github.com/creativecommons/cccatalog/pull/478&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank my mentors Brent and Anna for their guidance throughout the internship.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
-    <title type="text">Linked Commons: Data Update</title>
-    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
-    <updated>2020-08-25T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
-    <author>
-      <name>subhamX</name>
-    </author>
-    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id=&quot;where-does-it-fit&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
-&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id=&quot;what-is-distance-list&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
-&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
-&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
-&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id=&quot;key-points-of-the-sequential-db-build&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
-&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
-&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
-&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
-&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/">
@@ -2711,6 +2711,24 @@ options = {
 Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/">
+    <title type="text">Integration of Vocabulary with CCOS.</title>
+    <id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id>
+    <updated>2020-07-08T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
+&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
+&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
+&lt;h2 id=&quot;the-solution&quot;&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href=&quot;https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals&quot;&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href=&quot;https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516&quot;&gt;link&lt;/a&gt; for that.&lt;/p&gt;
+&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
+&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
+&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-coding-mid-term/">
     <title type="text">CC Legal Database: Coding and Mid-term status</title>
     <id>urn:uuid:0283bfb3-3e0e-3c6a-a70b-02df13f31235</id>
@@ -2734,24 +2752,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id=&quot;plan-for-the-second-half-of-the-timeline&quot;&gt;Plan for the second half of the timeline&lt;/h2&gt;&lt;p&gt;There are some tasks due from past weeks, such as build forms for Case and Scholarship submissions, but I am confident that now that the project has reached a stable state I can do it quickly in the next days. Other tasks were moved for later: searching records and filtering by tags moved after forms are created, so I can finish the visual parts of the site first and focus on functional work without shifting between types of tasks.&lt;/p&gt;
 &lt;p&gt;The tasks and they order have changed, like I mentioned earlier, requirements were modified (a bit) so some tasks I planned for last weeks are not necessary anymore or are done already out-of-box with Django admin (benefits of choosing a batteries included framework!). In general, I don't think the initial plan was wrong, we just went through the natural evolution of a product software. Mentors have also been very helpful in keeping a reasonable scope and adjusting priorities.&lt;/p&gt;
 &lt;p&gt;After main functionalities are done we can start making improvements, as we already identified some nice to have features but not so important at the moment. Stay tuned for more to come.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/">
-    <title type="text">Integration of Vocabulary with CCOS.</title>
-    <id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id>
-    <updated>2020-07-08T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" />
-    <author>
-      <name>dhruvi16</name>
-    </author>
-    <content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href=&quot;https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page&quot;&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href=&quot;https://opensource.creativecommons.org/&quot;&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
-&lt;h2 id=&quot;the-problem&quot;&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
-&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
-&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
-&lt;h2 id=&quot;the-solution&quot;&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href=&quot;https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals&quot;&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href=&quot;https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516&quot;&gt;link&lt;/a&gt; for that.&lt;/p&gt;
-&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href=&quot;https://www.getlektor.com/&quot;&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
-&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
-&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week3-4/">
@@ -3315,6 +3315,39 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h3 id=&quot;join-the-discussion&quot;&gt;Join the discussion&lt;/h3&gt;&lt;p&gt;If you have any feedback/suggestions or just want to say hi,  please join the &lt;code&gt;#cc-dev-browser-extension&lt;/code&gt; channel on &lt;a href=&quot;https://opensource.creativecommons.org/community/#slack&quot;&gt;slack&lt;/a&gt;. You can also track the progress on the project's &lt;a href=&quot;https://github.com/creativecommons/ccsearch-browser-extension&quot;&gt;Github&lt;/a&gt; Repository.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
+    <title type="text">Takeaways from my FOSS journey!</title>
+    <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;cover.jpg&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04/14774214687&quot;&gt;&quot;Sky at night&quot;&lt;/a&gt; by &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04&quot;&gt;Rychu92&lt;/a&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&amp;atype=rich&quot;&gt;CC BY-SA 2.0&lt;/a&gt;
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;First let me introduce myself because of course I am not a very famous blogger or writer.&lt;/p&gt;
+&lt;p&gt;I am Dhruvi. I am a third-year undergrad student. I am a designer/developer and also a FOSS enthusiast. I started my opensource journey a year ago (that is around Feb ’19) and now here I am starting my Outreachy internship with this blog (not literally of course). I am consistent, curious, and creative, and below I will tell you how these three C’s have helped me through my journey.&lt;/p&gt;
+&lt;p&gt;Below are the four things that I think might be the ‘takeaways’ from my experience -&lt;/p&gt;
+&lt;h3 id=&quot;now-is-the-time&quot;&gt;NOW is the time -&lt;/h3&gt;&lt;p&gt;There is no better time than now! Let’s accept the fact that most of the students wait for “the time” to start with opensource as most of us want to get into programs like GSoC, Outreachy, and many more. But I figured it is very necessary to know that whether you are interested in opensource or is it only the big internships attracting you. So, to get these answers, you need to explore, and to explore I suggest you start today. I am very fond of asking myself the question ‘Why?’ and to answer those questions I explore, I invest time. So start finding answers to your whys? today.&lt;/p&gt;
+&lt;h3 id=&quot;start-slow&quot;&gt;Start SLOW -&lt;/h3&gt;&lt;p&gt;For me the start was a little overwhelming and that made me push it away. And to avoid that I tried starting small and slow. By small and slow, I mean try the easy things first, like getting aware of the logistics. Personally, general practices or set of rules calm me down when I try to get into some uncomfortable zones. And yes opensource was not a very comfortable zone for me in the beginning (I mean what is *wink). To keep myself motivated, I started with familiar things like contributing to familiar projects or familiar good first issues (the easy ones). Completing a task or two gave me a lot of confidence and made me stick around.&lt;/p&gt;
+&lt;h3 id=&quot;choose-wisely&quot;&gt;Choose WISELY -&lt;/h3&gt;&lt;p&gt;After playing around for some time and getting familiar with the logistics, I went for a project hunt. I listed my areas of interest and areas which seemed exciting to me. Using those filters I found some amazing projects which were actively being worked on. I got my answers to why would I want to work on these projects? by working on them. I believe if you are interested the motivation will be natural. With some projects, I felt connected and I did not feel the need of pushing myself for contributing to them. My only advice for making a wise choice is that “Don’t push yourself too hard”!&lt;/p&gt;
+&lt;h3 id=&quot;speak-through-your-work&quot;&gt;Speak through your WORK -&lt;/h3&gt;&lt;p&gt;When I was sure, I wanted to work on a particular project I started getting familiar with the community (the specifics). I got familiar with the ideas and agendas the community had behind the projects. And fortunately, I got to work with the most amazing and inspiring people who helped me when I was stuck and I plan to keep working with them. I kept doing a few things which I guess might be worth mentioning -&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Try to write the most appropriate and relevant code.&lt;/li&gt;
+&lt;li&gt;Try to break the solution into small understandable parts.&lt;/li&gt;
+&lt;li&gt;Try to take initiatives. Small initiatives like opening issues will also work (Yes! opening relevant and meaningful issues is an initiative.).&lt;/li&gt;
+&lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-a-new-beginning/">
     <title type="text">CC Legal Database: a new beginning</title>
     <id>urn:uuid:0ca867d0-f061-3202-9da4-7e89977781ce</id>
@@ -3372,39 +3405,6 @@ The other notable sections included strategies for modification of templates whi
 &lt;h3 id=&quot;community-bonding&quot;&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
 The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
 &lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
-    <title type="text">Takeaways from my FOSS journey!</title>
-    <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
-    <updated>2020-05-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/" />
-    <author>
-      <name>dhruvi16</name>
-    </author>
-    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;cover.jpg&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04/14774214687&quot;&gt;&quot;Sky at night&quot;&lt;/a&gt; by &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04&quot;&gt;Rychu92&lt;/a&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&amp;atype=rich&quot;&gt;CC BY-SA 2.0&lt;/a&gt;
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;First let me introduce myself because of course I am not a very famous blogger or writer.&lt;/p&gt;
-&lt;p&gt;I am Dhruvi. I am a third-year undergrad student. I am a designer/developer and also a FOSS enthusiast. I started my opensource journey a year ago (that is around Feb ’19) and now here I am starting my Outreachy internship with this blog (not literally of course). I am consistent, curious, and creative, and below I will tell you how these three C’s have helped me through my journey.&lt;/p&gt;
-&lt;p&gt;Below are the four things that I think might be the ‘takeaways’ from my experience -&lt;/p&gt;
-&lt;h3 id=&quot;now-is-the-time&quot;&gt;NOW is the time -&lt;/h3&gt;&lt;p&gt;There is no better time than now! Let’s accept the fact that most of the students wait for “the time” to start with opensource as most of us want to get into programs like GSoC, Outreachy, and many more. But I figured it is very necessary to know that whether you are interested in opensource or is it only the big internships attracting you. So, to get these answers, you need to explore, and to explore I suggest you start today. I am very fond of asking myself the question ‘Why?’ and to answer those questions I explore, I invest time. So start finding answers to your whys? today.&lt;/p&gt;
-&lt;h3 id=&quot;start-slow&quot;&gt;Start SLOW -&lt;/h3&gt;&lt;p&gt;For me the start was a little overwhelming and that made me push it away. And to avoid that I tried starting small and slow. By small and slow, I mean try the easy things first, like getting aware of the logistics. Personally, general practices or set of rules calm me down when I try to get into some uncomfortable zones. And yes opensource was not a very comfortable zone for me in the beginning (I mean what is *wink). To keep myself motivated, I started with familiar things like contributing to familiar projects or familiar good first issues (the easy ones). Completing a task or two gave me a lot of confidence and made me stick around.&lt;/p&gt;
-&lt;h3 id=&quot;choose-wisely&quot;&gt;Choose WISELY -&lt;/h3&gt;&lt;p&gt;After playing around for some time and getting familiar with the logistics, I went for a project hunt. I listed my areas of interest and areas which seemed exciting to me. Using those filters I found some amazing projects which were actively being worked on. I got my answers to why would I want to work on these projects? by working on them. I believe if you are interested the motivation will be natural. With some projects, I felt connected and I did not feel the need of pushing myself for contributing to them. My only advice for making a wise choice is that “Don’t push yourself too hard”!&lt;/p&gt;
-&lt;h3 id=&quot;speak-through-your-work&quot;&gt;Speak through your WORK -&lt;/h3&gt;&lt;p&gt;When I was sure, I wanted to work on a particular project I started getting familiar with the community (the specifics). I got familiar with the ideas and agendas the community had behind the projects. And fortunately, I got to work with the most amazing and inspiring people who helped me when I was stuck and I plan to keep working with them. I kept doing a few things which I guess might be worth mentioning -&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Try to write the most appropriate and relevant code.&lt;/li&gt;
-&lt;li&gt;Try to break the solution into small understandable parts.&lt;/li&gt;
-&lt;li&gt;Try to take initiatives. Small initiatives like opening issues will also work (Yes! opening relevant and meaningful issues is an initiative.).&lt;/li&gt;
-&lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/">
