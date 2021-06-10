@@ -8,7 +8,7 @@
 <meta property="og:title" content="JavaScript Guidelines" />
 
 
-<meta property="og:description" content="These JavaScript Guidelines (style guide) help the community to focus on the intent of the code and work together with a minimum of friction." />
+<meta property="og:description" content="These JavaScript Guidelines (style guide) help the community focus on the code&#39;s intent and work together with a minimum of friction." />
 
 <meta property="og:url" content="/contributing-code/javascript-guidelines/" />
 <meta property="og:type" content="article" />
@@ -29,7 +29,7 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="JavaScript Guidelines">
-<meta name="twitter:description" content="These JavaScript Guidelines (style guide) help the community to focus on the intent of the code and work together with a minimum of friction.">
+<meta name="twitter:description" content="These JavaScript Guidelines (style guide) help the community focus on the code&#39;s intent and work together with a minimum of friction.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -232,7 +232,7 @@
       <div class="container is-paddingless">
         <h1>JavaScript Guidelines</h1>
         <div class="description column is-9 is-paddingless">
-          <p>These JavaScript Guidelines (style guide) help the community to focus on the intent of the code and work together with a minimum of friction.</p>
+          <p>These JavaScript Guidelines (style guide) help the community focus on the code's intent and work together with a minimum of friction.</p>
 
         </div>
       </div>
@@ -310,7 +310,9 @@
                     
                       <ul>
                         
-                          <li><a class="link" href="#stewardship"><i class="icon circle-filled"></i>Stewardship</a></li>
+                          <li><a class="link" href="#simplicity"><i class="icon circle-filled"></i>Simplicity</a></li>
+                        
+                          <li><a class="link" href="#stability"><i class="icon circle-filled"></i>Stability</a></li>
                         
                           <li><a class="link" href="#focus"><i class="icon circle-filled"></i>Focus</a></li>
                         
@@ -340,10 +342,14 @@
           </div>
         </div>
         <div class="column content is-three-quarters">
-          <h2 id="purpose">Purpose</h2><p>These JavaScript Guidelines help developers who are new to the community and want to make a contribution to the Creative Commons open-source ecosystem.</p>
-<h2 id="philosophy">Philosophy</h2><p>A few philosophical guidelines can stand in place of a thousand narrow rules.</p>
-<h3 id="stewardship">Stewardship</h3><blockquote><p>Build for longevity and maturity.</p>
+          <h2 id="purpose">Purpose</h2><p>These JavaScript Guidelines help developers who are new to the community and want to contribute to the Creative Commons open-source ecosystem.</p>
+<h2 id="philosophy">Philosophy</h2><p>A few philosophical guidelines can stand in place of a thousand narrow rules. These guidelines are not intended as absolute (black or white) truths but rather lenses to focus our vision when faced with subtle shades of ambiguity.</p>
+<h3 id="simplicity">Simplicity</h3><blockquote><p>Use and build only what is <em>essential</em> to a project.</p>
 </blockquote>
+<p>Projects can quickly grow beyond their essence by taking on dependencies and features that are not central to their purpose. Keep the essential goal in mind as a project evolves. Take on only what is needed and only when the need arises.</p>
+<h3 id="stability">Stability</h3><blockquote><p>Build for longevity and maturity.</p>
+</blockquote>
+<p>It is easy to get swept away in the rushing waters of new projects, tools, and libraries. However, the sedimentary landscape left behind by the swift and meandering river of change can be unstable. It is certainly unwise to build one's home on a river delta.</p>
 <p>Choose an existing framework and set of tools and use them to make what matters to you. Avoiding creating a bespoke framework when a current framework would get you further down the road.</p>
 <p>When choosing tools and technologies, keep an eye towards mature projects and standards built to last many years. Find projects that extend existing standards and ways of working.</p>
 <h3 id="focus">Focus</h3><blockquote><p>Choose the right level of abstraction and best use of time.</p>
@@ -352,7 +358,7 @@
 <h3 id="maintainability">Maintainability</h3><blockquote><p>Write clean and conventional code.</p>
 </blockquote>
 <p>Code is read more often than it is written. Code is written for humans, not machines. As such, we can do ourselves a favor by making our code as reader-friendly as possible. Follow <a href="https://github.com/ryanmcdermott/clean-code-javascript">clean code guidelines</a> as well as established development patterns.</p>
-<h2 id="pragmatics">Pragmatics</h2><p>The following sections outline how we've put the philosophy into action. See the <a href="https://github.com/creativecommons/chooser">creativecommons/chooser</a> project for an example of how we have applied the recommendations below.</p>
+<h2 id="pragmatics">Pragmatics</h2><p>The following sections outline how we've put the philosophy into action. See the <a href="https://github.com/creativecommons/chooser">creativecommons/chooser</a> project to exemplify how we have applied the recommendations below.</p>
 <h3 id="code-formatting">Code formatting</h3><p>We adopt existing code formatting standards. To this end, all JavaScript code must be formatted using <a href="https://prettier.io/">Prettier</a>, <em>an opinionated code formatter</em>. We also use <a href="https://eslint.org/">eslint</a> to handle cases that Prettier may overlook.</p>
 <h3 id="development-environment">Development environment</h3><p>We use <code>npm</code> to manage development dependencies. Each project should have a <code>package.json</code> with dependencies and scripts for running, linting, testing, and deploying the project (where possible).</p>
 <h3 id="development-framework">Development framework</h3><p>We use <a href="https://vuejs.org/">Vue.js</a> as our primary JavaScript development framework. Vue provides a ready-made toolkit that covers many development needs and extends on long-standing web development conventions.</p>
