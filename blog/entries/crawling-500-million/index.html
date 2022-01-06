@@ -475,53 +475,53 @@
 </pre></div>
 <p>The main drawback of dependency injection is that initializing your objects will take some more ceremony. See the <a href="https://github.com/creativecommons/image-crawler/blob/00b59aba9a15faccf203a53d73a98e8c06cb69e8/worker/scheduler.py#L162">initialization of the crawl scheduler</a> for an example of wiring up an object with a lot of dependencies. You might also find that constructors and other functions with a lot of dependencies will have a lot of arguments if care isn't taken to bundle external dependencies together. In my opinion, the price of a few extra lines of initialization code is well worth the benefits gained from testability and modularity.</p>
 <h4 id="smoke-testing">Smoke testing</h4><p>Even with our unit test coverage, we still need to do some basic small-scale manual tests to make sure our assumptions hold up in the real world. We'll need to write <a href="https://www.terraform.io/">Terraform</a> modules that provision a working version of the real system. Sadly, our Terraform infrastructure repository is private for now, but here's a taste of what the infra code looks like.</p>
-<div class="hll"><pre><span></span><span class="kr">module</span> <span class="nv">&quot;image-crawler&quot;</span> <span class="p">{</span>
-  <span class="na">source</span> <span class="o">=</span> <span class="s2">&quot;../../modules/services/image-crawler&quot;</span>
-  <span class="na">environment</span> <span class="o">=</span> <span class="s2">&quot;prod&quot;</span>
-  <span class="na">docker_tag</span> <span class="o">=</span> <span class="s2">&quot;0.25.0&quot;</span>
-  <span class="na">aws_access_key_id</span>     <span class="o">=</span> <span class="s2">&quot;${var.aws_access_key_id}&quot;</span>
-  <span class="na">aws_secret_access_key</span> <span class="o">=</span> <span class="s2">&quot;${var.aws_secret_access_key}&quot;</span>
-  <span class="na">zookeeper_endpoint</span> <span class="o">=</span> <span class="s2">&quot;${module.kafka.zookeeper_brokers}&quot;</span>
-  <span class="na">kafka_brokers</span> <span class="o">=</span> <span class="s2">&quot;${module.kafka.kafka_brokers}&quot;</span>
-  <span class="na">worker_instance_type</span> <span class="o">=</span> <span class="s2">&quot;m5.large&quot;</span>
-  <span class="na">worker_count</span> <span class="o">=</span> <span class="m">5</span>
-<span class="p">}</span>
+<div class="hll"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;image-crawler&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../../modules/services/image-crawler&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prod&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">docker_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.25.0&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">aws_access_key_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.aws_access_key_id}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.aws_secret_access_key}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">zookeeper_endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${module.kafka.zookeeper_brokers}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">kafka_brokers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${module.kafka.kafka_brokers}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">worker_instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;m5.large&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">worker_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <p><em><center>Initialization of crawler Terraform module in our production environment</center></em></p>
-<div class="hll"><pre><span></span><span class="kr">resource</span> <span class="nc">&quot;aws_instance&quot;</span> <span class="nv">&quot;crawler-workers&quot;</span> <span class="p">{</span>
-  <span class="na">ami</span>                     <span class="o">=</span> <span class="s2">&quot;${var.ami}&quot;</span>
-  <span class="na">instance_type</span>           <span class="o">=</span> <span class="s2">&quot;${var.worker_instance_type}&quot;</span>
-  <span class="na">user_data</span>               <span class="o">=</span> <span class="s2">&quot;${data.template_file.worker_init.rendered}&quot;</span>
-  <span class="na">subnet_id</span>               <span class="o">=</span> <span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span>
-  <span class="na">vpc_security_group_ids</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span>
-  <span class="na">count</span>                   <span class="o">=</span> <span class="s2">&quot;${var.worker_count}&quot;</span>
+<div class="hll"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-workers&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.ami}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.worker_instance_type}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${data.template_file.worker_init.rendered}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">subnet_id</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="na">count</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.worker_count}&quot;</span><span class="w"></span>
 
-  <span class="nb">tags</span> <span class="p">{</span>
-    <span class="na">Name</span>             <span class="o">=</span> <span class="s2">&quot;image-crawler-worker-${var.environment}&quot;</span>
-    <span class="na">environment</span>      <span class="o">=</span> <span class="s2">&quot;${var.environment}&quot;</span>
-    <span class="s2">&quot;cc:environment&quot;</span> <span class="o">=</span> <span class="s2">&quot;${var.environment == &quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span>
-    <span class="s2">&quot;cc:product&quot;</span>     <span class="o">=</span> <span class="s2">&quot;cccatalog-api&quot;</span>
-    <span class="s2">&quot;cc:purpose&quot;</span>     <span class="o">=</span> <span class="s2">&quot;Image crawler worker&quot;</span>
-    <span class="s2">&quot;cc:team&quot;</span>        <span class="o">=</span> <span class="s2">&quot;cc-search&quot;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">Name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;image-crawler-worker-${var.environment}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">environment</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:environment&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment == &quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:product&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cccatalog-api&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:purpose&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Image crawler worker&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:team&quot;</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cc-search&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kr">resource</span> <span class="nc">&quot;aws_instance&quot;</span> <span class="nv">&quot;crawler-monitor&quot;</span> <span class="p">{</span>
-  <span class="na">ami</span>                     <span class="o">=</span> <span class="s2">&quot;${var.ami}&quot;</span>
-  <span class="na">instance_type</span>           <span class="o">=</span> <span class="s2">&quot;c5.large&quot;</span>
-  <span class="na">user_data</span>               <span class="o">=</span> <span class="s2">&quot;${data.template_file.monitor_init.rendered}&quot;</span>
-  <span class="na">subnet_id</span>               <span class="o">=</span> <span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span>
-  <span class="na">vpc_security_group_ids</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-monitor&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.ami}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c5.large&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${data.template_file.monitor_init.rendered}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">subnet_id</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span><span class="w"></span>
 
-  <span class="nb">tags</span> <span class="p">{</span>
-    <span class="na">Name</span>             <span class="o">=</span> <span class="s2">&quot;image-crawler-monitor-${var.environment}&quot;</span>
-    <span class="na">environment</span>      <span class="o">=</span> <span class="s2">&quot;${var.environment}&quot;</span>
-    <span class="s2">&quot;cc:environment&quot;</span> <span class="o">=</span> <span class="s2">&quot;${var.environment == &quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span>
-    <span class="s2">&quot;cc:product&quot;</span>     <span class="o">=</span> <span class="s2">&quot;cccatalog-api&quot;</span>
-    <span class="s2">&quot;cc:purpose&quot;</span>     <span class="o">=</span> <span class="s2">&quot;Image crawler monitor&quot;</span>
-    <span class="s2">&quot;cc:team&quot;</span>        <span class="o">=</span> <span class="s2">&quot;cc-search&quot;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">Name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;image-crawler-monitor-${var.environment}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">environment</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:environment&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment == &quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:product&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cccatalog-api&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:purpose&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Image crawler monitor&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;cc:team&quot;</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cc-search&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <p><em><center>An excerpt of the crawler module definition</center></em></p>
 <p>One <code>terraform plan</code> and <code>terraform apply</code> cycle later, we're ready to feed a few million test URLs to the inbound image queue and see what happens. By my recollection, this uncovered many glaring issues:</p>
@@ -541,46 +541,46 @@
 </ul>
 <p>It would be nice to build a reporting dashboard for this, but in the interest of time, we'll dump a giant JSON blob to <code>STDOUT</code> every 5 seconds and call it a day. When we want to check on crawl progress, we <code>ssh</code> into the crawl monitoring virtual machine and <code>tail</code> the logs (we could also use our Graylog instance if we're feeling lazy). Fortunately, JSON is both trivially human and machine readable, so we can build a more sophisticated monitoring system later by parsing the logs.</p>
 <p>Here's an example log line from one of our smoke tests, indicating that we've crawled 13,224 images successfully and nothing else is happening.</p>
-<div class="hll"><pre><span></span><span class="p">{</span>
-   <span class="nt">&quot;event&quot;</span> <span class="p">:</span> <span class="s2">&quot;monitoring_update&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;time&quot;</span> <span class="p">:</span> <span class="s2">&quot;2020-04-17T20:22:56.837232&quot;</span><span class="p">,</span>
-   <span class="nt">&quot;general&quot;</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;global_max_rps&quot;</span> <span class="p">:</span> <span class="mf">193.418869804698</span><span class="p">,</span>
-      <span class="nt">&quot;error_rps&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="nt">&quot;processing_rate&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="nt">&quot;success_rps&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="nt">&quot;circuit_breaker_tripped&quot;</span> <span class="p">:</span> <span class="p">[],</span>
-      <span class="nt">&quot;num_resized&quot;</span> <span class="p">:</span> <span class="mi">13224</span><span class="p">,</span>
-      <span class="nt">&quot;resize_errors&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="nt">&quot;split_rate&quot;</span> <span class="p">:</span> <span class="mi">0</span>
-   <span class="p">},</span>
-   <span class="nt">&quot;specific&quot;</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;flickr&quot;</span> <span class="p">:</span> <span class="p">{</span>
-         <span class="nt">&quot;successful&quot;</span> <span class="p">:</span> <span class="mi">13188</span><span class="p">,</span>
-         <span class="nt">&quot;last_50_statuses&quot;</span> <span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;200&quot;</span> <span class="p">:</span> <span class="mi">50</span>
-         <span class="p">},</span>
-         <span class="nt">&quot;rate_limit&quot;</span> <span class="p">:</span> <span class="mf">178.375147633876</span><span class="p">,</span>
-         <span class="nt">&quot;error&quot;</span> <span class="p">:</span> <span class="mi">0</span>
-      <span class="p">},</span>
-      <span class="nt">&quot;animaldiversity&quot;</span> <span class="p">:</span> <span class="p">{</span>
-         <span class="nt">&quot;last_50_statuses&quot;</span> <span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;200&quot;</span> <span class="p">:</span> <span class="mi">18</span>
-         <span class="p">},</span>
-         <span class="nt">&quot;successful&quot;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-         <span class="nt">&quot;error&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-         <span class="nt">&quot;rate_limit&quot;</span> <span class="p">:</span> <span class="mf">0.206215440554406</span>
-      <span class="p">},</span>
-      <span class="nt">&quot;phylopic&quot;</span> <span class="p">:</span> <span class="p">{</span>
-         <span class="nt">&quot;rate_limit&quot;</span> <span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-         <span class="nt">&quot;error&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-         <span class="nt">&quot;successful&quot;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-         <span class="nt">&quot;last_50_statuses&quot;</span> <span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;200&quot;</span> <span class="p">:</span> <span class="mi">18</span>
-         <span class="p">}</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<div class="hll"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;event&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;monitoring_update&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;time&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-04-17T20:22:56.837232&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;general&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;global_max_rps&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">193.418869804698</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;error_rps&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;processing_rate&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;success_rps&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;circuit_breaker_tripped&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;num_resized&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13224</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;resize_errors&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;split_rate&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;specific&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;flickr&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;successful&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13188</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;last_50_statuses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"></span>
+<span class="w">         </span><span class="p">},</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;rate_limit&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">178.375147633876</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;error&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;animaldiversity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;last_50_statuses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="w"></span>
+<span class="w">         </span><span class="p">},</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;successful&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;error&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;rate_limit&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.206215440554406</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;phylopic&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;rate_limit&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;error&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;successful&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;last_50_statuses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 <p>Now that we can see what the crawler is up to, we can schedule the larger crawl and start collecting production quality data.</p>
 <h4 id="takeaways">Takeaways</h4><p>The result here is that we have a lightweight, modular, highly concurrent, and polite distributed image crawler with only a handful of lines of code.</p>

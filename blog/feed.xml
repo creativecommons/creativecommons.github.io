@@ -1154,19 +1154,19 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;At last&lt;/strong&gt;, make the developer onboarding easy by dockerizing the project and bring more application portability.&lt;/p&gt;
 &lt;h2 id=&quot;gsoc-work-product&quot;&gt;GSoC Work Product&lt;/h2&gt;&lt;p&gt;The live version of the linked commons can be found &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;. You can interact with it and &lt;strong&gt;&quot;explore the creative commons in graphs&quot;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If you wish to access the raw or filtered data, then here is a brief documentation of our new API.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/graph-data&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns a randomized graph having around 500 nodes and links.&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/graph-data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns a randomized graph having around 500 nodes and links.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/graph-data/?name={node_name}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/graph-data/?name={node_name}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/suggestions/?q={query}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt; 
-&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns a set of nodes which contains the {query} pattern in their nodeid&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;/api/suggestions/?q={query}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Returns a set of nodes which contains the {query} pattern in their nodeid&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&quot;demo&quot;&gt;Demo&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
     &lt;figure&gt;
@@ -1354,6 +1354,111 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href=&quot;https://creativecommons.org/author/aldencreativecommons-org/&quot;&gt;Alden&lt;/a&gt; and &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href=&quot;https://github.com/panchovm&quot;&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
 </content>
   </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/">
+    <title type="text">Automate GitHub for more than CI/CD</title>
+    <id>urn:uuid:1f2b4dad-de07-33ab-b1c7-394778548e55</id>
+    <updated>2020-08-26T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/" />
+    <author>
+      <name>zackkrida</name>
+    </author>
+    <content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Get started using GitHub bots and actions for community management and repository health.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In late 2018, in the midst of being acquired by Microsoft, GitHub &lt;a href=&quot;https://github.blog/2018-10-16-future-of-software/&quot;&gt;launched Github Actions&lt;/a&gt; into public beta, allowing users to run code on the popular development platform for the first time. With a straightforward &lt;code&gt;YAML&lt;/code&gt; configuration syntax and the power of Microsoft's Azure cloud, GitHub Actions quickly rose to compete with existing Continuous Integration (CI) and Continuous Deployment (CD) platforms like &lt;strong&gt;Circle CI&lt;/strong&gt; and &lt;strong&gt;Travis CI&lt;/strong&gt;. GitHub Actions made it easier than ever for developers to test and deploy software in the cloud, but from the beginning GitHub had bigger plans for the service.&lt;/p&gt;
+&lt;p&gt;In a &lt;a href=&quot;https://techcrunch.com/2018/10/16/github-launches-actions-its-workflow-automation-tool/&quot;&gt;2018 TechCrunch interview&lt;/a&gt;, GitHub's then head of platform acknowledged the usefulness of actions for more than CI/CD. &quot;I see CI/CD as one narrow use case of actions. It’s so, so much more,” Lambert stressed. “And I think it’s going to revolutionize DevOps because people are now going to build best in breed deployment workflows for specific applications and frameworks, and those become the de facto standard shared on GitHub. […] It’s going to do everything we did for open source again for the DevOps space and for all those different parts of that workflow ecosystem.&quot;&lt;/p&gt;
+&lt;p&gt;At Creative Commons, we use Github Actions and Bots on many of &lt;a href=&quot;https://github.com/creativecommons?type=source&quot;&gt;our open-source projects&lt;/a&gt; for more than CI/CD—to manage our &lt;a href=&quot;/community/community-team/&quot;&gt;community team&lt;/a&gt;; to automate repository health; and to automate tedious but frequent tasks. The following examples are just a small snapshot of our existing and in-progress automations.&lt;/p&gt;
+&lt;h2 id=&quot;example-automations&quot;&gt;Example automations&lt;/h2&gt;&lt;p&gt;&lt;!-- no toc --&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/blog/entries/automate-github-for-more-than-CI CD/#automatic-release-note-generation&quot;&gt;Release note generation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/blog/entries/automate-github-for-more-than-CI CD/#repository-normalization&quot;&gt;Repository normalization&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/blog/entries/automate-github-for-more-than-CI CD/#automatic-dependency-updates&quot;&gt;Dependency updates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;release-note-generation&quot;&gt;Release note generation&lt;/h3&gt;&lt;p&gt;Our frontend Vue.js application for CC Search gets released weekly, and is subject to constant pull requests from myself, one-time volunteers making their first open source contribution, and long-term, dedicated community members who frequently contribute. It's important for us to highlight &lt;em&gt;all&lt;/em&gt; of these contributions in our release notes, regardless of size or scope. Additionally, we find it useful to group changes into categories, so our users have a clear sense of what kinds of updates we've made.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure class=&quot;margin-bottom-large&quot;&gt;
+    &lt;img src=&quot;release-notes-screenshot.png&quot; alt=&quot;GitHub screenshot of release notes for CC Search&quot; /&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        An example of CC Search release notes generated by the &lt;a href=&quot;https://github.com/marketplace/actions/release-drafter&quot;&gt;Release Drafter&lt;/a&gt; GitHub Action.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;The quality of these release notes made them quite tedious to generate manually. With the &lt;a href=&quot;https://github.com/marketplace/actions/release-drafter&quot;&gt;release drafter action&lt;/a&gt;, we're able to automatically update a draft release note on every pull request to CC Search. The action lets us configure the line added for each pull request with some basic templating which includes variables for the pr number, title, and author (among others):&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;change-template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$TITLE:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#$NUMBER&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;by&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@$AUTHOR&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;This means each pull request gets a line like this in our release notes:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Enable web monetization on single result pages: &lt;strong&gt;#1191&lt;/strong&gt; by &lt;strong&gt;@zackkrida&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Perfect! We can also map GitHub labels on our pull requests to the sections of our generated release notes, like so:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;New&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Features&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;feature&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Bug&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Fixes&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;bug&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;critical&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The resulting release notes require no manual editing at release time, and has saved us hours over time and allows our developers to focus on DevOps work instead of copywriting on release days. We also never miss a contribution or expression of gratitude to one of our contributors. You can read the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/releases/latest&quot;&gt;latest CC Search release notes&lt;/a&gt; or &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/blob/develop/.github/release-drafter.yml&quot;&gt;see our full release-drafter.yml file here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;repository-normalization&quot;&gt;Repository Normalization&lt;/h3&gt;&lt;p&gt;Within a private repository of internal helper scripts, the CC technical team has a number of Github Actions which trigger Python scripts to keep configuration standardized across our repositories. We casually call this process &quot;repository normalization&quot;. One such script ensures that we use a standard set of GitHub labels across all of our projects. This consistency helps us do things like direct users to &lt;a href=&quot;https://github.com/search?q=org%3Acreativecommons+label%3A%22help+wanted%22+state%3Aopen&amp;amp;type=Issues&quot;&gt;open issues in need of assistance&lt;/a&gt; across the organization, or issues &lt;a href=&quot;https://github.com/search?q=org%3Acreativecommons+label%3A%22good+first+issue%22+state%3Aopen&amp;amp;type=Issues&quot;&gt;good for first-time open source contributors&lt;/a&gt;. With GitHub Actions, its easy to set up scheduled tasks with only a few lines of human-readable configuration. Here's the gist of running a Python script daily, for example:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Example scheduled python action&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;cron&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&amp;#39;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ubuntu-latest&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;actions/checkout@v2&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Set up Python 3.7&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;actions/setup-python@v1&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;python-version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3.7&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Install dependencies&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;python -m pip install --upgrade pip&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;python -m pip install pipenv&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;pipenv install&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Export token to env and run our script&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;pipenv run python our-script.py&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ADMIN_GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;${{ secrets.ADMIN_GITHUB_TOKEN }}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Internally and publicly, we use &lt;a href=&quot;https://github.com/orgs/creativecommons/projects&quot;&gt;GitHub Projects&lt;/a&gt; to manage our bi-weekly sprints and backlogs. The &lt;a href=&quot;https://github.com/subhamX/github-project-bot&quot;&gt;GitHub Project Bot&lt;/a&gt; action was built by &lt;a href=&quot;https://github.com/subhamX&quot;&gt;one of our community contributors&lt;/a&gt; and allows us to add pull requests to our project columns. Here's an example step in such a job:&lt;/p&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Handle cccatalog-frontend Repo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;subhamX/github-project-bot@v1.0.0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;${{ secrets.ADMIN_GITHUB_TOKEN }}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;COLUMN_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;In&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Progress&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(Community)&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;PROJECT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;https://github.com/orgs/creativecommons/projects/7&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;REPO_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We have additional scripts that sync our community team members across our open source website and GitHub, and several others that do even more of this cross-platform synchronization work. All of these scripts relive significant burden off of our engineering manager and open source community coordinator.&lt;/p&gt;
+&lt;h3 id=&quot;dependency-updates&quot;&gt;Dependency Updates&lt;/h3&gt;&lt;p&gt;Modern JavaScript projects are built atop piles of 3rd party dependencies. This frees developers to focus on product code instead of writing the same utility code over and over again, but exposes projects to issues of security and dependency management. To help alleviate these issues, GitHub &lt;a href=&quot;https://github.blog/2019-05-23-introducing-new-ways-to-keep-your-code-secure/#automated-security-fixes-with-dependabot&quot;&gt;acquired a startup called Dependabot&lt;/a&gt; which initially focused on automatic security updates for repositories. Dependabot creates pull requests that update third-party code  with known security vulnerabilities to the latest safe and stable versions.&lt;/p&gt;
+&lt;p&gt;This summer (June 2020), GitHub &lt;a href=&quot;https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/&quot;&gt;expanded dependabot's scope&lt;/a&gt; to keep &lt;em&gt;all&lt;/em&gt; third-party code up to date, regardless of security. By adding a &lt;code&gt;dependabot-config.yml&lt;/code&gt; file to any repo, developers no longer need to keep track of dependency updates on their own.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure class=&quot;margin-bottom-large&quot;&gt;
+    &lt;img src=&quot;dependabot-example.png&quot; alt=&quot;GitHub screenshot of a Dependabot PR message&quot; /&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        Dependabot writes pull requests to bump JavaScript dependencies and will automatically resolve merge conflicts and keep the PR up to date.
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;If your project has strong test coverage and a solid quality control process for release management, Dependabot pull requests can be made even more powerful with the &lt;a href=&quot;https://github.com/ridedott/merge-me-action&quot;&gt;Merge Me Action.&lt;/a&gt; Merge Me can be added to the end of any series of Github Actions to automatically merge pull requests that pass all CI tests which were authored by a particular user (the action assumes &lt;code&gt;dependabot&lt;/code&gt; by default). This means your repository can have highly-configurable, fully-automated dependency updates in just a few lines of &lt;code&gt;YAML&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;here-s-a-few-more&quot;&gt;Here's a few more&lt;/h2&gt;&lt;p&gt;Here's some smaller and simpler automations that can make a huge difference in your workflows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/probot/stale&quot;&gt;Automatically close old PRs after a period of inactivity&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.blog/2020-08-24-automate-releases-and-more-with-the-new-sentry-release-github-action/&quot;&gt;Automate security releases on Sentry&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/probot/reminders&quot;&gt;Add reminders to issues and pull requests&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
+&lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/">
     <title type="text">Overview of the GSoC 2020 Project</title>
     <id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id>
@@ -1423,153 +1528,6 @@ flag the corresponding image record  as obsolete.  The PR related to this task i
 &lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
 contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
 Brent for his guidance.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/">
-    <title type="text">Automate GitHub for more than CI/CD</title>
-    <id>urn:uuid:1f2b4dad-de07-33ab-b1c7-394778548e55</id>
-    <updated>2020-08-26T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI CD/" />
-    <author>
-      <name>zackkrida</name>
-    </author>
-    <content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Get started using GitHub bots and actions for community management and repository health.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;In late 2018, in the midst of being acquired by Microsoft, GitHub &lt;a href=&quot;https://github.blog/2018-10-16-future-of-software/&quot;&gt;launched Github Actions&lt;/a&gt; into public beta, allowing users to run code on the popular development platform for the first time. With a straightforward &lt;code&gt;YAML&lt;/code&gt; configuration syntax and the power of Microsoft's Azure cloud, GitHub Actions quickly rose to compete with existing Continuous Integration (CI) and Continuous Deployment (CD) platforms like &lt;strong&gt;Circle CI&lt;/strong&gt; and &lt;strong&gt;Travis CI&lt;/strong&gt;. GitHub Actions made it easier than ever for developers to test and deploy software in the cloud, but from the beginning GitHub had bigger plans for the service.&lt;/p&gt;
-&lt;p&gt;In a &lt;a href=&quot;https://techcrunch.com/2018/10/16/github-launches-actions-its-workflow-automation-tool/&quot;&gt;2018 TechCrunch interview&lt;/a&gt;, GitHub's then head of platform acknowledged the usefulness of actions for more than CI/CD. &quot;I see CI/CD as one narrow use case of actions. It’s so, so much more,” Lambert stressed. “And I think it’s going to revolutionize DevOps because people are now going to build best in breed deployment workflows for specific applications and frameworks, and those become the de facto standard shared on GitHub. […] It’s going to do everything we did for open source again for the DevOps space and for all those different parts of that workflow ecosystem.&quot;&lt;/p&gt;
-&lt;p&gt;At Creative Commons, we use Github Actions and Bots on many of &lt;a href=&quot;https://github.com/creativecommons?type=source&quot;&gt;our open-source projects&lt;/a&gt; for more than CI/CD—to manage our &lt;a href=&quot;/community/community-team/&quot;&gt;community team&lt;/a&gt;; to automate repository health; and to automate tedious but frequent tasks. The following examples are just a small snapshot of our existing and in-progress automations.&lt;/p&gt;
-&lt;h2 id=&quot;example-automations&quot;&gt;Example automations&lt;/h2&gt;&lt;p&gt;&lt;!-- no toc --&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/blog/entries/automate-github-for-more-than-CI CD/#automatic-release-note-generation&quot;&gt;Release note generation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/blog/entries/automate-github-for-more-than-CI CD/#repository-normalization&quot;&gt;Repository normalization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/blog/entries/automate-github-for-more-than-CI CD/#automatic-dependency-updates&quot;&gt;Dependency updates&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;release-note-generation&quot;&gt;Release note generation&lt;/h3&gt;&lt;p&gt;Our frontend Vue.js application for CC Search gets released weekly, and is subject to constant pull requests from myself, one-time volunteers making their first open source contribution, and long-term, dedicated community members who frequently contribute. It's important for us to highlight &lt;em&gt;all&lt;/em&gt; of these contributions in our release notes, regardless of size or scope. Additionally, we find it useful to group changes into categories, so our users have a clear sense of what kinds of updates we've made.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure class=&quot;margin-bottom-large&quot;&gt;
-    &lt;img src=&quot;release-notes-screenshot.png&quot; alt=&quot;GitHub screenshot of release notes for CC Search&quot; /&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        An example of CC Search release notes generated by the &lt;a href=&quot;https://github.com/marketplace/actions/release-drafter&quot;&gt;Release Drafter&lt;/a&gt; GitHub Action.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;The quality of these release notes made them quite tedious to generate manually. With the &lt;a href=&quot;https://github.com/marketplace/actions/release-drafter&quot;&gt;release drafter action&lt;/a&gt;, we're able to automatically update a draft release note on every pull request to CC Search. The action lets us configure the line added for each pull request with some basic templating which includes variables for the pr number, title, and author (among others):&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;change-template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;$TITLE:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#$NUMBER&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;by&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;@$AUTHOR&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;This means each pull request gets a line like this in our release notes:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Enable web monetization on single result pages: &lt;strong&gt;#1191&lt;/strong&gt; by &lt;strong&gt;@zackkrida&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Perfect! We can also map GitHub labels on our pull requests to the sections of our generated release notes, like so:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;New&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Features&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;feature&amp;#39;&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;Bug&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Fixes&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;bug&amp;#39;&lt;/span&gt;
-      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;critical&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The resulting release notes require no manual editing at release time, and has saved us hours over time and allows our developers to focus on DevOps work instead of copywriting on release days. We also never miss a contribution or expression of gratitude to one of our contributors. You can read the &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/releases/latest&quot;&gt;latest CC Search release notes&lt;/a&gt; or &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/blob/develop/.github/release-drafter.yml&quot;&gt;see our full release-drafter.yml file here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;repository-normalization&quot;&gt;Repository Normalization&lt;/h3&gt;&lt;p&gt;Within a private repository of internal helper scripts, the CC technical team has a number of Github Actions which trigger Python scripts to keep configuration standardized across our repositories. We casually call this process &quot;repository normalization&quot;. One such script ensures that we use a standard set of GitHub labels across all of our projects. This consistency helps us do things like direct users to &lt;a href=&quot;https://github.com/search?q=org%3Acreativecommons+label%3A%22help+wanted%22+state%3Aopen&amp;amp;type=Issues&quot;&gt;open issues in need of assistance&lt;/a&gt; across the organization, or issues &lt;a href=&quot;https://github.com/search?q=org%3Acreativecommons+label%3A%22good+first+issue%22+state%3Aopen&amp;amp;type=Issues&quot;&gt;good for first-time open source contributors&lt;/a&gt;. With GitHub Actions, its easy to set up scheduled tasks with only a few lines of human-readable configuration. Here's the gist of running a Python script daily, for example:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Example scheduled python action&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;schedule&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;cron&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*&amp;#39;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ubuntu-latest&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;actions/checkout@v2&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Set up Python 3.7&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;actions/setup-python@v1&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;python-version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3.7&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Install dependencies&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;python -m pip install --upgrade pip&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;python -m pip install pipenv&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;pipenv install&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Export token to env and run our script&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p p-Indicator&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;pipenv run python our-script.py&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;ADMIN_GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;${{ secrets.ADMIN_GITHUB_TOKEN }}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Internally and publicly, we use &lt;a href=&quot;https://github.com/orgs/creativecommons/projects&quot;&gt;GitHub Projects&lt;/a&gt; to manage our bi-weekly sprints and backlogs. The &lt;a href=&quot;https://github.com/subhamX/github-project-bot&quot;&gt;GitHub Project Bot&lt;/a&gt; action was built by &lt;a href=&quot;https://github.com/subhamX&quot;&gt;one of our community contributors&lt;/a&gt; and allows us to add pull requests to our project columns. Here's an example step in such a job:&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;Handle cccatalog-frontend Repo&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;subhamX/github-project-bot@v1.0.0&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;${{ secrets.ADMIN_GITHUB_TOKEN }}&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;COLUMN_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;In&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Progress&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(Community)&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;PROJECT_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;https://github.com/orgs/creativecommons/projects/7&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;REPO_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;https://github.com/creativecommons/cccatalog-frontend&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We have additional scripts that sync our community team members across our open source website and GitHub, and several others that do even more of this cross-platform synchronization work. All of these scripts relive significant burden off of our engineering manager and open source community coordinator.&lt;/p&gt;
-&lt;h3 id=&quot;dependency-updates&quot;&gt;Dependency Updates&lt;/h3&gt;&lt;p&gt;Modern JavaScript projects are built atop piles of 3rd party dependencies. This frees developers to focus on product code instead of writing the same utility code over and over again, but exposes projects to issues of security and dependency management. To help alleviate these issues, GitHub &lt;a href=&quot;https://github.blog/2019-05-23-introducing-new-ways-to-keep-your-code-secure/#automated-security-fixes-with-dependabot&quot;&gt;acquired a startup called Dependabot&lt;/a&gt; which initially focused on automatic security updates for repositories. Dependabot creates pull requests that update third-party code  with known security vulnerabilities to the latest safe and stable versions.&lt;/p&gt;
-&lt;p&gt;This summer (June 2020), GitHub &lt;a href=&quot;https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/&quot;&gt;expanded dependabot's scope&lt;/a&gt; to keep &lt;em&gt;all&lt;/em&gt; third-party code up to date, regardless of security. By adding a &lt;code&gt;dependabot-config.yml&lt;/code&gt; file to any repo, developers no longer need to keep track of dependency updates on their own.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure class=&quot;margin-bottom-large&quot;&gt;
-    &lt;img src=&quot;dependabot-example.png&quot; alt=&quot;GitHub screenshot of a Dependabot PR message&quot; /&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Dependabot writes pull requests to bump JavaScript dependencies and will automatically resolve merge conflicts and keep the PR up to date.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;If your project has strong test coverage and a solid quality control process for release management, Dependabot pull requests can be made even more powerful with the &lt;a href=&quot;https://github.com/ridedott/merge-me-action&quot;&gt;Merge Me Action.&lt;/a&gt; Merge Me can be added to the end of any series of Github Actions to automatically merge pull requests that pass all CI tests which were authored by a particular user (the action assumes &lt;code&gt;dependabot&lt;/code&gt; by default). This means your repository can have highly-configurable, fully-automated dependency updates in just a few lines of &lt;code&gt;YAML&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;here-s-a-few-more&quot;&gt;Here's a few more&lt;/h2&gt;&lt;p&gt;Here's some smaller and simpler automations that can make a huge difference in your workflows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/probot/stale&quot;&gt;Automatically close old PRs after a period of inactivity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.blog/2020-08-24-automate-releases-and-more-with-the-new-sentry-release-github-action/&quot;&gt;Automate security releases on Sentry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/probot/reminders&quot;&gt;Add reminders to issues and pull requests&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
-&lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href=&quot;https://github.com/marketplace?type=actions&quot;&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href=&quot;https://docs.github.com/actions&quot;&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
-    <title type="text">Linked Commons: Data Update</title>
-    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
-    <updated>2020-08-25T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
-    <author>
-      <name>subhamX</name>
-    </author>
-    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id=&quot;where-does-it-fit&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
-&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id=&quot;what-is-distance-list&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
-&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
-&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
-&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id=&quot;key-points-of-the-sequential-db-build&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
-&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
-&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
-&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
-&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/">
@@ -1644,6 +1602,48 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;Related PR: &lt;a href=&quot;https://github.com/creativecommons/cccatalog/pull/478&quot;&gt;https://github.com/creativecommons/cccatalog/pull/478&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;acknowledgement&quot;&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank my mentors Brent and Anna for their guidance throughout the internship.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/">
+    <title type="text">Linked Commons: Data Update</title>
+    <id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id>
+    <updated>2020-08-25T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" />
+    <author>
+      <name>subhamX</name>
+    </author>
+    <content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
+&lt;h2 id=&quot;where-does-it-fit&quot;&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding &quot;Graph Filtering Methods&quot; to &quot;Autocomplete Feature&quot;. These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;&quot;Scale the Data of Linked Commons&quot;&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id=&quot;pilot&quot;&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href=&quot;https://opensource.creativecommons.org/blog/entries/cc-datacatalog-data-processing/&quot;&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;&quot;distance list&quot;&lt;/strong&gt; of all the nodes.&lt;/p&gt;
+&lt;h3 id=&quot;what-is-distance-list&quot;&gt;What is &quot;distance list&quot;?&lt;/h3&gt;&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;distance-list.png&quot; alt=&quot;Distance List&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Adjacency_list&quot;&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, &quot;distance list&quot; groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, &quot;distance list&quot; is a more general form of the Adjacency List representation.&lt;/p&gt;
+&lt;p&gt;To build this &quot;distance list&quot;, we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href=&quot;https://en.wikipedia.org/wiki/Breadth-first_search&quot;&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;optimizations&quot;&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
+&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;&quot;Sequential dB Build&quot;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
+&lt;h3 id=&quot;key-points-of-the-sequential-db-build&quot;&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
+&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
+&lt;h2 id=&quot;new-architecture&quot;&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in &quot;build-dB-scripts&quot; weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
+&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href=&quot;https://en.wikipedia.org/wiki/Transpose_graph&quot;&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
+&lt;div style=&quot;text-align: center; width: 90%; margin-left: 5%;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;graph.png&quot; alt=&quot;Light Theme&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href=&quot;https://github.com/creativecommons/cccatalog-dataviz/&quot;&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href=&quot;http://dataviz.creativecommons.engineering/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href=&quot;https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz&quot;&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href=&quot;https://opensource.creativecommons.org/community/&quot;&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/">
@@ -1864,53 +1864,53 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The main drawback of dependency injection is that initializing your objects will take some more ceremony. See the &lt;a href=&quot;https://github.com/creativecommons/image-crawler/blob/00b59aba9a15faccf203a53d73a98e8c06cb69e8/worker/scheduler.py#L162&quot;&gt;initialization of the crawl scheduler&lt;/a&gt; for an example of wiring up an object with a lot of dependencies. You might also find that constructors and other functions with a lot of dependencies will have a lot of arguments if care isn't taken to bundle external dependencies together. In my opinion, the price of a few extra lines of initialization code is well worth the benefits gained from testability and modularity.&lt;/p&gt;
 &lt;h4 id=&quot;smoke-testing&quot;&gt;Smoke testing&lt;/h4&gt;&lt;p&gt;Even with our unit test coverage, we still need to do some basic small-scale manual tests to make sure our assumptions hold up in the real world. We'll need to write &lt;a href=&quot;https://www.terraform.io/&quot;&gt;Terraform&lt;/a&gt; modules that provision a working version of the real system. Sadly, our Terraform infrastructure repository is private for now, but here's a taste of what the infra code looks like.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;quot;image-crawler&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;../../modules/services/image-crawler&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;prod&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;docker_tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.25.0&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;aws_access_key_id&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.aws_access_key_id}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;aws_secret_access_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.aws_secret_access_key}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;zookeeper_endpoint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${module.kafka.zookeeper_brokers}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;kafka_brokers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${module.kafka.kafka_brokers}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;worker_instance_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;m5.large&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;worker_count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;quot;image-crawler&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;../../modules/services/image-crawler&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;prod&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;docker_tag&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;0.25.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;aws_access_key_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.aws_access_key_id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;aws_secret_access_key&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.aws_secret_access_key}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;zookeeper_endpoint&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${module.kafka.zookeeper_brokers}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;kafka_brokers&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${module.kafka.kafka_brokers}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;worker_instance_type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;m5.large&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;worker_count&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;&lt;center&gt;Initialization of crawler Terraform module in our production environment&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;&amp;quot;aws_instance&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;quot;crawler-workers&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;ami&lt;/span&gt;                     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.ami}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;instance_type&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.worker_instance_type}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;user_data&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${data.template_file.worker_init.rendered}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;subnet_id&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;vpc_security_group_ids&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${aws_security_group.image-crawler-sg.id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;count&lt;/span&gt;                   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.worker_count}&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;&amp;quot;aws_instance&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;quot;crawler-workers&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ami&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.ami}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;instance_type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.worker_instance_type}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;user_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${data.template_file.worker_init.rendered}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subnet_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;vpc_security_group_ids&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${aws_security_group.image-crawler-sg.id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                   &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.worker_count}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 
-  &lt;span class=&quot;nb&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;Name&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;image-crawler-worker-${var.environment}&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment}&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:environment&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment == &amp;quot;dev&amp;quot; ? &amp;quot;staging&amp;quot; : &amp;quot;production&amp;quot;}&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:product&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cccatalog-api&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:purpose&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Image crawler worker&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:team&amp;quot;&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc-search&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;image-crawler-worker-${var.environment}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:environment&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment == &amp;quot;dev&amp;quot; ? &amp;quot;staging&amp;quot; : &amp;quot;production&amp;quot;}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:product&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cccatalog-api&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:purpose&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Image crawler worker&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:team&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc-search&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 
-&lt;span class=&quot;kr&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;&amp;quot;aws_instance&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&amp;quot;crawler-monitor&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;ami&lt;/span&gt;                     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.ami}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;instance_type&lt;/span&gt;           &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;c5.large&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;user_data&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${data.template_file.monitor_init.rendered}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;subnet_id&lt;/span&gt;               &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;vpc_security_group_ids&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${aws_security_group.image-crawler-sg.id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;&amp;quot;aws_instance&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;&amp;quot;crawler-monitor&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ami&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;                     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.ami}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;instance_type&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;           &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;c5.large&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;user_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${data.template_file.monitor_init.rendered}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subnet_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;               &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;vpc_security_group_ids&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${aws_security_group.image-crawler-sg.id}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 
-  &lt;span class=&quot;nb&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;Name&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;image-crawler-monitor-${var.environment}&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment}&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:environment&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment == &amp;quot;dev&amp;quot; ? &amp;quot;staging&amp;quot; : &amp;quot;production&amp;quot;}&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:product&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cccatalog-api&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:purpose&amp;quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Image crawler monitor&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:team&amp;quot;&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;cc-search&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;             &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;image-crawler-monitor-${var.environment}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:environment&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${var.environment == &amp;quot;dev&amp;quot; ? &amp;quot;staging&amp;quot; : &amp;quot;production&amp;quot;}&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:product&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cccatalog-api&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:purpose&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;     &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Image crawler monitor&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc:team&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cc-search&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;&lt;center&gt;An excerpt of the crawler module definition&lt;/center&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;One &lt;code&gt;terraform plan&lt;/code&gt; and &lt;code&gt;terraform apply&lt;/code&gt; cycle later, we're ready to feed a few million test URLs to the inbound image queue and see what happens. By my recollection, this uncovered many glaring issues:&lt;/p&gt;
@@ -1930,46 +1930,46 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;It would be nice to build a reporting dashboard for this, but in the interest of time, we'll dump a giant JSON blob to &lt;code&gt;STDOUT&lt;/code&gt; every 5 seconds and call it a day. When we want to check on crawl progress, we &lt;code&gt;ssh&lt;/code&gt; into the crawl monitoring virtual machine and &lt;code&gt;tail&lt;/code&gt; the logs (we could also use our Graylog instance if we're feeling lazy). Fortunately, JSON is both trivially human and machine readable, so we can build a more sophisticated monitoring system later by parsing the logs.&lt;/p&gt;
 &lt;p&gt;Here's an example log line from one of our smoke tests, indicating that we've crawled 13,224 images successfully and nothing else is happening.&lt;/p&gt;
-&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;nt&quot;&gt;&amp;quot;event&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;monitoring_update&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-   &lt;span class=&quot;nt&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;2020-04-17T20:22:56.837232&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-   &lt;span class=&quot;nt&quot;&gt;&amp;quot;general&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;global_max_rps&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;193.418869804698&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;error_rps&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;processing_rate&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;success_rps&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;circuit_breaker_tripped&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;num_resized&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;resize_errors&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;split_rate&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-   &lt;span class=&quot;nt&quot;&gt;&amp;quot;specific&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;flickr&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13188&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;
-         &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;178.375147633876&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;animaldiversity&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
-         &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.206215440554406&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;quot;phylopic&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
-         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;div class=&quot;hll&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;event&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;monitoring_update&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;time&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;2020-04-17T20:22:56.837232&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;general&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;global_max_rps&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;193.418869804698&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;error_rps&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;processing_rate&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;success_rps&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;circuit_breaker_tripped&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;num_resized&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;resize_errors&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;split_rate&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;specific&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;flickr&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13188&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;178.375147633876&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;animaldiversity&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.206215440554406&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;phylopic&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;rate_limit&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;error&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;successful&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;last_50_statuses&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;200&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;         &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now that we can see what the crawler is up to, we can schedule the larger crawl and start collecting production quality data.&lt;/p&gt;
 &lt;h4 id=&quot;takeaways&quot;&gt;Takeaways&lt;/h4&gt;&lt;p&gt;The result here is that we have a lightweight, modular, highly concurrent, and polite distributed image crawler with only a handful of lines of code.&lt;/p&gt;
@@ -3090,61 +3090,6 @@ The changes in the source field after updating the image table in the database l
 helping me to filter the sub-providers of interest and conducting the necessary research.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
-    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
-    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
-    <updated>2020-06-10T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
-    <author>
-      <name>AyanChoudhary</name>
-    </author>
-    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
-&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
-The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
-&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
-The tab index adit for homepage is displayed:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
-For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
-Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
-    &amp;lt;template v-slot:noted&amp;gt;
-        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:attribution&amp;gt;
-        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
-        {{$t('footer.caption.attribution')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:icons&amp;gt;
-        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
-        {{$t('footer.caption.icons')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-&amp;lt;/i18n&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
-&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
-You can track the work done for these weeks through these PRs:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/science-museum-implementation/">
     <title type="text">Science Museum provider implementation</title>
     <id>urn:uuid:7960ba6c-0bbb-300e-86d8-4744b9b0ee25</id>
@@ -3246,25 +3191,59 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;/ul&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-design/">
-    <title type="text">CC Legal Database: Design</title>
-    <id>urn:uuid:b2a2a092-d722-34fb-bb65-9103c9b4ed48</id>
-    <updated>2020-06-09T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-design/" />
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/">
+    <title type="text">CC Search, Setting up vue-i18n and internationalizing homepage</title>
+    <id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id>
+    <updated>2020-06-10T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" />
     <author>
-      <name>krysal</name>
+      <name>AyanChoudhary</name>
     </author>
-    <content type="html">&lt;p&gt;Finishing the third week since the project started (for context see this &lt;a href=&quot;/blog/entries/legal-database-a-new-beginning/&quot;&gt;first post&lt;/a&gt;), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.&lt;/p&gt;
-&lt;h3 id=&quot;visual-styles&quot;&gt;Visual Styles&lt;/h3&gt;&lt;p&gt;The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old &quot;Countries&quot; page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.&lt;/p&gt;
-&lt;p&gt;The final look for the home site is as follows.&lt;/p&gt;
-&lt;div style=&quot;text-align: center;&quot;&gt;
-    &lt;figure&gt;
-        &lt;img src=&quot;cc-caselaw-home.png&quot; alt=&quot;New CC Caselaw Home Mockup&quot; style=&quot;border: 1px solid black&quot;&gt;
-        &lt;figcaption&gt;New Home page design with Vocabulary.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
-&lt;h3 id=&quot;data-model&quot;&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
+    <content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
+&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/996&quot;&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/997&quot;&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/998&quot;&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/999&quot;&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/issues/1000&quot;&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
+&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/audit.png&quot; alt=&quot;audit.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path=&quot;footer.caption.label&quot; tag=&quot;p&quot; class=&quot;caption&quot;&amp;gt;
+    &amp;lt;template v-slot:noted&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/policies#license&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:attribution&amp;gt;
+        &amp;lt;a href=&quot;https://creativecommons.org/licenses/by/4.0/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&amp;gt;
+        {{$t('footer.caption.attribution')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:icons&amp;gt;
+        &amp;lt;a href=&quot;https://fontawesome.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; class=&quot;has-text-white&quot;&amp;gt;
+        {{$t('footer.caption.icons')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+&amp;lt;/i18n&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/entries/cc-search-accessibility-week1-2/final.png&quot; alt=&quot;final.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1007&quot;&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend/pull/1013&quot;&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href=&quot;https://github.com/creativecommons/cccatalog-frontend&quot;&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href=&quot;https://opensource.creativecommons.org/blog/authors/akmadian/&quot;&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href=&quot;https://creativecommons.org/author/annacreativecommons-org/&quot;&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/resource-gathering/">
@@ -3291,6 +3270,27 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Interview&lt;/strong&gt; - The interview involves asking questions to the user one-to-one about how they perform the task currently. This involves the highest amount of interaction with the user. Interviews are held in labs. The designer talks to the user about the task and collects both quantitative and qualitative data. This is the most time-taking way of collecting data but it gives the most useful data among all the methods.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-design/">
+    <title type="text">CC Legal Database: Design</title>
+    <id>urn:uuid:b2a2a092-d722-34fb-bb65-9103c9b4ed48</id>
+    <updated>2020-06-09T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/legal-database-design/" />
+    <author>
+      <name>krysal</name>
+    </author>
+    <content type="html">&lt;p&gt;Finishing the third week since the project started (for context see this &lt;a href=&quot;/blog/entries/legal-database-a-new-beginning/&quot;&gt;first post&lt;/a&gt;), so the design phase is almost over and a new site look is out of the oven. The focus on these weeks was to draw the mockups for the user-facing parts of the site, integrating styles of CC Vocabulary and to get the data model for the database.&lt;/p&gt;
+&lt;h3 id=&quot;visual-styles&quot;&gt;Visual Styles&lt;/h3&gt;&lt;p&gt;The intention was to keep the content that is already present but improve its distribution and access by users. For this, the main menu was changed to provide direct links to listing of Cases and Scholarships. The old &quot;Countries&quot; page was removed and replaced by a more granular division by legal resource, so this data will be shown separately.&lt;/p&gt;
+&lt;p&gt;The final look for the home site is as follows.&lt;/p&gt;
+&lt;div style=&quot;text-align: center;&quot;&gt;
+    &lt;figure&gt;
+        &lt;img src=&quot;cc-caselaw-home.png&quot; alt=&quot;New CC Caselaw Home Mockup&quot; style=&quot;border: 1px solid black&quot;&gt;
+        &lt;figcaption&gt;New Home page design with Vocabulary.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
+&lt;h3 id=&quot;data-model&quot;&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-upcoming-improvements/">
@@ -3335,39 +3335,6 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content>
   </entry>
-  <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
-    <title type="text">Takeaways from my FOSS journey!</title>
-    <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
-    <updated>2020-05-22T00:00:00Z</updated>
-    <link href="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/" />
-    <author>
-      <name>dhruvi16</name>
-    </author>
-    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
-  &lt;figure&gt;
-    &lt;img src=&quot;cover.jpg&quot;/&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04/14774214687&quot;&gt;&quot;Sky at night&quot;&lt;/a&gt; by &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04&quot;&gt;Rychu92&lt;/a&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&amp;atype=rich&quot;&gt;CC BY-SA 2.0&lt;/a&gt;
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;First let me introduce myself because of course I am not a very famous blogger or writer.&lt;/p&gt;
-&lt;p&gt;I am Dhruvi. I am a third-year undergrad student. I am a designer/developer and also a FOSS enthusiast. I started my opensource journey a year ago (that is around Feb ’19) and now here I am starting my Outreachy internship with this blog (not literally of course). I am consistent, curious, and creative, and below I will tell you how these three C’s have helped me through my journey.&lt;/p&gt;
-&lt;p&gt;Below are the four things that I think might be the ‘takeaways’ from my experience -&lt;/p&gt;
-&lt;h3 id=&quot;now-is-the-time&quot;&gt;NOW is the time -&lt;/h3&gt;&lt;p&gt;There is no better time than now! Let’s accept the fact that most of the students wait for “the time” to start with opensource as most of us want to get into programs like GSoC, Outreachy, and many more. But I figured it is very necessary to know that whether you are interested in opensource or is it only the big internships attracting you. So, to get these answers, you need to explore, and to explore I suggest you start today. I am very fond of asking myself the question ‘Why?’ and to answer those questions I explore, I invest time. So start finding answers to your whys? today.&lt;/p&gt;
-&lt;h3 id=&quot;start-slow&quot;&gt;Start SLOW -&lt;/h3&gt;&lt;p&gt;For me the start was a little overwhelming and that made me push it away. And to avoid that I tried starting small and slow. By small and slow, I mean try the easy things first, like getting aware of the logistics. Personally, general practices or set of rules calm me down when I try to get into some uncomfortable zones. And yes opensource was not a very comfortable zone for me in the beginning (I mean what is *wink). To keep myself motivated, I started with familiar things like contributing to familiar projects or familiar good first issues (the easy ones). Completing a task or two gave me a lot of confidence and made me stick around.&lt;/p&gt;
-&lt;h3 id=&quot;choose-wisely&quot;&gt;Choose WISELY -&lt;/h3&gt;&lt;p&gt;After playing around for some time and getting familiar with the logistics, I went for a project hunt. I listed my areas of interest and areas which seemed exciting to me. Using those filters I found some amazing projects which were actively being worked on. I got my answers to why would I want to work on these projects? by working on them. I believe if you are interested the motivation will be natural. With some projects, I felt connected and I did not feel the need of pushing myself for contributing to them. My only advice for making a wise choice is that “Don’t push yourself too hard”!&lt;/p&gt;
-&lt;h3 id=&quot;speak-through-your-work&quot;&gt;Speak through your WORK -&lt;/h3&gt;&lt;p&gt;When I was sure, I wanted to work on a particular project I started getting familiar with the community (the specifics). I got familiar with the ideas and agendas the community had behind the projects. And fortunately, I got to work with the most amazing and inspiring people who helped me when I was stuck and I plan to keep working with them. I kept doing a few things which I guess might be worth mentioning -&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Try to write the most appropriate and relevant code.&lt;/li&gt;
-&lt;li&gt;Try to break the solution into small understandable parts.&lt;/li&gt;
-&lt;li&gt;Try to take initiatives. Small initiatives like opening issues will also work (Yes! opening relevant and meaningful issues is an initiative.).&lt;/li&gt;
-&lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
-</content>
-  </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/legal-database-a-new-beginning/">
     <title type="text">CC Legal Database: a new beginning</title>
     <id>urn:uuid:0ca867d0-f061-3202-9da4-7e89977781ce</id>
@@ -3405,6 +3372,39 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;CC Legal Database&lt;/strong&gt; is my Outreachy project for this summer, under the guidance of Director of Engineering &lt;a href=&quot;https://creativecommons.org/author/kriticreativecommons-org/&quot;&gt;Kriti Godey&lt;/a&gt; and Core Systems Manager &lt;a href=&quot;https://creativecommons.org/author/timidcreativecommons-org/&quot;&gt;Timid Robot Zehta&lt;/a&gt;, they are very supportive and the CC community is notable welcoming.&lt;/p&gt;
 &lt;p&gt;This is the first post of a series so stay tuned if you're interested to know more.&lt;/p&gt;
+</content>
+  </entry>
+  <entry xml:base="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/">
+    <title type="text">Takeaways from my FOSS journey!</title>
+    <id>urn:uuid:21536df2-1436-3e06-8262-8e5d2c91e01c</id>
+    <updated>2020-05-22T00:00:00Z</updated>
+    <link href="http://opensource.creativecommons.org/blog/entries/takeaways-from-my-FOSS-journey/" />
+    <author>
+      <name>dhruvi16</name>
+    </author>
+    <content type="html">&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;figure&gt;
+    &lt;img src=&quot;cover.jpg&quot;/&gt;
+    &lt;figcaption&gt;
+      &lt;em&gt;
+        &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04/14774214687&quot;&gt;&quot;Sky at night&quot;&lt;/a&gt; by &lt;a href=&quot;https://www.flickr.com/photos/60255995@N04&quot;&gt;Rychu92&lt;/a&gt; is licensed under &lt;a href=&quot;https://creativecommons.org/licenses/by-sa/2.0/?ref=ccsearch&amp;atype=rich&quot;&gt;CC BY-SA 2.0&lt;/a&gt;
+      &lt;/em&gt;
+    &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;&lt;p&gt;First let me introduce myself because of course I am not a very famous blogger or writer.&lt;/p&gt;
+&lt;p&gt;I am Dhruvi. I am a third-year undergrad student. I am a designer/developer and also a FOSS enthusiast. I started my opensource journey a year ago (that is around Feb ’19) and now here I am starting my Outreachy internship with this blog (not literally of course). I am consistent, curious, and creative, and below I will tell you how these three C’s have helped me through my journey.&lt;/p&gt;
+&lt;p&gt;Below are the four things that I think might be the ‘takeaways’ from my experience -&lt;/p&gt;
+&lt;h3 id=&quot;now-is-the-time&quot;&gt;NOW is the time -&lt;/h3&gt;&lt;p&gt;There is no better time than now! Let’s accept the fact that most of the students wait for “the time” to start with opensource as most of us want to get into programs like GSoC, Outreachy, and many more. But I figured it is very necessary to know that whether you are interested in opensource or is it only the big internships attracting you. So, to get these answers, you need to explore, and to explore I suggest you start today. I am very fond of asking myself the question ‘Why?’ and to answer those questions I explore, I invest time. So start finding answers to your whys? today.&lt;/p&gt;
+&lt;h3 id=&quot;start-slow&quot;&gt;Start SLOW -&lt;/h3&gt;&lt;p&gt;For me the start was a little overwhelming and that made me push it away. And to avoid that I tried starting small and slow. By small and slow, I mean try the easy things first, like getting aware of the logistics. Personally, general practices or set of rules calm me down when I try to get into some uncomfortable zones. And yes opensource was not a very comfortable zone for me in the beginning (I mean what is *wink). To keep myself motivated, I started with familiar things like contributing to familiar projects or familiar good first issues (the easy ones). Completing a task or two gave me a lot of confidence and made me stick around.&lt;/p&gt;
+&lt;h3 id=&quot;choose-wisely&quot;&gt;Choose WISELY -&lt;/h3&gt;&lt;p&gt;After playing around for some time and getting familiar with the logistics, I went for a project hunt. I listed my areas of interest and areas which seemed exciting to me. Using those filters I found some amazing projects which were actively being worked on. I got my answers to why would I want to work on these projects? by working on them. I believe if you are interested the motivation will be natural. With some projects, I felt connected and I did not feel the need of pushing myself for contributing to them. My only advice for making a wise choice is that “Don’t push yourself too hard”!&lt;/p&gt;
+&lt;h3 id=&quot;speak-through-your-work&quot;&gt;Speak through your WORK -&lt;/h3&gt;&lt;p&gt;When I was sure, I wanted to work on a particular project I started getting familiar with the community (the specifics). I got familiar with the ideas and agendas the community had behind the projects. And fortunately, I got to work with the most amazing and inspiring people who helped me when I was stuck and I plan to keep working with them. I kept doing a few things which I guess might be worth mentioning -&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Try to write the most appropriate and relevant code.&lt;/li&gt;
+&lt;li&gt;Try to break the solution into small understandable parts.&lt;/li&gt;
+&lt;li&gt;Try to take initiatives. Small initiatives like opening issues will also work (Yes! opening relevant and meaningful issues is an initiative.).&lt;/li&gt;
+&lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://opensource.creativecommons.org/blog/entries/improving-cc-license-chooser-outcomes/">
