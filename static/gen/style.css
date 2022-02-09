@@ -376,7 +376,7 @@ a:hover {
   -webkit-animation: spinAround 500ms infinite linear;
           animation: spinAround 500ms infinite linear;
   border: 2px solid whitesmoke;
-  border-radius: 290486px;
+  border-radius: 9999px;
   border-right-color: transparent;
   border-top-color: transparent;
   content: "";
@@ -407,6 +407,18 @@ a:hover {
   position: absolute;
   right: 0;
   top: 0; }
+
+.navbar-burger {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0; }
 
 /* Bulma Helpers */
 .has-text-white, .image .image-title, .image .bookmark-icon {
@@ -1600,6 +1612,9 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .is-italic {
   font-style: italic !important; }
+
+.is-underlined {
+  text-decoration: underline !important; }
 
 .has-text-weight-light {
   font-weight: 300 !important; }
@@ -2859,8 +2874,8 @@ table th {
     pointer-events: none; }
     .button.is-loading::after {
       position: absolute;
-      left: calc(50% - (1em / 2));
-      top: calc(50% - (1em / 2));
+      left: calc(50% - (1em * 0.5));
+      top: calc(50% - (1em * 0.5));
       position: absolute !important; }
   .button.is-static {
     background-color: whitesmoke;
@@ -2869,7 +2884,7 @@ table th {
     box-shadow: none;
     pointer-events: none; }
   .button.is-rounded, .image .button.profile {
-    border-radius: 290486px;
+    border-radius: 9999px;
     padding-left: calc(1em + 0.25em);
     padding-right: calc(1em + 0.25em); }
 
@@ -3159,7 +3174,7 @@ table th {
     width: auto; }
 
 .input.is-rounded, .image .input.profile {
-  border-radius: 290486px;
+  border-radius: 9999px;
   padding-left: calc(calc(0.75em - 1px) + 0.375em);
   padding-right: calc(calc(0.75em - 1px) + 0.375em); }
 
@@ -3216,7 +3231,7 @@ table th {
     right: 1.125em;
     z-index: 4; }
   .select.is-rounded select, .image .select.profile select {
-    border-radius: 290486px;
+    border-radius: 9999px;
     padding-left: 1em; }
   .select select {
     cursor: pointer;
@@ -3511,6 +3526,8 @@ table th {
     color: #fff; }
   .file.is-small {
     font-size: 0.8rem; }
+  .file.is-normal {
+    font-size: 1rem; }
   .file.is-medium {
     font-size: 1.12rem; }
     .file.is-medium .file-icon .fa {
@@ -5200,6 +5217,16 @@ table th {
     justify-content: center; }
 
 .card-header-icon {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: currentColor;
+  font-family: inherit;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -5725,12 +5752,12 @@ table th {
   .tabs.is-toggle ul {
     border-bottom: none; }
   .tabs.is-toggle.is-toggle-rounded li:first-child a {
-    border-bottom-left-radius: 290486px;
-    border-top-left-radius: 290486px;
+    border-bottom-left-radius: 9999px;
+    border-top-left-radius: 9999px;
     padding-left: 1.25em; }
   .tabs.is-toggle.is-toggle-rounded li:last-child a {
-    border-bottom-right-radius: 290486px;
-    border-top-right-radius: 290486px;
+    border-bottom-right-radius: 9999px;
+    border-top-right-radius: 9999px;
     padding-right: 1.25em; }
   .tabs.is-small {
     font-size: 0.8rem; }
@@ -6045,9 +6072,9 @@ nav.breadcrumb > ul {
   .image .pagination.profile .pagination-next {
     padding-left: 1em;
     padding-right: 1em;
-    border-radius: 290486px; }
+    border-radius: 9999px; }
   .pagination.is-rounded .pagination-link, .image .pagination.profile .pagination-link {
-    border-radius: 290486px; }
+    border-radius: 9999px; }
 
 .pagination,
 .pagination-list {
@@ -6132,12 +6159,20 @@ nav.breadcrumb > ul {
     flex-shrink: 1;
     justify-content: flex-start;
     order: 1; }
+  .pagination-previous,
+  .pagination-next,
+  .pagination-link,
+  .pagination-ellipsis {
+    margin-bottom: 0;
+    margin-top: 0; }
   .pagination-previous {
     order: 2; }
   .pagination-next {
     order: 3; }
   .pagination {
-    justify-content: space-between; }
+    justify-content: space-between;
+    margin-bottom: 0;
+    margin-top: 0; }
     .pagination.is-centered .pagination-previous {
       order: 1; }
     .pagination.is-centered .pagination-list {
@@ -7457,7 +7492,7 @@ a.navbar-item,
     height: auto;
     width: 100%; }
     .image img.is-rounded, .image img.profile {
-      border-radius: 290486px; }
+      border-radius: 9999px; }
   .image.is-fullwidth {
     width: 100%; }
   .image.is-square img,
@@ -7677,6 +7712,9 @@ a.navbar-item,
 .content.is-small {
   font-size: 0.8rem; }
 
+.content.is-normal {
+  font-size: 1rem; }
+
 .content.is-medium {
   font-size: 1.12rem; }
 
@@ -7854,19 +7892,21 @@ a.navbar-item,
   clear: both;
   color: #333;
   /* Overrides most CSS frameworks */
-  white-space: nowrap; }
-  .vs__dropdown-option:hover {
-    cursor: pointer; }
+  white-space: nowrap;
+  cursor: pointer; }
 
 .vs__dropdown-option--highlight {
   background: #5897fb;
   color: #fff; }
 
+.vs__dropdown-option--deselect {
+  background: #fb5858;
+  color: #fff; }
+
 .vs__dropdown-option--disabled {
   background: inherit;
-  color: rgba(60, 60, 60, 0.5); }
-  .vs__dropdown-option--disabled:hover {
-    cursor: inherit; }
+  color: rgba(60, 60, 60, 0.5);
+  cursor: inherit; }
 
 /* Selected Tags */
 .vs__selected {
@@ -7899,7 +7939,8 @@ a.navbar-item,
   background-color: transparent;
   border-color: transparent; }
 
-.vs--single.vs--open .vs__selected {
+.vs--single.vs--open .vs__selected,
+.vs--single.vs--loading .vs__selected {
   position: absolute;
   opacity: .4; }
 
@@ -7952,7 +7993,7 @@ a.navbar-item,
 .vs--unsearchable .vs__search {
   opacity: 1; }
 
-.vs--unsearchable:not(.vs--disabled) .vs__search:hover {
+.vs--unsearchable:not(.vs--disabled) .vs__search {
   cursor: pointer; }
 
 .vs--single.vs--searching:not(.vs--open):not(.vs--loading) .vs__search {
@@ -8240,6 +8281,7 @@ pre {
       line-height: 1.8125; }
 
 .sticky-top {
+  position: -webkit-sticky;
   position: sticky;
   top: 0; }
 
