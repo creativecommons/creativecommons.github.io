@@ -1,0 +1,612 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Open Source Work Programs: Project Lead Guide" />
+
+
+<meta property="og:description" content="CC participates in open source work programs such as GSoC and Outreachy. Both
+CC staff and community members are welcome to lead projects. Details about
+specific programs and rounds are listed in the Overview page; this
+page serves as a general project lead guide." />
+
+<meta property="og:url" content="/programs/lead-guide/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Open Source Work Programs: Project Lead Guide.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Open Source Work Programs: Project Lead Guide">
+<meta name="twitter:description" content="CC participates in open source work programs such as GSoC and Outreachy. Both
+CC staff and community members are welcome to lead projects. Details about
+specific programs and rounds are listed in the Overview page; this
+page serves as a general project lead guide.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Open Source Work Programs: Project Lead Guide — Creative Commons Open Source</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item " href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless  is-active" tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/programs/">
+              
+                Programs
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Open Source Work Programs: Project Lead Guide</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="code-guidelines">
+    <header class="header">
+      <div class="container is-paddingless">
+        <h1>Open Source Work Programs: Project Lead Guide</h1>
+        <div class="description column is-9 is-paddingless">
+          <p>CC participates in open source work programs such as GSoC and Outreachy. Both
+CC staff and community members are welcome to lead projects. Details about
+specific programs and rounds are listed in the <a href="/programs">Overview page</a>; this
+page serves as a general project lead guide.</p>
+
+        </div>
+      </div>
+    </header>
+    <div class="container code-guidelines-body">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="row">
+            
+              <aside class="menu sidebar-menu">
+                <ul class="menu-list">
+                  
+                    <li>
+                    <a class=" link" href="/programs/">Overview</a>
+                    
+                      <ul>
+                      
+                        <li><a class=" link" href="/programs/applicant-guide/"><i class="icon circle-filled"></i>Applicant Guide</a></li>
+                      
+                        <li><a class=" link" href="/programs/contrib-guide/"><i class="icon circle-filled"></i>Contributor Guide</a></li>
+                      
+                        <li><a class=" is-active  link" href="/programs/lead-guide/"><i class="icon circle-filled"></i>Project Lead Guide</a></li>
+                      
+                      </ul>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/programs/project-ideas/">Project Ideas</a>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/programs/history/">History</a>
+                    
+                    </li>
+                    
+                  
+                </ul>
+              </aside>
+            
+          </div>
+          <div class="row padding-bottom-normal sticky-top">
+            <h4 class="b-header">On this page</h4>
+            <aside class="menu table-of-contents">
+              <ul class="menu-list">
+                
+                  <li>
+                    <a class="link" href="#considerinng-being-a-project-lead">Considerinng Being a Project Lead?</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#proposing-a-project">Proposing a Project</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#application-period">Application Period</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#draft-application"><i class="icon circle-filled"></i>Draft Application</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#work-program-period">Work Program Period</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#preparing"><i class="icon circle-filled"></i>Preparing</a></li>
+                        
+                          <li><a class="link" href="#post-announcement"><i class="icon circle-filled"></i>Post-Announcement</a></li>
+                        
+                          <li><a class="link" href="#during-the-work-program"><i class="icon circle-filled"></i>During the Work Program</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div class="column content is-three-quarters">
+          <h2 id="considerinng-being-a-project-lead">Considerinng Being a Project Lead?</h2><p>Leading a project or mentorship is a serious commitment but a very rewarding
+experience. If you're trying to decide whether to be a project lead, please
+read the following documents:</p>
+<ul>
+<li><a href="https://google.github.io/gsocguides/mentor/">Google Summer of Code mentor
+guide</a></li>
+<li>Outreachy <a href="https://www.outreachy.org/mentor/#mentor">mentor role description</a>
+and <a href="https://www.outreachy.org/docs/internship/#mentor-expectations">mentor expectations</a></li>
+<li><a href="https://www.outreachy.org/mentor/mentor-faq/">Outreachy Mentor FAQ</a></li>
+</ul>
+<p>If you'd like to be a project lead but don't have a specific project in mind,
+email the <a href="/community/">CC Developers mailing list</a> and let us know what your
+skillset and availability is. We'll see if we have a project you can help out
+with. If you'd like to propose a project, read on.</p>
+<h2 id="proposing-a-project">Proposing a Project</h2><p>If you'd like to propose a project for a contributor to work on, please use the
+following template and send your idea to the <a href="/community/">CC Developers mailing
+list</a>. Someone from CC staff will get back to you about whether it
+is a viable project and next steps for moving it forward.</p>
+<p><em><strong>[Project Title]</strong></em></p>
+<ul>
+<li><strong>The Problem</strong>: <em>Describe the problem that needs to be solved and why it is
+an important one for CC.</em></li>
+<li><strong>Expected Outcome</strong>: <em>Describe the outcome that you’d like to see for this
+work program.</em></li>
+<li><strong>Contributor Tasks</strong>: <em>What will the contributor be expected to do during
+the work program?</em></li>
+<li><strong>Application Tips</strong>: <em>What are you looking for in the contributor’s project
+plan in their application?</em></li>
+<li><strong>Resources</strong>: <em>List of resources associated with this project idea. GitHub
+issues, specs, documentation. blog posts, etc.</em></li>
+<li><strong>Project Lead</strong>: <em>Who will be the project lead on this project?</em></li>
+<li><strong>Technical Skills</strong>: <em>What technical skills will this project need?</em></li>
+<li><strong>Difficulty</strong>: <em>How technically difficult is this project? Options: High,
+Medium, Low</em></li>
+<li><strong>Size</strong>: <em>Large (~305 hours) or Medium (~175 hours).</em></li>
+</ul>
+<p>Please note that project ideas should be related to an existing CC open source
+project or website and should be clearly scoped out. They should be doable in
+three months by a contributor with very little prior experience.</p>
+<h2 id="application-period">Application Period</h2><p>Once the initial application period opens, things get chaotic for a little bit
+as hundreds of applicants investigate various open source communities to try
+and contribute to them and find a good fit for a work program. There are a lot
+of emails, Slack messages, GitHub comments, and so on. This stage of the
+program is the most intense and lasts about a month (although the first few
+days are the most overwhelming).</p>
+<p>Some tips:</p>
+<ul>
+<li>Be prepared for this ahead of time.</li>
+<li>Have a good, well-documented set of tasks suitable for first-time
+contributors that you can point people to.</li>
+<li>Point people to public channels and away from email and DMs so that others
+can answer questions too.</li>
+<li>You will get a lot of low effort questions like "how do I get started" – ask
+for more details. You cannot spend 20 minutes helping every single person
+because there are far too many people, so help them help themselves.</li>
+<li>Prepare general documentation/frequently asked questions ahead of time.</li>
+</ul>
+<h3 id="draft-application">Draft Application</h3><p>You should encourage applicants to share drafts of the application with you
+ahead of time. Using a Google Doc with comment permissions enabled is probably
+the easiest way to achieve collaboration. Focus on making sure that their
+understanding of the project, the project plan, timeline, and deliverables
+match what you had in mind and is feasible (keeping in mind that they may be
+new to all this and may not get things done as quickly).</p>
+<h2 id="work-program-period">Work Program Period</h2><h3 id="preparing">Preparing</h3><p>Before the work program period begins:</p>
+<ul>
+<li>Talk to your backup lead/secondary mentor ahead of your time to create a plan
+for how to collaborate:<ul>
+<li>Who will be repsonsible for what?</li>
+<li>How will checkins and notes work?</li>
+</ul>
+</li>
+<li>If your project affects or involves anyone else at CC that's not
+leading/mentoring the project, talk to them about how they would like to be
+involved and come up with a plan to collaborate.</li>
+</ul>
+<h3 id="post-announcement">Post-Announcement</h3><p>Once the selected contributors have been announced:</p>
+<ul>
+<li>Reach out to your contributor ASAP.</li>
+<li>Get the contributors’ t-shirt size and address ASAP and send it to the
+program coordinator (we try to send out CC goodies).</li>
+<li>review the proposal again and ensure that the implementation details and
+weekly deliverables are feasible and well thought-out. there are probably
+some things that could be clarified or changed – work with the contributor to
+fix these items before any work is actually started.</li>
+<li>have an introductory call with the contributor and get to know each other. ask
+them questions about themselves and talk about yourself too.</li>
+<li>set up regular meetings: a weekly video call for the mentors to check-in with
+the contributor, and a monthly call with the cc program coordinator to check
+in with the contributor.</li>
+<li>create a document to keep any project information and notes. this document
+should be shared with the program coordinators.<ul>
+<li>the “final” implementation plan and weekly milestones (“final” because it
+is subject to change during the coding period based on progress)</li>
+<li>the contributor’s contact information and emergency contact</li>
+<li>all meeting notes</li>
+<li>any other project-relevant information.</li>
+</ul>
+</li>
+<li>decide with the contributor on the workflow the project will follow. e.g.<ul>
+<li>does the contributor understand regular git workflow (e.g. pull requests,
+branches, reviews)?</li>
+<li>how often should code be reviewed? does all code need to be reviewed?</li>
+<li>how often should code be committed? does all code need to use pull
+requests or can some be pushed directly to master?</li>
+<li>will the contributor commit directly to the repository hosted on the CC
+GitHub or will they use a fork?</li>
+<li>what is the best way for the contributor to get your attention when they
+are stuck?</li>
+<li>where will their project be deployed (if applicable) during development?</li>
+</ul>
+</li>
+<li>let the contributor know that they will be expected to post updates on their
+project on the cc technical blog regularly. decide on a cadence for the blog
+posts (should be every two weeks at a minimum) and set due dates for them.</li>
+<li>help the contributor get their development environment set up.</li>
+<li>ensure that the contributor has permissions to push to the appropriate GitHub
+repository.</li>
+</ul>
+<h3 id="during-the-work-program">During the Work Program</h3><p>During the work program:</p>
+<ul>
+<li>Attend your weekly check-in.<ul>
+<li>Take good notes so that your backup mentor can pick up where you left off
+easily if you’re unavailable.</li>
+<li>Make sure the contributor is on-track with their weekly milestones and if
+not, work with them to figure out why and come up with a plan.</li>
+<li>Ask how the contributor is doing generally.</li>
+<li>Praise things they are doing well and provide constructive criticism on
+the things they could improve on. Both of these are important.</li>
+</ul>
+</li>
+<li>Review all work/code promptly. You should aim to review within 1 business
+day.<ul>
+<li>If your contributor is blocked on their work for some other reason, help
+them become unblocked as soon as possible.</li>
+</ul>
+</li>
+<li>Check in on Slack with the contributor once every day or two. Remember that
+they are often not experienced with the work they are doing and may not know
+to ask for help or may be stuck on something that they cannot articulate very
+well.</li>
+<li>Ask for feedback on your mentorship every few weeks.</li>
+<li>Find an opportunity to invite your contributor to present their work at CC’s
+all staff meeting. It is up to you when you’d like to do this.</li>
+<li>Make sure you're familiar with the program timeline and submit your required
+evaluations on time.</li>
+<li>Engage the contributor in the larger CC development community. Encourage
+them to share their work and talk to them about other projects and your own
+work.<ul>
+<li>Ensure that the development version of their project is deployed somewhere
+ASAP so they can seek feedback from the community.</li>
+</ul>
+</li>
+<li>Work with the CC staff engineering team and program coordinators on a plan to
+move the project to production when the project is complete.</li>
+<li>Check in with any CC staff working with the contributor regularly to make
+sure their feedback is also being heard and implemented by the contributor.</li>
+<li>Talk to the program coordinator proactively. Especially if:<ul>
+<li>your contributor is not active and engaged regularly.</li>
+<li>your contributor is not communicating enough or misses a check-in.</li>
+<li>you have concerns or even just a bad feeling about something.</li>
+<li>you have feedback or questions about any part of the program process.</li>
+<li>you'd like feedback about how your mentoring is going</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>

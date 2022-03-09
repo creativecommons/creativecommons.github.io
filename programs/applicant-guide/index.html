@@ -1,0 +1,619 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Open Source Work Programs: Applicant Guide" />
+
+
+<meta property="og:description" content="CC participates in open source work programs such as GSoC and Outreachy. Both
+CC staff and community members are welcome to lead projects. Details about
+specific programs and rounds are listed in the Overview page; this
+page serves as a general guide to applicants." />
+
+<meta property="og:url" content="/programs/applicant-guide/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Open Source Work Programs: Applicant Guide.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Open Source Work Programs: Applicant Guide">
+<meta name="twitter:description" content="CC participates in open source work programs such as GSoC and Outreachy. Both
+CC staff and community members are welcome to lead projects. Details about
+specific programs and rounds are listed in the Overview page; this
+page serves as a general guide to applicants.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Open Source Work Programs: Applicant Guide — Creative Commons Open Source</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item " href="/blog/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless  is-active" tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/programs/">
+              
+                Programs
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Open Source Work Programs: Applicant Guide</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="code-guidelines">
+    <header class="header">
+      <div class="container is-paddingless">
+        <h1>Open Source Work Programs: Applicant Guide</h1>
+        <div class="description column is-9 is-paddingless">
+          <p>CC participates in open source work programs such as GSoC and Outreachy. Both
+CC staff and community members are welcome to lead projects. Details about
+specific programs and rounds are listed in the <a href="/programs">Overview page</a>; this
+page serves as a general guide to applicants.</p>
+
+        </div>
+      </div>
+    </header>
+    <div class="container code-guidelines-body">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="row">
+            
+              <aside class="menu sidebar-menu">
+                <ul class="menu-list">
+                  
+                    <li>
+                    <a class=" link" href="/programs/">Overview</a>
+                    
+                      <ul>
+                      
+                        <li><a class=" is-active  link" href="/programs/applicant-guide/"><i class="icon circle-filled"></i>Applicant Guide</a></li>
+                      
+                        <li><a class=" link" href="/programs/contrib-guide/"><i class="icon circle-filled"></i>Contributor Guide</a></li>
+                      
+                        <li><a class=" link" href="/programs/lead-guide/"><i class="icon circle-filled"></i>Project Lead Guide</a></li>
+                      
+                      </ul>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/programs/project-ideas/">Project Ideas</a>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/programs/history/">History</a>
+                    
+                    </li>
+                    
+                  
+                </ul>
+              </aside>
+            
+          </div>
+          <div class="row padding-bottom-normal sticky-top">
+            <h4 class="b-header">On this page</h4>
+            <aside class="menu table-of-contents">
+              <ul class="menu-list">
+                
+                  <li>
+                    <a class="link" href="#getting-started">Getting Started</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#understand-the-program"><i class="icon circle-filled"></i>Understand the Program</a></li>
+                        
+                          <li><a class="link" href="#understand-cc"><i class="icon circle-filled"></i>Understand CC</a></li>
+                        
+                          <li><a class="link" href="#join-the-community"><i class="icon circle-filled"></i>Join the Community</a></li>
+                        
+                          <li><a class="link" href="#pick-a-project"><i class="icon circle-filled"></i>Pick a Project</a></li>
+                        
+                          <li><a class="link" href="#contribute"><i class="icon circle-filled"></i>Contribute!</a></li>
+                        
+                          <li><a class="link" href="#draft-application"><i class="icon circle-filled"></i>Draft Application</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#contributing">Contributing</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#why-contribute"><i class="icon circle-filled"></i>Why contribute?</a></li>
+                        
+                          <li><a class="link" href="#how-to-contribute"><i class="icon circle-filled"></i>How to contribute</a></li>
+                        
+                          <li><a class="link" href="#contributing-documentation"><i class="icon circle-filled"></i>Contributing Documentation</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#application">Application</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#template"><i class="icon circle-filled"></i>Template</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#contacting-mentors">Contacting Mentors</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#intern-selection-criteria">Intern Selection Criteria</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#number-of-accepted-contributors">Number of Accepted Contributors</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#thank-you">Thank you</a>
+                    
+                  </li>
+                
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div class="column content is-three-quarters">
+          <h2 id="getting-started">Getting Started</h2><p>If you are interested in applying to be an open source contributor as part of a
+work program at Creative Commons (CC), here's a few things that will help:</p>
+<h3 id="understand-the-program">Understand the Program</h3><p>Here are some resources:</p>
+<ul>
+<li><a href="https://google.github.io/gsocguides/student/">Google Summer of Code Contributor Guide</a></li>
+<li><a href="https://developers.google.com/season-of-docs/docs/tech-writer-guide">Google Season of Docs technical writer guide</a></li>
+<li><a href="https://www.outreachy.org/docs/applicant/">Outreachy applicant guide</a></li>
+</ul>
+<h3 id="understand-cc">Understand CC</h3><p>Your first step should be to understand Creative Commons and what we do. We're
+not simply an open source software project like many other work program
+organization. We're a nonprofit organization and we have a lot of different
+programs – technical, legal, educational, public policy, organizational, and
+more. You can start reading about us at our <a href="https://creativecommons.org/">official
+website</a> and you can find plenty of information
+through searching about us. You'll need to know a decent amount about us in
+order to help us effectively.</p>
+<p>If you have a question about how we work, our programs, our licenses, or
+anything like that, please don't hesitate to ask!</p>
+<h3 id="join-the-community">Join the Community</h3><p><a href="/community/">Join the <code>#cc-dev-internships</code> channel on the CC Slack or the CC Developers
+mailing list</a> as early as possible to introduce yourself and get
+feedback on your ideas. All our mentors will be on Slack and respond to emails
+on the mailing list and it is better to post there rather than contacting them
+individually. Feel free to ask questions!</p>
+<h3 id="pick-a-project">Pick a Project</h3><p>Your next step should be to pick a particular project that you're interested in
+working on. The <a href="/programs/">Overview page</a> will cover the current
+work program rounds and link to related project ideas.</p>
+<p>Once you pick the project you're interested in, make sure to learn about the
+project thoroughly. You're going to be spending three months working on the
+project and you'll need to understand what the work entails so that you can
+plan the work out ahead of time and submit a strong application. The project
+descriptions are quite short so we expect you to do a lot of work here duron
+your own taking those descriptions and fleshing them out into a more detailed
+project plan and implementation timeline.</p>
+<p>The project leads are here to help you. We expect you to have a lot of
+questions along the way and we're happy to answer them.</p>
+<h3 id="contribute">Contribute!</h3><p>You will need to make at least one contribution to a Creative Commons project
+so that we can see a sample of your work. This is important for our evaluation
+of your application. For more details, see the <a href="/programs/applicant-guide/#contributing"><em>Contributing</em>
+section</a>, below. Note that for Season of Docs applicants,
+mentions of "code contributions" in this guide are somewhat synonymous with
+documentation contributions, and we would like to see both code and
+documentation related contributions from Season of Docs applicants to show a
+well rounded skill set.</p>
+<h3 id="draft-application">Draft Application</h3><p>The final step is to create a draft application and share it with your chosen
+project lead for feedback. <strong>Do not wait until the last minute to do this.</strong>
+You should ideally get at least two rounds of feedback from the project leads
+before you submit your final application. For more details, see the
+<a href="/programs/applicant-guide/#application"><em>Application</em> section</a>, below.</p>
+<h2 id="contributing">Contributing</h2><h3 id="why-contribute">Why contribute?</h3><p>Contributions are for you to get a sense of what it's like to contribute to an
+open source project (getting used to the GitHub workflow, interacting with
+other contributors, etc.) and for us to see a sample of your work/skills. If we
+are impressed by your contributions, we are more likely to select you as an
+work program contributor.</p>
+<h3 id="how-to-contribute">How to contribute</h3><p>Please read our <a href="/contributing-code/">Contributing Code</a> page for information
+on how to contribute. You can contribute to any Creative Commons repository,
+although it's better if you demonstrate skills related to the project you are
+applying for. Also, check your project's description for more specific
+contribution guidelines (not all of them will have them).</p>
+<p>If you're applying via Outreachy, remember to record your contribution via the
+Outreachy website! You can record contributions even if you have not yet
+received feedback on them or if they have not been merged – our mentors are
+busy so we can be slow to provide feedback.</p>
+<h3 id="contributing-documentation">Contributing Documentation</h3><p>If you are applying for Google Season of Docs, one of the best ways you can
+contribute to documentation is to find places where documentation can be
+improved, and open an issue for it on GitHub. Be sure to state what,
+specifically, could be improved, and how you plan to improve it.</p>
+<p>We prefer to see contributions that make substantive changes or improvements to
+documentation such as improving the clarity of existing documentation or
+creating new documentation. Typo and grammar fixes are, of course, still
+welcome, but we do like to see more substantive improvements.</p>
+<p>We would also like to see Season of Docs applicants make some code
+contributions to show a well rounded skillset and understanding of the project.</p>
+<h2 id="application">Application</h2><p>Your final application is very important to us. This is what we will use to
+determine how well you understand the project and how likely you are to
+successfully complete it. As part of the application, you should take the
+project description and flesh it out into a more detailed project plan and
+implementation timeline. The project descriptions are all fairly short and some
+of them include multiple paths for the project. So, we expect you to do a lot
+of work here to turn those into a feasible plan and timeline for a complete
+project that you can ship during the work program.</p>
+<p><strong>This is not something you should be working on in isolation.</strong> We expect you
+to have a lot of questions for the mentors along the way as you try and
+understand the project, come up with ideas, evaluate feasibility, etc. We also
+expect you to come up with a first draft and get feedback from mentors before
+you submit the final application on the program's official site.</p>
+<p>We suggest reading some articles on writing good Google Summer of Code
+proposals (even if you're applying for Outreachy). Here are some examples:</p>
+<ul>
+<li><a href="http://teom.org/blog/kde/how-to-write-a-kick-ass-proposal-for-google-summer-of-code/">How to write a kick-ass proposal for Google Summer of Code</a></li>
+<li><a href="https://people.csail.mit.edu/baghdadi/TXT_blog/5_advices_to_get_your_proposal_accepted.lyx.html">5 Tips to get your Google Summer of Code proposal accepted</a></li>
+<li><a href="https://medium.com/@evenstensberg/writing-a-solid-google-summer-of-code-proposal-a200fc6e785b">Writing a solid Google Summer of Code Proposal</a></li>
+</ul>
+<h3 id="template">Template</h3><p>You must use <strong><a href="https://docs.google.com/document/d/18LWuA_iTSGSeRFtpVQdfOoz1G30ZgJg-_K0lNSQBYd0/edit">our work program project template</a></strong> to create
+your application. Please make sure that your mentors have comment permissions
+before you share your document with them.</p>
+<p>If you are applying for Outreachy, please link to the project proposal document
+created using this template from your final Outreachy application.</p>
+<h2 id="contacting-mentors">Contacting Mentors</h2><p>All the CC project leads are on <a href="/community/">Slack</a>. <strong>Please use public
+channels on Slack as the primary method of communication.</strong> Public channels are
+better than direct messages because it allows any available project lead (or
+even another applicant) to answer your questions and interact with you. It also
+allows other applicants who have the same questions to benefit from the answers
+the mentor is giving you.</p>
+<p><strong>Please ask project leads specific questions.</strong> We don't know how to help you
+get started unless we know what you have questions about. People come from a
+variety of experiences and backgrounds and the things you may be confused about
+may be totally different than the things that someone else has questions about.
+Please give us as much information as possible, the more you tell us, the
+better we can help you.</p>
+<p>Remember that the project leads are busy – we've got full-time jobs or other
+commitments. It's good to follow up if you don't get a response, but wait a
+couple of days first.</p>
+<p><strong>Please refrain from addressing project leads as "sir" or "ma'am". We prefer
+to be addressed by our first names or usernames.</strong></p>
+<h2 id="intern-selection-criteria">Intern Selection Criteria</h2><p>Here are a few things we consider when selecting work program contributors:</p>
+<ul>
+<li><strong>Quality of the proposal</strong>: This is the most important thing. A good
+proposal includes attention to detail, externally measurable milestones,
+consideration for future maintainability and community involvement, and a
+demonstration of your skills.</li>
+<li><strong>Community involvement</strong>: One of our major goals is to build an active
+development community and attract long-term contributors. We see engaging in
+the community, whether it's asking questions, helping other students,
+contributing code, filing bugs, or whatever else, as a sign that you're
+genuinely interested in our work.</li>
+<li><strong>Contributions</strong>: We appreciate seeing your contributions, they help us
+gauge your ability to orient yourself to a new codebase, or the quality of
+your writing. Contribution quality is instrumental in giving us the
+confidence that you have the skills necessary to implement your proposal.</li>
+<li><strong>Communication skills and initiative</strong>: These are essential to completing a
+successful project. Things we look for (among others): asking specific and
+detailed questions, following up on conversations, making sure to read
+available resources before asking questions, being patient and responding to
+critical feedback well.</li>
+</ul>
+<h2 id="number-of-accepted-contributors">Number of Accepted Contributors</h2><p>Please, note that any work program has a limited amount of projects that are
+able be funded. Therefore, we will probably not be able to select a contributor
+for every project idea that we have listed. CC will be allocated a limited
+number of project slots by the program and we can only accept the number of
+contributors that we have slots for.</p>
+<h2 id="thank-you">Thank you</h2><p>Thank you for your contributions and your time!</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
