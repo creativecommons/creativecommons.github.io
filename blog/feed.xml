@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-01-06T00:00:00Z</updated><author><name></name></author><entry><title>CC Messaging Update 2022Q1 (Dropping IRC)</title><link href="http://opensource.creativecommons.org/blog/entries/2022-01-06-cc-messaging/" rel="alternate"></link><updated>2022-01-06T00:00:00Z</updated><author><name>TimidRobot</name></author><id>urn:uuid:043a7604-a0bf-3890-b20d-de0f99b67f8c</id><content type="html">&lt;h2 id="past-moved-to-slack"&gt;Past: Moved to Slack&lt;/h2&gt;&lt;p&gt;In 2016, Creative Commons (CC) moved to Slack as our primary messaging platform
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-03-17T00:00:00Z</updated><author><name></name></author><entry><title>Building the CC Global Components Library</title><link href="http://opensource.creativecommons.org/blog/entries/building-the-cc-global-components-library/" rel="alternate"></link><updated>2022-03-17T00:00:00Z</updated><author><name>MuluhGodson</name></author><id>urn:uuid:1140a314-fe2d-30a3-aeb4-19a4ba942e21</id><content type="html">&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;&lt;p&gt;During the course of my Outreachy internship with the Creative Commons, I got to work on some cool projects, one of which is the CC Global Components
+library supervised by my mentor &lt;a href="https://github.com/brylie"&gt;Brylie Christopher Oxley&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these 
+websites.
+With this in mind, there are several components which are part of most CC web properties. The three components in particular are:-&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt; The Global navigation menu &lt;/strong&gt; : displayed on sub-paths of the main creativecommons.org website, such as /licenses&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt; The Global footer &lt;/strong&gt; : displayed on most Creative Commons properties&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt; The Explore CC component &lt;/strong&gt; : displayed on all CC web properties, such as Global Summit etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Instead of having each project implement these components leading to code duplication accross projects and maintenance issues, we decided it was 
+preferable 
+to have a seperate library of these components which finally led to the CC Global Components project.&lt;/p&gt;
+&lt;h3 id="choosing-a-technology"&gt;Choosing a technology&lt;/h3&gt;&lt;p&gt;The goal of the Global components library was to build a custom web component that can be served via CDN. While planning, we needed to decide on 
+the technology to use. Agreeably, most web frameworks like React and Vue can be used to develop this but we wanted
+a simple implementation with fewer dependencies. Some ideal characteristics of what we were looking for was a technology that meets the following 
+criteria:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web Standards oriented&lt;/li&gt;
+&lt;li&gt;Clean separation of HTML, CSS, and JavaScript (structure, aesthetics, and functionality)&lt;/li&gt;
+&lt;li&gt;Lightweight / small bundle size&lt;/li&gt;
+&lt;li&gt;Loosely coupled (no tight or unrelated dependencies)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The two primary technologies we were considering were &lt;a href="https://v3.vuejs.org"&gt;Vue JS&lt;/a&gt; and &lt;a href="https://lwc.dev"&gt;Lightning Web Components&lt;/a&gt; but finally 
+decided to use Vue JS
+since we already had other projects developed in Vue (such as the Chooser project).&lt;/p&gt;
+&lt;h3 id="building-the-components"&gt;Building the components&lt;/h3&gt;&lt;p&gt;To scaffold the project, we used &lt;a href="https://www.npmjs.com/package/vue-sfc-rollup"&gt;Vue SFC rollup&lt;/a&gt;, which is a CLI templating utility that scaffolds 
+a minimal setup for compiling a library of multiple Vue SFCs (Single File Components) - into a form ready to share via npm. With this, 
+we could just focus on building the templates. We used &lt;a href="https://cc-vocabulary.netlify.app/"&gt;Vocabulary CSS&lt;/a&gt;, our own CC design package to style 
+the components.&lt;/p&gt;
+&lt;h4 id="1-cc-global-footer"&gt;1) CC Global Footer&lt;/h4&gt;&lt;p&gt;The CC Global Footer component was the easiest given that it's mostly static HTML. This component takes two attributes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;logo-url&lt;/code&gt;: which should point to the logo of the website it is used on. &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;donation-url&lt;/code&gt;: which is used for the donation button.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After importing the CDN script for the CC Global components, we can then use the CC Global footer in any page as such:&lt;/p&gt;
+&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cc-global-footer&lt;/span&gt;
+  &lt;span class="na"&gt;donation-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.com&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;logo-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/example/logo-white.png&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and this renders as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_global_footer.png" alt="CC Global Footer"&gt;&lt;/p&gt;
+&lt;h4 id="2-cc-explore"&gt;2) CC Explore&lt;/h4&gt;&lt;p&gt;The CC Explore component is an expandable banner which coontains links to all the CC Web properties. This component use a click listener which just
+toggles the expandable banner to show or hide when it is clicked. As with the CC Global Footer component, the CC Explore component takes two attributes.&lt;/p&gt;
+&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cc-explore&lt;/span&gt;
+  &lt;span class="na"&gt;donation-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://example.com&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;logo-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/example/logo-white.png&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and this renders as shown below:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_explore.gif" alt="CC Explore"&gt;&lt;/p&gt;
+&lt;h4 id="3-cc-global-header"&gt;3) CC Global Header&lt;/h4&gt;&lt;p&gt;The CC Global Header was an important component given that we had to make API calls to be able to render the Menu items for downstream projects
+such as the &lt;a href="https://github.com/creativecommons/cc-legal-tools-app"&gt;Licenses and Tools&lt;/a&gt;. We used the Axios library for the API calls to the Wordpress
+backend of the parent project &lt;a href="https://github.com/creativecommons/project_creativecommons.org"&gt;Projec_creativecommons.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The CC Global Header has three required attributes, &lt;code&gt;base-url&lt;/code&gt;, &lt;code&gt;donation-url&lt;/code&gt; and &lt;code&gt;logo-url&lt;/code&gt;, which are the URLs used for the API call, 
+Donation button and Logo respectively. There is one additional attribute &lt;code&gt;use-menu-placeholders&lt;/code&gt; you can set which renders placeholder Menu Items 
+if you are in a development environment. However, for a stagin/production setup we do not use this attribute.&lt;/p&gt;
+&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cc-global-header&lt;/span&gt;
+  &lt;span class="na"&gt;base-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://127.0.0.1:8000&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;donation-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http:/example.com&amp;quot;&lt;/span&gt;
+  &lt;span class="na"&gt;use-menu-placeholders&lt;/span&gt;
+  &lt;span class="na"&gt;logo-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/example/logo-black.png&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and this renders as shown:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_global_header.png" alt="CC Global Header"&gt;&lt;/p&gt;
+&lt;h3 id="conclusion"&gt;Conclusion&lt;/h3&gt;&lt;p&gt;The first version of this library (0.1.1) was released and published to NPM on Dec 10, 2021. Till date [the time of this writing] we have had several
+changes and optimizations to the code and are currently on version &lt;code&gt;0.5.0&lt;/code&gt;. This was a really enriching experience for me as it was my first time 
+working with Vue JS. We've also had additional code review and optimizations from &lt;a href="/blog/authors/TimidRobot/"&gt;Timid Robot&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The CC Global Components with all 3 components used renders as:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_global_components.gif" alt="CC global components"&gt;&lt;/p&gt;
+&lt;p&gt;You can find the CC Global Components project at:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub: &lt;a href="https://github.com/creativecommons/cc-global-components"&gt;CC Global Components&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NPM: &lt;a href="https://www.npmjs.com/package/@creativecommons/cc-global-components"&gt;cc-global-components&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content></entry><entry><title>CC Messaging Update 2022Q1 (Dropping IRC)</title><link href="http://opensource.creativecommons.org/blog/entries/2022-01-06-cc-messaging/" rel="alternate"></link><updated>2022-01-06T00:00:00Z</updated><author><name>TimidRobot</name></author><id>urn:uuid:043a7604-a0bf-3890-b20d-de0f99b67f8c</id><content type="html">&lt;h2 id="past-moved-to-slack"&gt;Past: Moved to Slack&lt;/h2&gt;&lt;p&gt;In 2016, Creative Commons (CC) moved to Slack as our primary messaging platform
 (&lt;a href="https://creativecommons.org/2016/10/18/slack-announcement/"&gt;We're on Slack! Join us! - Creative Commons&lt;/a&gt;). We are very thankful
 for the generous support that Slack has provided. The Slack messaging platform
 is far more accessible than IRC. We saw an immediate and sustained increase in
@@ -2907,33 +2984,4 @@ The audits were done using Lighthouse, Accessibility Insights and pa11y and they
 &lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
-</content></entry><entry><title>CC Legal Database: a new beginning</title><link href="http://opensource.creativecommons.org/blog/entries/legal-database-a-new-beginning/" rel="alternate"></link><updated>2020-05-22T00:00:00Z</updated><author><name>krysal</name></author><id>urn:uuid:0ca867d0-f061-3202-9da4-7e89977781ce</id><content type="html">&lt;p&gt;CC maintains a collection of case law and legal scholarship relevant to legal issues around Creative Commons licenses. The CC Legal Database system gathers and exposes this information for everybody, as anyone can submit information, this aims to help understanding how CC legal tools have been interpreted by courts, and how they operate the larger legal ecosystem.&lt;/p&gt;
-&lt;p&gt;The current &lt;a href="https://labs.creativecommons.org/caselaw/"&gt;site&lt;/a&gt; is a beta version built on Jekyll, a static site generator, using Google forms and spreadsheets as database. This system has served its purpose, but it's time to modernize it since there are several issues we want to fix, mainly related to the automation of review and publication process, as for the visual styles, CC is doing a major redesign of websites with &lt;a href="https://cc-vocabulary.netlify.com/"&gt;Vocabulary&lt;/a&gt;, the new design system, to unify the user experience.&lt;/p&gt;
-&lt;p&gt;The process for collecting the information is decoupled into loose spreadsheets, some Google forms, and its publication is a cumbersome manual process for two teams involved, the Legal Team that have to review the incoming data and edit it if necessary, and the Tech Team which is the one that actually publishes. This is prone to human errors (e.g. missing a column entry for one row) that can be easily avoided as well as save time to both CC teams.&lt;/p&gt;
-&lt;p&gt;This project, Reimplement CC’s Legal Database using Django, aims to address all these main issues, automate the reviewing and publication process, empowering CC legal staff to manage all the workflow without the intervention of the tech team, and make use of Vocabulary components and guides to unify styles with the rest of Creative Commons products.&lt;/p&gt;
-&lt;h3 id="design"&gt;Design&lt;/h3&gt;&lt;p&gt;First task in the plan is to design the user-facing parts of the new website on Figma, this tool allows to easily draw on the browser (great for start quickly since no need to install a program in your PC) and even collaborate between peers to edit one document at the same time. CC keeps here the Vocabulary design library, so it facilitates a lot using the already existing components.&lt;/p&gt;
-&lt;p&gt;You can find designs and follow the process in this Figma link: &lt;a href="https://www.figma.com/file/L2sACqzX61N2OMd5lmisop/New-CC-Caselaw-Mockups"&gt;New CC Caselaw Mockups&lt;/a&gt;. A new logo was made by the UX designer Francisco, with this the project start feeling like a consistent product of CC.&lt;/p&gt;
-&lt;div style="text-align: center; margin: 15px 0px"&gt;
-&lt;figure&gt;
-    &lt;img src="legal_database.svg" alt="New Creative Commons Legal Database logo" width="350px"/&gt;
-&lt;/figure&gt;
-&lt;/div&gt;&lt;!-- ![New Creative Commons Legal Database logo](legal_database.svg) --&gt;
-
-&lt;h3 id="why-django"&gt;Why Django?&lt;/h3&gt;&lt;p&gt;Before I briefly mentioned the use of Django, a framework of Python, for the implementation, so I will state some reasons that led to this decision.&lt;/p&gt;
-&lt;p&gt;Two options were given for the backend development: WordPress or Django. WordPress is a nice tool to build sites like blogs and e-commerce, it gives a lot of functionalities to end-users (usually not technical) out of the box and can be extended with a wide ecosystem of plugins, but I identified some cons for this particular case. It will bring many not necessary features to the system initially planned and will take considerable work to customize both, the frontend with Vocabulary and the database in the backend. Building a Wordpress theme with Vocabulary was already considered for another project apart, so that should be done first. As for the DB,  deal with Wordpress tables may not be the best developer experience and could be a real mess.&lt;/p&gt;
-&lt;p&gt;Looking at Django with Python, we can start in a greenfield ready to customize, like Wordpress, is a mature technology with a large number of libraries to extend its functionalities. For maintenance, the engineering team will be responsible and since Django is already used to back the &lt;a href="https://search.creativecommons.org/"&gt;CC Search&lt;/a&gt;, currently the most ambitious products of the organization, then there should be no problem with this point. Given all this it seemed obvious to me to choose Django for this project.&lt;/p&gt;
-&lt;h3 id="next-steps"&gt;Next steps&lt;/h3&gt;&lt;p&gt;It has only been a week so we're just starting, so next task to do sooner are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Conduct interview with staff to iterate over designs&lt;/li&gt;
-&lt;li&gt;Setup the Django project&lt;/li&gt;
-&lt;li&gt;Model the legal database&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="how-you-can-help"&gt;How you can help&lt;/h3&gt;&lt;p&gt;We are still discussing the new image before start coding so these are some options if you want to get involved:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Suggest improvements to designs/UX or new features joining the discussion on the &lt;a href="https://creativecommons.slack.com/channels/cc-dev-legal-database"&gt;&lt;code&gt;#cc-dev-legal-database&lt;/code&gt;&lt;/a&gt; Slack channel or on the &lt;a href="https://github.com/creativecommons/legaldb"&gt;github&lt;/a&gt; project.&lt;/li&gt;
-&lt;li&gt;Contribute directly to the CC's Vocabulary design system on &lt;a href="https://github.com/creativecommons/vocabulary"&gt;github&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Submit a case or a scholarship related to CC licenses on the &lt;a href="https://labs.creativecommons.org/caselaw/contribute/"&gt;current site&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;CC Legal Database&lt;/strong&gt; is my Outreachy project for this summer, under the guidance of Director of Engineering &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti Godey&lt;/a&gt; and Core Systems Manager &lt;a href="https://creativecommons.org/author/timidcreativecommons-org/"&gt;Timid Robot Zehta&lt;/a&gt;, they are very supportive and the CC community is notable welcoming.&lt;/p&gt;
-&lt;p&gt;This is the first post of a series so stay tuned if you're interested to know more.&lt;/p&gt;
 </content></entry></feed>
