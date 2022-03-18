@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-03-17T00:00:00Z</updated><author><name></name></author><entry><title>Building the CC Global Components Library</title><link href="http://opensource.creativecommons.org/blog/entries/building-the-cc-global-components-library/" rel="alternate"></link><updated>2022-03-17T00:00:00Z</updated><author><name>MuluhGodson</name></author><id>urn:uuid:1140a314-fe2d-30a3-aeb4-19a4ba942e21</id><content type="html">&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;&lt;p&gt;During the course of my Outreachy internship with the Creative Commons, I got to work on some cool projects, one of which is the CC Global Components
-library supervised by my mentor &lt;a href="https://github.com/brylie"&gt;Brylie Christopher Oxley&lt;/a&gt;.&lt;/p&gt;
+library supervised by my mentor &lt;a href="/blog/authors/brylie/"&gt;Brylie Christopher Oxley&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these 
 websites.
 With this in mind, there are several components which are part of most CC web properties. The three components in particular are:-&lt;/p&gt;
