@@ -475,7 +475,7 @@
 </pre></div>
 <p>The main drawback of dependency injection is that initializing your objects will take some more ceremony. See the <a href="https://github.com/creativecommons/image-crawler/blob/00b59aba9a15faccf203a53d73a98e8c06cb69e8/worker/scheduler.py#L162">initialization of the crawl scheduler</a> for an example of wiring up an object with a lot of dependencies. You might also find that constructors and other functions with a lot of dependencies will have a lot of arguments if care isn't taken to bundle external dependencies together. In my opinion, the price of a few extra lines of initialization code is well worth the benefits gained from testability and modularity.</p>
 <h4 id="smoke-testing">Smoke testing</h4><p>Even with our unit test coverage, we still need to do some basic small-scale manual tests to make sure our assumptions hold up in the real world. We'll need to write <a href="https://www.terraform.io/">Terraform</a> modules that provision a working version of the real system. Sadly, our Terraform infrastructure repository is private for now, but here's a taste of what the infra code looks like.</p>
-<div class="hll"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;image-crawler&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="hll"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;image-crawler&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../../modules/services/image-crawler&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="na">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prod&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="na">docker_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.25.0&quot;</span><span class="w"></span>
@@ -488,7 +488,7 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 <p><em><center>Initialization of crawler Terraform module in our production environment</center></em></p>
-<div class="hll"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-workers&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="hll"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-workers&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.ami}&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.worker_instance_type}&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${data.template_file.worker_init.rendered}&quot;</span><span class="w"></span>
@@ -506,7 +506,7 @@
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-monitor&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-monitor&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.ami}&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c5.large&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${data.template_file.monitor_init.rendered}&quot;</span><span class="w"></span>
