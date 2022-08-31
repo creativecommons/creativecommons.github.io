@@ -236,9 +236,11 @@
           <button type="button" class="button tag btn-dark filter-btn" data-filter="all">
             All Projects
           </button>
+          <!--
           <button type="button" class="button tag filter-btn" data-filter="difficulty-easy">
             Difficulty: Easy
           </button>
+          -->
           <button type="button" class="button tag filter-btn" data-filter="difficulty-medium">
             Difficulty: Medium
           </button>
@@ -247,6 +249,9 @@
           </button>
           <button type="button" class="button tag filter-btn" data-filter="skill-css">
             Skill: CSS
+          </button>
+          <button type="button" class="button tag filter-btn" data-filter="skill-django">
+            Skill: Django
           </button>
           <button type="button" class="button tag filter-btn" data-filter="skill-javascript">
             Skill: JavaScript
@@ -260,13 +265,53 @@
           <button type="button" class="button tag filter-btn" data-filter="skill-wordpress">
             Skill: WordPress
           </button>
-<!--
+          <!--
           <button type="button" class="button tag filter-btn" data-filter="skill-writing">
             Skill: Writing
-            </button>
--->
+          </button>
+          -->
         </div>
         <div class="project-ideas columns is-multiline">
+          
+          <div class="column is-one-quarter filter filter-label difficulty-medium skill-django skill-git skill-python">
+            <a href="#add-plain-text-format-to-cc-legal-tools">
+              <article class="card entry-post horizontal">
+                <div class="card-content">
+                  <h5 class="card-title">Add plain text format to CC Legal Tools</h5>
+                </div>
+              </article>
+            </a>
+          </div>
+          
+          <div class="column is-one-quarter filter filter-label difficulty-high skill-django skill-git skill-python skill-rdf skill-xml">
+            <a href="#add-rdf-xml-format-to-cc-legal-tools">
+              <article class="card entry-post horizontal">
+                <div class="card-content">
+                  <h5 class="card-title">Add RDF XML format to CC Legal Tools</h5>
+                </div>
+              </article>
+            </a>
+          </div>
+          
+          <div class="column is-one-quarter filter filter-label difficulty-medium skill-git skill-javascript skill-php skill-wordpress">
+            <a href="#modernize-termination-of-transfer-wp-plugin">
+              <article class="card entry-post horizontal">
+                <div class="card-content">
+                  <h5 class="card-title">Modernize termination-of-transfer WordPress plugin</h5>
+                </div>
+              </article>
+            </a>
+          </div>
+          
+          <div class="column is-one-quarter filter filter-label difficulty-medium skill-css skill-git skill-githubpages skill-html skill-javascript skill-json">
+            <a href="#refactor-cc-meta-search">
+              <article class="card entry-post horizontal">
+                <div class="card-content">
+                  <h5 class="card-title">Refactor CC meta search</h5>
+                </div>
+              </article>
+            </a>
+          </div>
           
           <div class="column is-one-quarter">
             <a href="#original-ideas">
@@ -281,6 +326,258 @@
       </div>
     </div>
     <div class="body container">
+      
+        <div class="project-idea">
+          <h2><a class="has-color-dark-slate-gray" name="add-plain-text-format-to-cc-legal-tools">Add plain text format to CC Legal Tools</a></h2>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <h5 class="b-header padding-bottom-small">Difficulty</h5>
+              <p class="padding-bottom-big">Medium</p>
+              <h5 class="b-header padding-bottom-small">Size</h5>
+              <p class="padding-bottom-big">Large (~350 hours)</p>
+              <h5 class="b-header padding-bottom-small">Skills recommended</h5>
+              <ul>
+<li>Djano</li>
+<li>Git</li>
+<li>Python</li>
+</ul>
+
+              <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
+              <ul>
+<li>Timid Robot</li>
+</ul>
+
+            </div>
+            <div class="column is-three-quarters">
+              <h3 class="padding-bottom-big">The Problem</h3>
+              <p><p>Plain text formats for the 4.0 licenses and the CC0 public domain dedication
+were created using a manual process (<a href="https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/">Plaintext versions of Creative Commons
+licenses and CC0 - Creative Commons</a>).  Only the English
+versions of the legal tools were formatted as plain text.  Additionally, that
+manual creation process was not without errors and is not sustainable.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
+              <p><p>Extend the CC Legal Tools App to generate deterministic plain text versions of
+the 4.0 licenses and the CC0 public domain dedication.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
+              <p><p>The contributor will need to extend the CC Legal Tools App to generate plain
+text versions. The generated plain text versions must be deterministic and
+match the formatting of the manual versions (except where improvements are
+desired). Application updates must include test coverage. Stretch goals include
+Markdown format generation and interfacing/collaborating with SPDX.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
+              <p><ul>
+<li>Engage with the CC Legal Tools repositories (issues, pull requests)</li>
+<li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
+<li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
+</ul>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Resources</h3>
+              <p><ul>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-app">creativecommons/cc-legal-tools-app</a>: License and public
+domain dedication management application for Creative Commons</li>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>: License and
+public domain dedication data for Creative Commons</li>
+<li><a href="https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/">Plaintext versions of Creative Commons licenses and CC0 - Creative
+Commons</a></li>
+</ul>
+</p>
+            </div>
+          </div>
+          <a href="#project-list" class="back-to-list"><i class="icon angle-up"></i> Back to the Project list</a>
+        </div>
+      
+        <div class="project-idea">
+          <h2><a class="has-color-dark-slate-gray" name="add-rdf-xml-format-to-cc-legal-tools">Add RDF XML format to CC Legal Tools</a></h2>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <h5 class="b-header padding-bottom-small">Difficulty</h5>
+              <p class="padding-bottom-big">High</p>
+              <h5 class="b-header padding-bottom-small">Size</h5>
+              <p class="padding-bottom-big">Large (~350 hours)</p>
+              <h5 class="b-header padding-bottom-small">Skills recommended</h5>
+              <ul>
+<li>Djano</li>
+<li>Git</li>
+<li>Python</li>
+<li>RDF</li>
+<li>XML</li>
+</ul>
+
+              <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
+              <ul>
+<li>Timid Robot</li>
+</ul>
+
+            </div>
+            <div class="column is-three-quarters">
+              <h3 class="padding-bottom-big">The Problem</h3>
+              <p><p>The CC Legal Tools App is currently using legacy RDF files for the machine
+readable layer of the legal tools. Those files are out of date and contain a
+few errors and omissions. This technical debt also prevents future work to
+improve the machine readable layer of the CC Legal Tools.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
+              <p><p>Extend the CC Legal Tools App to generate deterministic RDF XML files for all
+of the legal tools.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
+              <p><p>The contributor will need to extend the CC Legal Tools App to generate RDF XML
+files. The generated RDF XML files must be deterministic and well organized and
+based on current RDF specifications. Application updates must include test
+coverage. Stretch goals include planning any breaking changes and working on a
+static API.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
+              <p><ul>
+<li>Engage with the CC Legal Tools repositories (issues, pull requests)</li>
+<li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
+<li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
+</ul>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Resources</h3>
+              <p><ul>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-app">creativecommons/cc-legal-tools-app</a>: License and public
+domain dedication management application for Creative Commons</li>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>: License and
+public domain dedication data for Creative Commons</li>
+<li><a href="https://creativecommons.org/ns/">Describing Copyright in RDF - Creative Commons Rights Expression Language</a></li>
+</ul>
+</p>
+            </div>
+          </div>
+          <a href="#project-list" class="back-to-list"><i class="icon angle-up"></i> Back to the Project list</a>
+        </div>
+      
+        <div class="project-idea">
+          <h2><a class="has-color-dark-slate-gray" name="modernize-termination-of-transfer-wp-plugin">Modernize termination-of-transfer WordPress plugin</a></h2>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <h5 class="b-header padding-bottom-small">Difficulty</h5>
+              <p class="padding-bottom-big">Medium</p>
+              <h5 class="b-header padding-bottom-small">Size</h5>
+              <p class="padding-bottom-big">Large (~350 hours)</p>
+              <h5 class="b-header padding-bottom-small">Skills recommended</h5>
+              <ul>
+<li>Git</li>
+<li>JavaScript</li>
+<li>PHP</li>
+<li>WordPress</li>
+</ul>
+
+              <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
+              <ul>
+<li>Sara</li>
+</ul>
+
+            </div>
+            <div class="column is-three-quarters">
+              <h3 class="padding-bottom-big">The Problem</h3>
+              <p><p>Due to its current setup and structure it is difficult to install from the
+codebase directly into a WordPress installation (i.e. via Composer).
+Additionally, the codebase has sections that need to be checked and updated to
+current coding standards and best practices.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
+              <p><p>The plugin’s structure and setup follows current development standards, increasing maintainability and ease-of-use.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
+              <p><p>The contributor will restructure the repo, adjusting any necessary code to meet
+current WordPress plugin development standards, and best practices for PHP and
+Javascript (follow appropriate ECMAScript standards), while creating a
+directory structure that allows the codebase to be deployed into a standard
+WordPress installation.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
+              <p><ul>
+<li>Engage with the CC Legal Tools repositories (issues, pull requests)</li>
+<li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
+<li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
+</ul>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Resources</h3>
+              <p><ul>
+<li><a href="https://github.com/creativecommons/termination-of-transfer">creativecommons/termination-of-transfer</a></li>
+<li><a href="https://github.com/creativecommons/termination-of-transfer/issues/127">[Feature] Convert repository / codebase to a WordPress plugin that can be
+installed via composer #127</a></li>
+<li><a href="https://developer.wordpress.org/plugins/intro/">Introduction to Plugin Development</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_overview#standardization_process">MDN Web Docs: ECMAScript Standards</a></li>
+<li><a href="https://www.php-fig.org/psr/psr-1/">PHP-FIG: PSR-1</a></li>
+</ul>
+</p>
+            </div>
+          </div>
+          <a href="#project-list" class="back-to-list"><i class="icon angle-up"></i> Back to the Project list</a>
+        </div>
+      
+        <div class="project-idea">
+          <h2><a class="has-color-dark-slate-gray" name="refactor-cc-meta-search">Refactor CC meta search</a></h2>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <h5 class="b-header padding-bottom-small">Difficulty</h5>
+              <p class="padding-bottom-big">Medium</p>
+              <h5 class="b-header padding-bottom-small">Size</h5>
+              <p class="padding-bottom-big">Large (~350 hours)</p>
+              <h5 class="b-header padding-bottom-small">Skills recommended</h5>
+              <ul>
+<li>CSS</li>
+<li>Git</li>
+<li>GitHub Pages</li>
+<li>HTML</li>
+<li>JavaScript</li>
+<li>JSON</li>
+</ul>
+
+              <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
+              <ul>
+<li>Sara</li>
+</ul>
+
+            </div>
+            <div class="column is-three-quarters">
+              <h3 class="padding-bottom-big">The Problem</h3>
+              <p><p>The legacy CC meta search site doesn’t match the current visuals of the rest of
+CC web entities, and it’s built on PHP which requires a more complex hosting
+setup that can’t reside somewhere that supports simple static output (like
+GitHub pages). Additionally the code is set up in a legacy fashion, is not
+semantic, may contain accessibility issues, and contains broken meta searches.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
+              <p><p>Simplify and modernize the codebase and requirements of the legacy CC meta
+search, improve functionality, and update the visuals to match current CC
+standards and norms.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
+              <p><p>Rewrite the application, maintaining its original function,  as a static site
+on GitHub pages, using semantic, standards-compliant, and accessible HTML, CSS,
+and JavaScript. Update the visual aesthetic and overall appearance to better
+correspond with other current CC web entities.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
+              <p><ul>
+<li>Engage with the CC Legal Tools repositories (issues, pull requests)</li>
+<li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
+<li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
+</ul>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Resources</h3>
+              <p><ul>
+<li><a href="https://github.com/creativecommons/search">creativecommons/search</a>: Legacy Creative Commons Search, no
+longer under development</li>
+<li><a href="https://oldsearch.creativecommons.org/">oldsearch.creativecommons.org</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics">MDN Web Docs: Semantics</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs: HTML</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN Web Docs: JavaScript</a></li>
+<li><a href="https://wave.webaim.org/report#/https://oldsearch.creativecommons.org/">WAVE Report for “oldsearch.creativecommons.org”</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">About GitHub Pages</a></li>
+</ul>
+</p>
+            </div>
+          </div>
+          <a href="#project-list" class="back-to-list"><i class="icon angle-up"></i> Back to the Project list</a>
+        </div>
       
       <div>
         <h2 class="b-header"><a name="original-ideas" class="has-color-dark-slate-gray">Original Ideas</a></h2>
