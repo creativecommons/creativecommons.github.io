@@ -309,47 +309,6 @@ focus on the intent of the code and work together with a minimum of friction.</p
                   </li>
                 
                   <li>
-                    <a class="link" href="#code-formatting">Code Formatting</a>
-                    
-                      <ul>
-                        
-                          <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
-                        
-                          <li><a class="link" href="#examples"><i class="icon circle-filled"></i>Examples</a></li>
-                        
-                      </ul>
-                    
-                  </li>
-                
-                  <li>
-                    <a class="link" href="#style-and-quality">Style and Quality</a>
-                    
-                      <ul>
-                        
-                          <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
-                        
-                          <li><a class="link" href="#conflicts-with-black"><i class="icon circle-filled"></i>Conflicts with Black</a></li>
-                        
-                          <li><a class="link" href="#examples"><i class="icon circle-filled"></i>Examples</a></li>
-                        
-                      </ul>
-                    
-                  </li>
-                
-                  <li>
-                    <a class="link" href="#handling-imports">Handling Imports</a>
-                    
-                      <ul>
-                        
-                          <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
-                        
-                          <li><a class="link" href="#configuration"><i class="icon circle-filled"></i>Configuration</a></li>
-                        
-                      </ul>
-                    
-                  </li>
-                
-                  <li>
                     <a class="link" href="#development-environment">Development Environment</a>
                     
                       <ul>
@@ -357,6 +316,23 @@ focus on the intent of the code and work together with a minimum of friction.</p
                           <li><a class="link" href="#overview"><i class="icon circle-filled"></i>Overview</a></li>
                         
                           <li><a class="link" href="#examples"><i class="icon circle-filled"></i>Examples</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#development-tools">Development Tools</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#tool-order"><i class="icon circle-filled"></i>Tool Order</a></li>
+                        
+                          <li><a class="link" href="#handling-imports-isort"><i class="icon circle-filled"></i>Handling Imports (isort)</a></li>
+                        
+                          <li><a class="link" href="#code-formatting-black"><i class="icon circle-filled"></i>Code Formatting (black)</a></li>
+                        
+                          <li><a class="link" href="#style-and-quality-flake8"><i class="icon circle-filled"></i>Style and Quality (flake8)</a></li>
                         
                       </ul>
                     
@@ -376,53 +352,60 @@ focus on the intent of the code and work together with a minimum of friction.</p
 codebase and wishes to make any real-world contribution with
 <code>org:creativecommons</code> and be a part of the organization and learn new things
 with the organization.</p>
-<h2 id="code-formatting">Code Formatting</h2><h3 id="overview">Overview</h3><p>All Python code must be formatted using <a href="https://github.com/psf/black">Black</a>, <em>the uncompromising
+<h2 id="development-environment">Development Environment</h2><h3 id="overview">Overview</h3><p>Please work to minimize the number of development related technologies. This
+helps minimize the overhead of contributing to multiple projects. Most of our
+projects use <a href="https://github.com/pypa/pipenv">Pipenv</a>, <em>the Python Development Workflow for Humans</em>,
+and/or <a href="https://docs.docker.com/compose/">docker-compose</a>, <em>a tool for defining and running
+multi-container Docker applications</em>.</p>
+<h3 id="examples">Examples</h3><ul>
+<li>Pipenv configuration: <a href="https://github.com/search?q=org%3Acreativecommons+filename:Pipfile">GitHub Search · org:creativecommons
+filename:Pipfile</a></li>
+<li>Docker Compose configuration: <a href="https://github.com/search?q=org%3Acreativecommons+filename%3Adocker-compose.yml">GitHub Search · org:creativecommons
+filename:docker-compose.yml</a></li>
+</ul>
+<h2 id="development-tools">Development Tools</h2><h3 id="tool-order">Tool Order</h3><p>The recommended order to execute the tools described below is:</p>
+<ol>
+<li><code>isort</code> (will make changes)</li>
+<li><code>black</code> (will make changes)</li>
+<li><code>flake8</code> (issues warnings)</li>
+</ol>
+<p>Many of the Python repositories have a <code>tools.sh</code> helper script to execute them
+in order: <a href="https://github.com/search?q=org%3Acreativecommons+filename%3Atools.sh">GitHub Search · org:creativecommons filename:tools.sh</a>.</p>
+<h3 id="handling-imports-isort">Handling Imports (isort)</h3><h4 id="overview">Overview</h4><p>All the imports in the Python code must be done via <a href="https://github.com/pycqa/isort">isort</a>, a <em>Python
+utility/library to sort imports</em> alphabetically, and automatically separated
+into sections and by type. It provides a command line utility, Python library
+and <a href="https://github.com/pycqa/isort/wiki/isort-Plugins">plugins for various editors</a> to quickly sort all your
+imports. It requires Python 3.6+ to run but supports formatting Python 2 code
+too.</p>
+<h4 id="configuration">Configuration</h4><p>There's a good <code>isort</code> config which one should follow while contributing
+in the Python projects of the creativecommons. These configurations should
+be a part of <code>pyproject.toml</code> labelled as <code>[tools.isort]</code></p>
+<ul>
+<li>isort configuration (<code>pyproject.toml</code>): <a href="https://github.com/search?q=org%3Acreativecommons+filename:pyproject.toml">GitHub Search · org:creativecommons
+filename:pyproject.toml</a></li>
+</ul>
+<h3 id="code-formatting-black">Code Formatting (black)</h3><h4 id="overview">Overview</h4><p>All Python code must be formatted using <a href="https://github.com/psf/black">Black</a>, <em>the uncompromising
 Python code formatter</em>. Each project should contain a <code>pyproject.toml</code>
 configuration file that limits line length to 79 characters.</p>
-<h3 id="examples">Examples</h3><ul>
+<h4 id="examples">Examples</h4><ul>
 <li>Black configuration (<code>pyproject.toml</code>): <a href="https://github.com/search?q=org%3Acreativecommons+filename:pyproject.toml">GitHub Search · org:creativecommons
 filename:pyproject.toml</a></li>
 <li>GitHub Actions workflow: <a href="https://github.com/search?q=org%3Acreativecommons+%22pipenv+run+black%22&amp;type=code">GitHub Search · org:creativecommons "pipenv run
 black"</a></li>
 </ul>
-<h2 id="style-and-quality">Style and Quality</h2><h3 id="overview">Overview</h3><p>All Python code must be checked using <a href="https://gitlab.com/pycqa/flake8">flake8</a>, <em>a python tool that
-glues together pep8, pyflakes, mccabe, and third-party plugins to check
+<h3 id="style-and-quality-flake8">Style and Quality (flake8)</h3><h4 id="overview">Overview</h4><p>All Python code must be checked using <a href="https://github.com/pycqa/flake8">flake8</a>, <em>a python tool that
+glues together pycodestyle, pyflakes, mccabe, and third-party plugins to check
 the style and quality of some python code.</em></p>
-<h3 id="conflicts-with-black">Conflicts with Black</h3><p>Where flake8 conflicts with Black, the flake8 check should be skipped. For
+<h4 id="conflicts-with-black">Conflicts with Black</h4><p>Where flake8 conflicts with Black, the flake8 check should be skipped. For
 example, there are instances where black formats code that generates flake8
 warning for <a href="https://www.flake8rules.com/rules/E203.html">Whitespace before ':' (E203)</a>.</p>
-<h3 id="examples">Examples</h3><ul>
+<h4 id="examples">Examples</h4><ul>
 <li>flake8 configuration (<code>.flake8</code>): <a href="https://github.com/search?q=org%3Acreativecommons+filename:.flake8">GitHub Search · org:creativecommons
 filename:.flake8</a></li>
 <li>flake8 skip E203 warning: <a href="https://github.com/search?q=org%3Acreativecommons+%22noqa%3A+E203%22&amp;type=code">GitHub Search · org:creativecommons "noqa:
 E203"</a></li>
 <li>GitHub Actions workflow: <a href="https://github.com/search?q=org%3Acreativecommons+%22pipenv+run+flake8%22&amp;type=code">GitHub Search · org:creativecommons "pipenv run
 flake8"</a></li>
-</ul>
-<h2 id="handling-imports">Handling Imports</h2><h3 id="overview">Overview</h3><p>All the imports in the Python code must be done via <a href="https://github.com/pycqa/isort">isort</a>, a Python
-utility/library to sort imports alphabetically, and automatically separated
-into sections and by type.
-It provides a command line utility, Python library and
-<a href="https://github.com/pycqa/isort/wiki/isort-Plugins">plugins for various editors</a>
-to quickly sort all your imports. It requires Python 3.6+ to run but
-supports formatting Python 2 code too.</p>
-<h3 id="configuration">Configuration</h3><p>There's a good <code>isort</code> config which one should follow while contributing
-in the Python projects of the creativecommons. These configurations should
- be a part of <code>pyproject.toml</code> labelled as <code>[tools.isort]</code></p>
-<ul>
-<li>Isort Configuration (<code>pyproject.toml</code>): <a href="https://github.com/search?q=org%3Acreativecommons+filename:pyproject.toml">GitHub Search · org:creativecommons
-filename:pyproject.toml</a></li>
-</ul>
-<h2 id="development-environment">Development Environment</h2><h3 id="overview">Overview</h3><p>Please work to minimize the number of development related technologies. This
-helps minimize the overhead of contributing to multiple projects. Most of our
-projects use either <a href="https://github.com/pypa/pipenv">Pipenv</a>, <em>the Python Development Workflow for
-Humans,</em> or <a href="https://docs.docker.com/compose/">docker-compose</a>, <em>a tool for defining and running
-multi-container Docker applications.</em></p>
-<h3 id="examples">Examples</h3><ul>
-<li>Pipenv configuration: <a href="https://github.com/search?q=org%3Acreativecommons+filename:Pipfile">GitHub Search · org:creativecommons
-filename:Pipfile</a></li>
-<li>Docker-compose example: <a href="https://github.com/creativecommons/cccatalog/blob/master/src/cc_catalog_airflow/docker-compose.yml">docker-compose.yml for cccatalog</a>
-and the <a href="https://github.com/creativecommons/cccatalog#development-setup-for-airflow-and-api-puller-scripts">related README.md</a></li>
 </ul>
 <h2 id="additional-guidance">Additional Guidance</h2><p>Thankfully, Black removes a lot of style work and worry. Where there is room
 for developer discretion, the following guides are excellent resources:</p>
