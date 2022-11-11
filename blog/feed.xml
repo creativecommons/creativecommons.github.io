@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-03-17T00:00:00Z</updated><author><name></name></author><entry><title>Building the CC Global Components Library</title><link href="http://opensource.creativecommons.org/blog/entries/building-the-cc-global-components-library/" rel="alternate"></link><updated>2022-03-17T00:00:00Z</updated><author><name>MuluhGodson</name></author><id>urn:uuid:1140a314-fe2d-30a3-aeb4-19a4ba942e21</id><content type="html">&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;&lt;p&gt;During the course of my Outreachy internship with the Creative Commons, I got to work on some cool projects, one of which is the CC Global Components
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-11-11T00:00:00Z</updated><author><name></name></author><entry><title>CalVer to SemVer</title><link href="http://opensource.creativecommons.org/blog/entries/2022-11-11-calver-to-semver/" rel="alternate"></link><updated>2022-11-11T00:00:00Z</updated><author><name>TimidRobot</name></author><id>urn:uuid:70d61d34-1664-30a4-81f1-8cf222f5b31f</id><content type="html">&lt;p&gt;Creative Commons (CC) tried to use CalVer (calendar versioning), but
+encountered too many issues and decided on SemVer (semantic versioning)
+instead.&lt;/p&gt;
+&lt;h2 id="why-we-chose-calver"&gt;Why we chose CalVer&lt;/h2&gt;&lt;p&gt;Years ago, the CC technology team standardized on using &lt;a href="https://calver.org/"&gt;CalVer&lt;/a&gt; as our
+versioning scheme. Specifically, we selected &lt;code&gt;YYYY.0M.MICRO&lt;/code&gt;. &lt;a href="https://calver.org/"&gt;CalVer&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;YYYY&lt;/code&gt;&lt;/strong&gt; - Full year - 2006, 2016, 2106&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;0M&lt;/code&gt;&lt;/strong&gt; - Zero-padded month - 01, 02 ... 11, 12&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;Micro&lt;/code&gt;&lt;/strong&gt; - The third and usually final number in the version. Sometimes
+referred to as the "patch" segment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The use of CalVer was inspired by Ubuntu, pip, SaltStack, and others. It was
+thought that CalVer not only matched &lt;a href="https://semver.org/"&gt;SemVer&lt;/a&gt; in communicating
+potential risks to users, but also gave additional temporal context. Also, many
+argue that the promises of SemVer’s &lt;code&gt;MAJOR.MINOR.PATCH&lt;/code&gt; go unfulfilled often
+enough that they lose meaning and that the differences between MINOR/PATCH are
+too poorly defined (more on these later).&lt;/p&gt;
+&lt;h2 id="issues-encountered-with-calver"&gt;Issues Encountered with CalVer&lt;/h2&gt;&lt;h3 id="time/duration-is-not-primarily-relevant"&gt;Time/Duration Is Not Primarily Relevant&lt;/h3&gt;&lt;p&gt;CalVer is often favored by projects for which time/duration is of primary
+relevance (ex. Ubuntu releases which have a limited support window). However,
+none of CC’s projects have time/duration as a primary relevance.&lt;/p&gt;
+&lt;h3 id="major-expectations-and-slow-iteration"&gt;&lt;code&gt;MAJOR&lt;/code&gt; Expectations and Slow Iteration&lt;/h3&gt;&lt;p&gt;SemVer is a formalization of longstanding convention. Many many users,
+especially developers, expect the first number of a versioning scheme to
+indicate change severity. With &lt;code&gt;YYYY&lt;/code&gt; indicating current release year, the
+&lt;code&gt;YYYY.0M.MICRO&lt;/code&gt; versioning scheme might set an expectation of significant
+changes or improvements (ex. &lt;code&gt;2021.09.1&lt;/code&gt; to &lt;code&gt;2022.02.1&lt;/code&gt;) even when the content
+of the changes are trivial. With &lt;code&gt;YYYY&lt;/code&gt; indicating original release year, a
+slow moving but stable and functional release might appear abandoned or
+insecure (ex.  &lt;code&gt;2019.03.2&lt;/code&gt; in 2022).&lt;/p&gt;
+&lt;h3 id="poor-support-for-calver"&gt;Poor Support for CalVer&lt;/h3&gt;&lt;p&gt;We also encountered poor support for CalVer in software and systems. For
+example, NPM currently strips leading zeros which breaks CDN integration
+(&lt;a href="https://github.com/creativecommons/vocabulary/issues/588."&gt;CalVer and CDN compatibility · Issue #588 ·
+creativecommons/vocabulary&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id="using-semver"&gt;Using SemVer&lt;/h2&gt;&lt;p&gt;Our experiment with CalVer is a win for the scientific method. We can be more
+confident, today, that SemVer will treat both the developers and users of CC
+software better than CalVer.&lt;/p&gt;
+&lt;h3 id="semvers-promises-commitments"&gt;SemVer’s &lt;del&gt;Promises&lt;/del&gt; Commitments&lt;/h3&gt;&lt;p&gt;The CC Technology team sees SemVer as a set of commitments we are making to the
+users and developers of CC open source software. We may not achieve perfection
+in fulfilling those commitments, but they outline expectations and we hope
+you’ll open an issue if we make a mistake.&lt;/p&gt;
+&lt;h3 id="cc-semver-specifics"&gt;CC SemVer Specifics&lt;/h3&gt;&lt;p&gt;We will be using &lt;a href="https://semver.org/"&gt;SemVer&lt;/a&gt; (semantic versioning) going forward. To add
+additional clarity, we will avoid mixing functionality changes and bug fixes in
+releases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;MAJOR&lt;/code&gt; version when you make incompatible API changes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MINOR&lt;/code&gt; version when you add functionality in a backwards compatible manner&lt;ul&gt;
+&lt;li&gt;Releases that increment the &lt;code&gt;MINOR&lt;/code&gt; version &lt;strong&gt;must not&lt;/strong&gt; include bug
+fixes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PATCH&lt;/code&gt; version when you make backwards compatible bug fixes&lt;ul&gt;
+&lt;li&gt;Releases that increment the &lt;code&gt;PATCH&lt;/code&gt; version &lt;strong&gt;must not&lt;/strong&gt; include
+functionality additions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When a bug fix &lt;em&gt;technically&lt;/em&gt; changes functionality, we will release a bug fix
+(incrementing only the &lt;code&gt;PATCH&lt;/code&gt; version) as the change preserves the &lt;em&gt;intended
+functionality&lt;/em&gt;.&lt;/p&gt;
+</content></entry><entry><title>Building the CC Global Components Library</title><link href="http://opensource.creativecommons.org/blog/entries/building-the-cc-global-components-library/" rel="alternate"></link><updated>2022-03-17T00:00:00Z</updated><author><name>MuluhGodson</name></author><id>urn:uuid:1140a314-fe2d-30a3-aeb4-19a4ba942e21</id><content type="html">&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;&lt;p&gt;During the course of my Outreachy internship with the Creative Commons, I got to work on some cool projects, one of which is the CC Global Components
 library supervised by my mentor &lt;a href="/blog/authors/brylie/"&gt;Brylie Christopher Oxley&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these 
 websites.
@@ -2974,14 +3035,4 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;li&gt;Know when to ask for help from the community (I am still working on this).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;I know this was not an article full of resources and tips to get into Outreachy or GSoC but I just wanted to communicate that students should see that opensource is a broader concept. I wanted to share a personal take and help the beginners with my own experience. Thanks for reading!&lt;/p&gt;
-</content></entry><entry><title>CC Search, Proposal Drafting and Community Bonding</title><link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-and-internationalization/" rel="alternate"></link><updated>2020-05-22T00:00:00Z</updated><author><name>AyanChoudhary</name></author><id>urn:uuid:e9ce22b5-b66a-37f1-a59b-aa5419b7d5c5</id><content type="html">&lt;h3 id="proposal-drafting"&gt;Proposal Drafting&lt;/h3&gt;&lt;p&gt;The majority of my time in March was spent on drafting the proposal for my project &lt;strong&gt;Improve CC Search Accessibility&lt;/strong&gt;.
-While drafting my proposal I had two broad topic that I had to focus on: Accessibility and Internationalization.&lt;/p&gt;
-&lt;p&gt;So the first thing which I did was go through the various resources available with me such as w3 guidelines for accessibility, dequeuniversity accessibility insights and MDN notes on accessibility.
-After I made myself acquainted myself wih all of these, the next challenge was to sort out which of the metrics were relevant and important enough to be detailed in the proposal and also some of the others metrics which made notable appearances.
-Finally by including all of these I had the accessibility part of my proposal complete. Next, I had to work out the part for internationalization. Since it was already decided upon that we will be using vue-i18n, I did some research as to how to we can leverage it to gain the best possible result.&lt;/p&gt;
-&lt;p&gt;One of the important parts of internationalization happens to be deciding upon the JSON structure which was a highlighted section in my proposal.
-The other notable sections included strategies for modification of templates while translating and also how the translations would be carried out without hindering any further development of the platform.&lt;/p&gt;
-&lt;h3 id="community-bonding"&gt;Community Bonding&lt;/h3&gt;&lt;p&gt;Community Bonding involved getting to the mentors and the people whom I will be working with during this internship. Also we decided upon running the audit tests for the cc-search website during this time as it would help identify the key issues we would be facing and also would provide a suitable foundation to start working upon.
-The audits were done using Lighthouse, Accessibility Insights and pa11y and they provided useful insights on which parts of the website we should be focusing on such as the contrast issues and the aria-label fixes.&lt;/p&gt;
-&lt;p&gt;Coming up next will be the progress on the first 2 weeks of the project.&lt;/p&gt;
 </content></entry></feed>
