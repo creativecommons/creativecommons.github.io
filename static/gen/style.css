@@ -431,8 +431,7 @@ fieldset[disabled] .file-name, fieldset[disabled] .select select, .select fields
 }
 
 .control.is-loading::after, .select.is-loading::after, .button.is-loading::after {
-  -webkit-animation: spinAround 500ms infinite linear;
-          animation: spinAround 500ms infinite linear;
+  animation: spinAround 500ms infinite linear;
   border: 2px solid rgb(245, 245, 245);
   border-radius: 9999px;
   border-right-color: transparent;
@@ -3702,7 +3701,7 @@ table th {
     font-size: 0.6rem;
   }
   .button.is-responsive,
-.button.is-responsive.is-normal {
+  .button.is-responsive.is-normal {
     font-size: 0.7rem;
   }
   .button.is-responsive.is-medium {
@@ -3717,7 +3716,7 @@ table th {
     font-size: 0.7rem;
   }
   .button.is-responsive,
-.button.is-responsive.is-normal {
+  .button.is-responsive.is-normal {
     font-size: 0.8rem;
   }
   .button.is-responsive.is-medium {
@@ -6722,7 +6721,6 @@ table th {
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
-  min-height: -webkit-min-content;
   min-height: -moz-min-content;
   min-height: min-content;
 }
@@ -8029,7 +8027,7 @@ nav.breadcrumb > ul li:hover {
     flex-wrap: wrap;
   }
   .pagination-previous,
-.pagination-next {
+  .pagination-next {
     flex-grow: 1;
     flex-shrink: 1;
   }
@@ -8046,9 +8044,9 @@ nav.breadcrumb > ul li:hover {
     order: 1;
   }
   .pagination-previous,
-.pagination-next,
-.pagination-link,
-.pagination-ellipsis {
+  .pagination-next,
+  .pagination-link,
+  .pagination-ellipsis {
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -8173,7 +8171,7 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 769px), print {
   .level-left .level-item:not(:last-child),
-.level-right .level-item:not(:last-child) {
+  .level-right .level-item:not(:last-child) {
     margin-right: 0.75rem;
   }
 }
@@ -8326,7 +8324,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-white .navbar-brand .navbar-link {
   color: rgb(0, 0, 0);
 }
-.navbar.is-white .navbar-brand > a.navbar-item:focus, .navbar.is-white .navbar-brand > a.navbar-item:hover, .navbar.is-white .navbar-brand > a.navbar-item.is-active, .navbar.is-white .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-white .navbar-brand > a.navbar-item.number, .navbar.is-white .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-white .navbar-brand > a.navbar-item:focus, .navbar.is-white .navbar-brand > a.navbar-item:hover, .navbar.is-white .navbar-brand > a.navbar-item.is-active, .navbar.is-white .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-white .navbar-brand > a.navbar-item.number,
 .navbar.is-white .navbar-brand .navbar-link:focus,
 .navbar.is-white .navbar-brand .navbar-link:hover,
 .navbar.is-white .navbar-brand .navbar-link.is-active,
@@ -8343,40 +8341,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-white .navbar-start > .navbar-item,
-.navbar.is-white .navbar-start .navbar-link,
-.navbar.is-white .navbar-end > .navbar-item,
-.navbar.is-white .navbar-end .navbar-link {
+  .navbar.is-white .navbar-start .navbar-link,
+  .navbar.is-white .navbar-end > .navbar-item,
+  .navbar.is-white .navbar-end .navbar-link {
     color: rgb(0, 0, 0);
   }
-  .navbar.is-white .navbar-start > a.navbar-item:focus, .navbar.is-white .navbar-start > a.navbar-item:hover, .navbar.is-white .navbar-start > a.navbar-item.is-active, .navbar.is-white .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-white .navbar-start > a.navbar-item.number, .navbar.is-white .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-white .navbar-start .navbar-link:focus,
-.navbar.is-white .navbar-start .navbar-link:hover,
-.navbar.is-white .navbar-start .navbar-link.is-active,
-.navbar.is-white .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-white .navbar-start .navbar-link.number,
-.navbar.is-white .navbar-end > a.navbar-item:focus,
-.navbar.is-white .navbar-end > a.navbar-item:hover,
-.navbar.is-white .navbar-end > a.navbar-item.is-active,
-.navbar.is-white .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-white .navbar-end > a.navbar-item.number,
-.navbar.is-white .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-white .navbar-end .navbar-link:focus,
-.navbar.is-white .navbar-end .navbar-link:hover,
-.navbar.is-white .navbar-end .navbar-link.is-active,
-.navbar.is-white .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-white .navbar-end .navbar-link.number {
+  .navbar.is-white .navbar-start > a.navbar-item:focus, .navbar.is-white .navbar-start > a.navbar-item:hover, .navbar.is-white .navbar-start > a.navbar-item.is-active, .navbar.is-white .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-white .navbar-start > a.navbar-item.number,
+  .navbar.is-white .navbar-start .navbar-link:focus,
+  .navbar.is-white .navbar-start .navbar-link:hover,
+  .navbar.is-white .navbar-start .navbar-link.is-active,
+  .navbar.is-white .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-white .navbar-start .navbar-link.number,
+  .navbar.is-white .navbar-end > a.navbar-item:focus,
+  .navbar.is-white .navbar-end > a.navbar-item:hover,
+  .navbar.is-white .navbar-end > a.navbar-item.is-active,
+  .navbar.is-white .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-white .navbar-end > a.navbar-item.number,
+  .navbar.is-white .navbar-end .navbar-link:focus,
+  .navbar.is-white .navbar-end .navbar-link:hover,
+  .navbar.is-white .navbar-end .navbar-link.is-active,
+  .navbar.is-white .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-white .navbar-end .navbar-link.number {
     background-color: #f2f2f2;
     color: rgb(0, 0, 0);
   }
   .navbar.is-white .navbar-start .navbar-link::after,
-.navbar.is-white .navbar-end .navbar-link::after {
+  .navbar.is-white .navbar-end .navbar-link::after {
     border-color: rgb(0, 0, 0);
   }
   .navbar.is-white .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-white .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-white .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-white .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-white .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-white .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-white .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-white .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-white .navbar-item.has-dropdown.number .navbar-link {
     background-color: #f2f2f2;
     color: rgb(0, 0, 0);
   }
@@ -8393,7 +8390,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-black .navbar-brand .navbar-link {
   color: rgb(255, 255, 255);
 }
-.navbar.is-black .navbar-brand > a.navbar-item:focus, .navbar.is-black .navbar-brand > a.navbar-item:hover, .navbar.is-black .navbar-brand > a.navbar-item.is-active, .navbar.is-black .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-black .navbar-brand > a.navbar-item.number, .navbar.is-black .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-black .navbar-brand > a.navbar-item:focus, .navbar.is-black .navbar-brand > a.navbar-item:hover, .navbar.is-black .navbar-brand > a.navbar-item.is-active, .navbar.is-black .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-black .navbar-brand > a.navbar-item.number,
 .navbar.is-black .navbar-brand .navbar-link:focus,
 .navbar.is-black .navbar-brand .navbar-link:hover,
 .navbar.is-black .navbar-brand .navbar-link.is-active,
@@ -8410,40 +8407,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-black .navbar-start > .navbar-item,
-.navbar.is-black .navbar-start .navbar-link,
-.navbar.is-black .navbar-end > .navbar-item,
-.navbar.is-black .navbar-end .navbar-link {
+  .navbar.is-black .navbar-start .navbar-link,
+  .navbar.is-black .navbar-end > .navbar-item,
+  .navbar.is-black .navbar-end .navbar-link {
     color: rgb(255, 255, 255);
   }
-  .navbar.is-black .navbar-start > a.navbar-item:focus, .navbar.is-black .navbar-start > a.navbar-item:hover, .navbar.is-black .navbar-start > a.navbar-item.is-active, .navbar.is-black .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-black .navbar-start > a.navbar-item.number, .navbar.is-black .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-black .navbar-start .navbar-link:focus,
-.navbar.is-black .navbar-start .navbar-link:hover,
-.navbar.is-black .navbar-start .navbar-link.is-active,
-.navbar.is-black .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-black .navbar-start .navbar-link.number,
-.navbar.is-black .navbar-end > a.navbar-item:focus,
-.navbar.is-black .navbar-end > a.navbar-item:hover,
-.navbar.is-black .navbar-end > a.navbar-item.is-active,
-.navbar.is-black .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-black .navbar-end > a.navbar-item.number,
-.navbar.is-black .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-black .navbar-end .navbar-link:focus,
-.navbar.is-black .navbar-end .navbar-link:hover,
-.navbar.is-black .navbar-end .navbar-link.is-active,
-.navbar.is-black .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-black .navbar-end .navbar-link.number {
+  .navbar.is-black .navbar-start > a.navbar-item:focus, .navbar.is-black .navbar-start > a.navbar-item:hover, .navbar.is-black .navbar-start > a.navbar-item.is-active, .navbar.is-black .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-black .navbar-start > a.navbar-item.number,
+  .navbar.is-black .navbar-start .navbar-link:focus,
+  .navbar.is-black .navbar-start .navbar-link:hover,
+  .navbar.is-black .navbar-start .navbar-link.is-active,
+  .navbar.is-black .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-black .navbar-start .navbar-link.number,
+  .navbar.is-black .navbar-end > a.navbar-item:focus,
+  .navbar.is-black .navbar-end > a.navbar-item:hover,
+  .navbar.is-black .navbar-end > a.navbar-item.is-active,
+  .navbar.is-black .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-black .navbar-end > a.navbar-item.number,
+  .navbar.is-black .navbar-end .navbar-link:focus,
+  .navbar.is-black .navbar-end .navbar-link:hover,
+  .navbar.is-black .navbar-end .navbar-link.is-active,
+  .navbar.is-black .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-black .navbar-end .navbar-link.number {
     background-color: black;
     color: rgb(255, 255, 255);
   }
   .navbar.is-black .navbar-start .navbar-link::after,
-.navbar.is-black .navbar-end .navbar-link::after {
+  .navbar.is-black .navbar-end .navbar-link::after {
     border-color: rgb(255, 255, 255);
   }
   .navbar.is-black .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-black .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-black .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-black .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-black .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-black .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-black .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-black .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-black .navbar-item.has-dropdown.number .navbar-link {
     background-color: black;
     color: rgb(255, 255, 255);
   }
@@ -8460,7 +8456,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-light .navbar-brand .navbar-link {
   color: rgba(0, 0, 0, 0.7);
 }
-.navbar.is-light .navbar-brand > a.navbar-item:focus, .navbar.is-light .navbar-brand > a.navbar-item:hover, .navbar.is-light .navbar-brand > a.navbar-item.is-active, .navbar.is-light .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-light .navbar-brand > a.navbar-item.number, .navbar.is-light .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-light .navbar-brand > a.navbar-item:focus, .navbar.is-light .navbar-brand > a.navbar-item:hover, .navbar.is-light .navbar-brand > a.navbar-item.is-active, .navbar.is-light .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-light .navbar-brand > a.navbar-item.number,
 .navbar.is-light .navbar-brand .navbar-link:focus,
 .navbar.is-light .navbar-brand .navbar-link:hover,
 .navbar.is-light .navbar-brand .navbar-link.is-active,
@@ -8477,40 +8473,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-light .navbar-start > .navbar-item,
-.navbar.is-light .navbar-start .navbar-link,
-.navbar.is-light .navbar-end > .navbar-item,
-.navbar.is-light .navbar-end .navbar-link {
+  .navbar.is-light .navbar-start .navbar-link,
+  .navbar.is-light .navbar-end > .navbar-item,
+  .navbar.is-light .navbar-end .navbar-link {
     color: rgba(0, 0, 0, 0.7);
   }
-  .navbar.is-light .navbar-start > a.navbar-item:focus, .navbar.is-light .navbar-start > a.navbar-item:hover, .navbar.is-light .navbar-start > a.navbar-item.is-active, .navbar.is-light .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-light .navbar-start > a.navbar-item.number, .navbar.is-light .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-light .navbar-start .navbar-link:focus,
-.navbar.is-light .navbar-start .navbar-link:hover,
-.navbar.is-light .navbar-start .navbar-link.is-active,
-.navbar.is-light .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-light .navbar-start .navbar-link.number,
-.navbar.is-light .navbar-end > a.navbar-item:focus,
-.navbar.is-light .navbar-end > a.navbar-item:hover,
-.navbar.is-light .navbar-end > a.navbar-item.is-active,
-.navbar.is-light .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-light .navbar-end > a.navbar-item.number,
-.navbar.is-light .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-light .navbar-end .navbar-link:focus,
-.navbar.is-light .navbar-end .navbar-link:hover,
-.navbar.is-light .navbar-end .navbar-link.is-active,
-.navbar.is-light .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-light .navbar-end .navbar-link.number {
+  .navbar.is-light .navbar-start > a.navbar-item:focus, .navbar.is-light .navbar-start > a.navbar-item:hover, .navbar.is-light .navbar-start > a.navbar-item.is-active, .navbar.is-light .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-light .navbar-start > a.navbar-item.number,
+  .navbar.is-light .navbar-start .navbar-link:focus,
+  .navbar.is-light .navbar-start .navbar-link:hover,
+  .navbar.is-light .navbar-start .navbar-link.is-active,
+  .navbar.is-light .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-light .navbar-start .navbar-link.number,
+  .navbar.is-light .navbar-end > a.navbar-item:focus,
+  .navbar.is-light .navbar-end > a.navbar-item:hover,
+  .navbar.is-light .navbar-end > a.navbar-item.is-active,
+  .navbar.is-light .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-light .navbar-end > a.navbar-item.number,
+  .navbar.is-light .navbar-end .navbar-link:focus,
+  .navbar.is-light .navbar-end .navbar-link:hover,
+  .navbar.is-light .navbar-end .navbar-link.is-active,
+  .navbar.is-light .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-light .navbar-end .navbar-link.number {
     background-color: #e8e8e8;
     color: rgba(0, 0, 0, 0.7);
   }
   .navbar.is-light .navbar-start .navbar-link::after,
-.navbar.is-light .navbar-end .navbar-link::after {
+  .navbar.is-light .navbar-end .navbar-link::after {
     border-color: rgba(0, 0, 0, 0.7);
   }
   .navbar.is-light .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-light .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-light .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-light .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-light .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-light .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-light .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-light .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-light .navbar-item.has-dropdown.number .navbar-link {
     background-color: #e8e8e8;
     color: rgba(0, 0, 0, 0.7);
   }
@@ -8527,7 +8522,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-dark .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-dark .navbar-brand > a.navbar-item:focus, .navbar.is-dark .navbar-brand > a.navbar-item:hover, .navbar.is-dark .navbar-brand > a.navbar-item.is-active, .navbar.is-dark .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-dark .navbar-brand > a.navbar-item.number, .navbar.is-dark .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-dark .navbar-brand > a.navbar-item:focus, .navbar.is-dark .navbar-brand > a.navbar-item:hover, .navbar.is-dark .navbar-brand > a.navbar-item.is-active, .navbar.is-dark .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-dark .navbar-brand > a.navbar-item.number,
 .navbar.is-dark .navbar-brand .navbar-link:focus,
 .navbar.is-dark .navbar-brand .navbar-link:hover,
 .navbar.is-dark .navbar-brand .navbar-link.is-active,
@@ -8544,40 +8539,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-dark .navbar-start > .navbar-item,
-.navbar.is-dark .navbar-start .navbar-link,
-.navbar.is-dark .navbar-end > .navbar-item,
-.navbar.is-dark .navbar-end .navbar-link {
+  .navbar.is-dark .navbar-start .navbar-link,
+  .navbar.is-dark .navbar-end > .navbar-item,
+  .navbar.is-dark .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-dark .navbar-start > a.navbar-item:focus, .navbar.is-dark .navbar-start > a.navbar-item:hover, .navbar.is-dark .navbar-start > a.navbar-item.is-active, .navbar.is-dark .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-dark .navbar-start > a.navbar-item.number, .navbar.is-dark .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-dark .navbar-start .navbar-link:focus,
-.navbar.is-dark .navbar-start .navbar-link:hover,
-.navbar.is-dark .navbar-start .navbar-link.is-active,
-.navbar.is-dark .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-dark .navbar-start .navbar-link.number,
-.navbar.is-dark .navbar-end > a.navbar-item:focus,
-.navbar.is-dark .navbar-end > a.navbar-item:hover,
-.navbar.is-dark .navbar-end > a.navbar-item.is-active,
-.navbar.is-dark .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-dark .navbar-end > a.navbar-item.number,
-.navbar.is-dark .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-dark .navbar-end .navbar-link:focus,
-.navbar.is-dark .navbar-end .navbar-link:hover,
-.navbar.is-dark .navbar-end .navbar-link.is-active,
-.navbar.is-dark .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-dark .navbar-end .navbar-link.number {
+  .navbar.is-dark .navbar-start > a.navbar-item:focus, .navbar.is-dark .navbar-start > a.navbar-item:hover, .navbar.is-dark .navbar-start > a.navbar-item.is-active, .navbar.is-dark .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-dark .navbar-start > a.navbar-item.number,
+  .navbar.is-dark .navbar-start .navbar-link:focus,
+  .navbar.is-dark .navbar-start .navbar-link:hover,
+  .navbar.is-dark .navbar-start .navbar-link.is-active,
+  .navbar.is-dark .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-dark .navbar-start .navbar-link.number,
+  .navbar.is-dark .navbar-end > a.navbar-item:focus,
+  .navbar.is-dark .navbar-end > a.navbar-item:hover,
+  .navbar.is-dark .navbar-end > a.navbar-item.is-active,
+  .navbar.is-dark .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-dark .navbar-end > a.navbar-item.number,
+  .navbar.is-dark .navbar-end .navbar-link:focus,
+  .navbar.is-dark .navbar-end .navbar-link:hover,
+  .navbar.is-dark .navbar-end .navbar-link.is-active,
+  .navbar.is-dark .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-dark .navbar-end .navbar-link.number {
     background-color: #292929;
     color: #fff;
   }
   .navbar.is-dark .navbar-start .navbar-link::after,
-.navbar.is-dark .navbar-end .navbar-link::after {
+  .navbar.is-dark .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-dark .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-dark .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-dark .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-dark .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-dark .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-dark .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-dark .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-dark .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-dark .navbar-item.has-dropdown.number .navbar-link {
     background-color: #292929;
     color: #fff;
   }
@@ -8594,7 +8588,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-primary .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-primary .navbar-brand > a.navbar-item:focus, .navbar.is-primary .navbar-brand > a.navbar-item:hover, .navbar.is-primary .navbar-brand > a.navbar-item.is-active, .navbar.is-primary .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-primary .navbar-brand > a.navbar-item.number, .navbar.is-primary .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-primary .navbar-brand > a.navbar-item:focus, .navbar.is-primary .navbar-brand > a.navbar-item:hover, .navbar.is-primary .navbar-brand > a.navbar-item.is-active, .navbar.is-primary .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-primary .navbar-brand > a.navbar-item.number,
 .navbar.is-primary .navbar-brand .navbar-link:focus,
 .navbar.is-primary .navbar-brand .navbar-link:hover,
 .navbar.is-primary .navbar-brand .navbar-link.is-active,
@@ -8611,40 +8605,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-primary .navbar-start > .navbar-item,
-.navbar.is-primary .navbar-start .navbar-link,
-.navbar.is-primary .navbar-end > .navbar-item,
-.navbar.is-primary .navbar-end .navbar-link {
+  .navbar.is-primary .navbar-start .navbar-link,
+  .navbar.is-primary .navbar-end > .navbar-item,
+  .navbar.is-primary .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-primary .navbar-start > a.navbar-item:focus, .navbar.is-primary .navbar-start > a.navbar-item:hover, .navbar.is-primary .navbar-start > a.navbar-item.is-active, .navbar.is-primary .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-primary .navbar-start > a.navbar-item.number, .navbar.is-primary .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-primary .navbar-start .navbar-link:focus,
-.navbar.is-primary .navbar-start .navbar-link:hover,
-.navbar.is-primary .navbar-start .navbar-link.is-active,
-.navbar.is-primary .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-primary .navbar-start .navbar-link.number,
-.navbar.is-primary .navbar-end > a.navbar-item:focus,
-.navbar.is-primary .navbar-end > a.navbar-item:hover,
-.navbar.is-primary .navbar-end > a.navbar-item.is-active,
-.navbar.is-primary .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-primary .navbar-end > a.navbar-item.number,
-.navbar.is-primary .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-primary .navbar-end .navbar-link:focus,
-.navbar.is-primary .navbar-end .navbar-link:hover,
-.navbar.is-primary .navbar-end .navbar-link.is-active,
-.navbar.is-primary .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-primary .navbar-end .navbar-link.number {
+  .navbar.is-primary .navbar-start > a.navbar-item:focus, .navbar.is-primary .navbar-start > a.navbar-item:hover, .navbar.is-primary .navbar-start > a.navbar-item.is-active, .navbar.is-primary .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-primary .navbar-start > a.navbar-item.number,
+  .navbar.is-primary .navbar-start .navbar-link:focus,
+  .navbar.is-primary .navbar-start .navbar-link:hover,
+  .navbar.is-primary .navbar-start .navbar-link.is-active,
+  .navbar.is-primary .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-primary .navbar-start .navbar-link.number,
+  .navbar.is-primary .navbar-end > a.navbar-item:focus,
+  .navbar.is-primary .navbar-end > a.navbar-item:hover,
+  .navbar.is-primary .navbar-end > a.navbar-item.is-active,
+  .navbar.is-primary .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-primary .navbar-end > a.navbar-item.number,
+  .navbar.is-primary .navbar-end .navbar-link:focus,
+  .navbar.is-primary .navbar-end .navbar-link:hover,
+  .navbar.is-primary .navbar-end .navbar-link.is-active,
+  .navbar.is-primary .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-primary .navbar-end .navbar-link.number {
     background-color: #b83d00;
     color: #fff;
   }
   .navbar.is-primary .navbar-start .navbar-link::after,
-.navbar.is-primary .navbar-end .navbar-link::after {
+  .navbar.is-primary .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-primary .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-primary .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-primary .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-primary .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-primary .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-primary .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-primary .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-primary .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-primary .navbar-item.has-dropdown.number .navbar-link {
     background-color: #b83d00;
     color: #fff;
   }
@@ -8661,7 +8654,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-link .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-link .navbar-brand > a.navbar-item:focus, .navbar.is-link .navbar-brand > a.navbar-item:hover, .navbar.is-link .navbar-brand > a.navbar-item.is-active, .navbar.is-link .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-link .navbar-brand > a.navbar-item.number, .navbar.is-link .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-link .navbar-brand > a.navbar-item:focus, .navbar.is-link .navbar-brand > a.navbar-item:hover, .navbar.is-link .navbar-brand > a.navbar-item.is-active, .navbar.is-link .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-link .navbar-brand > a.navbar-item.number,
 .navbar.is-link .navbar-brand .navbar-link:focus,
 .navbar.is-link .navbar-brand .navbar-link:hover,
 .navbar.is-link .navbar-brand .navbar-link.is-active,
@@ -8678,40 +8671,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-link .navbar-start > .navbar-item,
-.navbar.is-link .navbar-start .navbar-link,
-.navbar.is-link .navbar-end > .navbar-item,
-.navbar.is-link .navbar-end .navbar-link {
+  .navbar.is-link .navbar-start .navbar-link,
+  .navbar.is-link .navbar-end > .navbar-item,
+  .navbar.is-link .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-link .navbar-start > a.navbar-item:focus, .navbar.is-link .navbar-start > a.navbar-item:hover, .navbar.is-link .navbar-start > a.navbar-item.is-active, .navbar.is-link .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-link .navbar-start > a.navbar-item.number, .navbar.is-link .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-link .navbar-start .navbar-link:focus,
-.navbar.is-link .navbar-start .navbar-link:hover,
-.navbar.is-link .navbar-start .navbar-link.is-active,
-.navbar.is-link .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-link .navbar-start .navbar-link.number,
-.navbar.is-link .navbar-end > a.navbar-item:focus,
-.navbar.is-link .navbar-end > a.navbar-item:hover,
-.navbar.is-link .navbar-end > a.navbar-item.is-active,
-.navbar.is-link .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-link .navbar-end > a.navbar-item.number,
-.navbar.is-link .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-link .navbar-end .navbar-link:focus,
-.navbar.is-link .navbar-end .navbar-link:hover,
-.navbar.is-link .navbar-end .navbar-link.is-active,
-.navbar.is-link .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-link .navbar-end .navbar-link.number {
+  .navbar.is-link .navbar-start > a.navbar-item:focus, .navbar.is-link .navbar-start > a.navbar-item:hover, .navbar.is-link .navbar-start > a.navbar-item.is-active, .navbar.is-link .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-link .navbar-start > a.navbar-item.number,
+  .navbar.is-link .navbar-start .navbar-link:focus,
+  .navbar.is-link .navbar-start .navbar-link:hover,
+  .navbar.is-link .navbar-start .navbar-link.is-active,
+  .navbar.is-link .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-link .navbar-start .navbar-link.number,
+  .navbar.is-link .navbar-end > a.navbar-item:focus,
+  .navbar.is-link .navbar-end > a.navbar-item:hover,
+  .navbar.is-link .navbar-end > a.navbar-item.is-active,
+  .navbar.is-link .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-link .navbar-end > a.navbar-item.number,
+  .navbar.is-link .navbar-end .navbar-link:focus,
+  .navbar.is-link .navbar-end .navbar-link:hover,
+  .navbar.is-link .navbar-end .navbar-link.is-active,
+  .navbar.is-link .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-link .navbar-end .navbar-link.number {
     background-color: #b83d00;
     color: #fff;
   }
   .navbar.is-link .navbar-start .navbar-link::after,
-.navbar.is-link .navbar-end .navbar-link::after {
+  .navbar.is-link .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-link .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-link .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-link .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-link .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-link .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-link .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-link .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-link .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-link .navbar-item.has-dropdown.number .navbar-link {
     background-color: #b83d00;
     color: #fff;
   }
@@ -8728,7 +8720,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-info .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-info .navbar-brand > a.navbar-item:focus, .navbar.is-info .navbar-brand > a.navbar-item:hover, .navbar.is-info .navbar-brand > a.navbar-item.is-active, .navbar.is-info .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-info .navbar-brand > a.navbar-item.number, .navbar.is-info .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-info .navbar-brand > a.navbar-item:focus, .navbar.is-info .navbar-brand > a.navbar-item:hover, .navbar.is-info .navbar-brand > a.navbar-item.is-active, .navbar.is-info .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-info .navbar-brand > a.navbar-item.number,
 .navbar.is-info .navbar-brand .navbar-link:focus,
 .navbar.is-info .navbar-brand .navbar-link:hover,
 .navbar.is-info .navbar-brand .navbar-link.is-active,
@@ -8745,40 +8737,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-info .navbar-start > .navbar-item,
-.navbar.is-info .navbar-start .navbar-link,
-.navbar.is-info .navbar-end > .navbar-item,
-.navbar.is-info .navbar-end .navbar-link {
+  .navbar.is-info .navbar-start .navbar-link,
+  .navbar.is-info .navbar-end > .navbar-item,
+  .navbar.is-info .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-info .navbar-start > a.navbar-item:focus, .navbar.is-info .navbar-start > a.navbar-item:hover, .navbar.is-info .navbar-start > a.navbar-item.is-active, .navbar.is-info .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-info .navbar-start > a.navbar-item.number, .navbar.is-info .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-info .navbar-start .navbar-link:focus,
-.navbar.is-info .navbar-start .navbar-link:hover,
-.navbar.is-info .navbar-start .navbar-link.is-active,
-.navbar.is-info .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-info .navbar-start .navbar-link.number,
-.navbar.is-info .navbar-end > a.navbar-item:focus,
-.navbar.is-info .navbar-end > a.navbar-item:hover,
-.navbar.is-info .navbar-end > a.navbar-item.is-active,
-.navbar.is-info .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-info .navbar-end > a.navbar-item.number,
-.navbar.is-info .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-info .navbar-end .navbar-link:focus,
-.navbar.is-info .navbar-end .navbar-link:hover,
-.navbar.is-info .navbar-end .navbar-link.is-active,
-.navbar.is-info .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-info .navbar-end .navbar-link.number {
+  .navbar.is-info .navbar-start > a.navbar-item:focus, .navbar.is-info .navbar-start > a.navbar-item:hover, .navbar.is-info .navbar-start > a.navbar-item.is-active, .navbar.is-info .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-info .navbar-start > a.navbar-item.number,
+  .navbar.is-info .navbar-start .navbar-link:focus,
+  .navbar.is-info .navbar-start .navbar-link:hover,
+  .navbar.is-info .navbar-start .navbar-link.is-active,
+  .navbar.is-info .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-info .navbar-start .navbar-link.number,
+  .navbar.is-info .navbar-end > a.navbar-item:focus,
+  .navbar.is-info .navbar-end > a.navbar-item:hover,
+  .navbar.is-info .navbar-end > a.navbar-item.is-active,
+  .navbar.is-info .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-info .navbar-end > a.navbar-item.number,
+  .navbar.is-info .navbar-end .navbar-link:focus,
+  .navbar.is-info .navbar-end .navbar-link:hover,
+  .navbar.is-info .navbar-end .navbar-link.is-active,
+  .navbar.is-info .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-info .navbar-end .navbar-link.number {
     background-color: #1445a5;
     color: #fff;
   }
   .navbar.is-info .navbar-start .navbar-link::after,
-.navbar.is-info .navbar-end .navbar-link::after {
+  .navbar.is-info .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-info .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-info .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-info .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-info .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-info .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-info .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-info .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-info .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-info .navbar-item.has-dropdown.number .navbar-link {
     background-color: #1445a5;
     color: #fff;
   }
@@ -8795,7 +8786,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-success .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-success .navbar-brand > a.navbar-item:focus, .navbar.is-success .navbar-brand > a.navbar-item:hover, .navbar.is-success .navbar-brand > a.navbar-item.is-active, .navbar.is-success .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-success .navbar-brand > a.navbar-item.number, .navbar.is-success .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-success .navbar-brand > a.navbar-item:focus, .navbar.is-success .navbar-brand > a.navbar-item:hover, .navbar.is-success .navbar-brand > a.navbar-item.is-active, .navbar.is-success .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-success .navbar-brand > a.navbar-item.number,
 .navbar.is-success .navbar-brand .navbar-link:focus,
 .navbar.is-success .navbar-brand .navbar-link:hover,
 .navbar.is-success .navbar-brand .navbar-link.is-active,
@@ -8812,40 +8803,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-success .navbar-start > .navbar-item,
-.navbar.is-success .navbar-start .navbar-link,
-.navbar.is-success .navbar-end > .navbar-item,
-.navbar.is-success .navbar-end .navbar-link {
+  .navbar.is-success .navbar-start .navbar-link,
+  .navbar.is-success .navbar-end > .navbar-item,
+  .navbar.is-success .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-success .navbar-start > a.navbar-item:focus, .navbar.is-success .navbar-start > a.navbar-item:hover, .navbar.is-success .navbar-start > a.navbar-item.is-active, .navbar.is-success .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-success .navbar-start > a.navbar-item.number, .navbar.is-success .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-success .navbar-start .navbar-link:focus,
-.navbar.is-success .navbar-start .navbar-link:hover,
-.navbar.is-success .navbar-start .navbar-link.is-active,
-.navbar.is-success .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-success .navbar-start .navbar-link.number,
-.navbar.is-success .navbar-end > a.navbar-item:focus,
-.navbar.is-success .navbar-end > a.navbar-item:hover,
-.navbar.is-success .navbar-end > a.navbar-item.is-active,
-.navbar.is-success .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-success .navbar-end > a.navbar-item.number,
-.navbar.is-success .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-success .navbar-end .navbar-link:focus,
-.navbar.is-success .navbar-end .navbar-link:hover,
-.navbar.is-success .navbar-end .navbar-link.is-active,
-.navbar.is-success .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-success .navbar-end .navbar-link.number {
+  .navbar.is-success .navbar-start > a.navbar-item:focus, .navbar.is-success .navbar-start > a.navbar-item:hover, .navbar.is-success .navbar-start > a.navbar-item.is-active, .navbar.is-success .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-success .navbar-start > a.navbar-item.number,
+  .navbar.is-success .navbar-start .navbar-link:focus,
+  .navbar.is-success .navbar-start .navbar-link:hover,
+  .navbar.is-success .navbar-start .navbar-link.is-active,
+  .navbar.is-success .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-success .navbar-start .navbar-link.number,
+  .navbar.is-success .navbar-end > a.navbar-item:focus,
+  .navbar.is-success .navbar-end > a.navbar-item:hover,
+  .navbar.is-success .navbar-end > a.navbar-item.is-active,
+  .navbar.is-success .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-success .navbar-end > a.navbar-item.number,
+  .navbar.is-success .navbar-end .navbar-link:focus,
+  .navbar.is-success .navbar-end .navbar-link:hover,
+  .navbar.is-success .navbar-end .navbar-link.is-active,
+  .navbar.is-success .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-success .navbar-end .navbar-link.number {
     background-color: #006700;
     color: #fff;
   }
   .navbar.is-success .navbar-start .navbar-link::after,
-.navbar.is-success .navbar-end .navbar-link::after {
+  .navbar.is-success .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-success .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-success .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-success .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-success .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-success .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-success .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-success .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-success .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-success .navbar-item.has-dropdown.number .navbar-link {
     background-color: #006700;
     color: #fff;
   }
@@ -8862,7 +8852,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-warning .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-warning .navbar-brand > a.navbar-item:focus, .navbar.is-warning .navbar-brand > a.navbar-item:hover, .navbar.is-warning .navbar-brand > a.navbar-item.is-active, .navbar.is-warning .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-warning .navbar-brand > a.navbar-item.number, .navbar.is-warning .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-warning .navbar-brand > a.navbar-item:focus, .navbar.is-warning .navbar-brand > a.navbar-item:hover, .navbar.is-warning .navbar-brand > a.navbar-item.is-active, .navbar.is-warning .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-warning .navbar-brand > a.navbar-item.number,
 .navbar.is-warning .navbar-brand .navbar-link:focus,
 .navbar.is-warning .navbar-brand .navbar-link:hover,
 .navbar.is-warning .navbar-brand .navbar-link.is-active,
@@ -8879,40 +8869,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-warning .navbar-start > .navbar-item,
-.navbar.is-warning .navbar-start .navbar-link,
-.navbar.is-warning .navbar-end > .navbar-item,
-.navbar.is-warning .navbar-end .navbar-link {
+  .navbar.is-warning .navbar-start .navbar-link,
+  .navbar.is-warning .navbar-end > .navbar-item,
+  .navbar.is-warning .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-warning .navbar-start > a.navbar-item:focus, .navbar.is-warning .navbar-start > a.navbar-item:hover, .navbar.is-warning .navbar-start > a.navbar-item.is-active, .navbar.is-warning .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-warning .navbar-start > a.navbar-item.number, .navbar.is-warning .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-warning .navbar-start .navbar-link:focus,
-.navbar.is-warning .navbar-start .navbar-link:hover,
-.navbar.is-warning .navbar-start .navbar-link.is-active,
-.navbar.is-warning .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-warning .navbar-start .navbar-link.number,
-.navbar.is-warning .navbar-end > a.navbar-item:focus,
-.navbar.is-warning .navbar-end > a.navbar-item:hover,
-.navbar.is-warning .navbar-end > a.navbar-item.is-active,
-.navbar.is-warning .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-warning .navbar-end > a.navbar-item.number,
-.navbar.is-warning .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-warning .navbar-end .navbar-link:focus,
-.navbar.is-warning .navbar-end .navbar-link:hover,
-.navbar.is-warning .navbar-end .navbar-link.is-active,
-.navbar.is-warning .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-warning .navbar-end .navbar-link.number {
+  .navbar.is-warning .navbar-start > a.navbar-item:focus, .navbar.is-warning .navbar-start > a.navbar-item:hover, .navbar.is-warning .navbar-start > a.navbar-item.is-active, .navbar.is-warning .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-warning .navbar-start > a.navbar-item.number,
+  .navbar.is-warning .navbar-start .navbar-link:focus,
+  .navbar.is-warning .navbar-start .navbar-link:hover,
+  .navbar.is-warning .navbar-start .navbar-link.is-active,
+  .navbar.is-warning .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-warning .navbar-start .navbar-link.number,
+  .navbar.is-warning .navbar-end > a.navbar-item:focus,
+  .navbar.is-warning .navbar-end > a.navbar-item:hover,
+  .navbar.is-warning .navbar-end > a.navbar-item.is-active,
+  .navbar.is-warning .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-warning .navbar-end > a.navbar-item.number,
+  .navbar.is-warning .navbar-end .navbar-link:focus,
+  .navbar.is-warning .navbar-end .navbar-link:hover,
+  .navbar.is-warning .navbar-end .navbar-link.is-active,
+  .navbar.is-warning .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-warning .navbar-end .navbar-link.number {
     background-color: #eba00e;
     color: #fff;
   }
   .navbar.is-warning .navbar-start .navbar-link::after,
-.navbar.is-warning .navbar-end .navbar-link::after {
+  .navbar.is-warning .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-warning .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-warning .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-warning .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-warning .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-warning .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-warning .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-warning .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-warning .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-warning .navbar-item.has-dropdown.number .navbar-link {
     background-color: #eba00e;
     color: #fff;
   }
@@ -8929,7 +8918,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-danger .navbar-brand .navbar-link {
   color: #fff;
 }
-.navbar.is-danger .navbar-brand > a.navbar-item:focus, .navbar.is-danger .navbar-brand > a.navbar-item:hover, .navbar.is-danger .navbar-brand > a.navbar-item.is-active, .navbar.is-danger .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-danger .navbar-brand > a.navbar-item.number, .navbar.is-danger .table-of-progress .step :hover .navbar-brand > a.navbar-item.is-active,
+.navbar.is-danger .navbar-brand > a.navbar-item:focus, .navbar.is-danger .navbar-brand > a.navbar-item:hover, .navbar.is-danger .navbar-brand > a.navbar-item.is-active, .navbar.is-danger .table-of-progress .step :hover .navbar-brand > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-danger .navbar-brand > a.navbar-item.number,
 .navbar.is-danger .navbar-brand .navbar-link:focus,
 .navbar.is-danger .navbar-brand .navbar-link:hover,
 .navbar.is-danger .navbar-brand .navbar-link.is-active,
@@ -8946,40 +8935,39 @@ nav.breadcrumb > ul li:hover {
 }
 @media screen and (min-width: 1024px) {
   .navbar.is-danger .navbar-start > .navbar-item,
-.navbar.is-danger .navbar-start .navbar-link,
-.navbar.is-danger .navbar-end > .navbar-item,
-.navbar.is-danger .navbar-end .navbar-link {
+  .navbar.is-danger .navbar-start .navbar-link,
+  .navbar.is-danger .navbar-end > .navbar-item,
+  .navbar.is-danger .navbar-end .navbar-link {
     color: #fff;
   }
-  .navbar.is-danger .navbar-start > a.navbar-item:focus, .navbar.is-danger .navbar-start > a.navbar-item:hover, .navbar.is-danger .navbar-start > a.navbar-item.is-active, .navbar.is-danger .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-danger .navbar-start > a.navbar-item.number, .navbar.is-danger .table-of-progress .step :hover .navbar-start > a.navbar-item.is-active,
-.navbar.is-danger .navbar-start .navbar-link:focus,
-.navbar.is-danger .navbar-start .navbar-link:hover,
-.navbar.is-danger .navbar-start .navbar-link.is-active,
-.navbar.is-danger .navbar-start .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-danger .navbar-start .navbar-link.number,
-.navbar.is-danger .navbar-end > a.navbar-item:focus,
-.navbar.is-danger .navbar-end > a.navbar-item:hover,
-.navbar.is-danger .navbar-end > a.navbar-item.is-active,
-.navbar.is-danger .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
-.table-of-progress .step :hover .navbar.is-danger .navbar-end > a.navbar-item.number,
-.navbar.is-danger .table-of-progress .step :hover .navbar-end > a.navbar-item.is-active,
-.navbar.is-danger .navbar-end .navbar-link:focus,
-.navbar.is-danger .navbar-end .navbar-link:hover,
-.navbar.is-danger .navbar-end .navbar-link.is-active,
-.navbar.is-danger .navbar-end .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-danger .navbar-end .navbar-link.number {
+  .navbar.is-danger .navbar-start > a.navbar-item:focus, .navbar.is-danger .navbar-start > a.navbar-item:hover, .navbar.is-danger .navbar-start > a.navbar-item.is-active, .navbar.is-danger .table-of-progress .step :hover .navbar-start > a.navbar-item.number, .table-of-progress .step :hover .navbar.is-danger .navbar-start > a.navbar-item.number,
+  .navbar.is-danger .navbar-start .navbar-link:focus,
+  .navbar.is-danger .navbar-start .navbar-link:hover,
+  .navbar.is-danger .navbar-start .navbar-link.is-active,
+  .navbar.is-danger .navbar-start .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-danger .navbar-start .navbar-link.number,
+  .navbar.is-danger .navbar-end > a.navbar-item:focus,
+  .navbar.is-danger .navbar-end > a.navbar-item:hover,
+  .navbar.is-danger .navbar-end > a.navbar-item.is-active,
+  .navbar.is-danger .table-of-progress .step :hover .navbar-end > a.navbar-item.number,
+  .table-of-progress .step :hover .navbar.is-danger .navbar-end > a.navbar-item.number,
+  .navbar.is-danger .navbar-end .navbar-link:focus,
+  .navbar.is-danger .navbar-end .navbar-link:hover,
+  .navbar.is-danger .navbar-end .navbar-link.is-active,
+  .navbar.is-danger .navbar-end .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-danger .navbar-end .navbar-link.number {
     background-color: #b2341b;
     color: #fff;
   }
   .navbar.is-danger .navbar-start .navbar-link::after,
-.navbar.is-danger .navbar-end .navbar-link::after {
+  .navbar.is-danger .navbar-end .navbar-link::after {
     border-color: #fff;
   }
   .navbar.is-danger .navbar-item.has-dropdown:focus .navbar-link,
-.navbar.is-danger .navbar-item.has-dropdown:hover .navbar-link,
-.navbar.is-danger .navbar-item.has-dropdown.is-active .navbar-link,
-.navbar.is-danger .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
-.table-of-progress .step :hover .navbar.is-danger .navbar-item.has-dropdown.number .navbar-link {
+  .navbar.is-danger .navbar-item.has-dropdown:hover .navbar-link,
+  .navbar.is-danger .navbar-item.has-dropdown.is-active .navbar-link,
+  .navbar.is-danger .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
+  .table-of-progress .step :hover .navbar.is-danger .navbar-item.has-dropdown.number .navbar-link {
     background-color: #b2341b;
     color: #fff;
   }
@@ -9191,7 +9179,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     display: block;
   }
   .navbar-brand .navbar-item,
-.navbar-tabs .navbar-item {
+  .navbar-tabs .navbar-item {
     align-items: center;
     display: flex;
   }
@@ -9227,19 +9215,19 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
     overflow: auto;
   }
   html.has-navbar-fixed-top-touch,
-body.has-navbar-fixed-top-touch {
+  body.has-navbar-fixed-top-touch {
     padding-top: 3.25rem;
   }
   html.has-navbar-fixed-bottom-touch,
-body.has-navbar-fixed-bottom-touch {
+  body.has-navbar-fixed-bottom-touch {
     padding-bottom: 3.25rem;
   }
 }
 @media screen and (min-width: 1024px) {
   .navbar,
-.navbar-menu,
-.navbar-start,
-.navbar-end {
+  .navbar-menu,
+  .navbar-start,
+  .navbar-end {
     align-items: stretch;
     display: flex;
   }
@@ -9250,19 +9238,19 @@ body.has-navbar-fixed-bottom-touch {
     padding: 1rem 2rem;
   }
   .navbar.is-spaced .navbar-start,
-.navbar.is-spaced .navbar-end {
+  .navbar.is-spaced .navbar-end {
     align-items: center;
   }
   .navbar.is-spaced a.navbar-item,
-.navbar.is-spaced .navbar-link {
+  .navbar.is-spaced .navbar-link {
     border-radius: 4px;
   }
   .navbar.is-transparent a.navbar-item:focus, .navbar.is-transparent a.navbar-item:hover, .navbar.is-transparent a.navbar-item.is-active, .navbar.is-transparent .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-transparent a.navbar-item.number,
-.navbar.is-transparent .navbar-link:focus,
-.navbar.is-transparent .navbar-link:hover,
-.navbar.is-transparent .navbar-link.is-active,
-.navbar.is-transparent .table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar.is-transparent .navbar-link.number {
+  .navbar.is-transparent .navbar-link:focus,
+  .navbar.is-transparent .navbar-link:hover,
+  .navbar.is-transparent .navbar-link.is-active,
+  .navbar.is-transparent .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar.is-transparent .navbar-link.number {
     background-color: transparent !important;
   }
   .navbar.is-transparent .navbar-item.has-dropdown.is-active .navbar-link, .navbar.is-transparent .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link, .table-of-progress .step :hover .navbar.is-transparent .navbar-item.has-dropdown.number .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:focus .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:focus-within .navbar-link, .navbar.is-transparent .navbar-item.has-dropdown.is-hoverable:hover .navbar-link {
@@ -9280,7 +9268,7 @@ body.has-navbar-fixed-bottom-touch {
     display: none;
   }
   .navbar-item,
-.navbar-link {
+  .navbar-link {
     align-items: center;
     display: flex;
   }
@@ -9367,11 +9355,11 @@ body.has-navbar-fixed-bottom-touch {
     display: block;
   }
   .navbar > .container .navbar-brand,
-.container > .navbar .navbar-brand {
+  .container > .navbar .navbar-brand {
     margin-left: -0.75rem;
   }
   .navbar > .container .navbar-menu,
-.container > .navbar .navbar-menu {
+  .container > .navbar .navbar-menu {
     margin-right: -0.75rem;
   }
   .navbar.is-fixed-bottom-desktop, .navbar.is-fixed-top-desktop {
@@ -9390,30 +9378,30 @@ body.has-navbar-fixed-bottom-touch {
     top: 0;
   }
   html.has-navbar-fixed-top-desktop,
-body.has-navbar-fixed-top-desktop {
+  body.has-navbar-fixed-top-desktop {
     padding-top: 3.25rem;
   }
   html.has-navbar-fixed-bottom-desktop,
-body.has-navbar-fixed-bottom-desktop {
+  body.has-navbar-fixed-bottom-desktop {
     padding-bottom: 3.25rem;
   }
   html.has-spaced-navbar-fixed-top,
-body.has-spaced-navbar-fixed-top {
+  body.has-spaced-navbar-fixed-top {
     padding-top: 5.25rem;
   }
   html.has-spaced-navbar-fixed-bottom,
-body.has-spaced-navbar-fixed-bottom {
+  body.has-spaced-navbar-fixed-bottom {
     padding-bottom: 5.25rem;
   }
   a.navbar-item.is-active, .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover a.navbar-item.is-active,
-.navbar-link.is-active,
-.table-of-progress .step :hover .navbar-link.number,
-.table-of-progress .step :hover .navbar-link.is-active {
+  .navbar-link.is-active,
+  .table-of-progress .step :hover .navbar-link.number,
+  .table-of-progress .step :hover .navbar-link.is-active {
     color: rgb(51, 51, 51);
   }
   a.navbar-item.is-active:not(:focus):not(:hover), .table-of-progress .step :hover a.navbar-item.number:not(:focus):not(:hover),
-.navbar-link.is-active:not(:focus):not(:hover),
-.table-of-progress .step :hover .navbar-link.number:not(:focus):not(:hover) {
+  .navbar-link.is-active:not(:focus):not(:hover),
+  .table-of-progress .step :hover .navbar-link.number:not(:focus):not(:hover) {
     background-color: transparent;
   }
   .navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link, .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link {
@@ -10022,14 +10010,6 @@ body.has-spaced-navbar-fixed-bottom {
 }
 
 /* KeyFrames */
-@-webkit-keyframes vSelectSpinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 @keyframes vSelectSpinner {
   0% {
     transform: rotate(0deg);
@@ -10334,8 +10314,7 @@ body.has-spaced-navbar-fixed-bottom {
   border-bottom: 0.9em solid rgba(100, 100, 100, 0.1);
   border-left: 0.9em solid rgba(60, 60, 60, 0.45);
   transform: translateZ(0);
-  -webkit-animation: vSelectSpinner 1.1s infinite linear;
-          animation: vSelectSpinner 1.1s infinite linear;
+  animation: vSelectSpinner 1.1s infinite linear;
   transition: opacity 0.1s;
 }
 
@@ -10659,7 +10638,6 @@ pre code {
 }
 
 .sticky-top {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
