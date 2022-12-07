@@ -305,23 +305,7 @@
 
       <div class="blog-content">
         <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/metadata-work-of-interest/">Metadata work of interest</a></h4>
-        
-  
-    
-      
-      
-      by
-      
-        
-        <a class="author-name" href="/archives/old-tech-blog/authors/ml/">
-        
-  ml
-
-        </a>
-      
-    
-  
-  on 2007-08-03</span>
+        by <a class="author-name" href="/archives/old-tech-blog/authors/ml/">ml</a> on 2007-08-03
 
         <div class="excerpt">
           Some of these could turn out to be interesting for describing licensed content on the web, all...

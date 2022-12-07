@@ -1,0 +1,716 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Data Science Discovery: Quantifying the Commons" />
+
+
+
+<meta property="og:description" content="University of California, Berkeley, Data Science Discovery Program Fall 2022" />
+
+
+<meta property="og:url" content="/blog/entries/2022-12-07-berkeley-quantifying/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Data Science Discovery: Quantifying the Commons.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Data Science Discovery: Quantifying the Commons">
+<meta name="twitter:description" content="University of California, Berkeley, Data Science Discovery Program Fall 2022">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Data Science Discovery: Quantifying the Commons — Creative Commons Open Source</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/entries/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Data Science Discovery: Quantifying the Commons</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Data Science Discovery: Quantifying the Commons</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="gravatar" />
+      </figure>
+    </header>
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/Dun-MingHuang/">Dun-Ming Huang (Brandon Huang)</a>, <a class="author-name" href="/blog/authors/ShuranYang/">Shuran Yang</a> on 2022-12-07
+          </p>
+        </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>University of California, Berkeley, Data Science Discovery Program Fall 2022</p>
+<h2 id="project-objective">Project Objective</h2><h3 id="problem-statement">Problem Statement</h3><p>In the previous years, from 2014 to 2017, Creative Commons (CC) have been
+releasing public reports detailing the growth, size, and usage of Creative
+Commons, demonstrating the significance and influences of Creative Commons.
+However, the effort to quantity Creative Commons has ceased at the proceeding
+year. This is the preincarnation of our current open-source project:
+<a href="https://github.com/creativecommons/quantifying">Quantifying the Commons</a>.</p>
+<p>An example visualization from the previous report in 2017:
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/2017_state_of_the_commons_data.png" alt="2017 State of the Commons data graph"></p>
+<p>The reason is that prior efforts to generate usage reports suffered unreliable
+data retrieval methods; while prone to malfunction over the updates of website
+architecture from data sources, these data extraction methods are not
+particularly rigorous in performance and have a significantly low (compared to
+current methods, at the scale or an hour v.s. 5 business days).</p>
+<p>To advance and continue the work of quantifying CC product states, the student
+researchers are delegated the design and implementation for reliable data
+retrieval processes on CC data that were employed in previous reports to
+replicate past efforts of this project's preincarnation, quantify the size and
+diversity of CC Product Usage on the Internet.</p>
+<h2 id="data-retrieval">Data Retrieval</h2><h3 id="how-to-detect-county-of-cc-licensed-documents">How to detect county of CC-Licensed Documents?</h3><p>If an online document uses a CC tool to protect it, then it will either be
+labeled as license under that tool or contain a hyperlink towards a
+creativecommons.org webpage that explains the license's rules (the deed).</p>
+<p>Therefore, we may use the following approach to identify and count CC-licensed
+documents:</p>
+<ol>
+<li>Select a list of CC tools to inspect (provided by CC).</li>
+<li>Use APIs of different online platforms to detect and count documents that
+are labeled as license by platform and/or contains a hyperlink towards CC
+license webpages.</li>
+<li>Store these data in tabular form to contain the count of documents protected
+under each type of CC tools.</li>
+</ol>
+<h3 id="what-platforms-to-collect-counts-from">What platforms to collect counts from?</h3><p>Here is a list of online platforms that we sampled document count from, as well
+as the delegations for platforms' data collection, visualization, and modeling
+in this project:</p>
+<table class="table table-striped">
+<thead class="thead-dark"><tr>
+<th>Platforms Containing Webpages</th>
+<th>Platforms Containing Photos</th>
+<th>Platforms containing Videos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google (Dun-Ming Huang)</td>
+<td>DeviantArt (Dun-Ming Huang)</td>
+<td>Vimeo (Dun-Ming Huang)</td>
+</tr>
+<tr>
+<td>Internet Archive (Dun-Ming Huang)</td>
+<td>Flickr (Shuran Yang)</td>
+<td>YouTube (Dun-Ming Huang)</td>
+</tr>
+<tr>
+<td></td>
+<td>MetMuseum (Dun-Ming Huang)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>WikiCommons (Dun-Ming Huang)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h3><p>Here are some significant defects found in datasets across sampled platforms
+during EDA:</p>
+<h3 id="fickr">Fickr</h3><ul>
+<li>Sampled Document Count from this dataset is at 35,000% ~ 100,000% of
+deviation from official statistics per CC product (license) investigated.</li>
+<li>Sampling frame locked at 4,000 available searched photos from each license.</li>
+<li>Significant duplication issue (resolved).</li>
+</ul>
+<h4 id="google-custom-search-api">Google Custom Search API</h4><ul>
+<li>Programmable Search Engine only reaches a subset of Google's website. The
+impact is not significant (then, further resolved via sampling frame
+adjustments in PSE).</li>
+<li>Accidentally used deprecated operators and parameters, causing faithfulness
+problems (resolved).</li>
+</ul>
+<h4 id="youtube-data-api">YouTube Data API</h4><ul>
+<li>API has maximum response value on total count of YouTube videos, causing
+severe underestimate.<ul>
+<li>Resolved via implementing custom granularity on data to enable honest
+response, conserve development cost, and introduce imputations in
+visualization.</li>
+</ul>
+</li>
+</ul>
+<h3 id="expanding-the-dataset">Expanding the Dataset</h3><p>Here are reasons and efforts of dataset expansion on platforms that received
+more data:</p>
+<h4 id="google-custom-search-api">Google Custom Search API</h4><ul>
+<li>Revised Data Sampling process to solve EDA-discovered inaccuracies.</li>
+<li>For expanding the horizons of CC product usage analyses upon past boundaries,
+where visualization was only conducted to compare cross-product performance,
+I incorporated further CC-product usage data across temporal axis and
+geographical demographics.</li>
+</ul>
+<h4 id="youtube-data-api">YouTube Data API</h4><ul>
+<li>Revised Data Sampling process to solve EDA-discovered inaccuracies.</li>
+<li>To perform unprecedented analyses on media-specific time-respective
+developments of CC options on popular platforms, YouTube's CC-licensed
+video count across two-month periods.</li>
+<li>Introduced imputation to alleviate unresolvable capped responses from YouTube
+and mitigate developmental cost in response to Youtube API's capping
+behaviour.</li>
+</ul>
+<h2 id="visualization">Visualization</h2><h3 id="philosophies-and-principles">Philosophies and Principles</h3><p>The visualizations of Quantifying the Commons is to be communicative and
+exhibitory.</p>
+<p>Some new aesthetics and principles we adopted (as a response to enhancement of
+prior efforts) are to:</p>
+<ul>
+<li>Present length in place of area for comprehensibility</li>
+<li>Analyze product development beyond license-wise comparisons</li>
+<li>Utilize colors for presenting data inclinations via works in Pandas, Seaborn,
+NumPy, Geopandas, and SpaCy</li>
+</ul>
+<h3 id="exhibiting-a-selection-of-visualizations">Exhibiting a Selection of Visualizations</h3><h4 id="diagram-1c">Diagram 1C</h4><p>Trend Chart of Creative Commons Usage on Google
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_1c.png" alt="Trend Chart of Creative Commons Usage on Google"></p>
+<p>There are now <strong>more than 2.7 Billion webpages protected by Creative Commons</strong>
+indexed by Google!</p>
+<h4 id="diagram-2">Diagram 2</h4><p>Heatmap on density of CC-licensed Google indexed webpages over country
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_2.png" alt="Heatmap on density of CC-licensed Google indexed webpages over country"></p>
+<p>Particularly, <strong>Western Europe and Americas enjoy a much robust use</strong> of
+Creative Commons document in terms of quantity. A Development in Asia and
+Africa should be encouraged.</p>
+<h4 id="diagram-3c">Diagram 3C</h4><p>Barplot for number of webpages protected by six primary CC licenses
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_3c.png" alt="Barplot for number of webpages protected by six primary CC licenses"></p>
+<p>We can see that <strong>Attribution</strong> (BY) and <strong>Attribution-Nonderivative (BY-ND)
+are popular licenses</strong> among the 3 billion documents sampled across the
+dataset.</p>
+<h4 id="diagram-6">Diagram 6</h4><p>Barplot of CC-licensed documents across Free Culture and Non Free Culture
+licenses
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_6.png" alt="Barplot of CC-licensed documents across Free Culture and Non Free Culture licenses"></p>
+<p>Roughly <strong>45.3% of the documents under CC protection are covered by Free
+Culture</strong> legal tools.</p>
+<h4 id="flickr-diagrams">Flickr Diagrams</h4><p>Usage of CC licenses on Flickr concentrated on Australia, Brazil, United Stated
+of America while is pretty low in Asia countries.</p>
+<p><strong>Note:</strong> Sampling Frame of these visualizations are locked at the first 4,000
+search results on photos under each general license types.</p>
+<h5 id="diagram-7a">Diagram 7A</h5><p>Analysis of Creative Commons Usage on Flickr</p>
+<p><img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_7a.png" alt="CC BY-SA 2.0 license usage in Flickr pictures taken during 1962-2022"></p>
+<h5 id="diagram-7b">Diagram 7B</h5><p><img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_7b.png" alt="Flickr maximum views of pictures under all licenses"></p>
+<p>Photos on Flickr under Attribution-NonCommercial-NoDerivs (BY-NC-ND) license has
+gained highest possible views, while usage of license Public Domain Mark has
+highest increasing trend in recent years.</p>
+<h5 id="diagram-7c">Diagram 7C</h5><p><img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_7c.png" alt="Flickr yearly trend of all licenses 2018-2022"></p>
+<h5 id="diagram-7d">Diagram 7D</h5><p><img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_7d.png" alt="Flickr Photos under CC-BY-NC-SA 2.0 and CC BY-NC 2.0: Categories Keywords"></p>
+<h4 id="diagram-8">Diagram 8</h4><p>Number of works under Creative Commons Tools across Platforms
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_8.png" alt="Number of works under Creative Commons Tools across Platforms"></p>
+<p>DeviantArt presents the most number of works under Creative Commons licenses
+and tools, followed by Wikipedia and WikiCommons. The estimate of video counts
+on YouTube is understimated, as demonstrated in Diagram 11B.</p>
+<h4 id="diagram-9b">Diagram 9B</h4><p>Barplot of Creative Commons Protected Documents across Countries
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_9b.png" alt="Barplot of Creative Commons Protected Documents across Countries"></p>
+<h4 id="diagram-10">Diagram 10</h4><p>Barplot of Creative Commons Protected Documents across languages
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_10.png" alt="Barplot of Creative Commons Protected Documents across languages"></p>
+<h4 id="diagram-11b">Diagram 11B</h4><p>Trend Chart of Cumulative Count of CC-Licensed YouTube Videos across Each Two-Months
+<img src="/blog/entries/2022-12-07-berkeley-quantifying/diagram_11b.png" alt="Trend Chart of Cumulative Count of CC-Licensed YouTube Videos across Each Two-Months"></p>
+<p>The <strong>orange line stand for the imputed value of new CC-Licensed YouTube video
+counts based on linear regression,</strong> which is the decided method of imputation
+because most medias' growth of CC-licensed document count also experience a
+linear growth.</p>
+<h2 id="modeling">Modeling</h2><p>(A side track)</p>
+<h3 id="objectives-of-modeling">Objectives of Modeling</h3><p>The models of this project aim to answer: "What is the license typing of a
+webpage/web document given its content?"</p>
+<p>Individual researchers have attempted each of their solutions via different
+resources, metrics, under different modeling contexts:</p>
+<h4 id="model-of-google-webpages-dun-ming-huang">Model of Google Webpages (Dun-Ming Huang)</h4><ul>
+<li>Modeling Context: Multiclass Classifier (7 classes).</li>
+<li>Modeling Training set: Text webpage contents acquired from Google API
+collected webpages (Common Crawl, the original choice, was marked
+unavailable due to source code corruption).</li>
+<li>Main Model Metric: Top-k accuracy, as this model is considered as the backend
+of a license recommendation system that receives webpage content and
+recommend 2 to 3 licenses to the user.</li>
+</ul>
+<h4 id="model-for-flickr-photos-shuran-yang">Model for Flickr Photos (Shuran Yang)</h4><ul>
+<li>Modeling Context: Binary Classifier (BY vs. BY-SA)</li>
+<li>Modeling Training set: Text photo descriptions acquired from Flickr API (with
+sampling frame of visualizations)</li>
+<li>Main Model Metric: Accuracy</li>
+</ul>
+<h3 id="training-process-summary-google-model">Training Process Summary: Google Model</h3><h4 id="preprocessing-pipeline">Preprocessing Pipeline</h4><ol>
+<li>Deduplication</li>
+<li>Remove Non-English Characters</li>
+<li>URL, <code>[^\w\s]</code>, Stopword Removal</li>
+<li>Remove Non-English Words</li>
+<li>Remove Short Words, Short Contents</li>
+<li>TF-IDF + SVD</li>
+<li>SMOTE</li>
+</ol>
+<h4 id="model-selection">Model Selection</h4><div class="hll"><pre><span></span><span class="n">Logistic</span> <span class="n">Regression</span><span class="p">(</span>
+    <span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
+    <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;liblinear&quot;</span><span class="p">,</span>
+    <span class="n">class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span>
+    <span class="n">C</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<div class="hll"><pre><span></span><span class="n">SVC</span><span class="p">(</span>
+    <span class="n">C</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;poly&quot;</span><span class="p">,</span>
+    <span class="n">degreee</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">class_weight</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<div class="hll"><pre><span></span><span class="n">RandomClassifier</span><span class="p">(</span>
+    <span class="n">class_weight</span><span class="o">=</span><span class="s2">&quot;balanced_subsample&quot;</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<div class="hll"><pre><span></span><span class="n">GradientBoostingClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<div class="hll"><pre><span></span><span class="n">NultinomialNB</span><span class="p">(</span>
+    <span class="n">fit_prior</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<ol>
+<li>text : InputLayer</li>
+<li>preprocessing : KerasLayer</li>
+<li>BERT_encoder : KerasLayer</li>
+<li>dropout : Dropout</li>
+<li>classifier : Dense</li>
+</ol>
+<h4 id="training-results">Training Results</h4><p><img src="/blog/entries/2022-12-07-berkeley-quantifying/training_performance.png" alt="Testing Performances across Models by Top-k Accuracy"></p>
+<h3 id="training-process-summary-flickr-model">Training Process Summary: Flickr Model</h3><h4 id="preprocessing-pipeline">Preprocessing Pipeline</h4><ol>
+<li>Deduplication</li>
+<li>Translation</li>
+<li>Stopword Removal, Lemmatization</li>
+<li>TF-IDF</li>
+</ol>
+<h4 id="model-selection">Model Selection</h4><div class="hll"><pre><span></span><span class="n">SVC</span><span class="p">(</span>
+    <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+<h4 id="training-results">Training Results</h4><p>An accuracy of 66.87% was reached.</p>
+<h2 id="next-steps">Next Steps</h2><h3 id="from-preincarnation-to-present">From Preincarnation to Present</h3><p>Via the efforts addressed above, we have not only managed to transform a data
+retrieval process from unstable, unexplored, and unavailable into an
+algorithmic, deterministic process reliable, documented, and interpretable! And
+the visualizations have become more exhibitory, concentrating on more
+effortfully extracted insights, and look at Creative Commons in further depth
+and more remarkable breadth.</p>
+<p>With significant re-implementations and designing policies to the data
+retrieval process for Quantifying the Commons, visualizations can be readily,
+immediately produced upon command; and upon the conceptual transformations of
+visualization production, Creative Commons will obtain new insights into the
+development of product and eventual policies upon the axes along which data was
+extracted from. Furthermore, we expect the production of model to work beyond
+the bounds of a Machine Learning product, but as a possibility to draw
+inferences upon product usage upon.</p>
+<p><strong>Such efforts are a short jump start to the long-term reincarnation of
+Quantifying the Commons.</strong></p>
+<h3 id="from-reincarnation-onto-baton-touches">From Reincarnation onto Baton Touches</h3><p>The current team would encourage the future team to increase the availability
+and user experience for our open source data extraction method, via automation
+and by-batch data extraction methods, for which Dun-Ming has written a design
+policy for. For modeling, the team also encourage building ingerence pipelines
+for using ELI5 for Logistic Regression models, as well as experiment more with
+loss function options of Gradient Boosting Classifier. For Flickr, the writer
+of this poster would like to suggest some data extraction method outside Flickr
+API but has access towards Flickr media, say Google Custom Search API.</p>
+<h2 id="additional-reading">Additional Reading</h2><ul>
+<li>Dun-Ming Huang blogs:<ul>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-0-10-d1844092fc7a">DSD Fall 2022: Quantifying the Commons (0/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-1-10-970dc24626b">DSD Fall 2022: Quantifying the Commons (1/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-2-10-537a5b204d7b">DSD Fall 2022: Quantifying the Commons (2/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-3-10-79bbfeb90daa">DSD Fall 2022: Quantifying the Commons (3/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-4-10-9bc90ec98262">DSD Fall 2022: Quantifying the Commons (4/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-5-10-475334a8895">DSD Fall 2022: Quantifying the Commons (5/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-6-10-961de95ef3aa">DSD Fall 2022: Quantifying the Commons (6/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-7a-10-ea011b9e05ee">DSD Fall 2022: Quantifying the Commons (7A/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-7b-10-e8bd8ba1c18a">DSD Fall 2022: Quantifying the Commons (7B/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-8a-10-6f5336c00d11">DSD Fall 2022: Quantifying the Commons (8A/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-8b-10-aa1ec8e2ae63">DSD Fall 2022: Quantifying the Commons (8B/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-9-10-536617bdcbb0">DSD Fall 2022: Quantifying the Commons (9/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+<li><a href="https://medium.com/@bransthre/dsd-fall-2022-quantifying-the-commons-10-10-47cbcb9bc8c2">DSD Fall 2022: Quantifying the Commons (10/10) | by Bransthre | Nov, 2022 | Medium</a></li>
+</ul>
+</li>
+<li>Shuran Yang blog:<ul>
+<li><a href="https://medium.com/@shuran1030/quantifying-the-commons-data-science-discovery-program-fall-2022-8e8c15b1ace3">Quantifying the Commons — Data Science Discovery Program Fall 2022 | by Shuran Yang | Nov, 2022 | Medium</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-dataviz/ ">cc-dataviz</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/collaboration/ ">collaboration</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/community/ ">community</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/quantifying-the-commons/ ">quantifying-the-commons</a>
+            
+          
+        </div>
+      </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2022-12-07-berkeley-quantifying"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+    </footer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/entries/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
