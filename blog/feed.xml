@@ -3126,51 +3126,6 @@ The changes in the source field after updating the image table in the database l
 &lt;a href="https://github.com/creativecommons/cccatalog/pull/420"&gt;https://github.com/creativecommons/cccatalog/pull/420&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="acknowledgement"&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I express my gratitude to Brent Moran and Anna Tumadóttir for their assistance with my first task in GSoC 2020 by
 helping me to filter the sub-providers of interest and conducting the necessary research.&lt;/p&gt;
-</content></entry><entry><title>CC Search, Setting up vue-i18n and internationalizing homepage</title><link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" rel="alternate"></link><updated>2020-06-10T00:00:00Z</updated><author><name>['AyanChoudhary']</name></author><id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id><content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
-&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/996"&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/997"&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/998"&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/999"&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/1000"&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
-The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
-&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
-The tab index adit for homepage is displayed:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week1-2/audit.png" alt="audit.png"&gt;&lt;/p&gt;
-&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
-For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
-Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path="footer.caption.label" tag="p" class="caption"&amp;gt;
-    &amp;lt;template v-slot:noted&amp;gt;
-        &amp;lt;a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener"&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:attribution&amp;gt;
-        &amp;lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&amp;gt;
-        {{$t('footer.caption.attribution')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-    &amp;lt;template v-slot:icons&amp;gt;
-        &amp;lt;a href="https://fontawesome.com/" target="_blank" rel="noopener" class="has-text-white"&amp;gt;
-        {{$t('footer.caption.icons')}}
-        &amp;lt;/a&amp;gt;
-    &amp;lt;/template&amp;gt;
-&amp;lt;/i18n&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week1-2/final.png" alt="final.png"&gt;&lt;/p&gt;
-&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
-You can track the work done for these weeks through these PRs:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/pull/1007"&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/pull/1013"&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/creativecommons/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://opensource.creativecommons.org/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content></entry><entry><title>Science Museum provider implementation</title><link href="http://opensource.creativecommons.org/blog/entries/science-museum-implementation/" rel="alternate"></link><updated>2020-06-10T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:7960ba6c-0bbb-300e-86d8-4744b9b0ee25</id><content type="html">&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;p&gt;CC catalog project is responsible for collecting CC licensed images available in the web,  CC licensed images are hosted by different
 sources, these sources that provide the images and its metadata are called providers. Currently, images are collected from providers using two methods
 Common Crawl and API based crawl. Common Crawl data is an open repository of web crawled data and we use that data to get the necessary image metadata 
@@ -3262,6 +3217,51 @@ images and their metadata, for each image data in multimedia, foreign id is in &
 &lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog/issues/302"&gt;research work&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog/pull/400"&gt;implementation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</content></entry><entry><title>CC Search, Setting up vue-i18n and internationalizing homepage</title><link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" rel="alternate"></link><updated>2020-06-10T00:00:00Z</updated><author><name>['AyanChoudhary']</name></author><id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id><content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
+&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/996"&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/997"&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/998"&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/999"&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/1000"&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
+&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week1-2/audit.png" alt="audit.png"&gt;&lt;/p&gt;
+&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path="footer.caption.label" tag="p" class="caption"&amp;gt;
+    &amp;lt;template v-slot:noted&amp;gt;
+        &amp;lt;a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener"&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:attribution&amp;gt;
+        &amp;lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&amp;gt;
+        {{$t('footer.caption.attribution')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:icons&amp;gt;
+        &amp;lt;a href="https://fontawesome.com/" target="_blank" rel="noopener" class="has-text-white"&amp;gt;
+        {{$t('footer.caption.icons')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+&amp;lt;/i18n&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week1-2/final.png" alt="final.png"&gt;&lt;/p&gt;
+&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/pull/1007"&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/pull/1013"&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/creativecommons/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://opensource.creativecommons.org/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content></entry><entry><title>Resource Gathering</title><link href="http://opensource.creativecommons.org/blog/entries/resource-gathering/" rel="alternate"></link><updated>2020-06-09T00:00:00Z</updated><author><name>['dhruvi16']</name></author><id>urn:uuid:1b4acbcb-fbab-372c-854f-833a05aafa23</id><content type="html">&lt;p&gt;As an outreachy intern, I am handling the integration of &lt;a href="https://creativecommons.org/"&gt;Creative Commons&lt;/a&gt; design library — &lt;a href="https://cc-vocabulary.netlify.app/"&gt;Vocabulary&lt;/a&gt; with one of our web products — &lt;a href="https://opensource.creativecommons.org/"&gt;CC OS&lt;/a&gt;. I have been working the design library for 3–4 months now and I have enjoyed the experience the library caters and I am trying to achieve the same experience in the Open source website. To understand UX in-depth, I have been reading different resources and document this knowledge through this series of blogs. This in-depth information will help me achieve the desired experience through the library.&lt;/p&gt;
 &lt;p&gt;Using a Coursera course, &lt;a href="https://www.coursera.org/learn/user-experience-design/"&gt;Introduction to user experience&lt;/a&gt;, I will be describing the UX design cycle with a series of articles and this article is about describing the first step of the design cycle which is Resource Gathering.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Basic definitions&lt;/strong&gt;&lt;/p&gt;
