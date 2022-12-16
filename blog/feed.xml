@@ -65,7 +65,7 @@ in this project:&lt;/p&gt;
 &lt;/table&gt;
 &lt;h3 id="exploratory-data-analysis-eda"&gt;Exploratory Data Analysis (EDA)&lt;/h3&gt;&lt;p&gt;Here are some significant defects found in datasets across sampled platforms
 during EDA:&lt;/p&gt;
-&lt;h3 id="fickr"&gt;Fickr&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="flickr"&gt;Flickr&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Sampled Document Count from this dataset is at 35,000% ~ 100,000% of
 deviation from official statistics per CC product (license) investigated.&lt;/li&gt;
 &lt;li&gt;Sampling frame locked at 4,000 available searched photos from each license.&lt;/li&gt;
