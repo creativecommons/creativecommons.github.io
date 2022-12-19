@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-12-07T00:00:00Z</updated><author><name></name></author><entry><title>Data Science Discovery: Quantifying the Commons</title><link href="http://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/" rel="alternate"></link><updated>2022-12-07T00:00:00Z</updated><author><name>['Dun-MingHuang', 'ShuranYang']</name></author><id>urn:uuid:b5ca9376-727d-3a82-97f0-d150f1827d77</id><content type="html">&lt;p&gt;University of California, Berkeley, Data Science Discovery Program Fall 2022&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2022-12-16T00:00:00Z</updated><author><name></name></author><entry><title>Thinking More Openly About Working in The Open</title><link href="http://opensource.creativecommons.org/blog/entries/2022-12-16-new-to-working-in-open/" rel="alternate"></link><updated>2022-12-16T00:00:00Z</updated><author><name>['sara']</name></author><id>urn:uuid:8f6dcc9a-f3b5-3f3f-9e29-56ef6d657688</id><content type="html">&lt;p&gt;I began working at Creative Commons (CC) as the Full Stack Engineer this year
+and it’s been amazing to get to work in the open at CC. But as someone who
+has been working in closed, internal source environments for a very long
+time it’s definitely been a learning experience and a perspective shift.&lt;/p&gt;
+&lt;p&gt;For years I benefited from, observed, and offered up personal work into the
+world of open source, but I was never deeply involved in other projects in
+a big way, nor was I able to contribute anything I did at my professional
+day job back into the open source world (despite the benefit open source
+afforded the work I did every day). It had been a hope of mine, something
+I had advocated for, but had ultimately not worked out. Now at CC I
+finally get to participate in projects that operate in the open, and a
+larger community of contributors around the world.&lt;/p&gt;
+&lt;p&gt;It's been refreshing and rewarding, but it's also been enlightening. There's
+so much that's different now. Working in the open doesn't just shift the
+terms under which your code is licensed or how many people can contribute, it
+requires a significant shift in both approach and process.&lt;/p&gt;
+&lt;p&gt;For example, working in the open means that while there may be community members
+eager to contribute they may lack contextual understanding that someone more
+intimately familiar with a project might develop over time and rely upon. To
+support contributions well you need to have a heavily documentation-first
+strategy that affords new contributors key information in understandable and
+clear instructions.&lt;/p&gt;
+&lt;p&gt;That also means that documenting &lt;em&gt;issues&lt;/em&gt; isn't just an item on a todo list
+you'll get to later. There's extreme value in writing out detailed information
+both for your future self, but also for any would-be community contributors to
+understand the problem and address it. Setup instructions, contextual
+documentation about the codebase, as well as detailed known issues, roadmaps,
+etc. All of it needs to be documented and written out, which not only
+benefits the community contributors, but also benefits the project as a
+whole. It means key information has to live in the open alongside the code
+it informs. It's truly a win-win all around.&lt;/p&gt;
+&lt;p&gt;The process also has to shift, you can't just make a list of things you want to
+tackle and get to work, you have to consider how each item can be smoothly
+adopted as granular and iterative Pull Requests that might all be worked on
+by entirely different individuals. The level of care in how the work is
+divided and scoped matters even more in this situation than it would have
+with an internal team. Working in the open doesn't just mean coding in the
+open, it also means planning in the open, and that means having a clearer
+view on the overall roadmap and goals the project hopes to meet.&lt;/p&gt;
+&lt;p&gt;If you are the steward of a codebase any task list you create or &lt;em&gt;issues&lt;/em&gt; you
+identify are ultimately not just for you alone. Putting an item on your list
+when you're working alone isn't enough, you've also got to find time to work
+on that item, and work your way through completing it.&lt;/p&gt;
+&lt;p&gt;In the open source context, working with a community of contributors, creating
+an &lt;em&gt;issue&lt;/em&gt; is just as important and meaningful as writing code, in many cases
+it might actually be MORE important. Because &lt;em&gt;issues&lt;/em&gt; are often the way in 
+which contributors first offer up help and insight, they're the first contact
+they have with your project. Furthermore, any &lt;em&gt;issue&lt;/em&gt; you create may end up
+getting completed by one or more people that are not you, which means it
+doesn't just sit on a list till you do it. It's a small, but significant
+shift in how you think about planning and breaking down work on a codebase
+in the open.&lt;/p&gt;
+&lt;p&gt;It’s certainly new, but incredibly rewarding. Even on days where I might not get
+to submit a Pull Request myself, or squash a bug in a meaningful way, I can still
+feel I offered up meaningful contributions to the community and the codebase
+through better documentation, answering someone’s question, reworking a
+process, or reviewing someone else’s generous contribution. Open Source means
+opening up your definition of what contribution means, and it’s a lot broader
+and more meaningful than I thought.&lt;/p&gt;
+</content></entry><entry><title>Data Science Discovery: Quantifying the Commons</title><link href="http://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/" rel="alternate"></link><updated>2022-12-07T00:00:00Z</updated><author><name>['Dun-MingHuang', 'ShuranYang']</name></author><id>urn:uuid:b5ca9376-727d-3a82-97f0-d150f1827d77</id><content type="html">&lt;p&gt;University of California, Berkeley, Data Science Discovery Program Fall 2022&lt;/p&gt;
 &lt;h2 id="project-objective"&gt;Project Objective&lt;/h2&gt;&lt;h3 id="problem-statement"&gt;Problem Statement&lt;/h3&gt;&lt;p&gt;In the previous years, from 2014 to 2017, Creative Commons (CC) have been
 releasing public reports detailing the growth, size, and usage of Creative
 Commons, demonstrating the significance and influences of Creative Commons.
@@ -3289,16 +3348,4 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;I made use of as many Vocabulary components as possible, like header, footer and table. This way is easier to keep consistency between CC products and to develop the frontend part of the site because those components are already built and tested, though some will require certain modifications (e.g. card link with a search input), and some others have to be created from scratch, like a pagination component that is actually now required for two sites.&lt;/p&gt;
 &lt;h3 id="data-model"&gt;Data Model&lt;/h3&gt;&lt;p&gt;The second main task I worked on was coding the models on Django, which is in charge of creating the database schema through migrations. For this, I had to review the sources of information (CSV files, sheets, forms) and how they are used. The key point here is to keep constant communication with staff who are more involved in the &lt;em&gt;business case&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Several iterations were required for each task as well as some researching, and while the engineering and design work never seems to end, this makes good foundations to continue and advance.&lt;/p&gt;
-</content></entry><entry><title>Upcoming improvements/features in CC Search Extension</title><link href="http://opensource.creativecommons.org/blog/entries/cc-browser-extension-upcoming-improvements/" rel="alternate"></link><updated>2020-06-01T00:00:00Z</updated><author><name>['makkoncept']</name></author><id>urn:uuid:cdf59a68-68ac-36b4-85c8-a19bb2848f33</id><content type="html">&lt;p&gt;&lt;a href="https://opensource.creativecommons.org/ccsearch-browser-extension/"&gt;CC Search Extension&lt;/a&gt; is a cross-browser extension, which lets you search for and filter content that is under Creative Commons licenses. It was developed as one of the CC projects during Google Summer of Code program of 2019.&lt;/p&gt;
-&lt;h3 id="the-story-so-far"&gt;The story so far&lt;/h3&gt;&lt;p&gt;It's release on the extension stores of &lt;a href="https://chrome.google.com/webstore/detail/cc-search-browser-extensi/agohkbfananbebiaphblgcfhcclklfnh"&gt;Chrome&lt;/a&gt;, &lt;a href="https://addons.mozilla.org/en-US/firefox/addon/cc-search-extension/"&gt;Firefox&lt;/a&gt;, and &lt;a href="https://addons.opera.com/en/extensions/details/cc-search/"&gt;Opera&lt;/a&gt; was accompanied by several announcements on twitter, which were well received by the community and thus the number of weekly users (i.e the number of users that have used the extension at least once during last week) drastically increased. After several weeks, the extension reached 22,000+ weekly users. But, now this number fluctuates between 9,000 - 10,000. So, what happened? Well, the majority of initial influx were the "curious" folks who just wanted to check out this new tool and later thought that this was not something that they might find useful. But, there are also users that are looking for a similar tool and the lack of sufficient features and capabilities of the extension made them stop using it and look for better alternatives.&lt;/p&gt;
-&lt;h3 id="what-s-the-plan"&gt;What's the plan&lt;/h3&gt;&lt;p&gt;The plan is to transform the extension to become competent enough to contribute to the user's workflow and be an important part of their toolkit. This will be done by adding valuable new features in addition to other enhancements and improvements.&lt;/p&gt;
-&lt;p&gt;In this section, I will list several improvements and features that will be added to the extension during the upcoming months.&lt;/p&gt;
-&lt;h4 id="new-filters"&gt;New Filters&lt;/h4&gt;&lt;p&gt;The extension, currently supports only 3 filters: &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;sources&lt;/code&gt;, and &lt;code&gt;use case&lt;/code&gt;. The support for new filters like &lt;code&gt;image type&lt;/code&gt;, &lt;code&gt;file type&lt;/code&gt;, &lt;code&gt;aspect ratio&lt;/code&gt;,  and &lt;code&gt;image size&lt;/code&gt; will be added. This will give more options to the users and let them be more specific about the content they want.&lt;/p&gt;
-&lt;h4 id="related-images-and-image-tags"&gt;Related Images and Image tags&lt;/h4&gt;&lt;p&gt;Showing related Images will help users find a variety of images that fit their requirements and also explore the images that would not usally show up on the initial pages of the search result. Whereas, Image tags will let the users incrementally make their queries better and more specific.&lt;/p&gt;
-&lt;h4 id="adding-browse-by-sources-section"&gt;Adding "Browse by Sources" section&lt;/h4&gt;&lt;p&gt;Even though the users can see the number of sources supported by the extension from the drop-down filter, they might not be familiar with many of them and what kind of content they provide. Adding a "Browse by Source" section would make users appreciate the sources available for them to choose from.&lt;/p&gt;
-&lt;h4 id="improving-the-bookmarks-section"&gt;Improving the bookmarks section&lt;/h4&gt;&lt;p&gt;Significant improvements will be made to the bookmarks section. First of all, the bookmarks data will be cached so that unnecessary requests to the Catalog API can be avoided. The bookmarks will be organized by the dates and this will also facilitate adding some type of filter mechanism. In addition to this, pagination in the bookmarks section and support for named bookmark file exports will be added&lt;/p&gt;
-&lt;h4 id="syncing-as-much-data-as-possible"&gt;Syncing as much data as possible&lt;/h4&gt;&lt;p&gt;An effort will be made to sync as much extension data as possible between the user's system. Syncing the user's preference/settings will ensure a familiar experience across systems and syncing the bookmarks data and the previous session search results would make them feel like they are continuing from where they left.&lt;/p&gt;
-&lt;h4 id="integrating-cc-vocabulary"&gt;Integrating CC Vocabulary&lt;/h4&gt;&lt;p&gt;The extension uses a very outdated version of CC Vocabulary. It will be replaced by the latest version for a refreshing new look.&lt;/p&gt;
-&lt;h4 id="adding-support-for-microsoft-edge"&gt;Adding support for Microsoft Edge&lt;/h4&gt;&lt;p&gt;The new Microsoft Edge browser is based on chromium. This paves the way to add support for it thanks to the power and flexibility of the WebExtension API. This will then allow us to also officially release on the &lt;a href="https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home"&gt;Microsoft Edge Addon Store&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="join-the-discussion"&gt;Join the discussion&lt;/h3&gt;&lt;p&gt;If you have any feedback/suggestions or just want to say hi,  please join the &lt;code&gt;#cc-dev-browser-extension&lt;/code&gt; channel on &lt;a href="https://opensource.creativecommons.org/community/#slack"&gt;slack&lt;/a&gt;. You can also track the progress on the project's &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension"&gt;Github&lt;/a&gt; Repository.&lt;/p&gt;
 </content></entry></feed>
