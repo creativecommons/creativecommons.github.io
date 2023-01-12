@@ -292,19 +292,19 @@
 <p><strong>At last</strong>, make the developer onboarding easy by dockerizing the project and bring more application portability.</p>
 <h2 id="gsoc-work-product">GSoC Work Product</h2><p>The live version of the linked commons can be found <a href="http://dataviz.creativecommons.engineering/">here</a>. You can interact with it and <strong>"explore the creative commons in graphs"</strong>.</p>
 <p>If you wish to access the raw or filtered data, then here is a brief documentation of our new API.</p>
-<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/graph-data</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/graph-data</span>
 <span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"> </span>
-<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns a randomized graph having around 500 nodes and links.</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns a randomized graph having around 500 nodes and links.</span>
 </pre></div>
 <p>&nbsp;</p>
-<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/graph-data/?name={node_name}</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/graph-data/?name={node_name}</span>
 <span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"> </span>
-<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.</span>
 </pre></div>
 <p>&nbsp;</p>
-<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/suggestions/?q={query}</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/suggestions/?q={query}</span>
 <span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"> </span>
-<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns a set of nodes which contains the {query} pattern in their nodeid</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns a set of nodes which contains the {query} pattern in their nodeid</span>
 </pre></div>
 <h3 id="demo">Demo</h3><div style="text-align: center; width: 90%; margin-left: 5%;">
     <figure>

@@ -297,57 +297,57 @@
     </figcaption>
   </figure>
 </div><p>The quality of these release notes made them quite tedious to generate manually. With the <a href="https://github.com/marketplace/actions/release-drafter">release drafter action</a>, we're able to automatically update a draft release note on every pull request to CC Search. The action lets us configure the line added for each pull request with some basic templating which includes variables for the pr number, title, and author (among others):</p>
-<div class="hll"><pre><span></span><span class="nt">change-template</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-</span><span class="nv"> </span><span class="s">$TITLE:</span><span class="nv"> </span><span class="s">#$NUMBER</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">@$AUTHOR&#39;</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="nt">change-template</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-</span><span class="nv"> </span><span class="s">$TITLE:</span><span class="nv"> </span><span class="s">#$NUMBER</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">@$AUTHOR&#39;</span>
 </pre></div>
 <p><br />This means each pull request gets a line like this in our release notes:</p>
 <blockquote><p>Enable web monetization on single result pages: <strong>#1191</strong> by <strong>@zackkrida</strong></p>
 </blockquote>
 <p>Perfect! We can also map GitHub labels on our pull requests to the sections of our generated release notes, like so:</p>
-<div class="hll"><pre><span></span><span class="nt">categories</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;New</span><span class="nv"> </span><span class="s">Features&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;feature&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Bug</span><span class="nv"> </span><span class="s">Fixes&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;bug&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;critical&#39;</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="nt">categories</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;New</span><span class="nv"> </span><span class="s">Features&#39;</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;feature&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Bug</span><span class="nv"> </span><span class="s">Fixes&#39;</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;bug&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;critical&#39;</span>
 </pre></div>
 <p>The resulting release notes require no manual editing at release time, and has saved us hours over time and allows our developers to focus on DevOps work instead of copywriting on release days. We also never miss a contribution or expression of gratitude to one of our contributors. You can read the <a href="https://github.com/creativecommons/cccatalog-frontend/releases/latest">latest CC Search release notes</a> or <a href="https://github.com/creativecommons/cccatalog-frontend/blob/develop/.github/release-drafter.yml">see our full release-drafter.yml file here</a>.</p>
 <h3 id="repository-normalization">Repository Normalization</h3><p>Within a private repository of internal helper scripts, the CC technical team has a number of Github Actions which trigger Python scripts to keep configuration standardized across our repositories. We casually call this process "repository normalization". One such script ensures that we use a standard set of GitHub labels across all of our projects. This consistency helps us do things like direct users to <a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22help+wanted%22+state%3Aopen&amp;type=Issues">open issues in need of assistance</a> across the organization, or issues <a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22good+first+issue%22+state%3Aopen&amp;type=Issues">good for first-time open source contributors</a>. With GitHub Actions, its easy to set up scheduled tasks with only a few lines of human-readable configuration. Here's the gist of running a Python script daily, for example:</p>
-<div class="hll"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example scheduled python action</span><span class="w"></span>
-<span class="nt">on</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.7</span><span class="w"></span>
-<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v1</span><span class="w"></span>
-<span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.7</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span><span class="w"></span>
-<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">        </span><span class="no">python -m pip install --upgrade pip</span><span class="w"></span>
-<span class="w">        </span><span class="no">python -m pip install pipenv</span><span class="w"></span>
-<span class="w">        </span><span class="no">pipenv install</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Export token to env and run our script</span><span class="w"></span>
-<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">        </span><span class="no">pipenv run python our-script.py</span><span class="w"></span>
-<span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">ADMIN_GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example scheduled python action</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.7</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v1</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.7</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">python -m pip install --upgrade pip</span>
+<span class="w">        </span><span class="no">python -m pip install pipenv</span>
+<span class="w">        </span><span class="no">pipenv install</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Export token to env and run our script</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">pipenv run python our-script.py</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ADMIN_GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span>
 </pre></div>
 <p>Internally and publicly, we use <a href="https://github.com/orgs/creativecommons/projects">GitHub Projects</a> to manage our bi-weekly sprints and backlogs. The <a href="https://github.com/subhamX/github-project-bot">GitHub Project Bot</a> action was built by <a href="https://github.com/subhamX">one of our community contributors</a> and allows us to add pull requests to our project columns. Here's an example step in such a job:</p>
-<div class="hll"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Handle cccatalog-frontend Repo</span><span class="w"></span>
-<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subhamX/github-project-bot@v1.0.0</span><span class="w"></span>
-<span class="w">  </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ACCESS_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span><span class="w"></span>
-<span class="w">    </span><span class="nt">COLUMN_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;In</span><span class="nv"> </span><span class="s">Progress</span><span class="nv"> </span><span class="s">(Community)&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">PROJECT_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/orgs/creativecommons/projects/7</span><span class="w"></span>
-<span class="w">    </span><span class="nt">REPO_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/creativecommons/cccatalog-frontend</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Handle cccatalog-frontend Repo</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subhamX/github-project-bot@v1.0.0</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ACCESS_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span>
+<span class="w">    </span><span class="nt">COLUMN_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;In</span><span class="nv"> </span><span class="s">Progress</span><span class="nv"> </span><span class="s">(Community)&quot;</span>
+<span class="w">    </span><span class="nt">PROJECT_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/orgs/creativecommons/projects/7</span>
+<span class="w">    </span><span class="nt">REPO_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/creativecommons/cccatalog-frontend</span>
 </pre></div>
 <p>We have additional scripts that sync our community team members across our open source website and GitHub, and several others that do even more of this cross-platform synchronization work. All of these scripts relive significant burden off of our engineering manager and open source community coordinator.</p>
 <h3 id="dependency-updates">Dependency Updates</h3><p>Modern JavaScript projects are built atop piles of 3rd party dependencies. This frees developers to focus on product code instead of writing the same utility code over and over again, but exposes projects to issues of security and dependency management. To help alleviate these issues, GitHub <a href="https://github.blog/2019-05-23-introducing-new-ways-to-keep-your-code-secure/#automated-security-fixes-with-dependabot">acquired a startup called Dependabot</a> which initially focused on automatic security updates for repositories. Dependabot creates pull requests that update third-party code  with known security vulnerabilities to the latest safe and stable versions.</p>

@@ -413,16 +413,16 @@ By default, pushing directly to the <em>default branch</em> (ex. <code>main</cod
 and all pull requests require review by at least one person before merge.</p>
 <h2 id="cc-metadata-file">CC Metadata file</h2><p>Each repo should have a <code>.cc-metadata.yml</code> file in the root directory with the
 following structure:</p>
-<div class="hll"><pre><span></span><span class="c1"># Whether this GitHub repo is for a CC-led engineering project</span><span class="w"></span>
-<span class="nt">engineering_project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="c1"># Name of the repository/project in English</span><span class="w"></span>
-<span class="nt">english_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC Catalog API</span><span class="w"></span>
-<span class="c1"># All technologies used</span><span class="w"></span>
-<span class="nt">technologies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Python, Django, Django REST Framework, Elasticsearch</span><span class="w"></span>
-<span class="c1"># Whether this repository should be featured on the CC Open Source site&#39;s &quot;Projects&quot; page</span><span class="w"></span>
-<span class="nt">featured</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="c1"># Slack channel name (optional key)</span><span class="w"></span>
-<span class="nt">slack</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;cc-dev-catalog&#39;</span><span class="w"></span>
+<div class="hll"><pre><span></span><span class="c1"># Whether this GitHub repo is for a CC-led engineering project</span>
+<span class="nt">engineering_project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="c1"># Name of the repository/project in English</span>
+<span class="nt">english_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC Catalog API</span>
+<span class="c1"># All technologies used</span>
+<span class="nt">technologies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Python, Django, Django REST Framework, Elasticsearch</span>
+<span class="c1"># Whether this repository should be featured on the CC Open Source site&#39;s &quot;Projects&quot; page</span>
+<span class="nt">featured</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="c1"># Slack channel name (optional key)</span>
+<span class="nt">slack</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;cc-dev-catalog&#39;</span>
 </pre></div>
 <p>This metadata file is used in the <a href="/projects/">Projects</a> page. Repos that are
 marked as non-engineering projects are not displayed in the page and repos

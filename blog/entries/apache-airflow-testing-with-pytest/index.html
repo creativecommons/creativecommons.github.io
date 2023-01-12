@@ -319,7 +319,7 @@ used for production in many cases.</p>
 <p>The solution is to choose a directory in your project, and set the environment
 variable <code>$AIRFLOW_HOME</code> whenever you run the tests, or use the <code>airflow</code>
 command on the project DAGs. I recommend you add the command</p>
-<div class="hll"><pre><span></span><span class="nb">export</span> <span class="nv">AIRFLOW_HOME</span><span class="o">=</span>/your/desired/full/path/
+<div class="hll"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">AIRFLOW_HOME</span><span class="o">=</span>/your/desired/full/path/
 </pre></div>
 <p>to a script (ours is called <code>env.sh</code>) that will be run in any shell dealing with
 the 'localized' Airflow instance, because forgetting to set the variable for

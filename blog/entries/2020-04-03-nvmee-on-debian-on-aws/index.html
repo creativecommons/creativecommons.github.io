@@ -316,12 +316,12 @@ and it might cause confusion</li>
 <p>The <a href="https://github.com/creativecommons/sre-salt-prime/blob/master/states/mount/init.sls"><code>states/mount/init.sls</code></a> state includes a complex shell
 command (with Jinja2 variables) that loops through the NVMe devices and finds
 the correct one:</p>
-<div class="hll"><pre><span></span><span class="k">for</span> n <span class="k">in</span> /dev/nvme?n?
+<div class="hll"><pre><span></span><span class="k">for</span><span class="w"> </span>n<span class="w"> </span><span class="k">in</span><span class="w"> </span>/dev/nvme?n?
 <span class="k">do</span>
-    <span class="k">if</span> nvme id-ctrl -v <span class="si">${</span><span class="nv">n</span><span class="si">}</span> <span class="p">|</span> grep -q <span class="s1">&#39;^0000:.*{{ spec_short }}&#39;</span>
-    <span class="k">then</span>
-        ln -s <span class="si">${</span><span class="nv">n</span><span class="si">}</span> <span class="o">{{</span> spec_long <span class="o">}}</span>
-    <span class="k">fi</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>nvme<span class="w"> </span>id-ctrl<span class="w"> </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">n</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;^0000:.*{{ spec_short }}&#39;</span>
+<span class="w">    </span><span class="k">then</span>
+<span class="w">        </span>ln<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">n</span><span class="si">}</span><span class="w"> </span><span class="o">{{</span><span class="w"> </span>spec_long<span class="w"> </span><span class="o">}}</span>
+<span class="w">    </span><span class="k">fi</span>
 <span class="k">done</span>
 </pre></div>
 <p>Example variable values:</p>
