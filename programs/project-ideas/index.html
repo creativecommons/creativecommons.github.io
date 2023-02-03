@@ -273,41 +273,41 @@
         </div>
         <div class="project-ideas columns is-multiline">
           
-          <div class="column is-one-quarter filter filter-label difficulty-medium skill-django skill-git skill-python">
-            <a href="#add-plain-text-format-to-cc-legal-tools">
+          <div class="column is-one-quarter filter filter-label difficulty-medium skill-git skill-github-actions skill-python">
+            <a href="#automating-quantifying-the-commons">
               <article class="card entry-post horizontal">
                 <div class="card-content">
-                  <h5 class="card-title">Add plain text format to CC Legal Tools</h5>
+                  <h5 class="card-title">Automating Quantifying the Commons</h5>
                 </div>
               </article>
             </a>
           </div>
           
           <div class="column is-one-quarter filter filter-label difficulty-high skill-django skill-git skill-python skill-rdf skill-xml">
-            <a href="#add-rdf-xml-format-to-cc-legal-tools">
+            <a href="#cc-legal-tools-machine-layer">
               <article class="card entry-post horizontal">
                 <div class="card-content">
-                  <h5 class="card-title">Add RDF XML format to CC Legal Tools</h5>
+                  <h5 class="card-title">CC Legal Tools: Machine Readable Layer</h5>
                 </div>
               </article>
             </a>
           </div>
           
-          <div class="column is-one-quarter filter filter-label difficulty-medium skill-git skill-javascript skill-php skill-wordpress">
-            <a href="#modernize-termination-of-transfer-wp-plugin">
+          <div class="column is-one-quarter filter filter-label difficulty-medium skill-git skill-javascript skill-jekyll skill-html skill-css">
+            <a href="#modernize-cc-resource-archive">
               <article class="card entry-post horizontal">
                 <div class="card-content">
-                  <h5 class="card-title">Modernize termination-of-transfer WordPress plugin</h5>
+                  <h5 class="card-title">Modernize CC Resource Archive</h5>
                 </div>
               </article>
             </a>
           </div>
           
-          <div class="column is-one-quarter filter filter-label difficulty-medium skill-css skill-git skill-githubpages skill-html skill-javascript skill-json">
-            <a href="#refactor-cc-meta-search">
+          <div class="column is-one-quarter filter filter-label difficulty-high skill-git skill-javascript skill-vue skill-html skill-css">
+            <a href="#upgrade-and-refactor-cc-chooser">
               <article class="card entry-post horizontal">
                 <div class="card-content">
-                  <h5 class="card-title">Refactor CC meta search</h5>
+                  <h5 class="card-title">Upgrade and Refactor CC Chooser</h5>
                 </div>
               </article>
             </a>
@@ -328,7 +328,7 @@
     <div class="body container">
       
         <div class="project-idea">
-          <h2><a class="has-color-dark-slate-gray" name="add-plain-text-format-to-cc-legal-tools">Add plain text format to CC Legal Tools</a></h2>
+          <h2><a class="has-color-dark-slate-gray" name="automating-quantifying-the-commons">Automating Quantifying the Commons</a></h2>
           <div class="columns">
             <div class="column is-one-quarter">
               <h5 class="b-header padding-bottom-small">Difficulty</h5>
@@ -337,8 +337,8 @@
               <p class="padding-bottom-big">Large (~350 hours)</p>
               <h5 class="b-header padding-bottom-small">Skills recommended</h5>
               <ul>
-<li>Django</li>
 <li>Git</li>
+<li>GitHub Actions</li>
 <li>Python</li>
 </ul>
 
@@ -350,40 +350,34 @@
             </div>
             <div class="column is-three-quarters">
               <h3 class="padding-bottom-big">The Problem</h3>
-              <p><p>Plain text formats for the 4.0 licenses and the CC0 public domain dedication
-were created using a manual process (<a href="https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/">Plaintext versions of Creative Commons
-licenses and CC0 - Creative Commons</a>).  Only the English
-versions of the legal tools were formatted as plain text.  Additionally, that
-manual creation process was not without errors and is not sustainable.</p>
+              <p><p>The Quantifying the Commons project has seen excellent additions led by student
+developers. However, the scope of previous projects did not include automation
+or combined reporting.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
-              <p><p>Extend the CC Legal Tools App to generate deterministic plain text versions of
-the 4.0 licenses and the CC0 public domain dedication.</p>
+              <p><p>Add automation of data gathering and report generation so that our reports
+quantifying the commons are never more than 3 months out of date.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
-              <p><p>The contributor will need to extend the CC Legal Tools App to generate plain
-text versions. The generated plain text versions must be deterministic and
-match the formatting of the manual versions (except where improvements are
-desired). Application updates must include test coverage. Stretch goals include
-Markdown format generation and interfacing/collaborating with SPDX.</p>
+              <p><p>The contributor will need to architect a data flow, formalize data formats,
+automate data gathering, and automate reporting. Challenges include quota
+limits that may require multi-day/multi-step data gathering, deciding on plain
+text vs binary data formats, and secret management. Knowledge of numpy and
+matplotlib python libraries will be very helpful.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
               <p><ul>
-<li>Engage with the CC Legal Tools repositories (issues, pull requests)</li>
+<li>Engage with the repository (issues, pull requests)</li>
 <li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
 <li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
 </ul>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Resources</h3>
               <p><ul>
-<li><a href="https://github.com/creativecommons/cc-legal-tools-app">creativecommons/cc-legal-tools-app</a>: License and public
-domain dedication management application for Creative Commons</li>
-<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>: License and
-public domain dedication data for Creative Commons</li>
-<li><a href="https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/">Plaintext versions of Creative Commons 4.0 licenses - Creative
-Commons</a></li>
-<li><a href="https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/">Plaintext versions of Creative Commons licenses and CC0 - Creative
-Commons</a></li>
+<li><a href="https://github.com/creativecommons/quantifying">creativecommons/quantifying</a>:
+Quantifying the Commons</li>
+<li><a href="https://github.com/creativecommons/quantifying/issues/22">[Feature] Automate Data Gathering and Analysis/Rendering · Issue
+#22</a></li>
 </ul>
 </p>
             </div>
@@ -392,7 +386,7 @@ Commons</a></li>
         </div>
       
         <div class="project-idea">
-          <h2><a class="has-color-dark-slate-gray" name="add-rdf-xml-format-to-cc-legal-tools">Add RDF XML format to CC Legal Tools</a></h2>
+          <h2><a class="has-color-dark-slate-gray" name="cc-legal-tools-machine-layer">CC Legal Tools: Machine Readable Layer</a></h2>
           <div class="columns">
             <div class="column is-one-quarter">
               <h5 class="b-header padding-bottom-small">Difficulty</h5>
@@ -416,21 +410,28 @@ Commons</a></li>
             </div>
             <div class="column is-three-quarters">
               <h3 class="padding-bottom-big">The Problem</h3>
-              <p><p>The CC Legal Tools App is currently using legacy RDF files for the machine
-readable layer of the legal tools. Those files are out of date and contain a
-few errors and omissions. This technical debt also prevents future work to
-improve the machine readable layer of the CC Legal Tools.</p>
+              <p><p>The CC Legal tools consist of three parts, the legal code, the deed (simple
+language description), and the machine readable. The machine readable layer has
+received the least recent development. It is out of date and there are
+unresolved issues.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
               <p><p>Extend the CC Legal Tools App to generate deterministic RDF XML files for all
 of the legal tools.</p>
+<p>Stretch goal: Extend the CC Legal Tools App to generate deterministic plain
+text versions of the 4.0 licenses and the CC0 public domain dedication.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
               <p><p>The contributor will need to extend the CC Legal Tools App to generate RDF XML
 files. The generated RDF XML files must be deterministic and well organized and
 based on current RDF specifications. Application updates must include test
-coverage. Stretch goals include planning any breaking changes and working on a
-static API.</p>
+coverage.</p>
+<p>Stretch goal: Extend the CC Legal Tools App to generate plain text versions.
+The generated plain text versions must be deterministic and match the
+formatting of the manual versions (except where improvements are desired).
+Application updates must include test coverage. Additional stretch goals
+include adding markdown format generation and interfacing/collaborating with
+SPDX.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
               <p><ul>
@@ -441,11 +442,26 @@ static API.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Resources</h3>
               <p><ul>
-<li><a href="https://github.com/creativecommons/cc-legal-tools-app">creativecommons/cc-legal-tools-app</a>: License and public
-domain dedication management application for Creative Commons</li>
-<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>: License and
-public domain dedication data for Creative Commons</li>
-<li><a href="https://creativecommons.org/ns/">Describing Copyright in RDF - Creative Commons Rights Expression Language</a></li>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-app/">creativecommons/cc-legal-tools-app</a>:
+License and public domain dedication management application for Creative
+Commons</li>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>:
+License and public domain dedication data for Creative Commons</li>
+<li><strong>ccREL (RDF/XML)</strong></li>
+<li><a href="https://creativecommons.org/ns/">Describing Copyright in RDF - Creative Commons Rights Expression
+Language</a></li>
+<li><a href="https://wiki.creativecommons.org/wiki/CC_REL">CC REL - Creative Commons</a> (CC
+Public Wiki)</li>
+<li><a href="https://github.com/creativecommons/ccrel">creativecommons/ccrel</a></li>
+<li><a href="https://opensource.creativecommons.org/ccrel/">ccREL: The Creative Commons Rights Expression
+Language</a></li>
+<li><a href="https://github.com/creativecommons/ccrel-guide">creativecommons/ccrel-guide</a></li>
+<li><a href="https://opensource.creativecommons.org/ccrel-guide/">CC REL by Example</a></li>
+<li><strong>Plain text format</strong></li>
+<li><a href="https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/">Plaintext versions of Creative Commons 4.0 licenses - Creative
+Commons</a></li>
+<li><a href="https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/">Plaintext versions of Creative Commons licenses and CC0 - Creative
+Commons</a></li>
 </ul>
 </p>
             </div>
@@ -454,7 +470,7 @@ public domain dedication data for Creative Commons</li>
         </div>
       
         <div class="project-idea">
-          <h2><a class="has-color-dark-slate-gray" name="modernize-termination-of-transfer-wp-plugin">Modernize termination-of-transfer WordPress plugin</a></h2>
+          <h2><a class="has-color-dark-slate-gray" name="modernize-cc-resource-archive">Modernize CC Resource Archive</a></h2>
           <div class="columns">
             <div class="column is-one-quarter">
               <h5 class="b-header padding-bottom-small">Difficulty</h5>
@@ -465,8 +481,9 @@ public domain dedication data for Creative Commons</li>
               <ul>
 <li>Git</li>
 <li>JavaScript</li>
-<li>PHP</li>
-<li>WordPress</li>
+<li>Jekyll</li>
+<li>HTML (Semantic &amp; Accessible)</li>
+<li>CSS (Structured &amp; Accessible)</li>
 </ul>
 
               <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
@@ -477,36 +494,36 @@ public domain dedication data for Creative Commons</li>
             </div>
             <div class="column is-three-quarters">
               <h3 class="padding-bottom-big">The Problem</h3>
-              <p><p>Due to its current setup and structure it is difficult to install from the
-codebase directly into a WordPress installation (i.e. via Composer).
-Additionally, the codebase has sections that need to be checked and updated to
-current coding standards and best practices.</p>
+              <p><p>The Resources Archive has an outdated visual setup, and needs functionality
+fixes and improvements.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
-              <p><p>The plugin’s structure and setup follows current development standards, increasing maintainability and ease-of-use.</p>
+              <p><p>Upgrade the look &amp; feel to match current CC aesthetics, using the internal
+Design System (Vocabulary). Codebase is running current and standards compliant
+technology implementations. Entire site builds as static files on GH pages.
+Generate clear documentation of codebase and functionality.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
-              <p><p>The contributor will restructure the repo, adjusting any necessary code to meet
-current WordPress plugin development standards, and best practices for PHP and
-Javascript (follow appropriate ECMAScript standards), while creating a
-directory structure that allows the codebase to be deployed into a standard
-WordPress installation.</p>
+              <p><p>Contributor will refactor codebase to fix resource submission, use current
+semantic, accessible, and standards compliant HTML, CSS, and JavaScript to
+match the current visual aesthetic of Creative Commons sites. Improve the
+overall UX for finding, submitting, and  accessing resources. Ensure the site
+functions as a static and stable Jekyll site hosted on GH Pages as static
+files. Final implementation will have clear documentation drafted within the
+codebase for future maintainability.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
               <p><ul>
-<li>Engage with the Termination of Transfer repository (issues, pull requests)</li>
+<li>Engage with the repository (issues, pull requests)</li>
 <li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
 <li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
 </ul>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Resources</h3>
               <p><ul>
-<li><a href="https://github.com/creativecommons/termination-of-transfer">creativecommons/termination-of-transfer</a></li>
-<li><a href="https://github.com/creativecommons/termination-of-transfer/issues/127">[Feature] Convert repository / codebase to a WordPress plugin that can be
-installed via composer #127</a></li>
-<li><a href="https://developer.wordpress.org/plugins/intro/">Introduction to Plugin Development</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_overview#standardization_process">MDN Web Docs: ECMAScript Standards</a></li>
-<li><a href="https://www.php-fig.org/psr/psr-1/">PHP-FIG: PSR-1</a></li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive">creativecommons/cc-resource-archive</a>: CC Resource Archive</li>
+<li><a href="https://jekyllrb.com/">Jekyll</a></li>
+<li><a href="https://pages.github.com/">GH Pages</a></li>
 </ul>
 </p>
             </div>
@@ -515,21 +532,23 @@ installed via composer #127</a></li>
         </div>
       
         <div class="project-idea">
-          <h2><a class="has-color-dark-slate-gray" name="refactor-cc-meta-search">Refactor CC meta search</a></h2>
+          <h2><a class="has-color-dark-slate-gray" name="upgrade-and-refactor-cc-chooser">Upgrade and Refactor CC Chooser</a></h2>
           <div class="columns">
             <div class="column is-one-quarter">
               <h5 class="b-header padding-bottom-small">Difficulty</h5>
-              <p class="padding-bottom-big">Medium</p>
+              <p class="padding-bottom-big">High</p>
               <h5 class="b-header padding-bottom-small">Size</h5>
               <p class="padding-bottom-big">Large (~350 hours)</p>
               <h5 class="b-header padding-bottom-small">Skills recommended</h5>
               <ul>
-<li>CSS</li>
 <li>Git</li>
-<li>GitHub Pages</li>
-<li>HTML</li>
 <li>JavaScript</li>
-<li>JSON</li>
+<li>Vite</li>
+<li>Vue.js (v2 &amp; v3)</li>
+<li>Pinia</li>
+<li>HTML (Semantic &amp; Accessible)</li>
+<li>CSS (Structured &amp; Accessible)</li>
+<li>Web Components</li>
 </ul>
 
               <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
@@ -540,40 +559,41 @@ installed via composer #127</a></li>
             </div>
             <div class="column is-three-quarters">
               <h3 class="padding-bottom-big">The Problem</h3>
-              <p><p>The legacy CC meta search site doesn’t match the current visuals of the rest of
-CC web entities, and it’s built on PHP which requires a more complex hosting
-setup that can’t reside somewhere that supports simple static output (like
-GitHub pages). Additionally the code is set up in a legacy fashion, is not
-semantic, may contain accessibility issues, and contains broken meta searches.</p>
+              <p><p>The Chooser has a stable initial UX, but due to bitrot its codebase is
+approaching non-support.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
-              <p><p>Simplify and modernize the codebase and requirements of the legacy CC meta
-search, improve functionality, and update the visuals to match current CC
-standards and norms.</p>
+              <p><p>Upgrade the codebase to current Vue.js versions and ancillary technologies
+(Vite, Pinia), created more clarity and longevity in the codebase. Generate
+clear documentation of codebase and functionality.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
-              <p><p>Rewrite the application, maintaining its original function,  as a static site
-on GitHub pages, using semantic, standards-compliant, and accessible HTML, CSS,
-and JavaScript. Update the visual aesthetic and overall appearance to better
-correspond with other current CC web entities.</p>
+              <p><p>The contributor will need to upgrade the codebase from Vue.js v2.x to Vue.js
+v3.x, from Vue CLI to Vite, and from Vuex to Pinia. Incorporate new UX changes
+using semantic,  standards compliant, and accessible JavaScript, HTML, and CSS.
+Reduce the number of dependencies, and establish a stable automated process to
+build out an embeddable Web Component compatible implementation. Knowledge of
+the upgrade path from Vue 2.x implementations to Vue 3.x will be helpful, as
+will knowledge of Web Components. Final implementation will have clear
+documentation drafted within the codebase for future maintainability.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
               <p><ul>
-<li>Engage with the Legacy CC Search repository (issues, pull requests)</li>
+<li>Engage with the repository (issues, pull requests)</li>
 <li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
 <li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
 </ul>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Resources</h3>
               <p><ul>
-<li><a href="https://github.com/creativecommons/search">creativecommons/search</a>: Legacy Creative Commons Search, no
-longer under development</li>
-<li><a href="https://oldsearch.creativecommons.org/">oldsearch.creativecommons.org</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics">MDN Web Docs: Semantics</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs: HTML</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN Web Docs: JavaScript</a></li>
-<li><a href="https://wave.webaim.org/report#/https://oldsearch.creativecommons.org/">WAVE Report for “oldsearch.creativecommons.org”</a></li>
-<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">About GitHub Pages</a></li>
+<li><a href="https://github.com/creativecommons/chooser">creativecommons/chooser</a>: Chooser</li>
+<li><a href="https://vuejs.org/">Vue.js</a></li>
+<li><a href="https://v3-migration.vuejs.org/">Vue v3 Migration Guide</a></li>
+<li><a href="https://cli.vuejs.org/">Vue CLI</a></li>
+<li><a href="https://vuex.vuejs.org/">Vuex</a></li>
+<li><a href="https://vitejs.dev/">Vite.js</a></li>
+<li><a href="https://pinia.vuejs.org/">Pinia</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a></li>
 </ul>
 </p>
             </div>
