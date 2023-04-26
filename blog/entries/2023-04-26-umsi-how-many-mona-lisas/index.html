@@ -1,0 +1,560 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Many Mona Lisas? Artistic Data Quantification and Assessment" />
+
+
+
+<meta property="og:description" content="Quantifying the Commons" />
+
+
+<meta property="og:url" content="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Many Mona Lisas? Artistic Data Quantification and Assessment.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Many Mona Lisas? Artistic Data Quantification and Assessment">
+<meta name="twitter:description" content="Quantifying the Commons">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Many Mona Lisas? Artistic Data Quantification and Assessment — Creative Commons Open Source</title>
+
+<body>
+  <div class="ga-script">
+<div id="ga-script"></div>
+<script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-2010376-37', 'auto');
+        ga('send', 'pageview');
+</script>
+</div>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/entries/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Many Mona Lisas? Artistic Data Quantification and Assessment</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Many Mona Lisas? Artistic Data Quantification and Assessment</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="gravatar" />
+      </figure>
+    </header>
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/grace_coleman/">Grace Coleman</a>, <a class="author-name" href="/blog/authors/anthony_ho/">Anthony Ho</a>, <a class="author-name" href="/blog/authors/tyler_phillips/">Tyler Phillips</a>, <a class="author-name" href="/blog/authors/claire_wan/">Claire Wan</a> on 2023-04-26
+          </p>
+        </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>Quantifying the Commons</p>
+<p>University of Michigan, School of Information</p>
+<h2 id="project-objective-and-problem-statement">Project Objective and Problem Statement</h2><p>Creative Commons (CC) has over one billion licensed works. However, there is no
+central data or organization of CC’s licensed works, making it difficult to
+quantify the number of works and to analyze which licenses are useful or should
+be retired. The goal of this project is to help CC staff identify redundant
+licenses and use quantitative data in marketing its impact. It focuses on Open Education Resources (OER).</p>
+<h2 id="data-collection">Data Collection</h2><p>Data was collected from <a href="https://www.oercommons.org/">OER Commons</a>, which is one of CC’s
+platforms and a library containing digital education resources. The first step
+in data collection was identifying which licenses this data source uses and how
+many works are under each license within OER Commons. OER Commons uses the
+licenses CC-BY, CC-BY-SA, CC-BY-ND, CC-BY-NC, CC-BY-NC-SA, and CC-BY-NC-ND
+which contribute to both ‘fair use’ and ‘commercial use’ assets, respectively.
+The next step in data collection was querying the Application Programming
+Interface (API) by license. In order to retrieve all works for a license,
+queries are batched by a maximum of 50 works retrieved at once.  This process
+is repeated until all works for a license are retrieved. These steps are run
+for every license. For every API call, the response is in XML which is parsed
+for features including education level, subject area, material type, media
+format, languages, primary user, and educational use. The results are outputted
+to a tab-separated CSV file.</p>
+<h2 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2><p>After collecting all of our data, we began exploring the different columns in
+our dataframe. In particular, we looked at the distribution of different
+languages, the distribution of items by license type, and when items were added
+to the OER Commons API. Through this exploration, we were able to further
+specify our analysis and dig deeper into the different relationships of the
+data.</p>
+<h3 id="diagram-1">Diagram #1:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_01.png" alt="Diagram #1: Percentage of Items per License Type"></p>
+<p>Diagram #1 shows the distribution of items taken from OER Commons by license
+type. It is clear that the CC-BY license type is the most popular, with 43% of
+the items having that license type. The CC-BY-SA license is also fairly
+popular, accounting for 27% of the items collected.</p>
+<h3 id="diagram-2">Diagram #2:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_02.png" alt="Diagram #2: Number of Items by Month since Dec 2015"></p>
+<p>Diagram #2 shows when items have been added to the OER Commons API. There is
+little activity from December 2015, up to the beginning of 2023. However, close
+to 30,000 items were added to the API in early 2023.</p>
+<h3 id="diagram-3">Diagram #3:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_03.png" alt="Diagram #3: Percentage of Items by Language"></p>
+<p>Diagram #3 shows the percentage of items by language. English is the most used
+language, with about 86% of the items being in English. The other languages
+each have a small amount of the items.</p>
+<h3 id="diagram-4">Diagram #4:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_04.png" alt="Diagram #4: Percentage of Items in English per License Type"></p>
+<p>Since English is clearly the most popular language, we decided to see the
+license distribution for items that are in English. Diagram #4 shows a similar
+distribution to the pie chart depicting the overall license distribution; this
+is to be expected since items in English account for 86% of all items, so the
+distribution of licenses is similar to the overall distribution.</p>
+<h3 id="diagram-5">Diagram #5:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_05.png" alt="Diagram #5: Percentage of Items in French per License Type"></p>
+<p>We continued to look at the distribution of licenses by each language.
+Diagram #5 shows that for the items in French, CC-BY license is the most
+popular at 49%, with CC-BY-SA being right behind it at 32%.</p>
+<h2 id="visualizations">Visualizations</h2><h3 id="diagram-6">Diagram #6:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_06.png" alt="Diagram #6: License Type Breakdown by Primary User"></p>
+<p>Diagram #6 shows the distribution of items on OER commons by primary user and
+broken down by license type. The platform predominantly contains items designed
+for teachers and students, with the rest for parents, administrators,
+librarians among others. The breakdown of licenses for each primary user is
+relatively consistent with the overall breakdown of the platform, as seen from
+the charts below (Diagram #7 and Diagram #8).</p>
+<h3 id="diagram-7">Diagram #7:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_07.png" alt="Diagram #7: Percentage of Items Used by Teachers per License Type"></p>
+<h3 id="diagram-8">Diagram #8:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_08.png" alt="Diagram #8: Percentage of Items Used by Students per License Type"></p>
+<h3 id="diagram-9">Diagram #9:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_09.png" alt="Diagram #9: Subject Area by License"></p>
+<p>Another aspect analyzed was inspecting the subject areas and the licenses that
+they hold as shown in Diagram #9. Some preliminary data cleaning had to be
+conducted as there were too many subjects on the platform, while some subjects
+had very low counts. The team grouped similar subjects into nine different
+categories, for example, social science, anthropology, sociology,
+communication, world cultures, psychology, women’s studies, and social work
+were grouped into social sciences.</p>
+<p>It can be seen from Diagram #9 that the most popular subject areas on the
+platform are health sciences, language/arts and other sciences. Diving deeper
+into these subject areas, health sciences and language/arts have a higher
+proportion of items with the CC-BY-NC-SA license.</p>
+<h3 id="diagram-10">Diagram #10:</h3><p><img src="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/diagram_10.png" alt="Diagram #10: Material Type Breakdown by Education Level"></p>
+<p>Finally, the team analyzed the material types of the items and sorted it by
+education level that the items were created for. Again, some data cleaning was
+required as there were too many material types to analyze and some also had
+very small data counts. The seven material types shown in Diagram #10 were the
+most popular, and represented roughly 2/3 of the total.</p>
+<p>After sorting the education levels in chronological order, an interesting trend
+that emerged is that the number of items increases with education level from
+preschool, hits a peak at the community college level, and then decreases
+afterwards. A shift in the material types can also be drawn from the graph, as
+lesson plans represent a large proportion of items from preschool to high
+school, but become insignificant from the college level onwards. On the other
+hand, this is replaced by a higher proportion of readings. Another observation
+worth remarking is that there is also a higher proportion of items at the
+college level for textbooks.</p>
+<h2 id="key-value">Key Value</h2><p>The insights created through the analysis of this project will be helpful for
+CC’s marketing efforts. The ability to understand the distribution of license
+types in different contexts such as education level, will help CC be better
+equipped to target their marketing toward key demographics such as preschool
+education materials for example. Another take away in terms of key value was
+CC’s initiative to long term preservation. CC’s need to centralize their
+collaborators' content into a database warehouse system has been an identified
+direction since the start of this project. Our prototype database of the OER
+Commons has contributed to these efforts in both small scale implementation as
+well as meeting the scope of our database system modeling. As other CC cohort
+chapters contribute their own databases of licenced works, there is a hopeful
+expectation that a merger of acquisition will take place with other CC chapters
+in the future.</p>
+<h2 id="next-steps">Next Steps</h2><p>As CC expands its contributing members into the open-source initiative of
+bringing licensed works to the world, other internal systems of data
+preservation and maintenance start to become a point of serious interest as the
+databases start to become an integrated endeavor in the future. Running our
+prototype case study of the OER-Commons database has given us insights on the
+direction of CC current database system and how this system will be better
+suited to evolve into a data warehouse hub as a long-term solution. When we
+started the process of data mining and data analysis, using Python3 has been a
+staple in both our groups efforts as well as CC’s previous protocols with Git.
+So, complementing this framework with other Python libraries that allow for
+easier database querying will be a step in the right direction for the next
+cohort of CC contributors to further this process along. An example of this
+library integration would be pandasql to utilize the family pandas library
+methods along with the SQL command logic that makes database maintenance easy
+and manageable. Besides updating the data storage, future work can continue to
+collect data from other sources with CC licensed work including the GLAM and
+Internet Archive.</p>
+<h2 id="acknowledgements">Acknowledgements</h2><p>We would like to express our gratitude towards Timid Robot Zehta, our client,
+for working on behalf of CC, as well as <a href="https://www.oercommons.org/">OER Commons</a> for their
+valuable contributions towards the development of digital licensing and open
+source databasing initiatives. Without them, this project would not have been
+possible. Their efforts have been instrumental in giving us the tools and
+resources to help progress in the open-source initiative by allowing us to
+promote the free exchange of ideas, knowledge, and resources within the art,
+health, and education sectors of non-profit endeavors. Open source projects are
+important because they allow the public to use and work on projects without
+restrictions or keys. Since this initiative is open source, our efforts can be
+added to and built upon, allowing the project to continue through the addition
+of new contributors with fresh perspectives. Both of their commitment to
+promoting accessible and inclusive content has enabled individuals and
+organizations to create and distribute digital assets without facing any legal
+restrictions around the world. It has been an absolute pleasure to work with
+these organizations and be a part of their mission to democratize access to
+information.</p>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-dataviz/ ">cc-dataviz</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/collaboration/ ">collaboration</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/community/ ">community</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/quantifying-the-commons/ ">quantifying-the-commons</a>
+            
+          
+        </div>
+      </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2023-04-26-umsi-how-many-mona-lisas"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2023-04-26-umsi-how-many-mona-lisas/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+    </footer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/entries/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="text" class="input" placeholder="Your email">
+                  <input type="submit" value="subscribe" class="button small">
+                </form>
+              </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
