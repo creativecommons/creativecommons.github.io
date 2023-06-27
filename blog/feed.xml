@@ -1913,67 +1913,6 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;The Major pull requests: &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/249"&gt;#249&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/255"&gt;#255&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/268"&gt;#268&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/270"&gt;#270&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/271"&gt;#271&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/272"&gt;#272&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/275"&gt;#275&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/276"&gt;#276&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Also, during this period, 5 updates of the extension were pushed to the extension stores. You can check out the &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/releases"&gt;releases page&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="acknowledgements"&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href="https://creativecommons.org/author/aldencreativecommons-org/"&gt;Alden&lt;/a&gt; and &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href="https://github.com/panchovm"&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
-</content></entry><entry><title>Overview of the GSoC 2020 Project</title><link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" rel="alternate"></link><updated>2020-08-26T00:00:00Z</updated><author><name>['charini']</name></author><id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id><content type="html">&lt;p&gt;This is my final blog post under the &lt;a href="/blog/entries/overview-of-the-gsoc-2020-project/#series"&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
-summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
-stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
-the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; and &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
-CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
-primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
-(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
-experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
-Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
-&lt;a href="/blog/entries/flickr-sub-provider-retrieval/"&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/420"&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/442"&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/455"&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/461"&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
-to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
-the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
-successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
-mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
-information is provided in my &lt;a href="/blog/entries/smithsonian-unit-code-update/"&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
-is #&lt;a href="https://github.com/creativecommons/cccatalog/pull/465"&gt;465&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
-from 19 museums. However, due to the fact that the different museums have different data models and the resultant
-incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
-fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
-information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
-identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
-result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
-some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
-#&lt;a href="https://github.com/creativecommons/cccatalog/issues/397"&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
-Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
-Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href="https://github.com/creativecommons/cccatalog/issues/397"&gt;397&lt;/a&gt; as well. The PRs related
-to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/474"&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
-Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/476"&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
-provider.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
-for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
-providers up-to-date, based on how old an image is. This is called the &lt;a href="/blog/entries/date-partitioned-data-reingestion/"&gt;re-ingestion strategy&lt;/a&gt;,
-where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
-detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
-database are obsolete, which could result in broken links being presented via the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; tool. As a
-solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
-&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
-the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
-flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href="https://github.com/creativecommons/cccatalog/pull/483"&gt;483&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
-contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
-Brent for his guidance.&lt;/p&gt;
 </content></entry><entry><title>Automate GitHub for more than CI/CD</title><link href="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI%20CD/" rel="alternate"></link><updated>2020-08-26T00:00:00Z</updated><author><name>['zackkrida']</name></author><id>urn:uuid:1f2b4dad-de07-33ab-b1c7-394778548e55</id><content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Get started using GitHub bots and actions for community management and repository health.&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In late 2018, in the midst of being acquired by Microsoft, GitHub &lt;a href="https://github.blog/2018-10-16-future-of-software/"&gt;launched Github Actions&lt;/a&gt; into public beta, allowing users to run code on the popular development platform for the first time. With a straightforward &lt;code&gt;YAML&lt;/code&gt; configuration syntax and the power of Microsoft's Azure cloud, GitHub Actions quickly rose to compete with existing Continuous Integration (CI) and Continuous Deployment (CD) platforms like &lt;strong&gt;Circle CI&lt;/strong&gt; and &lt;strong&gt;Travis CI&lt;/strong&gt;. GitHub Actions made it easier than ever for developers to test and deploy software in the cloud, but from the beginning GitHub had bigger plans for the service.&lt;/p&gt;
@@ -2069,6 +2008,67 @@ Brent for his guidance.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href="https://github.com/marketplace?type=actions"&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href="https://docs.github.com/actions"&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
+</content></entry><entry><title>Overview of the GSoC 2020 Project</title><link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" rel="alternate"></link><updated>2020-08-26T00:00:00Z</updated><author><name>['charini']</name></author><id>urn:uuid:4cdfc111-c714-33e1-b521-390d487d46da</id><content type="html">&lt;p&gt;This is my final blog post under the &lt;a href="/blog/entries/overview-of-the-gsoc-2020-project/#series"&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; and &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
+(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
+experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
+Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
+&lt;a href="/blog/entries/flickr-sub-provider-retrieval/"&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/420"&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/442"&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/455"&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/461"&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
+to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
+the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
+successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
+mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
+information is provided in my &lt;a href="/blog/entries/smithsonian-unit-code-update/"&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
+is #&lt;a href="https://github.com/creativecommons/cccatalog/pull/465"&gt;465&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
+from 19 museums. However, due to the fact that the different museums have different data models and the resultant
+incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
+fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
+information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
+identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
+result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
+some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
+#&lt;a href="https://github.com/creativecommons/cccatalog/issues/397"&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
+Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href="https://github.com/creativecommons/cccatalog/issues/397"&gt;397&lt;/a&gt; as well. The PRs related
+to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/474"&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
+Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/creativecommons/cccatalog/pull/476"&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
+provider.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
+for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
+providers up-to-date, based on how old an image is. This is called the &lt;a href="/blog/entries/date-partitioned-data-reingestion/"&gt;re-ingestion strategy&lt;/a&gt;,
+where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
+detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
+database are obsolete, which could result in broken links being presented via the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; tool. As a
+solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
+&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
+the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
+flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href="https://github.com/creativecommons/cccatalog/pull/483"&gt;483&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
+contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
+Brent for his guidance.&lt;/p&gt;
 </content></entry><entry><title>CC Catalog: wrapping up GSoC20</title><link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:ba947438-0d00-32ec-8ba7-acf6f5f15eb5</id><content type="html">&lt;p&gt;With the summer of code coming to an end, this blog post summarises the work done during the last three months. The project I have been working on is to add more provider API scripts to the CC Catalog. The CC Catalog project is responsible for collecting CC licensed images hosted across the web.&lt;/p&gt;
 &lt;p&gt;The internship journey has been great , and I was glad to get the opportunity to understand more about the working of the data pipeline. My work during the internship mainly involved researching new API providers and checking if they meet the necessary conditions, then we decided on a strategy to crawl the API. The strategy varies according to different APIs:  some can be partitioned based on date, others have to be paginated . Script is written for the API according to the strategy. 
 During the later phase of the internship, I had worked on the reingestion strategy for europeana and a script to merge Common Crawl tags and metadata to the corresponding image in the image table.&lt;/p&gt;
@@ -3449,95 +3449,49 @@ The changes in the source field after updating the image table in the database l
 &lt;a href="https://github.com/creativecommons/cccatalog/pull/420"&gt;https://github.com/creativecommons/cccatalog/pull/420&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="acknowledgement"&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I express my gratitude to Brent Moran and Anna Tumadóttir for their assistance with my first task in GSoC 2020 by
 helping me to filter the sub-providers of interest and conducting the necessary research.&lt;/p&gt;
-</content></entry><entry><title>Science Museum provider implementation</title><link href="http://opensource.creativecommons.org/blog/entries/science-museum-implementation/" rel="alternate"></link><updated>2020-06-10T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:7960ba6c-0bbb-300e-86d8-4744b9b0ee25</id><content type="html">&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;p&gt;CC catalog project is responsible for collecting CC licensed images available in the web,  CC licensed images are hosted by different
-sources, these sources that provide the images and its metadata are called providers. Currently, images are collected from providers using two methods
-Common Crawl and API based crawl. Common Crawl data is an open repository of web crawled data and we use that data to get the necessary image metadata 
-for that provider &lt;a href="https://commoncrawl.org/the-data/get-started/"&gt;more information&lt;/a&gt;. API crawl is implemented using the API endpoint maintained 
-by the providers. The main problem with Common Crawl is that we don't have control over the data they crawl, and this sometimes results poor 
-data quality whereas with API based crawl we have access to the information available. API based crawl is better when we need to update image
-metadata and reqular intervals.&lt;/p&gt;
-&lt;p&gt;As a part of the internship, I will be working on moving providers from Common Crawl to API based crawl as well as integrate new providers
-to the API crawl. I will be starting with the Science Museum provider.&lt;/p&gt;
-&lt;h2 id="science-museum"&gt;Science Museum&lt;/h2&gt;&lt;p&gt;Science museum is a provider with around 80,000 CC licensed images, currently Science museum data is ingested from Common Crawl. 
-Science museum is one such provider where our data is of poor quality and there is need to improve it. This is done by moving 
-Science museum to an API based crawl.&lt;/p&gt;
-&lt;h2 id="api-research"&gt;API research&lt;/h2&gt;&lt;p&gt;We want to index metadata using their open API &lt;a href="https://collection.sciencemuseumgroup.org.uk/search/has_image/image_license"&gt;endpoint&lt;/a&gt;. 
-However, before the implementation we have to ensure that the API provides necessary content and there is a systematic way to get it.
-The first step is to take an object from their collection and check certain criterias.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://collection.sciencemuseumgroup.org.uk/api/objects/co8005638"&gt;sample object&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The criteria are:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;parameters available for the API&lt;/li&gt;
-&lt;li&gt;Object landing url (frontend link of the object the image is associated with) &lt;/li&gt;
-&lt;li&gt;Image url (the url link of the image)&lt;/li&gt;
-&lt;li&gt;CC license associated with the image&lt;/li&gt;
-&lt;li&gt;creator, title and other metadata info &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Once the above checks have been made, we need to find a way to get all the objects, this could be by paging through the records 
-or partition using the parameters, etc. Since their API parameter has &lt;code&gt;page[number]&lt;/code&gt; paging would be an appropriate choice with  max size 
-as 100 it would require around 800 pages to get all the objects but then since they don't allow paging a large number of results, and 
-the max number of pages for Science Museum is 50 pages.This would mean we would get only 5000 objects and around 17000 images.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://collection.sciencemuseumgroup.org.uk/search/image_license?page[size]=100&amp;amp;page[number]=50"&gt;API page-50&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://collection.sciencemuseumgroup.org.uk/search/image_license?page[size]=100&amp;amp;page[number]=51"&gt;API page-51&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;So we need to find a way to divide the collection into subsets such that each subset has less than or equal to 5000 objects.
-Luckily, the API had another set of parameters &lt;code&gt;date[from]&lt;/code&gt; and &lt;code&gt;date[to]&lt;/code&gt; which represents the time period of the object. 
-Querying the API through different time period at the same time ensuring that records in that time period don't exceed 5000 solves the problem, starting
-from year 0 to year 2020 by trial and error method suitable year range was chosen.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                                            YEAR_RANGE = [
-                                                (0, 1500),
-                                                (1500, 1750),
-                                                (1750, 1825),
-                                                (1825, 1850),
-                                                (1850, 1875),
-                                                (1875, 1900),
-                                                (1900, 1915),
-                                                (1915, 1940),
-                                                (1940, 1965),
-                                                (1965, 1990),
-                                                (1990, 2020)
-                                            ]
+</content></entry><entry><title>CC Search, Setting up vue-i18n and internationalizing homepage</title><link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week1-2/" rel="alternate"></link><updated>2020-06-10T00:00:00Z</updated><author><name>['AyanChoudhary']</name></author><id>urn:uuid:b6330fc6-4ba0-3d32-96cf-057eec67072a</id><content type="html">&lt;p&gt;These are the first two weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
+We started with first compiling the accessibility reports from accessibility insights, lighthouse and pa11y into a single document and then opening up appropriate issues ont he repo to address them.&lt;/p&gt;
+&lt;p&gt;The accessibility issues are listed here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/996"&gt;Accessibility - Improve labels&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/997"&gt;Evaluate keyboard navigation effectiveness&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/998"&gt;Fix color contrast problems&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/999"&gt;Improve elements markup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/issues/1000"&gt;Evaluate any accessibility linter tools&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The decision was made to audit the tab indices along with internationalizing the page.
+The accessibility changes will be done after the completion of internationalization as the aria-labels will have to be internationalized as well.&lt;/p&gt;
+&lt;p&gt;The first two weeks involved setting up vue-i18n, auditing the tab index for homepage and internationalizing it.
+The tab index adit for homepage is displayed:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week1-2/audit.png" alt="audit.png"&gt;&lt;/p&gt;
+&lt;p&gt;The internationalization part was pretty straightforward, we just had to export all the strings to the JSON files and load transaltions through the i18n module.
+For complex elements of the type &lt;code&gt;string &amp;lt;tag&amp;gt;string&amp;lt;/tag&amp;gt; string&lt;/code&gt; I went for the templating method.
+Here we use the v-slot attribute of the i18n functional component to convert the element into a template where the tag occupies a slot in the syntax.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;i18n path="footer.caption.label" tag="p" class="caption"&amp;gt;
+    &amp;lt;template v-slot:noted&amp;gt;
+        &amp;lt;a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener"&amp;gt;{{$t('footer.caption.noted')}}&amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:attribution&amp;gt;
+        &amp;lt;a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"&amp;gt;
+        {{$t('footer.caption.attribution')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+    &amp;lt;template v-slot:icons&amp;gt;
+        &amp;lt;a href="https://fontawesome.com/" target="_blank" rel="noopener" class="has-text-white"&amp;gt;
+        {{$t('footer.caption.icons')}}
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/template&amp;gt;
+&amp;lt;/i18n&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With this we have a method to ingest the desired records, but before writing the script we need to know the different licenses 
-provided by the API.  We need to figure out a consistent way to identify which license and version are attached to each object.&lt;br&gt;
-To do this, we ran a test script to get counts of objects under different licenses.&lt;/p&gt;
-&lt;p&gt;The results are:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;+-----------------+----------+
-| license_version | count(1) |
-+-----------------+----------+
-| CC-BY-NC-ND 2.0 |      210 |
-| CC-BY-NC-ND 4.0 |     2376 |
-| CC-BY-NC-SA 2.0 |        1 |
-| CC-BY-NC-SA 4.0 |    61694 |
-+-----------------+----------+
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Since the licenses and their versions are confirmed, we can start the implementation.&lt;/p&gt;
-&lt;h2 id="implementation"&gt;Implementation&lt;/h2&gt;&lt;p&gt;The implementation is quite simple in nature: we loop the through the &lt;code&gt;YEAR_RANGE&lt;/code&gt; and get all the records for that period and 
-pass it on to an object data handler method that extracts the necessary details from the record and store it in the &lt;code&gt;ImageStore&lt;/code&gt;
-instance. ImageStore is a class that stores image information from the provider, it stores the information in a buffer and inserts to tsv
-when the buffer reached threshold limit. Due to overlapping date ranges, the metadata for some objects is collected multiple times.
-So, we keep track of the record/object's id in a global variable &lt;code&gt;RECORD_IDS = []&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Within the object data handler method before collecting details we check if the &lt;code&gt;id&lt;/code&gt; already exists in &lt;code&gt;RECORD_IDS&lt;/code&gt;. 
-If it exists we move on to the next record.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;                                            for obj_ in batch_data:
-                                                id_ = obj_.get("id")
-                                                if id_ in RECORD_IDS:
-                                                    continue
-                                                RECORD_IDS.append(id_)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;id_&lt;/code&gt; is the object id and we cannnot use this value as foreign identifier, the reason behind it is that an object could
-have multiple images with it and using object id we cannot determine the image uniquely, so we must use image id that is unique
-for each image. Currently image id is taken from &lt;code&gt;multimedia&lt;/code&gt;, multimedia is a field in the json response that lists multiple 
-images and their metadata, for each image data in multimedia, foreign id is in &lt;code&gt;admin.uid&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The implementation can be found &lt;a href="https://github.com/creativecommons/cccatalog/blob/master/src/cc_catalog_airflow/dags/provider_api_scripts/science_museum.py"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="results"&gt;Results:&lt;/h3&gt;&lt;p&gt;Running the scripts we get:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Number of records recieved : &lt;code&gt;35584&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Number of images collected : &lt;code&gt;62497&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The problem with current implementation is that records with no date would be missed.&lt;/p&gt;
-&lt;p&gt;Science Museum provider is the first provider I worked on as a part of the internship and thank my mentor Brent Moran for the help.&lt;/p&gt;
-&lt;h3 id="additional-details"&gt;Additional Details :&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog/issues/302"&gt;research work&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog/pull/400"&gt;implementation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;The final outcome looks pretty good:&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week1-2/final.png" alt="final.png"&gt;&lt;/p&gt;
+&lt;p&gt;And voila we are done with the first two weeks. I also internationalized the header and the footer along with the homepage.
+You can track the work done for these weeks through these PRs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/pull/1007"&gt;setup internationalization plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cccatalog-frontend/pull/1013"&gt;Internationalize homepage, header and footer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/creativecommons/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://opensource.creativecommons.org/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
+Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content></entry></feed>
