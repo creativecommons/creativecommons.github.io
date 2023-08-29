@@ -5,11 +5,14 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="CC Legal Tools: Machine-Readable Layer" />
 
 
 
-<meta property="og:url" content="/blog/categories/collaboration/" />
+<meta property="og:description" content="" />
+
+
+<meta property="og:url" content="/blog/entries/2023-08-25-machine-layer/" />
 <meta property="og:type" content="article" />
 
 
@@ -21,13 +24,16 @@
   
 
   
+    
+    
+  
 
   
 
-  <meta property="og:image" content="https://cc-og-image.vercel.app/Open Source at CC.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+  <meta property="og:image" content="https://cc-og-image.vercel.app/CC Legal Tools: Machine-Readable Layer.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
+<meta name="twitter:title" content="CC Legal Tools: Machine-Readable Layer">
 <meta name="twitter:description" content="">
 
 <meta name="twitter:site" content="@creativecommons">
@@ -44,7 +50,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>collaboration — Creative Commons Open Source</title>
+<title>CC Legal Tools: Machine-Readable Layer — Creative Commons Open Source</title>
 
 <body>
 
@@ -222,16 +228,16 @@
               
                 
               
-              <li><a class="link" href="/blog/categories/">
+              <li><a class="link" href="/blog/entries/">
               
-                Categories
+                Entries
               
               </a></li>
             
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed"></a></li>
+              <li class="is-active"><a aria-current="page displayed">CC Legal Tools: Machine-Readable Layer</a></li>
             
           
         </ul>
@@ -241,329 +247,150 @@
 
   <!-- Body -->
   
-<div class="all-categories">
-  <div class="header">
-    <div class="container">
-      <h1>All posts categorized "collaboration"</h1>
-      <a class="button small margin-top-bigger" href="/blog/categories/">See all categories</a>
-    </div>
-  </div>
-  <div class="categories-list container">
-    
-  <div class="columns is-multiline blog-entries">
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">CC Legal Tools: Machine-Readable Layer</h2>
+        <div class="author columns is-marginless">
+          <header>
       <figure class="image blog-image">
         <img class="profile" src="https://secure.gravatar.com/avatar/3876c2c7fd4a63165bbbc9fad6491a2a?size=200&d=mp" alt="gravatar" />
       </figure>
     </header>
-  
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/saurabh/">Saurabh Kumar</a> on 2023-08-28
+          </p>
+        </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p><img src="/blog/entries/2023-08-25-machine-layer/gsoc2023cc.png" alt="GSoC 2023 and CC"></p>
+<p>Greetings, readers!🌟 I'm excited to share that as part of Google Summer of
+Code (GSoC) 2023, I had the incredible opportunity to contribute to the
+exciting project "CC Legal Tools: Machine-Readable Layer." This journey has
+been a remarkable blend of learning, coding, and collaboration, and I'm
+thrilled to share the highlights of this journey with you all.</p>
+<h2 id="project-overview">Project Overview</h2><p>The project's core focus was to enhance the Creative Commons (CC) <a href="https://github.com/creativecommons/cc-legalt-tools-app">Legal Tools
+app</a> by introducing a robust machine-readable layer. The machine-readable
+layer enables computers to understand the intricacies of CC licenses, making it
+easier for legal professionals, developers, and enthusiasts to work with CC
+licenses programmatically.</p>
+<h2 id="getting-started">Getting Started</h2><p>My journey began with delving into the existing codebase and understanding the
+project's requirements i.e. understanding the app's architecture, its
+components, and how it currently handled CC licenses was crucial for what lay
+ahead.</p>
+<p>RDF, or Resource Description Framework, emerged as a crucial player in the
+project. Grasping the intricacies of RDF and its role in representing licenses
+was a necessary step in the journey.</p>
+<h2 id="challenges-and-learning-opportunities">Challenges and Learning Opportunities</h2><p>One of my early challenges was unraveling the complexities of the legacy
+RDF/XML files. How did they differ from the new RDF/XML files we aimed to
+generate? This exploration led me to discover improvements in structure,
+updated license information, and additional metadata.</p>
+<p>Generating RDF files for various licenses and versions became a puzzle to
+solve. Crafting RDF triples, understanding licensing nuances, and weaving this
+logic into the app's views became both a learning opportunity and a rewarding
+challenge.</p>
+<h2 id="contributions-and-the-work">Contributions and The Work</h2><p>As the project evolved, I worked to dynamically generate RDF/XML files,
+allowing the app to generate machine-readable licenses on-the-fly.</p>
+<p>To maintain an organized approach, it is ensured that the generated RDF files
+are sorted, all the credit goes to <a href="/blog/authors/TimidRobot/">Timid Robot</a>.</p>
+<p>The newly generated RDF/XML aims to enhance the clarity, accuracy,
+compatibility, and standardization of Creative Commons license representation
+in RDF format. These improvements boost machine-readability and semantic
+understanding, fostering seamless integration and interpretation in digital
+systems.</p>
+<h2 id="overview-of-changes">Overview of changes:</h2><ul>
+<li><strong>Improved Structure and Consistency:</strong><ul>
+<li>The new RDF/XML boasts a more organized, standardized structure, aligning
+with RDF standards. This enhances machine comprehension and accurate data
+processing.</li>
+</ul>
+</li>
+<li><strong>Updated License Information</strong>:<ul>
+<li>License information has been updated to reflect the latest permissions and
+restrictions. This ensures users and systems are informed accurately.</li>
+</ul>
+</li>
+<li><strong>Alignment with RDF Best Practices</strong>: <ul>
+<li>Changes align the representation with RDF best practices. This boosts
+interoperability and compatibility, thanks to standardized namespaces,
+ consistent naming, and proper relationship definitions.</li>
+</ul>
+</li>
+</ul>
+<p>Throughout the journey, I had the privilege of working closely with my mentor,
+engaging in collaborative discussions and receiving insightful code reviews..</p>
+<p>As my GSoC journey draws to a close, I'm excited about the foundation we've
+laid for the CC Legal Tools app. The machine-readable layer opens doors to a
+future of smarter, automated legal processes.</p>
+<p>The improvements made during GSoC will continue to ripple through the CC Legal
+Tools app, benefiting users and the broader open-source community.</p>
+<h2 id="mentor-and-support">Mentor and Support</h2><p>A heartfelt thanks to my mentor, <a href="/blog/authors/TimidRobot/">Timid Robot</a>, for guiding me
+through this incredible journey. Your unwavering support, wisdom, feedback, and
+willingness to share knowledge have truly been invaluable. I'm deeply grateful
+for the opportunity to learn and grow under your mentorship. Thank you for
+making this journey unforgettable.</p>
+<h2 id="takeaways-and-conclusion">Takeaways and Conclusion</h2><p>GSoC became a platform for me to acquire new skills, dive into complex
+concepts, and broaden my horizons. The learning experience was immersive and
+transformative.</p>
+<p>Being part of the open-source community was a revelation. Interacting with
+like-minded individuals, contributing to a shared goal, and experiencing the
+true essence of collaboration was a highlight.</p>
+<p>My GSoC journey has been a remarkable adventure of exploration, discovery, and
+growth. The project's mission to create a machine-readable layer for CC Legal
+Tools has left an indelible mark on my journey as a developer.</p>
+<p>Thank you for joining me on this expedition. Here's to the future of
+open-source contributions and the endless possibilities they hold.</p>
+<p>Cheers,</p>
+<p>Saurabh Kumar</p>
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-08-25-machine-layer/">CC Legal Tools: Machine-Readable Layer</a></h4>
-        by <a class="author-name" href="/blog/authors/saurabh/">Saurabh Kumar</a> on 2023-08-28
-
-        <div class="excerpt">
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/collaboration/ ">collaboration</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-legal-tools/ ">cc-legal-tools</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2023/ ">gsoc-2023</a>
+            
           
         </div>
       </div>
-    </article>
-  </div>
-
-    
       
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/f49628fb50324d628379b469c7f008c6?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-06-16-new-chapter-of-my-professional-life/">New Chapter of My Professional Life</a></h4>
-        by <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a> on 2023-06-20
-
-        <div class="excerpt">
-          Greetings, readers! I’m Shafiya Heena, from Hyderabad, India, who now finds herself immersed in...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/">Many Mona Lisas? Artistic Data Quantification and Assessment</a></h4>
-        by <a class="author-name" href="/blog/authors/grace_coleman/">Grace Coleman</a>, <a class="author-name" href="/blog/authors/anthony_ho/">Anthony Ho</a>, <a class="author-name" href="/blog/authors/tyler_phillips/">Tyler Phillips</a>, <a class="author-name" href="/blog/authors/claire_wan/">Claire Wan</a> on 2023-04-26
-
-        <div class="excerpt">
-          Quantifying the Commons
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-03-24-community-contributions/">Considering Community Contributions at Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2023-03-24
-
-        <div class="excerpt">
-          Different open source communities work differently and so everyone may arrive at Creative...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/799674ebf72ebba137da36402f2bab93?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-02-01-outreachy-mid-point/">Outreachy Internship Mid-point Progress Update</a></h4>
-        by <a class="author-name" href="/blog/authors/precious/">Precious Oritsedere</a> on 2023-02-01
-
-        <div class="excerpt">
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/799674ebf72ebba137da36402f2bab93?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-01-04-how-i-landed-my-first-internship/">How I Landed My First Internship With Outreachy</a></h4>
-        by <a class="author-name" href="/blog/authors/precious/">Precious Oritsedere</a> on 2023-01-04
-
-        <div class="excerpt">
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2022-12-16-new-to-working-in-open/">Thinking More Openly About Working in The Open</a></h4>
-        by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2022-12-16
-
-        <div class="excerpt">
-          I began working at Creative Commons (CC) as the Full Stack Engineer this year and it’s been...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2022-12-07-berkeley-quantifying/">Data Science Discovery: Quantifying the Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Dun-MingHuang/">Dun-Ming Huang (Brandon Huang)</a>, <a class="author-name" href="/blog/authors/ShuranYang/">Shuran Yang</a> on 2022-12-07
-
-        <div class="excerpt">
-          University of California, Berkeley, Data Science Discovery Program Fall 2022
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/5324367e4af9d821ff3b388c04c42e7e?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2022-11-11-calver-to-semver/">CalVer to SemVer</a></h4>
-        by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2022-11-11
-
-        <div class="excerpt">
-          Creative Commons (CC) tried to use CalVer (calendar versioning), but encountered too many issues...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/078347dbae1783ecf5e18c29b958d176?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2020-12-07-upcoming-changes-to-community/">Upcoming Changes to the CC Open Source Community</a></h4>
-        by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2020-12-07
-
-        <div class="excerpt">
-          Creative Commons (CC) is adopting a brand new organizational strategy in 2021, just in time for...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/c6b98be141f57ce877a7ae10595b0ae0?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2020-08-x5gon-cc-catalog-api/">X5GON Using CC Catalog API for Image Results</a></h4>
-        by <a class="author-name" href="/blog/authors/annatuma/">Anna Tumadóttir</a> on 2020-08-24
-
-        <div class="excerpt">
-          A few months ago, the Open Education team at Creative Commons made an introduction between the...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-  </div>
-
-  </div>
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2023-08-25-machine-layer"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2023-08-25-machine-layer/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
 </div>
+    </footer>
+  </div>
 
 
   <!-- Footer -->
