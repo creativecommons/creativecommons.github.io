@@ -299,7 +299,7 @@ manner. DAGs files are standard python files that are loaded from  the defined
 create the DAG objects.</p>
 <h2 id="cc-catalog-workflow">CC Catalog Workflow</h2><p>In the CC catalog, Airflow is set up inside a docker container along with other
 services . The loader and provider workflows are inside the <code>dags</code> directory in
-the repo <a href="https://github.com/creativecommons/cccatalog/tree/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags">dag folder</a>. Provider workflows are set up to pull metadata
+the repo <a href="https://github.com/cc-archive/cccatalog/tree/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags">dag folder</a>. Provider workflows are set up to pull metadata
 about CC licensed images from the respective providers , the data pulled is
 structured into a standardised format and written into a TSV (Tab Separated
 Values) file locally. These TSV files are then loaded into S3 and then finally
@@ -326,7 +326,7 @@ can be specified with airflow keyword strings like “@daily”, “@weekly”,
 cron expression.</li>
 </ul>
 <p>Example: Cleveland museum is currently scheduled for a monthly crawl with a
-starting date as <code>2020-01-15</code>. <a href="https://github.com/creativecommons/cccatalog/blob/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags/cleveland_museum_workflow.py">cleveland_museum_workflow</a></p>
+starting date as <code>2020-01-15</code>. <a href="https://github.com/cc-archive/cccatalog/blob/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags/cleveland_museum_workflow.py">cleveland_museum_workflow</a></p>
 <h2 id="loader-workflow">Loader workflow</h2><p>The data from the provider scripts are not directly loaded into S3. Instead,
 they are stored in a TSV file on the local disk, and the tsv_postgres workflow
 handles loading of data to S3, and eventually PostgreSQL. The DAG starts by

@@ -363,7 +363,7 @@ If it exists we move on to the next record.</p>
 have multiple images with it and using object id we cannot determine the image uniquely, so we must use image id that is unique
 for each image. Currently image id is taken from <code>multimedia</code>, multimedia is a field in the json response that lists multiple
 images and their metadata, for each image data in multimedia, foreign id is in <code>admin.uid</code>.</p>
-<p>The implementation can be found <a href="https://github.com/creativecommons/cccatalog/blob/master/src/cc_catalog_airflow/dags/provider_api_scripts/science_museum.py">here</a>.</p>
+<p>The implementation can be found <a href="https://github.com/cc-archive/cccatalog/blob/master/src/cc_catalog_airflow/dags/provider_api_scripts/science_museum.py">here</a>.</p>
 <h3 id="results">Results:</h3><p>Running the scripts we get:</p>
 <ul>
 <li>Number of records recieved : <code>35584</code></li>
@@ -372,8 +372,8 @@ images and their metadata, for each image data in multimedia, foreign id is in <
 <p>The problem with current implementation is that records with no date would be missed.</p>
 <p>Science Museum provider is the first provider I worked on as a part of the internship and thank my mentor Brent Moran for the help.</p>
 <h3 id="additional-details">Additional Details :</h3><ul>
-<li><a href="https://github.com/creativecommons/cccatalog/issues/302">research work</a></li>
-<li><a href="https://github.com/creativecommons/cccatalog/pull/400">implementation</a></li>
+<li><a href="https://github.com/cc-archive/cccatalog/issues/302">research work</a></li>
+<li><a href="https://github.com/cc-archive/cccatalog/pull/400">implementation</a></li>
 </ul>
 
     </div>

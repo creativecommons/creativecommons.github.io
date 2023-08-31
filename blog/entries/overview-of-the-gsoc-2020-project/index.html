@@ -295,10 +295,10 @@ experience for the users. I completed the implementation of sub-provider retriev
 Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
 <a href="/blog/entries/flickr-sub-provider-retrieval/">initial blog post</a> of this series. The PRs related to this task are as follows.</p>
 <ul>
-<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/420">420</a>: Retrieve sub-providers within Flickr</li>
-<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/442">442</a>: Retrieve sub-providers within Europeana</li>
-<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/455">455</a>: Retrieve sub-providers within Smithsonian</li>
-<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/461">461</a>: Add new source as a sub-provider of Flickr</li>
+<li>PR #<a href="https://github.com/cc-archive/cccatalog/pull/420">420</a>: Retrieve sub-providers within Flickr</li>
+<li>PR #<a href="https://github.com/cc-archive/cccatalog/pull/442">442</a>: Retrieve sub-providers within Europeana</li>
+<li>PR #<a href="https://github.com/cc-archive/cccatalog/pull/455">455</a>: Retrieve sub-providers within Smithsonian</li>
+<li>PR #<a href="https://github.com/cc-archive/cccatalog/pull/461">461</a>: Add new source as a sub-provider of Flickr</li>
 </ul>
 </li>
 <li><p><strong>Alert updates to Smithsonian unit codes</strong>: For the Smithsonian provider, we rely on the field known as <em>unit code</em>
@@ -307,7 +307,7 @@ the <em>unit code</em> values to change over time at the upstream, and if CC is 
 successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
 mechanism of alerting the CC code maintainers of potential changes to <em>unit code</em> values at the upstream. More
 information is provided in my <a href="/blog/entries/smithsonian-unit-code-update/">second blog post</a> of this series. The PR related to this task
-is #<a href="https://github.com/creativecommons/cccatalog/pull/465">465</a>.</p>
+is #<a href="https://github.com/cc-archive/cccatalog/pull/465">465</a>.</p>
 </li>
 <li><p><strong>Improvements to the Smithsonian provider API script</strong>: Smithsonian is an important provider which aggregates images
 from 19 museums. However, due to the fact that the different museums have different data models and the resultant
@@ -317,14 +317,14 @@ information. As part of my GSoC project, I improved the completeness of <em>crea
 identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
 result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
 some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
-#<a href="https://github.com/creativecommons/cccatalog/issues/397">397</a>. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+#<a href="https://github.com/cc-archive/cccatalog/issues/397">397</a>. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
 Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
-Smithsonian technical team of these issues and they are highlighted in ticket #<a href="https://github.com/creativecommons/cccatalog/issues/397">397</a> as well. The PRs related
+Smithsonian technical team of these issues and they are highlighted in ticket #<a href="https://github.com/cc-archive/cccatalog/issues/397">397</a> as well. The PRs related
 to this task are as follows.</p>
 <ul>
-<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/474">474</a>: Improve the creator and description information of the Smithsonian source <em>National Museum of
+<li>PR #<a href="https://github.com/cc-archive/cccatalog/pull/474">474</a>: Improve the creator and description information of the Smithsonian source <em>National Museum of
 Natural History</em> (NMNH). This is the largest museum (source) under the Smithsonian provider.</li>
-<li>PR #<a href="https://github.com/creativecommons/cccatalog/pull/476">476</a>: Improve the <em>creator</em> and <em>description</em> information of other sources coming under the Smithsonian
+<li>PR #<a href="https://github.com/cc-archive/cccatalog/pull/476">476</a>: Improve the <em>creator</em> and <em>description</em> information of other sources coming under the Smithsonian
 provider.</li>
 </ul>
 </li>
@@ -337,7 +337,7 @@ database are obsolete, which could result in broken links being presented via th
 solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
 <em>updated_on</em> column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
 the oldest <em>updated_on</em> value, an image can assume. If the <em>updated_on</em> value is older than the oldest valid value, we
-flag the corresponding image record  as obsolete.  The PR related to this task is #<a href="https://github.com/creativecommons/cccatalog/pull/483">483</a>.</p>
+flag the corresponding image record  as obsolete.  The PR related to this task is #<a href="https://github.com/cc-archive/cccatalog/pull/483">483</a>.</p>
 </li>
 </ol>
 <p>I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
