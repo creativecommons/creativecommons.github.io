@@ -270,7 +270,7 @@ library supervised by my mentor Brylie Christopher Oxley.">
     <div class="single-post-body content container">
       <h3 id="introduction">Introduction</h3><p>During the course of my Outreachy internship with the Creative Commons, I got to work on some cool projects, one of which is the CC Global Components
 library supervised by my mentor <a href="/blog/authors/brylie/">Brylie Christopher Oxley</a>.</p>
-<p>Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these 
+<p>Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these
 websites.
 With this in mind, there are several components which are part of most CC web properties. The three components in particular are:-</p>
 <ul>
@@ -278,12 +278,12 @@ With this in mind, there are several components which are part of most CC web pr
 <li><strong> The Global footer </strong> : displayed on most Creative Commons properties</li>
 <li><strong> The Explore CC component </strong> : displayed on all CC web properties, such as Global Summit etc.</li>
 </ul>
-<p>Instead of having each project implement these components leading to code duplication accross projects and maintenance issues, we decided it was 
-preferable 
+<p>Instead of having each project implement these components leading to code duplication accross projects and maintenance issues, we decided it was
+preferable
 to have a seperate library of these components which finally led to the CC Global Components project.</p>
-<h3 id="choosing-a-technology">Choosing a technology</h3><p>The goal of the Global components library was to build a custom web component that can be served via CDN. While planning, we needed to decide on 
+<h3 id="choosing-a-technology">Choosing a technology</h3><p>The goal of the Global components library was to build a custom web component that can be served via CDN. While planning, we needed to decide on
 the technology to use. Agreeably, most web frameworks like React and Vue can be used to develop this but we wanted
-a simple implementation with fewer dependencies. Some ideal characteristics of what we were looking for was a technology that meets the following 
+a simple implementation with fewer dependencies. Some ideal characteristics of what we were looking for was a technology that meets the following
 criteria:</p>
 <ul>
 <li>Web Standards oriented</li>
@@ -291,16 +291,16 @@ criteria:</p>
 <li>Lightweight / small bundle size</li>
 <li>Loosely coupled (no tight or unrelated dependencies)</li>
 </ul>
-<p>The two primary technologies we were considering were <a href="https://v3.vuejs.org">Vue JS</a> and <a href="https://lwc.dev">Lightning Web Components</a> but finally 
+<p>The two primary technologies we were considering were <a href="https://v3.vuejs.org">Vue JS</a> and <a href="https://lwc.dev">Lightning Web Components</a> but finally
 decided to use Vue JS
 since we already had other projects developed in Vue (such as the Chooser project).</p>
-<h3 id="building-the-components">Building the components</h3><p>To scaffold the project, we used <a href="https://www.npmjs.com/package/vue-sfc-rollup">Vue SFC rollup</a>, which is a CLI templating utility that scaffolds 
-a minimal setup for compiling a library of multiple Vue SFCs (Single File Components) - into a form ready to share via npm. With this, 
-we could just focus on building the templates. We used <a href="https://cc-vocabulary.netlify.app/">Vocabulary CSS</a>, our own CC design package to style 
+<h3 id="building-the-components">Building the components</h3><p>To scaffold the project, we used <a href="https://www.npmjs.com/package/vue-sfc-rollup">Vue SFC rollup</a>, which is a CLI templating utility that scaffolds
+a minimal setup for compiling a library of multiple Vue SFCs (Single File Components) - into a form ready to share via npm. With this,
+we could just focus on building the templates. We used <a href="https://cc-vocabulary.netlify.app/">Vocabulary CSS</a>, our own CC design package to style
 the components.</p>
 <h4 id="1-cc-global-footer">1) CC Global Footer</h4><p>The CC Global Footer component was the easiest given that it's mostly static HTML. This component takes two attributes:</p>
 <ul>
-<li><code>logo-url</code>: which should point to the logo of the website it is used on. </li>
+<li><code>logo-url</code>: which should point to the logo of the website it is used on.</li>
 <li><code>donation-url</code>: which is used for the donation button.</li>
 </ul>
 <p>After importing the CDN script for the CC Global components, we can then use the CC Global footer in any page as such:</p>
@@ -323,8 +323,8 @@ toggles the expandable banner to show or hide when it is clicked. As with the CC
 <h4 id="3-cc-global-header">3) CC Global Header</h4><p>The CC Global Header was an important component given that we had to make API calls to be able to render the Menu items for downstream projects
 such as the <a href="https://github.com/creativecommons/cc-legal-tools-app">Licenses and Tools</a>. We used the Axios library for the API calls to the Wordpress
 backend of the parent project <a href="https://github.com/creativecommons/project_creativecommons.org">Projec_creativecommons.org</a>.</p>
-<p>The CC Global Header has three required attributes, <code>base-url</code>, <code>donation-url</code> and <code>logo-url</code>, which are the URLs used for the API call, 
-Donation button and Logo respectively. There is one additional attribute <code>use-menu-placeholders</code> you can set which renders placeholder Menu Items 
+<p>The CC Global Header has three required attributes, <code>base-url</code>, <code>donation-url</code> and <code>logo-url</code>, which are the URLs used for the API call,
+Donation button and Logo respectively. There is one additional attribute <code>use-menu-placeholders</code> you can set which renders placeholder Menu Items
 if you are in a development environment. However, for a stagin/production setup we do not use this attribute.</p>
 <div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">cc-global-header</span>
   <span class="na">base-url</span><span class="o">=</span><span class="s">&quot;http://127.0.0.1:8000&quot;</span>
@@ -336,7 +336,7 @@ if you are in a development environment. However, for a stagin/production setup 
 <p>and this renders as shown:</p>
 <p><img src="/blog/entries/building-the-cc-global-components-library/cc_global_header.png" alt="CC Global Header"></p>
 <h3 id="conclusion">Conclusion</h3><p>The first version of this library (0.1.1) was released and published to NPM on Dec 10, 2021. Till date [the time of this writing] we have had several
-changes and optimizations to the code and are currently on version <code>0.5.0</code>. This was a really enriching experience for me as it was my first time 
+changes and optimizations to the code and are currently on version <code>0.5.0</code>. This was a really enriching experience for me as it was my first time
 working with Vue JS. We've also had additional code review and optimizations from <a href="/blog/authors/TimidRobot/">Timid Robot</a>.</p>
 <p>The CC Global Components with all 3 components used renders as:</p>
 <p><img src="/blog/entries/building-the-cc-global-components-library/cc_global_components.gif" alt="CC global components"></p>

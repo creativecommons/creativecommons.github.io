@@ -46,7 +46,7 @@ processing.&lt;/li&gt;
 restrictions. This ensures users and systems are informed accurately.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Alignment with RDF Best Practices&lt;/strong&gt;: &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Alignment with RDF Best Practices&lt;/strong&gt;:&lt;ul&gt;
 &lt;li&gt;Changes align the representation with RDF best practices. This boosts
 interoperability and compatibility, thanks to standardized namespaces,
  consistent naming, and proper relationship definitions.&lt;/li&gt;
@@ -415,7 +415,7 @@ when you're working alone isn't enough, you've also got to find time to work
 on that item, and work your way through completing it.&lt;/p&gt;
 &lt;p&gt;In the open source context, working with a community of contributors, creating
 an &lt;em&gt;issue&lt;/em&gt; is just as important and meaningful as writing code, in many cases
-it might actually be MORE important. Because &lt;em&gt;issues&lt;/em&gt; are often the way in 
+it might actually be MORE important. Because &lt;em&gt;issues&lt;/em&gt; are often the way in
 which contributors first offer up help and insight, they're the first contact
 they have with your project. Furthermore, any &lt;em&gt;issue&lt;/em&gt; you create may end up
 getting completed by one or more people that are not you, which means it
@@ -781,7 +781,7 @@ functionality additions&lt;/li&gt;
 functionality&lt;/em&gt;.&lt;/p&gt;
 </content></entry><entry><title>Building the CC Global Components Library</title><link href="http://opensource.creativecommons.org/blog/entries/building-the-cc-global-components-library/" rel="alternate"></link><updated>2022-03-17T00:00:00Z</updated><author><name>['MuluhGodson']</name></author><id>urn:uuid:1140a314-fe2d-30a3-aeb4-19a4ba942e21</id><content type="html">&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;&lt;p&gt;During the course of my Outreachy internship with the Creative Commons, I got to work on some cool projects, one of which is the CC Global Components
 library supervised by my mentor &lt;a href="/blog/authors/brylie/"&gt;Brylie Christopher Oxley&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these 
+&lt;p&gt;Having a unified design theme/look or experience accross the different CC websites has always been an important factor while developing these
 websites.
 With this in mind, there are several components which are part of most CC web properties. The three components in particular are:-&lt;/p&gt;
 &lt;ul&gt;
@@ -789,12 +789,12 @@ With this in mind, there are several components which are part of most CC web pr
 &lt;li&gt;&lt;strong&gt; The Global footer &lt;/strong&gt; : displayed on most Creative Commons properties&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt; The Explore CC component &lt;/strong&gt; : displayed on all CC web properties, such as Global Summit etc.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Instead of having each project implement these components leading to code duplication accross projects and maintenance issues, we decided it was 
-preferable 
+&lt;p&gt;Instead of having each project implement these components leading to code duplication accross projects and maintenance issues, we decided it was
+preferable
 to have a seperate library of these components which finally led to the CC Global Components project.&lt;/p&gt;
-&lt;h3 id="choosing-a-technology"&gt;Choosing a technology&lt;/h3&gt;&lt;p&gt;The goal of the Global components library was to build a custom web component that can be served via CDN. While planning, we needed to decide on 
+&lt;h3 id="choosing-a-technology"&gt;Choosing a technology&lt;/h3&gt;&lt;p&gt;The goal of the Global components library was to build a custom web component that can be served via CDN. While planning, we needed to decide on
 the technology to use. Agreeably, most web frameworks like React and Vue can be used to develop this but we wanted
-a simple implementation with fewer dependencies. Some ideal characteristics of what we were looking for was a technology that meets the following 
+a simple implementation with fewer dependencies. Some ideal characteristics of what we were looking for was a technology that meets the following
 criteria:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Web Standards oriented&lt;/li&gt;
@@ -802,16 +802,16 @@ criteria:&lt;/p&gt;
 &lt;li&gt;Lightweight / small bundle size&lt;/li&gt;
 &lt;li&gt;Loosely coupled (no tight or unrelated dependencies)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;The two primary technologies we were considering were &lt;a href="https://v3.vuejs.org"&gt;Vue JS&lt;/a&gt; and &lt;a href="https://lwc.dev"&gt;Lightning Web Components&lt;/a&gt; but finally 
+&lt;p&gt;The two primary technologies we were considering were &lt;a href="https://v3.vuejs.org"&gt;Vue JS&lt;/a&gt; and &lt;a href="https://lwc.dev"&gt;Lightning Web Components&lt;/a&gt; but finally
 decided to use Vue JS
 since we already had other projects developed in Vue (such as the Chooser project).&lt;/p&gt;
-&lt;h3 id="building-the-components"&gt;Building the components&lt;/h3&gt;&lt;p&gt;To scaffold the project, we used &lt;a href="https://www.npmjs.com/package/vue-sfc-rollup"&gt;Vue SFC rollup&lt;/a&gt;, which is a CLI templating utility that scaffolds 
-a minimal setup for compiling a library of multiple Vue SFCs (Single File Components) - into a form ready to share via npm. With this, 
-we could just focus on building the templates. We used &lt;a href="https://cc-vocabulary.netlify.app/"&gt;Vocabulary CSS&lt;/a&gt;, our own CC design package to style 
+&lt;h3 id="building-the-components"&gt;Building the components&lt;/h3&gt;&lt;p&gt;To scaffold the project, we used &lt;a href="https://www.npmjs.com/package/vue-sfc-rollup"&gt;Vue SFC rollup&lt;/a&gt;, which is a CLI templating utility that scaffolds
+a minimal setup for compiling a library of multiple Vue SFCs (Single File Components) - into a form ready to share via npm. With this,
+we could just focus on building the templates. We used &lt;a href="https://cc-vocabulary.netlify.app/"&gt;Vocabulary CSS&lt;/a&gt;, our own CC design package to style
 the components.&lt;/p&gt;
 &lt;h4 id="1-cc-global-footer"&gt;1) CC Global Footer&lt;/h4&gt;&lt;p&gt;The CC Global Footer component was the easiest given that it's mostly static HTML. This component takes two attributes:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;logo-url&lt;/code&gt;: which should point to the logo of the website it is used on. &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;logo-url&lt;/code&gt;: which should point to the logo of the website it is used on.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;donation-url&lt;/code&gt;: which is used for the donation button.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;After importing the CDN script for the CC Global components, we can then use the CC Global footer in any page as such:&lt;/p&gt;
@@ -834,8 +834,8 @@ toggles the expandable banner to show or hide when it is clicked. As with the CC
 &lt;h4 id="3-cc-global-header"&gt;3) CC Global Header&lt;/h4&gt;&lt;p&gt;The CC Global Header was an important component given that we had to make API calls to be able to render the Menu items for downstream projects
 such as the &lt;a href="https://github.com/creativecommons/cc-legal-tools-app"&gt;Licenses and Tools&lt;/a&gt;. We used the Axios library for the API calls to the Wordpress
 backend of the parent project &lt;a href="https://github.com/creativecommons/project_creativecommons.org"&gt;Projec_creativecommons.org&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The CC Global Header has three required attributes, &lt;code&gt;base-url&lt;/code&gt;, &lt;code&gt;donation-url&lt;/code&gt; and &lt;code&gt;logo-url&lt;/code&gt;, which are the URLs used for the API call, 
-Donation button and Logo respectively. There is one additional attribute &lt;code&gt;use-menu-placeholders&lt;/code&gt; you can set which renders placeholder Menu Items 
+&lt;p&gt;The CC Global Header has three required attributes, &lt;code&gt;base-url&lt;/code&gt;, &lt;code&gt;donation-url&lt;/code&gt; and &lt;code&gt;logo-url&lt;/code&gt;, which are the URLs used for the API call,
+Donation button and Logo respectively. There is one additional attribute &lt;code&gt;use-menu-placeholders&lt;/code&gt; you can set which renders placeholder Menu Items
 if you are in a development environment. However, for a stagin/production setup we do not use this attribute.&lt;/p&gt;
 &lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;cc-global-header&lt;/span&gt;
   &lt;span class="na"&gt;base-url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://127.0.0.1:8000&amp;quot;&lt;/span&gt;
@@ -847,7 +847,7 @@ if you are in a development environment. However, for a stagin/production setup 
 &lt;p&gt;and this renders as shown:&lt;/p&gt;
 &lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_global_header.png" alt="CC Global Header"&gt;&lt;/p&gt;
 &lt;h3 id="conclusion"&gt;Conclusion&lt;/h3&gt;&lt;p&gt;The first version of this library (0.1.1) was released and published to NPM on Dec 10, 2021. Till date [the time of this writing] we have had several
-changes and optimizations to the code and are currently on version &lt;code&gt;0.5.0&lt;/code&gt;. This was a really enriching experience for me as it was my first time 
+changes and optimizations to the code and are currently on version &lt;code&gt;0.5.0&lt;/code&gt;. This was a really enriching experience for me as it was my first time
 working with Vue JS. We've also had additional code review and optimizations from &lt;a href="/blog/authors/TimidRobot/"&gt;Timid Robot&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The CC Global Components with all 3 components used renders as:&lt;/p&gt;
 &lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_global_components.gif" alt="CC global components"&gt;&lt;/p&gt;
@@ -974,7 +974,7 @@ overlap in the next year or two.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Week 7&lt;/strong&gt;
 (10/31 - 11/07)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Integrated the main page contents and the main landing page itself, had it up and running.  &lt;/li&gt;
+&lt;li&gt;Integrated the main page contents and the main landing page itself, had it up and running.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Week 8&lt;/strong&gt;
 (11/08 - 11/15)&lt;/p&gt;
@@ -1011,8 +1011,8 @@ overlap in the next year or two.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Week 13&lt;/strong&gt;
 (12/13 - 12/19)&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Cleaned code, make sure everything is properly linted and ready before the final closing commits.    &lt;/li&gt;
-&lt;li&gt;Published the “Concluding Internship” blog post, rounding up my wholesome journey.    &lt;/li&gt;
+&lt;li&gt;Cleaned code, make sure everything is properly linted and ready before the final closing commits.&lt;/li&gt;
+&lt;li&gt;Published the “Concluding Internship” blog post, rounding up my wholesome journey.&lt;/li&gt;
 &lt;li&gt;Sought final closing approval.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;Post-Internship&lt;/strong&gt;&lt;/p&gt;
@@ -1071,7 +1071,7 @@ overlap in the next year or two.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Used &lt;a href="https://storybook.js.org/"&gt;StorybookJS&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Modified the existing overview page.&lt;/li&gt;
-&lt;li&gt;Removed highly verbose sections from the docs. &lt;/li&gt;
+&lt;li&gt;Removed highly verbose sections from the docs.&lt;/li&gt;
 &lt;li&gt;Documented Vocabulary sprint planning workflow.&lt;/li&gt;
 &lt;li&gt;Documented how to use a markdown component with CC Vocabulary.&lt;/li&gt;
 &lt;li&gt;Embedded hyperlink to other open source projects to improve SEO.&lt;/li&gt;
@@ -1100,7 +1100,7 @@ overlap in the next year or two.&lt;/p&gt;
 &lt;h3 id="issues-pr-s-raised-during-gsod-period"&gt;Issues &amp;amp; PR's raised during GSoD period&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;Repository&lt;/th&gt; 
+&lt;th&gt;Repository&lt;/th&gt;
 &lt;th&gt;Contribution&lt;/th&gt;
 &lt;th&gt;Relevant links&lt;/th&gt;
 &lt;/tr&gt;
@@ -1226,53 +1226,53 @@ overlap in the next year or two.&lt;/p&gt;
 &lt;p align="center"&gt;
     &lt;strong&gt;Thank you for all your time! This was the final blog post under the Vocabulary docs series. I'll be around for times to come, but until then, sayonara!&lt;/strong&gt;
 &lt;/p&gt;</content></entry><entry><title>Summary: My GSoD 2020 Journey</title><link href="http://opensource.creativecommons.org/blog/entries/summary-my-gsod-2020-journey/" rel="alternate"></link><updated>2020-12-02T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:8ef2254d-edd9-37d9-a144-5b539249b19f</id><content type="html">&lt;p&gt;Thank you for the wonderful experience, Creative Commons!&lt;/p&gt;
-&lt;p&gt;This blog post serves as a project report for ‘Improve CC Catalog API Usage Guide’. 
-It describes the work that I’ve done during my Google Season Of Docs (GSOD) 2020. 
+&lt;p&gt;This blog post serves as a project report for ‘Improve CC Catalog API Usage Guide’.
+It describes the work that I’ve done during my Google Season Of Docs (GSOD) 2020.
 My mentors for this project are Alden Page and Kriti Godey from Creative Commons.&lt;/p&gt;
-&lt;p&gt;In total, there are 12 weeks in the Doc Development Phase. 
+&lt;p&gt;In total, there are 12 weeks in the Doc Development Phase.
 Every 2 weeks, I would publish a blog post to update my progress to my mentors and organization.&lt;/p&gt;
-&lt;h3 id="week-1"&gt;Week 1&lt;/h3&gt;&lt;p&gt;So, the first two weeks of Google Season of Docs have passed. 
-For the first week, I added examples to perform the query using curl command. 
-I hit some problem with a Forbidden error. Turns out my access key got expired. 
+&lt;h3 id="week-1"&gt;Week 1&lt;/h3&gt;&lt;p&gt;So, the first two weeks of Google Season of Docs have passed.
+For the first week, I added examples to perform the query using curl command.
+I hit some problem with a Forbidden error. Turns out my access key got expired.
 My problem was solved after obtaining a new access key.&lt;/p&gt;
-&lt;h3 id="week-2"&gt;Week 2&lt;/h3&gt;&lt;p&gt;For the second week, I started to write response samples. 
-It was tough as I have a hard time understanding drf-yasg, which is an automatic Swagger generator. 
-It can produce Swagger / OpenAPI 2.0 specifications from a Django Rest Framework API. 
-I tried to find as many examples as I could to increase my understanding. 
-Funny, but it took me awhile to realise that drf-yasg is not made up of random letters. 
+&lt;h3 id="week-2"&gt;Week 2&lt;/h3&gt;&lt;p&gt;For the second week, I started to write response samples.
+It was tough as I have a hard time understanding drf-yasg, which is an automatic Swagger generator.
+It can produce Swagger / OpenAPI 2.0 specifications from a Django Rest Framework API.
+I tried to find as many examples as I could to increase my understanding.
+Funny, but it took me awhile to realise that drf-yasg is not made up of random letters.
 The DRF part stands for Django Rest Framework while YASG stands for Yet Another Swagger Generator.&lt;/p&gt;
-&lt;h3 id="week-3"&gt;Week 3&lt;/h3&gt;&lt;p&gt;Week 3 was quite hectic. 
-I moved back to my hometown during week 3. 
-Took 3 days off to settle my stuff and set up a workspace. 
-I worked on my GSoD project for only 2 days, Monday and Tuesday. 
-I managed to create response samples for most API endpoints. 
+&lt;h3 id="week-3"&gt;Week 3&lt;/h3&gt;&lt;p&gt;Week 3 was quite hectic.
+I moved back to my hometown during week 3.
+Took 3 days off to settle my stuff and set up a workspace.
+I worked on my GSoD project for only 2 days, Monday and Tuesday.
+I managed to create response samples for most API endpoints.
 Had a monthly video call with Kriti this week.&lt;/p&gt;
-&lt;h3 id="week-4"&gt;Week 4&lt;/h3&gt;&lt;p&gt;I reviewed what I’ve done and what I haven’t to estimate new completion time. 
-Thank god, I have a buffer week in my GSoD timeline and deliverables. 
-So yeah, all is good in terms of completion time. 
-I started to write descriptions for API endpoints. 
+&lt;h3 id="week-4"&gt;Week 4&lt;/h3&gt;&lt;p&gt;I reviewed what I’ve done and what I haven’t to estimate new completion time.
+Thank god, I have a buffer week in my GSoD timeline and deliverables.
+So yeah, all is good in terms of completion time.
+I started to write descriptions for API endpoints.
 Submitted first PR and published blog entry.&lt;/p&gt;
-&lt;h3 id="week-5"&gt;Week 5&lt;/h3&gt;&lt;p&gt;I managed to add a lot of stuff into the documentation. 
-I figured out how to add help texts to classes and how to create serializers. 
-I also managed to move all code examples under response samples. 
-In order to do this, I created a new class called CustomAutoSchema to add x-code-samples. 
-Other stuff that I did include creating new sections such as “Register and Authenticate” and “Glossary”. 
+&lt;h3 id="week-5"&gt;Week 5&lt;/h3&gt;&lt;p&gt;I managed to add a lot of stuff into the documentation.
+I figured out how to add help texts to classes and how to create serializers.
+I also managed to move all code examples under response samples.
+In order to do this, I created a new class called CustomAutoSchema to add x-code-samples.
+Other stuff that I did include creating new sections such as “Register and Authenticate” and “Glossary”.
 The hardest part of this week is probably trying to figure out how to add request body examples and move code examples.&lt;/p&gt;
-&lt;h3 id="week-6"&gt;Week 6&lt;/h3&gt;&lt;p&gt;I added another section called Contribute that provides a todolist to start contributing on Github. 
+&lt;h3 id="week-6"&gt;Week 6&lt;/h3&gt;&lt;p&gt;I added another section called Contribute that provides a todolist to start contributing on Github.
 I also wrote and published this blog post.&lt;/p&gt;
-&lt;h3 id="week-7"&gt;Week 7&lt;/h3&gt;&lt;p&gt;I restructured the file README in CC Catalog API repository. 
-I added a step by step guide on how to run the server locally. 
+&lt;h3 id="week-7"&gt;Week 7&lt;/h3&gt;&lt;p&gt;I restructured the file README in CC Catalog API repository.
+I added a step by step guide on how to run the server locally.
 I hope new users will be less intimidated to contribute to this project with the updated guide on how to run the server locally.&lt;/p&gt;
-&lt;h3 id="week-8"&gt;Week 8&lt;/h3&gt;&lt;p&gt;I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg. 
+&lt;h3 id="week-8"&gt;Week 8&lt;/h3&gt;&lt;p&gt;I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg.
 I also wrote and published this blog post.&lt;/p&gt;
-&lt;h3 id="week-9"&gt;Week 9&lt;/h3&gt;&lt;p&gt;I had completed all GSoD tasks by week 9. 
-So, I took a couple of days off and fixed last week's PR. 
-Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository. 
+&lt;h3 id="week-9"&gt;Week 9&lt;/h3&gt;&lt;p&gt;I had completed all GSoD tasks by week 9.
+So, I took a couple of days off and fixed last week's PR.
+Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository.
 Brent, the CC Catalog maintainer explained to me about what needs to be done.&lt;/p&gt;
-&lt;h3 id="week-10"&gt;Week 10&lt;/h3&gt;&lt;p&gt;I started exploring CC Catalog and its documentation. 
-Reminds me a lot about the first and second weeks of GSoD. 
-Trying to understand new stuff and having an "aha" moment when the dots finally connect. 
-I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository. 
+&lt;h3 id="week-10"&gt;Week 10&lt;/h3&gt;&lt;p&gt;I started exploring CC Catalog and its documentation.
+Reminds me a lot about the first and second weeks of GSoD.
+Trying to understand new stuff and having an "aha" moment when the dots finally connect.
+I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository.
 I also wrote and published this blog post.&lt;/p&gt;
 &lt;h3 id="week-11"&gt;Week 11&lt;/h3&gt;&lt;p&gt;I finished working on porting CC Catalog documentation from internal wiki to CC Catalog’s GitHub repository.
 Kriti told me that there would be a meeting in which I have to present what I've done for GSoD.
@@ -1303,7 +1303,7 @@ Another one is a summary of my GSoD 2020 journey, which also serves as a project
 &lt;p&gt;In future iterations of the docs development we hope to include the following features:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Increase the quantity of illustrative media so as to make the docs more intuitive this will be marked by adding video tutorials on how to use certain features of the CC Base theme and also adding illustrative tree diagrams to explain hierarchy of key directories and files in the CC Base project structure.&lt;/li&gt;
-&lt;li&gt;Integration of &lt;a href="https://www.algolia.com/"&gt;Algolia&lt;/a&gt; a software tool used to power search functionality in static generated sites. &lt;/li&gt;
+&lt;li&gt;Integration of &lt;a href="https://www.algolia.com/"&gt;Algolia&lt;/a&gt; a software tool used to power search functionality in static generated sites.&lt;/li&gt;
 &lt;li&gt;We also hope to improve SEO for the site.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;All the above mentioned improvements are geared at improving the overall user experience of the docs as well as ensure faster onboarding for our community members to get started on using the CC Base theme.&lt;/p&gt;
@@ -1314,14 +1314,14 @@ Another one is a summary of my GSoD 2020 journey, which also serves as a project
 &lt;small class="muted"&gt;The surreal feeling...&lt;/small&gt;
 &lt;/center&gt;&lt;p&gt;Merged? Yes. &lt;strong&gt;Merged&lt;/strong&gt;. Here's my story!&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;After getting a thumbs up from the UX Designer, I put up my &lt;a href="https://github.com/creativecommons/vocabulary/pull/747"&gt;GSoD Website PR&lt;/a&gt; for review.   &lt;/li&gt;
+&lt;li&gt;After getting a thumbs up from the UX Designer, I put up my &lt;a href="https://github.com/creativecommons/vocabulary/pull/747"&gt;GSoD Website PR&lt;/a&gt; for review.&lt;/li&gt;
 &lt;li&gt;I was confident there would be changes, and I let them roll in. It's important to note here that what seems perfect to you may not be so to others, and only experience teaches you the right from the wrong.&lt;/li&gt;
 &lt;li&gt;There were a few of them, mainly dealing with spacing, textual content and colors. I resolved them as soon as I could.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/authors/zackkrida/"&gt;zackkrida&lt;/a&gt; has been kind enough to point and enumerate all of them for me!&lt;/li&gt;
 &lt;li&gt;After receiving a final approval from the engineering team, my PR was finally merged!&lt;/li&gt;
 &lt;li&gt;The final draft of the vocabulary site is live! It will soon be deployed (on &lt;a href="https://netlify,com"&gt;Netlify&lt;/a&gt;) and be made available for public viewing.&lt;/li&gt;
-&lt;li&gt;For my readers, here's &lt;a href="https://cc-vocab-draft.web.app"&gt;exclusive preview&lt;/a&gt; of the final draft. &lt;/li&gt;
-&lt;li&gt;I've tried making it as optimised as possible, but if you have any inputs whatsoever feel free to raise issues over on our &lt;a href="https://github.com/creativecommons/vocabulary"&gt;GitHub repository&lt;/a&gt;. &lt;/li&gt;
+&lt;li&gt;For my readers, here's &lt;a href="https://cc-vocab-draft.web.app"&gt;exclusive preview&lt;/a&gt; of the final draft.&lt;/li&gt;
+&lt;li&gt;I've tried making it as optimised as possible, but if you have any inputs whatsoever feel free to raise issues over on our &lt;a href="https://github.com/creativecommons/vocabulary"&gt;GitHub repository&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;The famed &lt;a href="https://developers.google.com/web/tools/lighthouse"&gt;Lighthouse report&lt;/a&gt; suggests that it's a pretty good start! I've also taken care of the &lt;a href="https://www.w3.org/standards/webdesign/accessibility"&gt;accessibility aspect&lt;/a&gt; wherever applicable.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;center&gt;
@@ -1338,22 +1338,22 @@ Another one is a summary of my GSoD 2020 journey, which also serves as a project
 &lt;ul&gt;
 &lt;li&gt;The &lt;a href="https://github.com/creativecommons/vocabulary/pull/806"&gt;dark mode PR&lt;/a&gt; started off as a hacktoberfest contribution, and it is now complete!&lt;/li&gt;
 &lt;li&gt;Created a &lt;code&gt;/shared&lt;/code&gt; package to house common files between packages (such as the dark &amp;amp; light theme after referring to the &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt; documentation.&lt;/li&gt;
-&lt;li&gt;The automated npm &lt;a href="https://github.com/creativecommons/vocabulary/pull/746"&gt;README.md customisation&lt;/a&gt; is now up and running. (really had a blast solving that issue!) &lt;/li&gt;
+&lt;li&gt;The automated npm &lt;a href="https://github.com/creativecommons/vocabulary/pull/746"&gt;README.md customisation&lt;/a&gt; is now up and running. (really had a blast solving that issue!)&lt;/li&gt;
 &lt;li&gt;If the snapshot testing stands approved, we'll have it running on chromatic!&lt;/li&gt;
 &lt;li&gt;Raised issues to add multiple badges to the root README.md  file; namely &lt;code&gt;maintained with Lerna&lt;/code&gt; &amp;amp; custom badges for package sizes from &lt;a href="https://packagephobia.com/"&gt;packagephobia&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p align="center"&gt;
     &lt;strong&gt;Thank you for your time! Stay put for the season finale!&lt;/strong&gt;
-&lt;/p&gt;</content></entry><entry><title>Finish GSoD Tasks and Explore CC Catalog Documentation</title><link href="http://opensource.creativecommons.org/blog/entries/finish-gsod-tasks-and-explore-cc-catalog-documentation/" rel="alternate"></link><updated>2020-11-20T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:d5ea49f0-63f2-3466-93e0-7c513b4dc2d6</id><content type="html">&lt;p&gt;Today marks my fifth blog entry on Creative Commons. 
+&lt;/p&gt;</content></entry><entry><title>Finish GSoD Tasks and Explore CC Catalog Documentation</title><link href="http://opensource.creativecommons.org/blog/entries/finish-gsod-tasks-and-explore-cc-catalog-documentation/" rel="alternate"></link><updated>2020-11-20T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:d5ea49f0-63f2-3466-93e0-7c513b4dc2d6</id><content type="html">&lt;p&gt;Today marks my fifth blog entry on Creative Commons.
 For week 9 and 10, I explored CC Catalog documentation and began improving the documentation by removing keys and generalizing instructions.&lt;/p&gt;
-&lt;h3 id="week-9"&gt;Week 9&lt;/h3&gt;&lt;p&gt;I had completed all GSoD tasks by week 9. 
-So, I took a couple of days off and fixed last week's PR. 
-Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository. 
+&lt;h3 id="week-9"&gt;Week 9&lt;/h3&gt;&lt;p&gt;I had completed all GSoD tasks by week 9.
+So, I took a couple of days off and fixed last week's PR.
+Kriti assigned me with new tasks, which is to port CC Catalog documentation from the internal wiki into GitHub repository.
 Brent, the CC Catalog maintainer explained to me about what needs to be done.&lt;/p&gt;
-&lt;h3 id="week-10"&gt;Week 10&lt;/h3&gt;&lt;p&gt;For week 10, I started exploring CC Catalog and its documentation. 
-Reminds me a lot about the first and second weeks of GSoD. 
-Trying to understand new stuff and having an "aha" moment when the dots finally connect. 
-I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository. 
+&lt;h3 id="week-10"&gt;Week 10&lt;/h3&gt;&lt;p&gt;For week 10, I started exploring CC Catalog and its documentation.
+Reminds me a lot about the first and second weeks of GSoD.
+Trying to understand new stuff and having an "aha" moment when the dots finally connect.
+I started to move the documentation from the internal wiki to CC Catalog’s GitHub repository.
 I also wrote and published this blog post.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;End of blog entry.&lt;/p&gt;
@@ -1418,7 +1418,7 @@ I also wrote and published this blog post.&lt;/p&gt;
 &lt;li&gt;Vue.js is &lt;em&gt;fantastic&lt;/em&gt;. Maybe I'm a Vue.js fan now. Should I remain loyal to React? I don't know.&lt;/li&gt;
 &lt;li&gt;Making a site responsive isn't the &lt;em&gt;easiest&lt;/em&gt; of tasks, but it's certainly doable after a lot of stretching &amp;amp; compressing; lets say that.&lt;/li&gt;
 &lt;li&gt;"Code formatting is essential" would be an &lt;em&gt;understatement&lt;/em&gt; to make.&lt;/li&gt;
-&lt;li&gt;Monorepo's have their own pro's and con's. But in our case the con's were negligible, thankfully! &lt;/li&gt;
+&lt;li&gt;Monorepo's have their own pro's and con's. But in our case the con's were negligible, thankfully!&lt;/li&gt;
 &lt;li&gt;I'll be following up with some performance &amp;amp; accessibility testing this coming week, so let's see how that plays out!&lt;/li&gt;
 &lt;li&gt;A mentor plays a vital role in any project. My mentor &lt;code&gt;@dhruvkb&lt;/code&gt; has been very supportive and has made sure I stick to my timeline!&lt;/li&gt;
 &lt;/ul&gt;
@@ -1426,10 +1426,10 @@ I also wrote and published this blog post.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;I got the opportunity to speak at a CCOS event alongwith fellow speakers &lt;a href="https://opensource.creativecommons.org/blog/authors/dhruvkb/"&gt;dhruvkb&lt;/a&gt; &amp;amp; &lt;a href="https://opensource.creativecommons.org/blog/authors/dhruvi16/"&gt;dhruvi16&lt;/a&gt;. I had a blast talking to budding students from DSC-IIT Surat &amp;amp; DSC-RIT.&lt;/li&gt;
 &lt;li&gt;The dark mode (as promised) should be out before my next blog post.&lt;/li&gt;
-&lt;li&gt;Deployed the vocabulary storybook on &lt;a href="https://chromatic.com"&gt;Chromatic&lt;/a&gt; and compared &amp;amp; contrasted the pros &amp;amp; cons. Snapshot testing in the near future maybe? &lt;/li&gt;
-&lt;li&gt;Completed the hacktoberfest challenge. &lt;/li&gt;
+&lt;li&gt;Deployed the vocabulary storybook on &lt;a href="https://chromatic.com"&gt;Chromatic&lt;/a&gt; and compared &amp;amp; contrasted the pros &amp;amp; cons. Snapshot testing in the near future maybe?&lt;/li&gt;
+&lt;li&gt;Completed the hacktoberfest challenge.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="bonus-content"&gt;Bonus content&lt;/h3&gt;&lt;p&gt;Not many of you may know this, but this site uses the &lt;a href="https://getlektor.com"&gt;Lektor&lt;/a&gt; CMS. I needed to have it installed on my system (windows 10 OS) to run the code in our site repository. 
+&lt;h3 id="bonus-content"&gt;Bonus content&lt;/h3&gt;&lt;p&gt;Not many of you may know this, but this site uses the &lt;a href="https://getlektor.com"&gt;Lektor&lt;/a&gt; CMS. I needed to have it installed on my system (windows 10 OS) to run the code in our site repository.
 Lektor suggests running the following code in powershell as an installation step:&lt;/p&gt;
 &lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;new-object&lt;/span&gt; &lt;span class="n"&gt;net&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;webclient&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;DownloadString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://www.getlektor.com/installer.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1441,12 +1441,12 @@ Lektor suggests running the following code in powershell as an installation step
 &lt;p&gt;&lt;a href="https://chocolatey.org/packages/lektor"&gt;https://chocolatey.org/packages/lektor&lt;/a&gt;&lt;/p&gt;
 &lt;p align="center"&gt;
     &lt;strong&gt;Thank you for your time! Stay put for the next Vocabulary site update!&lt;/strong&gt;
-&lt;/p&gt;</content></entry><entry><title>Restructure README and Add Documentation Guidelines</title><link href="http://opensource.creativecommons.org/blog/entries/restructure-readme-and-add-documentation-guidelines/" rel="alternate"></link><updated>2020-11-05T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:98db0051-b46f-3e4b-ae18-a56418565d50</id><content type="html">&lt;p&gt;This is my fourth blog entry on Creative Commons. 
+&lt;/p&gt;</content></entry><entry><title>Restructure README and Add Documentation Guidelines</title><link href="http://opensource.creativecommons.org/blog/entries/restructure-readme-and-add-documentation-guidelines/" rel="alternate"></link><updated>2020-11-05T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:98db0051-b46f-3e4b-ae18-a56418565d50</id><content type="html">&lt;p&gt;This is my fourth blog entry on Creative Commons.
 For week 7 and 8, I restructured the file README to be more digestible to new users and created Documentation Guidelines for CC Catalog API documentation.&lt;/p&gt;
-&lt;h3 id="week-7"&gt;Week 7&lt;/h3&gt;&lt;p&gt;For this week, I restructured the file README in CC Catalog API repository. 
-I added a step by step guide on how to run the server locally. 
+&lt;h3 id="week-7"&gt;Week 7&lt;/h3&gt;&lt;p&gt;For this week, I restructured the file README in CC Catalog API repository.
+I added a step by step guide on how to run the server locally.
 I hope new users will be less intimidated to contribute to this project with the updated guide on how to run the server locally.&lt;/p&gt;
-&lt;h3 id="week-8"&gt;Week 8&lt;/h3&gt;&lt;p&gt;For week 8, I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg. 
+&lt;h3 id="week-8"&gt;Week 8&lt;/h3&gt;&lt;p&gt;For week 8, I created Documentation Guidelines which provides steps on how to contribute to CC Catalog API documentation, documentation styles, and cheat sheet for drf-yasg.
 I also wrote and published this blog post.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Finis.&lt;/p&gt;
@@ -1457,7 +1457,7 @@ I also wrote and published this blog post.&lt;/p&gt;
 &lt;li&gt;Be patient! Its fine to delay something if it makes sense to have it logically accomplished only after certain other tasks are done &amp;amp; dusted with.&lt;/li&gt;
 &lt;li&gt;How essential it is to write &lt;em&gt;neat code&lt;/em&gt; is something that's not spoken too often. (I wonder why...)&lt;/li&gt;
 &lt;li&gt;I always thought VueJS sets up SPA's by default. I'm surprised you need to configure it additionally to do just that!&lt;/li&gt;
-&lt;li&gt;Storybook is just a really nifty OSS with great community support! &lt;/li&gt;
+&lt;li&gt;Storybook is just a really nifty OSS with great community support!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="other-community-work-tidbits"&gt;Other community work tidbits&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;I've been working on the Dark Mode (a much awaited feature, at least for me!) for our storybooks with some support from our community. It should be up and running shortly!&lt;/li&gt;
@@ -1469,25 +1469,25 @@ I also wrote and published this blog post.&lt;/p&gt;
 &lt;p align="center"&gt;
     &lt;strong&gt;Thank you for your time! To be continued...&lt;/strong&gt;
 &lt;/p&gt;</content></entry><entry><title>Add New Sections, Descriptions, Help Texts, Code Examples, Schemas, and Serializers</title><link href="http://opensource.creativecommons.org/blog/entries/add-new-sections-descriptions-help-texts-code-examples-schemas-and-serializers/" rel="alternate"></link><updated>2020-10-21T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:b832956d-0c04-37e5-bde6-eb53722a4ba3</id><content type="html">&lt;p&gt;Welcome to my third blog entry! For week 5 and 6, I added new sections, descriptions, help texts, code examples, schemas, and serializers. I was so productive these past two weeks.&lt;/p&gt;
-&lt;h3 id="week-5"&gt;Week 5&lt;/h3&gt;&lt;p&gt;For this week, I managed to add a lot of stuff into the documentation. 
-I figured out how to add help texts to classes and how to create serializers. 
-I also managed to move all code examples under response samples. 
-In order to do this, I created a new class called CustomAutoSchema to add &lt;a href="https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md#x-codesamples"&gt;x-code-samples&lt;/a&gt;. 
-Other stuff that I did include creating new sections such as “Register and Authenticate” and “Glossary”. 
+&lt;h3 id="week-5"&gt;Week 5&lt;/h3&gt;&lt;p&gt;For this week, I managed to add a lot of stuff into the documentation.
+I figured out how to add help texts to classes and how to create serializers.
+I also managed to move all code examples under response samples.
+In order to do this, I created a new class called CustomAutoSchema to add &lt;a href="https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md#x-codesamples"&gt;x-code-samples&lt;/a&gt;.
+Other stuff that I did include creating new sections such as “Register and Authenticate” and “Glossary”.
 The hardest part of this week is probably trying to figure out how to add request body examples and move code examples.&lt;/p&gt;
-&lt;h3 id="week-6"&gt;Week 6&lt;/h3&gt;&lt;p&gt;For week 6, I added another section called Contribute that provides a todolist to start contributing on Github. 
+&lt;h3 id="week-6"&gt;Week 6&lt;/h3&gt;&lt;p&gt;For week 6, I added another section called Contribute that provides a todolist to start contributing on Github.
 I also wrote and published this blog post.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;All caught up!&lt;/p&gt;
 </content></entry><entry><title>Add Response Samples and Descriptions for API Endpoints</title><link href="http://opensource.creativecommons.org/blog/entries/add-response-samples-and-descriptions-for-api-endpoints/" rel="alternate"></link><updated>2020-10-09T00:00:00Z</updated><author><name>['ariessa']</name></author><id>urn:uuid:23d6eb6e-e157-34fb-af99-ddfcad7c5044</id><content type="html">&lt;p&gt;Well, hello again 👋! For week 3 and week 4, I added response samples and descriptions for API endpoints. Writing documentation feels a bit like coding at this point because I need to read a lot about drf-yasg, dig through issues and questions at Github / Stackoverflow to ensure that I don’t ask redundant (or even stupid) questions.&lt;/p&gt;
-&lt;h3 id="week-3"&gt;Week 3&lt;/h3&gt;&lt;p&gt;Week 3 was quite hectic. I moved back to my hometown during week 3. 
-Took 3 days off to settle my stuff and set up a workspace. 
-I worked on my GSoD project for only 2 days, Monday and Tuesday. 
-I managed to create response samples for most API endpoints. 
+&lt;h3 id="week-3"&gt;Week 3&lt;/h3&gt;&lt;p&gt;Week 3 was quite hectic. I moved back to my hometown during week 3.
+Took 3 days off to settle my stuff and set up a workspace.
+I worked on my GSoD project for only 2 days, Monday and Tuesday.
+I managed to create response samples for most API endpoints.
 Had a monthly video call with Kriti this week.&lt;/p&gt;
-&lt;h3 id="week-4"&gt;Week 4&lt;/h3&gt;&lt;p&gt;For this week, I reviewed what I’ve done and what I haven’t to estimate new completion time. 
-Thank god, I have a buffer week in my GSoD timeline and deliverables. 
-So yeah, all is good in terms of completion time. 
+&lt;h3 id="week-4"&gt;Week 4&lt;/h3&gt;&lt;p&gt;For this week, I reviewed what I’ve done and what I haven’t to estimate new completion time.
+Thank god, I have a buffer week in my GSoD timeline and deliverables.
+So yeah, all is good in terms of completion time.
 I started to write descriptions for API endpoints.
 Submitted first PR and published blog entry.&lt;/p&gt;
 &lt;hr&gt;
@@ -1498,8 +1498,8 @@ Submitted first PR and published blog entry.&lt;/p&gt;
 &lt;h2 id="vocabulary-site-usage-guide"&gt;Vocabulary Site &amp;amp; Usage Guide&lt;/h2&gt;&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;&lt;p&gt;&lt;a href="https://github.com/creativecommons/vocabulary"&gt;CC Vocabulary&lt;/a&gt; is a cohesive design system &amp;amp; Vue component library to unify the web-facing Creative Commons. It's currently comprised of 3 packages, namely Vocabulary, Vue-Vocabulary &amp;amp; Fonts. My contribution to this project would majorly involve building the landing site for CC Vocabulary, and refactor the documentation wherever necessary.&lt;/p&gt;
 &lt;h3 id="what-drives-me"&gt;What drives me&lt;/h3&gt;&lt;p&gt;Documentation is one of the primary reasons which determines how successful a certain open source library will be. The major question that developers think of while choosing a suitable tech stack to build their applications is:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Is the library &lt;em&gt;well documented&lt;/em&gt;? &lt;/li&gt;
-&lt;li&gt;Is it &lt;em&gt;well maintained&lt;/em&gt;? &lt;/li&gt;
+&lt;li&gt;Is the library &lt;em&gt;well documented&lt;/em&gt;?&lt;/li&gt;
+&lt;li&gt;Is it &lt;em&gt;well maintained&lt;/em&gt;?&lt;/li&gt;
 &lt;li&gt;Does it have some &lt;em&gt;considerable usage and error support&lt;/em&gt;?&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;These are exactly the questions I should be asking myself while going about this project idea.&lt;/p&gt;
@@ -1523,8 +1523,8 @@ Submitted first PR and published blog entry.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p align="center"&gt;
     &lt;strong&gt;Thank you for your time!&lt;/strong&gt;
-&lt;/p&gt;</content></entry><entry><title>Creative Commons WordPress plugin: attribution for images</title><link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-attribution-for-images/" rel="alternate"></link><updated>2020-10-01T00:00:00Z</updated><author><name>['rczajka']</name></author><id>urn:uuid:818016d3-7344-3937-9fd6-7e5ffad98071</id><content type="html">&lt;p&gt;As a part of &lt;a href="https://centrumcyfrowe.pl"&gt;Centrum Cyfrowe&lt;/a&gt;'s &lt;a href="https://otwartakultura.org/noworries/"&gt;#NoWorries project&lt;/a&gt; funded by EUIPO, 
-I have had the pleasure of enhancing the Creative Commons Wordpress plugin. 
+&lt;/p&gt;</content></entry><entry><title>Creative Commons WordPress plugin: attribution for images</title><link href="http://opensource.creativecommons.org/blog/entries/cc-wp-plugin-attribution-for-images/" rel="alternate"></link><updated>2020-10-01T00:00:00Z</updated><author><name>['rczajka']</name></author><id>urn:uuid:818016d3-7344-3937-9fd6-7e5ffad98071</id><content type="html">&lt;p&gt;As a part of &lt;a href="https://centrumcyfrowe.pl"&gt;Centrum Cyfrowe&lt;/a&gt;'s &lt;a href="https://otwartakultura.org/noworries/"&gt;#NoWorries project&lt;/a&gt; funded by EUIPO,
+I have had the pleasure of enhancing the Creative Commons Wordpress plugin.
 The new version of CC's Wordpress plugin has a feature called
 “attribution information for images”. It works like this:&lt;/p&gt;
 &lt;ol&gt;
@@ -1833,17 +1833,17 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id="gsoc-work-product"&gt;GSoC Work Product&lt;/h2&gt;&lt;p&gt;The live version of the linked commons can be found &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;. You can interact with it and &lt;strong&gt;"explore the creative commons in graphs"&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;If you wish to access the raw or filtered data, then here is a brief documentation of our new API.&lt;/p&gt;
 &lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/api/graph-data&lt;/span&gt;
-&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;
 &lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Returns a randomized graph having around 500 nodes and links.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 &lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/api/graph-data/?name={node_name}&lt;/span&gt;
-&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;
 &lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 &lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/api/suggestions/?q={query}&lt;/span&gt;
-&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;
 &lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Returns a set of nodes which contains the {query} pattern in their nodeid&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id="demo"&gt;Demo&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
@@ -1862,7 +1862,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/29"&gt;&lt;strong&gt;Add server-side filtering #29&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;We realized that the client-side graph filtering method is not very scalable. This PR adds the basic structure for the backend server and adds server-side graph filtering logic.&lt;/li&gt;
-&lt;li&gt;Added a parser to convert the input JSON file from &lt;code&gt;{nodes:[], links:[]}&lt;/code&gt; schema to the distance list format. &lt;/li&gt;
+&lt;li&gt;Added a parser to convert the input JSON file from &lt;code&gt;{nodes:[], links:[]}&lt;/code&gt; schema to the distance list format.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
     &lt;figure&gt;
@@ -1882,7 +1882,7 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;/div&gt;&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/35"&gt;&lt;strong&gt;Add node suggestions feature #35&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Added query autocomplete feature, to enable users to explore all the nodes in the database.&lt;/li&gt;
-&lt;li&gt;This functionality aims to minimize the number of misspelt filtering tries from the client. &lt;/li&gt;
+&lt;li&gt;This functionality aims to minimize the number of misspelt filtering tries from the client.&lt;/li&gt;
 &lt;li&gt;Refer to &lt;a href="/blog/entries/linked-commons-autocomplete-feature/"&gt;this blog&lt;/a&gt; for the motivation and detailed report on why we added autocomplete aka node suggestions feature.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/38"&gt;&lt;strong&gt;Fix filtering module #38&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
@@ -2177,11 +2177,11 @@ flag the corresponding image record  as obsolete.  The PR related to this task i
 contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
 Brent for his guidance.&lt;/p&gt;
 </content></entry><entry><title>CC Catalog: wrapping up GSoC20</title><link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:ba947438-0d00-32ec-8ba7-acf6f5f15eb5</id><content type="html">&lt;p&gt;With the summer of code coming to an end, this blog post summarises the work done during the last three months. The project I have been working on is to add more provider API scripts to the CC Catalog. The CC Catalog project is responsible for collecting CC licensed images hosted across the web.&lt;/p&gt;
-&lt;p&gt;The internship journey has been great , and I was glad to get the opportunity to understand more about the working of the data pipeline. My work during the internship mainly involved researching new API providers and checking if they meet the necessary conditions, then we decided on a strategy to crawl the API. The strategy varies according to different APIs:  some can be partitioned based on date, others have to be paginated . Script is written for the API according to the strategy. 
+&lt;p&gt;The internship journey has been great , and I was glad to get the opportunity to understand more about the working of the data pipeline. My work during the internship mainly involved researching new API providers and checking if they meet the necessary conditions, then we decided on a strategy to crawl the API. The strategy varies according to different APIs:  some can be partitioned based on date, others have to be paginated . Script is written for the API according to the strategy.
 During the later phase of the internship, I had worked on the reingestion strategy for europeana and a script to merge Common Crawl tags and metadata to the corresponding image in the image table.&lt;/p&gt;
 &lt;p&gt;Provider API implemented :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Science Museum :  Science Museum collection has around 60,000 images and was initially crawled through Common Crawl and shifted to API based crawl. &lt;ul&gt;
+&lt;li&gt;Science Museum :  Science Museum collection has around 60,000 images and was initially crawled through Common Crawl and shifted to API based crawl.&lt;ul&gt;
 &lt;li&gt;Issue: &lt;a href="https://github.com/creativecommons/cccatalog/issues/302"&gt;Science Museum ticket&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Related PRs: &lt;a href="https://github.com/creativecommons/cccatalog/pull/400"&gt;Science Museum script&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/cccatalog/pull/411"&gt;Science Museum workflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2219,7 +2219,7 @@ During the later phase of the internship, I had worked on the reingestion strate
 &lt;ul&gt;
 &lt;li&gt;Issue : &lt;a href="https://github.com/creativecommons/cccatalog/issues/396"&gt;Iconfinder ticket&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="europeana-reingestion-strategy"&gt;Europeana reingestion strategy&lt;/h2&gt;&lt;p&gt;Data collected from europeana was collected on a daily basis and there was a need to refresh it. The idea is that new data should be refreshed more frequently and as the data gets old, refreshing should become less frequent. While developing the strategy the API key limit and maximum collection expected is to be kept in mind. Considering these factors, a workflow was set up such that each day it crawls 59 days of data. 
+&lt;h2 id="europeana-reingestion-strategy"&gt;Europeana reingestion strategy&lt;/h2&gt;&lt;p&gt;Data collected from europeana was collected on a daily basis and there was a need to refresh it. The idea is that new data should be refreshed more frequently and as the data gets old, refreshing should become less frequent. While developing the strategy the API key limit and maximum collection expected is to be kept in mind. Considering these factors, a workflow was set up such that each day it crawls 59 days of data.
 The 59 days were split up into layers. The DAG crawls daily up to 1 week old data then it crawls monthly for data more than 1 week old and less than a year old data, anything older than a year is crawled every 3 months.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Issue: &lt;a href="https://github.com/creativecommons/cccatalog/issues/412"&gt;Europeana reingestion ticket&lt;/a&gt;&lt;/li&gt;
@@ -2583,7 +2583,7 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;h4 id="takeaways"&gt;Takeaways&lt;/h4&gt;&lt;p&gt;The result here is that we have a lightweight, modular, highly concurrent, and polite distributed image crawler with only a handful of lines of code.&lt;/p&gt;
 &lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;alden:~/code/image_crawler$&lt;span class="w"&gt; &lt;/span&gt;cloc&lt;span class="w"&gt; &lt;/span&gt;.
 &lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="m"&gt;48&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;text&lt;span class="w"&gt; &lt;/span&gt;files.
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="m"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;unique&lt;span class="w"&gt; &lt;/span&gt;files.&lt;span class="w"&gt;                              &lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="m"&gt;43&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;unique&lt;span class="w"&gt; &lt;/span&gt;files.
 &lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;files&lt;span class="w"&gt; &lt;/span&gt;ignored.
 
 github.com/AlDanial/cloc&lt;span class="w"&gt; &lt;/span&gt;v&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.81&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nv"&gt;T&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.02&lt;span class="w"&gt; &lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1667&lt;/span&gt;.4&lt;span class="w"&gt; &lt;/span&gt;files/s,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;130887&lt;/span&gt;.8&lt;span class="w"&gt; &lt;/span&gt;lines/s&lt;span class="o"&gt;)&lt;/span&gt;
@@ -2822,7 +2822,7 @@ An example a proper input elements with correct label nesting is:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Notice how the input is a child of the &lt;code&gt;&amp;lt;label&amp;gt;&lt;/code&gt; tag which has the &lt;code&gt;for&lt;/code&gt; attribute to point which element it labels.&lt;/p&gt;
 &lt;p&gt;Apart from these changes, the eslint configuration of the project were also changed to include a11y-linting for the elments.
-We used the &lt;a href="https://github.com/maranran/eslint-plugin-vue-a11y"&gt;eslint-plugin-vue-a11y&lt;/a&gt; to enforce accessibility guidelines for our components via lint checks. 
+We used the &lt;a href="https://github.com/maranran/eslint-plugin-vue-a11y"&gt;eslint-plugin-vue-a11y&lt;/a&gt; to enforce accessibility guidelines for our components via lint checks.
 Furthermore all the aria-labels were internationalized to enforce the i18n standard in our repo that we had setup earlier this summer.&lt;/p&gt;
 &lt;p&gt;After all these changes we had the following inprovements in the accessibility scores(computed from lighthouse):&lt;/p&gt;
 &lt;ol&gt;
@@ -2914,12 +2914,12 @@ the Smithsonian image retrieval script such that the Smithsonian sub-provider re
 &lt;li&gt;Submitting the form and getting a response of “Node doesn’t exist” isn’t a very good user flow, and we want to minimise such incidents.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Also, on a side note giving a search bar to the user and giving no hints is ruthless. We all need recommendations and guess what linked commons got you covered! Now for every keystroke, we load a bunch of node names which you might be looking for. ;)&lt;/p&gt;
-&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;The autocomplete feature on a very basic level aims to predict the rest of a word the user is typing. A possible implementation is though the linear traversal of all the nodes in the list. It will be having a &lt;strong&gt;linear time complexity&lt;/strong&gt;. It’s not very good and it’s very obvious to look for a faster and more efficient way. Also, even if for once we neglect the &lt;strong&gt;time complexity&lt;/strong&gt;, looking for the best 10 nodes out of these millions on the client's machine is not at all a good idea; it will cause throttling and will result in performance drops. 
+&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;The autocomplete feature on a very basic level aims to predict the rest of a word the user is typing. A possible implementation is though the linear traversal of all the nodes in the list. It will be having a &lt;strong&gt;linear time complexity&lt;/strong&gt;. It’s not very good and it’s very obvious to look for a faster and more efficient way. Also, even if for once we neglect the &lt;strong&gt;time complexity&lt;/strong&gt;, looking for the best 10 nodes out of these millions on the client's machine is not at all a good idea; it will cause throttling and will result in performance drops.
 On the other hand, a &lt;strong&gt;trie based solution&lt;/strong&gt; is more efficient for sure but still, we cannot do this indexing on the client machine for the same reasons stated above.
 So far, it is now apparent that we implement this feature on the server and also aim for at least something better than linear time complexity.&lt;/p&gt;
 &lt;h2 id="a-non-conventional-solution"&gt;A non-conventional solution&lt;/h2&gt;&lt;p&gt;We could have used Elastic Search, which is very powerful and has a ton of functionalities but since our needs are very small we wanted to look for other simple alternatives. Moreover, we didn't want to complicate our current architecture by adding an additional framework and libraries.&lt;/p&gt;
 &lt;p&gt;Taking the above points into consideration we went ahead with the following solution. We store all nodes data into an SQL dB and search for all the nodes whose domain name pattern was matching to the query string. After slicing the query set and other randomization we sent the payload to the client. To make it more robust, we are caching the results in the frontend to avoid multiple calls for the same query. It will surely reduce the load from the server and also give a faster response.&lt;/p&gt;
-&lt;h2 id="results"&gt;Results&lt;/h2&gt;&lt;p&gt;To make sure our solution works well, we performed load tests, checking that any response time does not exceed 1000 ms. We used locust which is a user load testing tool. We simulated with &lt;strong&gt;1000 users&lt;/strong&gt; and &lt;strong&gt;10 as Hatch rate&lt;/strong&gt;. 
+&lt;h2 id="results"&gt;Results&lt;/h2&gt;&lt;p&gt;To make sure our solution works well, we performed load tests, checking that any response time does not exceed 1000 ms. We used locust which is a user load testing tool. We simulated with &lt;strong&gt;1000 users&lt;/strong&gt; and &lt;strong&gt;10 as Hatch rate&lt;/strong&gt;.
 The following test is performed on the local machine to ensure that the server location isn’t affecting the results.&lt;/p&gt;
 &lt;p&gt;Here are some aggregated result statistics.&lt;/p&gt;
 &lt;table class="table table-striped"&gt;
@@ -3025,8 +3025,8 @@ For reference, in the above example the &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&
 &lt;p&gt;The corrected code is:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;ul role="tablist"&amp;gt;
     &amp;lt;li role="tab" :class="tabClass(0, 'tab')" :aria-selected="activeTab == 0"&amp;gt;
-        &amp;lt;a 
-            aria-label="help us improve form" 
+        &amp;lt;a
+            aria-label="help us improve form"
             href="#panel0"
             @click.prevent="setActiveTab(0)"
         &amp;gt;
@@ -3034,7 +3034,7 @@ For reference, in the above example the &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&
         &amp;lt;/a&amp;gt;
     &amp;lt;/li&amp;gt;
     &amp;lt;li role="tab" :class="tabClass(1, 'tab')" :aria-selected="activeTab == 1"&amp;gt;
-        &amp;lt;a 
+        &amp;lt;a
             aria-label="report a bug form"
             href="#panel1"
             @click.prevent="setActiveTab(1)"
@@ -3107,7 +3107,7 @@ Kunst&lt;/a&gt;. We don’t expect museum providers to change data on a daily ba
 parameters.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;start_date&lt;/code&gt; - it denotes the starting date from which the
-task should begin running. &lt;/li&gt;
+task should begin running.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;schedule_interval&lt;/code&gt; - it denotes the interval between subsequent runs, it
 can be specified with airflow keyword strings like “@daily”, “@weekly”,
 “@monthly”, “@yearly” other than these we can also schedule the interval using

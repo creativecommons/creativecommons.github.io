@@ -284,17 +284,17 @@
 <h2 id="gsoc-work-product">GSoC Work Product</h2><p>The live version of the linked commons can be found <a href="http://dataviz.creativecommons.engineering/">here</a>. You can interact with it and <strong>"explore the creative commons in graphs"</strong>.</p>
 <p>If you wish to access the raw or filtered data, then here is a brief documentation of our new API.</p>
 <div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/graph-data</span>
-<span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"> </span>
+<span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
 <span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns a randomized graph having around 500 nodes and links.</span>
 </pre></div>
 <p>&nbsp;</p>
 <div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/graph-data/?name={node_name}</span>
-<span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"> </span>
+<span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
 <span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.</span>
 </pre></div>
 <p>&nbsp;</p>
 <div class="hll"><pre><span></span><span class="nt">URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/api/suggestions/?q={query}</span>
-<span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"> </span>
+<span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
 <span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Returns a set of nodes which contains the {query} pattern in their nodeid</span>
 </pre></div>
 <h3 id="demo">Demo</h3><div style="text-align: center; width: 90%; margin-left: 5%;">
@@ -313,7 +313,7 @@
 <p><a href="https://github.com/cc-archive/cccatalog-dataviz/pull/29"><strong>Add server-side filtering #29</strong></a></p>
 <ul>
 <li>We realized that the client-side graph filtering method is not very scalable. This PR adds the basic structure for the backend server and adds server-side graph filtering logic.</li>
-<li>Added a parser to convert the input JSON file from <code>{nodes:[], links:[]}</code> schema to the distance list format. </li>
+<li>Added a parser to convert the input JSON file from <code>{nodes:[], links:[]}</code> schema to the distance list format.</li>
 </ul>
 <div style="text-align: center; width: 90%; margin-left: 5%;">
     <figure>
@@ -333,7 +333,7 @@
 </div><p><a href="https://github.com/cc-archive/cccatalog-dataviz/pull/35"><strong>Add node suggestions feature #35</strong></a></p>
 <ul>
 <li>Added query autocomplete feature, to enable users to explore all the nodes in the database.</li>
-<li>This functionality aims to minimize the number of misspelt filtering tries from the client. </li>
+<li>This functionality aims to minimize the number of misspelt filtering tries from the client.</li>
 <li>Refer to <a href="/blog/entries/linked-commons-autocomplete-feature/">this blog</a> for the motivation and detailed report on why we added autocomplete aka node suggestions feature.</li>
 </ul>
 <p><a href="https://github.com/cc-archive/cccatalog-dataviz/pull/38"><strong>Fix filtering module #38</strong></a></p>

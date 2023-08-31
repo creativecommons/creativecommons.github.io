@@ -326,8 +326,8 @@ For reference, in the above example the <code>&lt;ul&gt;</code> should have the 
 <p>The corrected code is:</p>
 <pre><code>&lt;ul role="tablist"&gt;
     &lt;li role="tab" :class="tabClass(0, 'tab')" :aria-selected="activeTab == 0"&gt;
-        &lt;a 
-            aria-label="help us improve form" 
+        &lt;a
+            aria-label="help us improve form"
             href="#panel0"
             @click.prevent="setActiveTab(0)"
         &gt;
@@ -335,7 +335,7 @@ For reference, in the above example the <code>&lt;ul&gt;</code> should have the 
         &lt;/a&gt;
     &lt;/li&gt;
     &lt;li role="tab" :class="tabClass(1, 'tab')" :aria-selected="activeTab == 1"&gt;
-        &lt;a 
+        &lt;a
             aria-label="report a bug form"
             href="#panel1"
             @click.prevent="setActiveTab(1)"
