@@ -10503,6 +10503,10 @@ a:hover {
   color: rgb(0, 128, 0);
 }
 
+svg {
+  width: 100%;
+}
+
 code {
   color: rgb(51, 51, 51);
   background-color: rgb(245, 245, 245);
