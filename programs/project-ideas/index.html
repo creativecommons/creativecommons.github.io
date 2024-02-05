@@ -238,11 +238,14 @@
           <button type="button" class="button tag filter-btn" data-filter="difficulty-hard">
             Difficulty: Hard
           </button>
+          <button type="button" class="button tag filter-btn" data-filter="skill-ansible">
+            Skill: Ansible
+          </button>
           <button type="button" class="button tag filter-btn" data-filter="skill-css">
             Skill: CSS
           </button>
-          <button type="button" class="button tag filter-btn" data-filter="skill-django">
-            Skill: Django
+          <button type="button" class="button tag filter-btn" data-filter="skill-docker">
+            Skill: Docker
           </button>
           <button type="button" class="button tag filter-btn" data-filter="skill-javascript">
             Skill: JavaScript
@@ -274,11 +277,21 @@
             </a>
           </div>
           
-          <div class="column is-one-quarter filter filter-label difficulty-high skill-django skill-git skill-python skill-rdf skill-xml">
-            <a href="#cc-legal-tools-machine-layer">
+          <div class="column is-one-quarter filter filter-label difficulty-medium skill-ansible skill-debian skill-docker skill-git">
+            <a href="#ansible-dev-env">
               <article class="card entry-post horizontal">
                 <div class="card-content">
-                  <h5 class="card-title">CC Legal Tools: Machine Readable Layer</h5>
+                  <h5 class="card-title">Create local Ansible Dev environment using Docker</h5>
+                </div>
+              </article>
+            </a>
+          </div>
+          
+          <div class="column is-one-quarter filter filter-label difficulty-hard skill-css skill-docker skill-git skill-javascript skill-php skill-wordpress">
+            <a href="#media-attribution-wp-plugin">
+              <article class="card entry-post horizontal">
+                <div class="card-content">
+                  <h5 class="card-title">Create Media Attribution and License Plugin for WordPress</h5>
                 </div>
               </article>
             </a>
@@ -289,16 +302,6 @@
               <article class="card entry-post horizontal">
                 <div class="card-content">
                   <h5 class="card-title">Modernize CC Resource Archive</h5>
-                </div>
-              </article>
-            </a>
-          </div>
-          
-          <div class="column is-one-quarter filter filter-label difficulty-high skill-git skill-javascript skill-vue skill-html skill-css">
-            <a href="#upgrade-and-refactor-cc-chooser">
-              <article class="card entry-post horizontal">
-                <div class="card-content">
-                  <h5 class="card-title">Upgrade and Refactor CC Chooser</h5>
                 </div>
               </article>
             </a>
@@ -377,52 +380,148 @@ Quantifying the Commons</li>
         </div>
       
         <div class="project-idea">
-          <h2><a class="has-color-dark-slate-gray" name="cc-legal-tools-machine-layer">CC Legal Tools: Machine Readable Layer</a></h2>
+          <h2><a class="has-color-dark-slate-gray" name="ansible-dev-env">Create local Ansible Dev environment using Docker</a></h2>
           <div class="columns">
             <div class="column is-one-quarter">
               <h5 class="b-header padding-bottom-small">Difficulty</h5>
-              <p class="padding-bottom-big">High</p>
+              <p class="padding-bottom-big">Medium</p>
               <h5 class="b-header padding-bottom-small">Size</h5>
               <p class="padding-bottom-big">Large (~350 hours)</p>
               <h5 class="b-header padding-bottom-small">Skills recommended</h5>
               <ul>
-<li>Django</li>
+<li>Ansible</li>
+<li>Debian</li>
+<li>Docker</li>
 <li>Git</li>
-<li>Python</li>
-<li>RDF</li>
-<li>XML</li>
 </ul>
 
               <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
               <ul>
-<li>Timid Robot</li>
+<li>Shafiya</li>
 </ul>
 
             </div>
             <div class="column is-three-quarters">
               <h3 class="padding-bottom-big">The Problem</h3>
-              <p><p>The CC Legal tools consist of three parts, the legal code, the deed (simple
-language description), and the machine readable. The machine readable layer has
-received the least recent development. It is out of date and there are
-unresolved issues.</p>
+              <p><p>The enhancement of system architectures through the strategic transition from
+SaltStack to Ansible for provisioning, coupled with the implementation of
+Docker infrastructure, represents a significant step towards improved
+efficiency and scalability.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
-              <p><p>Extend the CC Legal Tools App to generate deterministic RDF XML files for all
-of the legal tools.</p>
-<p>Stretch goal: Extend the CC Legal Tools App to generate deterministic plain
-text versions of the 4.0 licenses and the CC0 public domain dedication.</p>
+              <p><p>The project's goal is to create a strong and local development setup using
+Ansible and Docker. This setup will be like a real work environment, with a
+special server for security (Bastion), automation with Ansible, a server for
+websites, and a server for storing data. This setup will make developing things
+easier and safer, and it will be a model for how we do similar projects at CC
+in the future.</p>
+<p>Docker containers:</p>
+<ul>
+<li>Bastion (SSH jump server)</li>
+<li>Ansible</li>
+<li>Web server (Apache2/WordPress)</li>
+<li>Database server (MariaDB)</li>
+</ul>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
-              <p><p>The contributor will need to extend the CC Legal Tools App to generate RDF XML
-files. The generated RDF XML files must be deterministic and well organized and
-based on current RDF specifications. Application updates must include test
-coverage.</p>
-<p>Stretch goal: Extend the CC Legal Tools App to generate plain text versions.
-The generated plain text versions must be deterministic and match the
-formatting of the manual versions (except where improvements are desired).
-Application updates must include test coverage. Additional stretch goals
-include adding markdown format generation and interfacing/collaborating with
-SPDX.</p>
+              <p><p>Contributor will:</p>
+<ul>
+<li>Set up Docker containers for the Bastion server, Ansible server, Web server,
+and Database server.</li>
+<li>Implement a secure system for managing and using secrets<ul>
+<li>Set up a secure storage solution for managing secrets, such as Ansible Vault</li>
+<li>It is recommended to inject secrets into containers at runtime as needed,
+and not stored within container images.</li>
+</ul>
+</li>
+<li>Configure Ansible playbooks for deploying the web application and interact
+with the database.</li>
+<li>Document the setup process</li>
+</ul>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
+              <p><ul>
+<li>Engage with the repository (issues, pull requests)</li>
+<li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
+<li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
+</ul>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Resources</h3>
+              <p><ul>
+<li><a href="https://docs.ansible.com/">Ansible Documentation</a></li>
+<li><a href="https://wiki.debian.org/FrontPage">FrontPage - Debian Wiki</a></li>
+<li><a href="https://docs.docker.com/">Docker Docs</a></li>
+<li><a href="https://github.com/creativecommons/sre-salt-prime">creativecommons/sre-salt-prime</a>: Site Reliability Engineering / DevOps SaltStack configuration files</li>
+</ul>
+</p>
+            </div>
+          </div>
+          <a href="#project-list" class="back-to-list"><i class="icon angle-up"></i> Back to the Project list</a>
+        </div>
+      
+        <div class="project-idea">
+          <h2><a class="has-color-dark-slate-gray" name="media-attribution-wp-plugin">Create Media Attribution and License Plugin for WordPress</a></h2>
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <h5 class="b-header padding-bottom-small">Difficulty</h5>
+              <p class="padding-bottom-big">Hard</p>
+              <h5 class="b-header padding-bottom-small">Size</h5>
+              <p class="padding-bottom-big">Large (~350 hours)</p>
+              <h5 class="b-header padding-bottom-small">Skills recommended</h5>
+              <ul>
+<li>CSS</li>
+<li>Docker</li>
+<li>Git</li>
+<li>HTML</li>
+<li>JavaScript</li>
+<li>PHP</li>
+<li>WordPress (including Classic Editor, Gutenberg Editor/React.js, Plugins, and
+Themes)</li>
+</ul>
+
+              <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
+              <ul>
+<li>Sara</li>
+</ul>
+
+            </div>
+            <div class="column is-three-quarters">
+              <h3 class="padding-bottom-big">The Problem</h3>
+              <p><p>The current existing Creative Commons WordPress plugin has feature drift and
+technical debt that make it a challenge to sensibly expand/revise. At the core
+of desired uses, this new WordPress plugin needs a reliable and succinct way to
+add Attribution and Licensing information to a Media item within the Media
+Library at initial upload. This modification/extension of the Media item’s
+"meta field information" needs to be stable and clear enough to enable future
+expansions in featureset into other areas of the WordPress backend interface.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
+              <p><p>Building from a strategy of simplistic and necessary structure and
+functionality, a new plugin would be created that extends the fields for a
+Media item to include License and Attribution information.</p>
+</p>
+              <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
+              <p><p>Contributor will follow an approach that is simple to maintain, and possible to
+extend in the future. Users can upload items in at least four ways, and ideally
+all four would be factored into this plugin:</p>
+<ul>
+<li>through the Media Library directly</li>
+<li>through the TinyMCE editor “Add Media” button when utilizing the Classic
+Editor</li>
+<li>when adding an image to a “featured image” or similar field in the Classic
+Editor</li>
+<li>through any Gutenberg editor block that utilizes an image/file attachment
+mechanism.</li>
+</ul>
+<p>Each of these routes should have the ability to input and modify this
+additional meta field information about the item. The plugin should utilize
+well structured PHP generally. More specifically when solving for Gutenberg
+and/or TinyMCE adequate and sensible choices in JavaScript should be utilized.
+All code should be well documented, and specific code interacting with the
+Classic editor vs. Gutenberg editor contexts should be well compartmentalized.
+The Contributor will also set up a custom Docker configuration in accordance
+with other WP + Docker setups utilized by CC, specifically for the build and
+testing of the plugin.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
               <p><ul>
@@ -433,26 +532,14 @@ SPDX.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Resources</h3>
               <p><ul>
-<li><a href="https://github.com/creativecommons/cc-legal-tools-app/">creativecommons/cc-legal-tools-app</a>:
-License and public domain dedication management application for Creative
-Commons</li>
-<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>:
-License and public domain dedication data for Creative Commons</li>
-<li><strong>ccREL (RDF/XML)</strong></li>
-<li><a href="https://creativecommons.org/ns/">Describing Copyright in RDF - Creative Commons Rights Expression
-Language</a></li>
-<li><a href="https://wiki.creativecommons.org/wiki/CC_REL">CC REL - Creative Commons</a> (CC
-Public Wiki)</li>
-<li><a href="https://github.com/creativecommons/ccrel">creativecommons/ccrel</a></li>
-<li><a href="https://opensource.creativecommons.org/ccrel/">ccREL: The Creative Commons Rights Expression
-Language</a></li>
-<li><a href="https://github.com/creativecommons/ccrel-guide">creativecommons/ccrel-guide</a></li>
-<li><a href="https://opensource.creativecommons.org/ccrel-guide/">CC REL by Example</a></li>
-<li><strong>Plain text format</strong></li>
-<li><a href="https://creativecommons.org/2014/01/07/plaintext-versions-of-creative-commons-4-0-licenses/">Plaintext versions of Creative Commons 4.0 licenses - Creative
-Commons</a></li>
-<li><a href="https://creativecommons.org/2011/04/15/plaintext-versions-of-creative-commons-licenses-and-cc0/">Plaintext versions of Creative Commons licenses and CC0 - Creative
-Commons</a></li>
+<li><a href="https://wiki.creativecommons.org/wiki/Recommended_practices_for_attribution">CC Attribution Guidelines</a></li>
+<li><a href="https://creativecommons.org/share-your-work/cclicenses/">CC Licenses</a></li>
+<li><a href="https://codex.wordpress.org/TinyMCE">Classic Editor + TinyMCE</a></li>
+<li><a href="https://www.docker.com/">Docker</a></li>
+<li><a href="https://github.com/creativecommons/vocabulary-theme?tab=readme-ov-file#docker-containers">Docker in vocabulary-theme</a></li>
+<li><a href="https://developer.wordpress.org/block-editor/explanations/architecture/key-concepts/">Gutenberg</a></li>
+<li><a href="https://developer.wordpress.org/plugins/intro/">WordPress Plugin Development</a></li>
+<li><a href="https://codex.wordpress.org/Theme_Development">WordPress Theme Development</a></li>
 </ul>
 </p>
             </div>
@@ -489,9 +576,9 @@ Commons</a></li>
 fixes and improvements.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
-              <p><p>Upgrade the look &amp; feel to match current CC aesthetics, using the internal
+              <p><p>Upgrade the look and feel to match current CC aesthetics, using the internal
 Design System (Vocabulary). Codebase is running current and standards compliant
-technology implementations. Entire site builds as static files on GH pages.
+technology implementations. Entire site builds as static files on GitHub Pages.
 Generate clear documentation of codebase and functionality.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
@@ -499,9 +586,9 @@ Generate clear documentation of codebase and functionality.</p>
 semantic, accessible, and standards compliant HTML, CSS, and JavaScript to
 match the current visual aesthetic of Creative Commons sites. Improve the
 overall UX for finding, submitting, and  accessing resources. Ensure the site
-functions as a static and stable Jekyll site hosted on GH Pages as static
-files. Final implementation will have clear documentation drafted within the
-codebase for future maintainability.</p>
+functions as a static and stable site hosted on GitHub Pages. Final
+implementation will have clear documentation drafted within the codebase for
+future maintainability.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
               <p><ul>
@@ -512,79 +599,11 @@ codebase for future maintainability.</p>
 </p>
               <h3 class="padding-bottom-big padding-top-large">Resources</h3>
               <p><ul>
-<li><a href="https://github.com/creativecommons/cc-resource-archive">creativecommons/cc-resource-archive</a>: CC Resource Archive</li>
-<li><a href="https://jekyllrb.com/">Jekyll</a></li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive">creativecommons/cc-resource-archive</a>:
+CC Resource Archive</li>
+<li><a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://www.getlektor.com/">Lektor</a>, or
+<a href="https://getnikola.com/">Nikola</a></li>
 <li><a href="https://pages.github.com/">GH Pages</a></li>
-</ul>
-</p>
-            </div>
-          </div>
-          <a href="#project-list" class="back-to-list"><i class="icon angle-up"></i> Back to the Project list</a>
-        </div>
-      
-        <div class="project-idea">
-          <h2><a class="has-color-dark-slate-gray" name="upgrade-and-refactor-cc-chooser">Upgrade and Refactor CC Chooser</a></h2>
-          <div class="columns">
-            <div class="column is-one-quarter">
-              <h5 class="b-header padding-bottom-small">Difficulty</h5>
-              <p class="padding-bottom-big">High</p>
-              <h5 class="b-header padding-bottom-small">Size</h5>
-              <p class="padding-bottom-big">Large (~350 hours)</p>
-              <h5 class="b-header padding-bottom-small">Skills recommended</h5>
-              <ul>
-<li>Git</li>
-<li>JavaScript</li>
-<li>Vite</li>
-<li>Vue.js (v2 &amp; v3)</li>
-<li>Pinia</li>
-<li>HTML (Semantic &amp; Accessible)</li>
-<li>CSS (Structured &amp; Accessible)</li>
-<li>Web Components</li>
-</ul>
-
-              <h5 class="b-header padding-bottom-small padding-top-big">Project Lead</h5>
-              <ul>
-<li>Sara</li>
-</ul>
-
-            </div>
-            <div class="column is-three-quarters">
-              <h3 class="padding-bottom-big">The Problem</h3>
-              <p><p>The Chooser has a stable initial UX, but due to bitrot its codebase is
-approaching non-support.</p>
-</p>
-              <h3 class="padding-bottom-big padding-top-large">Expected Outcome</h3>
-              <p><p>Upgrade the codebase to current Vue.js versions and ancillary technologies
-(Vite, Pinia), created more clarity and longevity in the codebase. Generate
-clear documentation of codebase and functionality.</p>
-</p>
-              <h3 class="padding-bottom-big padding-top-large">Contributor Tasks</h3>
-              <p><p>The contributor will need to upgrade the codebase from Vue.js v2.x to Vue.js
-v3.x, from Vue CLI to Vite, and from Vuex to Pinia. Incorporate new UX changes
-using semantic,  standards compliant, and accessible JavaScript, HTML, and CSS.
-Reduce the number of dependencies, and establish a stable automated process to
-build out an embeddable Web Component compatible implementation. Knowledge of
-the upgrade path from Vue 2.x implementations to Vue 3.x will be helpful, as
-will knowledge of Web Components. Final implementation will have clear
-documentation drafted within the codebase for future maintainability.</p>
-</p>
-              <h3 class="padding-bottom-big padding-top-large">Application Tips</h3>
-              <p><ul>
-<li>Engage with the repository (issues, pull requests)</li>
-<li>Be helpful and welcoming (e.g. answer other contributors’ questions on Slack)</li>
-<li><a href="/programs/applicant-guide/">Applicant Guide</a></li>
-</ul>
-</p>
-              <h3 class="padding-bottom-big padding-top-large">Resources</h3>
-              <p><ul>
-<li><a href="https://github.com/creativecommons/chooser">creativecommons/chooser</a>: Chooser</li>
-<li><a href="https://vuejs.org/">Vue.js</a></li>
-<li><a href="https://v3-migration.vuejs.org/">Vue v3 Migration Guide</a></li>
-<li><a href="https://cli.vuejs.org/">Vue CLI</a></li>
-<li><a href="https://vuex.vuejs.org/">Vuex</a></li>
-<li><a href="https://vitejs.dev/">Vite.js</a></li>
-<li><a href="https://pinia.vuejs.org/">Pinia</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a></li>
 </ul>
 </p>
             </div>

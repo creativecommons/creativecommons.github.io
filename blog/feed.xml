@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2023-08-28T00:00:00Z</updated><author><name></name></author><entry><title>CC Legal Tools: Machine-Readable Layer</title><link href="http://opensource.creativecommons.org/blog/entries/2023-08-25-machine-layer/" rel="alternate"></link><updated>2023-08-28T00:00:00Z</updated><author><name>['saurabh']</name></author><id>urn:uuid:ca25cf56-a3e2-3703-bd66-7619befdf05c</id><content type="html">&lt;p&gt;&lt;img src="/blog/entries/2023-08-25-machine-layer/gsoc2023cc.png" alt="GSoC 2023 and CC"&gt;&lt;/p&gt;
-&lt;p&gt;Greetings, readers!🌟 I'm excited to share that as part of Google Summer of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2023-08-28T00:00:00Z</updated><author><name></name></author><entry><title>CC Legal Tools: Machine-Readable Layer</title><link href="http://opensource.creativecommons.org/blog/entries/2023-08-25-machine-layer/" rel="alternate"></link><updated>2023-08-28T00:00:00Z</updated><author><name>['saurabh']</name></author><id>urn:uuid:ca25cf56-a3e2-3703-bd66-7619befdf05c</id><content type="html">&lt;p&gt;Greetings, readers!🌟 I'm excited to share that as part of Google Summer of
 Code (GSoC) 2023, I had the incredible opportunity to contribute to the
 exciting project "CC Legal Tools: Machine-Readable Layer." This journey has
 been a remarkable blend of learning, coding, and collaboration, and I'm
 thrilled to share the highlights of this journey with you all.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/2023-08-25-machine-layer/gsoc2023cc.png" alt="GSoC 2023 and CC"&gt;&lt;/p&gt;
 &lt;h2 id="project-overview"&gt;Project Overview&lt;/h2&gt;&lt;p&gt;The project's core focus was to enhance the Creative Commons (CC) &lt;a href="https://github.com/creativecommons/cc-legal-tools-app"&gt;Legal Tools
 app&lt;/a&gt; by introducing a robust machine-readable layer. The machine-readable
 layer enables computers to understand the intricacies of CC licenses, making it
