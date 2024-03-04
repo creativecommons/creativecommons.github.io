@@ -304,35 +304,43 @@ associated with the repository.</p>
               <ul class="menu-list">
                 
                   <li>
-                    <a class="link" href="#required-items">Required Items</a>
+                    <a class="link" href="#organizational-defaults">Organizational defaults</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#required-items">Required items</a>
                     
                       <ul>
                         
                           <li><a class="link" href="#files"><i class="icon circle-filled"></i>Files</a></li>
-                        
-                          <li><a class="link" href="#additional-items"><i class="icon circle-filled"></i>Additional Items</a></li>
                         
                       </ul>
                     
                   </li>
                 
                   <li>
-                    <a class="link" href="#optional-items">Optional items</a>
+                    <a class="link" href="#additional-items">Additional items</a>
                     
                   </li>
                 
                   <li>
-                    <a class="link" href="#standard-labels">Standard Labels</a>
+                    <a class="link" href="#repository-configuration">Repository configuration</a>
                     
                   </li>
                 
                   <li>
-                    <a class="link" href="#branch-protections">Branch Protections</a>
+                    <a class="link" href="#standard-labels">Standard labels</a>
                     
                   </li>
                 
                   <li>
-                    <a class="link" href="#cc-metadata-file">CC Metadata file</a>
+                    <a class="link" href="#branch-protections">Branch protections</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#cc-metadata-file">CC metadata file</a>
                     
                   </li>
                 
@@ -341,7 +349,32 @@ associated with the repository.</p>
           </div>
         </div>
         <div class="column content is-three-quarters">
-          <h2 id="required-items">Required Items</h2><p>All GitHub repositories should have the following items to be considered fully
+          <h2 id="organizational-defaults">Organizational defaults</h2><p>The following organizational defaults are automatically applied to all
+repositories (per <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file">Creating a default community health file - GitHub
+Docs</a>). Most repositories <em>shouldn't</em> have their own copies of
+these files:</p>
+<ul>
+<li><a href="https://github.com/creativecommons/.github/blob/main/.github/PULL_REQUEST_TEMPLATE.md"><code>.github/PULL_REQUEST_TEMPLATE.md</code></a>: Pull request template<ul>
+<li>All pull request templates <em>must</em> include the full text of the <a href="https://developercertificate.org/">DCO</a>.</li>
+</ul>
+</li>
+<li><a href="https://github.com/creativecommons/.github/blob/main/.github/ISSUE_TEMPLATE/bug_report.md"><code>.github/ISSUE_TEMPLATE/bug_report.md</code></a>: Bug report
+issue template</li>
+<li><a href="https://github.com/creativecommons/.github/blob/main/.github/ISSUE_TEMPLATE/feature_request.md"><code>.github/ISSUE_TEMPLATE/feature_request.md</code></a>:
+Feature request issue template</li>
+<li><a href="https://github.com/creativecommons/vocabulary/blob/main/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT.md</code></a>: Code of Conduct<ul>
+<li><a href="https://help.github.com/en/articles/adding-a-code-of-conduct-to-your-project">Adding a code of conduct to your project - GitHub Help</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/creativecommons/vocabulary/blob/main/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>: contributor guidelines<ul>
+<li><a href="https://help.github.com/en/articles/setting-guidelines-for-repository-contributors">Setting guidelines for repository contributors - GitHub
+Help</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/creativecommons/.github/blob/main/FUNDING.yml"><code>FUNDING.yml</code></a>: Displays a sponsor button</li>
+<li><a href="https://github.com/creativecommons/.github/blob/main/SUPPORT.md"><code>SUPPORT.md</code></a>: Documentation on how to get help</li>
+</ul>
+<h2 id="required-items">Required items</h2><p>All GitHub repositories should have the following items to be considered fully
 ready for external contributors.</p>
 <h3 id="files">Files</h3><ul>
 <li><code>/.github/CODEOWNERS</code>: Defined code owners<ul>
@@ -349,47 +382,55 @@ ready for external contributors.</p>
 </ul>
 </li>
 <li><code>/.cc-metadata.yml</code>: The standard <a href="/contributing-code/github-repo-guidelines/#cc-metadata-file">CC metadata YAML file</a>.</li>
-<li><code>/CODE_OF_CONDUCT.md</code>: Code of Conduct<ul>
-<li>Feel free to use our standard <a href="https://github.com/creativecommons/vocabulary/blob/main/CODE_OF_CONDUCT.md"><code>CODE_OF_CONDUCT.md</code></a> file from
-<a href="https://github.com/creativecommons/.github">creativecommons/.github</a><ul>
-<li><a href="https://help.github.com/en/articles/adding-a-code-of-conduct-to-your-project">Adding a code of conduct to your project - GitHub Help</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><code>/LICENSE</code>: license file.</li>
-<li><code>/CONTRIBUTING.md</code>: contributor guidelines<ul>
-<li>Can be project-specific or our standard <a href="https://github.com/creativecommons/vocabulary/blob/main/CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>
-file from <a href="https://github.com/creativecommons/.github">creativecommons/.github</a></li>
-<li><a href="https://help.github.com/en/articles/setting-guidelines-for-repository-contributors">Setting guidelines for repository contributors - GitHub
-Help</a></li>
-</ul>
-</li>
-<li><code>/README.md</code>: read me information file<ul>
-<li>Must documents how to install and build the project locally and documents a
+<li><code>/README.md</code>: repository information file<ul>
+<li>begin with an H1 heading identical to repository name followed by a
+repository description</li>
+<li>Must document how to install and build the project locally and documents a
 high level overview of the project and code structure. It should also link
 to any other available documentation.</li>
+<li>Must document the Code of Conduct. For example, see the <a href="https://github.com/creativecommons/index-dev-env/blob/main/README.md#code-of-conduct">Code of
+Conduct</a> <code>README.md</code> section in
+<code>creativecommons/index-dev-env</code>.</li>
+<li>Must document Contributing. For example, see the
+<a href="https://github.com/creativecommons/index-dev-env/blob/main/README.md#contributing">Contributing</a> <code>README.md</code> section in
+<code>creativecommons/index-dev-env</code>.</li>
 </ul>
 </li>
-<li><strong>All pull request templates must include the full text of the <a href="https://developercertificate.org/">DCO</a>.</strong></li>
 </ul>
-<h3 id="additional-items">Additional Items</h3><ul>
-<li>CI and code style linters that run automatically whenever new code is pushed
-(if applicable to the project).</li>
-<li>At least a couple of automated tests (if applicable to the project).</li>
+<h2 id="additional-items">Additional items</h2><p>As applicable or appropriate, each repository should include:</p>
+<ul>
+<li>GitHub Actions for formatting, linting, styling, etc.</li>
+<li>GitHub Actions for unit tests</li>
 </ul>
-<h2 id="optional-items">Optional items</h2><ul>
-<li><a href="https://help.github.com/en/articles/creating-issue-templates-for-your-repository">Issue templates</a>. GitHub pulls the default templates from
-our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you want/need to
-customize them, create them in your repository.</li>
-<li>A <a href="https://help.github.com/en/articles/creating-a-pull-request-template-for-your-repository">pull request template</a>. GitHub pulls the default template
-from  our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you
-want/need to customize it, create it in your repository.</li>
-<li><a href="https://help.github.com/en/articles/adding-support-resources-to-your-project">Support resources</a>. GitHub pulls the default <code>SUPPORT.md</code>
-file from our <a href="https://github.com/creativecommons/.github"><code>.github</code> repository</a> automatically, but if you
-want/need to customize it, create it in your repository.</li>
+<h2 id="repository-configuration">Repository configuration</h2><ul>
+<li>Main page: About ⚙️ (Edit repository details)<ul>
+<li>Description should match <code>README.md</code></li>
+<li>Add appropriate Topics</li>
+<li>Disable/Uncheck any of the "Include in home page" that are not relevant to
+the repository (ex. if no packages are provided, uncheck Packages).</li>
 </ul>
-<h2 id="standard-labels">Standard Labels</h2><p>All repositories must contain a set of standard labels, <a href="/contributing-code/repo-labels/">documented
+</li>
+<li>Settings: General<ul>
+<li>Features<ul>
+<li>Disable/Uncheck Wikis unless you are going to use that feature</li>
+<li>Disable/Uncheck Discussions unless you are going to use that feature</li>
+<li>Disable/Uncheck Projects unless you are going to use that feature</li>
+</ul>
+</li>
+<li>Pull Requests<ul>
+<li>Enable/check Automatically delete head branches</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Settings: Collaborators and teams<ul>
+<li>Ensure, at a minimum that the team in <code>/.github/CODEOWNERS</code> has write
+permissions</li>
+</ul>
+</li>
+</ul>
+<h2 id="standard-labels">Standard labels</h2><p>All repositories must contain a set of standard labels, <a href="/contributing-code/repo-labels/">documented
 here</a>, which comprise of common labels in
 addition to repository-specific skill labels. You don't have to set these up
 manually. The labels are <a href="https://github.com/creativecommons/ccos-scripts">automatically
@@ -398,18 +439,18 @@ repositories, and so, must not be renamed.</p>
 <p>Repositories may contain additional custom labels as well which will remain
 unaffected by the sync. It is recommended that custom labels be explained in
 the contribution guidelines for that project.</p>
-<h2 id="branch-protections">Branch Protections</h2><p>Branch protections are automatically set up by CC staff via
+<h2 id="branch-protections">Branch protections</h2><p>Branch protections are automatically set up by CC staff via
 <a href="https://github.com/creativecommons/ccos-scripts">creativecommons/ccos-scripts</a>.
 By default, pushing directly to the <em>default branch</em> (ex. <code>main</code>) is disabled
 and all pull requests require review by at least one person before merge.</p>
-<h2 id="cc-metadata-file">CC Metadata file</h2><p>Each repo should have a <code>.cc-metadata.yml</code> file in the root directory with the
+<h2 id="cc-metadata-file">CC metadata file</h2><p>Each repo should have a <code>.cc-metadata.yml</code> file in the root directory with the
 following structure:</p>
 <div class="hll"><pre><span></span><span class="c1"># Whether this GitHub repo is for a CC-led engineering project</span>
 <span class="nt">engineering_project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="c1"># Name of the repository/project in English</span>
 <span class="nt">english_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC Catalog API</span>
-<span class="c1"># All technologies used</span>
-<span class="nt">technologies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Python, Django, Django REST Framework, Elasticsearch</span>
+<span class="c1"># All technologies used, sorted</span>
+<span class="nt">technologies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Django, Django REST Framework, Elasticsearch, Python</span>
 <span class="c1"># Whether this repository should be featured on the CC Open Source site&#39;s &quot;Projects&quot; page</span>
 <span class="nt">featured</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="c1"># Slack channel name (optional key)</span>
