@@ -10630,6 +10630,11 @@ pre code {
   line-height: 1.8125;
 }
 
+@media screen and (max-width: 1024px) {
+  .main-footer .subscription .newsletter {
+    width: 100%;
+  }
+}
 .sticky-top {
   position: sticky;
   top: 0;
