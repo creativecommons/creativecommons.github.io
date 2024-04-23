@@ -853,7 +853,7 @@ working with Vue JS. We've also had additional code review and optimizations fro
 &lt;p&gt;&lt;img src="/blog/entries/building-the-cc-global-components-library/cc_global_components.gif" alt="CC global components"&gt;&lt;/p&gt;
 &lt;p&gt;You can find the CC Global Components project at:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;GitHub: &lt;a href="https://github.com/creativecommons/cc-global-components"&gt;CC Global Components&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GitHub: &lt;a href="https://github.com/cc-archive/cc-global-components"&gt;CC Global Components&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;NPM: &lt;a href="https://www.npmjs.com/package/@creativecommons/cc-global-components"&gt;cc-global-components&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content></entry><entry><title>CC Messaging Update 2022Q1 (Dropping IRC)</title><link href="http://opensource.creativecommons.org/blog/entries/2022-01-06-cc-messaging/" rel="alternate"></link><updated>2022-01-06T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:043a7604-a0bf-3890-b20d-de0f99b67f8c</id><content type="html">&lt;h2 id="past-moved-to-slack"&gt;Past: Moved to Slack&lt;/h2&gt;&lt;p&gt;In 2016, Creative Commons (CC) moved to Slack as our primary messaging platform
