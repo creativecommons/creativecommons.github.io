@@ -1,5 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2023-08-28T00:00:00Z</updated><author><name></name></author><entry><title>CC Legal Tools: Machine-Readable Layer</title><link href="http://opensource.creativecommons.org/blog/entries/2023-08-25-machine-layer/" rel="alternate"></link><updated>2023-08-28T00:00:00Z</updated><author><name>['saurabh']</name></author><id>urn:uuid:ca25cf56-a3e2-3703-bd66-7619befdf05c</id><content type="html">&lt;p&gt;Greetings, readers!🌟 I'm excited to share that as part of Google Summer of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2024-05-28T00:00:00Z</updated><author><name></name></author><entry><title>New CreativeCommons.org launched 2023 September</title><link href="http://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/" rel="alternate"></link><updated>2024-05-28T00:00:00Z</updated><author><name>['sara', 'shafiya', 'TimidRobot']</name></author><id>urn:uuid:7ea5e14e-e9cb-35f3-8be8-e344b66f7a7e</id><content type="html">&lt;p&gt;Creative Commons (CC) launched a new
+&lt;a href="https://creativecommons.org/"&gt;CreativeCommons.org&lt;/a&gt; website on 2023 September
+27th. This relaunch included not just the website, but the entire technology
+stack (platform, server, and website components).&lt;/p&gt;
+&lt;h2 id="improved-platform"&gt;Improved platform&lt;/h2&gt;&lt;p&gt;The new website is hosted on AWS. This allowed us to design a more secure
+network architecture between services and deploy/manage the services using
+infrastructure as code.&lt;/p&gt;
+&lt;h2 id="improved-services"&gt;Improved services&lt;/h2&gt;&lt;p&gt;The services running the website were simplified and updated. The number of
+distinct servers was reduced from six down to two. Previously, loading the
+homepage required five services (HAProxy, Varnish, Apache2, PHP+FPM, and
+MariaDB). The complexity of the old services made troubleshooting more
+difficult. They were designed before Cloudflare began supporting us through
+&lt;a href="https://www.cloudflare.com/galileo/"&gt;Project Galileo&lt;/a&gt;. The new website
+requires only two services (Apache2 and MariaDB).&lt;/p&gt;
+&lt;h2 id="improved-website-components"&gt;Improved website components&lt;/h2&gt;&lt;h3 id="vocabulary"&gt;Vocabulary&lt;/h3&gt;&lt;p&gt;The website consists of a variety of components that use the Vocabulary design
+system (&lt;a href="https://github.com/creativecommons/vocabulary"&gt;creativecommons/vocabulary&lt;/a&gt;) to present a unified user
+experience. This relaunch was the first implementation of the new Vocabulary.
+It has returned to web core principals favoring semantic HTML and appropriately
+scoped CSS styling. It keeps the style layer responsibilities firmly within the
+CSS, rather than utilizing a framework like Bootstrap to add a myriad of
+style-based classes to the HTML layer.  Furthermore, JavaScript use has been
+kept incredibly minimal, offering routes of behavior that can’t already be
+accomplished via HTML and/or CSS, letting HTML and CSS do what they do best.
+This simplicity improves performance and also lowers barriers for community
+contributions.&lt;/p&gt;
+&lt;p&gt;Accessibility was a priority, making the code more semantic already helps, but
+we went further in ensuring that all the affordances you get from HTML aren’t
+blocked or altered via opinionated (and often non-standard) frameworks. The
+site performs better generally, and is much kinder to slower connection speeds.&lt;/p&gt;
+&lt;p&gt;The new implementation of Vocabulary includes a new Information Architecture
+and more stable UX approach for better visitor experiences. CC licensed media
+is one of our strengths and as such it was important to allow proper
+attribution to be baked into every instance of media rendering within the
+design. This means that while the image or video may be important to the flow
+of content, its attribution also gets a level of appropriate importance as
+well, highlighting ways in which others might handle attribution and following
+through on our own mission in the pursuit of better sharing at large.&lt;/p&gt;
+&lt;h3 id="wordpress"&gt;WordPress&lt;/h3&gt;&lt;p&gt;The project utilizes a custom WordPress theme
+(&lt;a href="https://github.com/creativecommons/vocabulary-theme"&gt;creativecommons/vocabulary-theme&lt;/a&gt;) that implements the new
+Vocabulary design system.&lt;/p&gt;
+&lt;p&gt;The theme utilizes the WordPress Classic Editor because of its long-term
+stability and more stable UX. Gutenberg still does not adhere to adequate
+Accessibility approaches, nor does it have a sense of stable
+feature-completeness. This creates an unreliable landscape to build upon.
+Gutenberg also requires one to build Block composition through React.js to
+accomplish tasks that are far easier and more approachable with the standard
+PHP templates that the Classic Editor is compatible with. This dramatically
+improves the ability for a new contributor to help, and speeds up the
+development process.&lt;/p&gt;
+&lt;p&gt;To allow a degree of more varied page composition, Advanced Custom Fields was
+utilized to more easily add, update, and version control custom fields across
+pages and page templates. This strikes a balance between more complex page
+composition, but within a more controllable set of circumstances.&lt;/p&gt;
+&lt;p&gt;Plugins in general were cut dramatically. The legacy site contained 20 active
+plugins, while this project relies on less than half, at 9, with hopeful
+pathways to eventually cut that number even further.&lt;/p&gt;
+&lt;p&gt;The site utilizes several custom content types and better taxonomies to split
+up the UX flow of varied kinds of content creation, allowing for smoother
+multi-author attribution, site-wide notices for fundraising and event
+announcements, and better blog post organization and way-finding overall.&lt;/p&gt;
+&lt;h3 id="cc-legal-tools"&gt;CC Legal Tools&lt;/h3&gt;&lt;p&gt;With the deployment of our new website, we also replaced the legacy ccEngine
+with the new CC Legal Tools. The current legal tool landscape is refreshingly
+simple with only seven tools (CC BY 4.0, CC BY-NC 4.0, CC BY-NC-ND 4.0, CC
+BY-NC-SA 4.0, CC BY-ND 4.0, CC BY-SA 4.0, CC0 1.0). However since previous
+versions of the licenses were adapted to specific jurisdictions (ported) and we
+collaborate with the community to support many translations, the new CC Legal
+Tools app manages over 30,000 documents!&lt;/p&gt;
+&lt;p&gt;The project to rewrite the CC Legal Tools and replace the legacy ccEngine began
+in 2020 with a request for proposals (&lt;a href="https://docs.google.com/document/d/1mlgmjDorTEwgIRRrvILK3v0pTJbGx8fB5SE1yplrz3Y/edit"&gt;RFP: License Infrastructure - Google
+Docs&lt;/a&gt;). The &lt;a href="https://www.caktusgroup.com/"&gt;Caktus Group&lt;/a&gt; began the new CC
+Legal Tools using the Django Python web framework. The work was continued by
+Timid Robot. Saurabh helped with RDF/XML generation (&lt;a href="/blog/entries/2023-08-25-machine-layer/"&gt;CC Legal Tools:
+Machine-Readable Layer — Creative Commons Open
+Source&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The new CC Legal Tools consist of two repositories:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-legal-tools-app"&gt;creativecommons/cc-legal-tools-app&lt;/a&gt;: &lt;em&gt;Static site
+generator using Django&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-legal-tools-data"&gt;creativecommons/cc-legal-tools-data&lt;/a&gt;: &lt;em&gt;Inputs and
+outputs of the application&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The legacy ccEngine consists of around 15,960 lines of Python 2. It was
+developed and extended organically over time, resulting in a less coherent
+codebase. The new CC Legal Tools has the benefit of hindsight and was
+architected as a single application to meet all of current requirements of CC.
+It consists of around 17,400 lines of Python 3 (including around 4,000 lines of
+tests). Benefits of the new CC Legal Tools include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Currently supported software (Python 3, Django 4.2, etc.)&lt;/li&gt;
+&lt;li&gt;Simplified data model&lt;/li&gt;
+&lt;li&gt;Improved translation handling&lt;/li&gt;
+&lt;li&gt;Improved RDF/XML generation/management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In particular, the fact that the new CC Legal Tools generate static assets is
+noteworthy. Static assets can be hosted performantly with a very simple service
+setup.&lt;/p&gt;
+&lt;h3 id="chooser"&gt;Chooser&lt;/h3&gt;&lt;p&gt;The new chooser beta (&lt;a href="https://github.com/creativecommons/chooser"&gt;creativecommons/chooser&lt;/a&gt;) was promoted to
+production with the new header and footer from the Vocabulary design system for
+a more uniform user experience.&lt;/p&gt;
+&lt;h3 id="faq-platform-toolkit"&gt;FAQ &amp;amp; Platform Toolkit&lt;/h3&gt;&lt;p&gt;The FAQ (&lt;a href="https://github.com/creativecommons/faq"&gt;creativecommons/faq&lt;/a&gt;) and
+Platform Toolkit (&lt;a href="https://github.com/creativecommons/mp"&gt;creativecommons/mp&lt;/a&gt;)
+were updated to use the new header and footer from the Vocabulary design system
+for a more uniform user experience.&lt;/p&gt;
+&lt;h2 id="improved-development"&gt;Improved development&lt;/h2&gt;&lt;p&gt;Utilizing infrastructure as code, we now have a much more robust staging
+environment. This allows us to preview larger changes so that they can be
+deployed to production with minimum risk. We also improved our local
+development environment and content synchronization tooling
+(&lt;a href="https://github.com/creativecommons/index-dev-env"&gt;creativecommons/index-dev-env&lt;/a&gt;). This means that not only did
+we fix many old bugs, but when new bugs are identified, we can fix them more
+rapidly!&lt;/p&gt;
+&lt;h2 id="thank-you"&gt;Thank you&lt;/h2&gt;&lt;p&gt;Thank you to the people who directly contributed to the success of the new
+website!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nate, former Director of Communications &amp;amp; Community&lt;/li&gt;
+&lt;li&gt;Sara, Full Stack Engineer&lt;/li&gt;
+&lt;li&gt;Shafiya, Systems Engineer&lt;/li&gt;
+&lt;li&gt;Timid Robot, Director of Technology&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;as well as many other previous staff, community contributors, and other
+&lt;a href="/community/supporters/"&gt;supporters&lt;/a&gt;!&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content></entry><entry><title>CC Legal Tools: Machine-Readable Layer</title><link href="http://opensource.creativecommons.org/blog/entries/2023-08-25-machine-layer/" rel="alternate"></link><updated>2023-08-28T00:00:00Z</updated><author><name>['saurabh']</name></author><id>urn:uuid:ca25cf56-a3e2-3703-bd66-7619befdf05c</id><content type="html">&lt;p&gt;Greetings, readers!🌟 I'm excited to share that as part of Google Summer of
 Code (GSoC) 2023, I had the incredible opportunity to contribute to the
 exciting project "CC Legal Tools: Machine-Readable Layer." This journey has
 been a remarkable blend of learning, coding, and collaboration, and I'm
@@ -3232,12 +3352,4 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h2 id="plan-for-the-second-half-of-the-timeline"&gt;Plan for the second half of the timeline&lt;/h2&gt;&lt;p&gt;There are some tasks due from past weeks, such as build forms for Case and Scholarship submissions, but I am confident that now that the project has reached a stable state I can do it quickly in the next days. Other tasks were moved for later: searching records and filtering by tags moved after forms are created, so I can finish the visual parts of the site first and focus on functional work without shifting between types of tasks.&lt;/p&gt;
 &lt;p&gt;The tasks and they order have changed, like I mentioned earlier, requirements were modified (a bit) so some tasks I planned for last weeks are not necessary anymore or are done already out-of-box with Django admin (benefits of choosing a batteries included framework!). In general, I don't think the initial plan was wrong, we just went through the natural evolution of a product software. Mentors have also been very helpful in keeping a reasonable scope and adjusting priorities.&lt;/p&gt;
 &lt;p&gt;After main functionalities are done we can start making improvements, as we already identified some nice to have features but not so important at the moment. Stay tuned for more to come.&lt;/p&gt;
-</content></entry><entry><title>Integration of Vocabulary with CCOS.</title><link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" rel="alternate"></link><updated>2020-07-08T00:00:00Z</updated><author><name>['dhruvi16']</name></author><id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id><content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href="https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page"&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href="/"&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
-&lt;h2 id="the-problem"&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
-&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
-&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
-&lt;h2 id="the-solution"&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href="https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals"&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href="https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516"&gt;link&lt;/a&gt; for that.&lt;/p&gt;
-&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href="https://www.getlektor.com/"&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
-&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
-&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
 </content></entry></feed>

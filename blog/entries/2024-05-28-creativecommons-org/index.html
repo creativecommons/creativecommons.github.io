@@ -5,11 +5,17 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="New CreativeCommons.org launched 2023 September" />
 
 
 
-<meta property="og:url" content="/blog/categories/wordpress/" />
+<meta property="og:description" content="Creative Commons (CC) launched a new
+CreativeCommons.org website on 2023 September
+27th. This relaunch included not just the website, but the entire technology
+stack (platform, server, and website components)." />
+
+
+<meta property="og:url" content="/blog/entries/2024-05-28-creativecommons-org/" />
 <meta property="og:type" content="article" />
 
 
@@ -21,14 +27,20 @@
   
 
   
+    
+    
+  
 
   
 
-  <meta property="og:image" content="https://cc-og-image.vercel.app/Open Source at CC.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+  <meta property="og:image" content="https://cc-og-image.vercel.app/New CreativeCommons.org launched 2023 September.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="New CreativeCommons.org launched 2023 September">
+<meta name="twitter:description" content="Creative Commons (CC) launched a new
+CreativeCommons.org website on 2023 September
+27th. This relaunch included not just the website, but the entire technology
+stack (platform, server, and website components).">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -44,7 +56,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>WordPress — Creative Commons Open Source</title>
+<title>New CreativeCommons.org launched 2023 September — Creative Commons Open Source</title>
 
 <body>
 
@@ -222,16 +234,16 @@
               
                 
               
-              <li><a class="link" href="/blog/categories/">
+              <li><a class="link" href="/blog/entries/">
               
-                Categories
+                Entries
               
               </a></li>
             
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed"></a></li>
+              <li class="is-active"><a aria-current="page displayed">New CreativeCommons.org launched 2023 September</a></li>
             
           
         </ul>
@@ -241,284 +253,195 @@
 
   <!-- Body -->
   
-<div class="all-categories">
-  <div class="header">
-    <div class="container">
-      <h1>All posts categorized "WordPress"</h1>
-      <a class="button small margin-top-bigger" href="/blog/categories/">See all categories</a>
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">New CreativeCommons.org launched 2023 September</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="gravatar" />
+      </figure>
+    </header>
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a>, <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a>, <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2024-05-28
+          </p>
+        </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>Creative Commons (CC) launched a new
+<a href="https://creativecommons.org/">CreativeCommons.org</a> website on 2023 September
+27th. This relaunch included not just the website, but the entire technology
+stack (platform, server, and website components).</p>
+<h2 id="improved-platform">Improved platform</h2><p>The new website is hosted on AWS. This allowed us to design a more secure
+network architecture between services and deploy/manage the services using
+infrastructure as code.</p>
+<h2 id="improved-services">Improved services</h2><p>The services running the website were simplified and updated. The number of
+distinct servers was reduced from six down to two. Previously, loading the
+homepage required five services (HAProxy, Varnish, Apache2, PHP+FPM, and
+MariaDB). The complexity of the old services made troubleshooting more
+difficult. They were designed before Cloudflare began supporting us through
+<a href="https://www.cloudflare.com/galileo/">Project Galileo</a>. The new website
+requires only two services (Apache2 and MariaDB).</p>
+<h2 id="improved-website-components">Improved website components</h2><h3 id="vocabulary">Vocabulary</h3><p>The website consists of a variety of components that use the Vocabulary design
+system (<a href="https://github.com/creativecommons/vocabulary">creativecommons/vocabulary</a>) to present a unified user
+experience. This relaunch was the first implementation of the new Vocabulary.
+It has returned to web core principals favoring semantic HTML and appropriately
+scoped CSS styling. It keeps the style layer responsibilities firmly within the
+CSS, rather than utilizing a framework like Bootstrap to add a myriad of
+style-based classes to the HTML layer.  Furthermore, JavaScript use has been
+kept incredibly minimal, offering routes of behavior that can’t already be
+accomplished via HTML and/or CSS, letting HTML and CSS do what they do best.
+This simplicity improves performance and also lowers barriers for community
+contributions.</p>
+<p>Accessibility was a priority, making the code more semantic already helps, but
+we went further in ensuring that all the affordances you get from HTML aren’t
+blocked or altered via opinionated (and often non-standard) frameworks. The
+site performs better generally, and is much kinder to slower connection speeds.</p>
+<p>The new implementation of Vocabulary includes a new Information Architecture
+and more stable UX approach for better visitor experiences. CC licensed media
+is one of our strengths and as such it was important to allow proper
+attribution to be baked into every instance of media rendering within the
+design. This means that while the image or video may be important to the flow
+of content, its attribution also gets a level of appropriate importance as
+well, highlighting ways in which others might handle attribution and following
+through on our own mission in the pursuit of better sharing at large.</p>
+<h3 id="wordpress">WordPress</h3><p>The project utilizes a custom WordPress theme
+(<a href="https://github.com/creativecommons/vocabulary-theme">creativecommons/vocabulary-theme</a>) that implements the new
+Vocabulary design system.</p>
+<p>The theme utilizes the WordPress Classic Editor because of its long-term
+stability and more stable UX. Gutenberg still does not adhere to adequate
+Accessibility approaches, nor does it have a sense of stable
+feature-completeness. This creates an unreliable landscape to build upon.
+Gutenberg also requires one to build Block composition through React.js to
+accomplish tasks that are far easier and more approachable with the standard
+PHP templates that the Classic Editor is compatible with. This dramatically
+improves the ability for a new contributor to help, and speeds up the
+development process.</p>
+<p>To allow a degree of more varied page composition, Advanced Custom Fields was
+utilized to more easily add, update, and version control custom fields across
+pages and page templates. This strikes a balance between more complex page
+composition, but within a more controllable set of circumstances.</p>
+<p>Plugins in general were cut dramatically. The legacy site contained 20 active
+plugins, while this project relies on less than half, at 9, with hopeful
+pathways to eventually cut that number even further.</p>
+<p>The site utilizes several custom content types and better taxonomies to split
+up the UX flow of varied kinds of content creation, allowing for smoother
+multi-author attribution, site-wide notices for fundraising and event
+announcements, and better blog post organization and way-finding overall.</p>
+<h3 id="cc-legal-tools">CC Legal Tools</h3><p>With the deployment of our new website, we also replaced the legacy ccEngine
+with the new CC Legal Tools. The current legal tool landscape is refreshingly
+simple with only seven tools (CC BY 4.0, CC BY-NC 4.0, CC BY-NC-ND 4.0, CC
+BY-NC-SA 4.0, CC BY-ND 4.0, CC BY-SA 4.0, CC0 1.0). However since previous
+versions of the licenses were adapted to specific jurisdictions (ported) and we
+collaborate with the community to support many translations, the new CC Legal
+Tools app manages over 30,000 documents!</p>
+<p>The project to rewrite the CC Legal Tools and replace the legacy ccEngine began
+in 2020 with a request for proposals (<a href="https://docs.google.com/document/d/1mlgmjDorTEwgIRRrvILK3v0pTJbGx8fB5SE1yplrz3Y/edit">RFP: License Infrastructure - Google
+Docs</a>). The <a href="https://www.caktusgroup.com/">Caktus Group</a> began the new CC
+Legal Tools using the Django Python web framework. The work was continued by
+Timid Robot. Saurabh helped with RDF/XML generation (<a href="/blog/entries/2023-08-25-machine-layer/">CC Legal Tools:
+Machine-Readable Layer — Creative Commons Open
+Source</a>).</p>
+<p>The new CC Legal Tools consist of two repositories:</p>
+<ol>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-app">creativecommons/cc-legal-tools-app</a>: <em>Static site
+generator using Django</em></li>
+<li><a href="https://github.com/creativecommons/cc-legal-tools-data">creativecommons/cc-legal-tools-data</a>: <em>Inputs and
+outputs of the application</em></li>
+</ol>
+<p>The legacy ccEngine consists of around 15,960 lines of Python 2. It was
+developed and extended organically over time, resulting in a less coherent
+codebase. The new CC Legal Tools has the benefit of hindsight and was
+architected as a single application to meet all of current requirements of CC.
+It consists of around 17,400 lines of Python 3 (including around 4,000 lines of
+tests). Benefits of the new CC Legal Tools include:</p>
+<ul>
+<li>Currently supported software (Python 3, Django 4.2, etc.)</li>
+<li>Simplified data model</li>
+<li>Improved translation handling</li>
+<li>Improved RDF/XML generation/management</li>
+</ul>
+<p>In particular, the fact that the new CC Legal Tools generate static assets is
+noteworthy. Static assets can be hosted performantly with a very simple service
+setup.</p>
+<h3 id="chooser">Chooser</h3><p>The new chooser beta (<a href="https://github.com/creativecommons/chooser">creativecommons/chooser</a>) was promoted to
+production with the new header and footer from the Vocabulary design system for
+a more uniform user experience.</p>
+<h3 id="faq-platform-toolkit">FAQ &amp; Platform Toolkit</h3><p>The FAQ (<a href="https://github.com/creativecommons/faq">creativecommons/faq</a>) and
+Platform Toolkit (<a href="https://github.com/creativecommons/mp">creativecommons/mp</a>)
+were updated to use the new header and footer from the Vocabulary design system
+for a more uniform user experience.</p>
+<h2 id="improved-development">Improved development</h2><p>Utilizing infrastructure as code, we now have a much more robust staging
+environment. This allows us to preview larger changes so that they can be
+deployed to production with minimum risk. We also improved our local
+development environment and content synchronization tooling
+(<a href="https://github.com/creativecommons/index-dev-env">creativecommons/index-dev-env</a>). This means that not only did
+we fix many old bugs, but when new bugs are identified, we can fix them more
+rapidly!</p>
+<h2 id="thank-you">Thank you</h2><p>Thank you to the people who directly contributed to the success of the new
+website!</p>
+<ul>
+<li>Nate, former Director of Communications &amp; Community</li>
+<li>Sara, Full Stack Engineer</li>
+<li>Shafiya, Systems Engineer</li>
+<li>Timid Robot, Director of Technology</li>
+<li><em>as well as many other previous staff, community contributors, and other
+<a href="/community/supporters/">supporters</a>!</em></li>
+</ul>
+
     </div>
-  </div>
-  <div class="categories-list container">
-    
-  <div class="columns is-multiline blog-entries">
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-        <header>
-          <figure class="image blog-image">
-            <img class="profile" src="/multiple-authors.jpg" alt="multiple authors image"/>
-          </figure>
-        </header>
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2024-05-28-creativecommons-org/">New CreativeCommons.org launched 2023 September</a></h4>
-        by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a>, <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a>, <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2024-05-28
-
-        <div class="excerpt">
-          Creative Commons (CC) launched a new CreativeCommons.org website on 2023 September 27th. This...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
           
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/078347dbae1783ecf5e18c29b958d176?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2020-12-07-upcoming-changes-to-community/">Upcoming Changes to the CC Open Source Community</a></h4>
-        by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2020-12-07
-
-        <div class="excerpt">
-          Creative Commons (CC) is adopting a brand new organizational strategy in 2021, just in time for...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-legal-tools/ ">cc-legal-tools</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-vocabulary/ ">cc-vocabulary</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/website/ ">website</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/wordpress/ ">wordpress</a>
+            
           
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/bca19ddd1522cb12edde0520d3d77ded?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-wp-plugin-attribution-for-images/">Creative Commons WordPress plugin: attribution for images</a></h4>
-        by <a class="author-name" href="/blog/authors/rczajka/">Radek Czajka</a> on 2020-10-01
-
-        <div class="excerpt">
-          As a part of Centrum Cyfrowe&#39;s #NoWorries project funded by EUIPO, I have had the pleasure of...
         </div>
       </div>
-    </article>
-  </div>
-
-    
       
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-          
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/34ed7629f6d0276faf18f8e9da3613b9?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2019-09-25-ccgn-redesign/">Revamping the Creative Commons Global Network website</a></h4>
-        by <a class="author-name" href="/blog/authors/hugosolar/">Hugo Solar</a> on 2019-09-25
-
-        <div class="excerpt">
-          The CC Global Network website is the face of our global community; it is the home for a...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-          
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/870502bc55d77d77522ad3f27876b511?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-wp-plugin-final-phase/">Creative Commons WordPress Plugin Final Phase</a></h4>
-        by <a class="author-name" href="/blog/authors/ahmadbilaldev/">Ahmad Bilal</a> on 2019-08-23
-
-        <div class="excerpt">
-          For the context, I am working with my mentor Timid Robot on Creative Commons WordPress Plugin in...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-          
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/098925a18f852b5ba294c9ab4d4a5796?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2019-07-24-cc-search-wp-plugin/">Easy search and use of CC-licensed images for WordPress</a></h4>
-        by <a class="author-name" href="/blog/authors/lenasterg/">Eleni (Lena) Stergatou</a> on 2019-07-24
-
-        <div class="excerpt">
-          Inspiration and idea for the WordPress plugin
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-          
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/870502bc55d77d77522ad3f27876b511?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-wp-plugin-second-phase/">Creative Commons WordPress Plugin Second Phase</a></h4>
-        by <a class="author-name" href="/blog/authors/ahmadbilaldev/">Ahmad Bilal</a> on 2019-07-20
-
-        <div class="excerpt">
-          For the context, I am working with my mentor Timid Robot on Creative Commons WordPress Plugin in...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-          
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/34ed7629f6d0276faf18f8e9da3613b9?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-chapter-websites/">Creative Commons Chapter Websites network</a></h4>
-        by <a class="author-name" href="/blog/authors/hugosolar/">Hugo Solar</a> on 2019-07-03
-
-        <div class="excerpt">
-          This year, Creative Commons launched a new communication tool to improve the chapters work...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-          
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-        <img class="profile" src="https://secure.gravatar.com/avatar/870502bc55d77d77522ad3f27876b511?size=200&d=mp" alt="gravatar" />
-      </figure>
-    </header>
-  
-
-      
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-wp-plugin-first-phase/">Reviving and Updating Creative Commons Plugin for WordPress</a></h4>
-        by <a class="author-name" href="/blog/authors/ahmadbilaldev/">Ahmad Bilal</a> on 2019-06-20
-
-        <div class="excerpt">
-          I am Ahmad Bilal, and I am working with Creative Commons in Google Summer of Code 2019. With...
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-  </div>
-
-  </div>
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2024-05-28-creativecommons-org"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
 </div>
+    </footer>
+  </div>
 
 
   <!-- Footer -->
