@@ -8,7 +8,10 @@
 <meta property="og:title" content="Repository Labels" />
 
 
-<meta property="og:description" content="To facilitate the community in finding ways to contribute that match their experiences and skillsets, we have developed a comprehensive system for labelling issues and PRs. This is an introduction to this standard labelling scheme." />
+<meta property="og:description" content="To facilitate the community in finding ways to contribute that
+match their experiences and skillsets, we have developed a comprehensive system
+for labelling issues and PRs. This is an introduction to this standard
+labelling scheme." />
 
 <meta property="og:url" content="/contributing-code/repo-labels/" />
 <meta property="og:type" content="article" />
@@ -29,7 +32,10 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Repository Labels">
-<meta name="twitter:description" content="To facilitate the community in finding ways to contribute that match their experiences and skillsets, we have developed a comprehensive system for labelling issues and PRs. This is an introduction to this standard labelling scheme.">
+<meta name="twitter:description" content="To facilitate the community in finding ways to contribute that
+match their experiences and skillsets, we have developed a comprehensive system
+for labelling issues and PRs. This is an introduction to this standard
+labelling scheme.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -223,7 +229,10 @@
       <div class="container is-paddingless">
         <h1>Repository Labels</h1>
         <div class="description column is-9 is-paddingless">
-          <p>To facilitate the community in finding ways to contribute that match their experiences and skillsets, we have developed a comprehensive system for labelling issues and PRs. This is an introduction to this standard labelling scheme.</p>
+          <p>To facilitate the community in finding ways to contribute that
+match their experiences and skillsets, we have developed a comprehensive system
+for labelling issues and PRs. This is an introduction to this standard
+labelling scheme.</p>
 
         </div>
       </div>
@@ -326,9 +335,9 @@
           </div>
         </div>
         <div class="column content is-three-quarters">
-          <p>Labels consist of three fields, viz. name, description and color. Label names 
-should have a consistent format to aid both filtering within the github UI as 
-well as scanning visually through the list. The following format is the most 
+          <p>Labels consist of three fields, viz. name, description and color. Label names
+should have a consistent format to aid both filtering within the github UI as
+well as scanning visually through the list. The following format is the most
 suited to this task (where <code>⎵</code> denotes a single space):</p>
 <pre><code>&lt;emoji&gt;⎵&lt;category&gt;:⎵&lt;name&gt;
 </code></pre>
@@ -368,8 +377,8 @@ single space <code>⎵</code>.</p>
     </tr>
   </tbody>
   </table>
-</div><p>The priority of an issue is based on its impact, derived from a combination of 
-urgency and importance. This determines the importance of the issue when sprint 
+</div><p>The priority of an issue is based on its impact, derived from a combination of
+urgency and importance. This determines the importance of the issue when sprint
 planning or deciding which issues to tackle next.</p>
 <ul>
 <li><span class="gh-label priority-unfavourable">
@@ -424,38 +433,26 @@ planning or deciding which issues to tackle next.</p>
 </div><p>The status of the issue determines whether it is ready for work or not. Issues
 may not be ready to be worked on for a number of reasons and the maintainers
 must keep updating the labels as the situation evolves.</p>
-<p>An issue, at the time of closing can have either the 
+<p>An issue, at the time of closing can have either the
 <span class="gh-label status-light">
   🏁 status: ready for dev
 </span>
-or the 
+or the
 <span class="gh-label status-lighter">
   ⛔️ status: discarded
 </span>
 label based on whether it was closed with or without resolution, respectively.</p>
 <ul>
-<li><span class="gh-label status-light">
-  🏁 status: ready for dev
+<li><span class="gh-label status-darker">
+  🚦 status: awaiting triage
 </span><ul>
-<li><strong>Description:</strong> Ready for work</li>
+<li><strong>Description:</strong> Has not been triaged &amp; therefore, not ready for work</li>
 </ul>
 </li>
 <li><span class="gh-label status-neutral">
   🚧 status: blocked
 </span><ul>
 <li><strong>Description:</strong> Blocked &amp; therefore, not ready for work</li>
-</ul>
-</li>
-<li><span class="gh-label status-dark">
-  🧹 status: ticket work required
-</span><ul>
-<li><strong>Description:</strong> Needs more details before it can be worked on</li>
-</ul>
-</li>
-<li><span class="gh-label status-dark">
-  🏷 status: label work required
-</span><ul>
-<li><strong>Description:</strong> Needs proper labelling before it can be worked on</li>
 </ul>
 </li>
 <li><span class="gh-label status-lighter">
@@ -470,10 +467,22 @@ label based on whether it was closed with or without resolution, respectively.</
 <li><strong>Description:</strong> Not suitable for work as repo is in maintenance</li>
 </ul>
 </li>
-<li><span class="gh-label status-darker">
-  🚦 status: awaiting triage
+<li><span class="gh-label status-dark">
+  🏷 status: label work required
 </span><ul>
-<li><strong>Description:</strong> Has not been triaged &amp; therefore, not ready for work</li>
+<li><strong>Description:</strong> Needs proper labelling before it can be worked on</li>
+</ul>
+</li>
+<li><span class="gh-label status-light">
+  🏁 status: ready for dev
+</span><ul>
+<li><strong>Description:</strong> Ready for work</li>
+</ul>
+</li>
+<li><span class="gh-label status-dark">
+  🧹 status: ticket work required
+</span><ul>
+<li><strong>Description:</strong> Needs more details before it can be worked on</li>
 </ul>
 </li>
 </ul>
@@ -484,12 +493,12 @@ represents the impact of the issue on the scope of the software.</p>
 <li><strong>Description:</strong> Addition of new feature</li>
 </ul>
 </li>
-<li><span class="gh-label goal">✨ goal: improvement</span><ul>
-<li><strong>Description:</strong> Improvement to an existing feature</li>
-</ul>
-</li>
 <li><span class="gh-label goal">🛠 goal: fix</span><ul>
 <li><strong>Description:</strong> Bug fix</li>
+</ul>
+</li>
+<li><span class="gh-label goal">✨ goal: improvement</span><ul>
+<li><strong>Description:</strong> Improvement to an existing feature</li>
 </ul>
 </li>
 </ul>
@@ -497,24 +506,28 @@ represents the impact of the issue on the scope of the software.</p>
 single codebase can have multiple aspects to it and knowing which ones will be
 touched helps contributors find relevant issues.</p>
 <ul>
-<li><span class="gh-label aspect">📄 aspect: text</span><ul>
-<li><strong>Description:</strong> Concerns the textual material in the repository</li>
-</ul>
-</li>
 <li><span class="gh-label aspect">💻 aspect: code</span><ul>
 <li><strong>Description:</strong> Concerns the software code in the repository</li>
 </ul>
 </li>
-<li><span class="gh-label aspect">🕹 aspect: interface</span><ul>
-<li><strong>Description:</strong> Concerns end-users' experience with the software</li>
+<li><span class="gh-label aspect">📖 aspect: docs</span><ul>
+<li><strong>Description:</strong> Concerns the documentation in the repository</li>
 </ul>
 </li>
 <li><span class="gh-label aspect">🤖 aspect: dx</span><ul>
 <li><strong>Description:</strong> Concerns developers' experience with the codebase</li>
 </ul>
 </li>
+<li><span class="gh-label aspect">🕹 aspect: interface</span><ul>
+<li><strong>Description:</strong> Concerns end-users' experience with the software</li>
 </ul>
-<h3 id="skill">Skill</h3><p>The technical skills a person is required to possess to work on the issue. 
+</li>
+<li><span class="gh-label aspect">📄 aspect: text</span><ul>
+<li><strong>Description:</strong> Concerns the textual material in the repository</li>
+</ul>
+</li>
+</ul>
+<h3 id="skill">Skill</h3><p>The technical skills a person is required to possess to work on the issue.
 Skills are a special type of label that vary by repository. Issues may not have
 a skill tag if no special skills are required.</p>
 <ul>
@@ -524,24 +537,24 @@ a skill tag if no special skills are required.</p>
 </li>
 </ul>
 <h3 id="talk">Talk</h3><p>Issues with interaction labels do not entail any work to be done on the
-repository. They are for Q&amp;A, RFCs and any other form of discussions. While both
-of these may appear to be too similar, triage permissions are granted to
+repository. They are for Q&amp;A, RFCs and any other form of discussions. While
+both of these may appear to be too similar, triage permissions are granted to
 collaborators who might not have the answers to questions but by labelling them
 as such, they might draw a faster response from an experienced contributor who
-does. <em>In the future this category might be rendered redundant by GitHub 
+does. <em>In the future this category might be rendered redundant by GitHub
 Discussions and will be removed.</em></p>
 <ul>
-<li><span class="gh-label talk">❓ talk: question</span><ul>
-<li><strong>Description:</strong> Can be resolved with an answer</li>
-</ul>
-</li>
 <li><span class="gh-label talk">💬 talk: discussion</span><ul>
 <li><strong>Description:</strong> Open for discussions and feedback</li>
 </ul>
 </li>
+<li><span class="gh-label talk">❓ talk: question</span><ul>
+<li><strong>Description:</strong> Can be resolved with an answer</li>
 </ul>
-<h3 id="friendliness">Friendliness</h3><p>The level of friendliness a particular issue is the valency of the issue 
-towards contributions from the community. Some issues provide a great 
+</li>
+</ul>
+<h3 id="friendliness">Friendliness</h3><p>The level of friendliness a particular issue is the valency of the issue
+towards contributions from the community. Some issues provide a great
 introduction while others require a little more familiarity with the codebase.
 <em>These issues do not have the category prefix as two of them are special labels
 recognized by GitHub. The special ones don't have emojis either.</em></p>
@@ -566,12 +579,6 @@ recognized by GitHub. The special ones don't have emojis either.</em></p>
 <li><strong>Description:</strong> Aaargh!</li>
 </ul>
 </li>
-<li><span class="gh-label hacktoberfest">
-  Hacktoberfest
-</span><ul>
-<li><strong>Description:</strong> Good issues for Hacktoberfest participants</li>
-</ul>
-</li>
 <li><span class="gh-label invalid">
   invalid
 </span><ul>
@@ -582,7 +589,7 @@ recognized by GitHub. The special ones don't have emojis either.</em></p>
 <h2 id="usage-rules">Usage rules</h2><p>In the above categories, some are marked with an <code>*</code> sign. Those are mandatory
 categories and every issue is required to have at least one label from those
 categories.</p>
-<p>Only issues labelled with 
+<p>Only issues labelled with
 <span class="gh-label has-text-white" style="background-color: #333333;">
   🚦 status: awaiting triage
 </span>
