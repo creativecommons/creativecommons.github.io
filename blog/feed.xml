@@ -1,5 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2024-05-28T00:00:00Z</updated><author><name></name></author><entry><title>New CreativeCommons.org launched 2023 September</title><link href="http://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/" rel="alternate"></link><updated>2024-05-28T00:00:00Z</updated><author><name>['sara', 'shafiya', 'TimidRobot']</name></author><id>urn:uuid:7ea5e14e-e9cb-35f3-8be8-e344b66f7a7e</id><content type="html">&lt;p&gt;Creative Commons (CC) launched a new
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2024-07-10T00:00:00Z</updated><author><name></name></author><entry><title>Automating Quantifying the Commons: Part 1</title><link href="http://opensource.creativecommons.org/blog/entries/2024-07-10-automating-quantifying/" rel="alternate"></link><updated>2024-07-10T00:00:00Z</updated><author><name>['naishasinha']</name></author><id>urn:uuid:6696bca3-7190-3d40-a3b6-75fd01ebe8c5</id><content type="html">&lt;p&gt;&lt;img src="/blog/entries/2024-07-10-automating-quantifying/Automating - GSoC Logo.png" alt="GSoC 2024"&gt;&lt;/p&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;Quantifying the Commons, an initiative emerging from the UC Berkeley Data Science Discovery Program, 
+aims to quantify the frequency of open domain and CC license usage for future accessibility and analysis purposes 
+(Refer to the initial CC article for Quantifying &lt;strong&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"&gt;here!&lt;/a&gt;&lt;/strong&gt;). 
+To date, the scope of the previous project advancements has not included automation or combined reporting, 
+which is necessary to minimize the potential for human error and allow for more timely updates, 
+especially for a system that engages with substantial streams of data. &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;As a selected developer for Google Summer of Code 2024, 
+my goal this summer is to develop automation software for data gathering, flow, and report generation, 
+ensuring that reports are never more than 3 months out-of-date. This blog post serves as a technical journal
+for my endeavor till the midterm evaluation period. Part 2 will be posted after successful completion of the
+entire summer program.&lt;/p&gt;
+&lt;h2 id="pre-program-knowledge-and-associated-challenges"&gt;Pre-Program Knowledge and Associated Challenges&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;As an undergraduate CS student, I had not yet had any experience working with codebases
+as intricate as this one; the most complex software I had worked on prior to this undertaking
+was most probably a medium-complexity full-stack application. In my pre-GSoC contributions to Quantifying, I did successfully 
+implement logging across all the Python files (&lt;strong&gt;&lt;a href="https://github.com/creativecommons/quantifying/pull/97"&gt;PR #97&lt;/a&gt;&lt;/strong&gt;), but admittedly, I was not familiar with a lot of the other modules that 
+were being used in these files. As a result, this caused minor inconveniences to my development process from the very beginning. 
+For example, not being experienced with operating system (OS) modules had me confused as to how I was supposed to 
+join new directories. In addition, I had never worked with such large streams of data before, so it was initially a
+challenge to map out pseudocode for handling big data effectively. The next section elaborates on my development process and how I resolved these setbacks.&lt;/p&gt;
+&lt;h2 id="development-process-midterm"&gt;Development Process (Midterm)&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id="i-data-flow-diagram-construction"&gt;I. Data Flow Diagram Construction&lt;/h3&gt;&lt;p&gt;Before starting the code implementation, I decided to develop a &lt;strong&gt;Data Flow Diagram (DFD)&lt;/strong&gt;, which provides a visual
+representation of how data flows through a software system. While researching effective DFDs for inspiration, I came across
+a &lt;strong&gt;&lt;a href="https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/distributed-data-management.html"&gt;technical whitepaper by Amazon Web Services (AWS)&lt;/a&gt;&lt;/strong&gt; on Distributed Data Management, and I found it very helpful in drafting
+my own DFD. As I was still relatively new to the codebase, it helped me simplify
+the current system into manageable components and better understand how to implement the rest of the project.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/2024-07-10-automating-quantifying/DFD.png" alt="DFD"&gt;
+This was the initial layout for the data directory flow; however, the more I delved into the development process,
+the more the steps changed. I will present the final directory flow in Part 2 at the end of the program.&lt;/p&gt;
+&lt;h3 id="ii-identifying-the-first-data-source-to-target"&gt;II. Identifying the First Data Source to Target&lt;/h3&gt;&lt;p&gt;The main approach for implementing this project was to target one specific data source and complete its data extraction, analysis,
+and report generation process before adding more data sources to the codebase. There were two possible strategies to consider:
+(1) work on the easier data sources first, or (2) begin with the highest complexity data source and then add the easier
+ones later. Both approaches have notable pros and cons; however, I decided to adopt the second strategy of 
+starting with the most complex data source first. Although this would take slightly longer to implement, it would simplify the process
+later on. As a result, I began implementing the software for the &lt;strong&gt;Google Custom Search&lt;/strong&gt;
+data source, which has the largest number of data retrieval potential among all the other sources.&lt;/p&gt;
+&lt;h3 id="iii-directory-setup-code-implementation"&gt;III. Directory Setup + Code Implementation&lt;/h3&gt;&lt;p&gt;Based on the DFD, &lt;strong&gt;&lt;a href="https://opensource.creativecommons.org/blog/authors/TimidRobot/"&gt;Timid Robot&lt;/a&gt;&lt;/strong&gt; (my mentor) and I identified the directory process to be as such: within our &lt;code&gt;scripts&lt;/code&gt; directory, we would have
+separate sub-directories to reflect the phases of data flow, &lt;code&gt;1-fetch&lt;/code&gt;, &lt;code&gt;2-process&lt;/code&gt;, &lt;code&gt;3-report&lt;/code&gt;. The code would then be
+set up to interact between systems in chronological order. Additionally, a shared directory was implemented to optimize similar functions and paths. &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;1-fetch&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As I mentioned in the previous sections, starting to code the initial file was a challenge, as I had to learn how to use
+new technologies and libraries on-the-go. As a matter of fact, my struggles began when I couldn't even import the 
+shared module correctly. However, slowly but surely, I found that consistent research of available documentation as well
+as constant insights from Timid Robot made it so that I finally understood everything that I was working with. There were
+a few specific things that helped me especially, and I would like to share them here in case it helps any software
+developer reading this post:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Reading Technical Whitepapers:&lt;/strong&gt; As I mentioned earlier, I studied a technical whitepaper by AWS to help me design my DFD.
+From this, I realized that consulting relevant whitepapers by industry giants to see how they approach similar tasks
+helped me a lot in understanding best practices to implementing the system. Here is another resource by Meta that I referenced, 
+called &lt;strong&gt;&lt;a href="https://engineering.fb.com/2024/05/22/data-infrastructure/composable-data-management-at-meta/"&gt;Composable Data Management at Meta&lt;/a&gt;&lt;/strong&gt; (I mainly used the  &lt;em&gt;Building on Similarities&lt;/em&gt; section
+to study the logical components of data systems).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Referencing the Most Recent Quantifying Codebase:&lt;/strong&gt; The pre-automation code that was already implemented by previous developers
+for &lt;em&gt;Quantifying the Commons&lt;/em&gt;
+was the closest thing to my own project that I could reference. Although not all of the code was relevant to the Automating project,
+there were many aspects of the codebase I found very helpful to take inspiration from, especially when online research led to a
+dead end.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Writing Documentation for the Code:&lt;/strong&gt; As a part of this project, I assigned myself the task of developing documentation for
+the Automating Quantifying the Commons project (&lt;strong&gt;&lt;a href="https://unmarred-gym-686.notion.site/Automating-Quantifying-the-Commons-Documentation-441056ae02364d8a9a51d5e820401db5?pvs=4"&gt;can be accessed here!&lt;/a&gt;&lt;/strong&gt;). Heavily inspired by the "rubber duck debugging"
+method, where explaining the code or problem step-by-step to someone or something will make the solution present itself, I decided to create documentation
+for future developers to reference, in which I break down the code step-by-step to explain each module or function. I found that in
+doing this, I was able to better understand my own code better.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As for the license data retrieval process using the Google Custom Search API Key, 
+I did have a little hesitation running everything for the first time. 
+Since I had never worked with confidential information or such large data inputs before, 
+I was scared of messing something up. Sure enough, the first time I ran everything with the language and country parameters, 
+it did cause a crash, since the API query-per-day limit was crossed with one script run. As I continued to update 
+the script, I learned a very useful trick when it comes to handling big data: 
+to avoid hitting the query limit while testing, you can replace the actual API calls 
+with logging statements to show the parameters being used. This helps you 
+understand the outputs without actually consuming API quota, and it can help you identify bugs more easily. &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;A notable aspect of this software is the directory organization. Throughout the process, I designed it so that the datasets are automatically stored within their
+respective quarter's directories rather than being stored altogether. This ensures efficient organization in order for users to easily access in the future, 
+especially when the number of datasets multiplies.&lt;/p&gt;
+&lt;p&gt;Upon successful completion of basic data retrieval and state management in Phase 1, 
+I felt much more confident about the trajectory of this project, and implementing 
+future steps and fixing new bugs became progressively easier.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;2-process&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The long-term goal of the Quantifying project is to have comprehensive datasets for each quarter, encompassing
+license data that scales up to millions and even billions. For the &lt;code&gt;2-process&lt;/code&gt; phase specifically, the aim is 
+to analyze and compare data between quarters to be able to display in the reports. However, given our Google Custom Search
+API constraints as well as the time period we're working with for the GSoC period (most of this period is mainly
+2024Q3), it is not possible to have a fully completed Phase 2. However, in order to deploy as complete of an automation software as possible,
+I have set up a basic psuedocode that can be implemented
+and built upon by future development efforts as more data is collected in the upcoming quarters/years.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;3-report&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As mentioned earlier, the Google Custom Search API constraints made it difficult to create a comprehensive and detailed dataset, so I plan to 
+initiate the development of a more fletched-out Google Custom Search post-GSoC, when more data can be accumulated (discussed further in the next section).
+As of now, there are three main completed report visualization schemes: &lt;strong&gt;(1)&lt;/strong&gt; Reports by Country, &lt;strong&gt;(2)&lt;/strong&gt; Reports by License Type,
+and &lt;strong&gt;(3)&lt;/strong&gt; Reports by Language. Although the visualizations are basic in design, I made sure to incorporate accessibility into the 
+visualizations for a better user experience. This included adding elements like labels on top of the bars with specific number counts for better
+readability and understanding of the reports. In addition, I included three key features in the reports codebase to cater to various possible 
+needs of the report users.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Key Feature #1:&lt;/strong&gt; I implemented command line arguments in which users can choose any quarter to visualize, as I believe this would be useful
+for anyone in need of individual reports from previous quarters, not just reports from this quarter.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Feature #2:&lt;/strong&gt; Successfully stores reports into the data reports directory specific to each quarter for optimal organization (similar to the
+dataset organization in Phase 1). In this way, 
+reports from one quarter will not be mixed up with reports from another quarter, making it easier for users to navigate and use.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Feature #3:&lt;/strong&gt; The program automatically generates and/or updates an individual &lt;code&gt;README&lt;/code&gt; file for each quarter's reports. This &lt;code&gt;README&lt;/code&gt; organizes
+all generated report images within that quarter into one page, alongside basic report descriptions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="mid-program-conclusions-and-upcoming-tasks"&gt;Mid-Program Conclusions and Upcoming Tasks&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;Overall, my understanding and skillset for this project increased ten-fold after completing all the phases for Google Custom Search. 
+Going into the second half of the Google Summer of Code program, I expect that I will complete the future data sources at a more efficient and faster rate,
+given the license data sizes and my heightened expertise. In fact, as of now (the midterm evaluation point), I have completed
+a relatively detailed Phase 1 for Flickr, which only involves 10 licenses. My biggest takeaway from the first half of the coding period is that rather than developing
+a basic querying process and adding on later, it's easier to start off with a complex and detailed version before moving on to Phases 2 and 3. Additionally, using
+the &lt;code&gt;shared&lt;/code&gt; module within the scripts can be very beneficial to simplify the coding process.&lt;/p&gt;
+&lt;p&gt;In the second half of the GSoC program, I plan to keep both of these takeaways in mind when developing scripts for the rest of the data sources. On a formal level,
+the final goal for the end of GSoC 2024 is to have a working codebase for Phases 1, 2, and 3 of all data sources, 
+including a completed automation setup for these scripts. Due to the effectiveness of the current directory organization and report generation features, 
+I will be standardizing them across all data sources.&lt;/p&gt;
+&lt;p&gt;Finally, after the software is complete to the extent that is possible during the GSoC period, 
+I plan to raise issues in the repository respective to all the next steps that
+could be taken post-GSoC by open-source developers for a more comprehensive software system.&lt;/p&gt;
+&lt;p&gt;So far, my journey at Creative Commons has significantly enhanced my skillset as a software developer, and I have never felt more motivated to take on more challenging tasks. 
+I'm looking forward to more levels of growth and accomplishments in the second half of the program. 
+I'll be back with Part 2 at the end of the summer with an updated, completed project!&lt;/p&gt;
+&lt;h2 id="additional-readings"&gt;Additional Readings&lt;/h2&gt;&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;(Stay posted for the second part of this series, coming soon!) Automating Quantifying the Commons: Part 2&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"&gt;Data Science Discovery: Quantifying the Commons&lt;/a&gt; | Author: Dun-Ming Huang (Brandon Huang) | Dec. 2022&lt;/li&gt;
+&lt;/ul&gt;
+</content></entry><entry><title>New CreativeCommons.org launched 2023 September</title><link href="http://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/" rel="alternate"></link><updated>2024-05-28T00:00:00Z</updated><author><name>['sara', 'shafiya', 'TimidRobot']</name></author><id>urn:uuid:7ea5e14e-e9cb-35f3-8be8-e344b66f7a7e</id><content type="html">&lt;p&gt;Creative Commons (CC) launched a new
 &lt;a href="https://creativecommons.org/"&gt;CreativeCommons.org&lt;/a&gt; website on 2023 September
 27th. This relaunch included not just the website, but the entire technology
 stack (platform, server, and website components).&lt;/p&gt;
@@ -2296,6 +2426,38 @@ Brent for his guidance.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href="https://github.com/marketplace?type=actions"&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href="https://docs.github.com/actions"&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
+</content></entry><entry><title>Linked Commons: Data Update</title><link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['subhamX']</name></author><id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id><content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
+&lt;h2 id="where-does-it-fit"&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding "Graph Filtering Methods" to "Autocomplete Feature". These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;"Scale the Data of Linked Commons"&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id="pilot"&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href="/blog/entries/cc-datacatalog-data-processing/"&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;"distance list"&lt;/strong&gt; of all the nodes.&lt;/p&gt;
+&lt;h3 id="what-is-distance-list"&gt;What is "distance list"?&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
+    &lt;figure&gt;
+        &lt;img src="distance-list.png" alt="Distance List" style="border: 1px solid black"&gt;
+        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href="https://en.wikipedia.org/wiki/Adjacency_list"&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, "distance list" groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, "distance list" is a more general form of the Adjacency List representation.&lt;/p&gt;
+&lt;p&gt;To build this "distance list", we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href="https://en.wikipedia.org/wiki/Breadth-first_search"&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
+&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="optimizations"&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
+&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;"Sequential dB Build"&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
+&lt;h3 id="key-points-of-the-sequential-db-build"&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
+&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
+&lt;h2 id="new-architecture"&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in "build-dB-scripts" weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
+&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href="https://en.wikipedia.org/wiki/Transpose_graph"&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
+&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
+    &lt;figure&gt;
+        &lt;img src="graph.png" alt="Light Theme" style="border: 1px solid black"&gt;
+        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz"&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href="/community/"&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content></entry><entry><title>CC Catalog: wrapping up GSoC20</title><link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:ba947438-0d00-32ec-8ba7-acf6f5f15eb5</id><content type="html">&lt;p&gt;With the summer of code coming to an end, this blog post summarises the work done during the last three months. The project I have been working on is to add more provider API scripts to the CC Catalog. The CC Catalog project is responsible for collecting CC licensed images hosted across the web.&lt;/p&gt;
 &lt;p&gt;The internship journey has been great , and I was glad to get the opportunity to understand more about the working of the data pipeline. My work during the internship mainly involved researching new API providers and checking if they meet the necessary conditions, then we decided on a strategy to crawl the API. The strategy varies according to different APIs:  some can be partitioned based on date, others have to be paginated . Script is written for the API according to the strategy.
 During the later phase of the internship, I had worked on the reingestion strategy for europeana and a script to merge Common Crawl tags and metadata to the corresponding image in the image table.&lt;/p&gt;
@@ -2360,38 +2522,6 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;Related PR: &lt;a href="https://github.com/cc-archive/cccatalog/pull/478"&gt;https://github.com/cc-archive/cccatalog/pull/478&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="acknowledgement"&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank my mentors Brent and Anna for their guidance throughout the internship.&lt;/p&gt;
-</content></entry><entry><title>Linked Commons: Data Update</title><link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['subhamX']</name></author><id>urn:uuid:bf2032b7-d1c2-320b-9cf1-92ad64320a02</id><content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id="where-does-it-fit"&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding "Graph Filtering Methods" to "Autocomplete Feature". These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;"Scale the Data of Linked Commons"&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
-&lt;h2 id="pilot"&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href="/blog/entries/cc-datacatalog-data-processing/"&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;"distance list"&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id="what-is-distance-list"&gt;What is "distance list"?&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="distance-list.png" alt="Distance List" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href="https://en.wikipedia.org/wiki/Adjacency_list"&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, "distance list" groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, "distance list" is a more general form of the Adjacency List representation.&lt;/p&gt;
-&lt;p&gt;To build this "distance list", we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href="https://en.wikipedia.org/wiki/Breadth-first_search"&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
-&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="optimizations"&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
-&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;"Sequential dB Build"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id="key-points-of-the-sequential-db-build"&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
-&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
-&lt;h2 id="new-architecture"&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in "build-dB-scripts" weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
-&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href="https://en.wikipedia.org/wiki/Transpose_graph"&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
-&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="graph.png" alt="Light Theme" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz"&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href="/community/"&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content></entry><entry><title>X5GON Using CC Catalog API for Image Results</title><link href="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/" rel="alternate"></link><updated>2020-08-24T00:00:00Z</updated><author><name>['annatuma']</name></author><id>urn:uuid:ffcc37e0-31ad-3231-b583-73749555ba0b</id><content type="html">&lt;p&gt;A few months ago, the Open Education team at Creative Commons made an introduction between the folks working on X5GON and CC Search.&lt;/p&gt;
 &lt;p&gt;Throughout a few conversations, we quickly discovered that there are many parallels to how we're approaching our work, and some important differences that would allow each of us to benefit from cooperation.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://www.x5gon.org/"&gt;X5GON&lt;/a&gt; is building an AI-driven platform, focused on delivery of open education resources (OER). At its core, it is building a catalog of OER, upon which other &lt;a href="https://www.x5gon.org/platforms/services/"&gt;services&lt;/a&gt; are based, such as analytics for personalized recommendations, and a discovery engine. By aggregating relevant content, curating it with the use of artificial intelligence and machine learning, and personalizing the experience to each learner, they're making OER more accessible and relevant.&lt;/p&gt;
@@ -3337,12 +3467,4 @@ options = {
 &lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/cc-archive/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://creativecommons.org/author/zackcreativecommons-org/"&gt;Zack Krida&lt;/a&gt; and &lt;a href="/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
 Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-</content></entry><entry><title>Integration of Vocabulary with CCOS.</title><link href="http://opensource.creativecommons.org/blog/entries/integration-vocabulary-ccos/" rel="alternate"></link><updated>2020-07-08T00:00:00Z</updated><author><name>['dhruvi16']</name></author><id>urn:uuid:220be94d-1b9f-3d0a-8f65-fe0449aa3848</id><content type="html">&lt;p&gt;This blog demonstrates the project I am working on during the course of my Outreachy internship. My project involves redesigning and reimplementing one of the web products of the CC network using our new cohesive design library — &lt;a href="https://cc-vocabulary.netlify.app/?path=/docs/vocabulary-introduction--page"&gt;Vocabulary&lt;/a&gt;. After my internship is completed, the &lt;a href="/"&gt;Creative Commons Open Source&lt;/a&gt; website will have a complete revamped interface that will extensively use Vocabulary components.&lt;/p&gt;
-&lt;h2 id="the-problem"&gt;The Problem -&lt;/h2&gt;&lt;p&gt;There exists a large variety of web products across the Creative Commons network. These products serve different purposes for the network and so do they vary in the way of presenting the existing content. So, to conquer the inconsistency across the different products we have our coherent design system called Vocabulary.&lt;/p&gt;
-&lt;p&gt;If we come to the current CC Open Source website, it is quite off-track considering our new design system Vocabulary. The styles and components of the website are not well aligned with the components of the Vocabulary. And thus it lacks harmony and consistency concerning the brand.&lt;/p&gt;
-&lt;p&gt;The purpose of a design system gets dissolved if it is not well incorporated with the products and we do have this problem with the CC Open Source website. Hence, there was a need for a redesign of CCOS as per the new Design Library. This project aims to rectify the problems and inconsistencies of the CCOS website and build a completely new website (as per Vocabulary).&lt;/p&gt;
-&lt;h2 id="the-solution"&gt;The Solution -&lt;/h2&gt;&lt;p&gt;I started with trying out different mock-ups for the new website in Figma. You can see what I tried to make &lt;a href="https://www.figma.com/file/ka3zs1iYnqJvyLnvAV3cW7/Home-proposals"&gt;here&lt;/a&gt;. And then with the help of our UX designer Francisco, we created all the mock-ups and finalized how the website will look in a couple of weeks, here is the &lt;a href="https://www.figma.com/file/mttcugI1UxvCJRKE5sdpbO/Mockups?node-id=759%3A516"&gt;link&lt;/a&gt; for that.&lt;/p&gt;
-&lt;p&gt;I started my internship with going through the website’s tech stack, the website is made using &lt;a href="https://www.getlektor.com/"&gt;Lektor&lt;/a&gt;, with which I was not very familiar. I read the official docs, went through projects, tried making demo projects, and took help from mentors wherever I got stuck.&lt;/p&gt;
-&lt;p&gt;To keep the project clean I added a theme that only has templates for the project and alters no content (as per aim). While updating templates, some components were not available in the Vocabulary yet, so I worked on adding those components to the library. And then used them in my new templates.&lt;/p&gt;
-&lt;p&gt;I have thoroughly enjoyed contributing to this project as I got to learn so much. And I am excited for what’s next to come in the upcoming weeks.&lt;/p&gt;
 </content></entry></feed>

@@ -1,0 +1,562 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Automating Quantifying the Commons: Part 1" />
+
+
+
+<meta property="og:description" content="" />
+
+
+<meta property="og:url" content="/blog/entries/2024-07-10-automating-quantifying/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Automating Quantifying the Commons: Part 1.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Automating Quantifying the Commons: Part 1">
+<meta name="twitter:description" content="">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Automating Quantifying the Commons: Part 1 — Creative Commons Open Source</title>
+
+<body>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/entries/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+                <a class="navbar-item" href="/community/supporters/">Supporters</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Automating Quantifying the Commons: Part 1</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Automating Quantifying the Commons: Part 1</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="gravatar" />
+    
+      </figure>
+    </header>
+          <p class="padding-small">
+            bynaishasinha on 2024-07-10
+          </p>
+        </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p><img src="/blog/entries/2024-07-10-automating-quantifying/Automating - GSoC Logo.png" alt="GSoC 2024"></p>
+<h2 id="introduction">Introduction</h2><hr>
+<p>Quantifying the Commons, an initiative emerging from the UC Berkeley Data Science Discovery Program, 
+aims to quantify the frequency of open domain and CC license usage for future accessibility and analysis purposes 
+(Refer to the initial CC article for Quantifying <strong><a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/">here!</a></strong>). 
+To date, the scope of the previous project advancements has not included automation or combined reporting, 
+which is necessary to minimize the potential for human error and allow for more timely updates, 
+especially for a system that engages with substantial streams of data. <br></p>
+<p>As a selected developer for Google Summer of Code 2024, 
+my goal this summer is to develop automation software for data gathering, flow, and report generation, 
+ensuring that reports are never more than 3 months out-of-date. This blog post serves as a technical journal
+for my endeavor till the midterm evaluation period. Part 2 will be posted after successful completion of the
+entire summer program.</p>
+<h2 id="pre-program-knowledge-and-associated-challenges">Pre-Program Knowledge and Associated Challenges</h2><hr>
+<p>As an undergraduate CS student, I had not yet had any experience working with codebases
+as intricate as this one; the most complex software I had worked on prior to this undertaking
+was most probably a medium-complexity full-stack application. In my pre-GSoC contributions to Quantifying, I did successfully 
+implement logging across all the Python files (<strong><a href="https://github.com/creativecommons/quantifying/pull/97">PR #97</a></strong>), but admittedly, I was not familiar with a lot of the other modules that 
+were being used in these files. As a result, this caused minor inconveniences to my development process from the very beginning. 
+For example, not being experienced with operating system (OS) modules had me confused as to how I was supposed to 
+join new directories. In addition, I had never worked with such large streams of data before, so it was initially a
+challenge to map out pseudocode for handling big data effectively. The next section elaborates on my development process and how I resolved these setbacks.</p>
+<h2 id="development-process-midterm">Development Process (Midterm)</h2><hr>
+<h3 id="i-data-flow-diagram-construction">I. Data Flow Diagram Construction</h3><p>Before starting the code implementation, I decided to develop a <strong>Data Flow Diagram (DFD)</strong>, which provides a visual
+representation of how data flows through a software system. While researching effective DFDs for inspiration, I came across
+a <strong><a href="https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/distributed-data-management.html">technical whitepaper by Amazon Web Services (AWS)</a></strong> on Distributed Data Management, and I found it very helpful in drafting
+my own DFD. As I was still relatively new to the codebase, it helped me simplify
+the current system into manageable components and better understand how to implement the rest of the project.</p>
+<p><img src="/blog/entries/2024-07-10-automating-quantifying/DFD.png" alt="DFD">
+This was the initial layout for the data directory flow; however, the more I delved into the development process,
+the more the steps changed. I will present the final directory flow in Part 2 at the end of the program.</p>
+<h3 id="ii-identifying-the-first-data-source-to-target">II. Identifying the First Data Source to Target</h3><p>The main approach for implementing this project was to target one specific data source and complete its data extraction, analysis,
+and report generation process before adding more data sources to the codebase. There were two possible strategies to consider:
+(1) work on the easier data sources first, or (2) begin with the highest complexity data source and then add the easier
+ones later. Both approaches have notable pros and cons; however, I decided to adopt the second strategy of 
+starting with the most complex data source first. Although this would take slightly longer to implement, it would simplify the process
+later on. As a result, I began implementing the software for the <strong>Google Custom Search</strong>
+data source, which has the largest number of data retrieval potential among all the other sources.</p>
+<h3 id="iii-directory-setup-code-implementation">III. Directory Setup + Code Implementation</h3><p>Based on the DFD, <strong><a href="https://opensource.creativecommons.org/blog/authors/TimidRobot/">Timid Robot</a></strong> (my mentor) and I identified the directory process to be as such: within our <code>scripts</code> directory, we would have
+separate sub-directories to reflect the phases of data flow, <code>1-fetch</code>, <code>2-process</code>, <code>3-report</code>. The code would then be
+set up to interact between systems in chronological order. Additionally, a shared directory was implemented to optimize similar functions and paths. <br></p>
+<p><strong><code>1-fetch</code></strong></p>
+<p>As I mentioned in the previous sections, starting to code the initial file was a challenge, as I had to learn how to use
+new technologies and libraries on-the-go. As a matter of fact, my struggles began when I couldn't even import the 
+shared module correctly. However, slowly but surely, I found that consistent research of available documentation as well
+as constant insights from Timid Robot made it so that I finally understood everything that I was working with. There were
+a few specific things that helped me especially, and I would like to share them here in case it helps any software
+developer reading this post:</p>
+<ol>
+<li><p><strong>Reading Technical Whitepapers:</strong> As I mentioned earlier, I studied a technical whitepaper by AWS to help me design my DFD.
+From this, I realized that consulting relevant whitepapers by industry giants to see how they approach similar tasks
+helped me a lot in understanding best practices to implementing the system. Here is another resource by Meta that I referenced, 
+called <strong><a href="https://engineering.fb.com/2024/05/22/data-infrastructure/composable-data-management-at-meta/">Composable Data Management at Meta</a></strong> (I mainly used the  <em>Building on Similarities</em> section
+to study the logical components of data systems).</p>
+</li>
+<li><p><strong>Referencing the Most Recent Quantifying Codebase:</strong> The pre-automation code that was already implemented by previous developers
+for <em>Quantifying the Commons</em>
+was the closest thing to my own project that I could reference. Although not all of the code was relevant to the Automating project,
+there were many aspects of the codebase I found very helpful to take inspiration from, especially when online research led to a
+dead end.</p>
+</li>
+<li><p><strong>Writing Documentation for the Code:</strong> As a part of this project, I assigned myself the task of developing documentation for
+the Automating Quantifying the Commons project (<strong><a href="https://unmarred-gym-686.notion.site/Automating-Quantifying-the-Commons-Documentation-441056ae02364d8a9a51d5e820401db5?pvs=4">can be accessed here!</a></strong>). Heavily inspired by the "rubber duck debugging"
+method, where explaining the code or problem step-by-step to someone or something will make the solution present itself, I decided to create documentation
+for future developers to reference, in which I break down the code step-by-step to explain each module or function. I found that in
+doing this, I was able to better understand my own code better.</p>
+</li>
+</ol>
+<p>As for the license data retrieval process using the Google Custom Search API Key, 
+I did have a little hesitation running everything for the first time. 
+Since I had never worked with confidential information or such large data inputs before, 
+I was scared of messing something up. Sure enough, the first time I ran everything with the language and country parameters, 
+it did cause a crash, since the API query-per-day limit was crossed with one script run. As I continued to update 
+the script, I learned a very useful trick when it comes to handling big data: 
+to avoid hitting the query limit while testing, you can replace the actual API calls 
+with logging statements to show the parameters being used. This helps you 
+understand the outputs without actually consuming API quota, and it can help you identify bugs more easily. <br></p>
+<p>A notable aspect of this software is the directory organization. Throughout the process, I designed it so that the datasets are automatically stored within their
+respective quarter's directories rather than being stored altogether. This ensures efficient organization in order for users to easily access in the future, 
+especially when the number of datasets multiplies.</p>
+<p>Upon successful completion of basic data retrieval and state management in Phase 1, 
+I felt much more confident about the trajectory of this project, and implementing 
+future steps and fixing new bugs became progressively easier.</p>
+<p><strong><code>2-process</code></strong></p>
+<p>The long-term goal of the Quantifying project is to have comprehensive datasets for each quarter, encompassing
+license data that scales up to millions and even billions. For the <code>2-process</code> phase specifically, the aim is 
+to analyze and compare data between quarters to be able to display in the reports. However, given our Google Custom Search
+API constraints as well as the time period we're working with for the GSoC period (most of this period is mainly
+2024Q3), it is not possible to have a fully completed Phase 2. However, in order to deploy as complete of an automation software as possible,
+I have set up a basic psuedocode that can be implemented
+and built upon by future development efforts as more data is collected in the upcoming quarters/years.</p>
+<p><strong><code>3-report</code></strong></p>
+<p>As mentioned earlier, the Google Custom Search API constraints made it difficult to create a comprehensive and detailed dataset, so I plan to 
+initiate the development of a more fletched-out Google Custom Search post-GSoC, when more data can be accumulated (discussed further in the next section).
+As of now, there are three main completed report visualization schemes: <strong>(1)</strong> Reports by Country, <strong>(2)</strong> Reports by License Type,
+and <strong>(3)</strong> Reports by Language. Although the visualizations are basic in design, I made sure to incorporate accessibility into the 
+visualizations for a better user experience. This included adding elements like labels on top of the bars with specific number counts for better
+readability and understanding of the reports. In addition, I included three key features in the reports codebase to cater to various possible 
+needs of the report users.</p>
+<ol>
+<li><strong>Key Feature #1:</strong> I implemented command line arguments in which users can choose any quarter to visualize, as I believe this would be useful
+for anyone in need of individual reports from previous quarters, not just reports from this quarter.</li>
+<li><strong>Key Feature #2:</strong> Successfully stores reports into the data reports directory specific to each quarter for optimal organization (similar to the
+dataset organization in Phase 1). In this way, 
+reports from one quarter will not be mixed up with reports from another quarter, making it easier for users to navigate and use.</li>
+<li><strong>Key Feature #3:</strong> The program automatically generates and/or updates an individual <code>README</code> file for each quarter's reports. This <code>README</code> organizes
+all generated report images within that quarter into one page, alongside basic report descriptions.</li>
+</ol>
+<h2 id="mid-program-conclusions-and-upcoming-tasks">Mid-Program Conclusions and Upcoming Tasks</h2><hr>
+<p>Overall, my understanding and skillset for this project increased ten-fold after completing all the phases for Google Custom Search. 
+Going into the second half of the Google Summer of Code program, I expect that I will complete the future data sources at a more efficient and faster rate,
+given the license data sizes and my heightened expertise. In fact, as of now (the midterm evaluation point), I have completed
+a relatively detailed Phase 1 for Flickr, which only involves 10 licenses. My biggest takeaway from the first half of the coding period is that rather than developing
+a basic querying process and adding on later, it's easier to start off with a complex and detailed version before moving on to Phases 2 and 3. Additionally, using
+the <code>shared</code> module within the scripts can be very beneficial to simplify the coding process.</p>
+<p>In the second half of the GSoC program, I plan to keep both of these takeaways in mind when developing scripts for the rest of the data sources. On a formal level,
+the final goal for the end of GSoC 2024 is to have a working codebase for Phases 1, 2, and 3 of all data sources, 
+including a completed automation setup for these scripts. Due to the effectiveness of the current directory organization and report generation features, 
+I will be standardizing them across all data sources.</p>
+<p>Finally, after the software is complete to the extent that is possible during the GSoC period, 
+I plan to raise issues in the repository respective to all the next steps that
+could be taken post-GSoC by open-source developers for a more comprehensive software system.</p>
+<p>So far, my journey at Creative Commons has significantly enhanced my skillset as a software developer, and I have never felt more motivated to take on more challenging tasks. 
+I'm looking forward to more levels of growth and accomplishments in the second half of the program. 
+I'll be back with Part 2 at the end of the summer with an updated, completed project!</p>
+<h2 id="additional-readings">Additional Readings</h2><hr>
+<ul>
+<li>(Stay posted for the second part of this series, coming soon!) Automating Quantifying the Commons: Part 2</li>
+<li><a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/">Data Science Discovery: Quantifying the Commons</a> | Author: Dun-Ming Huang (Brandon Huang) | Dec. 2022</li>
+</ul>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2024/ ">gsoc-2024</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc/ ">gsoc</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/big-data/ ">big-data</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/quantifying-the-commons/ ">quantifying-the-commons</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/cc-software/ ">cc-software</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/community/ ">community</a>
+            
+          
+        </div>
+      </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2024-07-10-automating-quantifying"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2024-07-10-automating-quantifying/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+    </footer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/entries/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
+                  <input type="submit" value="subscribe" class="button small">
+                 </form>
+               </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
