@@ -129,6 +129,97 @@ I'll be back with Part 2 at the end of the summer with an updated, completed pro
 &lt;li&gt;(Stay posted for the second part of this series, coming soon!) Automating Quantifying the Commons: Part 2&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"&gt;Data Science Discovery: Quantifying the Commons&lt;/a&gt; | Author: Dun-Ming Huang (Brandon Huang) | Dec. 2022&lt;/li&gt;
 &lt;/ul&gt;
+</content></entry><entry><title>Empowering Open Knowledge: GSoC 2024 With Creative Commons</title><link href="http://opensource.creativecommons.org/blog/entries/empowering-open-knowledge-gsoc-2024-with-creative-commons/" rel="alternate"></link><updated>2024-07-10T00:00:00Z</updated><author><name>['Murdock9803']</name></author><id>urn:uuid:ff375fe1-1d83-3c9f-b782-2b6166675041</id><content type="html">&lt;p&gt;Hello everyone! My name is Ayush Sahu, and I am thrilled to announce that I have joined Creative Commons this summer through the &lt;a href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code (2024)&lt;/a&gt; program. As a passionate advocate for open knowledge and a firm believer in the power of collaborative innovation, I am grateful to contribute to an organization that has been championing the free exchange of information and creativity for years.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/empowering-open-knowledge-gsoc-2024-with-creative-commons/GSoC+CC.png" alt="GSoC and CC"&gt;&lt;/p&gt;
+&lt;p&gt;I was inspired to collaborate with Creative Commons because of the profound impact it had on me personally. As a child creating videos for my YouTube channel, I was immensely grateful for the resources provided by Creative Commons. Their promotion of free and open knowledge enabled me to access high-quality content without the constraints of traditional licensing, fostering my creativity and passion for sharing information. This experience instilled in me a deep appreciation for the organization and its mission.&lt;/p&gt;
+&lt;h2 id="the-project-i-am-working-on"&gt;The Project I Am Working On&lt;/h2&gt;&lt;p&gt;The project - &lt;strong&gt;Modernize CC Resource Archive&lt;/strong&gt; focuses on implementing a comprehensive  visual overhaul to the &lt;a href="https://resources.creativecommons.org/"&gt;Resource Archive&lt;/a&gt; to align with current Creative Commons aesthetics and functionality standards. Utilizing the &lt;a href="https://github.com/creativecommons/vocabulary"&gt;Internal Design System (Vocabulary)&lt;/a&gt;, the project aims to upgrade the visual design, implement semantic, accessible, and standards-compliant &lt;code&gt;HTML&lt;/code&gt;, &lt;code&gt;CSS&lt;/code&gt;, and &lt;code&gt;JavaScript&lt;/code&gt;, and improve user experience (UX) for resource submission while ensuring site stability on &lt;code&gt;GitHub Pages&lt;/code&gt;. Through these efforts and solid documentation, the revamped Resources Archive will meet modern standards, enhance usability, and facilitate maintainability for both users and developers.&lt;/p&gt;
+&lt;h2 id="community-bonding-period"&gt;Community Bonding Period&lt;/h2&gt;&lt;p&gt;The community bonding period has been an incredibly enriching experience. During this time, I had the opportunity to meet my mentors, familiarize myself with the project, and engage with the vibrant community behind Creative Commons. I participated in meetings and discussions, which have deepened my understanding of the organization's values as well as the codebase. The warm welcome and the wealth of knowledge shared by the community have been truly inspiring.&lt;/p&gt;
+&lt;h2 id="environment-code-ideation-weeks-1-2-3"&gt;Environment, Code &amp;amp; Ideation - Weeks 1, 2 &amp;amp; 3&lt;/h2&gt;&lt;p&gt;These were the initial weeks of the project which went into testing the development environment, planning upcoming UI changes and getting acquainted with the working process.  Firstly, my project mentor &lt;a href="https://opensource.creativecommons.org/blog/authors/sara/"&gt;Sara&lt;/a&gt; guided me through my first contribution in the coding period. I was granted member status at the Creative Commons Organization on GitHub, which was both new and exciting for me.&lt;/p&gt;
+&lt;p&gt;The key achievements were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/266"&gt;PR#266&lt;/a&gt; - Updated the &lt;code&gt;docker-compose.yml&lt;/code&gt; file to the current spec. With the help of my mentor, I opened this first pull request in the coding period. The file was out of specification, as the &lt;code&gt;version&lt;/code&gt; element at the top of &lt;code&gt;docker-compose.yml&lt;/code&gt; file was just informative.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/279"&gt;Testing Docker Configurations&lt;/a&gt;: With immense help from mentors Sara and Timid Robot, I got the Docker environment ready for development.&lt;/li&gt;
+&lt;li&gt;Learned more about &lt;a href="https://jekyllrb.com/docs/"&gt;Jekyll&lt;/a&gt; and read the &lt;a href="https://github.com/creativecommons/vocabulary"&gt;Vocabulary&lt;/a&gt; code. Got familiar with classes in vocabulary.css and the custom CSS variables in library-vars.css. &lt;/li&gt;
+&lt;li&gt;Accessibility Improvements: Learned about keyboard navigability and optimizing the website for better accessibility using semantic HTML and appropriate CSS properties.&lt;/li&gt;
+&lt;li&gt;Issue Listing: Identified and listed relevant issues related to semantic code and UI changes. Also added some issues as a to-do list, as suggested by my mentor.&lt;/li&gt;
+&lt;li&gt;Reviewed the present structure of the files, and worked on ideas to improve the structure for better understandability and grouping of similar files.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;At the end of these initial weeks, I realized that I have spent enough time on understanding the code and planning on things. But as my mentor suggested, things will get smoother once we start working on them practically. So I decided to increase the pace of work in the upcoming weeks to get the planned tasks executed.&lt;/p&gt;
+&lt;h2 id="execution-updation-refactor-weeks-4-5-6"&gt;Execution, Updation &amp;amp; Refactor - Weeks 4, 5 &amp;amp; 6&lt;/h2&gt;&lt;p&gt;As the midterm evaluation approached, we held weekly review meetings to plan changes and contributions. The pace picked up in weeks 5 and 6, resulting in several presentable pull requests dedicated to UI changes and code refactoring. Notable tasks executed include:&lt;/p&gt;
+&lt;h3 id="improving-file-structure"&gt;Improving File Structure&lt;/h3&gt;&lt;p&gt;With discussion with my mentor, I improved the file structure in the codebase for better understandability and maintainability. After updating the structure, the paths to all the files that were changed were modified.  This was achieved by a group of Pull Requests that were created catering to the issue. The pull requests were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/280"&gt;PR#280&lt;/a&gt; - Adds &lt;code&gt;footer.html&lt;/code&gt; to the &lt;code&gt;_includes&lt;/code&gt; directory.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/281"&gt;PR#281&lt;/a&gt; - Includes &lt;code&gt;footer.html&lt;/code&gt; to all the pages of the site.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/282"&gt;PR#282&lt;/a&gt; - Shifted &lt;code&gt;an-explanation-of-creative-commons&lt;/code&gt; to &lt;code&gt;_resources&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/289"&gt;PR#289&lt;/a&gt; - Improves the file structure in the codebase.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/292"&gt;PR#292&lt;/a&gt; - Updates the paths to downloadable resources and PDFs.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/296"&gt;PR#296&lt;/a&gt; - Updated the &lt;code&gt;resource-template&lt;/code&gt; with new paths for images.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="listing-page-ui-changes"&gt;Listing Page UI Changes&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;listing.html&lt;/code&gt; page is responsible for the display of resource cards on the &lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;all.html&lt;/code&gt; pages. The resource cards had an outdated visual setup and needed to be aligned with the Internal Design System of Creative Commons known as Vocabulary. 
+Through the &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/298"&gt;PR#298&lt;/a&gt;, I performed the following tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Refactored the html structure of the resource card to &lt;code&gt;IMAGE - TITLE - BLURB&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Utilizing vocabulary, enhanced the style for &lt;code&gt;thumbnail list&lt;/code&gt; in &lt;code&gt;listing.html&lt;/code&gt;. Worked on the grid structure in &lt;code&gt;style.css&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Likewise, worked on enhancing style for the &lt;code&gt;thumbnail box&lt;/code&gt;, &lt;code&gt;thumbnail title&lt;/code&gt;, &lt;code&gt;thumbnail image&lt;/code&gt; and &lt;code&gt;thumbnail blurb&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Worked on Fonts, colors, background colors, etc. according to &lt;code&gt;vocabulary&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Assigned properties like &lt;code&gt;--underline-background-color&lt;/code&gt; from vocabulary into style.css.&lt;/li&gt;
+&lt;li&gt;Formatted the &lt;code&gt;style.css&lt;/code&gt; and &lt;code&gt;listing.html&lt;/code&gt; files with &lt;code&gt;prettier&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Fixed the responsiveness of the resource cards.&lt;/li&gt;
+&lt;li&gt;Added Documentation in &lt;code&gt;style.css&lt;/code&gt; for understandability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And through the &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/302"&gt;PR#302&lt;/a&gt;, the following tasks were completed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added a heading to the page.&lt;/li&gt;
+&lt;li&gt;Added clear documentation about various sections in the file.&lt;/li&gt;
+&lt;li&gt;Formatted the code with &lt;code&gt;prettier&lt;/code&gt; code formatter.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All these changes gave the website a new look, aligning more closely with the standard Creative Commons design schemes.&lt;/p&gt;
+&lt;h3 id="listing-page-all-javascript-changes"&gt;Listing Page (All) Javascript Changes&lt;/h3&gt;&lt;p&gt;The javascript code in listing.html file resided in the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; section of the page. The code was outdated and was lacking the ES6 Javascript concepts. For example, there were uses of &lt;code&gt;var&lt;/code&gt; keyword, &lt;code&gt;document.write()&lt;/code&gt; method, etc.. The code was responsible for a number of tasks related to the display of resources. It extracted the user-selected categories from the URL and then returned them as variables. Also, the javascript code was responsible for displaying the resources which contained the selected categories. 
+Through the &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/300"&gt;PR#300&lt;/a&gt;, the following tasks were completed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Updated the functions and code to follow ES6 javascript concepts.&lt;/li&gt;
+&lt;li&gt;Replaced the &lt;code&gt;document.write()&lt;/code&gt; method with &lt;code&gt;Document Object Manipulation&lt;/code&gt;. The &lt;code&gt;document.write()&lt;/code&gt; is old and not preferable.&lt;/li&gt;
+&lt;li&gt;Utilized the javascript &lt;code&gt;DOM&lt;/code&gt; for all the tasks related to filtering of resources in &lt;code&gt;listing.js&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Assigned checks to the categories selected by the user (which are extracted through the URL), sanitizing the input and preventing any attacks on the website.&lt;/li&gt;
+&lt;li&gt;Added proper documentation for all the functions and sections of code for better understandability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="resource-page-ui-changes"&gt;Resource Page UI Changes&lt;/h3&gt;&lt;p&gt;The resource page is a &lt;code&gt;layout&lt;/code&gt; to show various resources that are submitted in the resource archive. This layout page accepts values from the &lt;code&gt;front matter&lt;/code&gt; of various resources. This page was overall enhanced in terms of alignment to Creative Commons’ Design System. 
+The &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/304"&gt;PR#304&lt;/a&gt; performs the following tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Refactors the whole code for &lt;code&gt;resource.html&lt;/code&gt; page by implementing semantic HTML.&lt;/li&gt;
+&lt;li&gt;Improves the styling of the page in &lt;code&gt;styles.css&lt;/code&gt;, by utilizing vocabulary.&lt;/li&gt;
+&lt;li&gt;Makes the page responsive. &lt;/li&gt;
+&lt;li&gt;The inspiration is drawn from the &lt;a href="https://vocabulary-docs.netlify.app/specimen/contexts/blog-post.html"&gt;Vocabulary Blog Post Page&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These three weeks saw the most significant work being merged, resulting in a refreshed interface. Despite a slow start, consistent effort and mentor support helped me catch up by the midterm evaluation, making these weeks a great learning experience.&lt;/p&gt;
+&lt;h2 id="issues-solved-till-now"&gt;Issues Solved Till Now&lt;/h2&gt;&lt;p&gt;The issues relevant to the project which have been solved until now are listed below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/17"&gt;#17&lt;/a&gt; - upgrade JS code in listings.html&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/176"&gt;#176&lt;/a&gt; - make thumbnails responsive&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/242"&gt;#242&lt;/a&gt; - add footer in submission and resource pages&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/265"&gt;#265&lt;/a&gt; - The docker-compose.yml file currently out of spec&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/267"&gt;#267&lt;/a&gt; - Improve documentation for Dockerfiles&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/269"&gt;#269&lt;/a&gt; - relocate footer code to separate file ‘footer.html’ for reuse&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/273"&gt;#273&lt;/a&gt; - Resource file in the wrong location&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/276"&gt;#276&lt;/a&gt; - Inconsistent docker behavior - Parsing Gemfile&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/283"&gt;#283&lt;/a&gt; - Unnecessary google analytics function in listing.html&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/285"&gt;#285&lt;/a&gt; - Unnecessary google analytics function in resource and submission.html&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/287"&gt;#287&lt;/a&gt; - The file structure in the codebase can be improved. (re-structuring)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/288"&gt;#288&lt;/a&gt; - The style.css file is not properly organized and lacks documentation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/290"&gt;#290&lt;/a&gt; - The download [pdf] file links at bottom of resources aren't working&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/293"&gt;#293&lt;/a&gt; - The resourcetemplate.md needs to be updated.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/297"&gt;#297&lt;/a&gt; - Change the design of resource cards on homepage using vocabulary&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/165"&gt;#165&lt;/a&gt; - section heading for resource cards&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/301"&gt;#301&lt;/a&gt; - Add proper documentation to listing.html, refactor for structure&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/101"&gt;#101&lt;/a&gt; - Organize code with proper indentation&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/41"&gt;#41&lt;/a&gt; - UI/UX for resource page&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/272"&gt;#272&lt;/a&gt; - unwanted underline in the resource page&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="my-experience-from-getting-selected-to-midterm"&gt;My Experience - From Getting Selected To Midterm&lt;/h2&gt;&lt;p&gt;Getting selected to Google Summer of Code was honestly a very big deal for me. When I joined my university for my undergraduate degree, our seniors introduced us to two guys who got selected in GSoC that year. They were given immense importance and respect by our seniors and also my batchmates. From that instance I got to know that being a GSoC Contributor is a very prestigious thing for someone hoping to start their career. Having zero background knowledge in programming, I thought it’s not something that I should aim for, and leave it to the guys who already are pro at coding. But the dream of being a GSoC contributor just stuck somewhere in my head. 
+Fast forward to my third year at the university, I became good with frontend development as it was something that naturally excited me. After working hard for some months, I was finally selected for the GSoC 2024 program with Creative Commons.&lt;/p&gt;
+&lt;p&gt;Now after being selected to GSoC, I was very happy and satisfied as it was a dream come true. As a result of this, I could not do the amount of work that I should have, in the initial weeks of the program. I had weekly review meetings with the org mentors, who constantly supported and encouraged me to catch up to the planned timeline of tasks. As a result of their motivation and some extra efforts, I was able to finish the tasks that needed to be done till the midterm evaluation. At this point I feel really good that we are successful in completing the tasks till the midterm evaluation. The best thing about this is that it was always &lt;strong&gt;a combined effort&lt;/strong&gt;. I am planning to execute more tasks in the other half of the period, than we have till now. I’ll be faster as I have become really comfortable working with my mentors in these six weeks.&lt;/p&gt;
+&lt;h2 id="gratitude-and-acknowledgements"&gt;Gratitude and Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to express my heartfelt gratitude to my mentors and the entire Creative Commons community for giving me this incredible opportunity. Your support and guidance have been invaluable. Special thanks to my mentor &lt;a href="https://opensource.creativecommons.org/blog/authors/sara/"&gt;Sara Lovell (Possumbilities)&lt;/a&gt; for the constant support that I received from you all the time. I am really grateful for not only the technical help, but also the motivation, support and encouragement I got from your side. Also &lt;a href="https://opensource.creativecommons.org/blog/authors/TimidRobot/"&gt;Timid Robot&lt;/a&gt; and &lt;a href="https://opensource.creativecommons.org/blog/authors/shafiya/"&gt;Shafiya Heena&lt;/a&gt; were always present there whenever I needed them. Be it the weekly review meetings, or my confusion related to the development environment, I never felt I’m alone in this . I am excited to work further under your guidance and contribute to the shared vision of Creative Commons.&lt;/p&gt;
+&lt;h2 id="join-the-discussion"&gt;Join The Discussion&lt;/h2&gt;&lt;p&gt;There are numerous ways you can join the discussion and contribute to the project. Whether it’s by providing feedback, contributing to the codebase or simply spreading the word about open knowledge, your participation is highly encouraged. You can check out our github repository &lt;a href="https://github.com/creativecommons/cc-resource-archive"&gt;here&lt;/a&gt;, to find the codebase and join the discussion over there.&lt;/p&gt;
 </content></entry><entry><title>New CreativeCommons.org launched 2023 September</title><link href="http://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/" rel="alternate"></link><updated>2024-05-28T00:00:00Z</updated><author><name>['sara', 'shafiya', 'TimidRobot']</name></author><id>urn:uuid:7ea5e14e-e9cb-35f3-8be8-e344b66f7a7e</id><content type="html">&lt;p&gt;Creative Commons (CC) launched a new
 &lt;a href="https://creativecommons.org/"&gt;CreativeCommons.org&lt;/a&gt; website on 2023 September
 27th. This relaunch included not just the website, but the entire technology
@@ -3417,54 +3508,4 @@ files are moved to the failure directory for future inspection.&lt;/p&gt;
 &lt;li&gt;Update the visualization with a more recent and bigger dataset&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;p&gt;Overall, it was fantastic and rejuvenating experience working on these tasks. Now that you have read this blog till the end, I hope that you enjoyed it. For more information visit our &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;Github repo&lt;/a&gt;. We are looking forward to hearing from you on linked commons. Our &lt;a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz"&gt;slack&lt;/a&gt; doors are always open to you, see you there. :)&lt;/p&gt;
-</content></entry><entry><title>Internationalization continued: Modifying tests</title><link href="http://opensource.creativecommons.org/blog/entries/cc-search-accessibility-week5-6/" rel="alternate"></link><updated>2020-07-10T00:00:00Z</updated><author><name>['AyanChoudhary']</name></author><id>urn:uuid:91d205ed-b94e-3d2a-9c30-5af7f04506ac</id><content type="html">&lt;p&gt;These are the fifth and sixth weeks of my internship with CC. I am working on improving the accessibility of cc-search and internationalizing it as well.
-This post contains yet another important aspect to be taken care of while internationalizing the Vue components, i.e. modifying tests to include the changes.&lt;/p&gt;
-&lt;p&gt;The components which were left are the two pages displaying the most content:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/blob/develop/src/pages/BrowsePage.vue"&gt;Browse page&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/blob/develop/src/pages/PhotoDetailPage.vue"&gt;ImageDetail page&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The above two pages too were handled similar to the remaining pages, special care had to be taken in case of ImageDetail page since there are too many components in different files.
-By this point we also have our json structure figured out, mostly and are ready to push the json for fetching further translations.&lt;/p&gt;
-&lt;p&gt;Now let's look at the modifications required in the tests. We generally use &lt;code&gt;$t&lt;/code&gt; to access strings from the locales json, but this method/custom-component is not present in the testing vue instance, so we had to inject this method usin localVue and a custom i18n instance.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const localVue = createLocalVue();
-localVue.use(Vuex);
-localVue.use(VueI18n);
-const messages = require('@/locales/en.json');
-
-const i18n = new VueI18n({
-  locale: 'en',
-  fallbackLocale: 'en',
-  messages,
-});
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we inject this 18n component into our vue instance and we have access to our &lt;code&gt;$t&lt;/code&gt;, but there is still one more step left.
-We still need to mock its functionality in the tests. So we create a mock &lt;code&gt;$t&lt;/code&gt; instance to mock in our component. The final code is given below:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;const $t = (key) =&amp;gt; i18n.messages[key];
-
-options = {
-    mocks: {
-        $t,
-    },
-};
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now we are ready to render our component using these custom options with mocks for testing.&lt;/p&gt;
-&lt;p&gt;And &lt;em&gt;drum rolls&lt;/em&gt; we have successfully completed Internationalization of the complete cc search. Below are the images for some of the completed pages:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week5-6/final.png" alt="final.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week5-6/finalAbout.png" alt="finalAbout.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/entries/cc-search-accessibility-week5-6/finalImageDetail.png" alt="finalImageDetail.png"&gt;&lt;/p&gt;
-&lt;p&gt;The issues closed with the completion of Internationalization are:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/issues/487"&gt;[META] Internationalisation (i18n) Setup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/issues/941"&gt;Set up vue-i18n infrastructure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/issues/942"&gt;Create locale messages format JSON structure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/issues/943"&gt;Allow users to change locale on the client&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;You can track the work done for these weeks through this PR:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://github.com/cc-archive/cccatalog-frontend/pull/1040"&gt;Localize browsepage and single-result page&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/cc-archive/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://creativecommons.org/author/zackcreativecommons-org/"&gt;Zack Krida&lt;/a&gt; and &lt;a href="/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
-Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 </content></entry></feed>
