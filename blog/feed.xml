@@ -140,7 +140,7 @@ especially for a system that engages with substantial streams of data. &lt;br&gt
 &lt;p&gt;As a selected developer for Google Summer of Code 2024, 
 my goal this summer is to develop automation software for data gathering, flow, and report generation, 
 ensuring that reports are never more than 3 months out-of-date. This blog post serves as a technical journal
-for my endeavor till the midterm evaluation period. Part 2 will be posted after successful completion of the
+for my endeavor till the midterm evaluation period. &lt;strong&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2024-08-22-automating-quantifying/"&gt;Automating Quantifying the Commons: Part 2&lt;/a&gt;&lt;/strong&gt; will be posted after successful completion of the
 entire summer program.&lt;/p&gt;
 &lt;h2 id="pre-program-knowledge-and-associated-challenges"&gt;Pre-Program Knowledge and Associated Challenges&lt;/h2&gt;&lt;hr&gt;
 &lt;p&gt;As an undergraduate CS student, I had not yet had any experience working with codebases
@@ -256,7 +256,7 @@ I'm looking forward to more levels of growth and accomplishments in the second h
 I'll be back with Part 2 at the end of the summer with an updated, completed project!&lt;/p&gt;
 &lt;h2 id="additional-readings"&gt;Additional Readings&lt;/h2&gt;&lt;hr&gt;
 &lt;ul&gt;
-&lt;li&gt;(Stay posted for the second part of this series, coming soon!) Automating Quantifying the Commons: Part 2&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2024-08-22-automating-quantifying/"&gt;Automating Quantifying the Commons: Part 2&lt;/a&gt; | Author: Naisha Sinha | Aug. 2024&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"&gt;Data Science Discovery: Quantifying the Commons&lt;/a&gt; | Author: Dun-Ming Huang (Brandon Huang) | Dec. 2022&lt;/li&gt;
 &lt;/ul&gt;
 </content></entry><entry><title>Empowering Open Knowledge: GSoC 2024 With Creative Commons</title><link href="http://opensource.creativecommons.org/blog/entries/empowering-open-knowledge-gsoc-2024-with-creative-commons/" rel="alternate"></link><updated>2024-07-10T00:00:00Z</updated><author><name>['Murdock9803']</name></author><id>urn:uuid:ff375fe1-1d83-3c9f-b782-2b6166675041</id><content type="html">&lt;p&gt;Hello everyone! My name is Ayush Sahu, and I am thrilled to announce that I have joined Creative Commons this summer through the &lt;a href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code (2024)&lt;/a&gt; program. As a passionate advocate for open knowledge and a firm believer in the power of collaborative innovation, I am grateful to contribute to an organization that has been championing the free exchange of information and creativity for years.&lt;/p&gt;
