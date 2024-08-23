@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2024-08-22T00:00:00Z</updated><author><name></name></author><entry><title>Automating Quantifying the Commons: Part 2</title><link href="http://opensource.creativecommons.org/blog/entries/2024-08-22-automating-quantifying/" rel="alternate"></link><updated>2024-08-22T00:00:00Z</updated><author><name>['NaishaSinha']</name></author><id>urn:uuid:8e7c9006-3567-3028-841c-c6c91d114f07</id><content type="html">&lt;p&gt;&lt;img src="/blog/entries/2024-08-22-automating-quantifying/Automating - GSoC Logo.png" alt="GSoC 2024"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2024-08-23T00:00:00Z</updated><author><name></name></author><entry><title>Local Environment Creation using Ansible and Docker: Part 2</title><link href="http://opensource.creativecommons.org/blog/entries/2024-08-23-create-local-ansible-dev-env/" rel="alternate"></link><updated>2024-08-23T00:00:00Z</updated><author><name>['amandayclee']</name></author><id>urn:uuid:e799d536-27a9-35ae-98d5-a21021bd8b52</id><content type="html">&lt;div style="text-align: center;"&gt;
+    &lt;img src="gsoc-banner.png" alt="GSoC 2024" style="max-height: 200px;"&gt;
+&lt;/div&gt;&lt;h1 id="midterm-recap"&gt;Midterm Recap&lt;/h1&gt;&lt;p&gt;I successfully created customized Dockerfiles and a docker-compose.yml for &lt;code&gt;web&lt;/code&gt;, &lt;code&gt;database&lt;/code&gt;, and &lt;code&gt;ansible&lt;/code&gt; for the past 6 weeks. However, to better replicate our production environment, which uses an AWS RDS instance, we decided to remove the customized Dockerfile for database, as SSH access is not required for the database host in this setup.&lt;/p&gt;
+&lt;h3 id="week-by-week-progress"&gt;Week-by-Week Progress&lt;/h3&gt;&lt;p&gt;Following our initial architecture design, I began working on building a bastion server. One of the key lessons I learned during this process was the value of simplicity. For instance, I had to  assess the trade-offs between creating a custom Dockerfile and using a prebuilt image maintained by the community. In the world of DevOps, some terms are often loosely defined. For example, during my research on bastion servers, I encountered various use cases such as integrating MFA, logging, and other security features. However, these were beyond the scope of our current project.&lt;/p&gt;
+&lt;p&gt;For this project, we are building a bastion server primarily to serve as a secure gateway for managing access to internal servers. This specific requirement dictated a more straightforward implementation. In this context, I also came across the concept of "YAGNI" (You Aren’t Gonna Need It), which reminds us to avoid adding unnecessary features until they are actually required. Along the way, while working with Creative Commons (CC), I learned an important lesson: &lt;strong&gt;with so many tools, software, and technologies available, it’s crucial to focus on implementing configurations and solutions that are tailored specifically to our environment and requirements.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Before setting up the bastion server, it's also very important to understand the different SSH configuration options and choose the one that best meets our security and convenience needs. For instance, passwordless SSH enhances security and convenience by enabling SSH key-based authentication, but it requires public key configuration on each server, which can be cumbersome in larger environments. SSH Agent, on the other hand, improves the security and management of private keys by keeping them in memory across multiple connections. However, it requires running the SSH Agent locally and loading keys, adding some complexity to the setup. We ultimately decided to use ProxyJump because it offers centralized control and simplifies multi-hop connections through a bastion server, which provides strong security and convenience. While ProxyJump requires moderate configuration of both the bastion and target servers, it excels in supporting multi-hop connections and ensuring secure access to internal servers.&lt;/p&gt;
+&lt;p&gt;We finalized these details in the &lt;a href="https://github.com/creativecommons/ansible-dev/pull/14"&gt;Bastion Container Creation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The next step was to explore the best approach for integrating Ansible with Docker to closely mirror a production environment. We maintained our manual provisioning approach and focused on three key integration strategies.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Option 1 involves having Ansible manage containers directly through the Docker network, where all services (&lt;code&gt;bastion&lt;/code&gt;, &lt;code&gt;ansible&lt;/code&gt;, &lt;code&gt;web&lt;/code&gt;, &lt;code&gt;db&lt;/code&gt;) operate within the same network. Ansible handles the management of the web and db containers using their container names or IPs, with the bastion server acting as a jump host only when necessary. This approach treats each container as an independent host, with Ansible responsible for installing and configuring the necessary software.&lt;/li&gt;
+&lt;li&gt;Option 2 leverages the &lt;code&gt;community.docker.docker_container_exec&lt;/code&gt; module to execute commands within Docker containers via Ansible playbooks. This method allows for application installation and configuration tasks to be performed directly inside the containers.&lt;/li&gt;
+&lt;li&gt;Option 3 involves running only the bastion and Ansible services in Docker, while using Ansible to provision the web and db services. Ansible connects to these containers through the bastion server, allowing it to manage and configure the web and db as external resources.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When comparing these options, Option 1 manages applications within containers at the application layer, offering fine-grained control and simplifying setup in a unified environment. Option 2 operates at the Docker layer, providing greater flexibility and portability, ideal for quick deployments. Option 3 provides the best isolation between services, closely simulating a production environment with enhanced security, but it requires a more complex setup.&lt;/p&gt;
+&lt;p&gt;After careful consideration, we decided to proceed with Option 1, which shifts most configuration tasks from the Dockerfile to Ansible playbooks. As I write this post, I am in the process of implementing these playbooks to configure the containers. You can follow the ongoing development in this &lt;a href="https://github.com/creativecommons/ansible-dev/"&gt;repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id="acknowledgments"&gt;Acknowledgments&lt;/h1&gt;&lt;p&gt;This experience has provided me with practical skills in implementing real-world DevOps projects. I truly enjoy learning all this knowledge outside of my daily job and dedicating my personal time to something meaningful, which is often not covered in school. If this project succeeds as a proof of concept, I can gather more feedback from users, specifically open-source developers, to enhance this setup. I mentioned this in my previous blog post, but I can’t emphasize enough how grateful I am to &lt;a href="https://opensource.creativecommons.org/blog/authors/shafiya/"&gt;Shafiya&lt;/a&gt;, &lt;a href="https://opensource.creativecommons.org/blog/authors/TimidRobot/"&gt;Timid Robot&lt;/a&gt;, and &lt;a href="https://opensource.creativecommons.org/blog/authors/sara/"&gt;Sara&lt;/a&gt; for their guidance, and to Google Summer of Code for giving me the opportunity to contribute to open source. As a content creator who both produces and enjoys various open content online, I am incredibly excited and honored to contribute my technical expertise to CC.
+Thanks to CC’ impact on society, I am committed to continually advancing my technical skills and supporting this organization in the long term. I look forward to continuing my involvement in the open-source community!&lt;/p&gt;
+</content></entry><entry><title>Automating Quantifying the Commons: Part 2</title><link href="http://opensource.creativecommons.org/blog/entries/2024-08-22-automating-quantifying/" rel="alternate"></link><updated>2024-08-22T00:00:00Z</updated><author><name>['NaishaSinha']</name></author><id>urn:uuid:8e7c9006-3567-3028-841c-c6c91d114f07</id><content type="html">&lt;p&gt;&lt;img src="/blog/entries/2024-08-22-automating-quantifying/Automating - GSoC Logo.png" alt="GSoC 2024"&gt;&lt;/p&gt;
 &lt;h2 id="introduction-midterm-recap"&gt;Introduction: Midterm Recap&lt;/h2&gt;&lt;hr&gt;
 &lt;p&gt;This post serves as a technical journal for the development process of the
 concluding stretch of Automating Quantifying the Commons, a project initiative
@@ -115,7 +132,7 @@ and I’m eager to see the innovative solutions and improvements that will unfol
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2024-07-10-automating-quantifying/"&gt;Automating Quantifying the Commons: Part 1&lt;/a&gt; | Author: Naisha Sinha | Jul. 2024&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"&gt;Data Science Discovery: Quantifying the Commons&lt;/a&gt; | Author: Dun-Ming Huang (Brandon Huang) | Dec. 2022&lt;/li&gt;
 &lt;/ul&gt;
-</content></entry><entry><title>Local Environment Creation using Ansible and Docker</title><link href="http://opensource.creativecommons.org/blog/entries/2024-07-19-create-local-ansible-dev-env/" rel="alternate"></link><updated>2024-07-18T00:00:00Z</updated><author><name>['amandayclee']</name></author><id>urn:uuid:d8f7642b-d733-3011-981a-9aadff749fef</id><content type="html">&lt;p&gt;This project explores how Creative Commons
+</content></entry><entry><title>Local Environment Creation using Ansible and Docker: Part 1</title><link href="http://opensource.creativecommons.org/blog/entries/2024-07-19-create-local-ansible-dev-env/" rel="alternate"></link><updated>2024-07-18T00:00:00Z</updated><author><name>['amandayclee']</name></author><id>urn:uuid:d8f7642b-d733-3011-981a-9aadff749fef</id><content type="html">&lt;p&gt;This project explores how Creative Commons
 (CC) uses Ansible, an automated system administration tool, to build a local development environment. It is part of Google Summer of Code (GSoC) 2024.&lt;/p&gt;
 &lt;div style="text-align: center;"&gt;
     &lt;img src="gsoc-banner.png" alt="GSoC 2024" style="max-height: 200px;"&gt;
@@ -3541,67 +3558,4 @@ The corresponding changes are:&lt;/p&gt;
 &lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/cc-archive/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://creativecommons.org/author/zackcreativecommons-org/"&gt;Zack Krida&lt;/a&gt; and &lt;a href="/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
 Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-</content></entry><entry><title>Data flow: from API to DB</title><link href="http://opensource.creativecommons.org/blog/entries/data-flow-API-to-DB/" rel="alternate"></link><updated>2020-07-22T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:44db39c0-d562-3a62-b5c5-ac4babcbbe40</id><content type="html">&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;p&gt;The CC Catalog project  handles the flow of image metadata from the source or
-provider and loads it to the database, which is then surfaced to the &lt;a href="https://ccsearch.creativecommons.org/about"&gt;CC
-search&lt;/a&gt; tool. The workflows are set up for each provider to gather
-metadata about CC licensed images. These workflows are handled with the help of
-Apache Airflow. Airflow is an open source tool that helps us to schedule and
-monitor workflows.&lt;/p&gt;
-&lt;h2 id="airflow-intro"&gt;Airflow intro&lt;/h2&gt;&lt;p&gt;Apache Airflow is an open source tool that helps us to schedule tasks and
-monitor workflows . It provides an easy to use UI that makes managing tasks
-easy.  In Airflow, the tasks we want to schedule are organised in DAGs
-(Directed Acyclic Graphs). DAGs consist of a collection of tasks, and a
-relationship defined among these tasks, so that they run in an organised
-manner. DAGs files are standard python files that are loaded from  the defined
-&lt;code&gt;DAG_FOLDER&lt;/code&gt; on a host. Airflow selects all the python files in the
-&lt;code&gt;DAG_FOLDER&lt;/code&gt; that have a DAG instance defined globally, and executes them to
-create the DAG objects.&lt;/p&gt;
-&lt;h2 id="cc-catalog-workflow"&gt;CC Catalog Workflow&lt;/h2&gt;&lt;p&gt;In the CC catalog, Airflow is set up inside a docker container along with other
-services . The loader and provider workflows are inside the &lt;code&gt;dags&lt;/code&gt; directory in
-the repo &lt;a href="https://github.com/cc-archive/cccatalog/tree/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags"&gt;dag folder&lt;/a&gt;. Provider workflows are set up to pull metadata
-about CC licensed images from the respective providers , the data pulled is
-structured into a standardised format and written into a TSV (Tab Separated
-Values) file locally. These TSV files are then loaded into S3 and then finally
-to PostgreSQL DB by the loader workflow.&lt;/p&gt;
-&lt;h2 id="provider-api-workflow"&gt;Provider API workflow&lt;/h2&gt;&lt;p&gt;The provider workflows are usually scheduled in one of two time frequencies,
-daily or monthly.&lt;/p&gt;
-&lt;p&gt;Providers such as Flickr or Wikimedia Commons that are filtered using the date
-parameter are usually scheduled for daily jobs. These providers have a large
-volume of continuously changing data, and so daily updates are required to keep
-the data in sync.&lt;/p&gt;
-&lt;p&gt;Providers that are scheduled for monthly ingestion are ones with a relativley
-low volume of data, or for which filtering by date is not possible. This means
-we need to ingest the entire collection at once. Examples are museum providers
-like the &lt;a href="https://collection.sciencemuseumgroup.org.uk/"&gt;Science museum UK&lt;/a&gt; or &lt;a href="https://www.smk.dk/"&gt;Statens Museum for
-Kunst&lt;/a&gt;. We don’t expect museum providers to change data on a daily basis.&lt;/p&gt;
-&lt;p&gt;The scheduling of the DAGs by the scheduler daemons depends on a few
-parameters.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;start_date&lt;/code&gt; - it denotes the starting date from which the
-task should begin running.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;schedule_interval&lt;/code&gt; - it denotes the interval between subsequent runs, it
-can be specified with airflow keyword strings like “@daily”, “@weekly”,
-“@monthly”, “@yearly” other than these we can also schedule the interval using
-cron expression.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Example: Cleveland museum is currently scheduled for a monthly crawl with a
-starting date as &lt;code&gt;2020-01-15&lt;/code&gt;. &lt;a href="https://github.com/cc-archive/cccatalog/blob/dacb48d24c6ae9b532ff108589b9326bde0d37a3/src/cc_catalog_airflow/dags/cleveland_museum_workflow.py"&gt;cleveland_museum_workflow&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="loader-workflow"&gt;Loader workflow&lt;/h2&gt;&lt;p&gt;The data from the provider scripts are not directly loaded into S3. Instead,
-they are stored in a TSV file on the local disk, and the tsv_postgres workflow
-handles loading of data to S3, and eventually PostgreSQL. The DAG starts by
-calling the task to stage the oldest tsv file from the output directory of the
-provider scripts to the staging directory. Next, two tasks run in parallel, one
-loads the tsv file in the staging directory to S3 , while the other creates the
-loading table in the PostgreSQL database. Once the data is loaded to S3 and the
-loading table has been created, the data from S3 is loaded to the intermediate
-loading table and then finally inserted into the image table. If loading from
-S3 fails the data is loaded to PostgreSQL from the locally stored tsv file.
-When the data has been successfully transferred to the image table, the
-intermediate loading table is dropped and the tsv files in the staging
-directory are deleted. If the copying the tsv files to S3 fails or then those
-files are moved to the failure directory for future inspection.&lt;/p&gt;
-&lt;div style="text-align:center;"&gt;
-    &lt;img src="loader_workflow.png" width="1000px"/&gt;
-    &lt;p&gt; Loader workflow &lt;/p&gt;
-&lt;/div&gt;&lt;h2 id="acknowledgement"&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank Brent Moran for helping me write this blog post.&lt;/p&gt;
 </content></entry></feed>
