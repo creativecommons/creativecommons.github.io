@@ -1,0 +1,506 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Continuing Open Collaboration: GSoC 2024 With Creative Commons" />
+
+
+
+<meta property="og:description" content="As I reach the final phase of my work on the Creative Commons Resource Archive under this program, I’ve been thinking about how far we’ve come since the beginning. We started with the idea of modernizing the resource archive website, and we have built features that make it safer and more accessible. This journey has had its challenges, but it’s also been very rewarding. 
+In the first post, we discussed the early steps that set up this project. Now, as we are in the final weeks, I’m excited to share the progress we’ve made to turn the Resource Archive into a valuable tool for the community." />
+
+
+<meta property="og:url" content="/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Continuing Open Collaboration: GSoC 2024 With Creative Commons.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Continuing Open Collaboration: GSoC 2024 With Creative Commons">
+<meta name="twitter:description" content="As I reach the final phase of my work on the Creative Commons Resource Archive under this program, I’ve been thinking about how far we’ve come since the beginning. We started with the idea of modernizing the resource archive website, and we have built features that make it safer and more accessible. This journey has had its challenges, but it’s also been very rewarding. 
+In the first post, we discussed the early steps that set up this project. Now, as we are in the final weeks, I’m excited to share the progress we’ve made to turn the Resource Archive into a valuable tool for the community.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<meta name="monetization" content="$ilp.uphold.com/edR8erBDbRyq">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Continuing Open Collaboration: GSoC 2024 With Creative Commons — Creative Commons Open Source</title>
+
+<body>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item  is-active" href="/blog/entries/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+                <a class="navbar-item" href="/community/supporters/">Supporters</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/">
+              
+                Blog
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+                
+              
+              <li><a class="link" href="/blog/entries/">
+              
+                Entries
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Continuing Open Collaboration: GSoC 2024 With Creative Commons</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Continuing Open Collaboration: GSoC 2024 With Creative Commons</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/b84f9c55f00255c97f11b65641a3eb11?size=200&d=mp" alt="gravatar" />
+    
+      </figure>
+    </header>
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/Murdock9803/">Ayush Sahu</a> on 2024-08-22
+          </p>
+        </div>
+        
+          
+          <div class="series-header">
+            <span>This blog is part of the series:</span>
+            <a href="#series">GSoC 2024: CC Resource Archive</a>
+          </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>As I reach the final phase of my work on the Creative Commons Resource Archive under this program, I’ve been thinking about how far we’ve come since the beginning. We started with the idea of modernizing the <a href="https://resources.creativecommons.org/">resource archive website</a>, and we have built features that make it safer and more accessible. This journey has had its challenges, but it’s also been very rewarding. 
+In the first post, we discussed the early steps that set up this project. Now, as we are in the final weeks, I’m excited to share the progress we’ve made to turn the Resource Archive into a valuable tool for the community.</p>
+<p><img src="/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/GSoC+CC-banner.png" alt="GSoC and CC banner"></p>
+<p>Join me as I take you through this complete journey of covering new features, the hurdles we’ve overcome and the final product that I hope will continue to grow and serve the open knowledge community.</p>
+<h2 id="transitioning-from-midterm">Transitioning From Midterm</h2><p>After completing the Midterm milestone, the focus was to utilize the learnings and experience I got across the past weeks to complete the tasks mentioned in the timeline in the least time possible. My mentor suggested not to hurry up things too much, but just to work at a comfortable higher pace. This way, we can have some room for the implementation of stretch goals for the project. The midterm review provided valuable feedback, which helped guide the next steps. With a solid foundation in place, it was time to tackle the more complex challenges and polish the user experience. From enhancing the search functionality, filtering experience to improving the accessibility, the post midterm work aimed to ensure the resource archive becomes a great tool to serve the community.</p>
+<h2 id="completing-the-timeline-tasks-weeks-7-8-and-9">Completing The Timeline Tasks - Weeks 7, 8 and 9</h2><p>These three weeks were planned with the aim of completing the timeline tasks to focus on further goals of the projects. The <code>UI-related</code> tasks included Submission page, A guide for the newcomers to submit resources, and working on the filters.</p>
+<h3 id="submission-page-ui-changes">Submission Page UI Changes</h3><p>The <code>submission.html</code> page is responsible for the area where contributors come to contribute to the resource archive with their resources about Creative Commons or Open sharing of knowledge in general. 
+With the help of the <a href="https://github.com/creativecommons/cc-resource-archive/pull/315">PR#315</a>, The following tasks were performed :</p>
+<ul>
+<li>adds a new context to the element, named <code>submit-page</code>.</li>
+<li>refactors the whole html code for <code>submission.html</code> with semantic code.</li>
+<li>makes the page responsive, by adding <code>media queries</code> wherever needed.</li>
+<li>adds a step by step written guide including images, for submission of resource for new github users.</li>
+<li>ensures the page meets current CC aesthetics.</li>
+<li>adds documentation for better understanding and maintainability.</li>
+<li>formats the files with <code>prettier code formatter</code>.</li>
+</ul>
+<h3 id="submission-guide-for-newcomers">Submission guide For Newcomers</h3><p>For people not familiar with GitHub or Opening <code>Pull Requests</code> on GitHub, a comprehensive guide was added with step by step process to submit a resource to the resource archive. The guide included instructions to fork, clone the repository and also Open the PR by committing to the repository. This was accompanied with well-labeled images for better understandability. This work was achieved with the help of <a href="https://github.com/creativecommons/cc-resource-archive/pull/315">PR#315</a>. This was the final addition to the <code>submission.html</code> page and the whole tasks related to this page were completed by this.</p>
+<h3 id="filters-placement-and-functioning">Filters Placement and Functioning</h3><p>The resource archive utilizes filters to select similar resources. These filters are grouped in the form of three categories, <code>TOPIC</code>, <code>MEDIUM</code> and <code>LANGUAGE</code>. Each category has some filter options to choose from. In the previous iteration of the resource archive site, the category filters were placed in the middle of the page, and they also did not have any icon for the indication of a selected filter. 
+The <a href="https://github.com/creativecommons/cc-resource-archive/pull/316">PR#316</a> makes the filters responsiveness, and more easy to access by performing the following tasks:</p>
+<ul>
+<li>adds semantic html to <code>index.html</code> and <code>all.html</code></li>
+<li>removes the filters from <code>index.html</code>.</li>
+<li>removes inline styles from html pages.</li>
+<li>adds a new context to <code>listing.html</code>.</li>
+<li>works on the <code>see-all-resources</code> link.</li>
+<li>adds checkbox in place of <code>[x]</code> in category filters.</li>
+<li>makes the filters as a sidebar.</li>
+<li>makes the whole category filters responsive.</li>
+<li>Re-works on the <code>media-query</code> breakpoints.</li>
+<li>formats the code with <code>prettier code formatter</code>.</li>
+<li>adds documentation for the <code>index.html</code>, <code>all.html</code> and <code>style.css</code> files.</li>
+</ul>
+<h2 id="stretch-goals-and-ideation-weeks-10-11-and-12">Stretch Goals And Ideation - Weeks 10, 11 and 12</h2><p>After the completion of the tasks assigned in the timeline, we shifted the focus to the Stretch goals suggested in my proposal, and also by my mentor (<a href="https://github.com/possumbilities">Sara</a>). There were 3 major goals that were considered for a discussion. These were, Implementation of Search Functionality through <a href="https://lunrjs.com/docs/index.html">Lunr.js</a>, Improving accessibility through the inclusion of <a href="https://www.w3.org/WAI/standards-guidelines/aria/">ARIA</a> attributes to the elements in the website, and The use of <a href="https://docs.github.com/en/rest?apiVersion=2022-11-28">GitHub API</a> to automate the process of submission of resources to the site. Out of these three, the goals that were to be implemented were <code>ARIA</code> accessibility and <code>LUNR.js</code> search functionality. This was decided keeping in mind the scope of the project and the desired limit of complexity we wanted the site to have at this point.</p>
+<h3 id="aria-accessibility-and-search-functionsality-lunr.js">Aria Accessibility and Search Functionsality - LUNR.js</h3><p>My mentor suggested that I read about <code>WAI-ARIA</code> accessibility to gain insights about the process and better select the number of attributes and features we need to implement. I studied about this thoroughly and also watched some videos on the topic. I realized about the importance of having these features in our site and how greatly they impact the accessibility for different users. 
+Apart from this, we wanted to implement a search feature for the resources with the help of a lightweight searching library like <code>LUNR.js</code>. I started to read about the library and its execution process from various sources, majorly from the <a href="https://lunrjs.com/docs/index.html">LUNR Documentation</a> present in their site. After reading it and a bit of panning, I started to code for this feature. The goal was to keep the UI similar to the CC Search feature present in the header of many Creative Commons sites.</p>
+<h2 id="issues-solved-from-midterm-to-end">Issues Solved From Midterm To End</h2><p>The issues relevant to the project which have been solved in the period between midterm and final week are listed below:</p>
+<ul>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/52">#52</a> - use checkbox for <code>resourcenavtopicknown</code></li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/61">#61</a> - change UI of the homepage</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/72">#72</a> - UI refinement of the website</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/119">#119</a> - adding icon on filter text</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/274">#274</a> - Improve the UI of submission page with <code>vocabulary</code></li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/306">#306</a> - Language List Columns Collapsing on Website </li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/310">#310</a> - Add a step by step guide for submitting resources</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/311">#311</a> - html markup contains inline styles</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/313">#313</a> - improve mobile view layout for filter columns</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/314">#314</a> - remove extra white space between main content and footer</li>
+<li><a href="https://github.com/creativecommons/cc-resource-archive/issues/318">#318</a> - Links in submit page open on same page and spelling mistake-comapre</li>
+</ul>
+<h2 id="future-plans-and-execution">Future Plans And Execution</h2><p>The future plans include the execution of the Stretch Goals we discussed in the later weeks of the project. Firstly, I will be working on the <code>LUNR.js</code> search functionality and will be trying to complete this in the 13th week, and also the contributions on the <code>ARIA</code> accessibility are welcome on GitHub. Also, apart from these fixed goals, I aim to remain engaged with the community for the years ahead. I have planned to keep contributing to the organization - <a href="https://github.com/creativecommons">Creative Commons</a>, and especially the repository - <a href="https://github.com/creativecommons/cc-resource-archive">CC-Resource-Archive</a> for as long as I can. I will be contributing in the form of issues, pull requests and also code reviews. This is the first organization I got to connect professionally with, and I aim to continue to be a part of this mission of Sharing of Open Knowledge.</p>
+<h2 id="personal-growth-and-thoughts-on-completion">Personal Growth And Thoughts On Completion</h2><p>As I mentioned in my previous blog post, Being a part of Google Summer of Code was a very big deal for me. With an organization like Creative Commons, this could not have been better. I did not only know about the organization before all this GSoC 2024 preparation, but also resonated with the idea and mission behind it, and was grateful for the learning opportunities it creates for people across the world. Being at the final week of this program makes me emotional as I had a really good time with the mentors and the project. In the weekly meetings we conducted, the amount of motivation I got every single time talking with my mentor was unmatched. I was a complete newbie in terms of professional work experience, and this is the way everything should have been. I am a better individual at this point, and far more experienced. I think I will be able to guide my juniors in a better way from now onwards.
+This program also instilled in me a newfound confidence that is needed to take on tough tasks. I believe the program is less about coding skills and more about the self-improvement journey one has with their mentors and fellow contributors. One more thing which caught my interest is reviewing the Pull Requests of other contributors. My mentor suggested that I try reviewing pull requests of new contributors for experience. “This is a great learning opportunity for you” as they said it. Exactly as I was told, this was indeed a great and enjoyable opportunity.</p>
+<h2 id="conclusion">Conclusion</h2><h3 id="gratitude-and-acknowledgements">Gratitude And Acknowledgements</h3><p><a href="https://github.com/possumbilities">Sara Lovell</a>, <a href="https://github.com/TimidRobot">Timid Robot Zehta</a> and <a href="https://github.com/Shafiya-Heena">Shafiya Heena</a> were the best mentors I could have asked for this project program. My primary mentor, Sara, always encouraged me to be on track whenever I lagged behind in work. Considering this was a straightforward project, I did not predict the learning opportunities to be this much in number. I will always be grateful for these 12 weeks of support, learning and growth. Thank you !</p>
+<h3 id="for-future-contributors">For Future Contributors</h3><p>All the contributors that are hoping to contribute to this repository, or this organization, I welcome you with all my heart. If you are targeting to get selected in an Open Source mentorship program, that is a great idea. But do not just contribute to Open Source for the sake of resume building and stipend. I agree they are very good benefits, but Open Source is simply much more than this. Once you contribute to Open Source, you will fall in love with the support you get from this community, just like I did. You can find me on <a href="https://github.com/">GitHub</a> and on the <a href="https://github.com/creativecommons/cc-resource-archive">CC-Resource-Archive</a> repository mainly. Let’s have the conversation there!</p>
+
+    </div>
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
+          
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/collaboration/ ">collaboration</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc/ ">gsoc</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/gsoc-2024/ ">gsoc-2024</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/website/ ">website</a>
+            
+          
+        </div>
+      </div>
+      
+        <div class="series-posts" id="series">
+          <h5 class="title">Posts in the GSoC 2024: CC Resource Archive series</h5>
+          <ul class="posts">
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/empowering-open-knowledge-gsoc-2024-with-creative-commons/">Empowering Open Knowledge: GSoC 2024 With Creative Commons</a>
+                </li>
+              
+            
+              
+                <li class="has-color-dark-slate-gray">
+                  <i class="icon circle-filled"></i>Continuing Open Collaboration: GSoC 2024 With Creative Commons
+                </li>
+              
+            
+          </ul>
+        </div>
+      
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons"; this.page.url = "http://opensource.creativecommons.org/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+    </footer>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/entries/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
+                  <input type="submit" value="subscribe" class="button small">
+                 </form>
+               </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
