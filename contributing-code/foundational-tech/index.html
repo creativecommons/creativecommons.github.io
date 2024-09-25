@@ -1,0 +1,623 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Foundational technologies" />
+
+
+<meta property="og:description" content="Most or many of Creative Commons&#39; projects require a working
+knowledge of these foundational technologies." />
+
+<meta property="og:url" content="/contributing-code/foundational-tech/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Foundational technologies.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Foundational technologies">
+<meta name="twitter:description" content="Most or many of Creative Commons&#39; projects require a working
+knowledge of these foundational technologies.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/static/gen/script.js"></script>
+<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
+<script>
+  const globalHeaderInstance = vocabulary.createGlobalHeader();
+</script>
+<title>Foundational technologies — Creative Commons Open Source</title>
+
+<body>
+
+  <!-- Header -->
+  <header class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="has-text-black" href="/">
+          <svg
+            class="logo margin-top-small"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
+            viewBox="0 0 284 46">
+            <use href="#opensource"></use>
+          </svg>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item " href="/blog/entries/">
+            Blog
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless  is-active" tabindex="0">
+              Contribute<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
+              
+                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
+              
+                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
+              
+                <a class="navbar-item" href="/contributing-code/foundational-tech/">Foundational technologies</a>
+              
+                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
+              
+                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
+              
+                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Community<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown is-active">
+              
+                <a class="navbar-item" href="/community/">Join the Community</a>
+              
+                <a class="navbar-item" href="/community/community-team/">Community Team</a>
+              
+                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
+              
+                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
+              
+                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
+              
+                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
+              
+                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
+              
+                <a class="navbar-item" href="/community/supporters/">Supporters</a>
+              
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-arrowless " tabindex="0">
+              Work Programs<i class="icon caret-down"></i></a>
+            <div class="navbar-dropdown">
+              
+                <a class="navbar-item" href="/programs/">Overview</a>
+              
+                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
+              
+                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
+              
+                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
+              
+                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
+              
+                <a class="navbar-item" href="/programs/history/">History</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  
+    <div class="breadcrumb-container">
+      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
+        <ul>
+          
+          
+          <!-- Extracting the slugs of URL -->
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+            
+              
+              
+            
+          
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+              <li><a class="link" href="/">
+              
+                Home
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <!-- Forming the URL using extracted slugs -->
+              
+              
+              
+                
+              
+                
+              
+              <li><a class="link" href="/contributing-code/">
+              
+                Contributing Code
+              
+              </a></li>
+            
+          
+            <!-- Active link -->
+            
+              <li class="is-active"><a aria-current="page displayed">Foundational technologies</a></li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  
+
+  <!-- Body -->
+  
+  <div class="code-guidelines">
+    <header class="header">
+      <div class="container is-paddingless">
+        <h1>Foundational technologies</h1>
+        <div class="description column is-9 is-paddingless">
+          <p>Most or many of Creative Commons' projects require a working
+knowledge of these foundational technologies.</p>
+
+        </div>
+      </div>
+    </header>
+    <div class="container code-guidelines-body">
+      <div class="columns">
+        <div class="column is-one-quarter">
+          <div class="row">
+            
+              <aside class="menu sidebar-menu">
+                <ul class="menu-list">
+                  
+                    <li>
+                    <a class=" link" href="/contributing-code/projects/">Project List</a>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/contributing-code/issue-finder/">Issue Finder</a>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/contributing-code/">Contribution Guidelines</a>
+                    
+                      <ul>
+                      
+                        <li><a class=" link" href="/contributing-code/pr-guidelines/"><i class="icon circle-filled"></i>Pull Request Guidelines</a></li>
+                      
+                        <li><a class=" link" href="/contributing-code/github-repo-guidelines/"><i class="icon circle-filled"></i>GitHub Repo Guidelines</a></li>
+                      
+                        <li><a class=" link" href="/contributing-code/repo-labels/"><i class="icon circle-filled"></i>Repository Labels</a></li>
+                      
+                        <li><a class=" link" href="/contributing-code/javascript-guidelines/"><i class="icon circle-filled"></i>JavaScript Guidelines</a></li>
+                      
+                        <li><a class=" link" href="/contributing-code/python-guidelines/"><i class="icon circle-filled"></i>Python Guidelines</a></li>
+                      
+                        <li><a class=" link" href="/contributing-code/translation-guide/"><i class="icon circle-filled"></i>Translation Guide</a></li>
+                      
+                      </ul>
+                    
+                    </li>
+                    
+                      <hr class="divider">
+                    
+                  
+                    <li>
+                    <a class=" link" href="/contributing-code/usability/">Usability</a>
+                    
+                    </li>
+                    
+                  
+                </ul>
+              </aside>
+            
+          </div>
+          <div class="row padding-bottom-normal sticky-top">
+            <h4 class="b-header">On this page</h4>
+            <aside class="menu table-of-contents">
+              <ul class="menu-list">
+                
+                  <li>
+                    <a class="link" href="#step-zero">Step zero</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#slack">Slack</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#command-line-interface-cli">Command line interface (CLI)</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#getting-started-with-the-cli"><i class="icon circle-filled"></i>Getting started with the CLI</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#code-editor">Code editor</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#visual-studio-code"><i class="icon circle-filled"></i>Visual Studio Code</a></li>
+                        
+                          <li><a class="link" href="#vim"><i class="icon circle-filled"></i>Vim</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#github-and-git">GitHub and git</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#installing-github"><i class="icon circle-filled"></i>Installing GitHub</a></li>
+                        
+                          <li><a class="link" href="#installing-git"><i class="icon circle-filled"></i>Installing git</a></li>
+                        
+                          <li><a class="link" href="#getting-started-with-github-and-git"><i class="icon circle-filled"></i>Getting started with GitHub and Git</a></li>
+                        
+                          <li><a class="link" href="#cc-specifics-for-github"><i class="icon circle-filled"></i>CC specifics for GitHub</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#docker">Docker</a>
+                    
+                      <ul>
+                        
+                          <li><a class="link" href="#installing-docker"><i class="icon circle-filled"></i>Installing Docker</a></li>
+                        
+                          <li><a class="link" href="#getting-started-with-docker"><i class="icon circle-filled"></i>Getting started with Docker</a></li>
+                        
+                          <li><a class="link" href="#docker-compose"><i class="icon circle-filled"></i>Docker compose</a></li>
+                        
+                      </ul>
+                    
+                  </li>
+                
+                  <li>
+                    <a class="link" href="#next-steps">Next steps</a>
+                    
+                  </li>
+                
+              </ul>
+            </aside>
+          </div>
+        </div>
+        <div class="column content is-three-quarters">
+          <!-- disregard: vim syntax highlighting fix_ -->
+
+
+<h2 id="step-zero">Step zero</h2><p>Welcome to Creative Commons (CC) software development! We are glad you are
+here! ❤️</p>
+<p>Before engaging with our projects, please ensure you have a working knowledge
+of the following technologies:</p>
+<ol>
+<li>Slack</li>
+<li>Command line interface (CLI)</li>
+<li>Code editor</li>
+<li>GitHub and git</li>
+<li>Docker</li>
+</ol>
+<h2 id="slack">Slack</h2><p>Slack is currently our primary channel for chat and lower latency communication.</p>
+<p>For more information, see <a href="/community/">Join the CC Developer Community</a>.</p>
+<h2 id="command-line-interface-cli">Command line interface (CLI)</h2><p>Often shortened to just "command line" or referred to as the "console" or
+"terminal", the command line interface (CLI) is where quite a bit of software
+development work happens.</p>
+<h3 id="getting-started-with-the-cli">Getting started with the CLI</h3><ul>
+<li><a href="https://www.terminaltutor.com/">Terminal Tutor – learn the Command Line interactively</a></li>
+</ul>
+<h2 id="code-editor">Code editor</h2><p>A code editor or integrated development environment (IDE) provides strong
+support for software development. Which one you use is up to personal
+preference. The two editors used by the Technology team are currently Visual
+Studio Code (recommended) and Vim.</p>
+<h3 id="visual-studio-code">Visual Studio Code</h3><ul>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code - Code Editing. Redefined</a></li>
+<li>Highlighted features:<ul>
+<li><a href="https://code.visualstudio.com/docs/editor/emmet">Emmet in Visual Studio Code</a></li>
+</ul>
+</li>
+<li>Recommended plugins:<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">Docker - Visual Studio Marketplace</a> <em>makes it easy to
+build, manage, and deploy containerized applications from Visual Studio
+Code. It also provides one-click debugging of Node.js, Python, and .NET
+inside a container.</em></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter - Visual Studio Marketplace</a>: <em>is an
+opinionated code formatter.</em><ul>
+<li>Prettier is especially helpful for Web develoment (HTML, JavaScript,
+etc.)</li>
+</ul>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=stkb.rewrap">Rewrap - Visual Studio Marketplace</a><ul>
+<li>Some of our repositories hard wrap code and text at 80 characters</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="vim">Vim</h3><ul>
+<li><a href="https://www.vim.org/">welcome home : vim online</a></li>
+<li>Recommended plugins (install Vundle first):<ul>
+<li><a href="https://github.com/godlygeek/tabular">godlygeek/tabular</a>: <em>Vim script for text filtering and alignment</em><ul>
+<li>(required by vim-markdown)</li>
+</ul>
+</li>
+<li><a href="https://github.com/preservim/vim-markdown">preservim/vim-markdown</a>: <em>Markdown Vim Mode</em></li>
+<li><a href="https://github.com/VundleVim/Vundle.vim">VundleVim/Vundle.vim</a>: <em>Vundle, the plug-in manager for Vim</em></li>
+</ul>
+</li>
+</ul>
+<h2 id="github-and-git">GitHub and git</h2><p>All of our projects require a working knowledge of GitHub. It is our primary
+repository for code and we utilize many of the sites features for managing
+code and higher latency communication.</p>
+<p><a href="https://en.wikipedia.org/wiki/Git">Git - Wikipedia</a>:</p>
+<blockquote><p>Git (/ɡɪt/) is a distributed version control system that tracks
+versions of files. It is often used to control source code by programmers who
+are developing software collaboratively.</p>
+</blockquote>
+<h3 id="installing-github">Installing GitHub</h3><p>As a web service, GitHub doesn't require any installation. However, once you
+become more familiar with it, you may benefit from installing the GitHub
+command line utility:</p>
+<ul>
+<li><a href="https://cli.github.com/">GitHub CLI | Take GitHub to the command line</a></li>
+</ul>
+<h3 id="installing-git">Installing git</h3><ul>
+<li><strong>Linux:</strong> Git is optimally installed using your distribution's package
+manager. See <a href="https://git-scm.com/download/linux">Git- Download for Linux and Unix</a> for a wide range
+of popular distros.</li>
+<li><strong>macOS:</strong> Mac users can install Git using these instructions: <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#_installing_on_macos">Git -
+Installing Git - Installing on macOS</a></li>
+<li><strong>Windows:</strong><ul>
+<li>You must use Windows 10 or 11 with Windows Subsystem for Linux (WSL2). For
+installation instructions: see <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Install WSL | Microsoft Learn</a>.</li>
+<li>Git should be installed within WSL2, using the appropriate Linux
+installation method. For WSL2 Ubuntu, the command is:<div class="hll"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</pre></div>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="getting-started-with-github-and-git">Getting started with GitHub and Git</h3><p>Thankfully GitHub's documentation is relatively robust. Please see:</p>
+<ul>
+<li><a href="https://docs.github.com/en/get-started">Get started with GitHub documentation - GitHub Docs</a><ul>
+<li><a href="https://docs.github.com/en/get-started/using-github/github-flow">GitHub flow - GitHub Docs</a></li>
+</ul>
+</li>
+<li><a href="https://githubtraining.github.io/training-manual/#/">GitHub Training Manual</a></li>
+</ul>
+<h3 id="cc-specifics-for-github">CC specifics for GitHub</h3><p>For some specifics on how we use GitHub, please see the following information
+on this site:</p>
+<ul>
+<li><a href="/contributing-code/pr-guidelines/">Pull Request Guidelines — Creative Commons Open Source</a></li>
+<li><a href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines — Creative Commons Open Source</a></li>
+<li><a href="/contributing-code/repo-labels/">Repository Labels — Creative Commons Open Source</a></li>
+</ul>
+<h2 id="docker">Docker</h2><p><a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker (software) - Wikipedia</a>:</p>
+<blockquote><p>Docker is a set of platform as a service (PaaS) products that use OS-level
+virtualization to deliver software in packages called containers. [...]</p>
+<p>Docker is a tool that is used to automate the deployment of applications in
+lightweight containers so that applications can work efficiently in different
+environments in isolation.</p>
+</blockquote>
+<h3 id="installing-docker">Installing Docker</h3><ul>
+<li><strong>Linux:</strong> Both Docker Desktop and Docker Engine are separately supported on
+Linux. Both include the required Compose command plugin, but Docker Engine is
+typically much easier to install:<ul>
+<li><em>Recommended:</em> See <a href="https://docs.docker.com/engine/install">Install Docker Engine | Docker
+Docs</a> for links to installation instructions for
+Docker Engine and Compose for various Linux distributions.</li>
+<li>See <a href="https://docs.docker.com/desktop/install/linux-install">Install Docker Desktop on Linux | Docker Docs</a>
+for links to instructions for the graphical desktop app that includes the
+commandline interface and Compose</li>
+</ul>
+</li>
+<li><strong>macOS:</strong> Docker Desktop can be installed using these instructions: <a href="https://docs.docker.com/desktop/install/mac-install">Install
+Docker Desktop on Mac | Docker Docs</a>.</li>
+<li><strong>Windows:</strong> Docker Desktop should be installed on Windows itself and
+integrated with Windows Subsystem for Linux (WSL2) as explained in <a href="https://docs.docker.com/desktop/windows/wsl">Docker
+Desktop WSL 2 backend on Windows | Docker Docs</a>. Unlike Git,
+you should not install Docker within your WSL2 environment. For installation
+instructions: see <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Install WSL | Microsoft Learn</a>.</li>
+</ul>
+<h3 id="getting-started-with-docker">Getting started with Docker</h3><ul>
+<li><a href="https://docker-curriculum.com/">A Docker Tutorial for Beginners</a></li>
+</ul>
+<h3 id="docker-compose">Docker compose</h3><p>Our projects use <a href="https://docs.docker.com/compose/">Docker Compose | Docker Docs</a>.</p>
+<h2 id="next-steps">Next steps</h2><p>We have added a lot of documentation (ex. language guides) and tooling (issue
+finder) to this site that cover frequently asked questions and confusions.
+Please explore this site and reach out on Slack for additional assistance.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
+          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
+            <span class="has-text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 304 73">
+                <use href="#logomark"></use>
+              </svg>
+            </span>
+          </a>
+          <div>
+            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
+            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
+            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
+          </div>
+          <div class="margin-vertical-large">
+            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">instagram</i>
+            </a>
+            <a href="https://www.twitter.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">twitter</i>
+            </a>
+            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">facebook</i>
+            </a>
+            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
+              rel="noopener">
+              <i class="icon margin-right-small is-size-4">linkedin</i>
+            </a>
+          </div>
+        </div>
+        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
+          <div class="columns">
+            <div class="column is-full">
+              <nav class="footer-navigation">
+                <ul class="menu">
+                  <li>
+                    <a href="/blog/entries/" class="menu-item">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/community/community-team/" class="menu-item">Community Team</a>
+                  </li>
+                  <li>
+                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
+                  </li>
+                  <li>
+                    <a href="/archives/" class="menu-item">Archives</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-two-thirds">
+              <div class="subscription">
+                <h5 class="b-header">Subscribe to our newsletter</h5>
+                <form class="newsletter">
+                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
+                  <input type="submit" value="subscribe" class="button small">
+                 </form>
+               </div>
+              <div class="attribution margin-top-bigger">
+                <p class="caption">
+                  Except where otherwise
+                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
+                  content on this site is licensed under a
+                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
+                    Attribution 4.0 International license</a>.
+                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
+                  by
+                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
+                </p>
+                <div class="margin-top-smaller">
+                  <i class="icon margin-right-small is-size-4">cclogo</i>
+                  <i class="icon margin-right-small is-size-4">ccby</i>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <aside class="donate-section">
+                <h5>Our work relies on you!</h5>
+                <p>Help us keep the internet free and open.</p>
+                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
+                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
+                  Donate now
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
