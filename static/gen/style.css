@@ -1146,7 +1146,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   margin-top: 0.5rem !important;
 }
 
-.margin-right-small, .single-post .single-post-footer .category .categories .tag, .hero .hero-links .button .icon, .card.entry-post.project-index .card-content .labels .button {
+.margin-right-small, .single-post .single-post-footer .category .categories .tag, .card.entry-post.project-index .card-content .labels .button {
   margin-right: 0.5rem !important;
 }
 
@@ -1433,7 +1433,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding-right: 0.25rem !important;
 }
 
-.padding-vertical-smaller, .hero .hero-links .button .icon, .table-of-progress .step .number, .table-of-progress .step .is-active, .table-of-progress .step :hover .number, .table-of-progress .step :hover .is-active, .card.entry-post.project-index .card-content .external-links .button .icon, .card.entry-post.project-index .card-content .site-link .icon {
+.padding-vertical-smaller, .table-of-progress .step .number, .table-of-progress .step .is-active, .table-of-progress .step :hover .number, .table-of-progress .step :hover .is-active, .card.entry-post.project-index .card-content .external-links .button .icon, .card.entry-post.project-index .card-content .site-link .icon {
   padding-top: 0.25rem !important;
   padding-bottom: 0.25rem !important;
 }
@@ -10321,6 +10321,14 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 
 .hero .hero-links .button {
   text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  height: fit-content;
+  max-width: 300px;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 1.2;
+  white-space: normal;
 }
 @media screen and (min-width: 1312px) {
   .hero .hero-image {
