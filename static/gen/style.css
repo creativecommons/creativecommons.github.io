@@ -10499,6 +10499,10 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .project-ideas .body .back-to-list {
   text-decoration: none;
 }
+.card-title {
+  word-wrap: break-word;
+}
+
 .cc-search-guide .body .content h4 {
   color: rgb(176, 176, 176);
 }
