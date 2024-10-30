@@ -10319,6 +10319,9 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   opacity: 1;
 }
 
+.hero .hero-title .has-text-orange {
+  color: rgb(251, 119, 41);
+}
 .hero .hero-links .button {
   text-decoration: none;
   display: inline-block;
