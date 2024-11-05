@@ -488,7 +488,7 @@ fieldset[disabled] .file-name, fieldset[disabled] .select select, .select fields
 }
 
 a.has-text-white:hover, .image a.bookmark-icon:hover, .image a.image-title:hover, a.has-text-white:focus, .image a.bookmark-icon:focus, .image a.image-title:focus {
-  color: #e6e6e6 !important;
+  color: rgb(229.5, 229.5, 229.5) !important;
 }
 
 .has-background-white {
@@ -512,7 +512,7 @@ a.has-text-black:hover, .image a.image-icons:hover, a.has-text-black:focus, .ima
 }
 
 a.has-text-light:hover, a.has-text-light:focus {
-  color: #dbdbdb !important;
+  color: hsl(0, 0%, 86%) !important;
 }
 
 .has-background-light {
@@ -524,7 +524,7 @@ a.has-text-light:hover, a.has-text-light:focus {
 }
 
 a.has-text-dark:hover, a.has-text-dark:focus {
-  color: #1c1c1c !important;
+  color: hsl(0, 0%, 11%) !important;
 }
 
 .has-background-dark {
@@ -536,7 +536,7 @@ a.has-text-dark:hover, a.has-text-dark:focus {
 }
 
 a.has-text-primary:hover, a.has-text-primary:focus {
-  color: #9e3400 !important;
+  color: rgb(158, 52.1626794258, 0) !important;
 }
 
 .has-background-primary {
@@ -544,27 +544,27 @@ a.has-text-primary:hover, a.has-text-primary:focus {
 }
 
 .has-text-primary-light {
-  color: #fff1eb !important;
+  color: rgb(255, 241.3349282297, 234.6) !important;
 }
 
 a.has-text-primary-light:hover, a.has-text-primary-light:focus {
-  color: #ffcfb8 !important;
+  color: rgb(255, 207.1722488038, 183.6) !important;
 }
 
 .has-background-primary-light {
-  background-color: #fff1eb !important;
+  background-color: rgb(255, 241.3349282297, 234.6) !important;
 }
 
 .has-text-primary-dark {
-  color: #eb4d00 !important;
+  color: rgb(234.6, 77.4516746411, 0) !important;
 }
 
 a.has-text-primary-dark:hover, a.has-text-primary-dark:focus {
-  color: #ff691f !important;
+  color: rgb(255, 104.6842105263, 30.6) !important;
 }
 
 .has-background-primary-dark {
-  background-color: #eb4d00 !important;
+  background-color: rgb(234.6, 77.4516746411, 0) !important;
 }
 
 .has-text-link {
@@ -572,7 +572,7 @@ a.has-text-primary-dark:hover, a.has-text-primary-dark:focus {
 }
 
 a.has-text-link:hover, a.has-text-link:focus {
-  color: #9e3400 !important;
+  color: rgb(158, 52.1626794258, 0) !important;
 }
 
 .has-background-link {
@@ -580,27 +580,27 @@ a.has-text-link:hover, a.has-text-link:focus {
 }
 
 .has-text-link-light {
-  color: #fff1eb !important;
+  color: rgb(255, 241.3349282297, 234.6) !important;
 }
 
 a.has-text-link-light:hover, a.has-text-link-light:focus {
-  color: #ffcfb8 !important;
+  color: rgb(255, 207.1722488038, 183.6) !important;
 }
 
 .has-background-link-light {
-  background-color: #fff1eb !important;
+  background-color: rgb(255, 241.3349282297, 234.6) !important;
 }
 
 .has-text-link-dark {
-  color: #eb4d00 !important;
+  color: rgb(234.6, 77.4516746411, 0) !important;
 }
 
 a.has-text-link-dark:hover, a.has-text-link-dark:focus {
-  color: #ff691f !important;
+  color: rgb(255, 104.6842105263, 30.6) !important;
 }
 
 .has-background-link-dark {
-  background-color: #eb4d00 !important;
+  background-color: rgb(234.6, 77.4516746411, 0) !important;
 }
 
 .has-text-info {
@@ -608,7 +608,7 @@ a.has-text-link-dark:hover, a.has-text-link-dark:focus {
 }
 
 a.has-text-info:hover, a.has-text-info:focus {
-  color: #113b8f !important;
+  color: rgb(17.4407582938, 59.1469194313, 142.5592417062) !important;
 }
 
 .has-background-info {
@@ -620,7 +620,7 @@ a.has-text-info:hover, a.has-text-info:focus {
 }
 
 a.has-text-info-light:hover, a.has-text-info-light:focus {
-  color: #aabee5 !important;
+  color: rgb(169.9, 190.25, 229.1) !important;
 }
 
 .has-background-info-light {
@@ -632,7 +632,7 @@ a.has-text-info-light:hover, a.has-text-info-light:focus {
 }
 
 a.has-text-info-dark:hover, a.has-text-info-dark:focus {
-  color: #2263e4 !important;
+  color: rgb(34.0331753555, 98.6777251185, 227.9668246445) !important;
 }
 
 .has-background-info-dark {
@@ -656,7 +656,7 @@ a.has-text-success:hover, a.has-text-success:focus {
 }
 
 a.has-text-success-light:hover, a.has-text-success-light:focus {
-  color: #cbe995 !important;
+  color: rgb(203.4675324675, 233.3896103896, 148.6103896104) !important;
 }
 
 .has-background-success-light {
@@ -680,7 +680,7 @@ a.has-text-success-dark:hover, a.has-text-success-dark:focus {
 }
 
 a.has-text-warning:hover, a.has-text-warning:focus {
-  color: #d3900c !important;
+  color: rgb(210.7161016949, 143.6271186441, 12.2838983051) !important;
 }
 
 .has-background-warning {
@@ -692,7 +692,7 @@ a.has-text-warning:hover, a.has-text-warning:focus {
 }
 
 a.has-text-warning-light:hover, a.has-text-warning-light:focus {
-  color: #f6df8d !important;
+  color: rgb(246.4583333333, 222.5416666667, 140.5416666667) !important;
 }
 
 .has-background-warning-light {
@@ -704,7 +704,7 @@ a.has-text-warning-light:hover, a.has-text-warning-light:focus {
 }
 
 a.has-text-warning-dark:hover, a.has-text-warning-dark:focus {
-  color: #f5bd50 !important;
+  color: rgb(244.8093220339, 189.1525423729, 80.1906779661) !important;
 }
 
 .has-background-warning-dark {
@@ -716,7 +716,7 @@ a.has-text-warning-dark:hover, a.has-text-warning-dark:focus {
 }
 
 a.has-text-danger:hover, a.has-text-danger:focus {
-  color: #9c2e17 !important;
+  color: rgb(155.652173913, 45.9173913043, 23.347826087) !important;
 }
 
 .has-background-danger {
@@ -740,7 +740,7 @@ a.has-text-danger-light:hover, a.has-text-danger-light:focus {
 }
 
 a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
-  color: #e15538 !important;
+  color: rgb(225.1304347826, 84.7434782609, 55.8695652174) !important;
 }
 
 .has-background-danger-dark {
@@ -2515,7 +2515,7 @@ a:hover {
 
 code {
   background-color: hsl(0, 0%, 96%);
-  color: #852c00;
+  color: rgb(132.5, 43.7440191388, 0);
   font-size: 0.875em;
   font-weight: normal;
   padding: 0.25em 0.5em 0.25em;
@@ -2646,7 +2646,7 @@ table th {
   color: hsl(0, 0%, 21%);
 }
 .button.is-text:active, .button.is-text.is-active, .table-of-progress .step :hover .button.is-text.number, .table-of-progress .step :hover .button.is-text.is-active {
-  background-color: #e8e8e8;
+  background-color: hsl(0, 0%, 91%);
   color: hsl(0, 0%, 21%);
 }
 .button.is-text[disabled], fieldset[disabled] .button.is-text {
@@ -2670,7 +2670,7 @@ table th {
   color: rgb(0, 0, 0);
 }
 .button.is-white:hover, .button.is-white.is-hovered {
-  background-color: #f9f9f9;
+  background-color: rgb(248.625, 248.625, 248.625);
   border-color: transparent;
   color: rgb(0, 0, 0);
 }
@@ -2682,7 +2682,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
 }
 .button.is-white:active, .button.is-white.is-active, .table-of-progress .step :hover .button.is-white.number, .table-of-progress .step :hover .button.is-white.is-active {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
   border-color: transparent;
   color: rgb(0, 0, 0);
 }
@@ -2779,7 +2779,7 @@ table th {
   color: rgb(0, 0, 0);
 }
 .button.is-black.is-inverted:hover, .button.is-black.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-black.is-inverted[disabled], fieldset[disabled] .button.is-black.is-inverted {
   background-color: rgb(255, 255, 255);
@@ -2836,7 +2836,7 @@ table th {
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light:hover, .button.is-light.is-hovered {
-  background-color: #eeeeee;
+  background-color: hsl(0, 0%, 93.5%);
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -2845,10 +2845,10 @@ table th {
   color: rgba(0, 0, 0, 0.7);
 }
 .button.is-light:focus:not(:active), .button.is-light.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(244.8, 244.8, 244.8, 0.25);
 }
 .button.is-light:active, .button.is-light.is-active, .table-of-progress .step :hover .button.is-light.number, .table-of-progress .step :hover .button.is-light.is-active {
-  background-color: #e8e8e8;
+  background-color: hsl(0, 0%, 91%);
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -2919,7 +2919,7 @@ table th {
   color: #fff;
 }
 .button.is-dark:hover, .button.is-dark.is-hovered {
-  background-color: #2f2f2f;
+  background-color: hsl(0, 0%, 18.5%);
   border-color: transparent;
   color: #fff;
 }
@@ -2928,10 +2928,10 @@ table th {
   color: #fff;
 }
 .button.is-dark:focus:not(:active), .button.is-dark.is-focused:not(:active) {
-  box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(53.55, 53.55, 53.55, 0.25);
 }
 .button.is-dark:active, .button.is-dark.is-active, .table-of-progress .step :hover .button.is-dark.number, .table-of-progress .step :hover .button.is-dark.is-active {
-  background-color: #292929;
+  background-color: hsl(0, 0%, 16%);
   border-color: transparent;
   color: #fff;
 }
@@ -2945,7 +2945,7 @@ table th {
   color: hsl(0, 0%, 21%);
 }
 .button.is-dark.is-inverted:hover, .button.is-dark.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-dark.is-inverted[disabled], fieldset[disabled] .button.is-dark.is-inverted {
   background-color: #fff;
@@ -3002,7 +3002,7 @@ table th {
   color: #fff;
 }
 .button.is-primary:hover, .button.is-primary.is-hovered {
-  background-color: #c44100;
+  background-color: rgb(196.25, 64.7906698565, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -3014,7 +3014,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(209, 69, 0, 0.25);
 }
 .button.is-primary:active, .button.is-primary.is-active, .table-of-progress .step :hover .button.is-primary.number, .table-of-progress .step :hover .button.is-primary.is-active {
-  background-color: #b83d00;
+  background-color: rgb(183.5, 60.5813397129, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -3028,7 +3028,7 @@ table th {
   color: rgb(209, 69, 0);
 }
 .button.is-primary.is-inverted:hover, .button.is-primary.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-primary.is-inverted[disabled], fieldset[disabled] .button.is-primary.is-inverted {
   background-color: #fff;
@@ -3080,18 +3080,18 @@ table th {
   color: #fff;
 }
 .button.is-primary.is-light {
-  background-color: #fff1eb;
-  color: #eb4d00;
+  background-color: rgb(255, 241.3349282297, 234.6);
+  color: rgb(234.6, 77.4516746411, 0);
 }
 .button.is-primary.is-light:hover, .button.is-primary.is-light.is-hovered {
-  background-color: #ffe9de;
+  background-color: rgb(255, 232.7942583732, 221.85);
   border-color: transparent;
-  color: #eb4d00;
+  color: rgb(234.6, 77.4516746411, 0);
 }
 .button.is-primary.is-light:active, .button.is-primary.is-light.is-active, .table-of-progress .step :hover .button.is-primary.is-light.number {
-  background-color: #ffe0d1;
+  background-color: rgb(255, 224.2535885167, 209.1);
   border-color: transparent;
-  color: #eb4d00;
+  color: rgb(234.6, 77.4516746411, 0);
 }
 .button.is-link {
   background-color: rgb(209, 69, 0);
@@ -3099,7 +3099,7 @@ table th {
   color: #fff;
 }
 .button.is-link:hover, .button.is-link.is-hovered {
-  background-color: #c44100;
+  background-color: rgb(196.25, 64.7906698565, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -3111,7 +3111,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(209, 69, 0, 0.25);
 }
 .button.is-link:active, .button.is-link.is-active, .table-of-progress .step :hover .button.is-link.number, .table-of-progress .step :hover .button.is-link.is-active {
-  background-color: #b83d00;
+  background-color: rgb(183.5, 60.5813397129, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -3125,7 +3125,7 @@ table th {
   color: rgb(209, 69, 0);
 }
 .button.is-link.is-inverted:hover, .button.is-link.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-link.is-inverted[disabled], fieldset[disabled] .button.is-link.is-inverted {
   background-color: #fff;
@@ -3177,18 +3177,18 @@ table th {
   color: #fff;
 }
 .button.is-link.is-light {
-  background-color: #fff1eb;
-  color: #eb4d00;
+  background-color: rgb(255, 241.3349282297, 234.6);
+  color: rgb(234.6, 77.4516746411, 0);
 }
 .button.is-link.is-light:hover, .button.is-link.is-light.is-hovered {
-  background-color: #ffe9de;
+  background-color: rgb(255, 232.7942583732, 221.85);
   border-color: transparent;
-  color: #eb4d00;
+  color: rgb(234.6, 77.4516746411, 0);
 }
 .button.is-link.is-light:active, .button.is-link.is-light.is-active, .table-of-progress .step :hover .button.is-link.is-light.number {
-  background-color: #ffe0d1;
+  background-color: rgb(255, 224.2535885167, 209.1);
   border-color: transparent;
-  color: #eb4d00;
+  color: rgb(234.6, 77.4516746411, 0);
 }
 .button.is-info {
   background-color: rgb(23, 78, 188);
@@ -3196,7 +3196,7 @@ table th {
   color: #fff;
 }
 .button.is-info:hover, .button.is-info.is-hovered {
-  background-color: #1649b1;
+  background-color: rgb(21.6101895735, 73.2867298578, 176.6398104265);
   border-color: transparent;
   color: #fff;
 }
@@ -3208,7 +3208,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(23, 78, 188, 0.25);
 }
 .button.is-info:active, .button.is-info.is-active, .table-of-progress .step :hover .button.is-info.number, .table-of-progress .step :hover .button.is-info.is-active {
-  background-color: #1445a5;
+  background-color: rgb(20.2203791469, 68.5734597156, 165.2796208531);
   border-color: transparent;
   color: #fff;
 }
@@ -3222,7 +3222,7 @@ table th {
   color: rgb(23, 78, 188);
 }
 .button.is-info.is-inverted:hover, .button.is-info.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-info.is-inverted[disabled], fieldset[disabled] .button.is-info.is-inverted {
   background-color: #fff;
@@ -3278,12 +3278,12 @@ table th {
   color: rgb(23, 78, 188);
 }
 .button.is-info.is-light:hover, .button.is-info.is-light.is-hovered {
-  background-color: #c7d5ee;
+  background-color: rgb(199.225, 212.5625, 238.025);
   border-color: transparent;
   color: rgb(23, 78, 188);
 }
 .button.is-info.is-light:active, .button.is-info.is-light.is-active, .table-of-progress .step :hover .button.is-info.is-light.number {
-  background-color: #bdcdeb;
+  background-color: rgb(189.45, 205.125, 235.05);
   border-color: transparent;
   color: rgb(23, 78, 188);
 }
@@ -3293,7 +3293,7 @@ table th {
   color: #fff;
 }
 .button.is-success:hover, .button.is-success.is-hovered {
-  background-color: #007300;
+  background-color: rgb(0, 115.25, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -3305,7 +3305,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(0, 128, 0, 0.25);
 }
 .button.is-success:active, .button.is-success.is-active, .table-of-progress .step :hover .button.is-success.number, .table-of-progress .step :hover .button.is-success.is-active {
-  background-color: #006700;
+  background-color: rgb(0, 102.5, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -3319,7 +3319,7 @@ table th {
   color: rgb(0, 128, 0);
 }
 .button.is-success.is-inverted:hover, .button.is-success.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-success.is-inverted[disabled], fieldset[disabled] .button.is-success.is-inverted {
   background-color: #fff;
@@ -3375,12 +3375,12 @@ table th {
   color: rgb(0, 128, 0);
 }
 .button.is-success.is-light:hover, .button.is-success.is-light.is-hovered {
-  background-color: #dbf0b4;
+  background-color: rgb(218.8668831169, 239.8474025974, 180.4025974026);
   border-color: transparent;
   color: rgb(0, 128, 0);
 }
 .button.is-success.is-light:active, .button.is-success.is-light.is-active, .table-of-progress .step :hover .button.is-success.is-light.number {
-  background-color: #d6eeaa;
+  background-color: rgb(213.7337662338, 237.6948051948, 169.8051948052);
   border-color: transparent;
   color: rgb(0, 128, 0);
 }
@@ -3390,7 +3390,7 @@ table th {
   color: #fff;
 }
 .button.is-warning:hover, .button.is-warning.is-hovered {
-  background-color: #f1a614;
+  background-color: rgb(241.2976694915, 166.4618644068, 19.9523305085);
   border-color: transparent;
   color: #fff;
 }
@@ -3402,7 +3402,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(242, 171, 32, 0.25);
 }
 .button.is-warning:active, .button.is-warning.is-active, .table-of-progress .step :hover .button.is-warning.number, .table-of-progress .step :hover .button.is-warning.is-active {
-  background-color: #eba00e;
+  background-color: rgb(234.811440678, 160.0508474576, 13.688559322);
   border-color: transparent;
   color: #fff;
 }
@@ -3416,7 +3416,7 @@ table th {
   color: rgb(242, 171, 32);
 }
 .button.is-warning.is-inverted:hover, .button.is-warning.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-warning.is-inverted[disabled], fieldset[disabled] .button.is-warning.is-inverted {
   background-color: #fff;
@@ -3472,12 +3472,12 @@ table th {
   color: rgb(242, 171, 32);
 }
 .button.is-warning.is-light:hover, .button.is-warning.is-light.is-hovered {
-  background-color: #f9e9b0;
+  background-color: rgb(249.1145833333, 232.6354166667, 176.1354166667);
   border-color: transparent;
   color: rgb(242, 171, 32);
 }
 .button.is-warning.is-light:active, .button.is-warning.is-light.is-active, .table-of-progress .step :hover .button.is-warning.is-light.number {
-  background-color: #f8e5a4;
+  background-color: rgb(248.2291666667, 229.2708333333, 164.2708333333);
   border-color: transparent;
   color: rgb(242, 171, 32);
 }
@@ -3487,7 +3487,7 @@ table th {
   color: #fff;
 }
 .button.is-danger:hover, .button.is-danger.is-hovered {
-  background-color: #bd381c;
+  background-color: rgb(188.9130434783, 55.7293478261, 28.3369565217);
   border-color: transparent;
   color: #fff;
 }
@@ -3499,7 +3499,7 @@ table th {
   box-shadow: 0 0 0 0.125em rgba(200, 59, 30, 0.25);
 }
 .button.is-danger:active, .button.is-danger.is-active, .table-of-progress .step :hover .button.is-danger.number, .table-of-progress .step :hover .button.is-danger.is-active {
-  background-color: #b2341b;
+  background-color: rgb(177.8260869565, 52.4586956522, 26.6739130435);
   border-color: transparent;
   color: #fff;
 }
@@ -3513,7 +3513,7 @@ table th {
   color: rgb(200, 59, 30);
 }
 .button.is-danger.is-inverted:hover, .button.is-danger.is-inverted.is-hovered {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
 }
 .button.is-danger.is-inverted[disabled], fieldset[disabled] .button.is-danger.is-inverted {
   background-color: #fff;
@@ -3569,12 +3569,12 @@ table th {
   color: rgb(200, 59, 30);
 }
 .button.is-danger.is-light:hover, .button.is-danger.is-light.is-hovered {
-  background-color: #ffbcbc;
+  background-color: rgb(255, 188.25, 188.25);
   border-color: transparent;
   color: rgb(200, 59, 30);
 }
 .button.is-danger.is-light:active, .button.is-danger.is-light.is-active, .table-of-progress .step :hover .button.is-danger.is-light.number {
-  background-color: #ffb0b0;
+  background-color: rgb(255, 175.5, 175.5);
   border-color: transparent;
   color: rgb(200, 59, 30);
 }
@@ -3948,13 +3948,13 @@ table th {
   border-color: hsl(0, 0%, 96%);
 }
 .is-light.textarea:focus, .is-light.input:focus, .is-light.is-focused.textarea, .is-light.is-focused.input, .is-light.textarea:active, .is-light.input:active, .is-light.is-active.textarea, .table-of-progress .step :hover .is-light.textarea.number, .table-of-progress .step :hover .is-light.textarea.is-active, .is-light.is-active.input, .table-of-progress .step :hover .is-light.input.number, .table-of-progress .step :hover .is-light.input.is-active {
-  box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(244.8, 244.8, 244.8, 0.25);
 }
 .is-dark.textarea, .is-dark.input {
   border-color: hsl(0, 0%, 21%);
 }
 .is-dark.textarea:focus, .is-dark.input:focus, .is-dark.is-focused.textarea, .is-dark.is-focused.input, .is-dark.textarea:active, .is-dark.input:active, .is-dark.is-active.textarea, .table-of-progress .step :hover .is-dark.textarea.number, .table-of-progress .step :hover .is-dark.textarea.is-active, .is-dark.is-active.input, .table-of-progress .step :hover .is-dark.input.number, .table-of-progress .step :hover .is-dark.input.is-active {
-  box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(53.55, 53.55, 53.55, 0.25);
 }
 .is-primary.textarea, .is-primary.input {
   border-color: rgb(209, 69, 0);
@@ -4116,7 +4116,7 @@ table th {
   border-color: rgb(255, 255, 255);
 }
 .select.is-white select:hover, .select.is-white select.is-hovered {
-  border-color: #f2f2f2;
+  border-color: rgb(242.25, 242.25, 242.25);
 }
 .select.is-white select:focus, .select.is-white select.is-focused, .select.is-white select:active, .select.is-white select.is-active, .select.is-white .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-white select.number, .select.is-white .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-white select.is-active {
   box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.25);
@@ -4140,10 +4140,10 @@ table th {
   border-color: hsl(0, 0%, 96%);
 }
 .select.is-light select:hover, .select.is-light select.is-hovered {
-  border-color: #e8e8e8;
+  border-color: hsl(0, 0%, 91%);
 }
 .select.is-light select:focus, .select.is-light select.is-focused, .select.is-light select:active, .select.is-light select.is-active, .select.is-light .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-light select.number, .select.is-light .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-light select.is-active {
-  box-shadow: 0 0 0 0.125em rgba(245, 245, 245, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(244.8, 244.8, 244.8, 0.25);
 }
 .select.is-dark:not(:hover)::after {
   border-color: hsl(0, 0%, 21%);
@@ -4152,10 +4152,10 @@ table th {
   border-color: hsl(0, 0%, 21%);
 }
 .select.is-dark select:hover, .select.is-dark select.is-hovered {
-  border-color: #292929;
+  border-color: hsl(0, 0%, 16%);
 }
 .select.is-dark select:focus, .select.is-dark select.is-focused, .select.is-dark select:active, .select.is-dark select.is-active, .select.is-dark .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-dark select.number, .select.is-dark .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-dark select.is-active {
-  box-shadow: 0 0 0 0.125em rgba(54, 54, 54, 0.25);
+  box-shadow: 0 0 0 0.125em rgba(53.55, 53.55, 53.55, 0.25);
 }
 .select.is-primary:not(:hover)::after {
   border-color: rgb(209, 69, 0);
@@ -4164,7 +4164,7 @@ table th {
   border-color: rgb(209, 69, 0);
 }
 .select.is-primary select:hover, .select.is-primary select.is-hovered {
-  border-color: #b83d00;
+  border-color: rgb(183.5, 60.5813397129, 0);
 }
 .select.is-primary select:focus, .select.is-primary select.is-focused, .select.is-primary select:active, .select.is-primary select.is-active, .select.is-primary .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-primary select.number, .select.is-primary .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-primary select.is-active {
   box-shadow: 0 0 0 0.125em rgba(209, 69, 0, 0.25);
@@ -4176,7 +4176,7 @@ table th {
   border-color: rgb(209, 69, 0);
 }
 .select.is-link select:hover, .select.is-link select.is-hovered {
-  border-color: #b83d00;
+  border-color: rgb(183.5, 60.5813397129, 0);
 }
 .select.is-link select:focus, .select.is-link select.is-focused, .select.is-link select:active, .select.is-link select.is-active, .select.is-link .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-link select.number, .select.is-link .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-link select.is-active {
   box-shadow: 0 0 0 0.125em rgba(209, 69, 0, 0.25);
@@ -4188,7 +4188,7 @@ table th {
   border-color: rgb(23, 78, 188);
 }
 .select.is-info select:hover, .select.is-info select.is-hovered {
-  border-color: #1445a5;
+  border-color: rgb(20.2203791469, 68.5734597156, 165.2796208531);
 }
 .select.is-info select:focus, .select.is-info select.is-focused, .select.is-info select:active, .select.is-info select.is-active, .select.is-info .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-info select.number, .select.is-info .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-info select.is-active {
   box-shadow: 0 0 0 0.125em rgba(23, 78, 188, 0.25);
@@ -4200,7 +4200,7 @@ table th {
   border-color: rgb(0, 128, 0);
 }
 .select.is-success select:hover, .select.is-success select.is-hovered {
-  border-color: #006700;
+  border-color: rgb(0, 102.5, 0);
 }
 .select.is-success select:focus, .select.is-success select.is-focused, .select.is-success select:active, .select.is-success select.is-active, .select.is-success .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-success select.number, .select.is-success .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-success select.is-active {
   box-shadow: 0 0 0 0.125em rgba(0, 128, 0, 0.25);
@@ -4212,7 +4212,7 @@ table th {
   border-color: rgb(242, 171, 32);
 }
 .select.is-warning select:hover, .select.is-warning select.is-hovered {
-  border-color: #eba00e;
+  border-color: rgb(234.811440678, 160.0508474576, 13.688559322);
 }
 .select.is-warning select:focus, .select.is-warning select.is-focused, .select.is-warning select:active, .select.is-warning select.is-active, .select.is-warning .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-warning select.number, .select.is-warning .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-warning select.is-active {
   box-shadow: 0 0 0 0.125em rgba(242, 171, 32, 0.25);
@@ -4224,7 +4224,7 @@ table th {
   border-color: rgb(200, 59, 30);
 }
 .select.is-danger select:hover, .select.is-danger select.is-hovered {
-  border-color: #b2341b;
+  border-color: rgb(177.8260869565, 52.4586956522, 26.6739130435);
 }
 .select.is-danger select:focus, .select.is-danger select.is-focused, .select.is-danger select:active, .select.is-danger select.is-active, .select.is-danger .table-of-progress .step :hover select.number, .table-of-progress .step :hover .select.is-danger select.number, .select.is-danger .table-of-progress .step :hover select.is-active, .table-of-progress .step :hover .select.is-danger select.is-active {
   box-shadow: 0 0 0 0.125em rgba(200, 59, 30, 0.25);
@@ -4278,7 +4278,7 @@ table th {
   color: rgb(0, 0, 0);
 }
 .file.is-white:hover .file-cta, .file.is-white.is-hovered .file-cta {
-  background-color: #f9f9f9;
+  background-color: rgb(248.625, 248.625, 248.625);
   border-color: transparent;
   color: rgb(0, 0, 0);
 }
@@ -4288,7 +4288,7 @@ table th {
   color: rgb(0, 0, 0);
 }
 .file.is-white:active .file-cta, .file.is-white.is-active .file-cta, .table-of-progress .step :hover .file.is-white.number .file-cta {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
   border-color: transparent;
   color: rgb(0, 0, 0);
 }
@@ -4318,17 +4318,17 @@ table th {
   color: rgba(0, 0, 0, 0.7);
 }
 .file.is-light:hover .file-cta, .file.is-light.is-hovered .file-cta {
-  background-color: #eeeeee;
+  background-color: hsl(0, 0%, 93.5%);
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
 .file.is-light:focus .file-cta, .file.is-light.is-focused .file-cta {
   border-color: transparent;
-  box-shadow: 0 0 0.5em rgba(245, 245, 245, 0.25);
+  box-shadow: 0 0 0.5em rgba(244.8, 244.8, 244.8, 0.25);
   color: rgba(0, 0, 0, 0.7);
 }
 .file.is-light:active .file-cta, .file.is-light.is-active .file-cta, .table-of-progress .step :hover .file.is-light.number .file-cta {
-  background-color: #e8e8e8;
+  background-color: hsl(0, 0%, 91%);
   border-color: transparent;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -4338,17 +4338,17 @@ table th {
   color: #fff;
 }
 .file.is-dark:hover .file-cta, .file.is-dark.is-hovered .file-cta {
-  background-color: #2f2f2f;
+  background-color: hsl(0, 0%, 18.5%);
   border-color: transparent;
   color: #fff;
 }
 .file.is-dark:focus .file-cta, .file.is-dark.is-focused .file-cta {
   border-color: transparent;
-  box-shadow: 0 0 0.5em rgba(54, 54, 54, 0.25);
+  box-shadow: 0 0 0.5em rgba(53.55, 53.55, 53.55, 0.25);
   color: #fff;
 }
 .file.is-dark:active .file-cta, .file.is-dark.is-active .file-cta, .table-of-progress .step :hover .file.is-dark.number .file-cta {
-  background-color: #292929;
+  background-color: hsl(0, 0%, 16%);
   border-color: transparent;
   color: #fff;
 }
@@ -4358,7 +4358,7 @@ table th {
   color: #fff;
 }
 .file.is-primary:hover .file-cta, .file.is-primary.is-hovered .file-cta {
-  background-color: #c44100;
+  background-color: rgb(196.25, 64.7906698565, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -4368,7 +4368,7 @@ table th {
   color: #fff;
 }
 .file.is-primary:active .file-cta, .file.is-primary.is-active .file-cta, .table-of-progress .step :hover .file.is-primary.number .file-cta {
-  background-color: #b83d00;
+  background-color: rgb(183.5, 60.5813397129, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -4378,7 +4378,7 @@ table th {
   color: #fff;
 }
 .file.is-link:hover .file-cta, .file.is-link.is-hovered .file-cta {
-  background-color: #c44100;
+  background-color: rgb(196.25, 64.7906698565, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -4388,7 +4388,7 @@ table th {
   color: #fff;
 }
 .file.is-link:active .file-cta, .file.is-link.is-active .file-cta, .table-of-progress .step :hover .file.is-link.number .file-cta {
-  background-color: #b83d00;
+  background-color: rgb(183.5, 60.5813397129, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -4398,7 +4398,7 @@ table th {
   color: #fff;
 }
 .file.is-info:hover .file-cta, .file.is-info.is-hovered .file-cta {
-  background-color: #1649b1;
+  background-color: rgb(21.6101895735, 73.2867298578, 176.6398104265);
   border-color: transparent;
   color: #fff;
 }
@@ -4408,7 +4408,7 @@ table th {
   color: #fff;
 }
 .file.is-info:active .file-cta, .file.is-info.is-active .file-cta, .table-of-progress .step :hover .file.is-info.number .file-cta {
-  background-color: #1445a5;
+  background-color: rgb(20.2203791469, 68.5734597156, 165.2796208531);
   border-color: transparent;
   color: #fff;
 }
@@ -4418,7 +4418,7 @@ table th {
   color: #fff;
 }
 .file.is-success:hover .file-cta, .file.is-success.is-hovered .file-cta {
-  background-color: #007300;
+  background-color: rgb(0, 115.25, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -4428,7 +4428,7 @@ table th {
   color: #fff;
 }
 .file.is-success:active .file-cta, .file.is-success.is-active .file-cta, .table-of-progress .step :hover .file.is-success.number .file-cta {
-  background-color: #006700;
+  background-color: rgb(0, 102.5, 0);
   border-color: transparent;
   color: #fff;
 }
@@ -4438,7 +4438,7 @@ table th {
   color: #fff;
 }
 .file.is-warning:hover .file-cta, .file.is-warning.is-hovered .file-cta {
-  background-color: #f1a614;
+  background-color: rgb(241.2976694915, 166.4618644068, 19.9523305085);
   border-color: transparent;
   color: #fff;
 }
@@ -4448,7 +4448,7 @@ table th {
   color: #fff;
 }
 .file.is-warning:active .file-cta, .file.is-warning.is-active .file-cta, .table-of-progress .step :hover .file.is-warning.number .file-cta {
-  background-color: #eba00e;
+  background-color: rgb(234.811440678, 160.0508474576, 13.688559322);
   border-color: transparent;
   color: #fff;
 }
@@ -4458,7 +4458,7 @@ table th {
   color: #fff;
 }
 .file.is-danger:hover .file-cta, .file.is-danger.is-hovered .file-cta {
-  background-color: #bd381c;
+  background-color: rgb(188.9130434783, 55.7293478261, 28.3369565217);
   border-color: transparent;
   color: #fff;
 }
@@ -4468,7 +4468,7 @@ table th {
   color: #fff;
 }
 .file.is-danger:active .file-cta, .file.is-danger.is-active .file-cta, .table-of-progress .step :hover .file.is-danger.number .file-cta {
-  background-color: #b2341b;
+  background-color: rgb(177.8260869565, 52.4586956522, 26.6739130435);
   border-color: transparent;
   color: #fff;
 }
@@ -4569,18 +4569,18 @@ table th {
   position: relative;
 }
 .file-label:hover .file-cta {
-  background-color: #eeeeee;
+  background-color: hsl(0, 0%, 93.5%);
   color: hsl(0, 0%, 21%);
 }
 .file-label:hover .file-name {
-  border-color: #efefef;
+  border-color: rgb(238.625, 238.625, 238.625);
 }
 .file-label:active .file-cta {
-  background-color: #e8e8e8;
+  background-color: hsl(0, 0%, 91%);
   color: hsl(0, 0%, 21%);
 }
 .file-label:active .file-name {
-  border-color: #e8e8e8;
+  border-color: rgb(232.25, 232.25, 232.25);
 }
 
 .file-input {
@@ -7158,24 +7158,24 @@ table th {
   text-decoration: none;
 }
 .card.entry-post.link a:hover.has-background-tomato {
-  background-color: #ff5805 !important;
+  background-color: rgb(255, 87.5358851675, 5) !important;
 }
 .card.entry-post.link a:hover.has-background-gold,
 .card.entry-post.link .project-ideas .header .container .filter-labels a:hover,
 .project-ideas .header .container .filter-labels .card.entry-post.link a:hover {
-  background-color: #fcdf6e !important;
+  background-color: rgb(252.0251256281, 223.0201005025, 109.9748743719) !important;
 }
 .card.entry-post.link a:hover.has-background-forest-green {
   background-color: #00b300 !important;
 }
 .card.entry-post.link a:hover.has-background-dark-turquoise {
-  background-color: #18d3fa !important;
+  background-color: rgb(24.2914798206, 210.5515695067, 249.7085201794) !important;
 }
 .card.entry-post.link a:hover.has-background-dark-slate-blue {
-  background-color: #1b5ad5 !important;
+  background-color: rgb(26.6666666667, 90.1587301587, 213.3333333333) !important;
 }
 .card.entry-post.link a:hover.has-background-dark-slate-gray {
-  background-color: #4d4d4d !important;
+  background-color: rgb(76.5, 76.5, 76.5) !important;
 }
 .card.blog-entry {
   background-color: transparent;
@@ -8326,7 +8326,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-white .navbar-brand .navbar-link.is-active,
 .navbar.is-white .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-white .navbar-brand .navbar-link.number {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
   color: rgb(0, 0, 0);
 }
 .navbar.is-white .navbar-brand .navbar-link::after {
@@ -8358,7 +8358,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-white .navbar-end .navbar-link.is-active,
   .navbar.is-white .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-white .navbar-end .navbar-link.number {
-    background-color: #f2f2f2;
+    background-color: rgb(242.25, 242.25, 242.25);
     color: rgb(0, 0, 0);
   }
   .navbar.is-white .navbar-start .navbar-link::after,
@@ -8370,7 +8370,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-white .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-white .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-white .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #f2f2f2;
+    background-color: rgb(242.25, 242.25, 242.25);
     color: rgb(0, 0, 0);
   }
   .navbar.is-white .navbar-dropdown a.navbar-item.is-active, .navbar.is-white .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-white .navbar-dropdown a.navbar-item.number {
@@ -8458,7 +8458,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-light .navbar-brand .navbar-link.is-active,
 .navbar.is-light .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-light .navbar-brand .navbar-link.number {
-  background-color: #e8e8e8;
+  background-color: hsl(0, 0%, 91%);
   color: rgba(0, 0, 0, 0.7);
 }
 .navbar.is-light .navbar-brand .navbar-link::after {
@@ -8490,7 +8490,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-light .navbar-end .navbar-link.is-active,
   .navbar.is-light .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-light .navbar-end .navbar-link.number {
-    background-color: #e8e8e8;
+    background-color: hsl(0, 0%, 91%);
     color: rgba(0, 0, 0, 0.7);
   }
   .navbar.is-light .navbar-start .navbar-link::after,
@@ -8502,7 +8502,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-light .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-light .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-light .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #e8e8e8;
+    background-color: hsl(0, 0%, 91%);
     color: rgba(0, 0, 0, 0.7);
   }
   .navbar.is-light .navbar-dropdown a.navbar-item.is-active, .navbar.is-light .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-light .navbar-dropdown a.navbar-item.number {
@@ -8524,7 +8524,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-dark .navbar-brand .navbar-link.is-active,
 .navbar.is-dark .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-dark .navbar-brand .navbar-link.number {
-  background-color: #292929;
+  background-color: hsl(0, 0%, 16%);
   color: #fff;
 }
 .navbar.is-dark .navbar-brand .navbar-link::after {
@@ -8556,7 +8556,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-dark .navbar-end .navbar-link.is-active,
   .navbar.is-dark .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-dark .navbar-end .navbar-link.number {
-    background-color: #292929;
+    background-color: hsl(0, 0%, 16%);
     color: #fff;
   }
   .navbar.is-dark .navbar-start .navbar-link::after,
@@ -8568,7 +8568,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-dark .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-dark .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-dark .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #292929;
+    background-color: hsl(0, 0%, 16%);
     color: #fff;
   }
   .navbar.is-dark .navbar-dropdown a.navbar-item.is-active, .navbar.is-dark .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-dark .navbar-dropdown a.navbar-item.number {
@@ -8590,7 +8590,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-primary .navbar-brand .navbar-link.is-active,
 .navbar.is-primary .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-primary .navbar-brand .navbar-link.number {
-  background-color: #b83d00;
+  background-color: rgb(183.5, 60.5813397129, 0);
   color: #fff;
 }
 .navbar.is-primary .navbar-brand .navbar-link::after {
@@ -8622,7 +8622,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-primary .navbar-end .navbar-link.is-active,
   .navbar.is-primary .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-primary .navbar-end .navbar-link.number {
-    background-color: #b83d00;
+    background-color: rgb(183.5, 60.5813397129, 0);
     color: #fff;
   }
   .navbar.is-primary .navbar-start .navbar-link::after,
@@ -8634,7 +8634,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-primary .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-primary .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-primary .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #b83d00;
+    background-color: rgb(183.5, 60.5813397129, 0);
     color: #fff;
   }
   .navbar.is-primary .navbar-dropdown a.navbar-item.is-active, .navbar.is-primary .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-primary .navbar-dropdown a.navbar-item.number {
@@ -8656,7 +8656,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-link .navbar-brand .navbar-link.is-active,
 .navbar.is-link .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-link .navbar-brand .navbar-link.number {
-  background-color: #b83d00;
+  background-color: rgb(183.5, 60.5813397129, 0);
   color: #fff;
 }
 .navbar.is-link .navbar-brand .navbar-link::after {
@@ -8688,7 +8688,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-link .navbar-end .navbar-link.is-active,
   .navbar.is-link .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-link .navbar-end .navbar-link.number {
-    background-color: #b83d00;
+    background-color: rgb(183.5, 60.5813397129, 0);
     color: #fff;
   }
   .navbar.is-link .navbar-start .navbar-link::after,
@@ -8700,7 +8700,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-link .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-link .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-link .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #b83d00;
+    background-color: rgb(183.5, 60.5813397129, 0);
     color: #fff;
   }
   .navbar.is-link .navbar-dropdown a.navbar-item.is-active, .navbar.is-link .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-link .navbar-dropdown a.navbar-item.number {
@@ -8722,7 +8722,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-info .navbar-brand .navbar-link.is-active,
 .navbar.is-info .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-info .navbar-brand .navbar-link.number {
-  background-color: #1445a5;
+  background-color: rgb(20.2203791469, 68.5734597156, 165.2796208531);
   color: #fff;
 }
 .navbar.is-info .navbar-brand .navbar-link::after {
@@ -8754,7 +8754,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-info .navbar-end .navbar-link.is-active,
   .navbar.is-info .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-info .navbar-end .navbar-link.number {
-    background-color: #1445a5;
+    background-color: rgb(20.2203791469, 68.5734597156, 165.2796208531);
     color: #fff;
   }
   .navbar.is-info .navbar-start .navbar-link::after,
@@ -8766,7 +8766,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-info .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-info .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-info .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #1445a5;
+    background-color: rgb(20.2203791469, 68.5734597156, 165.2796208531);
     color: #fff;
   }
   .navbar.is-info .navbar-dropdown a.navbar-item.is-active, .navbar.is-info .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-info .navbar-dropdown a.navbar-item.number {
@@ -8788,7 +8788,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-success .navbar-brand .navbar-link.is-active,
 .navbar.is-success .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-success .navbar-brand .navbar-link.number {
-  background-color: #006700;
+  background-color: rgb(0, 102.5, 0);
   color: #fff;
 }
 .navbar.is-success .navbar-brand .navbar-link::after {
@@ -8820,7 +8820,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-success .navbar-end .navbar-link.is-active,
   .navbar.is-success .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-success .navbar-end .navbar-link.number {
-    background-color: #006700;
+    background-color: rgb(0, 102.5, 0);
     color: #fff;
   }
   .navbar.is-success .navbar-start .navbar-link::after,
@@ -8832,7 +8832,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-success .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-success .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-success .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #006700;
+    background-color: rgb(0, 102.5, 0);
     color: #fff;
   }
   .navbar.is-success .navbar-dropdown a.navbar-item.is-active, .navbar.is-success .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-success .navbar-dropdown a.navbar-item.number {
@@ -8854,7 +8854,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-warning .navbar-brand .navbar-link.is-active,
 .navbar.is-warning .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-warning .navbar-brand .navbar-link.number {
-  background-color: #eba00e;
+  background-color: rgb(234.811440678, 160.0508474576, 13.688559322);
   color: #fff;
 }
 .navbar.is-warning .navbar-brand .navbar-link::after {
@@ -8886,7 +8886,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-warning .navbar-end .navbar-link.is-active,
   .navbar.is-warning .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-warning .navbar-end .navbar-link.number {
-    background-color: #eba00e;
+    background-color: rgb(234.811440678, 160.0508474576, 13.688559322);
     color: #fff;
   }
   .navbar.is-warning .navbar-start .navbar-link::after,
@@ -8898,7 +8898,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-warning .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-warning .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-warning .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #eba00e;
+    background-color: rgb(234.811440678, 160.0508474576, 13.688559322);
     color: #fff;
   }
   .navbar.is-warning .navbar-dropdown a.navbar-item.is-active, .navbar.is-warning .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-warning .navbar-dropdown a.navbar-item.number {
@@ -8920,7 +8920,7 @@ nav.breadcrumb > ul li:hover {
 .navbar.is-danger .navbar-brand .navbar-link.is-active,
 .navbar.is-danger .navbar-brand .table-of-progress .step :hover .navbar-link.number,
 .table-of-progress .step :hover .navbar.is-danger .navbar-brand .navbar-link.number {
-  background-color: #b2341b;
+  background-color: rgb(177.8260869565, 52.4586956522, 26.6739130435);
   color: #fff;
 }
 .navbar.is-danger .navbar-brand .navbar-link::after {
@@ -8952,7 +8952,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-danger .navbar-end .navbar-link.is-active,
   .navbar.is-danger .navbar-end .table-of-progress .step :hover .navbar-link.number,
   .table-of-progress .step :hover .navbar.is-danger .navbar-end .navbar-link.number {
-    background-color: #b2341b;
+    background-color: rgb(177.8260869565, 52.4586956522, 26.6739130435);
     color: #fff;
   }
   .navbar.is-danger .navbar-start .navbar-link::after,
@@ -8964,7 +8964,7 @@ nav.breadcrumb > ul li:hover {
   .navbar.is-danger .navbar-item.has-dropdown.is-active .navbar-link,
   .navbar.is-danger .table-of-progress .step :hover .navbar-item.has-dropdown.number .navbar-link,
   .table-of-progress .step :hover .navbar.is-danger .navbar-item.has-dropdown.number .navbar-link {
-    background-color: #b2341b;
+    background-color: rgb(177.8260869565, 52.4586956522, 26.6739130435);
     color: #fff;
   }
   .navbar.is-danger .navbar-dropdown a.navbar-item.is-active, .navbar.is-danger .navbar-dropdown .table-of-progress .step :hover a.navbar-item.number, .table-of-progress .step :hover .navbar.is-danger .navbar-dropdown a.navbar-item.number {
@@ -9562,7 +9562,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   color: rgb(255, 255, 255);
 }
 .main-footer .subscription .newsletter .button:hover {
-  background-color: #909090;
+  background-color: rgb(143.5, 143.5, 143.5);
 }
 .main-footer .donate-section h5 {
   color: rgb(255, 255, 255);
