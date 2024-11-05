@@ -10322,6 +10322,12 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .hero .hero-title .has-text-orange {
   color: rgb(251, 119, 41);
 }
+@media (max-width: 530px) {
+  .hero .hero-title h1 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+  }
+}
 .hero .hero-links .button {
   text-decoration: none;
   display: inline-block;
