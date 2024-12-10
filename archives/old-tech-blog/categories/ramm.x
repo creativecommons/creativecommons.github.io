@@ -305,7 +305,9 @@
         by <a class="author-name" href="/archives/old-tech-blog/authors/ml/">ml</a> on 2007-08-03
 
         <div class="excerpt">
-          Some of these could turn out to be interesting for describing licensed content on the web, all...
+          
+            Some of these could turn out to be interesting for describing licensed content on the web, all...
+          
         </div>
       </div>
     </article>
