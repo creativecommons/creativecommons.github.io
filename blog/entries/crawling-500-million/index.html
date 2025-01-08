@@ -323,13 +323,13 @@
 <h5 id="backing-off-with-circuit-breakers">Backing off with circuit breakers</h5><p>If our heuristic fails to correctly approximate the bandwidth capabilities of a site, we are going to start encountering problems. For one, we might exceed the server-side rate limit, which means we will see <code>429 Rate Limit Exceeded</code> and <code>403 Forbidden</code> errors instead of the images we're trying to crawl. Worse yet, the upstream source might continue to happily serve requests while we suck up all of their traffic capacity, resulting in other users being unable to view the images. Clearly, in either scenario, we need to either reduce our crawl rate or even give up crawling the source entirely if it appears that we are impacting their uptime.</p>
 <p>To handle these situations, we have two tools in our toolbox: a sliding window recording the status code of every request made we've made to each domain in the last 60 seconds, and a list of the last 50 statuses for each website. If the number of errors in our one minute window exceed 10%, something is wrong; we should wait a minute before trying again. If we have encountered many errors in a row, however, that suggests that we're having trouble with a particular site, so we ought to give up crawling the source and raise an alert.</p>
 <p>Workers can keep track of this information in sorted sets in Redis. For the sliding error window, we'll sort each request by its timestamp, which will make it easy and cheap for us to expire status codes beyond the sliding window interval. Maintaining a list of the last N response codes is even easier; we just stick the status code in a list associated with the source.</p>
-<div class="hll"><pre><span></span><span class="k">class</span> <span class="nc">StatsManager</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redis</span><span class="p">):</span>
+<div class="hll"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">StatsManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">redis</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">redis</span> <span class="o">=</span> <span class="n">redis</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">known_sources</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_record_window_samples</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_record_window_samples</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Insert a status into all sliding windows. &quot;&quot;&quot;</span>
         <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
         <span class="c1"># Time-based sliding windows</span>
@@ -373,12 +373,12 @@
 <p>The answer is to implement a distributed token bucket system. The idea behind this is that each crawler has to obtain a token from Redis before making a request. Every second, the crawl monitor sets a variable containing the number of requests that can be made against a source. Each crawler process decrements the counter before making a request. If the decremented result is above zero, the worker is cleared to crawl. Otherwise, the rate limit has been reached and we should wait until a token has been obtained.</p>
 <p>The beauty of token buckets is their simplicity, performance, and resilience against failure. If our crawler monitor process dies, crawling halts completely; making a request is not possible without first acquiring a token. This is a much better alternative to the guard rails completely disappearing with the crawl monitor and allowing unbounded crawling. Further, since decrementing a counter and retrieving the result is an atomic operation in Redis, there's no risk of race conditions and therefore no need for locking. This is a huge boon for performance, as the overhead of coordinating and blocking on every single request would rapidly bog down our crawling system.</p>
 <p>To ensure that all crawling is performed at the correct speed, I wrapped <code>aiohttp.ClientSession</code> with a rate limited version of the class.</p>
-<div class="hll"><pre><span></span><span class="k">class</span> <span class="nc">RateLimitedClientSession</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aioclient</span><span class="p">,</span> <span class="n">redis</span><span class="p">):</span>
+<div class="hll"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">RateLimitedClientSession</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aioclient</span><span class="p">,</span> <span class="n">redis</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">aioclient</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">redis</span> <span class="o">=</span> <span class="n">redis</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">_get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="n">token_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CURRTOKEN_PREFIX</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
         <span class="n">tokens</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">decr</span><span class="p">(</span><span class="n">token_key</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">tokens</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
@@ -389,7 +389,7 @@
             <span class="n">token_acquired</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="n">token_acquired</span>
 
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
         <span class="n">token_acquired</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="n">token_acquired</span><span class="p">:</span>
             <span class="n">token_acquired</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_token</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
@@ -400,7 +400,7 @@
 <p>For instance, imagine that each worker is able to handle 5000 simultaneous crawling tasks, and every one of those tasks is tied to a tiny website with a very low rate limit. That means that our entire worker, which is capable of handling hundreds of crawl and analysis jobs per second, is stuck making one request per second until some faster tasks appear in the queue.</p>
 <p>In other words, we need to make sure that each worker process isn't jamming itself up with a single source. We have a <a href="https://en.wikipedia.org/wiki/Scheduling_(computing%29">scheduling problem</a>. We've naively implemented first-come-first-serve and need to switch to a different scheduling strategy.</p>
 <p>There are innumerable ways to address scheduling problems. Since there are only a few dozen sources in our system, we can get away with using a stupid scheduling algorithm: give each source equal capacity in every worker. In other words, if there are 5000 tasks to distribute and 30 sources, we can allocate 166 simultaneous tasks to each source per worker. That's plenty for our purposes. There are obvious drawbacks of this approach in that eventually there will be so many sources that we start starving high rate limit sources of work. We'll cross that bridge when we come to it; it's better to use the simplest possible approach we can get away with instead of spending all of our time on solving hypothetical future problems.</p>
-<div class="hll"><pre><span></span>    <span class="k">async</span> <span class="k">def</span> <span class="nf">_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_schedule</span><span class="p">):</span>
+<div class="hll"><pre><span></span>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_schedule</span><span class="p">):</span>
         <span class="n">raw_sources</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">smembers</span><span class="p">(</span><span class="s1">&#39;inbound_sources&#39;</span><span class="p">)</span>
         <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_sources</span><span class="p">]</span>
         <span class="n">num_sources</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
@@ -428,7 +428,7 @@
 <p>For example, the crawl monitor usually has to talk to our CC Search API (for assessing source size), Redis, and Kafka to do its job of regulating the crawl; instead of setting up a brittle and complicated integration test with all of those dependencies, we just instantiate some mock objects and pass them in. Now we can easily test individual components such as the error circuit breaker.</p>
 <p><em><center>Testing our crawl monitor's circuit breaking functionality with mock dependencies</center></em></p>
 <div class="hll"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
-<span class="k">def</span> <span class="nf">source_fixture</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">source_fixture</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Mocks the /v1/sources endpoint response. &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -446,7 +446,7 @@
     <span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">create_mock_monitor</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_mock_monitor</span><span class="p">(</span><span class="n">sources</span><span class="p">):</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">FakeAioResponse</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="n">sources</span><span class="p">)</span>
     <span class="n">session</span> <span class="o">=</span> <span class="n">FakeAioSession</span><span class="p">(</span><span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">)</span>
     <span class="n">redis</span> <span class="o">=</span> <span class="n">FakeRedis</span><span class="p">()</span>
@@ -455,7 +455,7 @@
 
 
 <span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">test_error_circuit_breaker</span><span class="p">(</span><span class="n">source_fixture</span><span class="p">):</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_error_circuit_breaker</span><span class="p">(</span><span class="n">source_fixture</span><span class="p">):</span>
     <span class="n">sources</span> <span class="o">=</span> <span class="n">source_fixture</span>
     <span class="n">redis</span><span class="p">,</span> <span class="n">monitor</span> <span class="o">=</span> <span class="n">create_mock_monitor</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
     <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;statuslast50req:example&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;500&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>

@@ -347,9 +347,9 @@ These files are:</p>
 this.</p>
 <p>The most basic test you'll want is to determine whether your DAGs can load
 without errors. To do this, you can use the following function:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">DagBag</span>
+<div class="hll"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">airflow.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">DagBag</span>
 
-<span class="k">def</span> <span class="nf">test_dags_load_with_no_errors</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_dags_load_with_no_errors</span><span class="p">():</span>
     <span class="n">dag_bag</span> <span class="o">=</span> <span class="n">DagBag</span><span class="p">(</span><span class="n">include_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">dag_bag</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;common_api_workflows.py&#39;</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dag_bag</span><span class="o">.</span><span class="n">import_errors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
@@ -363,10 +363,10 @@ load the DAG into the <code>DagBag</code> (except when you're actually testing t
 <em>can</em> be loaded). This may seem obvious, but none of the Airflow documentation
 uses this pattern. Here is an example of a function that creates a simple dag,
 and a test of the function:</p>
-<div class="hll"><pre><span></span><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
-<span class="kn">from</span> <span class="nn">airflow.operators.bash_operator</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+<div class="hll"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">airflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">airflow.operators.bash_operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">BashOperator</span>
 
-<span class="k">def</span> <span class="nf">create_dag</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_dag</span><span class="p">(</span>
         <span class="n">source</span><span class="p">,</span>
         <span class="n">script_location</span><span class="p">,</span>
         <span class="n">dag_id</span><span class="p">,</span>
@@ -397,7 +397,7 @@ and a test of the function:</p>
 
     <span class="k">return</span> <span class="n">dag</span>
 
-<span class="k">def</span> <span class="nf">test_create_dag_creates_correct_dependencies</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_create_dag_creates_correct_dependencies</span><span class="p">():</span>
     <span class="n">dag</span> <span class="o">=</span> <span class="n">create_dag</span><span class="p">(</span>
         <span class="s1">&#39;test_source&#39;</span><span class="p">,</span>
         <span class="s1">&#39;test_script_location&#39;</span><span class="p">,</span>

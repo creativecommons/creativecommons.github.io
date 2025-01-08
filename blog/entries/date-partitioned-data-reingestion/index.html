@@ -451,7 +451,7 @@ on the current <code>execution_date</code>, as well as metadata for photos uploa
 <li>3451, 3631, ..., 10291, or 10471 days prior.</li>
 </ul>
 <p>These lists can be generated using the following snippet:</p>
-<div class="hll"><pre><span></span><span class="k">def</span> <span class="nf">get_reingestion_day_list_list</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="hll"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_reingestion_day_list_list</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="p">[</span>
             <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">arg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
