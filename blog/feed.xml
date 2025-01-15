@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2024-12-10T00:00:00Z</updated><author><name></name></author><entry><title>My Outreachy Internship With Creative Commons</title><link href="http://opensource.creativecommons.org/blog/entries/my-outreachy-internship-with-creative-commons/" rel="alternate"></link><updated>2024-12-10T00:00:00Z</updated><author><name>['Queen']</name></author><id>urn:uuid:0e2dfb7f-de05-34dd-9a2e-323c02bc8def</id><content type="html">&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;p&gt;Hi, everyone! My name is Queen, and I’m a fresh pharmacy graduate with a passion for tech. My journey into coding started four years ago when I wrote my first HTML code and thought, "Yes, I’m FAANG-ready!" Spoiler: I wasn’t — but that didn’t stop me from dreaming big. Balancing pharmacy school and learning to code often felt like I was biting off more than I could chew, but I’m proud that I never gave up on my dream of becoming a front-end developer.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:cc6bc3c1-d0ad-365f-b7a6-1fcd73488c56</id><updated>2025-01-15T00:00:00Z</updated><author><name></name></author><entry><title>Skipping Google Summer of Code (GSoC) 2025</title><link href="http://opensource.creativecommons.org/blog/entries/2025-01-15-skipping-gsoc-2025/" rel="alternate"></link><updated>2025-01-15T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:ab4ea0f1-0e3e-3ff1-acf7-17962b9a0b9a</id><content type="html">&lt;p&gt;The Creative Commons (CC) technology team regrets to announce &lt;strong&gt;we will not be
+participating in Google Summer of Code (GSoC) 2025&lt;/strong&gt;. While the program remains
+excellent, we do not have the resources to participate this year and meet our
+core responsibilities.&lt;/p&gt;
+&lt;p&gt;We are grateful to Google for the program and have found incredible value in
+participating in past years. We look forward to participating in future years.
+We are thankful for the work and time of contributors. This is not an exciting
+announcement, but we will be better equipped to engage with work programs in
+the future.&lt;/p&gt;
+&lt;h2 id="preparing-to-re-engage"&gt;Preparing to re-engage&lt;/h2&gt;&lt;p&gt;In addition to revamping our CC Open Source website during the first quarter of
+this year, we will also be refreshing our structured community involvement, and
+improving our project lead resources.&lt;/p&gt;
+&lt;p&gt;Our CC Open Source website is in the process of being updated to be less
+technologically complex and to leverage the current Vocabulary design system
+(&lt;a href="http://github.com/creativecommons/vocabulary"&gt;creativecommons/vocabulary&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Our structured community involvement has languished since the technology team
+was downsized due to the COVID pandemic (202-12-07 &lt;a href="https://opensource.creativecommons.org/blog/entries/2020-12-07-upcoming-changes-to-community/"&gt;Upcoming Changes to the CC
+Open Source Community — Creative Commons Open Source&lt;/a&gt;). We will be
+simplifying community involvement so that we can be more responsive with
+increased visibility.&lt;/p&gt;
+&lt;p&gt;The most resource intensive period of a work program is the application phase.
+During this time there is a deluge of activity that has often exceeded our
+capacity. Developing our project lead resources will allow us to better set
+expectations, ease communications, and better point applicants on productive
+trajectories.&lt;/p&gt;
+&lt;h2 id="past-participation"&gt;Past participation&lt;/h2&gt;&lt;p&gt;For information on the excellent work completed during past participations,
+please see: &lt;a href="https://opensource.creativecommons.org/programs/history/"&gt;Open Source Work Programs: History — Creative Commons Open
+Source&lt;/a&gt;.&lt;/p&gt;
+</content></entry><entry><title>My Outreachy Internship With Creative Commons</title><link href="http://opensource.creativecommons.org/blog/entries/my-outreachy-internship-with-creative-commons/" rel="alternate"></link><updated>2024-12-10T00:00:00Z</updated><author><name>['Queen']</name></author><id>urn:uuid:0e2dfb7f-de05-34dd-9a2e-323c02bc8def</id><content type="html">&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;p&gt;Hi, everyone! My name is Queen, and I’m a fresh pharmacy graduate with a passion for tech. My journey into coding started four years ago when I wrote my first HTML code and thought, "Yes, I’m FAANG-ready!" Spoiler: I wasn’t — but that didn’t stop me from dreaming big. Balancing pharmacy school and learning to code often felt like I was biting off more than I could chew, but I’m proud that I never gave up on my dream of becoming a front-end developer.&lt;/p&gt;
 &lt;h2 id="my-core-values"&gt;My Core Values&lt;/h2&gt;&lt;p&gt;When I think about my core values, three words come to mind: &lt;strong&gt;Growth&lt;/strong&gt;, &lt;strong&gt;Curiosity&lt;/strong&gt;, and &lt;strong&gt;Knowledge&lt;/strong&gt;.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Growth&lt;/strong&gt;: I strive to improve in every aspect of life—mentally, physically, intellectually, and even spiritually. Every setback is just a stepping stone for me.  &lt;/li&gt;
@@ -3429,39 +3457,4 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h3 id="other-features-and-tweaks"&gt;Other features and tweaks&lt;/h3&gt;&lt;p&gt;Some other features were implemented but only relevant to our registered users, that is, the Legal Staff. They consist of Django admin customization, such as filtering records by status, and a particular thing requested, the answers of frequently asked questions need to be displayed formatted, so they are now saved as Markdown text and transformed to HTML with style on the public site, showing lists, bold text, links, etc. The admin can also see a preview while editing.&lt;/p&gt;
 &lt;h3 id="conclusion"&gt;Conclusion&lt;/h3&gt;&lt;p&gt;After reviewing all done this last month I see significant progress has been made, I have learned many things along the way: more of what Django and its ecosystem offers, about accessibility, continuous integration in Heroku and GitHub, and more. One of the things that makes me most happy is being able to be contributing and being part of an Open Source organization, knowing how it moves and works inside, something I never imagine before.&lt;/p&gt;
 &lt;p&gt;Time flies and there are less than two weeks left to finish, so if you want to follow the project here is the repository to suggest improvements or report bugs, or if you prefer something less technical you can join us on the &lt;a href="https://creativecommons.slack.com/channels/cc-dev-legal-database"&gt;slack channel&lt;/a&gt;.&lt;/p&gt;
-</content></entry><entry><title>Smithsonian Unit Code Update</title><link href="http://opensource.creativecommons.org/blog/entries/smithsonian-unit-code-update/" rel="alternate"></link><updated>2020-08-03T00:00:00Z</updated><author><name>['charini']</name></author><id>urn:uuid:23985c56-007a-3707-9f9c-66bde8adae7e</id><content type="html">&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;&lt;p&gt;The Creative Commons (CC) Catalog project collects and stores CC licensed images scattered across the internet, such
-that they can be made accessible to the general public via the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; and &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog API&lt;/a&gt;
-tools. Numerous information associated with each image, which help in the image search and categorisation process are
-stored via CC Catalog in the CC database.&lt;/p&gt;
-&lt;p&gt;In my &lt;a href="/blog/entries/flickr-sub-provider-retrieval/"&gt;previous blog post&lt;/a&gt; of this series entitled 'Flickr Sub-provider Retrieval', I discussed how
-the images from a certain provider (such as Flickr) can be categorised based on the sub-provider values (which reflects
-the underlying organisation or entity that published the images through the provider). We have similarly implemented
-the sub-provider retrieval logic for Europeana and Smithsonian providers. Unlike in Flickr and Europeana, every single
-image from Smithsonian is categorised under some sub-provider value where the sub-providers are identified based on a
-unit code value as contained in the API response (for more information please refer to the pull request &lt;a href="https://github.com/cc-archive/cccatalog/pull/455"&gt;#455&lt;/a&gt;).
-The unit code values and the corresponding sub provider values are maintained in the dictionary
-&lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt;. However, there is the possibility of the &lt;em&gt;unit code&lt;/em&gt; values being updated at the
-Smithsonian API level, and it is important that we have a mechanism of reflecting those updates in the
-&lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary as well. In this blog post, we discuss how we learn the potential
-changes to the &lt;em&gt;unit code&lt;/em&gt; values and keep the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary up-to-date.&lt;/p&gt;
-&lt;h2 id="implementation"&gt;Implementation&lt;/h2&gt;&lt;h3 id="retrieving-the-latest-unit-codes"&gt;Retrieving the latest unit codes&lt;/h3&gt;&lt;p&gt;We are required to obtain the latest &lt;em&gt;unit codes&lt;/em&gt; supported by the Smithsonian API to achieve this task. Furthermore,
-since we are only interested in image data, the &lt;em&gt;unit codes&lt;/em&gt; which are associated with images alone need to be
-retrieved. The latest Smithsonian &lt;em&gt;unit codes&lt;/em&gt; corresponding to images can be retrieved by calling the end point
-&lt;a href="https://api.si.edu/openaccess/api/v1.0/terms/unit_code?q=online_media_type:Images&amp;amp;api_key=REDACTED"&gt;https://api.si.edu/openaccess/api/v1.0/terms/unit_code?q=online_media_type:Images&amp;amp;api_key=REDACTED&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="check-for-unit-code-updates"&gt;Check for unit code updates&lt;/h3&gt;&lt;p&gt;In order to identify whether changes have occurred to the collection of &lt;em&gt;unit codes&lt;/em&gt; supported by the Smithsonian API
-(in the form of additions and/or deletions), we compare the values retrieved by calling the previously mentioned
-endpoint, with the values contained in the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary. All changes are reflected in a table
-named &lt;em&gt;smithsonian_new_unit_codes&lt;/em&gt; which contains the two fields, 'new_unit_code' and 'action'. If a new &lt;em&gt;unit code&lt;/em&gt; is
-introduced at the API level, we store that &lt;em&gt;unit code&lt;/em&gt; value with the corresponding action value 'add' in the table.
-This reflects that the given &lt;em&gt;unit code&lt;/em&gt; value needs to be added to the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS dictionary&lt;/em&gt;. If a
-&lt;em&gt;unit code&lt;/em&gt; that appears in the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary does not appear at the API level, we store
-the &lt;em&gt;unit code&lt;/em&gt; value with the corresponding action value 'delete' in the table, reflecting that it needs to be deleted
-from the dictionary.&lt;/p&gt;
-&lt;h3 id="triggering-the-unit-code-update-workflow"&gt;Triggering the unit code update workflow&lt;/h3&gt;&lt;p&gt;A separate workflow named &lt;em&gt;check_new_smithsonian_unit_codes_workflow&lt;/em&gt; allows executing the logic we discussed via the
-Airflow UI. For each execution, the table &lt;em&gt;smithsonian_new_unit_codes&lt;/em&gt; is completely cleared of previous data, and the
-latest updates to reflect in the &lt;em&gt;SMITHSONIAN_SUB_PROVIDERS&lt;/em&gt; dictionary are stored. Note that the actual updates to
-the dictionary (as reflected in the table) needs to be carried out by a person, since editing the dictionary is not
-automated. Furthermore, this workflow is expected to be executed at-least once a week, preferably prior to running
-the Smithsonian image retrieval script such that the Smithsonian sub-provider retrieval task can be run with no issue.&lt;/p&gt;
-&lt;h2 id="acknowledgement"&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I express my gratitude to my GSoC supervisor Brent Moran for assisting me with this task.&lt;/p&gt;
 </content></entry></feed>
