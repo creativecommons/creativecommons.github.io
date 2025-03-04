@@ -6,11 +6,14 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Reflecting On My Outreachy Journey With Creative Commons" />
 
 
 
-<meta property="og:url" content="/blog/categories/outreachy-2024/" />
+<meta property="og:description" content="It feels like just yesterday I was writing my first blog post, trying to wrap my head around all the things I’d be doing during this internship. And now, here I am, writing my final post—time really does fly when you’re deep in code, refactoring, and figuring things out." />
+
+
+<meta property="og:url" content="/blog/entries/reflecting-on-my-outreachy-journey-with-creative-commons/" />
 <meta property="og:type" content="article" />
 
 
@@ -22,14 +25,17 @@
   
 
   
+    
+    
+  
 
   
 
-  <meta property="og:image" content="https://cc-og-image.vercel.app/Open Source at CC.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Reflecting On My Outreachy Journey With Creative Commons.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Reflecting On My Outreachy Journey With Creative Commons">
+<meta name="twitter:description" content="It feels like just yesterday I was writing my first blog post, trying to wrap my head around all the things I’d be doing during this internship. And now, here I am, writing my final post—time really does fly when you’re deep in code, refactoring, and figuring things out.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -44,7 +50,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>outreachy-2024 — Creative Commons Open Source</title>
+<title>Reflecting On My Outreachy Journey With Creative Commons — Creative Commons Open Source</title>
 
 <body>
 
@@ -226,16 +232,16 @@
               
                 
               
-              <li><a class="link" href="/blog/categories/">
+              <li><a class="link" href="/blog/entries/">
               
-                Categories
+                Entries
               
               </a></li>
             
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed"></a></li>
+              <li class="is-active"><a aria-current="page displayed">Reflecting On My Outreachy Journey With Creative Commons</a></li>
             
           
         </ul>
@@ -245,117 +251,144 @@
 
   <!-- Body -->
   
-<div class="all-categories">
-  <div class="header">
-    <div class="container">
-      <h1>All posts categorized "outreachy-2024"</h1>
-      <a class="button small margin-top-bigger" href="/blog/categories/">See all categories</a>
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Reflecting On My Outreachy Journey With Creative Commons</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/86cfa08b8d93b4f90882a8c19d2f23f3?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-02-27
+          </p>
+        </div>
+        
+          
+          <div class="series-header">
+            <span>This blog is part of the series:</span>
+            <a href="#series">Outreachy Dec 2024: Consolidating and Implementing Vocabulary</a>
+          </div>
+        
+      </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>It feels like just yesterday I was writing my first blog post, trying to wrap my head around all the things I’d be doing during this internship. And now, here I am, writing my final post—time really does fly when you’re deep in code, refactoring, and figuring things out.</p>
+<p>When I started, I was both excited and nervous. I knew I’d be working on implementing and consolidating the Vocabulary design system across different Creative Commons ancillary websites, but I didn’t fully grasp just how much I’d learn along the way. The idea of making a meaningful contribution to such an impactful organization was thrilling, yet there was that little voice in my head wondering: <em>Can I really do this?</em></p>
+<p>Spoiler alert: Yes, I could—and I did!</p>
+<h2 id="from-day-one-to-now-the-journey">From Day One to Now: The Journey</h2><p>My first few weeks were all about getting familiar with the codebase, understanding how Vocabulary worked, and figuring out how the different websites used it. I remember spending quite a bit of time just reading through the Vocabulary documentation, going through all of the websites to identify discrepancies, and trying to piece things together.</p>
+<p>Looking back, it’s funny how something that once felt so complex now feels like second nature.</p>
+<h2 id="refactoring-the-issue-finder-removing-vue-for-a-simpler-setup">Refactoring the Issue Finder: Removing Vue for a Simpler Setup</h2><p>One of my major tasks was refactoring the issue finder tool on the Creative Commons Open Source website. This tool was built using Vue.js, but the goal was to remove Vue and refactor the JavaScript to align with the vocabulary approach - using HTML and CSS as much as possible with minimal and plain JavaScript.</p>
+<p>At first, this felt like a huge task, especially since I hadn’t used Vue before. The Vue-based setup handled filtering, UI interactions, and data fetching. Without a framework, I had to ensure that the core functionality remained intact while simplifying the code.</p>
+<p>I started by carefully analyzing how Vue was being used in the project. Then, I broke down the refactor into smaller steps:</p>
+<ul>
+<li>Removing Vue dependencies and setting up a plan to replace its functionality with vanilla JavaScript.  </li>
+<li>Refactoring the JavaScript—rewriting event listeners, handling state manually, and simplifying functions where possible.  </li>
+<li>Ensuring everything still worked-since Vue had handled reactivity, I had to make sure UI changes (like filtering issues) were updated correctly without unnecessary complexity.  </li>
+<li>Testing and fine-tuning—checking for edge cases and making sure the refactored version behaved just like the Vue version (but with cleaner, more maintainable code).  </li>
+</ul>
+<h2 id="working-with-datatables-a-whole-new-learning-curve">Working with DataTables: A Whole New Learning Curve</h2><p>One of the most interesting things I learned during my internship was working with datatables Before this project, I had never even heard of DataTables. I spent time reading through the documentation, testing out different configurations, and experimenting with how it handled datasets.</p>
+<p>Initially, I added DataTables to the project using a <strong>content delivery network (CDN)</strong>, which was the quickest way to integrate it. However, after a suggestion from my mentor, we decided it would be better to download the source code and add it as a vendor folder in the project.</p>
+<p>After setting it up, I worked on overriding some default styles to make sure datatables aligned with Vocabulary’s design system. I had to carefully adjust CSS properties, inspect the DOM structure, and test different solutions to make sure everything looked cohesive.</p>
+<p>This entire process taught me an important lesson:</p>
+<blockquote><p><strong>Documentation is your best friend.</strong> When dealing with a new tool, reading the official documentation can save so much time.</p>
+</blockquote>
+<h2 id="from-midterm-to-now-wrapping-up-and-final-contributions">From Midterm to Now: Wrapping Up and Final Contributions</h2><p>After the midterm blog, my focus shifted towards finishing up the restyling process and addressing minor bugs across the Creative Commons Open Source website. These were smaller but important refinements—ensuring consistency, fixing UI inconsistencies, and making sure everything aligned with the Vocabulary design system.</p>
+<h3 id="improving-the-search-portal">Improving the Search Portal</h3><p>One of the websites I worked on was the <strong>Search Portal</strong>. This involved:</p>
+<ul>
+<li>Defining the CC abbreviation in the header section to improve clarity and accessibility.  </li>
+<li>Restyling the search input to align visually with the provided context in Vocabulary, making it feel more integrated with the overall design.  </li>
+<li>Making downstream changes to ensure everything was up to date with Vocabulary’s latest standards.  </li>
+</ul>
+<p>The goal was to keep the existing functionality and improve on the design, making sure the search input visually aligned with the design system.</p>
+<h3 id="cc-legal-database-legaldb-planning-for-future-work">CC Legal Database(LegalDB): Planning for Future Work</h3><p>Although LegalDB was initially part of the project scope, time constraints didn’t allow for implementation. Instead, I'm focusing on laying the groundwork for future contributions by:</p>
+<ul>
+<li>Identifying necessary changes and documenting them thoroughly.  </li>
+<li>Creating all the relevant issues and linking them to the larger tracking issue on Vocabulary, ensuring that future contributors have a clear roadmap to follow.  </li>
+</ul>
+<p>This is so that even though I couldn’t complete the work myself, the transition for the next person picking it up would be smooth and well-documented.</p>
+<h2 id="whats-next">What’s Next?</h2><p>This internship has solidified my love for front-end development, especially when it comes to building interfaces that are both beautiful and functional. My next goal? To dive deeper into <strong>animations, interactivity, and making the web more immersive</strong> (looking at you, <strong>GSAP and Three.js</strong>!).</p>
+<p>I also want to keep contributing to <strong>open source</strong> and continue growing as a developer. This isn’t the end—it’s just the beginning of the next chapter.</p>
+<h2 id="a-heartfelt-goodbye-for-now">A Heartfelt Goodbye (For Now!)</h2><p>To my mentors, and everyone who supported me during this internship— thank you! Your guidance, patience, and encouragement made this experience truly special.</p>
+<p>To future Outreachy interns: If you ever feel overwhelmed, know that it’s part of the journey. Keep asking questions, keep pushing through challenges, and most importantly—<strong>enjoy the process</strong>. You’ll come out on the other side with skills, confidence, and a whole new appreciation for open source.</p>
+<p>And with that, it’s time to say goodbye to this chapter.</p>
+<p>Until then, <strong>happy coding!</strong> 🚀</p>
+
     </div>
-  </div>
-  <div class="categories-list container">
-    
-  <div class="columns is-multiline blog-entries">
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/86cfa08b8d93b4f90882a8c19d2f23f3?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/reflecting-on-my-outreachy-journey-with-creative-commons/">Reflecting On My Outreachy Journey With Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-02-27
-
-        <div class="excerpt">
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
           
-            It feels like just yesterday I was writing my first blog post, trying to wrap my head around all...
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/outreachy/ ">outreachy</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/outreachy-2024/ ">outreachy-2024</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/community/ ">community</a>
+            
           
         </div>
       </div>
-    </article>
-  </div>
-
-    
       
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/86cfa08b8d93b4f90882a8c19d2f23f3?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/outreachy-midpoint-progess-with-creative-commons/">Outreachy Midpoint Progress With Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-01-19
-
-        <div class="excerpt">
-          
-            Outreachy Midpoint Blog Post
-          
+        <div class="series-posts" id="series">
+          <h5 class="title">Posts in the Outreachy Dec 2024: Consolidating and Implementing Vocabulary series</h5>
+          <ul class="posts">
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/my-outreachy-internship-with-creative-commons/">My Outreachy Internship With Creative Commons</a>
+                </li>
+              
+            
+              
+                <li>
+                  <i class="icon circle-filled"></i><a href="/blog/entries/outreachy-midpoint-progess-with-creative-commons/">Outreachy Midpoint Progress With Creative Commons</a>
+                </li>
+              
+            
+              
+                <li class="has-color-dark-slate-gray">
+                  <i class="icon circle-filled"></i>Reflecting On My Outreachy Journey With Creative Commons
+                </li>
+              
+            
+          </ul>
         </div>
-      </div>
-    </article>
-  </div>
-
-    
       
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/86cfa08b8d93b4f90882a8c19d2f23f3?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/my-outreachy-internship-with-creative-commons/">My Outreachy Internship With Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2024-12-10
-
-        <div class="excerpt">
-          
-            IntroductionHi, everyone! My name is Queen, and I’m a fresh pharmacy graduate with a passion for...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-  </div>
-
-  </div>
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/reflecting-on-my-outreachy-journey-with-creative-commons"; this.page.url = "http://opensource.creativecommons.org/blog/entries/reflecting-on-my-outreachy-journey-with-creative-commons/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
 </div>
+    </footer>
+  </div>
 
 
   <!-- Footer -->
