@@ -6,11 +6,14 @@
 <link rel="stylesheet" href="/static/gen/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
 <meta property="og:site_name" content="Creative Commons" />
-<meta property="og:title" content="" />
+<meta property="og:title" content="Migrating from MariaDB 10.4 to 10.11 on AWS RDS" />
 
 
 
-<meta property="og:url" content="/blog/authors/shafiya/" />
+<meta property="og:description" content="As part of AWS’s request to migrate the RDS DB engine from MariaDB 10.4 to 10.11, this blog post provides a detailed, step-by-step guide to ensure a smooth transition. We’ll cover the pre-migration steps, the actual upgrade process, and post-migration verification to minimize downtime and potential issues." />
+
+
+<meta property="og:url" content="/blog/entries/2025-03-06-AWS-RDS-blog-post/" />
 <meta property="og:type" content="article" />
 
 
@@ -22,14 +25,17 @@
   
 
   
+    
+    
+  
 
   
 
-  <meta property="og:image" content="https://cc-og-image.vercel.app/Open Source at CC.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Migrating from MariaDB 10.4 to 10.11 on AWS RDS.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Migrating from MariaDB 10.4 to 10.11 on AWS RDS">
+<meta name="twitter:description" content="As part of AWS’s request to migrate the RDS DB engine from MariaDB 10.4 to 10.11, this blog post provides a detailed, step-by-step guide to ensure a smooth transition. We’ll cover the pre-migration steps, the actual upgrade process, and post-migration verification to minimize downtime and potential issues.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -44,9 +50,7 @@
 <script>
   const globalHeaderInstance = vocabulary.createGlobalHeader();
 </script>
-<title>
-  Shafiya Heena
- — Creative Commons Open Source</title>
+<title>Migrating from MariaDB 10.4 to 10.11 on AWS RDS — Creative Commons Open Source</title>
 
 <body>
 
@@ -228,16 +232,16 @@
               
                 
               
-              <li><a class="link" href="/blog/authors/">
+              <li><a class="link" href="/blog/entries/">
               
-                Authors
+                Entries
               
               </a></li>
             
           
             <!-- Active link -->
             
-              <li class="is-active"><a aria-current="page displayed"></a></li>
+              <li class="is-active"><a aria-current="page displayed">Migrating from MariaDB 10.4 to 10.11 on AWS RDS</a></li>
             
           
         </ul>
@@ -247,97 +251,183 @@
 
   <!-- Body -->
   
-<div class="author-posts">
-  <div class="header">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-quarter-tablet-only is-2-desktop">
-          <figure class="image profile">
-            <img class="profile" src="https://secure.gravatar.com/avatar/f49628fb50324d628379b469c7f008c6?size=200&d=mp" alt="gravatar">
-          </figure>
+  <div class="single-post">
+    <header class="single-post-header">
+      <div class="container">
+        <h4>CC Open Source Blog</h4>
+        <h2 class="title">Migrating from MariaDB 10.4 to 10.11 on AWS RDS</h2>
+        <div class="author columns is-marginless">
+          <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/f49628fb50324d628379b469c7f008c6?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+          <p class="padding-small">
+            by <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a> on 2025-03-24
+          </p>
         </div>
-        <div class="column content is-8">
-          <h2>
-  Shafiya Heena
-</h2>
-          
-            <div class="about"><p>Shafiya is the <a href="https://creativecommons.org/person/shafiyacreativecommons-org/">Systems Engineer</a> at Creative Commons. She is
-<code>@shafiya</code> on <a href="/community/">CC Slack</a> and <a href="https://github.com/Shafiya-Heena">Shafiya-Heena</a> on GitHub.</p>
-</div>
-          
-          <a class="button small" href="/blog/authors/">See all authors</a>
-        </div>
+        
       </div>
+    </header>
+    <div class="single-post-body content container">
+      <p>As part of AWS’s request to migrate the RDS DB engine from MariaDB 10.4 to 10.11, this blog post provides a detailed, step-by-step guide to ensure a smooth transition. We’ll cover the pre-migration steps, the actual upgrade process, and post-migration verification to minimize downtime and potential issues.</p>
+<p>Let’s dive in!</p>
+<h2 id="pre-migration-steps">Pre-Migration Steps</h2><p>Before performing the upgrade, it’s essential to ensure a structured migration plan, especially if your environment has customized database parameters. Follow these preliminary steps:</p>
+<ul>
+<li>Create a DB Parameter Group – Customizes database-specific settings for the new engine version.</li>
+<li>Create an Option Group – Manages additional features like replication and logging.</li>
+<li>Backup and Test – Take a snapshot of the existing database to prevent data loss.</li>
+</ul>
+<h3 id="create-a-db-parameter-group">Create a DB Parameter Group</h3><p>RDS DB Parameter Groups allow you to configure database-specific parameters, such as memory, cache, and other DB settings. You need to create a custom DB Parameter Group for MariaDB 10.11 because different versions require different settings.</p>
+<p><strong>How to Create a DB Parameter Group</strong></p>
+<ul>
+<li>Login to AWS Management Console<ul>
+<li>Go to the RDS service in the AWS Management Console.</li>
+</ul>
+</li>
+<li>Navigate to Parameter Groups<ul>
+<li>In the left navigation pane, under Databases, select Parameter Groups.</li>
+</ul>
+</li>
+<li>Create a New Parameter Group<ul>
+<li>Click on Create parameter group.</li>
+<li>Parameter group family: Choose mariadb10.11 from the dropdown.</li>
+<li>Group name: Provide a meaningful name like webserver-stage-rds parameters-mariadb-10-11.</li>
+<li>Description: Optionally add a description such as "Custom Parameter Group for MariaDB 10.11."</li>
+<li>Click Create.</li>
+</ul>
+</li>
+<li>Modify the Parameters<ul>
+<li>Once the parameter group is created, click on it to edit.</li>
+<li>Modify the parameters as per your application’s requirements, e.g., change innodb_buffer_pool_size,time_zone, etc., to optimize for the new version.</li>
+<li>Click Save changes once done.</li>
+</ul>
+</li>
+</ul>
+<h3 id="create-an-option-group">Create an Option Group</h3><p>Option Groups are a collection of database options (such as replication, backups, and logging) that you can apply to RDS instances. To migrate from 10.4 to 10.11, you need to create and associate an Option Group with the new engine version.</p>
+<p><strong>How to Create an Option Group</strong></p>
+<ul>
+<li>Go to Option Groups in RDS<ul>
+<li>In the AWS Management Console, go to RDS and then Option Groups under the Databases section.</li>
+</ul>
+</li>
+<li>Create an Option Group<ul>
+<li>Click Create group.</li>
+<li>Option group name: Provide a name like default:mariadb-10-11.</li>
+<li>Engine version: Select MariaDB 10.11.</li>
+<li>Click Create.</li>
+</ul>
+</li>
+<li>Add Options to the Group<ul>
+<li>Select the new Option Group you just created.</li>
+<li>Click Add option to save the selected options.</li>
+</ul>
+</li>
+</ul>
+<h2 id="perform-the-mariadb-version-upgrade">Perform the MariaDB Version Upgrade</h2><p>Once you’ve created the required DB Parameter Group and Option Group, you’re ready to perform the migration from MariaDB 10.4 to 10.11.</p>
+<h3 id="how-to-perform-the-migration">How to Perform the Migration</h3><ul>
+<li>Backup Your Database<ul>
+<li>It’s important to create a snapshot of your current DB instance before starting the upgrade process. This ensures that you can roll back in case of any issues.</li>
+<li>Go to your RDS instance and click on Actions → Take Snapshot.</li>
+</ul>
+</li>
+<li>Modify the DB Instance to Use the New Version<ul>
+<li>Navigate to Databases in the AWS RDS dashboard.</li>
+<li>Select the DB instance you want to upgrade.</li>
+<li>Click Modify at the top right.</li>
+<li>Under DB Engine Version, choose 10.11 from the drop-down.</li>
+<li>Under DB Parameter Group, select the custom parameter group created for 10.11.</li>
+<li>Under Option Group, select the newly created Option Group for MariaDB 10.11.</li>
+<li>Click Continue.</li>
+</ul>
+</li>
+<li>Apply Changes<ul>
+<li>Choose whether you want the changes to apply immediately or during the next maintenance window. For minimal downtime, apply during the maintenance window.</li>
+<li>Review the changes and click Modify DB Instance.</li>
+</ul>
+</li>
+<li>Reboot the Instance (if necessary)<ul>
+<li>Once the modification is complete, your DB instance might need to be rebooted for the changes to take effect. Confirm and reboot if prompted.</li>
+</ul>
+</li>
+</ul>
+<h3 id="verify-the-migration">Verify the Migration</h3><p>After the upgrade is complete, it’s time to verify the migration.</p>
+<ul>
+<li>Check DB Engine Version</li>
+<li>Check Application Performance<ul>
+<li>Test your application to ensure that it works properly with the new MariaDB version.</li>
+</ul>
+</li>
+<li>Review Logs<ul>
+<li>Check the RDS logs to verify that no errors have occurred during the upgrade process.</li>
+</ul>
+</li>
+</ul>
+<h2 id="post-migration-clean-up">Post-Migration Clean-Up</h2><ul>
+<li>Delete Old Parameter and Option Groups (if not required)<ul>
+<li>Once the migration is successful and tested, you can clean up unused Parameter and Option Groups to avoid unnecessary overhead.</li>
+</ul>
+</li>
+<li>Monitor and Scale<ul>
+<li>Monitor the instance for any potential issues and scale the resources (e.g., CPU, memory) if required based on the performance of MariaDB 10.11.</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2><p>Migrating from MariaDB 10.4 to 10.11 on AWS RDS is a straightforward process, but it requires careful planning, especially around DB Parameter Groups and Option Groups.
+By following the steps outlined in this blog post, you can ensure a smooth transition to the latest MariaDB version, improving the performance, security, and scalability of your application.
+Remember to always perform proper backups, test the migration in a staging environment, and monitor post-migration performance to ensure everything is functioning as expected.</p>
+<h2 id="best-practices">Best Practices</h2><ul>
+<li>✔ Always test the migration in a staging environment before applying changes in production.</li>
+<li>✔ Monitor RDS logs and application performance after the upgrade.</li>
+<li>✔ Ensure proper backups before initiating any engine version changes.</li>
+</ul>
+<p>By implementing these best practices, you can enhance performance, security, and scalability while ensuring a successful migration.</p>
+<p>🚀 Happy migrating!</p>
+<h2 id="references">References</h2><ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBEngineVersion.html">AWS RDS Documentation - MariaDB Engine Versions</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBParameterGroups.html">AWS RDS Parameter Groups</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.OptionGroups.html">AWS RDS Option Groups</a></li>
+</ul>
+
     </div>
-  </div>
-  <div class="posts container">
-    
-  <div class="columns is-multiline blog-entries">
-    
-      
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2025-03-06-AWS-RDS-blog-post/">Migrating from MariaDB 10.4 to 10.11 on AWS RDS</a></h4>
-        by <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a> on 2025-03-24
-
-        <div class="excerpt">
+    <footer class="single-post-footer container">
+      <div class="category">
+        <h4 class="category-title">Categories</h4>
+        <div class="categories">
           
-            As part of AWS’s request to migrate the RDS DB engine from MariaDB 10.4 to 10.11, this blog post...
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
+            
+              
+              
+              <a class="button tag" href=" /blog/categories/collaboration/ ">collaboration</a>
+            
           
         </div>
       </div>
-    </article>
-  </div>
-
-    
       
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2024-05-28-creativecommons-org/">New CreativeCommons.org launched 2023 September</a></h4>
-        by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a>, <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a>, <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2024-05-28
-
-        <div class="excerpt">
-          
-            Creative Commons (CC) launched a new CreativeCommons.org website on 2023 September 27th. This...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-06-16-new-chapter-of-my-professional-life/">New Chapter of My Professional Life</a></h4>
-        by <a class="author-name" href="/blog/authors/shafiya/">Shafiya Heena</a> on 2023-06-20
-
-        <div class="excerpt">
-          
-            Greetings, readers! I’m Shafiya Heena, from Hyderabad, India, who now finds herself immersed in...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-  </div>
-
-  </div>
+      <div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2025-03-06-AWS-RDS-blog-post"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2025-03-06-AWS-RDS-blog-post/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
 </div>
+    </footer>
+  </div>
 
 
   <!-- Footer -->
