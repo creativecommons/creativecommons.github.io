@@ -282,26 +282,26 @@
 <h2 id="project-overview">Project Overview</h2><p>The goal of my project is to implement the Vocabulary design system across several Creative Commons ancillary websites like the <a href="https://opensource.creativecommons.org/">CC Open Source</a>, <a href="https://legaldb.creativecommons.org/en/">CC Legal Database</a>, <a href="https://search.creativecommons.org/">CC Search Portal</a>, and <a href="https://resources.creativecommons.org/">CC Resource Archive</a>.</p>
 <h2 id="progress-so-far">Progress So Far</h2><h3 id="phase-one-refactoring-markup-to-align-with-vocabulary">Phase One: Refactoring Markup to Align with Vocabulary</h3><p>In the first phase, I focused on refactoring the markup to align with Vocabulary’s components and context. Here are the pull requests (PRs) merged during this phase:</p>
 <ul>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/118">PR 118</a>: Refactored the recent blog post section on the homepage.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/856">PR 856</a>: Refactored the homepage markup to align with Vocabulary components.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/862">PR 862</a>: Updated <code>page-with-toc.html</code>, which serves as a template for many pages.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/863">PR 863</a>: Initially, I planned to refactor the markup to Vocabulary’s context, but after feedback from my mentor, I instead removed legacy class names while retaining the table structure.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/865">PR 865</a>: Refactored the blog’s author page to match Vocabulary’s “person” context.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/866">PR 866</a>: Updated the blog structure to follow Vocabulary markup.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/867">PR 867</a>: Refactored the Project List page, leaving the table markup intact but removing old styles.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/868">PR 868</a>: Refactored the Issue Finder tool, replacing Vue.js with plain JavaScript. Although removing Webpack will happen later, this PR set the stage for future improvements.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/870">PR 870</a>: Aligned the Authors page with Vocabulary’s team styling.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/871">PR 871</a>: Refactored the Project Ideas page, incorporating Vocabulary’s project markup and removing legacy styles.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/873">PR 873</a>: Dynamically updated the body tag’s class in <code>layout.html</code> and added a body-class field to the <code>blog.ini</code> model file for consistent styling.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/880">PR 880</a>: Refactored <code>page-with-title.html</code> (used by CC Tech Archives) to align with Vocabulary.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/886">PR 886</a>: Updated the header component markup and removed old class names.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/118">PR 118</a>: Refactored the recent blog post section on the homepage.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/856">PR 856</a>: Refactored the homepage markup to align with Vocabulary components.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/862">PR 862</a>: Updated <code>page-with-toc.html</code>, which serves as a template for many pages.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/863">PR 863</a>: Initially, I planned to refactor the markup to Vocabulary’s context, but after feedback from my mentor, I instead removed legacy class names while retaining the table structure.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/865">PR 865</a>: Refactored the blog’s author page to match Vocabulary’s “person” context.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/866">PR 866</a>: Updated the blog structure to follow Vocabulary markup.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/867">PR 867</a>: Refactored the Project List page, leaving the table markup intact but removing old styles.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/868">PR 868</a>: Refactored the Issue Finder tool, replacing Vue.js with plain JavaScript. Although removing Webpack will happen later, this PR set the stage for future improvements.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/870">PR 870</a>: Aligned the Authors page with Vocabulary’s team styling.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/871">PR 871</a>: Refactored the Project Ideas page, incorporating Vocabulary’s project markup and removing legacy styles.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/873">PR 873</a>: Dynamically updated the body tag’s class in <code>layout.html</code> and added a body-class field to the <code>blog.ini</code> model file for consistent styling.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/880">PR 880</a>: Refactored <code>page-with-title.html</code> (used by CC Tech Archives) to align with Vocabulary.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/886">PR 886</a>: Updated the header component markup and removed old class names.</li>
 </ul>
 <h3 id="phase-2-adding-local-styles">Phase 2: Adding Local Styles</h3><p>After refactoring the markup, I moved on to styling sections that Vocabulary doesn’t cover. Here are some of the merged PRs so far;</p>
 <ul>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/888">PR 888</a>: Added local styles based on Creative Commons’ main website for the homepage and other sections, such as “Get Involved” and “Featured Projects.”</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/891">PR 891</a>: Created a new <code>issue-finder.css</code> file to restyle the Issue Finder page while removing legacy styles but maintaining legacy design.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/898">PR 898</a>: Integrated Datatables and jQuery by adding them to a vendor folder. Styled the table and code blocks using existing website styles.</li>
-<li><a href="https://github.com/creativecommons/creativecommons.github.io-source/pull/990">PR 990</a>: Styled the CC Search archive table using Datatables.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/888">PR 888</a>: Added local styles based on Creative Commons’ main website for the homepage and other sections, such as “Get Involved” and “Featured Projects.”</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/891">PR 891</a>: Created a new <code>issue-finder.css</code> file to restyle the Issue Finder page while removing legacy styles but maintaining legacy design.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/898">PR 898</a>: Integrated Datatables and jQuery by adding them to a vendor folder. Styled the table and code blocks using existing website styles.</li>
+<li><a href="https://github.com/creativecommons/ccos-website-source/pull/990">PR 990</a>: Styled the CC Search archive table using Datatables.</li>
 </ul>
 <h2 id="current-status">Current Status</h2><p>I’m a little behind schedule—I had planned to start work on the Legal Database website by now. However, I’m wrapping up the CC Open Source website this week and will move on to the next phase soon.</p>
 <h2 id="lessons-learned">Lessons Learned</h2><p>This internship has been an incredible learning journey. Here are some key takeaways:</p>
