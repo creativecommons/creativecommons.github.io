@@ -2,9 +2,15 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="icon"  href="/static/vocabulary/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="/static/vocabulary/favicon/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/static/vocabulary/favicon/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/vocabulary/favicon/apple-touch-icon.png" />
+<link rel="stylesheet" href="/static/css/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/datatable/datatables.js"></script>
+<script type="text/javascript" src="/static/js/table.js"></script>
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="" />
 
@@ -33,292 +39,448 @@
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/static/gen/script.js"></script>
-<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
-<script>
-  const globalHeaderInstance = vocabulary.createGlobalHeader();
-</script>
 <title>GSoC — Creative Commons Open Source</title>
 
-<body>
+<body >
 
-  <!-- Header -->
-  <header class="container">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a class="has-text-black" href="/" aria-label="Home">
-          <svg
-            class="logo margin-top-small"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 284 46">
-            <use href="#opensource"></use>
-          </svg>
-        </a>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item " href="/blog/entries/">
-            Blog
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Contribute<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
-              
-                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
-              
-                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
-              
-                <a class="navbar-item" href="/contributing-code/foundational-tech/">Foundational technologies</a>
-              
-                <a class="navbar-item" href="/contributing-code/documentation-guidelines/">Documentation Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
-              
-                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Community<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown is-active">
-              
-                <a class="navbar-item" href="/community/">Join the Community</a>
-              
-                <a class="navbar-item" href="/community/community-team/">Community Team</a>
-              
-                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
-              
-                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
-              
-                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
-              
-                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
-              
-                <a class="navbar-item" href="/community/supporters/">Supporters</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Work Programs<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/programs/">Overview</a>
-              
-                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
-              
-                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
-              
-                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
-              
-                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
-              
-                <a class="navbar-item" href="/programs/history/">History</a>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+<a class="skip-to-content" href="#main-content-marker">Skip to content</a>
+<header>
+    <div class="masthead">
+        <h1><a class="identity-logo product" href="/">Open source</a></h1>
+        <button class="expand-menu">Menu</button>
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="/blog/entries/">Blog</a></li>
+                <li><a href="/contributing-code/">Contribute</a></li>
+                <li><a href="/community/">Community</a></li>
+                <li><a href="/programs/">Work Programs</a></li>
+            </ul>
+            <!--TODO: Evaluate use of dropdown/secondary menu-->
+        </nav>
+
+        <nav class="ancillary-menu">
+            <ul>
+                <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
+                <li><button class="explore">Explore CC</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="explore-panel">
+    <!-- (optional main CC logo, p, link on non-home site back to main site) -->
+    <aside>
+      <a
+        class="identity-logo"
+        href="https://creativecommons.org"
+        >Creative Commons</a
+      >
+      <h2>Our Work Relies On You!</h2>
+      <p>Help us keep the internet free and open.</p>
+    </aside>
+    <nav class="explore-menu">
+        <ul>
+            <li>
+                <a href="https://network.creativecommons.org/" target="_blank">Global Network</a>
+                <p>Join a  global community working to strengthen the Commons</p>
+            </li>
+            <li>
+                <a href="https://certificate.creativecommons.org/" target="_blank">Certificate</a>
+                <p>Become an expert in creating and engaging with openly licensed materials</p>
+            </li>
+            <li>
+                <a href="/choose" target="_blank">Chooser</a>
+                <p>Get help choosing the appropriate license for your work</p>
+            </li>
+            <li>
+                <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
+                <p>Find engines to search openly licensed material for creative and educational reuse</p>
+            </li>
+        </ul>
     </nav>
-  </header>
+    </div>
+
+</header>
 
   <!-- Breadcrumb -->
+   <!--TODO: EVALUATE USE OF BREADCRUMB;REMOVE OR KEEP-->
   
-    <div class="breadcrumb-container">
-      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
-        <ul>
-          
-          
-          <!-- Extracting the slugs of URL -->
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-              <li><a class="link" href="/">
-              
-                Home
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-              <li><a class="link" href="/archives/">
-              
-                Archives
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-                
-              
-              <li><a class="link" href="/archives/old-tech-blog/">
-              
-                Old Tech Blog
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-                
-              
-                
-              
-              <li><a class="link" href="/archives/old-tech-blog/categories/">
-              
-                Categories
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <li class="is-active"><a aria-current="page displayed"></a></li>
-            
-          
-        </ul>
-      </nav>
-    </div>
-  
-
   <!-- Body -->
+  <span id="main-content-marker"></span>
+  <main>
   
-<div class="all-categories">
-  <div class="header">
-    <div class="container">
-      <h1>All posts categorized "GSoC"</h1>
-      <a class="button small margin-top-bigger" href="/archives/old-tech-blog/categories/">See all categories</a>
-    </div>
-  </div>
-  <div class="categories-list container">
+<header>
+  <h1>Category: Gsoc </h1>
+</header>
+
+<aside class="sidebar">
+  <nav class="filter-menu" aria-labelledby="categories">
+    <h2>Categories</h2>
     
-  <div class="columns is-multiline blog-entries">
+<ul>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/Add-In/">Add-In</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/adobe/">adobe</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/AgShare/">AgShare</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/API/">API</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/atom/">atom</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/berlios/">berlios</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/case/">case</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/ccPublisher/">ccPublisher</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/code/">code</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/Debian/">Debian</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/Describing/">Describing</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/development/">development</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/DiscoverEd/">DiscoverEd</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/embedding/">embedding</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/GSoC/">GSoC</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/gunarpenikis/">gunarpenikis</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/infrastructure/">infrastructure</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/inkscape/">inkscape</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/internal/">internal</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/Interns/">Interns</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/irc/">irc</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/krita/">krita</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/lgm2007/">lgm2007</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/liblicense/">liblicense</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/license/">license</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/LRMI/">LRMI</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/Mac/">Mac</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/mediawiki/">mediawiki</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/metadata/">metadata</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/Metrics/">Metrics</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/microformats/">microformats</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/neurocommons/">neurocommons</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/nutch/">nutch</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/one/">one</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/opencontentlibrary/">opencontentlibrary</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/opendata/">opendata</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/openid/">openid</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/OpenOffice/">OpenOffice</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/opensource/">opensource</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/people/">people</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/php/">php</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/platform/">platform</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/powder/">powder</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/press/">press</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/prototype/">prototype</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/provenance/">provenance</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/python/">python</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/ramm.x">ramm.x</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/RDF/">RDF</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/RDFa/">RDFa</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/registry/">registry</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/releases/">releases</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/rss/">rss</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/sanity/">sanity</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/schema.org">schema.org</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/scribus/">scribus</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/search/">search</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/semantic/">semantic</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/serif/">serif</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/slides/">slides</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/software/">software</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/standard/">standard</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/standards/">standards</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/status/">status</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/syndication/">syndication</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/system/">system</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/techblog/">techblog</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/techsummit/">techsummit</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/testing/">testing</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/text/">text</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/tools/">tools</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/upload/">upload</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/video/">video</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/w3c/">w3c</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/weekend-hacks/">weekend-hacks</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/wiki/">wiki</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/WordPress/">WordPress</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/wplicense/">wplicense</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/XMP/">XMP</a>
+    </li>
+  
+    <li>
+      <a href="/archives/old-tech-blog/categories/xtech/">xtech</a>
+    </li>
+  
+</ul>
+
+  </nav>
+</aside>
+
+<div>
+  
+  <ul>
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-media-fingerprinting-library/">Creative Commons Media Fingerprinting Library</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ethanlim/">Ethan Lim</a> on 2013-07-15
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-media-fingerprinting-library/">Creative Commons Media Fingerprinting Library</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ethanlim/">Ethan Lim</a> on 2013-07-15
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             CC would prefer that all content on the Web include correct licensing metadata. Alas, that is...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -332,25 +494,39 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-pasteboard/">Creative Commons Pasteboard</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/THanish/">Thanish</a> on 2013-07-15
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-pasteboard/">Creative Commons Pasteboard</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/THanish/">Thanish</a> on 2013-07-15
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             The Creative Commons Pasteboard is a browser extension used to help users easily clip content...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -364,25 +540,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-libreoffice-plugin-updates/">Creative_Commons_LibreOffice_Plugin_Updates</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/Ishan-Thilina/">Ishan Thilina</a> on 2012-07-15
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-libreoffice-plugin-updates/">Creative_Commons_LibreOffice_Plugin_Updates</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/Ishan-Thilina/">Ishan Thilina</a> on 2012-07-15
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This year Creative Commons has a much more limited focus on what we would like to see out of...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -396,25 +595,39 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/good-advice-for-gsoc-students/">A post with good advice for GSOC students</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/cwebber/">cwebber</a> on 2011-03-25
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/good-advice-for-gsoc-students/">A post with good advice for GSOC students</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/cwebber/">cwebber</a> on 2011-03-25
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             As Nathan already mentioned, we will be once again participating in Google Summer of Code this...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -428,25 +641,39 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-gsoc-integration-is-the-word/">CC + GSoC: Integration is the Word</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/nathan/">nathan</a> on 2011-03-21
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-gsoc-integration-is-the-word/">CC + GSoC: Integration is the Word</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/nathan/">nathan</a> on 2011-03-21
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Creative Commons is once again participating in the Google Summer of Code, an opportunity for...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -460,25 +687,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-12/">GSoC CC Wordpress Plugin: Weekly Report #12</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-08-19
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-12/">GSoC CC Wordpress Plugin: Weekly Report #12</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-08-19
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This may be my last report for the plugin. After 150 commits and a bit over 30KB of written PHP...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -492,25 +736,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-11/">GSoC CC WordPress Plugin: Weekly Report #11</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-08-10
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-11/">GSoC CC WordPress Plugin: Weekly Report #11</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-08-10
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This week most of the work on the plugin consisted of styling changes and fixing bugs, mainly...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -524,25 +785,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-9-10/">GSoC CC Wordpress Plugin: Weekly Report #9 / #10</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-08-04
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-9-10/">GSoC CC Wordpress Plugin: Weekly Report #9 / #10</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-08-04
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Time is running out for work on the plugin. With the 9th of this month being the suggested date...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -556,25 +834,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-8/">GSoC CC WordPress Plugin: Weekly Report #8</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-07-21
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-8/">GSoC CC WordPress Plugin: Weekly Report #8</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-07-21
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This is a short one. This week, I did only a few things related to the plugin: First, planned...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -588,25 +883,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-ffext-wpplugin/">GSoC CC Firefox Extension + WordPress plugin = ?</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/igorlukanin/">Igor Lukanin</a> on 2010-07-15
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-ffext-wpplugin/">GSoC CC Firefox Extension + WordPress plugin = ?</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/igorlukanin/">Igor Lukanin</a> on 2010-07-15
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Undoubtedly, it&#39;s very important for all GSoC student projects (and all projects under CC in...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -620,25 +932,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-6-7/">GSoC CC Wordpress Plugin: Weekly Report #6 / #7</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-07-13
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-6-7/">GSoC CC Wordpress Plugin: Weekly Report #6 / #7</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-07-13
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             One week ago, my laptop&#39;s harddisk broke down during the afternoon. I had been accustomed to...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -652,25 +981,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-firefox-extension-status-report/">GSoC Firefox Extension: Status Report</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/igorlukanin/">Igor Lukanin</a> on 2010-07-11
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-firefox-extension-status-report/">GSoC Firefox Extension: Status Report</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/igorlukanin/">Igor Lukanin</a> on 2010-07-11
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             The extension for Firefox web browser I&#39;m developing has a number of improvements in the code...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -684,25 +1030,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-open-office-plugin-gets-a-new-ui/">Creative Commons Open Office Plugin gets a new UI and supports for Public Domain</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/akila87/">akila87</a> on 2010-07-03
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-open-office-plugin-gets-a-new-ui/">Creative Commons Open Office Plugin gets a new UI and supports for Public Domain</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/akila87/">akila87</a> on 2010-07-03
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             User Interface
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -716,25 +1085,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-5/">GSoC CC Wordpress Plugin: Weekly Report #5</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-30
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-5/">GSoC CC Wordpress Plugin: Weekly Report #5</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-30
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/API">Api</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Another delayed report, late by a day. This time, however, I can deliver ; the current version...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -748,25 +1140,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-4/">GSoC CC Wordpress Plugin: Weekly Report #4</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-25
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-4/">GSoC CC Wordpress Plugin: Weekly Report #4</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-25
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             As some of you may have noticed, this report about the Wordpress CC plugin is several days late....
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -780,25 +1192,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-3/">GSoC CC Wordpress Plugin: Weekly Report #3</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-16
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-3/">GSoC CC Wordpress Plugin: Weekly Report #3</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-16
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This week, development on the plugin proceeded at a faster pace. Shortly after I posted the last...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -812,25 +1244,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-openoffice-plugin-updates-weekly-report-1-2/">GSoC OpenOffice Plugin Updates: Weekly Report 1 &amp; 2</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/akila87/">akila87</a> on 2010-06-14
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-openoffice-plugin-updates-weekly-report-1-2/">GSoC OpenOffice Plugin Updates: Weekly Report 1 &amp; 2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/akila87/">akila87</a> on 2010-06-14
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             For the last two weeks I was focusing on the User Interface and the Picasa support. At first...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -844,25 +1296,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-2/">GSoC CC Wordpress Plugin: Weekly Report #2</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-08
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-2/">GSoC CC Wordpress Plugin: Weekly Report #2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-08
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             For last week&#39;s work on the plugin, I had two targets, both related to the goal of making the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -876,25 +1348,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-ccffext-1-2/">GSoC Firefox Extension: Project Introduction and Weekly Reports #1-2</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/igorlukanin/">Igor Lukanin</a> on 2010-06-08
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-ccffext-1-2/">GSoC Firefox Extension: Project Introduction and Weekly Reports #1-2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/igorlukanin/">Igor Lukanin</a> on 2010-06-08
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hello, my name&#39;s Igor Lukanin. I&#39;m a 21 year old student of the Ural Federal University located...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -908,25 +1397,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-1/">GSoC CC Wordpress Plugin: Weekly Report #1</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-01
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-cc-wordpress-plugin-weekly-report-1/">GSoC CC Wordpress Plugin: Weekly Report #1</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/erlehmann/">erlehmann</a> on 2010-06-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/WordPress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This week I was busy and lazy in turns, so I worked on the plugin only on two days. These are...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -940,25 +1446,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-open-office-plugin-here-it-is-with-some-new-features/">Creative Commons Open Office Plugin. Here it is with some new features....</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/akila87/">akila87</a> on 2010-05-20
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-open-office-plugin-here-it-is-with-some-new-features/">Creative Commons Open Office Plugin. Here it is with some new features....</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/akila87/">akila87</a> on 2010-05-20
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hi there!
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -972,25 +1501,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-drupal/">Creative Commons Drupal Module</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/blaise/">blaise</a> on 2009-09-23
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-drupal/">Creative Commons Drupal Module</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/blaise/">blaise</a> on 2009-09-23
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/API">Api</a>
+              , 
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/software">Software</a>
+              , 
+              
+                <a href="/blog/categories/tools">Tools</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Creative Commons provides vast number of public copyright licenses for people who want to enable...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1004,25 +1559,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-drupal-module-gsoc-2009/">Creative Commons Drupal Module -- GSoC 2009</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/blaise/">blaise</a> on 2009-09-03
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-drupal-module-gsoc-2009/">Creative Commons Drupal Module -- GSoC 2009</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/blaise/">blaise</a> on 2009-09-03
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/API">Api</a>
+              , 
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/software">Software</a>
+              , 
+              
+                <a href="/blog/categories/tools">Tools</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This past year was my last at the University of Toronto, making this summer my last chance to...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1036,25 +1617,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/openofficeorg-add-in-updates-gsoc-2009/">OpenOffice.org Add-in Updates - GSoC 2009</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/nimal/">nimal</a> on 2009-07-06
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/openofficeorg-add-in-updates-gsoc-2009/">OpenOffice.org Add-in Updates - GSoC 2009</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/nimal/">nimal</a> on 2009-07-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             I&#39;ve been working on the GSoC 2009 project, where I&#39;m working on certain updates to the existing...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1068,25 +1669,57 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/new-validator-released/">New validator released!</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/asheesh/">asheesh</a> on 2009-01-06
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/new-validator-released/">New validator released!</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/asheesh/">asheesh</a> on 2009-01-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/software">Software</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This past summer, Hugo Dworak worked with us (thanks to Google Summer of Code) on a new...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1100,25 +1733,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/loggy-some-results/">Loggy: some results</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-09-02
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/loggy-some-results/">Loggy: some results</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-09-02
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             So after setting up EC2, S3, grabbing the files from S3, SCP-ing the python scripts and running...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1132,25 +1782,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/py-file-also-if-__name__-__main__/">&gt;&gt;&gt; py &gt;&gt; file ... Also if __name__ == &#39;&#39;__main__&#39;&#39;:</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-09-01
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/py-file-also-if-__name__-__main__/">&gt;&gt;&gt; py &gt;&gt; file ... Also if __name__ == &#39;&#39;__main__&#39;&#39;:</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-09-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              , 
+              
+                <a href="/blog/categories/python">Python</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Some major updates and we have the scripts running, thanks Asheesh for the redirection idea, it...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1164,25 +1834,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/ec2-s3sync-and-back-to-python/">EC2, S3Sync and back to Python.</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-08-31
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/ec2-s3sync-and-back-to-python/">EC2, S3Sync and back to Python.</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-08-31
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              , 
+              
+                <a href="/blog/categories/python">Python</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             So this is where we are.
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1196,25 +1886,54 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/license-oriented-metadata-validator-summertime-is-winding-up/">License-oriented metadata validator and viewer: summertime is winding up</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/hugo/">hugo</a> on 2008-08-16
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/license-oriented-metadata-validator-summertime-is-winding-up/">License-oriented metadata validator and viewer: summertime is winding up</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/hugo/">hugo</a> on 2008-08-16
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/python">Python</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Google Summer of Code 2008 approaches its end, as less than forty-eight hours are left to submit...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1228,25 +1947,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/flickr-image-re-use-for-openofficeorg-new-updates/">Flickr Image Re-Use for OpenOffice.org new updates</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-08-12
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/flickr-image-re-use-for-openofficeorg-new-updates/">Flickr Image Re-Use for OpenOffice.org new updates</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-08-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Since my last article new functionalities were implemented :
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1260,25 +2002,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/geoip-hates-me-phail/">GeoIP Hates Me ... phail.</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-08-06
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/geoip-hates-me-phail/">GeoIP Hates Me ... phail.</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-08-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              , 
+              
+                <a href="/blog/categories/python">Python</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Not that I am expecting much trouble coding using the Geo-IP module, but trying to get it on to...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1292,25 +2054,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/flickr-image-re-use-for-openofficeorg-demo-availlable/">Flickr Image Re-Use for OpenOffice.org Demo availlable</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-07-12
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/flickr-image-re-use-for-openofficeorg-demo-availlable/">Flickr Image Re-Use for OpenOffice.org Demo availlable</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-07-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              , 
+              
+                <a href="/blog/categories/techsummit">Techsummit</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Never trust a programmer when he gives you a date for something to be done . Thats what i did in...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1324,25 +2112,54 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/license-oriented-metadata-validator-libvalidator/">License-oriented metadata validator and viewer: libvalidator</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/hugo/">hugo</a> on 2008-07-08
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/license-oriented-metadata-validator-libvalidator/">License-oriented metadata validator and viewer: libvalidator</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/hugo/">hugo</a> on 2008-07-08
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              , 
+              
+                <a href="/blog/categories/python">Python</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             As the Google Summer of Code 2008 midterm evaluation deadline is approaching, it is a good time...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1356,25 +2173,63 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/rdfa-for-semantic-mediawiki-gsoc-2008/">RDFa for Semantic MediaWiki [GSoC 2008]</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/davemccabe/">davemccabe</a> on 2008-07-01
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/rdfa-for-semantic-mediawiki-gsoc-2008/">RDFa for Semantic MediaWiki [GSoC 2008]</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/davemccabe/">davemccabe</a> on 2008-07-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/mediawiki">Mediawiki</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/microformats">Microformats</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/semantic">Semantic</a>
+              , 
+              
+                <a href="/blog/categories/standards">Standards</a>
+              , 
+              
+                <a href="/blog/categories/syndication">Syndication</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hello, world!
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1388,25 +2243,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/python-cumulative-metrics/">Python &amp;&amp; cumulative metrics?</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-23
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/python-cumulative-metrics/">Python &amp;&amp; cumulative metrics?</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-23
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             So I get to see the state-of-the-art and reconciling Apache and Squid logs. Based on this I need...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1420,25 +2292,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/flickr-image-re-use-for-openofficeorg-updates/">Flickr Image Re-Use for OpenOffice.org update</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-06-13
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/flickr-image-re-use-for-openofficeorg-updates/">Flickr Image Re-Use for OpenOffice.org update</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-06-13
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             I`m happy to announce that i succeeded in doing, in a basic manner, all the 3 requirements for...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1452,25 +2350,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/how-big-are-the-logs-again/">How big are the logs again?</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-13
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/how-big-are-the-logs-again/">How big are the logs again?</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-13
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             OK, so now I should maybe go back and thank nathany for the advise on not to download the whole...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1484,25 +2399,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/s3-finally/">S3 Finally!</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-03
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/s3-finally/">S3 Finally!</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-03
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             /me hugs paulproteuss ... yes an extra s in there today, but thanks to him [and the guy who...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1516,25 +2448,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-logger-the-s3-chronicles/">CC-Logger The S3 Chronicles</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-02
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-logger-the-s3-chronicles/">CC-Logger The S3 Chronicles</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-02
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Task One :: Setup a client to access the S3 bucket and retrieve the logs.
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1548,25 +2497,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-logger-gsoc-2008/">CC-Logger [GSoC 2008]</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-01
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-logger-gsoc-2008/">CC-Logger [GSoC 2008]</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ankitg/">ankitg</a> on 2008-06-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Metrics">Metrics</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Before I dive-in on what CC-Logger is all about, a small intro to who I am:
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1580,25 +2546,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-2008-flickr-image-re-use-for-openofficeorg/">GSoC 2008 : Flickr Image Re-Use for OpenOffice.org</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-05-29
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-2008-flickr-image-re-use-for-openofficeorg/">GSoC 2008 : Flickr Image Re-Use for OpenOffice.org</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/mihai/">mihai</a> on 2008-05-29
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             As title might suggest, i have been selected for GSoC 2008. As mentor for this project has been...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1612,25 +2604,60 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/license-oriented-metadata-validator-dev-just-started/">License-oriented metadata validator and viewer: the development has just started</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/hugo/">hugo</a> on 2008-05-26
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/license-oriented-metadata-validator-dev-just-started/">License-oriented metadata validator and viewer: the development has just started</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/hugo/">hugo</a> on 2008-05-26
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/opensource">Opensource</a>
+              , 
+              
+                <a href="/blog/categories/python">Python</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/software">Software</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Creative Commons participates in Google Summer of Code™ and has accepted a proposal (see the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1644,25 +2671,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/a-farewell/">A Farewell</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/tannewt/">tannewt</a> on 2007-08-24
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/a-farewell/">A Farewell</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/tannewt/">tannewt</a> on 2007-08-24
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/Interns">Interns</a>
+              , 
+              
+                <a href="/blog/categories/liblicense">Liblicense</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Well, today is my last day. I&#39;ve thoroughly enjoyed my time here at CC. Thanks to everyone here...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1676,25 +2723,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-openoffice-addin-update-added-impress-funcionality/">CC OpenOffice Addin Update: Added Impress funcionality!</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-07-24
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-openoffice-addin-update-added-impress-funcionality/">CC OpenOffice Addin Update: Added Impress funcionality!</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-07-24
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hello everyone!
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1708,25 +2778,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/sidecar-xmp-and-license-extractors-in-tracker/">Sidecar XMP and License Extractors in Tracker</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-07-10
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/sidecar-xmp-and-license-extractors-in-tracker/">Sidecar XMP and License Extractors in Tracker</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-07-10
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/embedding">Embedding</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              , 
+              
+                <a href="/blog/categories/XMP">Xmp</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Tracker has accepted my patches to read XMP sidecar, as well as patches to extract licenses from...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1740,25 +2836,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/cc-openofficeorg-addin-updates/">CC OpenOffice.Org AddIn updates</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-07-07
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/cc-openofficeorg-addin-updates/">CC OpenOffice.Org AddIn updates</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-07-07
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hello all,
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1772,25 +2894,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/liblicense-has-licenses-376-of-them/">Liblicense has licenses! 376 of them...</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-07-06
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/liblicense-has-licenses-376-of-them/">Liblicense has licenses! 376 of them...</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-07-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              , 
+              
+                <a href="/blog/categories/system">System</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Prepping for the 0.1 release, I&#39;ve generated RDF descriptions of all CC licenses in all...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1804,25 +2949,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/more-summer-of-code-liblicense-tracker-beagle/">More Summer of Code -- Liblicense, Tracker, Beagle,...</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-06-30
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/more-summer-of-code-liblicense-tracker-beagle/">More Summer of Code -- Liblicense, Tracker, Beagle,...</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-06-30
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/embedding">Embedding</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/license">License</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/XMP">Xmp</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Let&#39;s see, where am I at.
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1836,25 +3007,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/its-coming-cc-openofficeorg-add-in/">It&#39;s coming! CC OpenOffice.Org Add-in</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-06-27
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/its-coming-cc-openofficeorg-add-in/">It&#39;s coming! CC OpenOffice.Org Add-in</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-06-27
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/software">Software</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             As you may know, I am working on this project as part of the Google Summer of Code program....
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1868,25 +3065,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/indexing-license-metadata-in-tracker-week-2/">Indexing License Metadata in Tracker, Week 2</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-06-19
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/indexing-license-metadata-in-tracker-week-2/">Indexing License Metadata in Tracker, Week 2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-06-19
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/development">Development</a>
+              , 
+              
+                <a href="/blog/categories/embedding">Embedding</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             I&#39;ve made progress extracting licenses from the following formats: Vorbis, MP3, FLAC, PDF, JPEG,...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1900,25 +3120,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/indexing-license-metadata-in-tracker-week-1/">Indexing License Metadata in Tracker, Week 1</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-06-12
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/indexing-license-metadata-in-tracker-week-1/">Indexing License Metadata in Tracker, Week 1</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-06-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/embedding">Embedding</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/metadata">Metadata</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/XMP">Xmp</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Week 1 of Google Summer of Code is complete and already I&#39;m seeing much progress. There&#39;s a mess...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1932,25 +3178,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-biomedical-data-to-rdf/">&#39;Summer of Code: &#34;Converting biomedical text mining data to RDF, integrating</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/matthiassamwald/">matthiassamwald</a> on 2007-04-18
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-biomedical-data-to-rdf/">&#39;Summer of Code: &#34;Converting biomedical text mining data to RDF, integrating</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/matthiassamwald/">matthiassamwald</a> on 2007-04-18
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/neurocommons">Neurocommons</a>
+              , 
+              
+                <a href="/blog/categories/RDF">Rdf</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              , 
+              
+                <a href="/blog/categories/text">Text</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             About the project
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1964,25 +3236,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-project-openofficeorg-writer-add-in/">&#34;Summer of Code Project: â€œOpenOffice.org Writer Add-in for Publishing CC</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-04-14
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-project-openofficeorg-writer-add-in/">&#34;Summer of Code Project: â€œOpenOffice.org Writer Add-in for Publishing CC</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ksiomelo/">ksiomelo</a> on 2007-04-14
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/Add-In">Add-in</a>
+              , 
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/OpenOffice">Openoffice</a>
+              , 
+              
+                <a href="/blog/categories/software">Software</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hi there!
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1996,25 +3291,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-indexing-embedded-license-claims-in-tracker/">Summer of Code: &#34;Indexing Embedded License Claims in Tracker&#34;</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-04-14
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-indexing-embedded-license-claims-in-tracker/">Summer of Code: &#34;Indexing Embedded License Claims in Tracker&#34;</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/jakin/">jakin</a> on 2007-04-14
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/XMP">Xmp</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hello all,
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -2028,25 +3340,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-project-including-rdfa-support-in-nutch/">&#39;Summer of Code Project: &#34;Including RDFa support in Nutch: Updating the ccNutch</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/alankelon/">alankelon</a> on 2007-04-13
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-project-including-rdfa-support-in-nutch/">&#39;Summer of Code Project: &#34;Including RDFa support in Nutch: Updating the ccNutch</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/alankelon/">alankelon</a> on 2007-04-13
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/nutch">Nutch</a>
+              , 
+              
+                <a href="/blog/categories/RDFa">Rdfa</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Hello!
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -2060,25 +3392,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/more-summer-of-code-projects/">More Summer of Code projects</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/ml/">ml</a> on 2007-04-12
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/more-summer-of-code-projects/">More Summer of Code projects</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/ml/">ml</a> on 2007-04-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/inkscape">Inkscape</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Nathan blogged the five accepted Creative Commons/Science Commons projects.
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -2092,122 +3441,120 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/archives/old-tech-blog/entries/gsoc-projects/">Summer of Code Projects</a></h4>
-        by <a class="author-name" href="/archives/old-tech-blog/authors/nathan/">nathan</a> on 2007-04-12
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/archives/old-tech-blog/entries/gsoc-projects/">Summer of Code Projects</a></h3>
+          <span class="byline"> by <a class="author-name" href="/archives/old-tech-blog/authors/nathan/">nathan</a> on 2007-04-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/GSoC">Gsoc</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             We&#39;re very happy to have five students working on Creative Commons and Science Commons projects...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
-  </div>
+  </ul>
 
-  </div>
 </div>
 
+  </main>
 
   <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
-          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
-            <span class="has-text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 304 73">
-                <use href="#logomark"></use>
-              </svg>
-            </span>
-          </a>
-          <div>
-            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
-            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
-            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
-          </div>
-          <div class="margin-vertical-large">
-            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">instagram</i>
-            </a>
-            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">facebook</i>
-            </a>
-            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">linkedin</i>
-            </a>
-          </div>
+  <footer>
+    <a class="identity-logo" href="https://www.creativecommons.org">Creative Commons</a>
+
+    <nav class="footer-menu" aria-label="Footer menu">
+        <ul>
+
+            <li><a href="/blog/entries/">Blog</a></li>
+            <li><a href="/community/community-team/">Community Team</a></li>
+            <li><a href="/contributing-code/projects/">Project List</a></li>
+            <li><a href="/archives/">Archives</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br /> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+
+    <nav class="social-menu" aria-label="Social menu">
+        <ul>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank">
+        <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Your email" required>
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
         </div>
-        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
-          <div class="columns">
-            <div class="column is-full">
-              <nav class="footer-navigation">
-                <ul class="menu">
-                  <li>
-                    <a href="/blog/entries/" class="menu-item">Blog</a>
-                  </li>
-                  <li>
-                    <a href="/community/community-team/" class="menu-item">Community Team</a>
-                  </li>
-                  <li>
-                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
-                  </li>
-                  <li>
-                    <a href="/archives/" class="menu-item">Archives</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-two-thirds">
-              <div class="subscription">
-                <h5 class="b-header">Subscribe to our newsletter</h5>
-                <form class="newsletter">
-                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
-                  <input type="submit" value="subscribe" class="button small">
-                 </form>
-               </div>
-               <div class="attribution margin-top-bigger">
-                <p class="caption">
-                  Except where otherwise
-                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
-                  content on this site is licensed under a
-                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
-                    Attribution 4.0 International license</a>.
-                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
-                  by
-                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
-                </p>
-                <div class="margin-top-smaller">
-                  <i class="icon margin-right-small is-size-4">cclogo</i>
-                  <i class="icon margin-right-small is-size-4">ccby</i>
-                </div>
-              </div>
-            </div>
-            <div class="column is-one-third">
-              <aside class="donate-section">
-                <h5>Our work relies on you!</h5>
-                <p>Help us keep the internet free and open.</p>
-                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
-                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
-                  Donate now
-                </a>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </div>
+        <input type="submit" value="subscribe" id="mc-embedded-subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
     </div>
   </footer>
-</body>
+  <script src="/static/vocabulary/js/vocabulary.js"></script>
+ </body>
 </html>

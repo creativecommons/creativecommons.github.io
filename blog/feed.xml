@@ -377,7 +377,7 @@ of data we could collect using the given APIs over this time period. However, as
 automation software for data gathering, flow, and report generation, ensuring script runs on a quarterly basis. The &lt;strong&gt;Next Steps&lt;/strong&gt; section will elaborate on how this software will be solidified over
 the upcoming quarters and years.&lt;/p&gt;
 &lt;p&gt;130+ commits, 7,615+ net code additions, and 360+ hours of work later, I present ten pivotal deliverables that I have completed over the summer period:&lt;/p&gt;
-&lt;table class="table table-striped"&gt;
+&lt;table class="datatable display"&gt;
 &lt;thead class="thead-dark"&gt;&lt;tr&gt;
 &lt;th&gt;Deliverable&lt;/th&gt;
 &lt;th&gt;Description&lt;/th&gt;
@@ -1321,7 +1321,7 @@ under each type of CC tools.&lt;/li&gt;
 &lt;h3 id="what-platforms-to-collect-counts-from"&gt;What platforms to collect counts from?&lt;/h3&gt;&lt;p&gt;Here is a list of online platforms that we sampled document count from, as well
 as the delegations for platforms' data collection, visualization, and modeling
 in this project:&lt;/p&gt;
-&lt;table class="table table-striped"&gt;
+&lt;table class="datatable display"&gt;
 &lt;thead class="thead-dark"&gt;&lt;tr&gt;
 &lt;th&gt;Platforms Containing Webpages&lt;/th&gt;
 &lt;th&gt;Platforms Containing Photos&lt;/th&gt;

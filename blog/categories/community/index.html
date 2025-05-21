@@ -2,9 +2,15 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="icon"  href="/static/vocabulary/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="/static/vocabulary/favicon/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/static/vocabulary/favicon/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/vocabulary/favicon/apple-touch-icon.png" />
+<link rel="stylesheet" href="/static/css/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/datatable/datatables.js"></script>
+<script type="text/javascript" src="/static/js/table.js"></script>
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="" />
 
@@ -33,266 +39,315 @@
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/static/gen/script.js"></script>
-<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
-<script>
-  const globalHeaderInstance = vocabulary.createGlobalHeader();
-</script>
 <title>community — Creative Commons Open Source</title>
 
-<body>
+<body >
 
-  <!-- Header -->
-  <header class="container">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a class="has-text-black" href="/" aria-label="Home">
-          <svg
-            class="logo margin-top-small"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 284 46">
-            <use href="#opensource"></use>
-          </svg>
-        </a>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item  is-active" href="/blog/entries/">
-            Blog
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Contribute<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
-              
-                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
-              
-                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
-              
-                <a class="navbar-item" href="/contributing-code/foundational-tech/">Foundational technologies</a>
-              
-                <a class="navbar-item" href="/contributing-code/documentation-guidelines/">Documentation Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
-              
-                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Community<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown is-active">
-              
-                <a class="navbar-item" href="/community/">Join the Community</a>
-              
-                <a class="navbar-item" href="/community/community-team/">Community Team</a>
-              
-                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
-              
-                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
-              
-                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
-              
-                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
-              
-                <a class="navbar-item" href="/community/supporters/">Supporters</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Work Programs<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/programs/">Overview</a>
-              
-                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
-              
-                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
-              
-                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
-              
-                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
-              
-                <a class="navbar-item" href="/programs/history/">History</a>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+<a class="skip-to-content" href="#main-content-marker">Skip to content</a>
+<header>
+    <div class="masthead">
+        <h1><a class="identity-logo product" href="/">Open source</a></h1>
+        <button class="expand-menu">Menu</button>
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="/blog/entries/">Blog</a></li>
+                <li><a href="/contributing-code/">Contribute</a></li>
+                <li><a href="/community/">Community</a></li>
+                <li><a href="/programs/">Work Programs</a></li>
+            </ul>
+            <!--TODO: Evaluate use of dropdown/secondary menu-->
+        </nav>
+
+        <nav class="ancillary-menu">
+            <ul>
+                <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
+                <li><button class="explore">Explore CC</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="explore-panel">
+    <!-- (optional main CC logo, p, link on non-home site back to main site) -->
+    <aside>
+      <a
+        class="identity-logo"
+        href="https://creativecommons.org"
+        >Creative Commons</a
+      >
+      <h2>Our Work Relies On You!</h2>
+      <p>Help us keep the internet free and open.</p>
+    </aside>
+    <nav class="explore-menu">
+        <ul>
+            <li>
+                <a href="https://network.creativecommons.org/" target="_blank">Global Network</a>
+                <p>Join a  global community working to strengthen the Commons</p>
+            </li>
+            <li>
+                <a href="https://certificate.creativecommons.org/" target="_blank">Certificate</a>
+                <p>Become an expert in creating and engaging with openly licensed materials</p>
+            </li>
+            <li>
+                <a href="/choose" target="_blank">Chooser</a>
+                <p>Get help choosing the appropriate license for your work</p>
+            </li>
+            <li>
+                <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
+                <p>Find engines to search openly licensed material for creative and educational reuse</p>
+            </li>
+        </ul>
     </nav>
-  </header>
+    </div>
+
+</header>
 
   <!-- Breadcrumb -->
+   <!--TODO: EVALUATE USE OF BREADCRUMB;REMOVE OR KEEP-->
   
-    <div class="breadcrumb-container">
-      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
-        <ul>
-          
-          
-          <!-- Extracting the slugs of URL -->
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-              <li><a class="link" href="/">
-              
-                Home
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-              <li><a class="link" href="/blog/">
-              
-                Blog
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-                
-              
-              <li><a class="link" href="/blog/categories/">
-              
-                Categories
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <li class="is-active"><a aria-current="page displayed"></a></li>
-            
-          
-        </ul>
-      </nav>
-    </div>
-  
-
   <!-- Body -->
+  <span id="main-content-marker"></span>
+  <main>
   
-<div class="all-categories">
-  <div class="header">
-    <div class="container">
-      <h1>All posts categorized "community"</h1>
-      <a class="button small margin-top-bigger" href="/blog/categories/">See all categories</a>
-    </div>
-  </div>
-  <div class="categories-list container">
+<header>
+  <h1>Category: Community </h1>
+</header>
+
+<aside class="sidebar">
+  <nav class="filter-menu" aria-labelledby="categories">
+    <h2>Categories</h2>
     
-  <div class="columns is-multiline blog-entries">
+<ul>
+  
+    <li>
+      <a href="/blog/categories/airflow/">airflow</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/announcements/">announcements</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/audio/">audio</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/big-data/">big-data</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-browser-extension/">cc-browser-extension</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-catalog/">cc-catalog</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-catalog-api/">cc-catalog-api</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-chooser/">cc-chooser</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-dataviz/">cc-dataviz</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-legal-database/">cc-legal-database</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-legal-tools/">cc-legal-tools</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-link-checker/">cc-link-checker</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-search/">cc-search</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-software/">cc-software</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-vocabulary/">cc-vocabulary</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-wp-base-theme/">cc-wp-base-theme</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/cc-wp-plugin/">cc-wp-plugin</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/chapters/">Chapters</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/collaboration/">collaboration</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/community/">community</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/design/">Design</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/freesound/">freesound</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/google-docs/">google-docs</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsoc/">gsoc</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsoc-2019/">gsoc-2019</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsoc-2020/">gsoc-2020</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsoc-2023/">gsoc-2023</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsoc-2024/">gsoc-2024</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsod/">gsod</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/gsod-2020/">gsod-2020</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/open-source/">open-source</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/outreachy/">outreachy</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/outreachy-2019-20/">outreachy-2019-20</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/outreachy-2020/">outreachy-2020</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/outreachy-2021/">outreachy-2021</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/outreachy-2022/">outreachy-2022</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/outreachy-2024/">outreachy-2024</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/platform-toolkit/">platform-toolkit</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/plugin/">plugin</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/product/">product</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/quantifying-the-commons/">quantifying-the-commons</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/SaltStack/">SaltStack</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/tech/">tech</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/testing/">testing</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/website/">Website</a>
+    </li>
+  
+    <li>
+      <a href="/blog/categories/wordpress/">WordPress</a>
+    </li>
+  
+</ul>
+
+  </nav>
+</aside>
+
+<div>
+  
+  <ul>
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/86cfa08b8d93b4f90882a8c19d2f23f3?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/reflecting-on-my-outreachy-journey-with-creative-commons/">Reflecting On My Outreachy Journey With Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-02-27
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/reflecting-on-my-outreachy-journey-with-creative-commons/">Reflecting On My Outreachy Journey With Creative Commons</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-02-27
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2024">Outreachy-2024</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             It feels like just yesterday I was writing my first blog post, trying to wrap my head around all...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -306,25 +361,100 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/outreachy-midpoint-progess-with-creative-commons/">Outreachy Midpoint Progress With Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-01-19
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/outreachy-midpoint-progess-with-creative-commons/">Outreachy Midpoint Progress With Creative Commons</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2025-01-19
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2024">Outreachy-2024</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Outreachy Midpoint Blog Post
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/86cfa08b8d93b4f90882a8c19d2f23f3?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2025-01-15-skipping-gsoc-2025/">Skipping Google Summer of Code (GSoC) 2025</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2025-01-15
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            The Creative Commons (CC) technology team regrets to announce we will not be participating in...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -338,25 +468,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2025-01-15-skipping-gsoc-2025/">Skipping Google Summer of Code (GSoC) 2025</a></h4>
-        by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2025-01-15
-
-        <div class="excerpt">
-          
-            The Creative Commons (CC) technology team regrets to announce we will not be participating in...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/my-outreachy-internship-with-creative-commons/">My Outreachy Internship With Creative Commons</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2024-12-10
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2024">Outreachy-2024</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            IntroductionHi, everyone! My name is Queen, and I’m a fresh pharmacy graduate with a passion for...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -370,25 +523,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/my-outreachy-internship-with-creative-commons/">My Outreachy Internship With Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Queen/">Queen Fawale</a> on 2024-12-10
-
-        <div class="excerpt">
-          
-            IntroductionHi, everyone! My name is Queen, and I’m a fresh pharmacy graduate with a passion for...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2024-08-23-create-local-ansible-dev-env/">Local Environment Creation using Ansible and Docker: Part 2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/amandayclee/">Amanda Lee</a> on 2024-08-23
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/gsoc-2024">Gsoc-2024</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -402,25 +578,57 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2024-08-23-create-local-ansible-dev-env/">Local Environment Creation using Ansible and Docker: Part 2</a></h4>
-        by <a class="author-name" href="/blog/authors/amandayclee/">Amanda Lee</a> on 2024-08-23
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2024-08-22-automating-quantifying/">Automating Quantifying the Commons: Part 2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/NaishaSinha/">Naisha Sinha</a> on 2024-08-22
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/gsoc-2024">Gsoc-2024</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/big-data">Big-data</a>
+              , 
+              
+                <a href="/blog/categories/quantifying-the-commons">Quantifying-the-commons</a>
+              , 
+              
+                <a href="/blog/categories/cc-software">Cc-software</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -434,57 +642,112 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2024-08-22-automating-quantifying/">Automating Quantifying the Commons: Part 2</a></h4>
-        by <a class="author-name" href="/blog/authors/NaishaSinha/">Naisha Sinha</a> on 2024-08-22
-
-        <div class="excerpt">
-          
-            
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/e259595bca0de9b89681541579f1e558?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2024-07-19-create-local-ansible-dev-env/">Local Environment Creation using Ansible and Docker: Part 1</a></h4>
-        by <a class="author-name" href="/blog/authors/amandayclee/">Amanda Lee</a> on 2024-07-18
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2024-07-19-create-local-ansible-dev-env/">Local Environment Creation using Ansible and Docker: Part 1</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/amandayclee/">Amanda Lee</a> on 2024-07-18
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/gsoc-2024">Gsoc-2024</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This project explores how Creative Commons (CC) uses Ansible, an automated system administration...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/e259595bca0de9b89681541579f1e558?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2024-07-10-automating-quantifying/">Automating Quantifying the Commons: Part 1</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/NaishaSinha/">Naisha Sinha</a> on 2024-07-10
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/gsoc-2024">Gsoc-2024</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/big-data">Big-data</a>
+              , 
+              
+                <a href="/blog/categories/quantifying-the-commons">Quantifying-the-commons</a>
+              , 
+              
+                <a href="/blog/categories/cc-software">Cc-software</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -498,185 +761,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2024-07-10-automating-quantifying/">Automating Quantifying the Commons: Part 1</a></h4>
-        by <a class="author-name" href="/blog/authors/NaishaSinha/">Naisha Sinha</a> on 2024-07-10
-
-        <div class="excerpt">
-          
-            
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="/multiple-authors.jpg" alt="multiple authors image"/>
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/">Many Mona Lisas? Artistic Data Quantification and Assessment</a></h4>
-        by <a class="author-name" href="/blog/authors/grace_coleman/">Grace Coleman</a>, <a class="author-name" href="/blog/authors/anthony_ho/">Anthony Ho</a>, <a class="author-name" href="/blog/authors/tyler_phillips/">Tyler Phillips</a>, <a class="author-name" href="/blog/authors/claire_wan/">Claire Wan</a> on 2023-04-26
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2023-04-26-umsi-how-many-mona-lisas/">Many Mona Lisas? Artistic Data Quantification and Assessment</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/grace_coleman/">Grace Coleman</a>, <a class="author-name" href="/blog/authors/anthony_ho/">Anthony Ho</a>, <a class="author-name" href="/blog/authors/tyler_phillips/">Tyler Phillips</a>, <a class="author-name" href="/blog/authors/claire_wan/">Claire Wan</a> on 2023-04-26
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-dataviz">Cc-dataviz</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/quantifying-the-commons">Quantifying-the-commons</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Quantifying the Commons
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-03-24-community-contributions/">Considering Community Contributions at Creative Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2023-03-24
-
-        <div class="excerpt">
-          
-            Different open source communities work differently and so everyone may arrive at Creative...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/799674ebf72ebba137da36402f2bab93?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-02-01-outreachy-mid-point/">Outreachy Internship Mid-point Progress Update</a></h4>
-        by <a class="author-name" href="/blog/authors/precious/">Precious Oritsedere</a> on 2023-02-01
-
-        <div class="excerpt">
-          
-            
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/799674ebf72ebba137da36402f2bab93?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2023-01-04-how-i-landed-my-first-internship/">How I Landed My First Internship With Outreachy</a></h4>
-        by <a class="author-name" href="/blog/authors/precious/">Precious Oritsedere</a> on 2023-01-04
-
-        <div class="excerpt">
-          
-            
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2022-12-16-new-to-working-in-open/">Thinking More Openly About Working in The Open</a></h4>
-        by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2022-12-16
-
-        <div class="excerpt">
-          
-            I began working at Creative Commons (CC) as the Full Stack Engineer this year and it’s been...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -690,25 +816,323 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2022-12-07-berkeley-quantifying/">Data Science Discovery: Quantifying the Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/Dun-MingHuang/">Dun-Ming Huang (Brandon Huang)</a>, <a class="author-name" href="/blog/authors/ShuranYang/">Shuran Yang</a> on 2022-12-07
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2023-03-24-community-contributions/">Considering Community Contributions at Creative Commons</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2023-03-24
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Different open source communities work differently and so everyone may arrive at Creative...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
+
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2023-02-01-outreachy-mid-point/">Outreachy Internship Mid-point Progress Update</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/precious/">Precious Oritsedere</a> on 2023-02-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2022">Outreachy-2022</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/799674ebf72ebba137da36402f2bab93?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
+
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2023-01-04-how-i-landed-my-first-internship/">How I Landed My First Internship With Outreachy</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/precious/">Precious Oritsedere</a> on 2023-01-04
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2022">Outreachy-2022</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/799674ebf72ebba137da36402f2bab93?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
+
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2022-12-16-new-to-working-in-open/">Thinking More Openly About Working in The Open</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2022-12-16
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            I began working at Creative Commons (CC) as the Full Stack Engineer this year and it’s been...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
+
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2022-12-07-berkeley-quantifying/">Data Science Discovery: Quantifying the Commons</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/Dun-MingHuang/">Dun-Ming Huang (Brandon Huang)</a>, <a class="author-name" href="/blog/authors/ShuranYang/">Shuran Yang</a> on 2022-12-07
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-dataviz">Cc-dataviz</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/quantifying-the-commons">Quantifying-the-commons</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             University of California, Berkeley, Data Science Discovery Program Fall 2022
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="/multiple-authors.jpg" alt="multiple authors image"/>
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/building-the-cc-global-components-library/">Building the CC Global Components Library</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/MuluhGodson/">Muluh MG Godson</a> on 2022-03-17
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2021">Outreachy-2021</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/design">Design</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            IntroductionDuring the course of my Outreachy internship with the Creative Commons, I got to...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -722,25 +1146,42 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/building-the-cc-global-components-library/">Building the CC Global Components Library</a></h4>
-        by <a class="author-name" href="/blog/authors/MuluhGodson/">Muluh MG Godson</a> on 2022-03-17
-
-        <div class="excerpt">
-          
-            IntroductionDuring the course of my Outreachy internship with the Creative Commons, I got to...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2022-01-06-cc-messaging/">CC Messaging Update 2022Q1 (Dropping IRC)</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2022-01-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Past: Moved to Slack
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -754,25 +1195,93 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2022-01-06-cc-messaging/">CC Messaging Update 2022Q1 (Dropping IRC)</a></h4>
-        by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2022-01-06
-
-        <div class="excerpt">
-          
-            Past: Moved to Slack
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2020-12-07-upcoming-changes-to-community/">Upcoming Changes to the CC Open Source Community</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2020-12-07
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/cc-browser-extension">Cc-browser-extension</a>
+              , 
+              
+                <a href="/blog/categories/cc-catalog">Cc-catalog</a>
+              , 
+              
+                <a href="/blog/categories/cc-catalog-api">Cc-catalog-api</a>
+              , 
+              
+                <a href="/blog/categories/cc-chooser">Cc-chooser</a>
+              , 
+              
+                <a href="/blog/categories/cc-dataviz">Cc-dataviz</a>
+              , 
+              
+                <a href="/blog/categories/cc-legal-database">Cc-legal-database</a>
+              , 
+              
+                <a href="/blog/categories/cc-link-checker">Cc-link-checker</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/cc-vocabulary">Cc-vocabulary</a>
+              , 
+              
+                <a href="/blog/categories/cc-wp-base-theme">Cc-wp-base-theme</a>
+              , 
+              
+                <a href="/blog/categories/cc-wp-plugin">Cc-wp-plugin</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/platform-toolkit">Platform-toolkit</a>
+              , 
+              
+                <a href="/blog/categories/wordpress">Wordpress</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Creative Commons (CC) is adopting a brand new organizational strategy in 2021, just in time for...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -786,57 +1295,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2020-12-07-upcoming-changes-to-community/">Upcoming Changes to the CC Open Source Community</a></h4>
-        by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2020-12-07
-
-        <div class="excerpt">
-          
-            Creative Commons (CC) is adopting a brand new organizational strategy in 2021, just in time for...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/6ee7af2da22737fd49ce56adc226d2cb?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/summary-my-gsod-2020-journey/">Summary: My GSoD 2020 Journey</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-12-02
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/summary-my-gsod-2020-journey/">Summary: My GSoD 2020 Journey</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-12-02
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog">Cc-catalog</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Thank you for the wonderful experience, Creative Commons!
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -850,25 +1353,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/finish-video-presentation-project-report-and-evaluation-form/">Finish Video Presentation, Project Report and Evaluation Form</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-12-01
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/finish-video-presentation-project-report-and-evaluation-form/">Finish Video Presentation, Project Report and Evaluation Form</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-12-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog">Cc-catalog</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             For week 10 and 11, I finished porting CC Catalog documentation, submitted a video presentation,...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -882,25 +1411,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/finish-gsod-tasks-and-explore-cc-catalog-documentation/">Finish GSoD Tasks and Explore CC Catalog Documentation</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-11-20
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/finish-gsod-tasks-and-explore-cc-catalog-documentation/">Finish GSoD Tasks and Explore CC Catalog Documentation</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-11-20
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog">Cc-catalog</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Today marks my fifth blog entry on Creative Commons. For week 9 and 10, I explored CC Catalog...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -914,25 +1469,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/restructure-readme-and-add-documentation-guidelines/">Restructure README and Add Documentation Guidelines</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-11-05
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/restructure-readme-and-add-documentation-guidelines/">Restructure README and Add Documentation Guidelines</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-11-05
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog-api">Cc-catalog-api</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This is my fourth blog entry on Creative Commons. For week 7 and 8, I restructured the file...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -946,25 +1527,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/add-new-sections-descriptions-help-texts-code-examples-schemas-and-serializers/">Add New Sections, Descriptions, Help Texts, Code Examples, Schemas, and Serializers</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-10-21
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/add-new-sections-descriptions-help-texts-code-examples-schemas-and-serializers/">Add New Sections, Descriptions, Help Texts, Code Examples, Schemas, and Serializers</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-10-21
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog-api">Cc-catalog-api</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Welcome to my third blog entry! For week 5 and 6, I added new sections, descriptions, help...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -978,25 +1585,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/add-response-samples-and-descriptions-for-api-endpoints/">Add Response Samples and Descriptions for API Endpoints</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-10-09
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/add-response-samples-and-descriptions-for-api-endpoints/">Add Response Samples and Descriptions for API Endpoints</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-10-09
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog-api">Cc-catalog-api</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Well, hello again 👋! For week 3 and week 4, I added response samples and descriptions for API...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1010,25 +1643,106 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/add-query-using-curl-command-and-provide-response-samples/">Add Query Using curl Command and Provide Response Samples</a></h4>
-        by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-09-25
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/add-query-using-curl-command-and-provide-response-samples/">Add Query Using curl Command and Provide Response Samples</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ariessa/">Ariessa Norramli</a> on 2020-09-25
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-catalog-api">Cc-catalog-api</a>
+              , 
+              
+                <a href="/blog/categories/gsod">Gsod</a>
+              , 
+              
+                <a href="/blog/categories/gsod-2020">Gsod-2020</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             First of all, I’m very thankful to get selected as a Google Season of Docs participant under...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/6ee7af2da22737fd49ce56adc226d2cb?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-wrapup/">Accessibility and Internationalization: WrapUp GSoC 2020</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-08-31
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            These is the final blog of my internship with CC. I am working on improving the accessibility of...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1042,25 +1756,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-wrapup/">Accessibility and Internationalization: WrapUp GSoC 2020</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-08-31
-
-        <div class="excerpt">
-          
-            These is the final blog of my internship with CC. I am working on improving the accessibility of...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/automate-github-for-more-than-CI CD/">Automate GitHub for more than CI/CD</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/zackkrida/">Zack Krida</a> on 2020-08-26
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Get started using GitHub bots and actions for community management and repository health.
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1074,25 +1808,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/automate-github-for-more-than-CI CD/">Automate GitHub for more than CI/CD</a></h4>
-        by <a class="author-name" href="/blog/authors/zackkrida/">Zack Krida</a> on 2020-08-26
-
-        <div class="excerpt">
-          
-            Get started using GitHub bots and actions for community management and repository health.
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2020-08-x5gon-cc-catalog-api/">X5GON Using CC Catalog API for Image Results</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/annatuma/">Anna Tumadóttir</a> on 2020-08-24
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/cc-catalog">Cc-catalog</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/collaboration">Collaboration</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            A few months ago, the Open Education team at Creative Commons made an introduction between the...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1106,25 +1866,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2020-08-x5gon-cc-catalog-api/">X5GON Using CC Catalog API for Image Results</a></h4>
-        by <a class="author-name" href="/blog/authors/annatuma/">Anna Tumadóttir</a> on 2020-08-24
-
-        <div class="excerpt">
-          
-            A few months ago, the Open Education team at Creative Commons made an introduction between the...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/crawling-500-million/">How to politely crawl and analyze 500 million images</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2020-08-17
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Background
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1138,25 +1918,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/crawling-500-million/">How to politely crawl and analyze 500 million images</a></h4>
-        by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2020-08-17
-
-        <div class="excerpt">
-          
-            Background
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/say_hello_to_ct/">Say Hello To Our Community Team</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/dhruvkb/">Dhruv Bhanushali</a> on 2020-08-14
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Creative Commons is committed to open-source software. We have over two dozen projects, spanning...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1170,57 +1970,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/say_hello_to_ct/">Say Hello To Our Community Team</a></h4>
-        by <a class="author-name" href="/blog/authors/dhruvkb/">Dhruv Bhanushali</a> on 2020-08-14
-
-        <div class="excerpt">
-          
-            Creative Commons is committed to open-source software. We have over two dozen projects, spanning...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/ba5f8ac4afb162644051544e25b5cfe8?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-week9-10/">Accessibility Improvements: Final Changes and Modal Accessilibity</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-08-12
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-week9-10/">Accessibility Improvements: Final Changes and Modal Accessilibity</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-08-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             These are the last two weeks of my internship with CC. I am working on improving the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1234,25 +2025,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-week7-8/">CC Search, Initial Accessibility Improvements</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-07-25
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-week7-8/">CC Search, Initial Accessibility Improvements</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-07-25
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             These are the seventh and eighth weeks of my internship with CC. I am working on improving the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1266,25 +2080,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-week5-6/">Internationalization continued: Modifying tests</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-07-10
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-week5-6/">Internationalization continued: Modifying tests</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-07-10
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             These are the fifth and sixth weeks of my internship with CC. I am working on improving the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1298,25 +2135,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-week3-4/">Internationalization Continued: Handling strings in the store</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-06-26
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-week3-4/">Internationalization Continued: Handling strings in the store</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-06-26
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             These are the second two weeks of my internship with CC. I am working on improving the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1330,25 +2190,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-week1-2/">CC Search, Setting up vue-i18n and internationalizing homepage</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-06-10
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-week1-2/">CC Search, Setting up vue-i18n and internationalizing homepage</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-06-10
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             These are the first two weeks of my internship with CC. I am working on improving the...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1362,25 +2245,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-search-accessibility-and-internationalization/">CC Search, Proposal Drafting and Community Bonding</a></h4>
-        by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-05-22
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-search-accessibility-and-internationalization/">CC Search, Proposal Drafting and Community Bonding</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/AyanChoudhary/">Ayan Choudhary</a> on 2020-05-22
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Proposal Drafting
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1388,31 +2294,54 @@
     <header>
       <figure class="image blog-image">
     
-        <img class="profile" src="https://secure.gravatar.com/avatar/d57fcb48567c6365f6ebc847ec31bbef?size=200&d=mp" alt="author's gravatar" />
+        <img class="profile" src="https://secure.gravatar.com/avatar/ba5f8ac4afb162644051544e25b5cfe8?size=200&d=mp" alt="author's gravatar" />
     
       </figure>
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-platform-toolkit-revamp-4/">CC Platform Toolkit Revamp - 4</a></h4>
-        by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2020-03-04
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-platform-toolkit-revamp-4/">CC Platform Toolkit Revamp - 4</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2020-03-04
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/platform-toolkit">Platform-toolkit</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2019-20">Outreachy-2019-20</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Phew, how is it possible that we&#39;re already in March? Between my last check-in and today, there...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1426,25 +2355,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-platform-toolkit-revamp-3/">CC Platform Toolkit Revamp - 3</a></h4>
-        by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2020-01-22
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-platform-toolkit-revamp-3/">CC Platform Toolkit Revamp - 3</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2020-01-22
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/platform-toolkit">Platform-toolkit</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2019-20">Outreachy-2019-20</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Last time I checked-in, I was working on revisiting the current Platform Toolkit and making a...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1458,25 +2410,103 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-platform-toolkit-revamp-2/">CC Platform Toolkit Revamp - 2</a></h4>
-        by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2020-01-06
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-platform-toolkit-revamp-2/">CC Platform Toolkit Revamp - 2</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2020-01-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/platform-toolkit">Platform-toolkit</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2019-20">Outreachy-2019-20</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Time is really flying! I can hardly believe this is already week 5 as of my internship with CC...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/d57fcb48567c6365f6ebc847ec31bbef?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/freesound-intro/">An Introduction to Freesound</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/ffont/">Frederic Font</a> on 2019-12-19
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/freesound">Freesound</a>
+              , 
+              
+                <a href="/blog/categories/audio">Audio</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            About Freesound
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1490,25 +2520,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/freesound-intro/">An Introduction to Freesound</a></h4>
-        by <a class="author-name" href="/blog/authors/ffont/">Frederic Font</a> on 2019-12-19
-
-        <div class="excerpt">
-          
-            About Freesound
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-platform-toolkit-revamp/">CC Platform Toolkit Revamp</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2019-12-16
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/platform-toolkit">Platform-toolkit</a>
+              , 
+              
+                <a href="/blog/categories/outreachy">Outreachy</a>
+              , 
+              
+                <a href="/blog/categories/outreachy-2019-20">Outreachy-2019-20</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            I&#39;ve just finished my second week as an intern for CC (part of the Outreachy program 2019-2020...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1522,57 +2575,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-platform-toolkit-revamp/">CC Platform Toolkit Revamp</a></h4>
-        by <a class="author-name" href="/blog/authors/apdsrocha/">Ana Paula Rocha</a> on 2019-12-16
-
-        <div class="excerpt">
-          
-            I&#39;ve just finished my second week as an intern for CC (part of the Outreachy program 2019-2020...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/32853a2ab283e0093bf088d8af5d3cdc?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/aws_grant/">Creative Commons Awarded AWS Imagine Grant</a></h4>
-        by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-12-12
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/aws_grant/">Creative Commons Awarded AWS Imagine Grant</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-12-12
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Creative Commons was recently awarded a $125,000 AWS Imagine grant, which will cover...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1586,25 +2627,97 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/building-distributed-indexer/">Building a Distributed Indexer for a Search Engine</a></h4>
-        by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-12-11
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/building-distributed-indexer/">Building a Distributed Indexer for a Search Engine</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-12-11
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             With CC Search, we want to make it possible to search all of the estimated 1.6 billion Creative...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/32853a2ab283e0093bf088d8af5d3cdc?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2019-11-25-empowering-collaboration/">Empowering Collaboration in the Commons</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2019-11-25
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            In the past few months I have been privileged to attend [Wikimania 2019][wikimania2019] and the...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1618,25 +2731,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2019-11-25-empowering-collaboration/">Empowering Collaboration in the Commons</a></h4>
-        by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2019-11-25
-
-        <div class="excerpt">
-          
-            In the past few months I have been privileged to attend [Wikimania 2019][wikimania2019] and the...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2019-09-25-ccgn-redesign/">Revamping the Creative Commons Global Network website</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/hugosolar/">Hugo Solar</a> on 2019-09-25
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/wordpress">Wordpress</a>
+              , 
+              
+                <a href="/blog/categories/website">Website</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            The CC Global Network website is the face of our global community; it is the home for a...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1650,25 +2783,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2019-09-25-ccgn-redesign/">Revamping the Creative Commons Global Network website</a></h4>
-        by <a class="author-name" href="/blog/authors/hugosolar/">Hugo Solar</a> on 2019-09-25
-
-        <div class="excerpt">
-          
-            The CC Global Network website is the face of our global community; it is the home for a...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2019-09-11-google-docs-plugin/">Creative Commons Google Docs Add-on</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/brandonopened/">Brandon Dorman</a> on 2019-09-11
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/google-docs">Google-docs</a>
+              , 
+              
+                <a href="/blog/categories/plugin">Plugin</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            A few years ago I published a Google Docs Add-on that allowed users to insert a Creative Commons...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1682,25 +2838,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2019-09-11-google-docs-plugin/">Creative Commons Google Docs Add-on</a></h4>
-        by <a class="author-name" href="/blog/authors/brandonopened/">Brandon Dorman</a> on 2019-09-11
-
-        <div class="excerpt">
-          
-            A few years ago I published a Google Docs Add-on that allowed users to insert a Creative Commons...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/improving-ranking/">Some thoughts on improving the relevance of images in CC Search</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-09-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Like other image search services, CC Search matches queries with keywords in descriptive...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1714,25 +2890,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/improving-ranking/">Some thoughts on improving the relevance of images in CC Search</a></h4>
-        by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-09-06
-
-        <div class="excerpt">
-          
-            Like other image search services, CC Search matches queries with keywords in descriptive...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/2019-07-24-cc-search-wp-plugin/">Easy search and use of CC-licensed images for WordPress</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/lenasterg/">Eleni (Lena) Stergatou</a> on 2019-07-24
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/wordpress">Wordpress</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/plugin">Plugin</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Inspiration and idea for the WordPress plugin
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1746,25 +2948,45 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/2019-07-24-cc-search-wp-plugin/">Easy search and use of CC-licensed images for WordPress</a></h4>
-        by <a class="author-name" href="/blog/authors/lenasterg/">Eleni (Lena) Stergatou</a> on 2019-07-24
-
-        <div class="excerpt">
-          
-            Inspiration and idea for the WordPress plugin
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/searching-300-million/">Searching 300MM Images with CC Search: Backend Architecture</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-06-19
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            In 2016, Creative Commons hired Liza Daly to build a proof-of-concept engine for searching 10...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1778,121 +3000,48 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/searching-300-million/">Searching 300MM Images with CC Search: Backend Architecture</a></h4>
-        by <a class="author-name" href="/blog/authors/aldenpage/">Alden Page</a> on 2019-06-19
-
-        <div class="excerpt">
-          
-            In 2016, Creative Commons hired Liza Daly to build a proof-of-concept engine for searching 10...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-catalog-leverage-open-data-1/">CC Catalog: Leveraging Open Data and Open APIs</a></h4>
-        by <a class="author-name" href="/blog/authors/sclachar/">Sophine Clachar</a> on 2019-06-07
-
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-catalog-leverage-open-data-1/">CC Catalog: Leveraging Open Data and Open APIs</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/sclachar/">Sophine Clachar</a> on 2019-06-07
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/cc-search">Cc-search</a>
+              , 
+              
+                <a href="/blog/categories/cc-catalog">Cc-catalog</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             This post is the first of a three-part series about the underlying infrastructure for Creative...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
 
-    
-      
+      <figure>
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/078347dbae1783ecf5e18c29b958d176?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/meet-gsoc-2019-students/">Meet CC’s 2019 Google Summer of Code students</a></h4>
-        by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2019-05-30
-
-        <div class="excerpt">
-          
-            This year, CC is participating in Google Summer of Code (GSoC) as a mentoring organization after...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
-  
-    
-    
-    
-    <header>
-      <figure class="image blog-image">
-    
-        <img class="profile" src="https://secure.gravatar.com/avatar/078347dbae1783ecf5e18c29b958d176?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-  
-
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-gsoc-accepted-students/">CC Google Summer of Code accepted students announced</a></h4>
-        by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2019-05-06
-
-        <div class="excerpt">
-          
-            Google Summer of Code has just announced the list of accepted students for 2019. We’d like to...
-          
-        </div>
-      </div>
-    </article>
-  </div>
-
-    
-      
-        
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
   
     
     
@@ -1906,25 +3055,210 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/open-source-at-cc-gs2019-pre-event/">Open Source at Creative Commons - 2019 Global Summit Event</a></h4>
-        by <a class="author-name" href="/blog/authors/sclachar/">Sophine Clachar</a> on 2019-05-01
+      </figure>
+   </article>
+ </li>
 
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/meet-gsoc-2019-students/">Meet CC’s 2019 Google Summer of Code students</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2019-05-30
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/gsoc-2019">Gsoc-2019</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            This year, CC is participating in Google Summer of Code (GSoC) as a mentoring organization after...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/078347dbae1783ecf5e18c29b958d176?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
+
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-gsoc-accepted-students/">CC Google Summer of Code accepted students announced</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2019-05-06
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/gsoc-2019">Gsoc-2019</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            Google Summer of Code has just announced the list of accepted students for 2019. We’d like to...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/078347dbae1783ecf5e18c29b958d176?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
+
+    
+      
+        
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/open-source-at-cc-gs2019-pre-event/">Open Source at Creative Commons - 2019 Global Summit Event</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/sclachar/">Sophine Clachar</a> on 2019-05-01
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
         <div class="excerpt">
           
             Creative Commons has been building free software for over a decade to support its mission of...
           
         </div>
-      </div>
-    </article>
-  </div>
+        -->
+      </header>
+
+      <figure>
+        
+  
+    
+    
+    
+    <header>
+      <figure class="image blog-image">
+    
+        <img class="profile" src="https://secure.gravatar.com/avatar/?size=200&d=mp" alt="author's gravatar" />
+    
+      </figure>
+    </header>
+  
+
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/open-development-with-saltstack/">Open Development with SaltStack</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2019-04-17
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/SaltStack">Saltstack</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            I am excited to publicize the open source repository for our SaltStack configuration:...
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1938,25 +3272,51 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/open-development-with-saltstack/">Open Development with SaltStack</a></h4>
-        by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2019-04-17
-
-        <div class="excerpt">
-          
-            I am excited to publicize the open source repository for our SaltStack configuration:...
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
       
         
-  <div class="column is-one-third is-paddingless padding-horizontal-big padding-top-bigger">
-    <article class="card entry-post horizontal no-border blog-entry">
-      
+  <li>
+    <article class="post">
+      <header>
+        <h3 class="title"><a href="/blog/entries/cc-plus-gsoc-2019/">CC + Google Summer of Code 2019</a></h3>
+          <span class="byline"> by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2019-03-04
+ </span>
+            <span class="categories">
+              
+              
+                <a href="/blog/categories/announcements">Announcements</a>
+              , 
+              
+                <a href="/blog/categories/community">Community</a>
+              , 
+              
+                <a href="/blog/categories/gsoc">Gsoc</a>
+              , 
+              
+                <a href="/blog/categories/gsoc-2019">Gsoc-2019</a>
+              , 
+              
+                <a href="/blog/categories/open-source">Open-source</a>
+              
+              
+              
+            </span>
+        <!-- TODO: add excerpt back in -->
+        <!--
+        <div class="excerpt">
+          
+            
+          
+        </div>
+        -->
+      </header>
+
+      <figure>
+        
   
     
     
@@ -1970,122 +3330,74 @@
     </header>
   
 
-      <div class="blog-content">
-        <h4 class="b-header"><a class="blog-title" href="/blog/entries/cc-plus-gsoc-2019/">CC + Google Summer of Code 2019</a></h4>
-        by <a class="author-name" href="/blog/authors/kgodey/">Kriti Godey</a> on 2019-03-04
-
-        <div class="excerpt">
-          
-            
-          
-        </div>
-      </div>
-    </article>
-  </div>
+      </figure>
+   </article>
+ </li>
 
     
-  </div>
+  </ul>
 
-  </div>
 </div>
 
+  </main>
 
   <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
-          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
-            <span class="has-text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 304 73">
-                <use href="#logomark"></use>
-              </svg>
-            </span>
-          </a>
-          <div>
-            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
-            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
-            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
-          </div>
-          <div class="margin-vertical-large">
-            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">instagram</i>
-            </a>
-            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">facebook</i>
-            </a>
-            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">linkedin</i>
-            </a>
-          </div>
+  <footer>
+    <a class="identity-logo" href="https://www.creativecommons.org">Creative Commons</a>
+
+    <nav class="footer-menu" aria-label="Footer menu">
+        <ul>
+
+            <li><a href="/blog/entries/">Blog</a></li>
+            <li><a href="/community/community-team/">Community Team</a></li>
+            <li><a href="/contributing-code/projects/">Project List</a></li>
+            <li><a href="/archives/">Archives</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br /> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+
+    <nav class="social-menu" aria-label="Social menu">
+        <ul>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank">
+        <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Your email" required>
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
         </div>
-        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
-          <div class="columns">
-            <div class="column is-full">
-              <nav class="footer-navigation">
-                <ul class="menu">
-                  <li>
-                    <a href="/blog/entries/" class="menu-item">Blog</a>
-                  </li>
-                  <li>
-                    <a href="/community/community-team/" class="menu-item">Community Team</a>
-                  </li>
-                  <li>
-                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
-                  </li>
-                  <li>
-                    <a href="/archives/" class="menu-item">Archives</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-two-thirds">
-              <div class="subscription">
-                <h5 class="b-header">Subscribe to our newsletter</h5>
-                <form class="newsletter">
-                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
-                  <input type="submit" value="subscribe" class="button small">
-                 </form>
-               </div>
-               <div class="attribution margin-top-bigger">
-                <p class="caption">
-                  Except where otherwise
-                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
-                  content on this site is licensed under a
-                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
-                    Attribution 4.0 International license</a>.
-                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
-                  by
-                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
-                </p>
-                <div class="margin-top-smaller">
-                  <i class="icon margin-right-small is-size-4">cclogo</i>
-                  <i class="icon margin-right-small is-size-4">ccby</i>
-                </div>
-              </div>
-            </div>
-            <div class="column is-one-third">
-              <aside class="donate-section">
-                <h5>Our work relies on you!</h5>
-                <p>Help us keep the internet free and open.</p>
-                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
-                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
-                  Donate now
-                </a>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </div>
+        <input type="submit" value="subscribe" id="mc-embedded-subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
     </div>
   </footer>
-</body>
+  <script src="/static/vocabulary/js/vocabulary.js"></script>
+ </body>
 </html>

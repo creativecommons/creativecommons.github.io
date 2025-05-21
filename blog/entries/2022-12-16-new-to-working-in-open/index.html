@@ -2,9 +2,15 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="icon"  href="/static/vocabulary/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="/static/vocabulary/favicon/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/static/vocabulary/favicon/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/vocabulary/favicon/apple-touch-icon.png" />
+<link rel="stylesheet" href="/static/css/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/datatable/datatables.js"></script>
+<script type="text/javascript" src="/static/js/table.js"></script>
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="Thinking More Openly About Working in The Open" />
 
@@ -45,240 +51,105 @@ time it’s definitely been a learning experience and a perspective shift.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/static/gen/script.js"></script>
-<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
-<script>
-  const globalHeaderInstance = vocabulary.createGlobalHeader();
-</script>
 <title>Thinking More Openly About Working in The Open — Creative Commons Open Source</title>
 
-<body>
+<body  class="blog-post" >
 
-  <!-- Header -->
-  <header class="container">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a class="has-text-black" href="/" aria-label="Home">
-          <svg
-            class="logo margin-top-small"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 284 46">
-            <use href="#opensource"></use>
-          </svg>
-        </a>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item  is-active" href="/blog/entries/">
-            Blog
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Contribute<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
-              
-                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
-              
-                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
-              
-                <a class="navbar-item" href="/contributing-code/foundational-tech/">Foundational technologies</a>
-              
-                <a class="navbar-item" href="/contributing-code/documentation-guidelines/">Documentation Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
-              
-                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Community<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown is-active">
-              
-                <a class="navbar-item" href="/community/">Join the Community</a>
-              
-                <a class="navbar-item" href="/community/community-team/">Community Team</a>
-              
-                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
-              
-                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
-              
-                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
-              
-                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
-              
-                <a class="navbar-item" href="/community/supporters/">Supporters</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Work Programs<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/programs/">Overview</a>
-              
-                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
-              
-                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
-              
-                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
-              
-                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
-              
-                <a class="navbar-item" href="/programs/history/">History</a>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+<a class="skip-to-content" href="#main-content-marker">Skip to content</a>
+<header>
+    <div class="masthead">
+        <h1><a class="identity-logo product" href="/">Open source</a></h1>
+        <button class="expand-menu">Menu</button>
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="/blog/entries/">Blog</a></li>
+                <li><a href="/contributing-code/">Contribute</a></li>
+                <li><a href="/community/">Community</a></li>
+                <li><a href="/programs/">Work Programs</a></li>
+            </ul>
+            <!--TODO: Evaluate use of dropdown/secondary menu-->
+        </nav>
+
+        <nav class="ancillary-menu">
+            <ul>
+                <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
+                <li><button class="explore">Explore CC</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="explore-panel">
+    <!-- (optional main CC logo, p, link on non-home site back to main site) -->
+    <aside>
+      <a
+        class="identity-logo"
+        href="https://creativecommons.org"
+        >Creative Commons</a
+      >
+      <h2>Our Work Relies On You!</h2>
+      <p>Help us keep the internet free and open.</p>
+    </aside>
+    <nav class="explore-menu">
+        <ul>
+            <li>
+                <a href="https://network.creativecommons.org/" target="_blank">Global Network</a>
+                <p>Join a  global community working to strengthen the Commons</p>
+            </li>
+            <li>
+                <a href="https://certificate.creativecommons.org/" target="_blank">Certificate</a>
+                <p>Become an expert in creating and engaging with openly licensed materials</p>
+            </li>
+            <li>
+                <a href="/choose" target="_blank">Chooser</a>
+                <p>Get help choosing the appropriate license for your work</p>
+            </li>
+            <li>
+                <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
+                <p>Find engines to search openly licensed material for creative and educational reuse</p>
+            </li>
+        </ul>
     </nav>
-  </header>
+    </div>
+
+</header>
 
   <!-- Breadcrumb -->
+   <!--TODO: EVALUATE USE OF BREADCRUMB;REMOVE OR KEEP-->
   
-    <div class="breadcrumb-container">
-      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
-        <ul>
-          
-          
-          <!-- Extracting the slugs of URL -->
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-              <li><a class="link" href="/">
-              
-                Home
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-              <li><a class="link" href="/blog/">
-              
-                Blog
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-                
-              
-              <li><a class="link" href="/blog/entries/">
-              
-                Entries
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <li class="is-active"><a aria-current="page displayed">Thinking More Openly About Working in The Open</a></li>
-            
-          
-        </ul>
-      </nav>
-    </div>
-  
-
   <!-- Body -->
+  <span id="main-content-marker"></span>
+  <main>
   
-  <div class="single-post">
-    <header class="single-post-header">
-      <div class="container">
-        <h4>CC Open Source Blog</h4>
-        <h2 class="title">Thinking More Openly About Working in The Open</h2>
-        <div class="author columns is-marginless">
-          <header>
-      <figure class="image blog-image">
+<header>
+  <h1>Thinking More Openly About Working in The Open</h1>
+  <span class="byline"><a>by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2022-12-16</a></span>
+  <span class="categories">
     
-        <img class="profile" src="https://secure.gravatar.com/avatar/898c4d3ca8cabbee04ffe00bde6df9ab?size=200&d=mp" alt="author's gravatar" />
-    
-      </figure>
-    </header>
-          <p class="padding-small">
-            by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2022-12-16
-          </p>
-        </div>
+      
         
-      </div>
-    </header>
-    <div class="single-post-body content container">
-      <p>I began working at Creative Commons (CC) as the Full Stack Engineer this year
+        
+        <a href="/blog/categories/open-source/">open-source</a>
+      
+        
+        
+        <a href="/blog/categories/collaboration/">collaboration</a>
+      
+        
+        
+        <a href="/blog/categories/community/">community</a>
+      
+    
+  </span>
+</header>
+
+<!-- TODO: IF EXCERPT IS TO BE INCLUDED, ADD EXCERPT HERE -->
+<!--
+  <aside class="opening">
+    <p> </p>
+  </aside>
+-->
+
+<div><p>I began working at Creative Commons (CC) as the Full Stack Engineer this year
 and it’s been amazing to get to work in the open at CC. But as someone who
 has been working in closed, internal source environments for a very long
 time it’s definitely been a learning experience and a perspective shift.</p>
@@ -337,31 +208,29 @@ through better documentation, answering someone’s question, reworking a
 process, or reviewing someone else’s generous contribution. Open Source means
 opening up your definition of what contribution means, and it’s a lot broader
 and more meaningful than I thought.</p>
+</div>
 
-    </div>
-    <footer class="single-post-footer container">
-      <div class="category">
-        <h4 class="category-title">Categories</h4>
-        <div class="categories">
-          
-            
-              
-              
-              <a class="button tag" href=" /blog/categories/open-source/ ">open-source</a>
-            
-              
-              
-              <a class="button tag" href=" /blog/categories/collaboration/ ">collaboration</a>
-            
-              
-              
-              <a class="button tag" href=" /blog/categories/community/ ">community</a>
-            
-          
-        </div>
-      </div>
+
+
+<article class="tags">
+  <h2>Tags</h2>
+  <ul>
+    
       
-      <div class="comments">
+        
+        <li><a href="/blog/categories/open-source/">open-source</a></li>
+      
+        
+        <li><a href="/blog/categories/collaboration/">collaboration</a></li>
+      
+        
+        <li><a href="/blog/categories/community/">community</a></li>
+      
+    
+  </ul>
+</article>
+
+<div class="comments">
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function() { this.page.identifier = "/blog/entries/2022-12-16-new-to-working-in-open"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2022-12-16-new-to-working-in-open/"; };
@@ -377,106 +246,66 @@ and more meaningful than I thought.</p>
     rel="nofollow">comments powered by Disqus.</a>
 </noscript>
 </div>
-    </footer>
-  </div>
 
+  </main>
 
   <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
-          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
-            <span class="has-text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 304 73">
-                <use href="#logomark"></use>
-              </svg>
-            </span>
-          </a>
-          <div>
-            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
-            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
-            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
-          </div>
-          <div class="margin-vertical-large">
-            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">instagram</i>
-            </a>
-            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">facebook</i>
-            </a>
-            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">linkedin</i>
-            </a>
-          </div>
+  <footer>
+    <a class="identity-logo" href="https://www.creativecommons.org">Creative Commons</a>
+
+    <nav class="footer-menu" aria-label="Footer menu">
+        <ul>
+
+            <li><a href="/blog/entries/">Blog</a></li>
+            <li><a href="/community/community-team/">Community Team</a></li>
+            <li><a href="/contributing-code/projects/">Project List</a></li>
+            <li><a href="/archives/">Archives</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br /> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+
+    <nav class="social-menu" aria-label="Social menu">
+        <ul>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank">
+        <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Your email" required>
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
         </div>
-        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
-          <div class="columns">
-            <div class="column is-full">
-              <nav class="footer-navigation">
-                <ul class="menu">
-                  <li>
-                    <a href="/blog/entries/" class="menu-item">Blog</a>
-                  </li>
-                  <li>
-                    <a href="/community/community-team/" class="menu-item">Community Team</a>
-                  </li>
-                  <li>
-                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
-                  </li>
-                  <li>
-                    <a href="/archives/" class="menu-item">Archives</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-two-thirds">
-              <div class="subscription">
-                <h5 class="b-header">Subscribe to our newsletter</h5>
-                <form class="newsletter">
-                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
-                  <input type="submit" value="subscribe" class="button small">
-                 </form>
-               </div>
-               <div class="attribution margin-top-bigger">
-                <p class="caption">
-                  Except where otherwise
-                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
-                  content on this site is licensed under a
-                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
-                    Attribution 4.0 International license</a>.
-                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
-                  by
-                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
-                </p>
-                <div class="margin-top-smaller">
-                  <i class="icon margin-right-small is-size-4">cclogo</i>
-                  <i class="icon margin-right-small is-size-4">ccby</i>
-                </div>
-              </div>
-            </div>
-            <div class="column is-one-third">
-              <aside class="donate-section">
-                <h5>Our work relies on you!</h5>
-                <p>Help us keep the internet free and open.</p>
-                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
-                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
-                  Donate now
-                </a>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </div>
+        <input type="submit" value="subscribe" id="mc-embedded-subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
     </div>
   </footer>
-</body>
+  <script src="/static/vocabulary/js/vocabulary.js"></script>
+ </body>
 </html>

@@ -2,9 +2,15 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/gen/style.css">
+<link rel="icon"  href="/static/vocabulary/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="/static/vocabulary/favicon/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/static/vocabulary/favicon/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/vocabulary/favicon/apple-touch-icon.png" />
+<link rel="stylesheet" href="/static/css/style.css">
 <link rel="stylesheet" href="/static/pygments.css">
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/datatable/datatables.js"></script>
+<script type="text/javascript" src="/static/js/table.js"></script>
 <meta property="og:site_name" content="Creative Commons" />
 <meta property="og:title" content="Open Source Projects" />
 
@@ -33,1786 +39,1555 @@
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/static/gen/script.js"></script>
-<script src="https://unpkg.com/@creativecommons/vocabulary@2020.7.2/js/vocabulary.js"></script>
-<script>
-  const globalHeaderInstance = vocabulary.createGlobalHeader();
-</script>
 <title>Open Source Projects — Creative Commons Open Source</title>
 
-<body>
+<body >
 
-  <!-- Header -->
-  <header class="container">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a class="has-text-black" href="/" aria-label="Home">
-          <svg
-            class="logo margin-top-small"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 284 46">
-            <use href="#opensource"></use>
-          </svg>
-        </a>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item " href="/blog/entries/">
-            Blog
-          </a>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless  is-active" tabindex="0">
-              Contribute<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/contributing-code/">Contribution Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/projects/">Project List</a>
-              
-                <a class="navbar-item" href="/contributing-code/issue-finder/">Issue Finder</a>
-              
-                <a class="navbar-item" href="/contributing-code/pr-guidelines/">Pull Request Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/repo-labels/">Repository Labels</a>
-              
-                <a class="navbar-item" href="/contributing-code/foundational-tech/">Foundational technologies</a>
-              
-                <a class="navbar-item" href="/contributing-code/documentation-guidelines/">Documentation Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/javascript-guidelines/">JavaScript Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/python-guidelines/">Python Guidelines</a>
-              
-                <a class="navbar-item" href="/contributing-code/translation-guide/">Translation Guide</a>
-              
-                <a class="navbar-item" href="/contributing-code/usability/">Usability</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Community<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown is-active">
-              
-                <a class="navbar-item" href="/community/">Join the Community</a>
-              
-                <a class="navbar-item" href="/community/community-team/">Community Team</a>
-              
-                <a class="navbar-item" href="/community/community-team/members/">Community Team Members</a>
-              
-                <a class="navbar-item" href="/community/community-team/project-roles/">Project Roles</a>
-              
-                <a class="navbar-item" href="/community/community-team/community-building-roles/">Community Building Roles</a>
-              
-                <a class="navbar-item" href="/community/write-a-blog-post/">Write a Blog Post</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/">Code of Conduct</a>
-              
-                <a class="navbar-item" href="/community/code-of-conduct/enforcement/">Code of Conduct Enforcement</a>
-              
-                <a class="navbar-item" href="/community/supporters/">Supporters</a>
-              
-            </div>
-          </div>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link is-arrowless " tabindex="0">
-              Work Programs<i class="icon caret-down"></i></a>
-            <div class="navbar-dropdown">
-              
-                <a class="navbar-item" href="/programs/">Overview</a>
-              
-                <a class="navbar-item" href="/programs/project-ideas/">Project Ideas</a>
-              
-                <a class="navbar-item" href="/programs/applicant-guide/">Applicant Guide</a>
-              
-                <a class="navbar-item" href="/programs/contrib-guide/">Contributor Guide</a>
-              
-                <a class="navbar-item" href="/programs/lead-guide/">Project Lead Guide</a>
-              
-                <a class="navbar-item" href="/programs/history/">History</a>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+<a class="skip-to-content" href="#main-content-marker">Skip to content</a>
+<header>
+    <div class="masthead">
+        <h1><a class="identity-logo product" href="/">Open source</a></h1>
+        <button class="expand-menu">Menu</button>
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="/blog/entries/">Blog</a></li>
+                <li><a href="/contributing-code/">Contribute</a></li>
+                <li><a href="/community/">Community</a></li>
+                <li><a href="/programs/">Work Programs</a></li>
+            </ul>
+            <!--TODO: Evaluate use of dropdown/secondary menu-->
+        </nav>
+
+        <nav class="ancillary-menu">
+            <ul>
+                <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
+                <li><button class="explore">Explore CC</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="explore-panel">
+    <!-- (optional main CC logo, p, link on non-home site back to main site) -->
+    <aside>
+      <a
+        class="identity-logo"
+        href="https://creativecommons.org"
+        >Creative Commons</a
+      >
+      <h2>Our Work Relies On You!</h2>
+      <p>Help us keep the internet free and open.</p>
+    </aside>
+    <nav class="explore-menu">
+        <ul>
+            <li>
+                <a href="https://network.creativecommons.org/" target="_blank">Global Network</a>
+                <p>Join a  global community working to strengthen the Commons</p>
+            </li>
+            <li>
+                <a href="https://certificate.creativecommons.org/" target="_blank">Certificate</a>
+                <p>Become an expert in creating and engaging with openly licensed materials</p>
+            </li>
+            <li>
+                <a href="/choose" target="_blank">Chooser</a>
+                <p>Get help choosing the appropriate license for your work</p>
+            </li>
+            <li>
+                <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
+                <p>Find engines to search openly licensed material for creative and educational reuse</p>
+            </li>
+        </ul>
     </nav>
-  </header>
+    </div>
+
+</header>
 
   <!-- Breadcrumb -->
+   <!--TODO: EVALUATE USE OF BREADCRUMB;REMOVE OR KEEP-->
   
-    <div class="breadcrumb-container">
-      <nav class="container breadcrumb caption bold" aria-label="breadcrumbs">
-        <ul>
-          
-          
-          <!-- Extracting the slugs of URL -->
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-            
-              
-              
-            
-          
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-              <li><a class="link" href="/">
-              
-                Home
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <!-- Forming the URL using extracted slugs -->
-              
-              
-              
-                
-              
-                
-              
-              <li><a class="link" href="/contributing-code/">
-              
-                Contributing Code
-              
-              </a></li>
-            
-          
-            <!-- Active link -->
-            
-              <li class="is-active"><a aria-current="page displayed">Open Source Projects</a></li>
-            
-          
-        </ul>
-      </nav>
-    </div>
-  
-
   <!-- Body -->
+  <span id="main-content-marker"></span>
+  <main>
   
-  <div class="project-list">
-    <div class="header">
-      <div class="container">
-        <h1>Project List</h1>
-        <p class="description">This is a list of all active open source software projects that Creative Commons (CC) maintains.</p>
-      </div>
-    </div>
-    <div class="body container">
-      <p>Please read the <a href="/contributing-code">Contributing Code</a> page for general information on how to get involved. Contribution guidelines specific to an individual project can be found in the <code>README</code> and the <code>CONTRIBUTING</code> files in the root folder of every repository. If you have any questions, don't hesistate to reach out to us through <a href="/community">one of our community forums</a> or open a GitHub issue.</p>
-      <div class="featured-projects">
-        <h2 class="is-paddingless level-left">
-          Featured Projects
-        </h2>
-        <div class="project-list columns is-multiline">
-          
-          
-        
-          
-        
-          
-        
-          
-        
-          
-            <div class=" column is-one-third">
-              <article class="card entry-post vertical project-index">
-                <div class="card-content">
-                  <h4 class="card-title b-header"><a href="https://github.com/creativecommons/cc-legal-tools-app">CC Legal Tools Application</a></h4>
-                  <a class="button is-text tiny site-link" href="https://creativecommons.org/licenses/">
-                    <span>Visit site</span>
-                    <i class="icon external-link"></i>
-                  </a>
-                  <div class="content">
-                    Legal tool (licenses, public domain dedication, etc.) management application for Creative Commons
-                  </div>
-                  <div class="labels">
-                    
-                      <button class="button tag">Django</button>
-                    
-                      <button class="button tag">Python</button>
-                    
-                  </div>
-                  <div class="external-links">
-                    <a class="button is-text tiny" href="https://github.com/creativecommons/cc-legal-tools-app">
-                      <i class="icon github"></i>
-                      <span class="link-content">Github Repository</span>
-                    </a>
-                    
-                      <br>
-                      <a class="button is-text tiny" href="https://creativecommons.slack.com/channels/cc-dev-legal-tools">
-                        <i class="icon slack"></i>
-                        <span class="link-content">Slack channel (#cc-dev-legal-tools)</span>
-                      </a>
-                    
-                  </div>
-                </div>
-              </article>
-            </div>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-            <div class=" column is-one-third">
-              <article class="card entry-post vertical project-index">
-                <div class="card-content">
-                  <h4 class="card-title b-header"><a href="https://github.com/creativecommons/chooser">CC Chooser</a></h4>
-                  <a class="button is-text tiny site-link" href="https://creativecommons.org/chooser">
-                    <span>Visit site</span>
-                    <i class="icon external-link"></i>
-                  </a>
-                  <div class="content">
-                    The new and improved CC license selection tool.
-                  </div>
-                  <div class="labels">
-                    
-                      <button class="button tag">HTML</button>
-                    
-                      <button class="button tag">CSS</button>
-                    
-                      <button class="button tag">JS</button>
-                    
-                  </div>
-                  <div class="external-links">
-                    <a class="button is-text tiny" href="https://github.com/creativecommons/chooser">
-                      <i class="icon github"></i>
-                      <span class="link-content">Github Repository</span>
-                    </a>
-                    
-                  </div>
-                </div>
-              </article>
-            </div>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-            <div class=" column is-one-third">
-              <article class="card entry-post vertical project-index">
-                <div class="card-content">
-                  <h4 class="card-title b-header"><a href="https://github.com/creativecommons/quantifying">Quantifying the Commons</a></h4>
-                  <a class="button is-text tiny site-link" href="https://github.com/creativecommons/quantifying">
-                    <span>Visit site</span>
-                    <i class="icon external-link"></i>
-                  </a>
-                  <div class="content">
-                    quantify the size and diversity of the commons--the collection of works that are openly licensed or in the public domain
-                  </div>
-                  <div class="labels">
-                    
-                      <button class="button tag">Python</button>
-                    
-                  </div>
-                  <div class="external-links">
-                    <a class="button is-text tiny" href="https://github.com/creativecommons/quantifying">
-                      <i class="icon github"></i>
-                      <span class="link-content">Github Repository</span>
-                    </a>
-                    
-                      <br>
-                      <a class="button is-text tiny" href="https://creativecommons.slack.com/channels/cc-dev-quantifying">
-                        <i class="icon slack"></i>
-                        <span class="link-content">Slack channel (#cc-dev-quantifying)</span>
-                      </a>
-                    
-                  </div>
-                </div>
-              </article>
-            </div>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </div>
-      </div>
-      <div class="active-project">
-        <h2>All Active Projects</h2>
-        <p class="padding-vertical-big">This is a complete list of active Creative Commons software projects. Archived projects are not documented here and can be found on the <strong><a href="https://github.com/cc-archive">CC Archive GitHub organization</a>.</strong></p>
-        <div class="table-container">
-          <table class="table is-bordered  is-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Language</th>
-                <th scope="col">License</th>
-                <th scope="col">Links</th>
-              </tr>
-            </thead>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">1</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">.github</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Default templates and guidelines for Creative Commons GitHub repositories.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/.github/blob/main/COPYING" class="is-block">Creative Commons Zero v1.0 Universal</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://opensource.creativecommons.org/contributing-code/github-repo-guidelines/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/.github" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">2</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">candela-utility</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Candela helper plugin to manage additional config and bootstrapping, used on CC Certificates website</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/candela-utility/blob/master/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="http://certificates.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/candela-utility" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">3</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">cc-accidenz-commons</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">CC Accidenz Commons font</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/cc-accidenz-commons/blob/main/LICENSE" class="is-block">Creative Commons Attribution Share Alike 4.0 International</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/cc-accidenz-commons" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">4</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">cc-assets</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Image assets used across Creative Commons projects.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/cc-assets/blob/main/COPYING.md" class="is-block">Other</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/cc-assets" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-developers" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">5</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">cc-legal-tools-app</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Legal tool (licenses, public domain dedication, etc.) management application for Creative Commons</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Python
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/cc-legal-tools-app/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://creativecommons.org/licenses/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/cc-legal-tools-app" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-legal-tools" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">6</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">cc-legal-tools-data</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Legal tool (licenses, public domain dedication, etc.) data for Creative Commons</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/cc-legal-tools-data/blob/main/COPYING" class="is-block">Creative Commons Zero v1.0 Universal</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/cc-legal-tools-data" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-legal-tools" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">7</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">cc-license-chooser</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons JavaScript license selector in the form of a JavaScript widget</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  XSLT
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/cc-license-chooser/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/cc-license-chooser" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-license-chooser" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">8</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">cc-resource-archive</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Collection of resources on Creative Commons (CC) tools and other open topics</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Dockerfile
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/cc-resource-archive/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://resources.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/cc-resource-archive" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">9</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">CCID-cas</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">RubyCAS customizations for CCID (Creative Commons ID)</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/CCID-cas/blob/main/LICENSE.md" class="is-block">Other</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://login.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/CCID-cas" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">10</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">CCID-MediaWiki</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Script to add CCID users to MediaWiki</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/CCID-MediaWiki/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/CCID-MediaWiki" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">11</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">ccos-scripts</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Scripts used to maintain various pieces of CC&#39;s open source presence.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Python
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/ccos-scripts/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/ccos-scripts" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">12</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">ccos-website-source</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Source files for CC Open Source website</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/ccos-website-source/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://opensource.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/ccos-website-source" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">13</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">ccrel-guide</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">A guide to using the Creative Commons Rights Expression Language (CC REL)</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/ccrel-guide/blob/main/LICENSE" class="is-block">Other</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://opensource.creativecommons.org/ccrel-guide/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/ccrel-guide" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">14</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">certificates-landing-page-theme</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Theme for CC Certificates website landing page</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  SCSS
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/certificates-landing-page-theme/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="http://certificates.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/certificates-landing-page-theme" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">15</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">chooser</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">The new and improved CC license selection tool.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  CSS
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/chooser/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://creativecommons.org/chooser" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/chooser" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">16</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">commoners</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons Global Network website</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/commoners/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://network.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/commoners" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">17</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">Creative-Commons-Post-Republisher</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">This plugin allows you to add a button to your WordPress site&#39;s posts which will display terms and licensing for Creative Commons reposting, as well as the title and content of the post for easy sharing. This is useful for sites that want to easily and clearly share their content with others.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/Creative-Commons-Post-Republisher/blob/main/LICENSE" class="is-block">GNU General Public License v3.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/Creative-Commons-Post-Republisher" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">18</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">creativecommons-base</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Base WordPress theme for Creative Commons websites.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/creativecommons-base/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://opensource.creativecommons.org/creativecommons-base/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/creativecommons-base" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">19</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">creativecommons-certificate</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">WordPress theme for the CC Certificate Website</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/creativecommons-certificate/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/creativecommons-certificate" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">20</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">creativecommons.org</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Legacy legal code translations and general support issues</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/creativecommons.org/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/creativecommons.org" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">21</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">data-science-playground</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal"></td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Jupyter Notebook
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/data-science-playground/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/data-science-playground" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-developers" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">22</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">faq</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons FAQ page</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/faq/blob/main/LICENSE" class="is-block">Other</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://creativecommons.org/faq/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/faq" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">23</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">index-dev-env</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Local development environment for CreativeCommons.org (product name: index)</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Shell
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/index-dev-env/blob/main/COPYING" class="is-block">Creative Commons Zero v1.0 Universal</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/index-dev-env" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">24</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">index-prototype</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">This is the UX frontend prototyping repository for the new creativecommons.org website build, inspired by the Vocabulary design system.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/index-prototype/blob/main/COPYING" class="is-block">Creative Commons Zero v1.0 Universal</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://creativecommons-prototype.netlify.app/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/index-prototype" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">25</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">legaldb</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">CC Legal Database: curated repository of Case Law and Scholarship data from around the world in a Django based website.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Python
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/legaldb/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://LegalDB.CreativeCommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/legaldb" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-legal-database" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">26</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">licensebuttons</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons badges, license Buttons, etc.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Python
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/licensebuttons/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://licensebuttons.net/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/licensebuttons" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">27</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">magical-pony</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Helper tool for staging CC license legalcode translations before they are officially published</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/magical-pony/blob/main/COPYING" class="is-block">Creative Commons Zero v1.0 Universal</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/magical-pony" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">28</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">mp</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Documentation for CC integration into user-generated content platforms</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/mp/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://creativecommons.org/platform/toolkit/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/mp" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">29</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">og-image-generator</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">An open graph image generator for Creative Commons projects.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  TypeScript
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/og-image-generator/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://cc-og-image.vercel.app" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/og-image-generator" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-developers" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">30</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">open4us.org</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Open Professionals Education Network (OPEN) website</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Shell
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/open4us.org/blob/main/LICENSE" class="is-block">Creative Commons Attribution 4.0 International</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="http://open4us.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/open4us.org" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">31</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">quantifying</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">quantify the size and diversity of the commons--the collection of works that are openly licensed or in the public domain</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Jupyter Notebook
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/quantifying/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/quantifying" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-quantifying" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">32</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">reversionary-rights</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">International reversionary rights resources site.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/reversionary-rights/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://rights-back-beta.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/reversionary-rights" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">33</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">scholars-addenda</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">The scholars addenda system.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Python
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/scholars-addenda/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://labs.creativecommons.org/scholars/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/scholars-addenda" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">34</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">search</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons Search Portal</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  CSS
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/search/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://search.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/search" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">35</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">sre-salt-prime</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Site Reliability Engineering / DevOps SaltStack configuration files</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  SaltStack
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/sre-salt-prime/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/sre-salt-prime" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">36</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">sre-wp-pull</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons Site Reliability Engineering WordPress Data Pull</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Shell
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/sre-wp-pull/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/sre-wp-pull" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">37</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">stateof</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Static copies of previous State of the Commons sites</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  Shell
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/stateof/blob/main/LICENSE" class="is-block">Creative Commons Attribution 4.0 International</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://stateof.creativecommons.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/stateof" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">38</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">taaccct</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Profiles of exemplary workforce training programs supported by the U.S. Department of Labor Trade Adjustment Assistance Community College &amp; Career Training program.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  JavaScript
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/taaccct/blob/gh-pages/LICENSE" class="is-block">Creative Commons Attribution 4.0 International</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://taaccct.open4us.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/taaccct" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">39</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">team-open</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Collection of stories documenting the power of open licensing</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/team-open/blob/main/LICENSE" class="is-block">Creative Commons Attribution 4.0 International</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="http://teamopen.cc/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/team-open" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">40</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">termination-of-transfer</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Termination of Transfer tool</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  JavaScript
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/termination-of-transfer/blob/main/LICENSE" class="is-block">GNU Affero General Public License v3.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://rightsback.org/questionnaire/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/termination-of-transfer" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">41</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">the-power-of-open</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons created the legal and technical infrastructure that allows effective sharing of knowledge, art and data by individuals, organizations and governments. More importantly, millions of creators took advantage of that infrastructure to share work that enriches the global commons for all humanity. The Power of Open collects the stories of those creators.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/the-power-of-open/blob/main/LICENSE" class="is-block">Other</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://thepowerofopen.org/" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/the-power-of-open" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">42</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">vocabulary</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">A cohesive system of design for Creative Commons</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  HTML
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/vocabulary/blob/main/COPYING" class="is-block">Creative Commons Zero v1.0 Universal</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                    <a href="https://vocabulary-docs.netlify.app" class="is-block"><i class="icon external-link padding-right-small"></i>Website</a>
-                  
-                  <a href="https://github.com/creativecommons/vocabulary" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">43</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">vocabulary-theme</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">WordPress Theme implementation of the Vocabulary design system</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/vocabulary-theme/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/vocabulary-theme" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">44</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-plugin-cc-global-network</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal"></td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-plugin-cc-global-network/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-plugin-cc-global-network" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">45</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-plugin-creativecommons-website</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">This WordPress plugin provides custom functionality for the creativecommons.org website.</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-plugin-creativecommons-website/blob/main/LICENSE" class="is-block">Other</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-plugin-creativecommons-website" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">46</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-theme-cc-chapter</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons Chapter site theme (including chapter sites setup, taxonomies, and widget code)</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-theme-cc-chapter/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-theme-cc-chapter" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">47</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-theme-cc-commoners</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal"></td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-theme-cc-commoners/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-theme-cc-commoners" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">48</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-theme-cctoolkit</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">Creative Commons - Business Toolkit WordPress theme</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-theme-cctoolkit/blob/main/LICENSE" class="is-block">GNU General Public License v2.0</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-theme-cctoolkit" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">49</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-theme-creativecommons.org</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">New WordPress theme for Creative Commons website</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-theme-creativecommons.org/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-theme-creativecommons.org" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">50</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-theme-openglam</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">[WIP] WordPress theme for openglam.org</td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-theme-openglam/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-theme-openglam" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-              <tr>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">51</td>
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  <div class="text-bigger has-text-weight-bold padding-bottom-smaller">wp-theme-summit</div>
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal"></td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  PHP
-                </td>
-                
-                  <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                    <a href="https://github.com/creativecommons/wp-theme-summit/blob/main/LICENSE" class="is-block">MIT License</a>
-                  </td>
-                
-                <td class="padding-vertical-normal padding-right-xl padding-left-normal">
-                  
-                  <a href="https://github.com/creativecommons/wp-theme-summit" class="is-block"><i class="icon github padding-right-small"></i>Github</a>
-                  
-                    <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress" class="is-block"><i class="icon slack padding-right-small"></i>Slack</a>
-                  
-                </td>
-              </tr>
-            
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+<header>
+  <h1>Project List</h1>
+  <p>This is a list of all active open source software projects that Creative Commons (CC) maintains.</p>
+</header>
 
+<div class="content body-container">
+<p>Please read the <a href="/contributing-code">Contributing Code</a> page for general information on how to get involved. Contribution guidelines specific to an individual project can be found in the <code>README</code> and the <code>CONTRIBUTING</code> files in the root folder of every repository. If you have any questions, don't hesitate to reach out to us through <a href="/community">one of our community forums</a> or open a GitHub issue.</p>
+
+<article class="projects">
+  <h2>Featured Projects</h2>
+  <p>Explore our highlighted open source initiatives.</p>
+  
+  <ul>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <article class="project">
+            <h3><a href="https://github.com/creativecommons/cc-legal-tools-app">CC Legal Tools Application</a></h3>
+            <p>Legal tool (licenses, public domain dedication, etc.) management application for Creative Commons</p>
+          </article>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <article class="project">
+            <h3><a href="https://github.com/creativecommons/chooser">CC Chooser</a></h3>
+            <p>The new and improved CC license selection tool.</p>
+          </article>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <article class="project">
+            <h3><a href="https://github.com/creativecommons/quantifying">Quantifying the Commons</a></h3>
+            <p>quantify the size and diversity of the commons--the collection of works that are openly licensed or in the public domain</p>
+          </article>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </ul>
+</article>
+
+<!--
+TODO: Consider whether to add additional data that current markup does not support:
+- Technology tags
+- Slack channel links 
+- Website links
+- GitHub specific links
+--> 
+<div>
+  <h2>All Active Projects</h2>
+  <p>This is a complete list of active Creative Commons software projects. Archived projects are not documented here and can be found on the <strong><a href="https://github.com/cc-archive">CC Archive GitHub organization</a></strong>.</p>
+  <table class="datatable display">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Language</th>
+        <th scope="col">License</th>
+        <th scope="col">Links</th>
+      </tr>
+    </thead>
+    
+      <tr>
+        <td>1</td>
+        <td>
+          <div>.github</div>
+        </td>
+        
+          <td>Default templates and guidelines for Creative Commons GitHub repositories.</td>
+        
+        <td>
+          
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/.github/blob/main/COPYING">Creative Commons Zero v1.0 Universal</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://opensource.creativecommons.org/contributing-code/github-repo-guidelines/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/.github"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>2</td>
+        <td>
+          <div>candela-utility</div>
+        </td>
+        
+          <td>Candela helper plugin to manage additional config and bootstrapping, used on CC Certificates website</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/candela-utility/blob/master/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+            <a href="http://certificates.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/candela-utility"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>3</td>
+        <td>
+          <div>cc-accidenz-commons</div>
+        </td>
+        
+          <td>CC Accidenz Commons font</td>
+        
+        <td>
+          
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/cc-accidenz-commons/blob/main/LICENSE">Creative Commons Attribution Share Alike 4.0 International</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/cc-accidenz-commons"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>4</td>
+        <td>
+          <div>cc-assets</div>
+        </td>
+        
+          <td>Image assets used across Creative Commons projects.</td>
+        
+        <td>
+          
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/cc-assets/blob/main/COPYING.md">Other</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/cc-assets"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-developers"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>5</td>
+        <td>
+          <div>cc-legal-tools-app</div>
+        </td>
+        
+          <td>Legal tool (licenses, public domain dedication, etc.) management application for Creative Commons</td>
+        
+        <td>
+          Python
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/cc-legal-tools-app/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://creativecommons.org/licenses/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/cc-legal-tools-app"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-legal-tools"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>6</td>
+        <td>
+          <div>cc-legal-tools-data</div>
+        </td>
+        
+          <td>Legal tool (licenses, public domain dedication, etc.) data for Creative Commons</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/cc-legal-tools-data/blob/main/COPYING">Creative Commons Zero v1.0 Universal</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/cc-legal-tools-data"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-legal-tools"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>7</td>
+        <td>
+          <div>cc-license-chooser</div>
+        </td>
+        
+          <td>Creative Commons JavaScript license selector in the form of a JavaScript widget</td>
+        
+        <td>
+          XSLT
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/cc-license-chooser/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/cc-license-chooser"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-license-chooser"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>8</td>
+        <td>
+          <div>cc-resource-archive</div>
+        </td>
+        
+          <td>Collection of resources on Creative Commons (CC) tools and other open topics</td>
+        
+        <td>
+          Dockerfile
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/cc-resource-archive/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://resources.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/cc-resource-archive"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>9</td>
+        <td>
+          <div>CCID-cas</div>
+        </td>
+        
+          <td>RubyCAS customizations for CCID (Creative Commons ID)</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/CCID-cas/blob/main/LICENSE.md">Other</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://login.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/CCID-cas"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>10</td>
+        <td>
+          <div>CCID-MediaWiki</div>
+        </td>
+        
+          <td>Script to add CCID users to MediaWiki</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/CCID-MediaWiki/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/CCID-MediaWiki"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>11</td>
+        <td>
+          <div>ccos-scripts</div>
+        </td>
+        
+          <td>Scripts used to maintain various pieces of CC&#39;s open source presence.</td>
+        
+        <td>
+          Python
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/ccos-scripts/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/ccos-scripts"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>12</td>
+        <td>
+          <div>ccos-website-source</div>
+        </td>
+        
+          <td>Source files for CC Open Source website</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/ccos-website-source/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://opensource.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/ccos-website-source"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>13</td>
+        <td>
+          <div>ccrel-guide</div>
+        </td>
+        
+          <td>A guide to using the Creative Commons Rights Expression Language (CC REL)</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/ccrel-guide/blob/main/LICENSE">Other</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://opensource.creativecommons.org/ccrel-guide/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/ccrel-guide"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>14</td>
+        <td>
+          <div>certificates-landing-page-theme</div>
+        </td>
+        
+          <td>Theme for CC Certificates website landing page</td>
+        
+        <td>
+          SCSS
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/certificates-landing-page-theme/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+            <a href="http://certificates.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/certificates-landing-page-theme"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>15</td>
+        <td>
+          <div>chooser</div>
+        </td>
+        
+          <td>The new and improved CC license selection tool.</td>
+        
+        <td>
+          CSS
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/chooser/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://creativecommons.org/chooser"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/chooser"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>16</td>
+        <td>
+          <div>commoners</div>
+        </td>
+        
+          <td>Creative Commons Global Network website</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/commoners/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://network.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/commoners"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>17</td>
+        <td>
+          <div>Creative-Commons-Post-Republisher</div>
+        </td>
+        
+          <td>This plugin allows you to add a button to your WordPress site&#39;s posts which will display terms and licensing for Creative Commons reposting, as well as the title and content of the post for easy sharing. This is useful for sites that want to easily and clearly share their content with others.</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/Creative-Commons-Post-Republisher/blob/main/LICENSE">GNU General Public License v3.0</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/Creative-Commons-Post-Republisher"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>18</td>
+        <td>
+          <div>creativecommons-base</div>
+        </td>
+        
+          <td>Base WordPress theme for Creative Commons websites.</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/creativecommons-base/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://opensource.creativecommons.org/creativecommons-base/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/creativecommons-base"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>19</td>
+        <td>
+          <div>creativecommons-certificate</div>
+        </td>
+        
+          <td>WordPress theme for the CC Certificate Website</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/creativecommons-certificate/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/creativecommons-certificate"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>20</td>
+        <td>
+          <div>creativecommons.org</div>
+        </td>
+        
+          <td>Legacy legal code translations and general support issues</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/creativecommons.org/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/creativecommons.org"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>21</td>
+        <td>
+          <div>data-science-playground</div>
+        </td>
+        
+          <td></td>
+        
+        <td>
+          Jupyter Notebook
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/data-science-playground/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/data-science-playground"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-developers"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>22</td>
+        <td>
+          <div>faq</div>
+        </td>
+        
+          <td>Creative Commons FAQ page</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/faq/blob/main/LICENSE">Other</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://creativecommons.org/faq/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/faq"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>23</td>
+        <td>
+          <div>index-dev-env</div>
+        </td>
+        
+          <td>Local development environment for CreativeCommons.org (product name: index)</td>
+        
+        <td>
+          Shell
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/index-dev-env/blob/main/COPYING">Creative Commons Zero v1.0 Universal</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/index-dev-env"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>24</td>
+        <td>
+          <div>index-prototype</div>
+        </td>
+        
+          <td>This is the UX frontend prototyping repository for the new creativecommons.org website build, inspired by the Vocabulary design system.</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/index-prototype/blob/main/COPYING">Creative Commons Zero v1.0 Universal</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://creativecommons-prototype.netlify.app/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/index-prototype"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>25</td>
+        <td>
+          <div>legaldb</div>
+        </td>
+        
+          <td>CC Legal Database: curated repository of Case Law and Scholarship data from around the world in a Django based website.</td>
+        
+        <td>
+          Python
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/legaldb/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://LegalDB.CreativeCommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/legaldb"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-legal-database"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>26</td>
+        <td>
+          <div>licensebuttons</div>
+        </td>
+        
+          <td>Creative Commons badges, license Buttons, etc.</td>
+        
+        <td>
+          Python
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/licensebuttons/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://licensebuttons.net/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/licensebuttons"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>27</td>
+        <td>
+          <div>magical-pony</div>
+        </td>
+        
+          <td>Helper tool for staging CC license legalcode translations before they are officially published</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/magical-pony/blob/main/COPYING">Creative Commons Zero v1.0 Universal</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/magical-pony"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>28</td>
+        <td>
+          <div>mp</div>
+        </td>
+        
+          <td>Documentation for CC integration into user-generated content platforms</td>
+        
+        <td>
+          
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/mp/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://creativecommons.org/platform/toolkit/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/mp"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>29</td>
+        <td>
+          <div>og-image-generator</div>
+        </td>
+        
+          <td>An open graph image generator for Creative Commons projects.</td>
+        
+        <td>
+          TypeScript
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/og-image-generator/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://cc-og-image.vercel.app"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/og-image-generator"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-developers"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>30</td>
+        <td>
+          <div>open4us.org</div>
+        </td>
+        
+          <td>Open Professionals Education Network (OPEN) website</td>
+        
+        <td>
+          Shell
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/open4us.org/blob/main/LICENSE">Creative Commons Attribution 4.0 International</a>
+          </td>
+        
+        <td>
+          
+            <a href="http://open4us.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/open4us.org"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>31</td>
+        <td>
+          <div>quantifying</div>
+        </td>
+        
+          <td>quantify the size and diversity of the commons--the collection of works that are openly licensed or in the public domain</td>
+        
+        <td>
+          Jupyter Notebook
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/quantifying/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/quantifying"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-quantifying"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>32</td>
+        <td>
+          <div>reversionary-rights</div>
+        </td>
+        
+          <td>International reversionary rights resources site.</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/reversionary-rights/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://rights-back-beta.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/reversionary-rights"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>33</td>
+        <td>
+          <div>scholars-addenda</div>
+        </td>
+        
+          <td>The scholars addenda system.</td>
+        
+        <td>
+          Python
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/scholars-addenda/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://labs.creativecommons.org/scholars/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/scholars-addenda"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>34</td>
+        <td>
+          <div>search</div>
+        </td>
+        
+          <td>Creative Commons Search Portal</td>
+        
+        <td>
+          CSS
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/search/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://search.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/search"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>35</td>
+        <td>
+          <div>sre-salt-prime</div>
+        </td>
+        
+          <td>Site Reliability Engineering / DevOps SaltStack configuration files</td>
+        
+        <td>
+          SaltStack
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/sre-salt-prime/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/sre-salt-prime"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>36</td>
+        <td>
+          <div>sre-wp-pull</div>
+        </td>
+        
+          <td>Creative Commons Site Reliability Engineering WordPress Data Pull</td>
+        
+        <td>
+          Shell
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/sre-wp-pull/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/sre-wp-pull"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>37</td>
+        <td>
+          <div>stateof</div>
+        </td>
+        
+          <td>Static copies of previous State of the Commons sites</td>
+        
+        <td>
+          Shell
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/stateof/blob/main/LICENSE">Creative Commons Attribution 4.0 International</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://stateof.creativecommons.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/stateof"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>38</td>
+        <td>
+          <div>taaccct</div>
+        </td>
+        
+          <td>Profiles of exemplary workforce training programs supported by the U.S. Department of Labor Trade Adjustment Assistance Community College &amp; Career Training program.</td>
+        
+        <td>
+          JavaScript
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/taaccct/blob/gh-pages/LICENSE">Creative Commons Attribution 4.0 International</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://taaccct.open4us.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/taaccct"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>39</td>
+        <td>
+          <div>team-open</div>
+        </td>
+        
+          <td>Collection of stories documenting the power of open licensing</td>
+        
+        <td>
+          
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/team-open/blob/main/LICENSE">Creative Commons Attribution 4.0 International</a>
+          </td>
+        
+        <td>
+          
+            <a href="http://teamopen.cc/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/team-open"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>40</td>
+        <td>
+          <div>termination-of-transfer</div>
+        </td>
+        
+          <td>Termination of Transfer tool</td>
+        
+        <td>
+          JavaScript
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/termination-of-transfer/blob/main/LICENSE">GNU Affero General Public License v3.0</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://rightsback.org/questionnaire/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/termination-of-transfer"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>41</td>
+        <td>
+          <div>the-power-of-open</div>
+        </td>
+        
+          <td>Creative Commons created the legal and technical infrastructure that allows effective sharing of knowledge, art and data by individuals, organizations and governments. More importantly, millions of creators took advantage of that infrastructure to share work that enriches the global commons for all humanity. The Power of Open collects the stories of those creators.</td>
+        
+        <td>
+          
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/the-power-of-open/blob/main/LICENSE">Other</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://thepowerofopen.org/"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/the-power-of-open"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>42</td>
+        <td>
+          <div>vocabulary</div>
+        </td>
+        
+          <td>A cohesive system of design for Creative Commons</td>
+        
+        <td>
+          HTML
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/vocabulary/blob/main/COPYING">Creative Commons Zero v1.0 Universal</a>
+          </td>
+        
+        <td>
+          
+            <a href="https://vocabulary-docs.netlify.app"><i></i>Website</a>
+          
+          <a href="https://github.com/creativecommons/vocabulary"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>43</td>
+        <td>
+          <div>vocabulary-theme</div>
+        </td>
+        
+          <td>WordPress Theme implementation of the Vocabulary design system</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/vocabulary-theme/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/vocabulary-theme"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>44</td>
+        <td>
+          <div>wp-plugin-cc-global-network</div>
+        </td>
+        
+          <td></td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-plugin-cc-global-network/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-plugin-cc-global-network"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>45</td>
+        <td>
+          <div>wp-plugin-creativecommons-website</div>
+        </td>
+        
+          <td>This WordPress plugin provides custom functionality for the creativecommons.org website.</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-plugin-creativecommons-website/blob/main/LICENSE">Other</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-plugin-creativecommons-website"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>46</td>
+        <td>
+          <div>wp-theme-cc-chapter</div>
+        </td>
+        
+          <td>Creative Commons Chapter site theme (including chapter sites setup, taxonomies, and widget code)</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-theme-cc-chapter/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-theme-cc-chapter"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>47</td>
+        <td>
+          <div>wp-theme-cc-commoners</div>
+        </td>
+        
+          <td></td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-theme-cc-commoners/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-theme-cc-commoners"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>48</td>
+        <td>
+          <div>wp-theme-cctoolkit</div>
+        </td>
+        
+          <td>Creative Commons - Business Toolkit WordPress theme</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-theme-cctoolkit/blob/main/LICENSE">GNU General Public License v2.0</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-theme-cctoolkit"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>49</td>
+        <td>
+          <div>wp-theme-creativecommons.org</div>
+        </td>
+        
+          <td>New WordPress theme for Creative Commons website</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-theme-creativecommons.org/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-theme-creativecommons.org"><i></i>GitHub</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>50</td>
+        <td>
+          <div>wp-theme-openglam</div>
+        </td>
+        
+          <td>[WIP] WordPress theme for openglam.org</td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-theme-openglam/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-theme-openglam"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+      <tr>
+        <td>51</td>
+        <td>
+          <div>wp-theme-summit</div>
+        </td>
+        
+          <td></td>
+        
+        <td>
+          PHP
+        </td>
+        
+          <td>
+            <a href="https://github.com/creativecommons/wp-theme-summit/blob/main/LICENSE">MIT License</a>
+          </td>
+        
+        <td>
+          
+          <a href="https://github.com/creativecommons/wp-theme-summit"><i></i>GitHub</a>
+          
+            <a href="https://creativecommons.slack.com/channels/cc-dev-wordpress"><i></i>Slack</a>
+          
+        </td>
+      </tr>
+    
+  </table>
+</div>
+</div>
+
+  </main>
 
   <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-one-third-tablet-only is-one-quarter-desktop">
-          <a href="https://creativecommons.org" class="main-logo margin-bottom-bigger">
-            <span class="has-text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 304 73">
-                <use href="#logomark"></use>
-              </svg>
-            </span>
-          </a>
-          <div>
-            <address class="margin-bottom-normal">Creative Commons<br />PO Box 1866, Mountain View CA 94042</address>
-            <a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a><br />
-            <a href="tel://+1-415-429-6753" class="phone">+1-415-429-6753</a>
-          </div>
-          <div class="margin-vertical-large">
-            <a href="https://www.instagram.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">instagram</i>
-            </a>
-            <a href="https://www.facebook.com/creativecommons" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">facebook</i>
-            </a>
-            <a href="https://www.linkedin.com/company/creative-commons/" class="social has-text-white" target="_blank"
-              rel="noopener">
-              <i class="icon margin-right-small is-size-4">linkedin</i>
-            </a>
-          </div>
+  <footer>
+    <a class="identity-logo" href="https://www.creativecommons.org">Creative Commons</a>
+
+    <nav class="footer-menu" aria-label="Footer menu">
+        <ul>
+
+            <li><a href="/blog/entries/">Blog</a></li>
+            <li><a href="/community/community-team/">Community Team</a></li>
+            <li><a href="/contributing-code/projects/">Project List</a></li>
+            <li><a href="/archives/">Archives</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br /> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+
+    <nav class="social-menu" aria-label="Social menu">
+        <ul>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank">
+        <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Your email" required>
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
         </div>
-        <div class="column is-two-third-tablet-only is-three-quarters-desktop">
-          <div class="columns">
-            <div class="column is-full">
-              <nav class="footer-navigation">
-                <ul class="menu">
-                  <li>
-                    <a href="/blog/entries/" class="menu-item">Blog</a>
-                  </li>
-                  <li>
-                    <a href="/community/community-team/" class="menu-item">Community Team</a>
-                  </li>
-                  <li>
-                    <a href="/contributing-code/projects/" class="menu-item">Project List</a>
-                  </li>
-                  <li>
-                    <a href="/archives/" class="menu-item">Archives</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-two-thirds">
-              <div class="subscription">
-                <h5 class="b-header">Subscribe to our newsletter</h5>
-                <form class="newsletter">
-                  <input type="email" id="emailInput" class="input" placeholder="Your email" required>
-                  <input type="submit" value="subscribe" class="button small">
-                 </form>
-               </div>
-               <div class="attribution margin-top-bigger">
-                <p class="caption">
-                  Except where otherwise
-                  <a href="https://creativecommons.org/policies#license" target="_blank" rel="noopener">noted</a>,
-                  content on this site is licensed under a
-                  <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons
-                    Attribution 4.0 International license</a>.
-                  <a href="https://creativecommons.org/website-icons" target="_blank" rel="noopener">Icons</a>
-                  by
-                  <a href="https://fontawesome.com/" target="_blank" rel="noopener">Font Awesome</a>.
-                </p>
-                <div class="margin-top-smaller">
-                  <i class="icon margin-right-small is-size-4">cclogo</i>
-                  <i class="icon margin-right-small is-size-4">ccby</i>
-                </div>
-              </div>
-            </div>
-            <div class="column is-one-third">
-              <aside class="donate-section">
-                <h5>Our work relies on you!</h5>
-                <p>Help us keep the internet free and open.</p>
-                <a class="button small donate" href="https://creativecommons.org/donate?c_src=website&c_src2=GlobalFooter">
-                  <i class="icon cc-letterheart-filled margin-right-small is-size-5 padding-top-smaller"></i>
-                  Donate now
-                </a>
-              </aside>
-            </div>
-          </div>
-        </div>
-      </div>
+        <input type="submit" value="subscribe" id="mc-embedded-subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
     </div>
   </footer>
-</body>
+  <script src="/static/vocabulary/js/vocabulary.js"></script>
+ </body>
 </html>
