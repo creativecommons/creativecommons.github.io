@@ -113,7 +113,7 @@
 </header>
 
 <aside class="sidebar">
-  <nav class="filter-menu" aria-labelledby="categories">
+  <nav aria-labelledby="categories">
     <h2>Categories</h2>
     
 <ul>
