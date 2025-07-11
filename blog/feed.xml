@@ -1,5 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2025-03-24T00:00:00Z</updated><author><name></name></author><entry><title>Migrating from MariaDB 10.4 to 10.11 on AWS RDS</title><link href="http://opensource.creativecommons.org/blog/entries/2025-03-06-AWS-RDS-blog-post/" rel="alternate"></link><updated>2025-03-24T00:00:00Z</updated><author><name>['shafiya']</name></author><id>urn:uuid:5883a758-4e87-369c-b744-dee79053503c</id><content type="html">&lt;p&gt;As part of AWS’s request to migrate the RDS DB engine from MariaDB 10.4 to 10.11, this blog post provides a detailed, step-by-step guide to ensure a smooth transition. We’ll cover the pre-migration steps, the actual upgrade process, and post-migration verification to minimize downtime and potential issues.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"></link><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"></link><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2025-07-11T00:00:00Z</updated><author><name></name></author><entry><title>Refactoring and Releasing the new CC Chooser: Part 1</title><link href="http://opensource.creativecommons.org/blog/entries/2025-07-11-refactoring-the-cc-chooser-pt-1/" rel="alternate"></link><updated>2025-07-11T00:00:00Z</updated><author><name>['sara']</name></author><id>urn:uuid:12eaf1bd-68c0-324c-99c8-931d8b2c255d</id><content type="html">&lt;p&gt;We’re excited to announce that we have finally moved the Chooser from a 
+long-term beta state into a finished and stable v1.0. But it certainly hasn’t 
+been a straight-line. The Chooser has been met with a lot of challenges along 
+the way and in this series we’ll walk through that journey in three parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Part 1: History and debt: The historical context that led to the newest 
+refactor and release of the 2025 Chooser.&lt;/li&gt;
+&lt;li&gt;Part 2: Specifics and fixes: Breaking down the specifics of technical debt, 
+issues, complexity, contextual-shift misalignment, and fixes.&lt;/li&gt;
+&lt;li&gt;Part 3: Future Growth: What’s next for the Chooser, and what directions we 
+hope to grow it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="whats-the-chooser"&gt;What’s the Chooser?&lt;/h2&gt;&lt;p&gt;From our &lt;a href="https://creativecommons.org/share-your-work/"&gt;website&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Our &lt;a href="https://creativecommons.org/choose/"&gt;chooser&lt;/a&gt; helps you determine which Creative Commons License is 
+right for 
+you in a few easy steps. If you are new to Creative Commons, you may also want 
+to read licensing considerations before you &lt;a href="https://creativecommons.org/choose/"&gt;get started with the 
+chooser&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="circumstances-and-context"&gt;Circumstances and context&lt;/h2&gt;&lt;p&gt;What do you do when an ecosystem shifts, not just with the number of engineers, 
+but also from the focal point of complexity built around a core product that no 
+longer exists at an org? You evaluate the context within which everything 
+exists and you reevaluate what works from there forward.&lt;/p&gt;
+&lt;p&gt;The Chooser has existed as a tool within the Creative Commons (CC) main website 
+for over fifteen years, and helped guide countless people through their choice 
+of sharing restraints and freedoms combined with which Legal Tool those 
+requirements are best aligned with. In 2019 the Chooser was met with a need to 
+refactor both its UX, and also its core technological approach. The CC 
+Technology team was focused hard on CC Search, which would later launch in the 
+Summer of 2019. CC Search was a rather complex application that required a more 
+robust and dynamic user interface. It was in every way much more of an app than 
+a website and so the team chose to build out the CC Search engine with Vue.js. 
+Like the rest of the JavaScript ecosystem, this meant some speed and 
+affordances in dev time with a trade off in larger code dependency and 
+complexity; given the size of their team and the ecosystem they were seeking to 
+build it was a solid and reasonable judgement call.&lt;/p&gt;
+&lt;h2 id="building-an-ecosystem-from-a-strong-core-product"&gt;Building an ecosystem from a strong core product&lt;/h2&gt;&lt;p&gt;After landing on Vue and setting to work to build out the search engine, it 
+became reasonable to also move as many other projects to the same ecosystem so 
+that updates overall could better operate as a supportive ecosystem. If other 
+websites and projects were moved to Vue, then they could share dependencies, 
+benefit from fixes and updates, and as the CC Search engine grew it could have 
+the delightful benefit of lifting up all the other projects along the way.&lt;/p&gt;
+&lt;p&gt;With a larger engineering team to manage the ecosystem it made a lot of sense 
+(Node is sprawling, and can be overkill in the wrong circumstances). It 
+decreased the complexity of managing a search engine, while adding some 
+complexity to smaller projects, with the balanced gain of spreading updates and 
+works across the whole a lot more cohesively. The end goal here was a 
+development environment that was much less siloed and more responsibility 
+consistent in how it approached dev work.&lt;/p&gt;
+&lt;p&gt;Vocabulary also entered the picture at this time. Its goal was to operate as a 
+design spec and implementation “rule system” for the Vue framework 
+implementation.&lt;/p&gt;
+&lt;h2 id="shifting-circumstances"&gt;Shifting circumstances&lt;/h2&gt;&lt;p&gt;In 2020, Covid shocked our society, disrupted giving, and brought staff 
+reductions to Creative Commons. Most of the Technology team was laid off. Work 
+was mostly suspended, some projects were sunset, and others were left with 
+minimal maintenance. Thankfully, CC Search was acquired and continued by 
+Automattic as [Openverse][openverse]. However, with its absence came a rather 
+large hole at 
+the center of a very large development wheel.&lt;/p&gt;
+&lt;p&gt;Without the CC Search engine, now all the smaller projects which had adopted 
+Vue would no longer receive the benefit of being attached to the larger 
+project’s progress. Instead a balkanization began to unfold. The flexibility 
+and scale that the Node ecosystem had offered when the CC Engine existed at the 
+organization no longer applied, and now Node in all its forms within all the 
+various projects were a liability instead of a strength.&lt;/p&gt;
+&lt;p&gt;Node is a fast moving system, and without a larger team it was difficult to 
+keep dependencies updated, tested, and secure. Projects began to drift away 
+from each other. Some projects still utilized Vue, others only halfway, and 
+others abandoned in-progress migrations to Vue, instead falling back to what 
+they had been doing before. The ecosystem fragmented and technical debt began 
+to accrue. Since Vue (and by proxy Node/NPM) moves so quickly–the debt 
+accrual was considerable.&lt;/p&gt;
+&lt;h2 id="the-2020-chooser-in-limbo"&gt;The 2020 Chooser in limbo&lt;/h2&gt;&lt;p&gt;The 2020 Chooser, left with minimal maintenance, was a beta version. It was 
+revamped and rebuilt to focus on the latest legal tools, offer a better UX, and 
+incorporate the Vocabulary design system. It was built from the ground up 
+entirely within Vue. And so the Chooser largely stayed, mired in beta due to an 
+ever increasing amount of technical debt. The rest of the world was moving from 
+Vue 2 to Vue 3, but there wasn't capacity at CC to update the Chooser.&lt;/p&gt;
+&lt;p&gt;By 2023, the Technology team had the capacity to begin reducing technical debt. 
+Later that year the main CC site redesign was launched. That work cleared the 
+way for redoing the Vocabulary design system, removing Vue, and simplifying its 
+approach to be better scaled to a more concise set of engineering resources. 
+The new site better utilized native WordPress functionality and minimized 
+JavaScript (it did not use Vue or any other JavaScript framework).&lt;/p&gt;
+&lt;h2 id="laying-groundwork-for-a-refactor-and-release"&gt;Laying groundwork for a refactor and release&lt;/h2&gt;&lt;p&gt;A lot of time had passed since its original beta redesign and 2020 beta 
+release. The scope of the Chooser needed to be reconsidered. The core of its 
+functionality needed to be narrowed back down to manageable goals, decision 
+pathways, and stable long-term engineering.&lt;/p&gt;
+&lt;p&gt;In 2025, the Chooser was updated to better align with both the larger CC dev 
+ecosystem and the capacity of the Technology team. These changes have resulted 
+in a Chooser that is more integrated, balanced, stable, and viable long term.&lt;/p&gt;
+&lt;h2 id="moving-forward"&gt;Moving forward&lt;/h2&gt;&lt;p&gt;In the next part of this series we’ll walk through the technical debt the 
+Chooser had accrued, and the specific improvements and changes that we’ve 
+implemented!&lt;/p&gt;
+</content></entry><entry><title>Migrating from MariaDB 10.4 to 10.11 on AWS RDS</title><link href="http://opensource.creativecommons.org/blog/entries/2025-03-06-AWS-RDS-blog-post/" rel="alternate"></link><updated>2025-03-24T00:00:00Z</updated><author><name>['shafiya']</name></author><id>urn:uuid:5883a758-4e87-369c-b744-dee79053503c</id><content type="html">&lt;p&gt;As part of AWS’s request to migrate the RDS DB engine from MariaDB 10.4 to 10.11, this blog post provides a detailed, step-by-step guide to ensure a smooth transition. We’ll cover the pre-migration steps, the actual upgrade process, and post-migration verification to minimize downtime and potential issues.&lt;/p&gt;
 &lt;p&gt;Let’s dive in!&lt;/p&gt;
 &lt;h2 id="pre-migration-steps"&gt;Pre-Migration Steps&lt;/h2&gt;&lt;p&gt;Before performing the upgrade, it’s essential to ensure a structured migration plan, especially if your environment has customized database parameters. Follow these preliminary steps:&lt;/p&gt;
 &lt;ul&gt;
@@ -330,61 +424,6 @@ Source&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;After careful consideration, we decided to proceed with Option 1, which shifts most configuration tasks from the Dockerfile to Ansible playbooks. As I write this post, I am in the process of implementing these playbooks to configure the containers. You can follow the ongoing development in this &lt;a href="https://github.com/creativecommons/ansible-dev/"&gt;repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id="acknowledgments"&gt;Acknowledgments&lt;/h1&gt;&lt;p&gt;This experience has provided me with practical skills in implementing real-world DevOps projects. I truly enjoy learning all this knowledge outside of my daily job and dedicating my personal time to something meaningful, which is often not covered in school. If this project succeeds as a proof of concept, I can gather more feedback from users, specifically open-source developers, to enhance this setup. I mentioned this in my previous blog post, but I can’t emphasize enough how grateful I am to &lt;a href="https://opensource.creativecommons.org/blog/authors/shafiya/"&gt;Shafiya&lt;/a&gt;, &lt;a href="https://opensource.creativecommons.org/blog/authors/TimidRobot/"&gt;Timid Robot&lt;/a&gt;, and &lt;a href="https://opensource.creativecommons.org/blog/authors/sara/"&gt;Sara&lt;/a&gt; for their guidance, and to Google Summer of Code for giving me the opportunity to contribute to open source. As a content creator who both produces and enjoys various open content online, I am incredibly excited and honored to contribute my technical expertise to CC.
 Thanks to CC’ impact on society, I am committed to continually advancing my technical skills and supporting this organization in the long term. I look forward to continuing my involvement in the open-source community!&lt;/p&gt;
-</content></entry><entry><title>Continuing Open Collaboration: GSoC 2024 With Creative Commons</title><link href="http://opensource.creativecommons.org/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/" rel="alternate"></link><updated>2024-08-22T00:00:00Z</updated><author><name>['Murdock9803']</name></author><id>urn:uuid:e0361bd0-acff-36a8-879f-49a99ba31e29</id><content type="html">&lt;p&gt;As I reach the final phase of my work on the Creative Commons Resource Archive under this program, I’ve been thinking about how far we’ve come since the beginning. We started with the idea of modernizing the &lt;a href="https://resources.creativecommons.org/"&gt;resource archive website&lt;/a&gt;, and we have built features that make it safer and more accessible. This journey has had its challenges, but it’s also been very rewarding. 
-In the first post, we discussed the early steps that set up this project. Now, as we are in the final weeks, I’m excited to share the progress we’ve made to turn the Resource Archive into a valuable tool for the community.&lt;/p&gt;
-&lt;p&gt;&lt;img src="/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/GSoC+CC-banner.png" alt="GSoC and CC banner"&gt;&lt;/p&gt;
-&lt;p&gt;Join me as I take you through this complete journey of covering new features, the hurdles we’ve overcome and the final product that I hope will continue to grow and serve the open knowledge community.&lt;/p&gt;
-&lt;h2 id="transitioning-from-midterm"&gt;Transitioning From Midterm&lt;/h2&gt;&lt;p&gt;After completing the Midterm milestone, the focus was to utilize the learnings and experience I got across the past weeks to complete the tasks mentioned in the timeline in the least time possible. My mentor suggested not to hurry up things too much, but just to work at a comfortable higher pace. This way, we can have some room for the implementation of stretch goals for the project. The midterm review provided valuable feedback, which helped guide the next steps. With a solid foundation in place, it was time to tackle the more complex challenges and polish the user experience. From enhancing the search functionality, filtering experience to improving the accessibility, the post midterm work aimed to ensure the resource archive becomes a great tool to serve the community.&lt;/p&gt;
-&lt;h2 id="completing-the-timeline-tasks-weeks-7-8-and-9"&gt;Completing The Timeline Tasks - Weeks 7, 8 and 9&lt;/h2&gt;&lt;p&gt;These three weeks were planned with the aim of completing the timeline tasks to focus on further goals of the projects. The &lt;code&gt;UI-related&lt;/code&gt; tasks included Submission page, A guide for the newcomers to submit resources, and working on the filters.&lt;/p&gt;
-&lt;h3 id="submission-page-ui-changes"&gt;Submission Page UI Changes&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;submission.html&lt;/code&gt; page is responsible for the area where contributors come to contribute to the resource archive with their resources about Creative Commons or Open sharing of knowledge in general. 
-With the help of the &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/315"&gt;PR#315&lt;/a&gt;, The following tasks were performed :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;adds a new context to the element, named &lt;code&gt;submit-page&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;refactors the whole html code for &lt;code&gt;submission.html&lt;/code&gt; with semantic code.&lt;/li&gt;
-&lt;li&gt;makes the page responsive, by adding &lt;code&gt;media queries&lt;/code&gt; wherever needed.&lt;/li&gt;
-&lt;li&gt;adds a step by step written guide including images, for submission of resource for new github users.&lt;/li&gt;
-&lt;li&gt;ensures the page meets current CC aesthetics.&lt;/li&gt;
-&lt;li&gt;adds documentation for better understanding and maintainability.&lt;/li&gt;
-&lt;li&gt;formats the files with &lt;code&gt;prettier code formatter&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="submission-guide-for-newcomers"&gt;Submission guide For Newcomers&lt;/h3&gt;&lt;p&gt;For people not familiar with GitHub or Opening &lt;code&gt;Pull Requests&lt;/code&gt; on GitHub, a comprehensive guide was added with step by step process to submit a resource to the resource archive. The guide included instructions to fork, clone the repository and also Open the PR by committing to the repository. This was accompanied with well-labeled images for better understandability. This work was achieved with the help of &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/315"&gt;PR#315&lt;/a&gt;. This was the final addition to the &lt;code&gt;submission.html&lt;/code&gt; page and the whole tasks related to this page were completed by this.&lt;/p&gt;
-&lt;h3 id="filters-placement-and-functioning"&gt;Filters Placement and Functioning&lt;/h3&gt;&lt;p&gt;The resource archive utilizes filters to select similar resources. These filters are grouped in the form of three categories, &lt;code&gt;TOPIC&lt;/code&gt;, &lt;code&gt;MEDIUM&lt;/code&gt; and &lt;code&gt;LANGUAGE&lt;/code&gt;. Each category has some filter options to choose from. In the previous iteration of the resource archive site, the category filters were placed in the middle of the page, and they also did not have any icon for the indication of a selected filter. 
-The &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/316"&gt;PR#316&lt;/a&gt; makes the filters responsiveness, and more easy to access by performing the following tasks:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;adds semantic html to &lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;all.html&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;removes the filters from &lt;code&gt;index.html&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;removes inline styles from html pages.&lt;/li&gt;
-&lt;li&gt;adds a new context to &lt;code&gt;listing.html&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;works on the &lt;code&gt;see-all-resources&lt;/code&gt; link.&lt;/li&gt;
-&lt;li&gt;adds checkbox in place of &lt;code&gt;[x]&lt;/code&gt; in category filters.&lt;/li&gt;
-&lt;li&gt;makes the filters as a sidebar.&lt;/li&gt;
-&lt;li&gt;makes the whole category filters responsive.&lt;/li&gt;
-&lt;li&gt;Re-works on the &lt;code&gt;media-query&lt;/code&gt; breakpoints.&lt;/li&gt;
-&lt;li&gt;formats the code with &lt;code&gt;prettier code formatter&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;adds documentation for the &lt;code&gt;index.html&lt;/code&gt;, &lt;code&gt;all.html&lt;/code&gt; and &lt;code&gt;style.css&lt;/code&gt; files.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="stretch-goals-and-ideation-weeks-10-11-and-12"&gt;Stretch Goals And Ideation - Weeks 10, 11 and 12&lt;/h2&gt;&lt;p&gt;After the completion of the tasks assigned in the timeline, we shifted the focus to the Stretch goals suggested in my proposal, and also by my mentor (&lt;a href="https://github.com/possumbilities"&gt;Sara&lt;/a&gt;). There were 3 major goals that were considered for a discussion. These were, Implementation of Search Functionality through &lt;a href="https://lunrjs.com/docs/index.html"&gt;Lunr.js&lt;/a&gt;, Improving accessibility through the inclusion of &lt;a href="https://www.w3.org/WAI/standards-guidelines/aria/"&gt;ARIA&lt;/a&gt; attributes to the elements in the website, and The use of &lt;a href="https://docs.github.com/en/rest?apiVersion=2022-11-28"&gt;GitHub API&lt;/a&gt; to automate the process of submission of resources to the site. Out of these three, the goals that were to be implemented were &lt;code&gt;ARIA&lt;/code&gt; accessibility and &lt;code&gt;LUNR.js&lt;/code&gt; search functionality. This was decided keeping in mind the scope of the project and the desired limit of complexity we wanted the site to have at this point.&lt;/p&gt;
-&lt;h3 id="aria-accessibility-and-search-functionsality-lunr.js"&gt;Aria Accessibility and Search Functionsality - LUNR.js&lt;/h3&gt;&lt;p&gt;My mentor suggested that I read about &lt;code&gt;WAI-ARIA&lt;/code&gt; accessibility to gain insights about the process and better select the number of attributes and features we need to implement. I studied about this thoroughly and also watched some videos on the topic. I realized about the importance of having these features in our site and how greatly they impact the accessibility for different users. 
-Apart from this, we wanted to implement a search feature for the resources with the help of a lightweight searching library like &lt;code&gt;LUNR.js&lt;/code&gt;. I started to read about the library and its execution process from various sources, majorly from the &lt;a href="https://lunrjs.com/docs/index.html"&gt;LUNR Documentation&lt;/a&gt; present in their site. After reading it and a bit of panning, I started to code for this feature. The goal was to keep the UI similar to the CC Search feature present in the header of many Creative Commons sites.&lt;/p&gt;
-&lt;h2 id="issues-solved-from-midterm-to-end"&gt;Issues Solved From Midterm To End&lt;/h2&gt;&lt;p&gt;The issues relevant to the project which have been solved in the period between midterm and final week are listed below:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/52"&gt;#52&lt;/a&gt; - use checkbox for &lt;code&gt;resourcenavtopicknown&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/61"&gt;#61&lt;/a&gt; - change UI of the homepage&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/72"&gt;#72&lt;/a&gt; - UI refinement of the website&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/119"&gt;#119&lt;/a&gt; - adding icon on filter text&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/274"&gt;#274&lt;/a&gt; - Improve the UI of submission page with &lt;code&gt;vocabulary&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/306"&gt;#306&lt;/a&gt; - Language List Columns Collapsing on Website &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/310"&gt;#310&lt;/a&gt; - Add a step by step guide for submitting resources&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/311"&gt;#311&lt;/a&gt; - html markup contains inline styles&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/313"&gt;#313&lt;/a&gt; - improve mobile view layout for filter columns&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/314"&gt;#314&lt;/a&gt; - remove extra white space between main content and footer&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/318"&gt;#318&lt;/a&gt; - Links in submit page open on same page and spelling mistake-comapre&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="future-plans-and-execution"&gt;Future Plans And Execution&lt;/h2&gt;&lt;p&gt;The future plans include the execution of the Stretch Goals we discussed in the later weeks of the project. Firstly, I will be working on the &lt;code&gt;LUNR.js&lt;/code&gt; search functionality and will be trying to complete this in the 13th week, and also the contributions on the &lt;code&gt;ARIA&lt;/code&gt; accessibility are welcome on GitHub. Also, apart from these fixed goals, I aim to remain engaged with the community for the years ahead. I have planned to keep contributing to the organization - &lt;a href="https://github.com/creativecommons"&gt;Creative Commons&lt;/a&gt;, and especially the repository - &lt;a href="https://github.com/creativecommons/cc-resource-archive"&gt;CC-Resource-Archive&lt;/a&gt; for as long as I can. I will be contributing in the form of issues, pull requests and also code reviews. This is the first organization I got to connect professionally with, and I aim to continue to be a part of this mission of Sharing of Open Knowledge.&lt;/p&gt;
-&lt;h2 id="personal-growth-and-thoughts-on-completion"&gt;Personal Growth And Thoughts On Completion&lt;/h2&gt;&lt;p&gt;As I mentioned in my previous blog post, Being a part of Google Summer of Code was a very big deal for me. With an organization like Creative Commons, this could not have been better. I did not only know about the organization before all this GSoC 2024 preparation, but also resonated with the idea and mission behind it, and was grateful for the learning opportunities it creates for people across the world. Being at the final week of this program makes me emotional as I had a really good time with the mentors and the project. In the weekly meetings we conducted, the amount of motivation I got every single time talking with my mentor was unmatched. I was a complete newbie in terms of professional work experience, and this is the way everything should have been. I am a better individual at this point, and far more experienced. I think I will be able to guide my juniors in a better way from now onwards.
-This program also instilled in me a newfound confidence that is needed to take on tough tasks. I believe the program is less about coding skills and more about the self-improvement journey one has with their mentors and fellow contributors. One more thing which caught my interest is reviewing the Pull Requests of other contributors. My mentor suggested that I try reviewing pull requests of new contributors for experience. “This is a great learning opportunity for you” as they said it. Exactly as I was told, this was indeed a great and enjoyable opportunity.&lt;/p&gt;
-&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;h3 id="gratitude-and-acknowledgements"&gt;Gratitude And Acknowledgements&lt;/h3&gt;&lt;p&gt;&lt;a href="https://github.com/possumbilities"&gt;Sara Lovell&lt;/a&gt;, &lt;a href="https://github.com/TimidRobot"&gt;Timid Robot Zehta&lt;/a&gt; and &lt;a href="https://github.com/Shafiya-Heena"&gt;Shafiya Heena&lt;/a&gt; were the best mentors I could have asked for this project program. My primary mentor, Sara, always encouraged me to be on track whenever I lagged behind in work. Considering this was a straightforward project, I did not predict the learning opportunities to be this much in number. I will always be grateful for these 12 weeks of support, learning and growth. Thank you !&lt;/p&gt;
-&lt;h3 id="for-future-contributors"&gt;For Future Contributors&lt;/h3&gt;&lt;p&gt;All the contributors that are hoping to contribute to this repository, or this organization, I welcome you with all my heart. If you are targeting to get selected in an Open Source mentorship program, that is a great idea. But do not just contribute to Open Source for the sake of resume building and stipend. I agree they are very good benefits, but Open Source is simply much more than this. Once you contribute to Open Source, you will fall in love with the support you get from this community, just like I did. You can find me on &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; and on the &lt;a href="https://github.com/creativecommons/cc-resource-archive"&gt;CC-Resource-Archive&lt;/a&gt; repository mainly. Let’s have the conversation there!&lt;/p&gt;
 </content></entry><entry><title>Automating Quantifying the Commons: Part 2</title><link href="http://opensource.creativecommons.org/blog/entries/2024-08-22-automating-quantifying/" rel="alternate"></link><updated>2024-08-22T00:00:00Z</updated><author><name>['NaishaSinha']</name></author><id>urn:uuid:a984b2ae-b334-3c7e-9b5c-54769d5d09b5</id><content type="html">&lt;p&gt;&lt;img src="/blog/entries/2024-08-22-automating-quantifying/Automating - GSoC Logo.png" alt="GSoC 2024"&gt;&lt;/p&gt;
 &lt;h2 id="introduction-midterm-recap"&gt;Introduction: Midterm Recap&lt;/h2&gt;&lt;hr&gt;
 &lt;p&gt;This post serves as a technical journal for the development process of the
@@ -501,6 +540,61 @@ and I’m eager to see the innovative solutions and improvements that will unfol
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2024-07-10-automating-quantifying/"&gt;Automating Quantifying the Commons: Part 1&lt;/a&gt; | Author: Naisha Sinha | Jul. 2024&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://opensource.creativecommons.org/blog/entries/2022-12-07-berkeley-quantifying/"&gt;Data Science Discovery: Quantifying the Commons&lt;/a&gt; | Author: Dun-Ming Huang (Brandon Huang) | Dec. 2022&lt;/li&gt;
 &lt;/ul&gt;
+</content></entry><entry><title>Continuing Open Collaboration: GSoC 2024 With Creative Commons</title><link href="http://opensource.creativecommons.org/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/" rel="alternate"></link><updated>2024-08-22T00:00:00Z</updated><author><name>['Murdock9803']</name></author><id>urn:uuid:e0361bd0-acff-36a8-879f-49a99ba31e29</id><content type="html">&lt;p&gt;As I reach the final phase of my work on the Creative Commons Resource Archive under this program, I’ve been thinking about how far we’ve come since the beginning. We started with the idea of modernizing the &lt;a href="https://resources.creativecommons.org/"&gt;resource archive website&lt;/a&gt;, and we have built features that make it safer and more accessible. This journey has had its challenges, but it’s also been very rewarding. 
+In the first post, we discussed the early steps that set up this project. Now, as we are in the final weeks, I’m excited to share the progress we’ve made to turn the Resource Archive into a valuable tool for the community.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/blog/entries/continuing-open-collaboration-gsoc-2024-with-creative-commons/GSoC+CC-banner.png" alt="GSoC and CC banner"&gt;&lt;/p&gt;
+&lt;p&gt;Join me as I take you through this complete journey of covering new features, the hurdles we’ve overcome and the final product that I hope will continue to grow and serve the open knowledge community.&lt;/p&gt;
+&lt;h2 id="transitioning-from-midterm"&gt;Transitioning From Midterm&lt;/h2&gt;&lt;p&gt;After completing the Midterm milestone, the focus was to utilize the learnings and experience I got across the past weeks to complete the tasks mentioned in the timeline in the least time possible. My mentor suggested not to hurry up things too much, but just to work at a comfortable higher pace. This way, we can have some room for the implementation of stretch goals for the project. The midterm review provided valuable feedback, which helped guide the next steps. With a solid foundation in place, it was time to tackle the more complex challenges and polish the user experience. From enhancing the search functionality, filtering experience to improving the accessibility, the post midterm work aimed to ensure the resource archive becomes a great tool to serve the community.&lt;/p&gt;
+&lt;h2 id="completing-the-timeline-tasks-weeks-7-8-and-9"&gt;Completing The Timeline Tasks - Weeks 7, 8 and 9&lt;/h2&gt;&lt;p&gt;These three weeks were planned with the aim of completing the timeline tasks to focus on further goals of the projects. The &lt;code&gt;UI-related&lt;/code&gt; tasks included Submission page, A guide for the newcomers to submit resources, and working on the filters.&lt;/p&gt;
+&lt;h3 id="submission-page-ui-changes"&gt;Submission Page UI Changes&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;submission.html&lt;/code&gt; page is responsible for the area where contributors come to contribute to the resource archive with their resources about Creative Commons or Open sharing of knowledge in general. 
+With the help of the &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/315"&gt;PR#315&lt;/a&gt;, The following tasks were performed :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;adds a new context to the element, named &lt;code&gt;submit-page&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;refactors the whole html code for &lt;code&gt;submission.html&lt;/code&gt; with semantic code.&lt;/li&gt;
+&lt;li&gt;makes the page responsive, by adding &lt;code&gt;media queries&lt;/code&gt; wherever needed.&lt;/li&gt;
+&lt;li&gt;adds a step by step written guide including images, for submission of resource for new github users.&lt;/li&gt;
+&lt;li&gt;ensures the page meets current CC aesthetics.&lt;/li&gt;
+&lt;li&gt;adds documentation for better understanding and maintainability.&lt;/li&gt;
+&lt;li&gt;formats the files with &lt;code&gt;prettier code formatter&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="submission-guide-for-newcomers"&gt;Submission guide For Newcomers&lt;/h3&gt;&lt;p&gt;For people not familiar with GitHub or Opening &lt;code&gt;Pull Requests&lt;/code&gt; on GitHub, a comprehensive guide was added with step by step process to submit a resource to the resource archive. The guide included instructions to fork, clone the repository and also Open the PR by committing to the repository. This was accompanied with well-labeled images for better understandability. This work was achieved with the help of &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/315"&gt;PR#315&lt;/a&gt;. This was the final addition to the &lt;code&gt;submission.html&lt;/code&gt; page and the whole tasks related to this page were completed by this.&lt;/p&gt;
+&lt;h3 id="filters-placement-and-functioning"&gt;Filters Placement and Functioning&lt;/h3&gt;&lt;p&gt;The resource archive utilizes filters to select similar resources. These filters are grouped in the form of three categories, &lt;code&gt;TOPIC&lt;/code&gt;, &lt;code&gt;MEDIUM&lt;/code&gt; and &lt;code&gt;LANGUAGE&lt;/code&gt;. Each category has some filter options to choose from. In the previous iteration of the resource archive site, the category filters were placed in the middle of the page, and they also did not have any icon for the indication of a selected filter. 
+The &lt;a href="https://github.com/creativecommons/cc-resource-archive/pull/316"&gt;PR#316&lt;/a&gt; makes the filters responsiveness, and more easy to access by performing the following tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;adds semantic html to &lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;all.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;removes the filters from &lt;code&gt;index.html&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;removes inline styles from html pages.&lt;/li&gt;
+&lt;li&gt;adds a new context to &lt;code&gt;listing.html&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;works on the &lt;code&gt;see-all-resources&lt;/code&gt; link.&lt;/li&gt;
+&lt;li&gt;adds checkbox in place of &lt;code&gt;[x]&lt;/code&gt; in category filters.&lt;/li&gt;
+&lt;li&gt;makes the filters as a sidebar.&lt;/li&gt;
+&lt;li&gt;makes the whole category filters responsive.&lt;/li&gt;
+&lt;li&gt;Re-works on the &lt;code&gt;media-query&lt;/code&gt; breakpoints.&lt;/li&gt;
+&lt;li&gt;formats the code with &lt;code&gt;prettier code formatter&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;adds documentation for the &lt;code&gt;index.html&lt;/code&gt;, &lt;code&gt;all.html&lt;/code&gt; and &lt;code&gt;style.css&lt;/code&gt; files.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="stretch-goals-and-ideation-weeks-10-11-and-12"&gt;Stretch Goals And Ideation - Weeks 10, 11 and 12&lt;/h2&gt;&lt;p&gt;After the completion of the tasks assigned in the timeline, we shifted the focus to the Stretch goals suggested in my proposal, and also by my mentor (&lt;a href="https://github.com/possumbilities"&gt;Sara&lt;/a&gt;). There were 3 major goals that were considered for a discussion. These were, Implementation of Search Functionality through &lt;a href="https://lunrjs.com/docs/index.html"&gt;Lunr.js&lt;/a&gt;, Improving accessibility through the inclusion of &lt;a href="https://www.w3.org/WAI/standards-guidelines/aria/"&gt;ARIA&lt;/a&gt; attributes to the elements in the website, and The use of &lt;a href="https://docs.github.com/en/rest?apiVersion=2022-11-28"&gt;GitHub API&lt;/a&gt; to automate the process of submission of resources to the site. Out of these three, the goals that were to be implemented were &lt;code&gt;ARIA&lt;/code&gt; accessibility and &lt;code&gt;LUNR.js&lt;/code&gt; search functionality. This was decided keeping in mind the scope of the project and the desired limit of complexity we wanted the site to have at this point.&lt;/p&gt;
+&lt;h3 id="aria-accessibility-and-search-functionsality-lunr.js"&gt;Aria Accessibility and Search Functionsality - LUNR.js&lt;/h3&gt;&lt;p&gt;My mentor suggested that I read about &lt;code&gt;WAI-ARIA&lt;/code&gt; accessibility to gain insights about the process and better select the number of attributes and features we need to implement. I studied about this thoroughly and also watched some videos on the topic. I realized about the importance of having these features in our site and how greatly they impact the accessibility for different users. 
+Apart from this, we wanted to implement a search feature for the resources with the help of a lightweight searching library like &lt;code&gt;LUNR.js&lt;/code&gt;. I started to read about the library and its execution process from various sources, majorly from the &lt;a href="https://lunrjs.com/docs/index.html"&gt;LUNR Documentation&lt;/a&gt; present in their site. After reading it and a bit of panning, I started to code for this feature. The goal was to keep the UI similar to the CC Search feature present in the header of many Creative Commons sites.&lt;/p&gt;
+&lt;h2 id="issues-solved-from-midterm-to-end"&gt;Issues Solved From Midterm To End&lt;/h2&gt;&lt;p&gt;The issues relevant to the project which have been solved in the period between midterm and final week are listed below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/52"&gt;#52&lt;/a&gt; - use checkbox for &lt;code&gt;resourcenavtopicknown&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/61"&gt;#61&lt;/a&gt; - change UI of the homepage&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/72"&gt;#72&lt;/a&gt; - UI refinement of the website&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/119"&gt;#119&lt;/a&gt; - adding icon on filter text&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/274"&gt;#274&lt;/a&gt; - Improve the UI of submission page with &lt;code&gt;vocabulary&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/306"&gt;#306&lt;/a&gt; - Language List Columns Collapsing on Website &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/310"&gt;#310&lt;/a&gt; - Add a step by step guide for submitting resources&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/311"&gt;#311&lt;/a&gt; - html markup contains inline styles&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/313"&gt;#313&lt;/a&gt; - improve mobile view layout for filter columns&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/314"&gt;#314&lt;/a&gt; - remove extra white space between main content and footer&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/creativecommons/cc-resource-archive/issues/318"&gt;#318&lt;/a&gt; - Links in submit page open on same page and spelling mistake-comapre&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="future-plans-and-execution"&gt;Future Plans And Execution&lt;/h2&gt;&lt;p&gt;The future plans include the execution of the Stretch Goals we discussed in the later weeks of the project. Firstly, I will be working on the &lt;code&gt;LUNR.js&lt;/code&gt; search functionality and will be trying to complete this in the 13th week, and also the contributions on the &lt;code&gt;ARIA&lt;/code&gt; accessibility are welcome on GitHub. Also, apart from these fixed goals, I aim to remain engaged with the community for the years ahead. I have planned to keep contributing to the organization - &lt;a href="https://github.com/creativecommons"&gt;Creative Commons&lt;/a&gt;, and especially the repository - &lt;a href="https://github.com/creativecommons/cc-resource-archive"&gt;CC-Resource-Archive&lt;/a&gt; for as long as I can. I will be contributing in the form of issues, pull requests and also code reviews. This is the first organization I got to connect professionally with, and I aim to continue to be a part of this mission of Sharing of Open Knowledge.&lt;/p&gt;
+&lt;h2 id="personal-growth-and-thoughts-on-completion"&gt;Personal Growth And Thoughts On Completion&lt;/h2&gt;&lt;p&gt;As I mentioned in my previous blog post, Being a part of Google Summer of Code was a very big deal for me. With an organization like Creative Commons, this could not have been better. I did not only know about the organization before all this GSoC 2024 preparation, but also resonated with the idea and mission behind it, and was grateful for the learning opportunities it creates for people across the world. Being at the final week of this program makes me emotional as I had a really good time with the mentors and the project. In the weekly meetings we conducted, the amount of motivation I got every single time talking with my mentor was unmatched. I was a complete newbie in terms of professional work experience, and this is the way everything should have been. I am a better individual at this point, and far more experienced. I think I will be able to guide my juniors in a better way from now onwards.
+This program also instilled in me a newfound confidence that is needed to take on tough tasks. I believe the program is less about coding skills and more about the self-improvement journey one has with their mentors and fellow contributors. One more thing which caught my interest is reviewing the Pull Requests of other contributors. My mentor suggested that I try reviewing pull requests of new contributors for experience. “This is a great learning opportunity for you” as they said it. Exactly as I was told, this was indeed a great and enjoyable opportunity.&lt;/p&gt;
+&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;h3 id="gratitude-and-acknowledgements"&gt;Gratitude And Acknowledgements&lt;/h3&gt;&lt;p&gt;&lt;a href="https://github.com/possumbilities"&gt;Sara Lovell&lt;/a&gt;, &lt;a href="https://github.com/TimidRobot"&gt;Timid Robot Zehta&lt;/a&gt; and &lt;a href="https://github.com/Shafiya-Heena"&gt;Shafiya Heena&lt;/a&gt; were the best mentors I could have asked for this project program. My primary mentor, Sara, always encouraged me to be on track whenever I lagged behind in work. Considering this was a straightforward project, I did not predict the learning opportunities to be this much in number. I will always be grateful for these 12 weeks of support, learning and growth. Thank you !&lt;/p&gt;
+&lt;h3 id="for-future-contributors"&gt;For Future Contributors&lt;/h3&gt;&lt;p&gt;All the contributors that are hoping to contribute to this repository, or this organization, I welcome you with all my heart. If you are targeting to get selected in an Open Source mentorship program, that is a great idea. But do not just contribute to Open Source for the sake of resume building and stipend. I agree they are very good benefits, but Open Source is simply much more than this. Once you contribute to Open Source, you will fall in love with the support you get from this community, just like I did. You can find me on &lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; and on the &lt;a href="https://github.com/creativecommons/cc-resource-archive"&gt;CC-Resource-Archive&lt;/a&gt; repository mainly. Let’s have the conversation there!&lt;/p&gt;
 </content></entry><entry><title>Local Environment Creation using Ansible and Docker: Part 1</title><link href="http://opensource.creativecommons.org/blog/entries/2024-07-19-create-local-ansible-dev-env/" rel="alternate"></link><updated>2024-07-18T00:00:00Z</updated><author><name>['amandayclee']</name></author><id>urn:uuid:6b1318ac-36d5-3881-a3fb-235ad3557944</id><content type="html">&lt;p&gt;This project explores how Creative Commons
 (CC) uses Ansible, an automated system administration tool, to build a local development environment. It is part of Google Summer of Code (GSoC) 2024.&lt;/p&gt;
 &lt;div style="text-align: center;"&gt;
@@ -2877,6 +2971,67 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;The Major pull requests: &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/249"&gt;#249&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/255"&gt;#255&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/268"&gt;#268&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/270"&gt;#270&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/271"&gt;#271&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/272"&gt;#272&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/275"&gt;#275&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/276"&gt;#276&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Also, during this period, 5 updates of the extension were pushed to the extension stores. You can check out the &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/releases"&gt;releases page&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="acknowledgements"&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href="https://creativecommons.org/author/aldencreativecommons-org/"&gt;Alden&lt;/a&gt; and &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href="https://github.com/panchovm"&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
+</content></entry><entry><title>Overview of the GSoC 2020 Project</title><link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" rel="alternate"></link><updated>2020-08-26T00:00:00Z</updated><author><name>['charini']</name></author><id>urn:uuid:19eff109-3a39-3e51-abed-c1cf0d33e789</id><content type="html">&lt;p&gt;This is my final blog post under the &lt;a href="/blog/entries/overview-of-the-gsoc-2020-project/#series"&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
+summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
+stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
+the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; and &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
+CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
+primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
+(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
+experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
+Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
+&lt;a href="/blog/entries/flickr-sub-provider-retrieval/"&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/420"&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/442"&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/455"&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/461"&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
+to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
+the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
+successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
+mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
+information is provided in my &lt;a href="/blog/entries/smithsonian-unit-code-update/"&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
+is #&lt;a href="https://github.com/cc-archive/cccatalog/pull/465"&gt;465&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
+from 19 museums. However, due to the fact that the different museums have different data models and the resultant
+incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
+fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
+information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
+identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
+result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
+some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
+#&lt;a href="https://github.com/cc-archive/cccatalog/issues/397"&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
+Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
+Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href="https://github.com/cc-archive/cccatalog/issues/397"&gt;397&lt;/a&gt; as well. The PRs related
+to this task are as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/474"&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
+Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
+&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/476"&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
+provider.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
+for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
+providers up-to-date, based on how old an image is. This is called the &lt;a href="/blog/entries/date-partitioned-data-reingestion/"&gt;re-ingestion strategy&lt;/a&gt;,
+where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
+detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
+database are obsolete, which could result in broken links being presented via the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; tool. As a
+solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
+&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
+the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
+flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href="https://github.com/cc-archive/cccatalog/pull/483"&gt;483&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
+contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
+Brent for his guidance.&lt;/p&gt;
 </content></entry><entry><title>Automate GitHub for more than CI/CD</title><link href="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI%20CD/" rel="alternate"></link><updated>2020-08-26T00:00:00Z</updated><author><name>['zackkrida']</name></author><id>urn:uuid:1e6c1edf-000f-3daf-a995-c38ae9d741c7</id><content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Get started using GitHub bots and actions for community management and repository health.&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;In late 2018, in the midst of being acquired by Microsoft, GitHub &lt;a href="https://github.blog/2018-10-16-future-of-software/"&gt;launched Github Actions&lt;/a&gt; into public beta, allowing users to run code on the popular development platform for the first time. With a straightforward &lt;code&gt;YAML&lt;/code&gt; configuration syntax and the power of Microsoft's Azure cloud, GitHub Actions quickly rose to compete with existing Continuous Integration (CI) and Continuous Deployment (CD) platforms like &lt;strong&gt;Circle CI&lt;/strong&gt; and &lt;strong&gt;Travis CI&lt;/strong&gt;. GitHub Actions made it easier than ever for developers to test and deploy software in the cloud, but from the beginning GitHub had bigger plans for the service.&lt;/p&gt;
@@ -2972,67 +3127,38 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href="https://github.com/marketplace?type=actions"&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href="https://docs.github.com/actions"&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
-</content></entry><entry><title>Overview of the GSoC 2020 Project</title><link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" rel="alternate"></link><updated>2020-08-26T00:00:00Z</updated><author><name>['charini']</name></author><id>urn:uuid:19eff109-3a39-3e51-abed-c1cf0d33e789</id><content type="html">&lt;p&gt;This is my final blog post under the &lt;a href="/blog/entries/overview-of-the-gsoc-2020-project/#series"&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
-summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
-stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
-the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; and &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
-CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
-primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
-(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
-experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
-Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
-&lt;a href="/blog/entries/flickr-sub-provider-retrieval/"&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/420"&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/442"&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/455"&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/461"&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
+</content></entry><entry><title>Linked Commons: Data Update</title><link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['subhamX']</name></author><id>urn:uuid:1dad6fa5-89ee-37e8-b84b-fbcac9a924a5</id><content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
+&lt;h2 id="where-does-it-fit"&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding "Graph Filtering Methods" to "Autocomplete Feature". These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;"Scale the Data of Linked Commons"&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
+&lt;h2 id="pilot"&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href="/blog/entries/cc-datacatalog-data-processing/"&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;"distance list"&lt;/strong&gt; of all the nodes.&lt;/p&gt;
+&lt;h3 id="what-is-distance-list"&gt;What is "distance list"?&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
+    &lt;figure&gt;
+        &lt;img src="distance-list.png" alt="Distance List" style="border: 1px solid black"&gt;
+        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href="https://en.wikipedia.org/wiki/Adjacency_list"&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, "distance list" groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, "distance list" is a more general form of the Adjacency List representation.&lt;/p&gt;
+&lt;p&gt;To build this "distance list", we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href="https://en.wikipedia.org/wiki/Breadth-first_search"&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
+&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="optimizations"&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
+&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;"Sequential dB Build"&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
+&lt;h3 id="key-points-of-the-sequential-db-build"&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
+&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
-to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
-the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
-successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
-mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
-information is provided in my &lt;a href="/blog/entries/smithsonian-unit-code-update/"&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
-is #&lt;a href="https://github.com/cc-archive/cccatalog/pull/465"&gt;465&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
-from 19 museums. However, due to the fact that the different museums have different data models and the resultant
-incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
-fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
-information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
-identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
-result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
-some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
-#&lt;a href="https://github.com/cc-archive/cccatalog/issues/397"&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
-Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
-Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href="https://github.com/cc-archive/cccatalog/issues/397"&gt;397&lt;/a&gt; as well. The PRs related
-to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/474"&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
-Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/476"&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
-provider.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
-for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
-providers up-to-date, based on how old an image is. This is called the &lt;a href="/blog/entries/date-partitioned-data-reingestion/"&gt;re-ingestion strategy&lt;/a&gt;,
-where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
-detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
-database are obsolete, which could result in broken links being presented via the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; tool. As a
-solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
-&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
-the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
-flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href="https://github.com/cc-archive/cccatalog/pull/483"&gt;483&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
-contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
-Brent for his guidance.&lt;/p&gt;
+&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
+&lt;h2 id="new-architecture"&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in "build-dB-scripts" weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
+&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href="https://en.wikipedia.org/wiki/Transpose_graph"&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
+&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
+    &lt;figure&gt;
+        &lt;img src="graph.png" alt="Light Theme" style="border: 1px solid black"&gt;
+        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz"&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href="/community/"&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content></entry><entry><title>CC Catalog: wrapping up GSoC20</title><link href="http://opensource.creativecommons.org/blog/entries/cc-catalog-wrapping-gsoc20/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['srinidhi']</name></author><id>urn:uuid:70acd86a-5401-35d6-b28e-942e0fd91380</id><content type="html">&lt;p&gt;With the summer of code coming to an end, this blog post summarises the work done during the last three months. The project I have been working on is to add more provider API scripts to the CC Catalog. The CC Catalog project is responsible for collecting CC licensed images hosted across the web.&lt;/p&gt;
 &lt;p&gt;The internship journey has been great , and I was glad to get the opportunity to understand more about the working of the data pipeline. My work during the internship mainly involved researching new API providers and checking if they meet the necessary conditions, then we decided on a strategy to crawl the API. The strategy varies according to different APIs:  some can be partitioned based on date, others have to be paginated . Script is written for the API according to the strategy.
 During the later phase of the internship, I had worked on the reingestion strategy for europeana and a script to merge Common Crawl tags and metadata to the corresponding image in the image table.&lt;/p&gt;
@@ -3097,42 +3223,4 @@ Similar logic has been applied to met museum and museum victoria.&lt;/p&gt;
 &lt;li&gt;Related PR: &lt;a href="https://github.com/cc-archive/cccatalog/pull/478"&gt;https://github.com/cc-archive/cccatalog/pull/478&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="acknowledgement"&gt;Acknowledgement&lt;/h2&gt;&lt;p&gt;I would like to thank my mentors Brent and Anna for their guidance throughout the internship.&lt;/p&gt;
-</content></entry><entry><title>Linked Commons: Data Update</title><link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" rel="alternate"></link><updated>2020-08-25T00:00:00Z</updated><author><name>['subhamX']</name></author><id>urn:uuid:1dad6fa5-89ee-37e8-b84b-fbcac9a924a5</id><content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id="where-does-it-fit"&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding "Graph Filtering Methods" to "Autocomplete Feature". These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;"Scale the Data of Linked Commons"&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
-&lt;h2 id="pilot"&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href="/blog/entries/cc-datacatalog-data-processing/"&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;"distance list"&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id="what-is-distance-list"&gt;What is "distance list"?&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="distance-list.png" alt="Distance List" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href="https://en.wikipedia.org/wiki/Adjacency_list"&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, "distance list" groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, "distance list" is a more general form of the Adjacency List representation.&lt;/p&gt;
-&lt;p&gt;To build this "distance list", we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href="https://en.wikipedia.org/wiki/Breadth-first_search"&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
-&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="optimizations"&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
-&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;"Sequential dB Build"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id="key-points-of-the-sequential-db-build"&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
-&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
-&lt;h2 id="new-architecture"&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in "build-dB-scripts" weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
-&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href="https://en.wikipedia.org/wiki/Transpose_graph"&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
-&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="graph.png" alt="Light Theme" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;a href="https://creativecommons.slack.com/channels/cc-dev-cc-catalog-viz"&gt;slack&lt;/a&gt; channel. Read more about our community teams &lt;a href="/community/"&gt;here&lt;/a&gt;. See you in my next blog! 🚀&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
-</content></entry><entry><title>X5GON Using CC Catalog API for Image Results</title><link href="http://opensource.creativecommons.org/blog/entries/2020-08-x5gon-cc-catalog-api/" rel="alternate"></link><updated>2020-08-24T00:00:00Z</updated><author><name>['annatuma']</name></author><id>urn:uuid:ad722ccb-5de0-360b-8425-3cb05472167b</id><content type="html">&lt;p&gt;A few months ago, the Open Education team at Creative Commons made an introduction between the folks working on X5GON and CC Search.&lt;/p&gt;
-&lt;p&gt;Throughout a few conversations, we quickly discovered that there are many parallels to how we're approaching our work, and some important differences that would allow each of us to benefit from cooperation.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.x5gon.org/"&gt;X5GON&lt;/a&gt; is building an AI-driven platform, focused on delivery of open education resources (OER). At its core, it is building a catalog of OER, upon which other &lt;a href="https://www.x5gon.org/platforms/services/"&gt;services&lt;/a&gt; are based, such as analytics for personalized recommendations, and a discovery engine. By aggregating relevant content, curating it with the use of artificial intelligence and machine learning, and personalizing the experience to each learner, they're making OER more accessible and relevant.&lt;/p&gt;
-&lt;p&gt;CC Search is not yet ready to ingest content types beyond images, but when we are able to do so, we plan to integrate via API with X5GON in order to serve OER that is made available in formats we will support in the future, starting with audio.&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://discovery.x5gon.org/"&gt;X5GON Discovery search engine&lt;/a&gt; allows users to find OER in video, audio, and text formats - and now, with the integration of results powered by the CC Catalog API, which also powers CC Search, users can also find openly licensed images for relevant educational queries. This is a great resource for educators and learners from all over the world.&lt;/p&gt;
-&lt;p&gt;Try it for yourself, or look at these results for making &lt;a href="https://discovery.x5gon.org/search?q=geometry&amp;amp;type=Image"&gt;geometry&lt;/a&gt; visual and fun!&lt;/p&gt;
 </content></entry></feed>

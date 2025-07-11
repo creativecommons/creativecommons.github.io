@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon"  href="/static/vocabulary/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="/static/vocabulary/favicon/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/static/vocabulary/favicon/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/vocabulary/favicon/apple-touch-icon.png" />
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/datatable/datatables.js"></script>
+<script type="text/javascript" src="/static/js/table.js"></script>
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Refactoring and Releasing the new CC Chooser: Part 1" />
+
+
+
+<meta property="og:description" content="We’re excited to announce that we have finally moved the Chooser from a 
+long-term beta state into a finished and stable v1.0. But it certainly hasn’t 
+been a straight-line. The Chooser has been met with a lot of challenges along 
+the way and in this series we’ll walk through that journey in three parts:" />
+
+
+<meta property="og:url" content="/blog/entries/2025-07-11-refactoring-the-cc-chooser-pt-1/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Refactoring and Releasing the new CC Chooser: Part 1.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+  <meta name="description" content="Refactoring and Releasing the new CC Chooser: Part 1 - CC Open Source" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Refactoring and Releasing the new CC Chooser: Part 1">
+<meta name="twitter:description" content="We’re excited to announce that we have finally moved the Chooser from a 
+long-term beta state into a finished and stable v1.0. But it certainly hasn’t 
+been a straight-line. The Chooser has been met with a lot of challenges along 
+the way and in this series we’ll walk through that journey in three parts:">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<title>Refactoring and Releasing the new CC Chooser: Part 1 — Creative Commons Open Source</title>
+
+<body  class="blog-post" >
+
+<a class="skip-to-content" href="#main-content-marker">Skip to content</a>
+<header>
+    <div class="masthead">
+        <h1><a class="identity-logo product" href="/">Open source</a></h1>
+        <button class="expand-menu">Menu</button>
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="/blog/entries/">Blog</a></li>
+                <li><a href="/contributing-code/">Contribute</a></li>
+                <li><a href="/community/">Community</a></li>
+                <li><a href="/programs/">Work Programs</a></li>
+            </ul>
+            <!--TODO: Evaluate use of dropdown/secondary menu-->
+        </nav>
+
+        <nav class="ancillary-menu">
+            <ul>
+                <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
+                <li><button class="explore">Explore CC</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="explore-panel">
+    <!-- (optional main CC logo, p, link on non-home site back to main site) -->
+    <aside>
+      <a
+        class="identity-logo"
+        href="https://creativecommons.org"
+        >Creative Commons</a
+      >
+      <h2>Our Work Relies On You!</h2>
+      <p>Help us keep the internet free and open.</p>
+    </aside>
+    <nav class="explore-menu">
+        <ul>
+            <li>
+                <a href="https://network.creativecommons.org/" target="_blank">Global Network</a>
+                <p>Join a  global community working to strengthen the Commons</p>
+            </li>
+            <li>
+                <a href="https://certificate.creativecommons.org/" target="_blank">Certificate</a>
+                <p>Become an expert in creating and engaging with openly licensed materials</p>
+            </li>
+            <li>
+                <a href="/choose" target="_blank">Chooser</a>
+                <p>Get help choosing the appropriate license for your work</p>
+            </li>
+            <li>
+                <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
+                <p>Find engines to search openly licensed material for creative and educational reuse</p>
+            </li>
+        </ul>
+    </nav>
+    </div>
+
+</header>
+
+  <!-- Breadcrumb -->
+   <!--TODO: EVALUATE USE OF BREADCRUMB;REMOVE OR KEEP-->
+  
+  <!-- Body -->
+  <span id="main-content-marker"></span>
+  <main>
+  
+<header>
+  <h1>Refactoring and Releasing the new CC Chooser: Part 1</h1>
+  <span class="byline"><a>by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2025-07-11</a></span>
+  <span class="categories">
+    
+      
+        
+        
+        <a href="/blog/categories/open-source/">open-source</a>
+      
+        
+        
+        <a href="/blog/categories/cc-chooser/">cc-chooser</a>
+      
+        
+        
+        <a href="/blog/categories/cc-vocabulary/">cc-vocabulary</a>
+      
+    
+  </span>
+</header>
+
+<!-- TODO: IF EXCERPT IS TO BE INCLUDED, ADD EXCERPT HERE -->
+<!--
+  <aside class="opening">
+    <p> </p>
+  </aside>
+-->
+
+<div><p>We’re excited to announce that we have finally moved the Chooser from a 
+long-term beta state into a finished and stable v1.0. But it certainly hasn’t 
+been a straight-line. The Chooser has been met with a lot of challenges along 
+the way and in this series we’ll walk through that journey in three parts:</p>
+<ul>
+<li>Part 1: History and debt: The historical context that led to the newest 
+refactor and release of the 2025 Chooser.</li>
+<li>Part 2: Specifics and fixes: Breaking down the specifics of technical debt, 
+issues, complexity, contextual-shift misalignment, and fixes.</li>
+<li>Part 3: Future Growth: What’s next for the Chooser, and what directions we 
+hope to grow it.</li>
+</ul>
+<h2 id="whats-the-chooser">What’s the Chooser?</h2><p>From our <a href="https://creativecommons.org/share-your-work/">website</a>:</p>
+<blockquote><p>Our <a href="https://creativecommons.org/choose/">chooser</a> helps you determine which Creative Commons License is 
+right for 
+you in a few easy steps. If you are new to Creative Commons, you may also want 
+to read licensing considerations before you <a href="https://creativecommons.org/choose/">get started with the 
+chooser</a></p>
+</blockquote>
+<h2 id="circumstances-and-context">Circumstances and context</h2><p>What do you do when an ecosystem shifts, not just with the number of engineers, 
+but also from the focal point of complexity built around a core product that no 
+longer exists at an org? You evaluate the context within which everything 
+exists and you reevaluate what works from there forward.</p>
+<p>The Chooser has existed as a tool within the Creative Commons (CC) main website 
+for over fifteen years, and helped guide countless people through their choice 
+of sharing restraints and freedoms combined with which Legal Tool those 
+requirements are best aligned with. In 2019 the Chooser was met with a need to 
+refactor both its UX, and also its core technological approach. The CC 
+Technology team was focused hard on CC Search, which would later launch in the 
+Summer of 2019. CC Search was a rather complex application that required a more 
+robust and dynamic user interface. It was in every way much more of an app than 
+a website and so the team chose to build out the CC Search engine with Vue.js. 
+Like the rest of the JavaScript ecosystem, this meant some speed and 
+affordances in dev time with a trade off in larger code dependency and 
+complexity; given the size of their team and the ecosystem they were seeking to 
+build it was a solid and reasonable judgement call.</p>
+<h2 id="building-an-ecosystem-from-a-strong-core-product">Building an ecosystem from a strong core product</h2><p>After landing on Vue and setting to work to build out the search engine, it 
+became reasonable to also move as many other projects to the same ecosystem so 
+that updates overall could better operate as a supportive ecosystem. If other 
+websites and projects were moved to Vue, then they could share dependencies, 
+benefit from fixes and updates, and as the CC Search engine grew it could have 
+the delightful benefit of lifting up all the other projects along the way.</p>
+<p>With a larger engineering team to manage the ecosystem it made a lot of sense 
+(Node is sprawling, and can be overkill in the wrong circumstances). It 
+decreased the complexity of managing a search engine, while adding some 
+complexity to smaller projects, with the balanced gain of spreading updates and 
+works across the whole a lot more cohesively. The end goal here was a 
+development environment that was much less siloed and more responsibility 
+consistent in how it approached dev work.</p>
+<p>Vocabulary also entered the picture at this time. Its goal was to operate as a 
+design spec and implementation “rule system” for the Vue framework 
+implementation.</p>
+<h2 id="shifting-circumstances">Shifting circumstances</h2><p>In 2020, Covid shocked our society, disrupted giving, and brought staff 
+reductions to Creative Commons. Most of the Technology team was laid off. Work 
+was mostly suspended, some projects were sunset, and others were left with 
+minimal maintenance. Thankfully, CC Search was acquired and continued by 
+Automattic as [Openverse][openverse]. However, with its absence came a rather 
+large hole at 
+the center of a very large development wheel.</p>
+<p>Without the CC Search engine, now all the smaller projects which had adopted 
+Vue would no longer receive the benefit of being attached to the larger 
+project’s progress. Instead a balkanization began to unfold. The flexibility 
+and scale that the Node ecosystem had offered when the CC Engine existed at the 
+organization no longer applied, and now Node in all its forms within all the 
+various projects were a liability instead of a strength.</p>
+<p>Node is a fast moving system, and without a larger team it was difficult to 
+keep dependencies updated, tested, and secure. Projects began to drift away 
+from each other. Some projects still utilized Vue, others only halfway, and 
+others abandoned in-progress migrations to Vue, instead falling back to what 
+they had been doing before. The ecosystem fragmented and technical debt began 
+to accrue. Since Vue (and by proxy Node/NPM) moves so quickly–the debt 
+accrual was considerable.</p>
+<h2 id="the-2020-chooser-in-limbo">The 2020 Chooser in limbo</h2><p>The 2020 Chooser, left with minimal maintenance, was a beta version. It was 
+revamped and rebuilt to focus on the latest legal tools, offer a better UX, and 
+incorporate the Vocabulary design system. It was built from the ground up 
+entirely within Vue. And so the Chooser largely stayed, mired in beta due to an 
+ever increasing amount of technical debt. The rest of the world was moving from 
+Vue 2 to Vue 3, but there wasn't capacity at CC to update the Chooser.</p>
+<p>By 2023, the Technology team had the capacity to begin reducing technical debt. 
+Later that year the main CC site redesign was launched. That work cleared the 
+way for redoing the Vocabulary design system, removing Vue, and simplifying its 
+approach to be better scaled to a more concise set of engineering resources. 
+The new site better utilized native WordPress functionality and minimized 
+JavaScript (it did not use Vue or any other JavaScript framework).</p>
+<h2 id="laying-groundwork-for-a-refactor-and-release">Laying groundwork for a refactor and release</h2><p>A lot of time had passed since its original beta redesign and 2020 beta 
+release. The scope of the Chooser needed to be reconsidered. The core of its 
+functionality needed to be narrowed back down to manageable goals, decision 
+pathways, and stable long-term engineering.</p>
+<p>In 2025, the Chooser was updated to better align with both the larger CC dev 
+ecosystem and the capacity of the Technology team. These changes have resulted 
+in a Chooser that is more integrated, balanced, stable, and viable long term.</p>
+<h2 id="moving-forward">Moving forward</h2><p>In the next part of this series we’ll walk through the technical debt the 
+Chooser had accrued, and the specific improvements and changes that we’ve 
+implemented!</p>
+</div>
+
+
+  
+  <aside class="closing">
+    <p>This blog is part of the series:
+    <a href="/blog/series/2025-chooser-refactor/">Refactoring and Releasing the new CC Chooser</a>
+    </p>
+  </aside>
+
+  <article class="posts related">
+    <h2>Related posts</h2>
+    <ul>
+      
+        <li>
+          <article class="post">
+            <header>
+              <h3><a href="/blog/entries/2025-07-11-refactoring-the-cc-chooser-pt-1/">Refactoring and Releasing the new CC Chooser: Part 1</a></h3>
+              <span class="byline">by <a class="author-name" href="/blog/authors/sara/">Sara Lovell</a> on 2025-07-11</span>
+              <span class="categories">
+                
+                  
+                    
+                    <a href="/blog/categories/open-source/">open-source</a>
+                  
+                    
+                    <a href="/blog/categories/cc-chooser/">cc-chooser</a>
+                  
+                    
+                    <a href="/blog/categories/cc-vocabulary/">cc-vocabulary</a>
+                  
+                
+              </span>
+            </header>
+          </article>
+        </li>
+      
+    </ul>
+  </article>
+
+
+<article class="tags">
+  <h2>Tags</h2>
+  <ul>
+    
+      
+        
+        <li><a href="/blog/categories/open-source/">open-source</a></li>
+      
+        
+        <li><a href="/blog/categories/cc-chooser/">cc-chooser</a></li>
+      
+        
+        <li><a href="/blog/categories/cc-vocabulary/">cc-vocabulary</a></li>
+      
+    
+  </ul>
+</article>
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2025-07-11-refactoring-the-cc-chooser-pt-1"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2025-07-11-refactoring-the-cc-chooser-pt-1/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a class="identity-logo" href="https://www.creativecommons.org">Creative Commons</a>
+
+    <nav class="footer-menu" aria-label="Footer menu">
+        <ul>
+
+            <li><a href="/blog/entries/">Blog</a></li>
+            <li><a href="/community/community-team/">Community Team</a></li>
+            <li><a href="/contributing-code/projects/">Project List</a></li>
+            <li><a href="/archives/">Archives</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br /> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+
+    <nav class="social-menu" aria-label="Social menu">
+        <ul>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank">
+        <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Your email" required>
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
+        </div>
+        <input type="submit" value="subscribe" id="mc-embedded-subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
+    </div>
+  </footer>
+  <script src="/static/vocabulary/js/vocabulary.js"></script>
+ </body>
+</html>
