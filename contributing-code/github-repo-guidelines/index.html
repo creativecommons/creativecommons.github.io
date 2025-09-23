@@ -362,22 +362,20 @@ following structure:</p>
 <div class="hll"><pre><span></span><span class="c1"># Whether this GitHub repo is for a CC-led engineering project</span>
 <span class="nt">engineering_project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="c1"># Name of the repository/project in English</span>
-<span class="nt">english_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC Catalog API</span>
+<span class="nt">english_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CC Legal Tools Application</span>
 <span class="c1"># All technologies used, sorted</span>
-<span class="nt">technologies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Django, Django REST Framework, Elasticsearch, Python</span>
+<span class="nt">technologies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Django, Python</span>
 <span class="c1"># Whether this repository should be featured on the CC Open Source site&#39;s &quot;Projects&quot; page</span>
 <span class="nt">featured</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="c1"># Slack channel name (optional key)</span>
-<span class="nt">slack</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;cc-dev-catalog&#39;</span>
 </pre></div>
 <p>This metadata file is used in the <a href="/projects/">Projects</a> page. Repos that are
 marked as non-engineering projects are not displayed in the page and repos
 marked as featured as displayed at the top of the page. Repos should be marked
 as featured if we are actively looking for community contributions and have the
 bandwidth to review them quickly.</p>
-<p>Repos without this metadata file are treated as <code>engineering_projects: true</code>,
-<code>featured: false</code> and <code>slack: ""</code>. A default is necessary since it will take
-time for us to clean up and add metadata to all our repos.</p>
+<p>Repos without this metadata file are treated as <code>engineering_projects: true</code>
+and <code>featured: false</code>. A default is necessary since it will take time for us to
+clean up and add metadata to all our repos.</p>
 
 </div>
 
