@@ -65,9 +65,8 @@ particular recommendation can be accurately made.&lt;/p&gt;
 &lt;p&gt;Everything else can be assumed to be unknown (non matching).&lt;/p&gt;
 &lt;p&gt;This gives us a starting point to set up a simple state machine, and check 
 against routinely at specific events and provide recommendations and/or update 
-the interface.
-Reducing the JavaScript footprint and overhead&lt;/p&gt;
-&lt;p&gt;Once we no longer needed a complex state management engine because we only have 
+the interface.&lt;/p&gt;
+&lt;h2 id="reducing-the-javascript-footprint-and-overhead"&gt;Reducing the JavaScript footprint and overhead&lt;/h2&gt;&lt;p&gt;Once we no longer needed a complex state management engine because we only have 
 14 possible correct “states” we’d like to handle, we could move away from 
 the need for a larger more complex state management framework like Vue.js.&lt;/p&gt;
 &lt;p&gt;The 2020 beta Chooser utilized Vue.js and its dependency chain, the newer 2025 
@@ -93,9 +92,8 @@ also flexible enough to build out newer features over time.&lt;/p&gt;
 &lt;p&gt;The state paths and smaller footprint means that we are left with a minimal 
 amount of logic required to alter the visual state of the UX, and to allow a 
 user to move through the stepper, the attribution fields, and the various 
-marking formats and their individual functionalities.
-Embrace native support and semantics&lt;/p&gt;
-&lt;p&gt;As the decision stepper is the main interaction element, the new markup was 
+marking formats and their individual functionalities.&lt;/p&gt;
+&lt;h2 id="embrace-native-support-and-semantics"&gt;Embrace native support and semantics&lt;/h2&gt;&lt;p&gt;As the decision stepper is the main interaction element, the new markup was 
 first built from there, setting up a semantic form, grouped into fieldsets, and 
 labelled accordingly.&lt;/p&gt;
 &lt;p&gt;The classes in particular let the markup describe each component in a way that 
@@ -108,7 +106,7 @@ lean on existing HTML and JS functionality, and also established a foundation
 from which more robust Web Components could be utilized later if such a need 
 arose, giving us a stable path of complexity to follow down the line.&lt;/p&gt;
 &lt;p&gt;We also opted to avoid the use of popup modals and tabs, and instead leaned on 
-&lt;code&gt;&amp;lt;summary&amp;gt;/&amp;lt;details&amp;gt;&lt;/code&gt; elements instead to accomplish similar behavior without 
+&lt;code&gt;&amp;lt;summary&amp;gt;&lt;/code&gt;/&lt;code&gt;&amp;lt;details&amp;gt;&lt;/code&gt; elements instead to accomplish similar behavior without 
 the 
 need for JS based behavior. Once again keeping our JS footprint much smaller.&lt;/p&gt;
 &lt;h2 id="improving-the-ux"&gt;Improving the UX&lt;/h2&gt;&lt;h3 id="reducing-friction"&gt;Reducing friction&lt;/h3&gt;&lt;p&gt;We tried to reduce redundancy and better control friction within the UX 
@@ -126,11 +124,12 @@ recommendation much more quickly. This change also lets us remove the
 “Reset” button as well, since moving backwards through the fieldsets will 
 reset lower fieldset values automatically. We also get a boost in accessibility 
 with its removal, since it’s not advised as a solid use case within 
-accessible interfaces, due to it being too easily clicked.&lt;/p&gt;
-&lt;p&gt;“The Web would be a happier place if virtually all Reset buttons were 
-removed. This button almost never helps users, but often hurts them.” (Reset 
-and Cancel Buttons - NN/G)&lt;/p&gt;
-&lt;p&gt;We also removed the final Done button and its adjacent shaking behavior. The 
+accessible interfaces, &lt;a href="https://www.nngroup.com/articles/reset-and-cancel-buttons/"&gt;due to it being too easily clicked&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;“The Web would be a happier place if virtually all Reset buttons were 
+removed. This button almost never helps users, but often hurts them.” (&lt;a href="https://www.nngroup.com/articles/reset-and-cancel-buttons/"&gt;Reset 
+and Cancel Buttons - NN/G&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We also removed the final "Done" button and its adjacent shaking behavior. The 
 “Done” button had an erroneous purpose, since the recommendation was 
 already available on the right, and it was unclear why the “Done” button 
 would be necessary to reach a final UX state.&lt;/p&gt;
@@ -160,9 +159,8 @@ given the chance to fully understand what they are doing by utilizing CC0.&lt;/p
 &lt;p&gt;We also leaned more on the “Need Help?” section to provide deeper 
 explanations rather than adding more information in other areas. This 
 section’s newer placement lets it serve as a way to drill down further, 
-without having to increase the density of information in the fieldsets.
-Better related UX element binding and separation&lt;/p&gt;
-&lt;p&gt;Despite being a rather simple interface the Chooser offers several overlapping 
+without having to increase the density of information in the fieldsets.&lt;/p&gt;
+&lt;h3 id="better-related-ux-element-binding-and-separation"&gt;Better related UX element binding and separation&lt;/h3&gt;&lt;p&gt;Despite being a rather simple interface the Chooser offers several overlapping 
 use cases, and as such we tried to find subtle ways to bind distinct areas of 
 input to related areas of output either with attention focus, or with some 
 measure of connective mechanisms.&lt;/p&gt;
