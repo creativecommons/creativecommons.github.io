@@ -279,6 +279,12 @@ knowledge of these foundational technologies.</p>
                                     </a>
                                 </li>
                             
+                                <li>
+                                    <a href="#file-permissions">
+                                      File permissions
+                                    </a>
+                                </li>
+                            
                         </ul>
                     
                 </li>
@@ -430,6 +436,28 @@ on this site:</p>
 <li><a href="/contributing-code/pr-guidelines/">Pull Request Guidelines — Creative Commons Open Source</a></li>
 <li><a href="/contributing-code/github-repo-guidelines/">GitHub Repo Guidelines — Creative Commons Open Source</a></li>
 <li><a href="/contributing-code/repo-labels/">Repository Labels — Creative Commons Open Source</a></li>
+</ul>
+<h3 id="file-permissions">File permissions</h3><p>Please note the following best practices for file permissions:</p>
+<ul>
+<li><code>0777</code> - Anyone can read/write/execute<ul>
+<li>⚠️  Never use these permissions</li>
+</ul>
+</li>
+<li><code>0755</code> – Owner can read/write/execute, group and others can read/execute<ul>
+<li>Should be used for scripts that are executed from the command line</li>
+<li>Shouldn't ever be used for plain text files, images, etc.</li>
+</ul>
+</li>
+<li><code>0644</code> - Owner can read/write, group and others can read-only<ul>
+<li>Default on most systems</li>
+</ul>
+</li>
+</ul>
+<p>References:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-permissions-linux">How to Set Permissions in Linux: A Guide to chmod and chown | DigitalOcean</a></li>
+<li><a href="https://thelinuxcode.com/add-chmod-permissions-to-file-in-git/">Mastering Permissions in Git: A Complete Guide to Adding chmod Modes in Your
+Repository – TheLinuxCode</a></li>
 </ul>
 <h2 id="docker">Docker</h2><p><a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker (software) - Wikipedia</a>:</p>
 <blockquote><p>Docker is a set of platform as a service (PaaS) products that use OS-level
