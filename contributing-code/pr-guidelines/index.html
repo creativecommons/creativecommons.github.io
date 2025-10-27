@@ -223,18 +223,21 @@ code in.</p>
 </aside>
 
 <div class="content">
-    <p>Read and follow the contributing guidelines and code of conduct for the project. Here are screenshots of where to find them for <a href="/contributing-code/pr-guidelines/first-time-contributor-resources.png">first time contributors</a> and <a href="/contributing-code/pr-guidelines/previous-contributor-resources.png">previous contributors</a>.</p>
-<p>We aim to review pull requests within five business days.<a href="#footnote-1"><strong>*</strong></a>. If it has been over five business days and you have not received any feedback, feel free to follow up with us.</p>
+    <!-- disregard: vim syntax highlighting fix_ -->
+
+<p>Read and follow the contributing guidelines and code of conduct for the project. Here are screenshots of where to find them for <a href="/contributing-code/pr-guidelines/first-time-contributor-resources.png">first time contributors</a> and <a href="/contributing-code/pr-guidelines/previous-contributor-resources.png">previous contributors</a>.</p>
+<p>We aim to review pull requests within five business days.<sup class="footnote-ref" id="fnref-business-days"><a href="#fn-business-days">1</a></sup> If it has been over five business days and you have not received any feedback, feel free to follow up with us.</p>
 <ul>
 <li><strong>Make A Branch</strong><ul>
 <li>Please create a separate branch for each issue that you're working on. Do not make changes to the default branch (e.g. <code>master</code>, <code>develop</code>) of your fork.</li>
 </ul>
 </li>
-<li><strong>Push Your Code ASAP</strong> <ul>
-<li>Push your code as soon as you can. Follow the "<a href="https://www.worklytics.co/blog/commit-early-push-often/">early and often</a>" rule. </li>
-<li>Make a pull request as soon as you can and <strong>mark the title with a "[WIP]"</strong>. You can create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a>.
-<br/>
-<a href="/contributing-code/pr-guidelines/draft_pr.gif">Screenshot: How to create draft PR?</a></li>
+<li><strong>Push Your Code ASAP</strong><ul>
+<li>Push your code as soon as you can. Follow the "<a href="https://www.worklytics.co/blog/commit-early-push-often/">early and often</a>" rule.</li>
+<li>Make a pull request as soon as you can and <strong>mark the title with a "[WIP]"</strong>. You can create a <a href="https://help.github.com/en/articles/about-pull-requests#draft-pull-requests">draft pull request</a>.<ul>
+<li><a href="/contributing-code/pr-guidelines/draft_pr.gif">Screenshot: How to create draft PR?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>Describe Your Pull Request</strong><ul>
@@ -249,24 +252,31 @@ This checks off the boxes in your to-do list. The more boxes you check, the bett
 </li>
 <li>Describe your change in detail. Too much detail is better than too little.</li>
 <li>Describe how you tested your change.</li>
-<li>Check the Preview tab to make sure the Markdown is correctly rendered and that all tags and references are linked. If not, go back and edit the Markdown.
-<br/>
-<a href="/contributing-code/pr-guidelines/populated_pr.png">Screenshot: Populated pull request</a></li>
+<li>Check the Preview tab to make sure the Markdown is correctly rendered and that all tags and references are linked. If not, go back and edit the Markdown.<ul>
+<li><a href="/contributing-code/pr-guidelines/populated_pr.png">Screenshot: Populated pull request</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>Request Review</strong><ul>
-<li>Once your PR is ready, <strong>remove the "[WIP]" from the title</strong> and/or change it from a draft PR to a regular PR.</li>
+<li>Once your PR is ready, <strong>remove the "[WIP]" from the title</strong> and/or change it from a draft PR to a regular PR.<ul>
+<li>To be ready, any code must execute and complete successfully on your machine</li>
+<li>To be ready, you should have already reviewed the <strong>Files changed</strong> tab for unintended files and other obvious mistakes</li>
+</ul>
+</li>
 <li>If a specific reviewer is not assigned automatically, please <a href="https://help.github.com/en/articles/requesting-a-pull-request-review">request a review</a> from the project maintainer and any other interested parties manually.</li>
 </ul>
 </li>
 <li><strong>Incorporating feedback</strong><ul>
 <li>If your PR gets a 'Changes requested' review, you will need to address the feedback and update your PR by pushing to the same branch. You don't need to close the PR and open a new one.</li>
-<li>Be sure to <strong>re-request review</strong> once you have made changes after a code review.
-<br/>
-<a href="/contributing-code/pr-guidelines/rereview.png">Screenshot: How to request re-review?</a></li>
-<li>Asking for a re-review makes it clear that you addressed the changes that were requested and that it's waiting on the maintainers instead of the other way round.
-<br/>
-<a href="/contributing-code/pr-guidelines/difference.png">Screenshot: Difference between 'Changes requested' and 'Review required'</a></li>
+<li>Be sure to <strong>re-request review</strong> once you have made changes after a code review.<ul>
+<li><a href="/contributing-code/pr-guidelines/rereview.png">Screenshot: How to request re-review?</a></li>
+</ul>
+</li>
+<li>Asking for a re-review makes it clear that you addressed the changes that were requested and that it's waiting on the maintainers instead of the other way round.<ul>
+<li><a href="/contributing-code/pr-guidelines/difference.png">Screenshot: Difference between 'Changes requested' and 'Review required'</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -286,7 +296,12 @@ This checks off the boxes in your to-do list. The more boxes you check, the bett
 </ul>
 </li>
 </ul>
-<p class="caption"><a name="footnote-1" class="has-color-dark-slate-gray"><strong>*</strong></a> CC staff work Monday through Friday and are not available on weekends and national holidays (the specific holidays observed vary based on the person's location). CC is closed between Christmas Eve and New Years' Day every year and for a few days following the CC Global Summit. Also, our availability during events such as the CC Global Summit and our biannual staff meetups is limited.</p>
+<div class="footnotes">
+<hr>
+<ol><li id="fn-business-days"><p>CC staff work Monday through Friday and are not available on weekends and national holidays (the specific holidays observed vary based on the person's location). CC is closed between Christmas Eve and New Years' Day every year. Also, our availability during events such as staff meetups is limited.<a href="#fnref-business-days" class="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
 </div>
 
 
