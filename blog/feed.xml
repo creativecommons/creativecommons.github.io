@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2025-10-06T00:00:00Z</updated><author><name/></author><entry><title>Refactoring and Releasing the new CC Chooser: Part 2</title><link href="http://opensource.creativecommons.org/blog/entries/2025-10-06-refactoring-the-cc-chooser-pt-2/" rel="alternate"/><updated>2025-10-06T00:00:00Z</updated><author><name>['sara']</name></author><id>urn:uuid:37b05421-d008-3d52-8984-d785641d4a38</id><content type="html">&lt;p&gt;This blog is part two of a three part series: &lt;a href="/blog/series/2025-chooser-refactor/"&gt;Refactoring and Releasing the 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2025-12-01T00:00:00Z</updated><author><name/></author><entry><title>Avoiding generative AI development tools</title><link href="http://opensource.creativecommons.org/blog/entries/2025-12-01-avoiding-gen-ai-tools/" rel="alternate"/><updated>2025-12-01T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:ad0d890c-6979-302d-a258-cfa4e0dfd274</id><content type="html">&lt;p&gt;At this time, the Creative Commons (CC) &lt;strong&gt;Technology team&lt;/strong&gt; has concluded that
+generative AI development tooling does not pass a cost/benefit analysis &lt;em&gt;for
+contributing to our open source projects&lt;/em&gt;. Until further notice, we will not
+accept CC Open Source submissions that include code or content generated with
+AI.&lt;/p&gt;
+&lt;h2 id="overhyped"&gt;Overhyped&lt;/h2&gt;&lt;p&gt;Generative AI productivity claims are often championed (and paid for) by those
+who reap a material benefit from adoption of AI tooling. Adoption rates are
+inflated by a lack of choice when AI tools are included by default and often
+cannot be disabled (EditorDavid, 2025). We’ve observed that arguments for their
+adoption too often appeal to a fear of missing out or potential future
+benefits.&lt;/p&gt;
+&lt;h2 id="inefficiency-and-slop"&gt;Inefficiency and slop&lt;/h2&gt;&lt;p&gt;Our current evaluation of generative AI development tooling is that it does not
+offer a benefit to our open source projects nor to the user of the AI tooling.
+Indeed, "when developers use AI tools, they take 19% longer than without—AI
+makes them slower." (METR, 2025). A recent report from MIT NANDA indicates
+"that 95% of organizations are getting zero return [from generative AI]."
+(Challapally et al., 2025). AI tooling enables the creation of spurious work
+for reviewers. For example, see the following comment on an AI slop
+submission:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;This code does not call curl. This is not a "POC" of anything than [sic]
+suggesting you did this with an AI and that you do not understand what you're
+doing here.
+&lt;br&gt;Please identify the exact line of curl source code that has the problem
+you say exists.
+&lt;br&gt;(badger, 2025)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="counterproductive"&gt;Counterproductive&lt;/h2&gt;&lt;p&gt;Especially for our contributors, when we participate in work programs like
+Google Summer of Code (GSoC) or Outreachy, AI tools train the wrong skills. We
+want contributors who are learning the technologies that underpin our open
+source projects.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;I listened to an industry representative say that he wants students to have
+“design thinking and the ability to ask questions” without recognizing that
+the student use of AI tools he advocates will stunt their critical thinking
+skills, making it impossible for them to ask questions and do interesting
+“design thinking.”.
+&lt;br&gt;(Valeries, 2025)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="responsibility-and-solidarity"&gt;Responsibility and solidarity&lt;/h2&gt;&lt;p&gt;In addition to concerns with how AI development tools might negatively impact
+our day-to-day, the Technology team has concerns about how generative AI
+technology is created and implemented/deployed. Even if generative AI
+development tools were actually helpful, the Technology team would be reluctant
+to use tools that were developed in a way that harmed others, that are funded
+by deployments/implementations that harm others, and that offer short-term
+benefits at an existential cost.&lt;/p&gt;
+&lt;h2 id="references"&gt;References&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;badger. (2025, September 16). Comment on Stack Buffer Overflow in cURL Cookie
+Parsing Leads to RCE. curl.
+&lt;a href="https://hackerone.com/reports/3340109#activity-36894924"&gt;https://hackerone.com/reports/3340109#activity-36894924&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Challapally, A., Pease, C., Raskar, R., Chari, P., (2025, July). The GenAI
+Divide: STATE OF AI IN BUSINESS 2025. MIT NANDA.
+&lt;a href="https://www.artificialintelligence-news.com/wp-content/uploads/2025/08/ai_report_2025.pdf"&gt;https://www.artificialintelligence-news.com/wp-content/uploads/2025/08/ai_report_2025.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;EditorDavid. (2025, May 31). GitHub Users Angry at the Prospect of AI-Written
+Issues From Copilot. Slashdot.
+&lt;a href="https://developers.slashdot.org/story/25/06/01/0049240/github-users-angry-at-the-prospect-of-ai-written-issues-from-copilot"&gt;https://developers.slashdot.org/story/25/06/01/0049240/github-users-angry-at-the-prospect-of-ai-written-issues-from-copilot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;METR. (2025, July 10). Measuring the Impact of Early-2025 AI on Experienced
+Open-Source Developer Productivity. METR.
+&lt;a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"&gt;https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Valeries, Barr. (2025, August 29). Feeling Cranky About AI and CS Education.
+Communications of the ACM.
+&lt;a href="https://cacm.acm.org/blogcacm/feeling-cranky-about-ai-and-cs-education/"&gt;https://cacm.acm.org/blogcacm/feeling-cranky-about-ai-and-cs-education/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content></entry><entry><title>Refactoring and Releasing the new CC Chooser: Part 2</title><link href="http://opensource.creativecommons.org/blog/entries/2025-10-06-refactoring-the-cc-chooser-pt-2/" rel="alternate"/><updated>2025-10-06T00:00:00Z</updated><author><name>['sara']</name></author><id>urn:uuid:37b05421-d008-3d52-8984-d785641d4a38</id><content type="html">&lt;p&gt;This blog is part two of a three part series: &lt;a href="/blog/series/2025-chooser-refactor/"&gt;Refactoring and Releasing the 
 new CC Chooser&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The Creative Commons Chooser 2025 refactor offers a number of improvements 
 across the surface of the application. Wherever possible we tried to consider 
@@ -3328,36 +3389,4 @@ flag the corresponding image record  as obsolete.  The PR related to this task i
 &lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
 contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
 Brent for his guidance.&lt;/p&gt;
-</content></entry><entry><title>Linked Commons: Data Update</title><link href="http://opensource.creativecommons.org/blog/entries/linked-commons-data-update/" rel="alternate"/><updated>2020-08-25T00:00:00Z</updated><author><name>['subhamX']</name></author><id>urn:uuid:1dad6fa5-89ee-37e8-b84b-fbcac9a924a5</id><content type="html">&lt;p&gt;In this blog, I will be explaining the task we were working on for the last 3-4 weeks. It will take you on a journey of optimizations from million graph traversals in building the database to just a few traversals in the end. Also, we will be covering the new architecture for the upcoming version of the Linked Commons and the reason behind the change.&lt;/p&gt;
-&lt;h2 id="where-does-it-fit"&gt;Where does it fit?&lt;/h2&gt;&lt;p&gt;So far the Linked Commons was using a tiny subset of the data available in the CC Catalog. One of the primary targets of our team was to update the data. If you observe closely all tasks so far starting from adding "Graph Filtering Methods" to "Autocomplete Feature". These were actually bringing us closer towards this task. i.e. the much-awaited &lt;strong&gt;"Scale the Data of Linked Commons"&lt;/strong&gt;. We aim to add around &lt;strong&gt;235k nodes and 4.14 million links&lt;/strong&gt; into the Linked Commons project from around &lt;strong&gt;400 nodes and 500 links&lt;/strong&gt; in the current version. This drastic addition of new data is one of its kind, which makes this task very challenging and exciting.&lt;/p&gt;
-&lt;h2 id="pilot"&gt;Pilot&lt;/h2&gt;&lt;p&gt;The raw CC Catalog data cannot be used directly in the Linked Commons. Our first task involves processing it, which includes removing isolated nodes, etc. You can read more about it in the data processing series &lt;a href="/blog/entries/cc-datacatalog-data-processing/"&gt;blog&lt;/a&gt; written by my mentor Maria. After this, we need to build a database which stores the &lt;strong&gt;"distance list"&lt;/strong&gt; of all the nodes.&lt;/p&gt;
-&lt;h3 id="what-is-distance-list"&gt;What is "distance list"?&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="distance-list.png" alt="Distance List" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Distance list representation* of the node 'icij' part of a hypothetical graph&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Distance List&lt;/strong&gt; is a method of graph representation. It is similar to &lt;a href="https://en.wikipedia.org/wiki/Adjacency_list"&gt;Adjacency List&lt;/a&gt; representation of graphs but instead of storing data of just immediate neighbouring nodes, "distance list" groups all vertices based on their distance from the root node and stores this grouped data for every vertex in the graph. In short, "distance list" is a more general form of the Adjacency List representation.&lt;/p&gt;
-&lt;p&gt;To build this "distance list", we created a script for this, let’s name it &lt;strong&gt;build-dB-script.py&lt;/strong&gt;, which uses the &lt;a href="https://en.wikipedia.org/wiki/Breadth-first_search"&gt;Breadth-First Search(BFS)&lt;/a&gt; algorithm on every node to traverse the graph and gradually build this distance list. The filtering nodes feature of our web page connects to the server, which uses the aforementioned database and serves a smaller chunk of data.&lt;/p&gt;
-&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;&lt;p&gt;Now that we know where the &lt;em&gt;build-dB-script&lt;/em&gt; is used, let’s discuss the problems with it. The new graph data we are going to use is enormous and is in millions. A full traversal of a graph with million nodes, million times is very slow. Just to give some helpful numbers, the script was taking around 10 minutes to process a hundred nodes. Assuming the growth is linear(in the best case), it will take more than &lt;strong&gt;15 days&lt;/strong&gt; to complete the computations. &lt;strong&gt;It is scary, and thus, optimizations in the &lt;em&gt;build-dB-script&lt;/em&gt; are the need of the hour!!&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="optimizations"&gt;Optimizations&lt;/h2&gt;&lt;p&gt;In this section, we will talk of the different versions of the build database script, starting from the brute force BFS method.&lt;/p&gt;
-&lt;p&gt;The brute force BFS was the most simple and technically correct solution, but as the name suggests it was slow. In the next iteration, I stored the details of last n nodes, 10 to be precise and performed the same old BFS. It was faster but it had a logic error. Say, there is a link from a node to an already visited/traversed node. The script was not putting all the nodes which could have been explored from this path. After a few more leaps from Depth-first Search, to Breadth-first search, and other methods, eventually with the help of my mentors, we built a new approach - &lt;strong&gt;"Sequential dB Build"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;To keep this blog short, I won’t be going too much into implementation details, but here are some of the critical points.&lt;/p&gt;
-&lt;h3 id="key-points-of-the-sequential-db-build"&gt;Key points of the Sequential dB Build:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;It was the fastest of all the predecessors and reduced the script timing significantly.&lt;/li&gt;
-&lt;li&gt;In this approach, we aimed to build the all distance list of [1, 2, 3,... ., k-1] before building kth distance list.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unfortunately, still, it was not enough for our current requirements. Just to give you some insights, the distance two list computation was taking around &lt;strong&gt;4 hours&lt;/strong&gt;, and &lt;strong&gt;distance three list&lt;/strong&gt; computation was taking &lt;strong&gt;20+ hours&lt;/strong&gt;. It shows that all these optimizations were not enough and were incapable of handling this big dataset.&lt;/p&gt;
-&lt;h2 id="new-architecture"&gt;New Architecture&lt;/h2&gt;&lt;p&gt;As the optimizations in "build-dB-scripts" weren’t enough, we started looking to simplify the current architecture. In the end, we want to have a viable product which is scalable to this massive data. Although we are still not dropping the multi-distance filtering, we will continue our research on it and hopefully will have it in &lt;strong&gt;Linked Commons 3.0&lt;/strong&gt;. 😎&lt;/p&gt;
-&lt;p&gt;For any node, it is more likely that any person would wish to know the immediate neighbours who are linking to some arbitrary node. Nodes at a distance greater than one exhibits very less information on the reach and connectivity of the root node. It was because of this we decided to change our current logic of having the distance list up to 10; instead, we reduced it to 1 and also stored the immediate incomming nodes list (Nodes which are at distance 1 in the &lt;a href="https://en.wikipedia.org/wiki/Transpose_graph"&gt;transpose graph&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This small change in the design simplified a lot of things, and now the new graph build was taking around 2 minutes. By the time I am writing this blog we have upgraded our database from &lt;strong&gt;shelve to MongoDB&lt;/strong&gt; where the build time is further reduced. 🔥🔥&lt;/p&gt;
-&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="graph.png" alt="Light Theme" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Graph showing neighbouring nodes. Incoming link are coloured with Turquoise and outgoing are coloured with Red.&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;&lt;p&gt;This task was really challenging and I learnt a lot. It was really mesmerizing to see the &lt;strong&gt;Linked Commons grow and evolve&lt;/strong&gt;. I hope you enjoyed reading this blog. You can follow the project development &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;here&lt;/a&gt;, and access the stable version of linked commons &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Feel free to report bugs and suggest features. It will help us improve this project. If you wish to join the our team, consider joining our &lt;code&gt;# Open Source&lt;/code&gt; channel on Zulip. Read more about our community teams &lt;a href="/community/"&gt;here&lt;/a&gt;. See you in my next blog! 🚀 [updated 2025-09-23]&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;*&lt;em&gt;Linked Commons uses a more complex schema. The picture is just for illustration.&lt;/em&gt;&lt;/p&gt;
 </content></entry></feed>
