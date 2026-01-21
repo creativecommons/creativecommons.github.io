@@ -17,9 +17,9 @@
 
 
 <meta property="og:description" content="Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
-Creative Commons for the December 2025 cohort. My project involves improving and
-expanding Quantifying the commons. In this post, I will share my progress and
-key takeaways from the first half of my internship." />
+Creative Commons for the December 2025 cohort. My project involves improving
+and expanding Quantifying the commons. In this post, I will share my progress
+and key takeaways from the first half of my internship." />
 
 
 <meta property="og:url" content="/blog/entries/2026-01-22-My-outreachy-journey/" />
@@ -46,9 +46,9 @@ key takeaways from the first half of my internship." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Quantifying the Commons: My Journey so far with outreachy">
 <meta name="twitter:description" content="Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
-Creative Commons for the December 2025 cohort. My project involves improving and
-expanding Quantifying the commons. In this post, I will share my progress and
-key takeaways from the first half of my internship.">
+Creative Commons for the December 2025 cohort. My project involves improving
+and expanding Quantifying the commons. In this post, I will share my progress
+and key takeaways from the first half of my internship.">
 
 <meta name="twitter:site" content="@creativecommons">
 <meta name="twitter:creator" content="@creativecommons">
@@ -123,13 +123,9 @@ key takeaways from the first half of my internship.">
   
 <header>
   <h1>Quantifying the Commons: My Journey so far with outreachy</h1>
-  <span class="byline"><a>by <a class="author-name" href="/blog/authors/Oreoluwa/">Oreoluwa Oluwasina</a> on 2023-01-22</a></span>
+  <span class="byline"><a>by <a class="author-name" href="/blog/authors/Oreoluwa/">Oreoluwa Oluwasina</a> on 2023-01-21</a></span>
   <span class="categories">
     
-      
-        
-        
-        <a href="/blog/categories/open-source/">open-source</a>
       
         
         
@@ -138,6 +134,10 @@ key takeaways from the first half of my internship.">
         
         
         <a href="/blog/categories/community/">community</a>
+      
+        
+        
+        <a href="/blog/categories/open-source/">open-source</a>
       
         
         
@@ -155,14 +155,14 @@ key takeaways from the first half of my internship.">
 -->
 
 <div><p>Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
-Creative Commons for the December 2025 cohort. My project involves improving and
-expanding Quantifying the commons. In this post, I will share my progress and
-key takeaways from the first half of my internship.</p>
+Creative Commons for the December 2025 cohort. My project involves improving
+and expanding Quantifying the commons. In this post, I will share my progress
+and key takeaways from the first half of my internship.</p>
 <h2 id="project-overview">Project overview</h2><p>Quantifying the commons aims to track and analyse the trends of the creative
-commons legal tools. Who is using these legal tools, where, why, how? We want to
-measure the impact of these tools. For the past 25 years, efforts have
-been made by the organisation to democratize knowledge and content on the
-internet. We want to identify our growth, gaps and areas for development.</p>
+commons legal tools. Who is using these legal tools, where, why, how? We want
+to measure the impact of these tools. For the past 25 years, efforts have been
+made by the organisation to democratize knowledge and content on the internet.
+We want to identify our growth, gaps and areas for development.</p>
 <h3 id="a-brief-history-i-learnt-about">A brief history I learnt about</h3><p>After watching a documentary recommended by my mentor. I learnt about a great
 man called Aaron Schwartz who is also known as internet's own boy. He believed
 knowledge should be free and accessible to everyone. His ideas helped inspire
@@ -184,38 +184,39 @@ interruption. I integrated a workflow that checks if an output has been
 generated previously to avoid regeneration or running of script continuously,
 when we have an output already.</p>
 <h4 id="another-script-requirement-is-making-the-script-idempotent">Another script requirement is making the script idempotent</h4><p>Making the script idempotent means executing the python scripts multiple times
-and still get the same output. Before my work on the project, the report scripts
-usually append it sections to the readme using the <code>update_readme()</code> function and
-this allows the order of outputs to change. For example when I run a script, I
-can get A-B-C but when I run it again maybe in the next quarter. I could get
-B-C-A, we don't want it like that. It should be predictable and consistent
-across quarters. But now,it inserts the sections alphabetically to the right
-position regardless of how the python scripts were executed. So we get A-B-C in
-quarter 1 and A-B-C in quarter 2.</p>
+and still get the same output. Before my work on the project, the report
+scripts usually append it sections to the readme using the <code>update_readme()</code>
+function and this allows the order of outputs to change. For example when I run
+a script, I can get A-B-C but when I run it again maybe in the next quarter. I
+could get B-C-A, we don't want it like that. It should be predictable and
+consistent across quarters. But now,it inserts the sections alphabetically to
+the right position regardless of how the python scripts were executed. So we
+get A-B-C in quarter 1 and A-B-C in quarter 2.</p>
 <h4 id="documentation-on-the-project">Documentation on the project</h4><p>Improving contributors experience is a big part of the project. During the
-Outreachy contribution phase, new contributors kept on asking the same questions
-over and over again because there were some lack of information in the
-documentation. Timid Robot and I tried to identify areas that were lacking
+Outreachy contribution phase, new contributors kept on asking the same
+questions over and over again because there were some lack of information in
+the documentation. Timid Robot and I tried to identify areas that were lacking
 clarity and we put in more context into the sides of the documentation.</p>
 <h4 id="completing-the-three-stages-of-report-for-existing-scripts">Completing the three stages of report for existing scripts</h4><p>Previous contributions had incomplete stages of report for a particular data
 source. I worked on completing the process and report stage for the Openverse
 data source. This required understanding the data fetched and what meaningful
 data or insight can be beneficial for the different teams in the organisation.</p>
-<h3 id="current-status">Current status</h3><p>I am currently working on completing the process and report stage for other data
-sources. Then I expand the project by adding new data sources for reporting. An
-iterative task for me is to check for areas in the code that might need
-improvement or better ways of doing things in the codebase.</p>
+<h3 id="current-status">Current status</h3><p>I am currently working on completing the process and report stage for other
+data sources. Then I expand the project by adding new data sources for
+reporting. An iterative task for me is to check for areas in the code that
+might need improvement or better ways of doing things in the codebase.</p>
 <h3 id="collaboration-with-mentors">Collaboration with mentors</h3><p>My favorite part of this project is my weekly meetup with my mentors, I get to
-ask questions, get ideas on ways I could improve something or solve a problem. I
-also get to review work done by my mentors, which allows me to learn from their
-approaches and imbibe them into my contributions.</p>
+ask questions, get ideas on ways I could improve something or solve a problem.
+I also get to review work done by my mentors, which allows me to learn from
+their approaches and imbibe them into my contributions.</p>
 <h3 id="key-takeways">Key takeways</h3><p>Open source has been one of the coolest experiences in my tech journey. It has
 helped me expand my skill set, as I picked up new programming languages along
-the way. I learned to easily identify optimal solutions, especially when working
-within constraints or limitations that could affect outcomes. Through this, I
-realized the importance of building the simplest possible architecture first,
-and then gradually adding components as the solution evolves.</p>
-<p>I am excited to embark on the next half! I hope to make more impact on this project.</p>
+the way. I learned to easily identify optimal solutions, especially when
+working within constraints or limitations that could affect outcomes. Through
+this, I realized the importance of building the simplest possible architecture
+first, and then gradually adding components as the solution evolves.</p>
+<p>I am excited to embark on the next half! I hope to make more impact on this
+project.</p>
 </div>
 
 
@@ -226,13 +227,13 @@ and then gradually adding components as the solution evolves.</p>
     
       
         
-        <li><a href="/blog/categories/open-source/">open-source</a></li>
-      
-        
         <li><a href="/blog/categories/collaboration/">collaboration</a></li>
       
         
         <li><a href="/blog/categories/community/">community</a></li>
+      
+        
+        <li><a href="/blog/categories/open-source/">open-source</a></li>
       
         
         <li><a href="/blog/categories/quantifying-the-commons/">quantifying-the-commons</a></li>

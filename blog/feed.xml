@@ -1563,15 +1563,15 @@ that's the power of open source!&lt;/p&gt;
 &lt;p&gt;Additionally, I had to prioritize certain tasks over others and make adjustments to my plan as necessary.&lt;/p&gt;
 &lt;p&gt;The new CSS I have written so far already makes the website's layout responsive. I have also created a new script.js file and started working on the neccessary functionalities of the website. I plan to implement all feedback gotten from my mentors and debug any remaining issues. Additionally, I will be working on improving the website's overall performance by implementing several optimization techniques as necessary.&lt;/p&gt;
 &lt;p&gt;Overall, My aim is to ensure that the website is fully functional and user-friendly for all users.&lt;/p&gt;
-</content></entry><entry><title>Quantifying the Commons: My Journey so far with outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2026-01-22-My-outreachy-journey/" rel="alternate"/><updated>2023-01-22T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:38874a7e-4773-3892-96e6-17e26e362452</id><content type="html">&lt;p&gt;Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
-Creative Commons for the December 2025 cohort. My project involves improving and
-expanding Quantifying the commons. In this post, I will share my progress and
-key takeaways from the first half of my internship.&lt;/p&gt;
+</content></entry><entry><title>Quantifying the Commons: My Journey so far with outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2026-01-22-My-outreachy-journey/" rel="alternate"/><updated>2023-01-21T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:38874a7e-4773-3892-96e6-17e26e362452</id><content type="html">&lt;p&gt;Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
+Creative Commons for the December 2025 cohort. My project involves improving
+and expanding Quantifying the commons. In this post, I will share my progress
+and key takeaways from the first half of my internship.&lt;/p&gt;
 &lt;h2 id="project-overview"&gt;Project overview&lt;/h2&gt;&lt;p&gt;Quantifying the commons aims to track and analyse the trends of the creative
-commons legal tools. Who is using these legal tools, where, why, how? We want to
-measure the impact of these tools. For the past 25 years, efforts have
-been made by the organisation to democratize knowledge and content on the
-internet. We want to identify our growth, gaps and areas for development.&lt;/p&gt;
+commons legal tools. Who is using these legal tools, where, why, how? We want
+to measure the impact of these tools. For the past 25 years, efforts have been
+made by the organisation to democratize knowledge and content on the internet.
+We want to identify our growth, gaps and areas for development.&lt;/p&gt;
 &lt;h3 id="a-brief-history-i-learnt-about"&gt;A brief history I learnt about&lt;/h3&gt;&lt;p&gt;After watching a documentary recommended by my mentor. I learnt about a great
 man called Aaron Schwartz who is also known as internet's own boy. He believed
 knowledge should be free and accessible to everyone. His ideas helped inspire
@@ -1593,38 +1593,39 @@ interruption. I integrated a workflow that checks if an output has been
 generated previously to avoid regeneration or running of script continuously,
 when we have an output already.&lt;/p&gt;
 &lt;h4 id="another-script-requirement-is-making-the-script-idempotent"&gt;Another script requirement is making the script idempotent&lt;/h4&gt;&lt;p&gt;Making the script idempotent means executing the python scripts multiple times
-and still get the same output. Before my work on the project, the report scripts
-usually append it sections to the readme using the &lt;code&gt;update_readme()&lt;/code&gt; function and
-this allows the order of outputs to change. For example when I run a script, I
-can get A-B-C but when I run it again maybe in the next quarter. I could get
-B-C-A, we don't want it like that. It should be predictable and consistent
-across quarters. But now,it inserts the sections alphabetically to the right
-position regardless of how the python scripts were executed. So we get A-B-C in
-quarter 1 and A-B-C in quarter 2.&lt;/p&gt;
+and still get the same output. Before my work on the project, the report
+scripts usually append it sections to the readme using the &lt;code&gt;update_readme()&lt;/code&gt;
+function and this allows the order of outputs to change. For example when I run
+a script, I can get A-B-C but when I run it again maybe in the next quarter. I
+could get B-C-A, we don't want it like that. It should be predictable and
+consistent across quarters. But now,it inserts the sections alphabetically to
+the right position regardless of how the python scripts were executed. So we
+get A-B-C in quarter 1 and A-B-C in quarter 2.&lt;/p&gt;
 &lt;h4 id="documentation-on-the-project"&gt;Documentation on the project&lt;/h4&gt;&lt;p&gt;Improving contributors experience is a big part of the project. During the
-Outreachy contribution phase, new contributors kept on asking the same questions
-over and over again because there were some lack of information in the
-documentation. Timid Robot and I tried to identify areas that were lacking
+Outreachy contribution phase, new contributors kept on asking the same
+questions over and over again because there were some lack of information in
+the documentation. Timid Robot and I tried to identify areas that were lacking
 clarity and we put in more context into the sides of the documentation.&lt;/p&gt;
 &lt;h4 id="completing-the-three-stages-of-report-for-existing-scripts"&gt;Completing the three stages of report for existing scripts&lt;/h4&gt;&lt;p&gt;Previous contributions had incomplete stages of report for a particular data
 source. I worked on completing the process and report stage for the Openverse
 data source. This required understanding the data fetched and what meaningful
 data or insight can be beneficial for the different teams in the organisation.&lt;/p&gt;
-&lt;h3 id="current-status"&gt;Current status&lt;/h3&gt;&lt;p&gt;I am currently working on completing the process and report stage for other data
-sources. Then I expand the project by adding new data sources for reporting. An
-iterative task for me is to check for areas in the code that might need
-improvement or better ways of doing things in the codebase.&lt;/p&gt;
+&lt;h3 id="current-status"&gt;Current status&lt;/h3&gt;&lt;p&gt;I am currently working on completing the process and report stage for other
+data sources. Then I expand the project by adding new data sources for
+reporting. An iterative task for me is to check for areas in the code that
+might need improvement or better ways of doing things in the codebase.&lt;/p&gt;
 &lt;h3 id="collaboration-with-mentors"&gt;Collaboration with mentors&lt;/h3&gt;&lt;p&gt;My favorite part of this project is my weekly meetup with my mentors, I get to
-ask questions, get ideas on ways I could improve something or solve a problem. I
-also get to review work done by my mentors, which allows me to learn from their
-approaches and imbibe them into my contributions.&lt;/p&gt;
+ask questions, get ideas on ways I could improve something or solve a problem.
+I also get to review work done by my mentors, which allows me to learn from
+their approaches and imbibe them into my contributions.&lt;/p&gt;
 &lt;h3 id="key-takeways"&gt;Key takeways&lt;/h3&gt;&lt;p&gt;Open source has been one of the coolest experiences in my tech journey. It has
 helped me expand my skill set, as I picked up new programming languages along
-the way. I learned to easily identify optimal solutions, especially when working
-within constraints or limitations that could affect outcomes. Through this, I
-realized the importance of building the simplest possible architecture first,
-and then gradually adding components as the solution evolves.&lt;/p&gt;
-&lt;p&gt;I am excited to embark on the next half! I hope to make more impact on this project.&lt;/p&gt;
+the way. I learned to easily identify optimal solutions, especially when
+working within constraints or limitations that could affect outcomes. Through
+this, I realized the importance of building the simplest possible architecture
+first, and then gradually adding components as the solution evolves.&lt;/p&gt;
+&lt;p&gt;I am excited to embark on the next half! I hope to make more impact on this
+project.&lt;/p&gt;
 </content></entry><entry><title>How I Landed My First Internship With Outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2023-01-04-how-i-landed-my-first-internship/" rel="alternate"/><updated>2023-01-04T00:00:00Z</updated><author><name>['precious']</name></author><id>urn:uuid:5e40a203-7f1e-3406-b46e-156b060ce85b</id><content type="html">&lt;p&gt;&lt;img src="https://res.cloudinary.com/dexcmkxjl/image/upload/v1671657493/blog_image_kjvep8.jpg" alt="quote image"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Take a moment to resonate with the words above. This is a principle I always follow in life. "Doing it scared"&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Get To Know Me&lt;/strong&gt;&lt;/p&gt;
