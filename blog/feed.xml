@@ -1563,6 +1563,68 @@ that's the power of open source!&lt;/p&gt;
 &lt;p&gt;Additionally, I had to prioritize certain tasks over others and make adjustments to my plan as necessary.&lt;/p&gt;
 &lt;p&gt;The new CSS I have written so far already makes the website's layout responsive. I have also created a new script.js file and started working on the neccessary functionalities of the website. I plan to implement all feedback gotten from my mentors and debug any remaining issues. Additionally, I will be working on improving the website's overall performance by implementing several optimization techniques as necessary.&lt;/p&gt;
 &lt;p&gt;Overall, My aim is to ensure that the website is fully functional and user-friendly for all users.&lt;/p&gt;
+</content></entry><entry><title>Quantifying the Commons: My Journey so far with outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2026-01-22-My-outreachy-journey/" rel="alternate"/><updated>2023-01-22T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:38874a7e-4773-3892-96e6-17e26e362452</id><content type="html">&lt;p&gt;Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
+Creative Commons for the December 2025 cohort. My project involves improving and
+expanding Quantifying the commons. In this post, I will share my progress and
+key takeaways from the first half of my internship.&lt;/p&gt;
+&lt;h2 id="project-overview"&gt;Project overview&lt;/h2&gt;&lt;p&gt;Quantifying the commons aims to track and analyse the trends of the creative
+commons legal tools. Who is using these legal tools, where, why, how? We want to
+measure the impact of these tools. For the past 25 years, efforts have
+been made by the organisation to democratize knowledge and content on the
+internet. We want to identify our growth, gaps and areas for development.&lt;/p&gt;
+&lt;h3 id="a-brief-history-i-learnt-about"&gt;A brief history I learnt about&lt;/h3&gt;&lt;p&gt;After watching a documentary recommended by my mentor. I learnt about a great
+man called Aaron Schwartz who is also known as internet's own boy. He believed
+knowledge should be free and accessible to everyone. His ideas helped inspire
+movements like Creative Commons, which allows creators to share their work
+legally while choosing how others can use it. I resonate well with this
+movement because I realised how much knowledge I have gained from reading
+articles and my random searches on the internet. I feel really excited to be
+contributing to this mission.&lt;/p&gt;
+&lt;h2 id="progress-so-far"&gt;Progress so far&lt;/h2&gt;&lt;h3 id="aligning-the-project-better-to-the-script-requirements"&gt;Aligning the project better to the script requirements&lt;/h3&gt;&lt;h4 id="one-of-the-main-script-requirement-is-making-the-script-repeatable"&gt;One of the main script requirement is making the script repeatable&lt;/h4&gt;&lt;p&gt;We use Github Actions to automate our python script on a quarterly basis. So
+there is an execution schedule that runs for 45 days or less. For better
+efficiency, scripts must exit early if a task is already completed and must
+reliably continue at the appropriate spot if multiple runs are required and not
+completed. Multiple runs in the sense that some of the APIs we integrate to
+fetch data have their limitations that allow a certain amount of fetch per hour
+or day. So we continue to fetch after the specified hour or day. During my work
+on the project, I implemented a mechanism that checks for completion of fetch
+scripts and allows the script to continue from when it stops during any
+interruption. I integrated a workflow that checks if an output has been
+generated previously to avoid regeneration or running of script continuously,
+when we have an output already.&lt;/p&gt;
+&lt;h4 id="another-script-requirement-is-making-the-script-idempotent"&gt;Another script requirement is making the script idempotent&lt;/h4&gt;&lt;p&gt;Making the script idempotent means executing the python scripts multiple times
+and still get the same output. Before my work on the project, the report scripts
+usually append it sections to the readme using the &lt;code&gt;update_readme()&lt;/code&gt; function and
+this allows the order of outputs to change. For example when I run a script, I
+can get A-B-C but when I run it again maybe in the next quarter. I could get
+B-C-A, we don't want it like that. It should be predictable and consistent
+across quarters. But now,it inserts the sections alphabetically to the right
+position regardless of how the python scripts were executed. So we get A-B-C in
+quarter 1 and A-B-C in quarter 2.&lt;/p&gt;
+&lt;h4 id="documentation-on-the-project"&gt;Documentation on the project&lt;/h4&gt;&lt;p&gt;Improving contributors experience is a big part of the project. During the
+Outreachy contribution phase, new contributors kept on asking the same questions
+over and over again because there were some lack of information in the
+documentation. Timid Robot and I tried to identify areas that were lacking
+clarity and we put in more context into the sides of the documentation.&lt;/p&gt;
+&lt;h4 id="completing-the-three-stages-of-report-for-existing-scripts"&gt;Completing the three stages of report for existing scripts&lt;/h4&gt;&lt;p&gt;Previous contributions had incomplete stages of report for a particular data
+source. I worked on completing the process and report stage for the Openverse
+data source. This required understanding the data fetched and what meaningful
+data or insight can be beneficial for the different teams in the organisation.&lt;/p&gt;
+&lt;h3 id="current-status"&gt;Current status&lt;/h3&gt;&lt;p&gt;I am currently working on completing the process and report stage for other data
+sources. Then I expand the project by adding new data sources for reporting. An
+iterative task for me is to check for areas in the code that might need
+improvement or better ways of doing things in the codebase.&lt;/p&gt;
+&lt;h3 id="collaboration-with-mentors"&gt;Collaboration with mentors&lt;/h3&gt;&lt;p&gt;My favorite part of this project is my weekly meetup with my mentors, I get to
+ask questions, get ideas on ways I could improve something or solve a problem. I
+also get to review work done by my mentors, which allows me to learn from their
+approaches and imbibe them into my contributions.&lt;/p&gt;
+&lt;h3 id="key-takeways"&gt;Key takeways&lt;/h3&gt;&lt;p&gt;Open source has been one of the coolest experiences in my tech journey. It has
+helped me expand my skill set, as I picked up new programming languages along
+the way. I learned to easily identify optimal solutions, especially when working
+within constraints or limitations that could affect outcomes. Through this, I
+realized the importance of building the simplest possible architecture first,
+and then gradually adding components as the solution evolves.&lt;/p&gt;
+&lt;p&gt;I am excited to embark on the next half! I hope to make more impact on this project.&lt;/p&gt;
 </content></entry><entry><title>How I Landed My First Internship With Outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2023-01-04-how-i-landed-my-first-internship/" rel="alternate"/><updated>2023-01-04T00:00:00Z</updated><author><name>['precious']</name></author><id>urn:uuid:5e40a203-7f1e-3406-b46e-156b060ce85b</id><content type="html">&lt;p&gt;&lt;img src="https://res.cloudinary.com/dexcmkxjl/image/upload/v1671657493/blog_image_kjvep8.jpg" alt="quote image"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Take a moment to resonate with the words above. This is a principle I always follow in life. "Doing it scared"&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Get To Know Me&lt;/strong&gt;&lt;/p&gt;
@@ -3328,65 +3390,4 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
 &lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href="https://github.com/marketplace?type=actions"&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href="https://docs.github.com/actions"&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
-</content></entry><entry><title>Overview of the GSoC 2020 Project</title><link href="http://opensource.creativecommons.org/blog/entries/overview-of-the-gsoc-2020-project/" rel="alternate"/><updated>2020-08-26T00:00:00Z</updated><author><name>['charini']</name></author><id>urn:uuid:19eff109-3a39-3e51-abed-c1cf0d33e789</id><content type="html">&lt;p&gt;This is my final blog post under the &lt;a href="/blog/entries/overview-of-the-gsoc-2020-project/#series"&gt;GSoC 2020: CC catalog&lt;/a&gt; series, where I will highlight and
-summarize my contributions to Creative Commons (CC) as part of my GSoC project. The CC Catalog project collects and
-stores CC licensed images scattered across the internet, such that they can be made accessible to the general public via
-the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; and &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog API&lt;/a&gt; tools. I got the opportunity to work on different aspects of the
-CC Catalog repository which ultimately enhances the user experience of the CC Search and CC Catalog API tools. My
-primary contributions in the duration of GSoC, and the related pull requests (PR) are as follows.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Sub-provider retrieval&lt;/strong&gt;: The first task I completed as part of my GSoC project was the retrieval of sub-providers
-(also known as &lt;em&gt;source&lt;/em&gt;) such that images could be categorised under these sources, ensuring an enhanced search
-experience for the users. I completed the implementation of sub-provider retrieval for three providers; Flickr,
-Europeana, and Smithsonian. If you are interested in learning how the retrieval logic works, please check my
-&lt;a href="/blog/entries/flickr-sub-provider-retrieval/"&gt;initial blog post&lt;/a&gt; of this series. The PRs related to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/420"&gt;420&lt;/a&gt;: Retrieve sub-providers within Flickr&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/442"&gt;442&lt;/a&gt;: Retrieve sub-providers within Europeana&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/455"&gt;455&lt;/a&gt;: Retrieve sub-providers within Smithsonian&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/461"&gt;461&lt;/a&gt;: Add new source as a sub-provider of Flickr&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alert updates to Smithsonian unit codes&lt;/strong&gt;: For the Smithsonian provider, we rely on the field known as &lt;em&gt;unit code&lt;/em&gt;
-to determine the sub-provider (for Smithsonian it is often a museum) each image belongs to. However, it is possible for
-the &lt;em&gt;unit code&lt;/em&gt; values to change over time at the upstream, and if CC is unaware of these changes, it could hinder the
-successful categorisation of Smithsonian images under unique sub-provider values. I have therefore introduced a
-mechanism of alerting the CC code maintainers of potential changes to &lt;em&gt;unit code&lt;/em&gt; values at the upstream. More
-information is provided in my &lt;a href="/blog/entries/smithsonian-unit-code-update/"&gt;second blog post&lt;/a&gt; of this series. The PR related to this task
-is #&lt;a href="https://github.com/cc-archive/cccatalog/pull/465"&gt;465&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Improvements to the Smithsonian provider API script&lt;/strong&gt;: Smithsonian is an important provider which aggregates images
-from 19 museums. However, due to the fact that the different museums have different data models and the resultant
-incompatibility of the JSON responses returned from requests to the Smithsonian API, it is difficult to know which
-fields to rely on to obtain the information necessary for CC. This results in CC missing out on certain important
-information. As part of my GSoC project, I improved the completeness of &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information, by
-identifying previously unknown fields from which these details could be retrieved. Even though my improvements did not
-result in the identification of a comprehensive list of fields, the completeness of data was considerably improved for
-some Smithsonian museums compared to how it was before. For more context about this issue please refer to the ticket
-#&lt;a href="https://github.com/cc-archive/cccatalog/issues/397"&gt;397&lt;/a&gt;. Apart from improving information of Smithsonian data, I was also able to identify issues with certain
-Smithsonian API responses which did not contain mandatory information for some of the museums. We have informed the
-Smithsonian technical team of these issues and they are highlighted in ticket #&lt;a href="https://github.com/cc-archive/cccatalog/issues/397"&gt;397&lt;/a&gt; as well. The PRs related
-to this task are as follows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/474"&gt;474&lt;/a&gt;: Improve the creator and description information of the Smithsonian source &lt;em&gt;National Museum of
-Natural History&lt;/em&gt; (NMNH). This is the largest museum (source) under the Smithsonian provider.&lt;/li&gt;
-&lt;li&gt;PR #&lt;a href="https://github.com/cc-archive/cccatalog/pull/476"&gt;476&lt;/a&gt;: Improve the &lt;em&gt;creator&lt;/em&gt; and &lt;em&gt;description&lt;/em&gt; information of other sources coming under the Smithsonian
-provider.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Expiration of outdated images&lt;/strong&gt;: The final task I completed as part of my GSoC project was implementing a strategy
-for expiring outdated images in the CC database. CC has a mechanism for keeping the images they have retrieved from
-providers up-to-date, based on how old an image is. This is called the &lt;a href="/blog/entries/date-partitioned-data-reingestion/"&gt;re-ingestion strategy&lt;/a&gt;,
-where newer images are updated more frequently compared to older images. However, this re-ingestion strategy does not
-detect images which have been deleted at the upstream. Thus, it is possible that some of the images stored in the CC
-database are obsolete, which could result in broken links being presented via the &lt;a href="https://ccsearch.creativecommons.org/"&gt;CC Search&lt;/a&gt; tool. As a
-solution, I have implemented a mechanism of identifying whether images in the CC database are obsolete by looking at the
-&lt;em&gt;updated_on&lt;/em&gt; column value of the CC image table. Depending on the re-ingestion strategy per provider, we can know what
-the oldest &lt;em&gt;updated_on&lt;/em&gt; value, an image can assume. If the &lt;em&gt;updated_on&lt;/em&gt; value is older than the oldest valid value, we
-flag the corresponding image record  as obsolete.  The PR related to this task is #&lt;a href="https://github.com/cc-archive/cccatalog/pull/483"&gt;483&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I will continue to take the responsibility for maintaining my code in the CC Catalog repository, and I hope to continue
-contributing to the CC codebase. It has been a wonderful GSoC journey for me and special thanks goes to my supervisor
-Brent for his guidance.&lt;/p&gt;
 </content></entry></feed>
