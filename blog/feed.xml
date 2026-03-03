@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2026-01-22T00:00:00Z</updated><author><name/></author><entry><title>Quantifying the Commons: My Journey so far with outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2026-01-22-My-outreachy-journey/" rel="alternate"/><updated>2026-01-22T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:38874a7e-4773-3892-96e6-17e26e362452</id><content type="html">&lt;p&gt;Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2026-03-03T00:00:00Z</updated><author><name/></author><entry><title>Quantifying the Commons: The end of an era</title><link href="http://opensource.creativecommons.org/blog/entries/2026-30-03-the-end-of-an-era/" rel="alternate"/><updated>2026-03-03T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:eaec2419-2ad5-3631-9f37-b781c05ce43d</id><content type="html">&lt;h2 id="quantifying-the-commons-the-end-of-an-era"&gt;Quantifying the Commons: The end of an era&lt;/h2&gt;&lt;p&gt;Dear gentle reader,&lt;/p&gt;
+&lt;p&gt;It is the end of an era yet the beginning of my bloom as a young aspiring data
+professional on a global stage. It feels so surreal to be at the end of this
+amazing journey with my mentors and to see the quantifying commons become a
+mature project in the creative commons open source community. Quantifying the
+commons is also blooming so stay tuned to experience its impact in different
+teams at Creative Commons.&lt;/p&gt;
+&lt;p&gt;Looking back, I was quite nervous on my first meeting with Timid Robot and
+Sara. I did not quite understand the automation part of the project, how long
+the scripts ran? Why? I was fascinated by the whole process of the system,
+after further explanation by Timid Robot I was really impressed by the design
+thinking. A lot of details and critical thinking were put into implementing the
+system. Big kudos to the project lead and previous contributors, I am in love
+with the foundation being put in place prior to my contribution. It is a firm
+one and it made my work easier and worthwhile.&lt;/p&gt;
+&lt;h2 id="day-1-was-amazing-day-90-is-growth"&gt;Day 1 was amazing, Day 90 is growth!&lt;/h2&gt;&lt;p&gt;I went from being confused with concepts used in the codebase to suggesting
+ideas on improving the automation process in the system. I constantly read
+articles, tested, iterated and improvised functions and mechanisms. I improved
+on my data structure and algorithm skills, I had to cater for test cases,
+limitations and risk. Risk in the sense that the system is exposed to change
+because the data is live and dynamic from the API. This is what I did in the
+first half of my internship
+&lt;a href="https://opensource.creativecommons.org/blog/entries/2026-01-22-My-outreachy-journey/"&gt;here&lt;/a&gt;.
+I would be focusing on the second half of the internship in this blog post. A
+big part of the project is ensuring the integrity of data is in sync with the
+efficiency of the automation process.&lt;/p&gt;
+&lt;h3 id="automating-the-smithsonian-quarterly-report"&gt;Automating the Smithsonian quarterly report&lt;/h3&gt;&lt;p&gt;Smithsonian is one of the largest public institutions in the United States. It
+has a total of 38 units/data sources like museums, zoos and libraries as of
+when I worked on it. We derived insights on the usage of CC0 license across the
+media records and records without media. This urged me to add the horizontal
+stacked barplot to the collection of visualization in the report system. From
+this, we could get the distribution of the records with CC0 licenses at a
+glance. Also, we explored the top 10 distribution of units and lowest 10
+distribution of units. This meaningfully tells us how common the CC0 license is
+used in these institutions. After testing the whole workflow a couple of times,
+I detected that the unit code seems to be updated frequently whether added or
+removed. I developed a function that keeps track of these changes and gives a
+warning about changes in the next automation process. This was the best way
+possible at the moment to handle the sudden unit code, so that our data is
+quite predictable and updated.&lt;/p&gt;
+&lt;h3 id="automating-the-arxiv-quarterly-report"&gt;Automating the arXiv quarterly report&lt;/h3&gt;&lt;p&gt;Arxiv is a curated research-sharing platform with 5 million monthly active
+users and hosts 2.6 million research papers. We derived quite interesting
+insights from this data source. Then expanded the visualization collection in
+plot.py by adding the function for line plot and vertical stacked barplot. The
+insights include the count of legal tools on a yearly basis and various
+comparative analysis of the tools over the years. We also explored the
+breakdown of these tools usage in different categories.&lt;/p&gt;
+&lt;h2 id="lessons-learned"&gt;Lessons learned&lt;/h2&gt;&lt;p&gt;I learnt so much about creating a structure when solving a problem. It is quite
+easier to debug and it presents a detailed workflow for future contributors to
+understand what has been done previously. It literally boils down to how you
+name your variable or how you use it in a function. I also learnt the
+importance of asking why. Timid Robot encouraged me to always question
+assumptions and understand the reasoning behind decisions. This was the best
+thing to do because it made the whole internship fun and puzzling. Things
+became naturally logical and I could connect the dots quite easily.&lt;/p&gt;
+&lt;h2 id="what-next"&gt;What Next!&lt;/h2&gt;&lt;p&gt;I hope to continue volunteering my time on the project going forward. I am also
+eager to explore other open-source projects involving research, big data, and
+automation, and to further align these skill sets with my background in
+actuarial science.&lt;/p&gt;
+&lt;h2 id="goodbye-for-now"&gt;Goodbye for now&lt;/h2&gt;&lt;p&gt;I really enjoyed working with my mentors, I will miss our little chit chats
+about the holidays, the weather and even vacation trips. I look forward to
+catching up again in the future.&lt;/p&gt;
+</content></entry><entry><title>Quantifying the Commons: My Journey so far with outreachy</title><link href="http://opensource.creativecommons.org/blog/entries/2026-01-22-My-outreachy-journey/" rel="alternate"/><updated>2026-01-22T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:38874a7e-4773-3892-96e6-17e26e362452</id><content type="html">&lt;p&gt;Hi there! My name is Oreoluwa, from Nigeria. I am an Outreachy intern at
 Creative Commons for the December 2025 cohort. My project involves improving
 and expanding Quantifying the commons. In this post, I will share my progress
 and key takeaways from the first half of my internship.&lt;/p&gt;
@@ -3296,99 +3358,4 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;p&gt;The Major pull requests: &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/249"&gt;#249&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/255"&gt;#255&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/268"&gt;#268&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/270"&gt;#270&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/271"&gt;#271&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/272"&gt;#272&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/275"&gt;#275&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/276"&gt;#276&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Also, during this period, 5 updates of the extension were pushed to the extension stores. You can check out the &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/releases"&gt;releases page&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="acknowledgements"&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href="https://creativecommons.org/author/aldencreativecommons-org/"&gt;Alden&lt;/a&gt; and &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href="https://github.com/panchovm"&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
-</content></entry><entry><title>Automate GitHub for more than CI/CD</title><link href="http://opensource.creativecommons.org/blog/entries/automate-github-for-more-than-CI%20CD/" rel="alternate"/><updated>2020-08-26T00:00:00Z</updated><author><name>['zackkrida']</name></author><id>urn:uuid:1e6c1edf-000f-3daf-a995-c38ae9d741c7</id><content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Get started using GitHub bots and actions for community management and repository health.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;In late 2018, in the midst of being acquired by Microsoft, GitHub &lt;a href="https://github.blog/2018-10-16-future-of-software/"&gt;launched Github Actions&lt;/a&gt; into public beta, allowing users to run code on the popular development platform for the first time. With a straightforward &lt;code&gt;YAML&lt;/code&gt; configuration syntax and the power of Microsoft's Azure cloud, GitHub Actions quickly rose to compete with existing Continuous Integration (CI) and Continuous Deployment (CD) platforms like &lt;strong&gt;Circle CI&lt;/strong&gt; and &lt;strong&gt;Travis CI&lt;/strong&gt;. GitHub Actions made it easier than ever for developers to test and deploy software in the cloud, but from the beginning GitHub had bigger plans for the service.&lt;/p&gt;
-&lt;p&gt;In a &lt;a href="https://techcrunch.com/2018/10/16/github-launches-actions-its-workflow-automation-tool/"&gt;2018 TechCrunch interview&lt;/a&gt;, GitHub's then head of platform acknowledged the usefulness of actions for more than CI/CD. "I see CI/CD as one narrow use case of actions. It’s so, so much more,” Lambert stressed. “And I think it’s going to revolutionize DevOps because people are now going to build best in breed deployment workflows for specific applications and frameworks, and those become the de facto standard shared on GitHub. […] It’s going to do everything we did for open source again for the DevOps space and for all those different parts of that workflow ecosystem."&lt;/p&gt;
-&lt;p&gt;At Creative Commons, we use Github Actions and Bots on many of &lt;a href="https://github.com/creativecommons?type=source"&gt;our open-source projects&lt;/a&gt; for more than CI/CD—to manage our &lt;a href="/community/community-team/"&gt;community team&lt;/a&gt;; to automate repository health; and to automate tedious but frequent tasks. The following examples are just a small snapshot of our existing and in-progress automations.&lt;/p&gt;
-&lt;h2 id="example-automations"&gt;Example automations&lt;/h2&gt;&lt;p&gt;&lt;!-- no toc --&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="/blog/entries/automate-github-for-more-than-CI CD/#automatic-release-note-generation"&gt;Release note generation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/blog/entries/automate-github-for-more-than-CI CD/#repository-normalization"&gt;Repository normalization&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/blog/entries/automate-github-for-more-than-CI CD/#automatic-dependency-updates"&gt;Dependency updates&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id="release-note-generation"&gt;Release note generation&lt;/h3&gt;&lt;p&gt;Our frontend Vue.js application for CC Search gets released weekly, and is subject to constant pull requests from myself, one-time volunteers making their first open source contribution, and long-term, dedicated community members who frequently contribute. It's important for us to highlight &lt;em&gt;all&lt;/em&gt; of these contributions in our release notes, regardless of size or scope. Additionally, we find it useful to group changes into categories, so our users have a clear sense of what kinds of updates we've made.&lt;/p&gt;
-&lt;div style="text-align: center;"&gt;
-  &lt;figure class="margin-bottom-large"&gt;
-    &lt;img src="release-notes-screenshot.png" alt="GitHub screenshot of release notes for CC Search" /&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        An example of CC Search release notes generated by the &lt;a href="https://github.com/marketplace/actions/release-drafter"&gt;Release Drafter&lt;/a&gt; GitHub Action.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;The quality of these release notes made them quite tedious to generate manually. With the &lt;a href="https://github.com/marketplace/actions/release-drafter"&gt;release drafter action&lt;/a&gt;, we're able to automatically update a draft release note on every pull request to CC Search. The action lets us configure the line added for each pull request with some basic templating which includes variables for the pr number, title, and author (among others):&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;change-template&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;-&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;$TITLE:&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;#$NUMBER&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;by&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;@$AUTHOR&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;br /&gt;This means each pull request gets a line like this in our release notes:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;Enable web monetization on single result pages: &lt;strong&gt;#1191&lt;/strong&gt; by &lt;strong&gt;@zackkrida&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Perfect! We can also map GitHub labels on our pull requests to the sections of our generated release notes, like so:&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;categories&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;New&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;Features&amp;#39;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;label&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;feature&amp;#39;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;title&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Bug&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;Fixes&amp;#39;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;label&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;bug&amp;#39;&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;critical&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The resulting release notes require no manual editing at release time, and has saved us hours over time and allows our developers to focus on DevOps work instead of copywriting on release days. We also never miss a contribution or expression of gratitude to one of our contributors. You can read the &lt;a href="https://github.com/cc-archive/cccatalog-frontend/releases/latest"&gt;latest CC Search release notes&lt;/a&gt; or &lt;a href="https://github.com/cc-archive/cccatalog-frontend/blob/develop/.github/release-drafter.yml"&gt;see our full release-drafter.yml file here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id="repository-normalization"&gt;Repository Normalization&lt;/h3&gt;&lt;p&gt;Within a private repository of internal helper scripts, the CC technical team has a number of Github Actions which trigger Python scripts to keep configuration standardized across our repositories. We casually call this process "repository normalization". One such script ensures that we use a standard set of GitHub labels across all of our projects. This consistency helps us do things like direct users to &lt;a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22help+wanted%22+state%3Aopen&amp;amp;type=Issues"&gt;open issues in need of assistance&lt;/a&gt; across the organization, or issues &lt;a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22good+first+issue%22+state%3Aopen&amp;amp;type=Issues"&gt;good for first-time open source contributors&lt;/a&gt;. With GitHub Actions, its easy to set up scheduled tasks with only a few lines of human-readable configuration. Here's the gist of running a Python script daily, for example:&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Example scheduled python action&lt;/span&gt;
-&lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;schedule&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;cron&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;0&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;0&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;*&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;*&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;*&amp;#39;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;push&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;branches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;master&lt;/span&gt;
-&lt;span class="nt"&gt;jobs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;runs-on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ubuntu-latest&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;steps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/checkout@v2&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Set up Python 3.7&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/setup-python@v1&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;python-version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;3.7&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Install dependencies&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;|&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;python -m pip install --upgrade pip&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;python -m pip install pipenv&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;pipenv install&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Export token to env and run our script&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;|&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="no"&gt;pipenv run python our-script.py&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;env&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;ADMIN_GITHUB_TOKEN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;${{ secrets.ADMIN_GITHUB_TOKEN }}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Internally and publicly, we use &lt;a href="https://github.com/orgs/creativecommons/projects"&gt;GitHub Projects&lt;/a&gt; to manage our bi-weekly sprints and backlogs. The &lt;a href="https://github.com/subhamX/github-project-bot"&gt;GitHub Project Bot&lt;/a&gt; action was built by &lt;a href="https://github.com/subhamX"&gt;one of our community contributors&lt;/a&gt; and allows us to add pull requests to our project columns. Here's an example step in such a job:&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Handle cccatalog-frontend Repo&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;subhamX/github-project-bot@v1.0.0&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;ACCESS_TOKEN&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;${{ secrets.ADMIN_GITHUB_TOKEN }}&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;COLUMN_NAME&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;In&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;Progress&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;(Community)&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;PROJECT_URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://github.com/orgs/creativecommons/projects/7&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;REPO_URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://github.com/cc-archive/cccatalog-frontend&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We have additional scripts that sync our community team members across our open source website and GitHub, and several others that do even more of this cross-platform synchronization work. All of these scripts relive significant burden off of our engineering manager and open source community coordinator.&lt;/p&gt;
-&lt;h3 id="dependency-updates"&gt;Dependency Updates&lt;/h3&gt;&lt;p&gt;Modern JavaScript projects are built atop piles of 3rd party dependencies. This frees developers to focus on product code instead of writing the same utility code over and over again, but exposes projects to issues of security and dependency management. To help alleviate these issues, GitHub &lt;a href="https://github.blog/2019-05-23-introducing-new-ways-to-keep-your-code-secure/#automated-security-fixes-with-dependabot"&gt;acquired a startup called Dependabot&lt;/a&gt; which initially focused on automatic security updates for repositories. Dependabot creates pull requests that update third-party code  with known security vulnerabilities to the latest safe and stable versions.&lt;/p&gt;
-&lt;p&gt;This summer (June 2020), GitHub &lt;a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/"&gt;expanded dependabot's scope&lt;/a&gt; to keep &lt;em&gt;all&lt;/em&gt; third-party code up to date, regardless of security. By adding a &lt;code&gt;dependabot-config.yml&lt;/code&gt; file to any repo, developers no longer need to keep track of dependency updates on their own.&lt;/p&gt;
-&lt;div style="text-align: center;"&gt;
-  &lt;figure class="margin-bottom-large"&gt;
-    &lt;img src="dependabot-example.png" alt="GitHub screenshot of a Dependabot PR message" /&gt;
-    &lt;figcaption&gt;
-      &lt;em&gt;
-        Dependabot writes pull requests to bump JavaScript dependencies and will automatically resolve merge conflicts and keep the PR up to date.
-      &lt;/em&gt;
-    &lt;/figcaption&gt;
-  &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;If your project has strong test coverage and a solid quality control process for release management, Dependabot pull requests can be made even more powerful with the &lt;a href="https://github.com/ridedott/merge-me-action"&gt;Merge Me Action.&lt;/a&gt; Merge Me can be added to the end of any series of Github Actions to automatically merge pull requests that pass all CI tests which were authored by a particular user (the action assumes &lt;code&gt;dependabot&lt;/code&gt; by default). This means your repository can have highly-configurable, fully-automated dependency updates in just a few lines of &lt;code&gt;YAML&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id="here-s-a-few-more"&gt;Here's a few more&lt;/h2&gt;&lt;p&gt;Here's some smaller and simpler automations that can make a huge difference in your workflows.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/probot/stale"&gt;Automatically close old PRs after a period of inactivity&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.blog/2020-08-24-automate-releases-and-more-with-the-new-sentry-release-github-action/"&gt;Automate security releases on Sentry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/probot/reminders"&gt;Add reminders to issues and pull requests&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These examples are a small sample of the non-CI/CD capabilities of GitHub Actions. You can peek in the &lt;code&gt;.github/&lt;/code&gt; directory of any of our open source repositories to see the actions we're using, and feel free to make an issue on any project if you have an idea for an automation of your own. As we increase the number and quality of integrations in our open source repositories, we may update this article or create follow-up posts with more examples.&lt;/p&gt;
-&lt;p&gt;If you're interested in learning more about GitHub Actions, GitHub has a wonderful &lt;a href="https://github.com/marketplace?type=actions"&gt;marketplace&lt;/a&gt; of avaliable actions you can explore, and the &lt;a href="https://docs.github.com/actions"&gt;documentation for actions&lt;/a&gt; is avaliable in several languages.&lt;/p&gt;
 </content></entry></feed>
