@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2026-03-03T00:00:00Z</updated><author><name/></author><entry><title>Quantifying the Commons: The end of an era</title><link href="http://opensource.creativecommons.org/blog/entries/2026-30-03-the-end-of-an-era/" rel="alternate"/><updated>2026-03-03T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:eaec2419-2ad5-3631-9f37-b781c05ce43d</id><content type="html">&lt;h2 id="quantifying-the-commons-the-end-of-an-era"&gt;Quantifying the Commons: The end of an era&lt;/h2&gt;&lt;p&gt;Dear gentle reader,&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2026-03-11T00:00:00Z</updated><author><name/></author><entry><title>Deprioritizing work programs</title><link href="http://opensource.creativecommons.org/blog/entries/2026-03-11-deprioritizing-work-programs/" rel="alternate"/><updated>2026-03-11T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:20dc8fc5-21aa-355d-a420-ef3ab8b945a1</id><content type="html">&lt;p&gt;Unfortunately, Creative Commons (CC) has no plans to participate in future work
+programs like &lt;a href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code (GSoC)&lt;/a&gt; or &lt;a href="https://www.outreachy.org/"&gt;Outreachy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Technology team remains grateful to these invaluable programs and the many
+contributors, interns, and volunteers that they brought. Still, the
+contributions of our community far exceed our ability to document them. For a
+history of free/libre and open source work programs at CC, please see: &lt;a href="/programs/history/"&gt;Open
+Source Work Programs: History — Creative Commons Open Source&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Despite their ongoing success, the issues and problems that these work programs
+were created to address have only grown along with other changes in the
+technology industry. Their mission remains as important now, as ever. We hope
+their value will continue to be recognized.&lt;/p&gt;
+&lt;p&gt;For our part, we can only hope that the resources we developed for engaging
+with these work programs might benefit others and that someday we might be able
+to participate again.&lt;/p&gt;
+</content></entry><entry><title>Quantifying the Commons: The end of an era</title><link href="http://opensource.creativecommons.org/blog/entries/2026-30-03-the-end-of-an-era/" rel="alternate"/><updated>2026-03-03T00:00:00Z</updated><author><name>['Oreoluwa']</name></author><id>urn:uuid:eaec2419-2ad5-3631-9f37-b781c05ce43d</id><content type="html">&lt;h2 id="quantifying-the-commons-the-end-of-an-era"&gt;Quantifying the Commons: The end of an era&lt;/h2&gt;&lt;p&gt;Dear gentle reader,&lt;/p&gt;
 &lt;p&gt;It is the end of an era yet the beginning of my bloom as a young aspiring data
 professional on a global stage. It feels so surreal to be at the end of this
 amazing journey with my mentors and to see the quantifying commons become a
@@ -3255,107 +3269,4 @@ Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
 &lt;h3 id="ending-note"&gt;Ending Note&lt;/h3&gt;&lt;p&gt;In the end, I would like to thank my mentors Maria and Brent, for their unconditional guidance throughout this internship period. The insights I got from them will truly help me in the days to come.&lt;/p&gt;
 &lt;p&gt;Special thanks to Francisco, Anna and Kriti for the awesome brainstorming ideas in the UX meet which helped us build an increment superior version of the Linked Commons.&lt;/p&gt;
 &lt;p&gt;It is not the end, rather a new beginning. Cheers! 🚀🚀🚀&lt;/p&gt;
-</content></entry><entry><title>CC Search Extension: Wrapping up GSoC 2020</title><link href="http://opensource.creativecommons.org/blog/entries/cc-search-extension-wrapping-up-gsoc-2020/" rel="alternate"/><updated>2020-08-27T00:00:00Z</updated><author><name>['makkoncept']</name></author><id>urn:uuid:b26ba45d-3314-3ad9-8a69-3b14251af321</id><content type="html">&lt;p&gt;In this post, I'll give an overview of the improvements and features that were added to the CC Search browser extension. I am delighted to state that the goals that were set for Google Summer of Code 2020 have been successfully completed.&lt;/p&gt;
-&lt;h2 id="widen-the-integration-with-cc-catalog-api"&gt;Widen the integration with CC Catalog API&lt;/h2&gt;&lt;p&gt;Both &lt;a href="/blog/entries/cc-search-extension-wrapping-up-gsoc-2020/search.creativecommons.org"&gt;CC Search&lt;/a&gt; and CC Search Extension are powered by &lt;a href="https://api.creativecommons.engineering/v1/"&gt;CC Catalog REST API&lt;/a&gt;. The API allows programmatic access to search for CC-licensed and public domain digital media. Better integration with the API was one of the major targets during this internship because it significantly improves and adds new searching workflows to the extension.&lt;/p&gt;
-&lt;p&gt;This can be sub-divided into &lt;em&gt;New Filters&lt;/em&gt;, &lt;em&gt;Browse By Sources&lt;/em&gt;, &lt;em&gt;search by tags&lt;/em&gt;, and &lt;em&gt;related images&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 id="new-filters"&gt;New Filters&lt;/h3&gt;&lt;p&gt;The &lt;code&gt;/image&lt;/code&gt; endpoint of the API is used for searching. We can also provide several query parameters that can filter the result. Previously, the extension only supported filtering the content using &lt;code&gt;license&lt;/code&gt;, &lt;code&gt;sources&lt;/code&gt;, and &lt;code&gt;use case&lt;/code&gt;. Now, besides these filters, the extension also supports filtering by &lt;code&gt;image type&lt;/code&gt;, &lt;code&gt;file type&lt;/code&gt;, &lt;code&gt;aspect ratio&lt;/code&gt;, and &lt;code&gt;image size&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="old-extension-filters.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Filters in the old version&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;figure&gt;
-    &lt;img src="new-extension-filters.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Filters in the new version&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;p&gt;&lt;em&gt;Rationale&lt;/em&gt;: This will allow users to be more precise in their queries when searching.&lt;/p&gt;
-&lt;h3 id="browsing-by-source"&gt;Browsing by source&lt;/h3&gt;&lt;p&gt;The extension now has a dynamically updated "sources" section. Clicking a source link triggers a request to the &lt;code&gt;/image&lt;/code&gt; endpoint to get the images associated with it.&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="source-section-light.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Source section&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;figure&gt;
-    &lt;img src="source-section-dark.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Source section in dark mode&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;p&gt;&lt;em&gt;Rationale&lt;/em&gt;: This opens an avenue for exploration of all the different sources which are available in the catalog. This is advantageous for the users who are not familiar with the type of content a particular source provides. They might run into a source that has a huge catalog of high-quality images that they are looking for.&lt;/p&gt;
-&lt;h3 id="search-by-tags"&gt;Search by tags&lt;/h3&gt;&lt;p&gt;Most of the images have some tags associated with them, which are also sent along with the image data by the API. This, and the flexibility of the &lt;code&gt;/image&lt;/code&gt; endpoint, paved the way for the addition of searching for images using image-tags.&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="search-by-image-tag.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Search by image tag&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Rational&lt;/em&gt; - Image tags will allow users to incrementally make their queries better and more specific.&lt;/p&gt;
-&lt;h3 id="related-images"&gt;Related images&lt;/h3&gt;&lt;p&gt;In the image detail section of any particular image, you can now see several recommendations. This has been made possible by adding support for the &lt;a href="https://api.creativecommons.engineering/v1/#tag/recommendations"&gt;&lt;code&gt;/recommendations/images/{identifier}&lt;/code&gt;&lt;/a&gt; endpoint of the API.&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="related-images.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Image recommendations&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Rationale&lt;/em&gt; -  This will help users find a variety of images that fit their requirements and also explore the images that would not usually show up on the initial pages of the search result.&lt;/p&gt;
-&lt;h2 id="improvements-to-bookmarks-section"&gt;Improvements to bookmarks section&lt;/h2&gt;&lt;p&gt;The bookmark section has great prominence in CC Search Extension because the export/import workflow is tied to it and unlike the search result data, the bookmarks data is preserved across user sessions (closing the extension does not wipe out the bookmarks). It has undergone some crucial improvements like caching, voluntary loading and increase in the number bookmarks that it can hold (the limit now is 300 which earlier was ~50).&lt;/p&gt;
-&lt;p&gt;The bookmarks section is significantly faster now as caching has eliminated the need to make many simultaneous network requests to the API when bookmarks are loaded. Voluntary loading also helps reduce perceived lag by reducing the number of bookmarks that load at once.&lt;/p&gt;
-&lt;p&gt;Though the improvement in performance is better recognized when you are using the extension, I tried to demonstrate that by comparing the rendering of the bookmarked images.&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="bookmarks-in-old-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Bookmark section in the old version&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="bookmarks-in-new-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Bookmarks section in the new version&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id="a-better-use-of-sync-storage"&gt;A better use of sync storage&lt;/h2&gt;&lt;p&gt;The bookmarks and the user settings are synced between user systems. There are very tight write limits and bytes quotas associated with this storage(&lt;a href="https://developer.chrome.com/apps/storage#properties"&gt;documentation link&lt;/a&gt;). Due to this, the way the extension used this storage, and the assumptions it made about its schema was improved multiple times. Since the extension was already in production, and had around 5,000 weekly users, the code for migrating the user's sync storage was pushed along with these updates. Also, the support was added for legacy bookmark files that some users might still be using.&lt;/p&gt;
-&lt;h2 id="integration-with-vocabulary"&gt;Integration with Vocabulary&lt;/h2&gt;&lt;p&gt;The extension now supports the latest version of &lt;a href="https://github.com/creativecommons/vocabulary"&gt;CC vocabulary&lt;/a&gt;. The challenging part of this was to rethink, mold, and update each and every workflow of the extension according to the new design.&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="image-detail-old-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Old version — Image detail&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="image-detail-new-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;New version — Image detail&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="deletion-in-old-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Old version — Deleting bookmarks&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="deletion-in-new-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;New version — Deleting bookmarks&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="dark-mode-old-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;Old version — Dark mode&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;figure &gt;
-    &lt;img src="dark-mode-new-version.gif" style="width: 70%"&gt;
-    &lt;figcaption&gt;
-        &lt;em&gt;New version — Dark mode&lt;/em&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 id="release-on-microsoft-edge"&gt;Release on Microsoft Edge&lt;/h2&gt;&lt;p&gt;I am also testing the extension on Microsoft Edge. We also have it &lt;a href="https://microsoftedge.microsoft.com/addons/detail/cc-search/djolilnbndifmlfmcdnifdfjfbglipgc"&gt;listed&lt;/a&gt; on the Edge store. You can soon expect the latest version of CC Search Extension available for install there.&lt;/p&gt;
-&lt;h2 id="code"&gt;Code&lt;/h2&gt;&lt;p&gt;The project repository is hosted on &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension"&gt;Github&lt;/a&gt;. During this period, I have made &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/compare/v1.3.0...master"&gt;more than 320&lt;/a&gt; commits.&lt;/p&gt;
-&lt;p&gt;The Major pull requests: &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/249"&gt;#249&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/255"&gt;#255&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/268"&gt;#268&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/270"&gt;#270&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/271"&gt;#271&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/272"&gt;#272&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/275"&gt;#275&lt;/a&gt;, &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/pull/276"&gt;#276&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Also, during this period, 5 updates of the extension were pushed to the extension stores. You can check out the &lt;a href="https://github.com/creativecommons/ccsearch-browser-extension/releases"&gt;releases page&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="acknowledgements"&gt;Acknowledgements&lt;/h2&gt;&lt;p&gt;I would like to thank &lt;a href="https://creativecommons.org/author/aldencreativecommons-org/"&gt;Alden&lt;/a&gt; and &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti&lt;/a&gt; for their valuable guidance during this journey. Special thanks to &lt;a href="https://github.com/panchovm"&gt;Fransisco&lt;/a&gt;, for designing the mockups of the extension, and to the wonderful contributors of CC Vocabulary.&lt;/p&gt;
 </content></entry></feed>
