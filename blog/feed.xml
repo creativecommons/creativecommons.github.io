@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2026-03-11T00:00:00Z</updated><author><name/></author><entry><title>Deprioritizing work programs</title><link href="http://opensource.creativecommons.org/blog/entries/2026-03-11-deprioritizing-work-programs/" rel="alternate"/><updated>2026-03-11T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:20dc8fc5-21aa-355d-a420-ef3ab8b945a1</id><content type="html">&lt;p&gt;Unfortunately, Creative Commons (CC) has no plans to participate in future work
+<feed xmlns="http://www.w3.org/2005/Atom"><title>CC technical blog</title><link href="http://opensource.creativecommons.org/" rel="alternate"/><link href="http://opensource.creativecommons.org/blog/feed.xml" rel="self"/><id>urn:uuid:6bb2a1da-c434-35c1-ba82-9d6cd50f2a71</id><updated>2026-05-06T00:00:00Z</updated><author><name/></author><entry><title>Sunsetting api.creativecommons.org</title><link href="http://opensource.creativecommons.org/blog/entries/2026-05-06-sunsetting-api/" rel="alternate"/><updated>2026-05-06T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:6792d0e4-fa95-3111-820d-2d226beb749a</id><content type="html">&lt;p&gt;Creative Commons (CC) will terminate the api.crativecommons.org service on 2026
+Nov 02. Please note, however, that hosting or software failure may render the
+service unavailable before that date.&lt;/p&gt;
+&lt;h2 id="removal-rationale"&gt;Removal Rationale&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;The API depends on the legacy ccEngine, which was replaced by the current CC
+Legal Tools on 2023-09-27. It is no longer maintainable.&lt;/li&gt;
+&lt;li&gt;The infrastructure hosting the API is no longer supported.&lt;/li&gt;
+&lt;li&gt;The data provided changes infrequently enough that an API is a suboptimal
+solution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="next-steps"&gt;Next Steps&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Evaluate existing flat files to replace API:&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://creativecommons.org/rdf/index.rdf"&gt;creativecommons.org/rdf/index.rdf&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;This ccREL file has existed for a long time, but has never been very
+visible. Its accuracy was significantly improved with the new CC Legal
+Tools App static site generation starting in 2023 September.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;creativecommons/cc-legal-tools-data: &lt;a href="https://github.com/creativecommons/cc-legal-tools-data/blob/main/config/cc-legal-tools.csv"&gt;config/cc-legal-tools.csv&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;This file is new this year. Its generation in the CC Legal Tools App can
+be modified or a new file can be generated if additional data is needed, a
+different file format is needed, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;If you are using DSpace, see: &lt;a href="https://github.com/DSpace/DSpace/issues/11808"&gt;Replace api.creativecommons.org
+DSpace/DSpace#11808&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Please use the following form to share concerns or request ongoing
+communication: &lt;a href="https://docs.google.com/forms/d/e/1FAIpQLScZn1Jo3Ktfb5o2Sf08hMb3yWD9WArpQtQGvQaoP19un-UOQw/viewform?usp=dialog"&gt;Sunsetting api.creativecommons.org feedback&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="related-blog-posts"&gt;Related blog posts&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;2024-05-28&lt;/code&gt;: &lt;a href="https://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/"&gt;New CreativeCommons.org launched 2023 September&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2011-08-31&lt;/code&gt;: &lt;a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/summary-of-current-licensing-tools/"&gt;Summary of current licensing tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2011-01-13&lt;/code&gt;: &lt;a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/cc-rest-api-updated-for-public-domain-mark/"&gt;CC REST API Updated for Public Domain Mark&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2009-04-02&lt;/code&gt;: &lt;a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/enumeration-descriptions-in-cc-web-services/"&gt;Enumeration descriptions in CC Web Services&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2008-07-24&lt;/code&gt;: &lt;a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/cclicense-in-alpha/"&gt;cc.license in alpha&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content></entry><entry><title>Deprioritizing work programs</title><link href="http://opensource.creativecommons.org/blog/entries/2026-03-11-deprioritizing-work-programs/" rel="alternate"/><updated>2026-03-11T00:00:00Z</updated><author><name>['TimidRobot']</name></author><id>urn:uuid:20dc8fc5-21aa-355d-a420-ef3ab8b945a1</id><content type="html">&lt;p&gt;Unfortunately, Creative Commons (CC) has no plans to participate in future work
 programs like &lt;a href="https://summerofcode.withgoogle.com/"&gt;Google Summer of Code (GSoC)&lt;/a&gt; or &lt;a href="https://www.outreachy.org/"&gt;Outreachy&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The Technology team remains grateful to these invaluable programs and the many
 contributors, interns, and volunteers that they brought. Still, the
@@ -3173,100 +3211,4 @@ The experience was just amazing and the poeple are so helpful I really enjoyed w
 &lt;p&gt;The progress of the project can be tracked on &lt;a href="https://github.com/cc-archive/cccatalog-frontend"&gt;cc-search&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;CC Search Accessiblity is my GSoC 2020 project under the guidance of &lt;a href="https://creativecommons.org/author/zackcreativecommons-org/"&gt;Zack Krida&lt;/a&gt; and &lt;a href="/blog/authors/akmadian/"&gt;Ari Madian&lt;/a&gt;, who is the primary mentor for this project, &lt;a href="https://creativecommons.org/author/annacreativecommons-org/"&gt;Anna Tumadóttir&lt;/a&gt; for helping all along and engineering director &lt;a href="https://creativecommons.org/author/kriticreativecommons-org/"&gt;Kriti
 Godey&lt;/a&gt;, have been very supportive.&lt;/p&gt;
-</content></entry><entry><title>Linked Commons: GSoC'20 Wrap Up</title><link href="http://opensource.creativecommons.org/blog/entries/linked-commons-gsoc-wrap-up/" rel="alternate"/><updated>2020-08-28T00:00:00Z</updated><author><name>['subhamX']</name></author><id>urn:uuid:8da8befc-a55c-3d93-98df-108688fb663c</id><content type="html">&lt;p&gt;Time flies faster when you are having fun! I didn't believe it back then. But now I do after experiencing it. It couldn't have been more accurate that here I am writing my concluding blog of the &lt;strong&gt;GSoC 2020: The Linked Commons series&lt;/strong&gt; when I just started enjoying things.&lt;/p&gt;
-&lt;p&gt;In this post, I will give a brief overview of the linked commons and my GSoC contributions. It was an exciting journey, and I loved working on this project.&lt;/p&gt;
-&lt;p&gt;Before I begin any further just for ritual, let me share a one liner on &lt;strong&gt;what The Linked Commons is&lt;/strong&gt;, although I highly recommend reading the other posts in this series, who knows you might join our team.😉&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The CC catalog data visualization or linked commons is a web application which finds and explores relationships between Creative Commons licensed content on the web.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;My primary contributions to the project during the GSoC timeline were threefold.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Firstly&lt;/strong&gt;, revamp the design and migrate the project to react.js for a fast and scalable rendering performance.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Secondly&lt;/strong&gt;, add graph filtering methods and scale the data to enable users to visualize massive data more efficiently.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;At last&lt;/strong&gt;, make the developer onboarding easy by dockerizing the project and bring more application portability.&lt;/p&gt;
-&lt;h2 id="gsoc-work-product"&gt;GSoC Work Product&lt;/h2&gt;&lt;p&gt;The live version of the linked commons can be found &lt;a href="http://dataviz.creativecommons.engineering/"&gt;here&lt;/a&gt;. You can interact with it and &lt;strong&gt;"explore the creative commons in graphs"&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;If you wish to access the raw or filtered data, then here is a brief documentation of our new API.&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/api/graph-data&lt;/span&gt;
-&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;
-&lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Returns a randomized graph having around 500 nodes and links.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/api/graph-data/?name={node_name}&lt;/span&gt;
-&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;
-&lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Returns the filtered graph with a set of nodes which are either immediate neighbours to {node_name} in the original graph or the transpose graph.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-&lt;div class="hll"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;/api/suggestions/?q={query}&lt;/span&gt;
-&lt;span class="nt"&gt;Method&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;GET&lt;/span&gt;
-&lt;span class="nt"&gt;Description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Returns a set of nodes which contains the {query} pattern in their nodeid&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="demo"&gt;Demo&lt;/h3&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="graph-filtering.gif" alt="demo" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Linked Commons: Filtering the Graph 🔥&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h3 id="my-code-contributions"&gt;My Code Contributions&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Repository:&lt;/strong&gt; &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/"&gt;https://github.com/cc-archive/cccatalog-dataviz/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Commits:&lt;/strong&gt; &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/commits/master"&gt;https://github.com/cc-archive/cccatalog-dataviz/commits/master&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Contributors:&lt;/strong&gt; &lt;a href="https://github.com/cc-archive/cccatalog-dataviz/graphs/contributors"&gt;https://github.com/cc-archive/cccatalog-dataviz/graphs/contributors&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/28"&gt;&lt;strong&gt;Migrate frontend to React #28&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Migrated the frontend to a web application using React.js for smooth rendering performance.&lt;/li&gt;
-&lt;li&gt;Add client-side graph filtering method to enable users to interact with the loaded graph.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/29"&gt;&lt;strong&gt;Add server-side filtering #29&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;We realized that the client-side graph filtering method is not very scalable. This PR adds the basic structure for the backend server and adds server-side graph filtering logic.&lt;/li&gt;
-&lt;li&gt;Added a parser to convert the input JSON file from &lt;code&gt;{nodes:[], links:[]}&lt;/code&gt; schema to the distance list format.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="api-call.png" alt="API call" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;API call to filter graph data&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/33"&gt;&lt;strong&gt;Design upgrade #33&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;It revamped the design of the frontend.&lt;/li&gt;
-&lt;li&gt;Added both primary light theme and secondary dark theme&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style="text-align: center; font-style: normal; width: 80%; margin-left: 10%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="design-dark.png" alt="Dark Theme" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;&lt;em&gt;Linked Commons: Dark Theme&lt;/em&gt;&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/35"&gt;&lt;strong&gt;Add node suggestions feature #35&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Added query autocomplete feature, to enable users to explore all the nodes in the database.&lt;/li&gt;
-&lt;li&gt;This functionality aims to minimize the number of misspelt filtering tries from the client.&lt;/li&gt;
-&lt;li&gt;Refer to &lt;a href="/blog/entries/linked-commons-autocomplete-feature/"&gt;this blog&lt;/a&gt; for the motivation and detailed report on why we added autocomplete aka node suggestions feature.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/38"&gt;&lt;strong&gt;Fix filtering module #38&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Optimizes the build-dB-script to run efficiently on the larger and newer dataset of the cc-catalog.&lt;/li&gt;
-&lt;li&gt;Added the basic form of the randomized graph filtering method.&lt;/li&gt;
-&lt;li&gt;Refer to &lt;a href="/blog/entries/linked-commons-data-update/"&gt;this blog&lt;/a&gt; for a piece of detailed information on data update.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/39"&gt;&lt;strong&gt;Database upgrade and core enhancements #39&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;It upgrades the primary database from shelve to MongoDB for higher performance.&lt;/li&gt;
-&lt;li&gt;Dockerizes the frontend and backend for both dev and prod environments for higher application portability.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://github.com/cc-archive/cccatalog-dataviz/pull/40"&gt;&lt;strong&gt;Frontend enhancements #40&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Fixes common UI bugs, updates the frontend design and enhances the mobile and smaller devices experience with the linked commons&lt;/li&gt;
-&lt;li&gt;Modularizes and updates the code documentation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style="text-align: center; width: 80%; margin-left: 10%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="design-light.png" alt="Theme Light" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Linked Commons: Light Theme&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;div style="text-align: center; width: 90%; margin-left: 5%;"&gt;
-    &lt;figure&gt;
-        &lt;img src="lighthouse-audit.png" alt="Lighthouse Audit" style="border: 1px solid black"&gt;
-        &lt;figcaption&gt;Lighthouse Stats of the latest version of the Linked Commons&lt;/figcaption&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;&lt;h3 id="whats-next"&gt;What’s Next?&lt;/h3&gt;&lt;p&gt;Throughout this internship period, we, the Linked Commons team, aimed to make this version the best among all. But there is still scope for improvement.&lt;/p&gt;
-&lt;p&gt;Just to give you some insights; currently, the complete graph contains 235k nodes and 4.14million links. During the preprocessing, we dropped a lot of the nodes. Additionally, we removed more than 3 million nodes which didn't have cc_licenses information. So, in general, the current version shows only those nodes which are soundly linked with other domains and their licenses information is available. To give a complete picture of the massive "cc-catalog", the linked commons need to "gird up his loins".&lt;/p&gt;
-&lt;p&gt;After seeing the tremendous potential it has, I will undoubtedly continue working on it and help the linked commons in this quest. ⚡&lt;/p&gt;
-&lt;h3 id="ending-note"&gt;Ending Note&lt;/h3&gt;&lt;p&gt;In the end, I would like to thank my mentors Maria and Brent, for their unconditional guidance throughout this internship period. The insights I got from them will truly help me in the days to come.&lt;/p&gt;
-&lt;p&gt;Special thanks to Francisco, Anna and Kriti for the awesome brainstorming ideas in the UX meet which helped us build an increment superior version of the Linked Commons.&lt;/p&gt;
-&lt;p&gt;It is not the end, rather a new beginning. Cheers! 🚀🚀🚀&lt;/p&gt;
 </content></entry></feed>

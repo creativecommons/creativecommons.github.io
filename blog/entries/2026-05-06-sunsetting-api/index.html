@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon"  href="/static/vocabulary/favicon/favicon.ico" sizes="any">
+<link rel="icon" href="/static/vocabulary/favicon/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/static/vocabulary/favicon/manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/vocabulary/favicon/apple-touch-icon.png" />
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/pygments.css">
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/datatable/datatables.js"></script>
+<script type="text/javascript" src="/static/js/table.js"></script>
+<meta property="og:site_name" content="Creative Commons" />
+<meta property="og:title" content="Sunsetting api.creativecommons.org" />
+
+
+
+<meta property="og:description" content="Creative Commons (CC) will terminate the api.crativecommons.org service on 2026
+Nov 02. Please note, however, that hosting or software failure may render the
+service unavailable before that date." />
+
+
+<meta property="og:url" content="/blog/entries/2026-05-06-sunsetting-api/" />
+<meta property="og:type" content="article" />
+
+
+  
+  
+
+  
+    
+  
+
+  
+    
+    
+  
+
+  
+
+  <meta property="og:image" content="https://cc-og-image.vercel.app/Sunsetting api.creativecommons.org.png?&amp;md=1&amp;fontFamily=roboto-condensed&amp;fontSize=100px&amp;images=https%3A%2F%2Fcc-vocabulary.netlify.app%2Flogos%2Fproducts%2Fopen_source.svg%23opensource" />
+  <meta name="description" content="Sunsetting api.creativecommons.org - CC Open Source" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sunsetting api.creativecommons.org">
+<meta name="twitter:description" content="Creative Commons (CC) will terminate the api.crativecommons.org service on 2026
+Nov 02. Please note, however, that hosting or software failure may render the
+service unavailable before that date.">
+
+<meta name="twitter:site" content="@creativecommons">
+<meta name="twitter:creator" content="@creativecommons">
+<title>Sunsetting api.creativecommons.org — Creative Commons Open Source</title>
+
+<body  class="blog-post" >
+
+<a class="skip-to-content" href="#main-content-marker">Skip to content</a>
+<header>
+    <div class="masthead">
+        <h1><a class="identity-logo product" href="/">Open source</a></h1>
+        <button class="expand-menu">Menu</button>
+        <nav class="primary-menu">
+            <ul>
+                <li><a href="/blog/entries/">Blog</a></li>
+                <li><a href="/contributing-code/">Contribute</a></li>
+                <li><a href="/community/">Community</a></li>
+                <li><a href="/programs/">Work Programs</a></li>
+            </ul>
+            <!--TODO: Evaluate use of dropdown/secondary menu-->
+        </nav>
+
+        <nav class="ancillary-menu">
+            <ul>
+                <li><a class="donate icon-attach fa-heart" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate</a></li>
+                <li><button class="explore">Explore CC</button></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="explore-panel">
+    <!-- (optional main CC logo, p, link on non-home site back to main site) -->
+    <aside>
+      <a
+        class="identity-logo"
+        href="https://creativecommons.org"
+        >Creative Commons</a
+      >
+      <h2>Our Work Relies On You!</h2>
+      <p>Help us keep the internet free and open.</p>
+    </aside>
+    <nav class="explore-menu">
+        <ul>
+            <li>
+                <a href="https://network.creativecommons.org/" target="_blank">Global Network</a>
+                <p>Join a  global community working to strengthen the Commons</p>
+            </li>
+            <li>
+                <a href="https://certificate.creativecommons.org/" target="_blank">Certificate</a>
+                <p>Become an expert in creating and engaging with openly licensed materials</p>
+            </li>
+            <li>
+                <a href="/chooser/" target="_blank">Chooser</a>
+                <p>Get help choosing the appropriate license for your work</p>
+            </li>
+            <li>
+                <a href="https://search.creativecommons.org/"  target="_blank">Search Portal</a>
+                <p>Find engines to search openly licensed material for creative and educational reuse</p>
+            </li>
+        </ul>
+    </nav>
+    </div>
+
+</header>
+
+
+
+  <!-- Body -->
+  <span id="main-content-marker"></span>
+  <main>
+  
+<header>
+  <h1>Sunsetting api.creativecommons.org</h1>
+  <span class="byline"><a>by <a class="author-name" href="/blog/authors/TimidRobot/">Timid Robot Zehta</a> on 2026-05-06</a></span>
+  <span class="categories">
+    
+      
+        
+        
+        <a href="/blog/categories/announcements/">announcements</a>
+      
+        
+        
+        <a href="/blog/categories/cc-legal-tools/">cc-legal-tools</a>
+      
+    
+  </span>
+</header>
+
+<!-- TODO: IF EXCERPT IS TO BE INCLUDED, ADD EXCERPT HERE -->
+<!--
+  <aside class="opening">
+    <p> </p>
+  </aside>
+-->
+
+<div><p>Creative Commons (CC) will terminate the api.crativecommons.org service on 2026
+Nov 02. Please note, however, that hosting or software failure may render the
+service unavailable before that date.</p>
+<h2 id="removal-rationale">Removal Rationale</h2><ul>
+<li>The API depends on the legacy ccEngine, which was replaced by the current CC
+Legal Tools on 2023-09-27. It is no longer maintainable.</li>
+<li>The infrastructure hosting the API is no longer supported.</li>
+<li>The data provided changes infrequently enough that an API is a suboptimal
+solution.</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2><ul>
+<li>Evaluate existing flat files to replace API:<ul>
+<li><a href="https://creativecommons.org/rdf/index.rdf">creativecommons.org/rdf/index.rdf</a><ul>
+<li>This ccREL file has existed for a long time, but has never been very
+visible. Its accuracy was significantly improved with the new CC Legal
+Tools App static site generation starting in 2023 September.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>creativecommons/cc-legal-tools-data: <a href="https://github.com/creativecommons/cc-legal-tools-data/blob/main/config/cc-legal-tools.csv">config/cc-legal-tools.csv</a><ul>
+<li>This file is new this year. Its generation in the CC Legal Tools App can
+be modified or a new file can be generated if additional data is needed, a
+different file format is needed, etc.</li>
+</ul>
+</li>
+<li>If you are using DSpace, see: <a href="https://github.com/DSpace/DSpace/issues/11808">Replace api.creativecommons.org
+DSpace/DSpace#11808</a>.</li>
+<li>Please use the following form to share concerns or request ongoing
+communication: <a href="https://docs.google.com/forms/d/e/1FAIpQLScZn1Jo3Ktfb5o2Sf08hMb3yWD9WArpQtQGvQaoP19un-UOQw/viewform?usp=dialog">Sunsetting api.creativecommons.org feedback</a>.</li>
+</ul>
+<h2 id="related-blog-posts">Related blog posts</h2><ul>
+<li><code>2024-05-28</code>: <a href="https://opensource.creativecommons.org/blog/entries/2024-05-28-creativecommons-org/">New CreativeCommons.org launched 2023 September</a></li>
+<li><code>2011-08-31</code>: <a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/summary-of-current-licensing-tools/">Summary of current licensing tools</a></li>
+<li><code>2011-01-13</code>: <a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/cc-rest-api-updated-for-public-domain-mark/">CC REST API Updated for Public Domain Mark</a></li>
+<li><code>2009-04-02</code>: <a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/enumeration-descriptions-in-cc-web-services/">Enumeration descriptions in CC Web Services</a></li>
+<li><code>2008-07-24</code>: <a href="https://opensource.creativecommons.org/archives/old-tech-blog/entries/cclicense-in-alpha/">cc.license in alpha</a></li>
+</ul>
+</div>
+
+
+
+<article class="tags">
+  <h2>Tags</h2>
+  <ul>
+    
+      
+        
+        <li><a href="/blog/categories/announcements/">announcements</a></li>
+      
+        
+        <li><a href="/blog/categories/cc-legal-tools/">cc-legal-tools</a></li>
+      
+    
+  </ul>
+</article>
+
+<div class="comments">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function() { this.page.identifier = "/blog/entries/2026-05-06-sunsetting-api"; this.page.url = "http://opensource.creativecommons.org/blog/entries/2026-05-06-sunsetting-api/"; };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//cc-open-source.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"
+    rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+</div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a class="identity-logo" href="https://www.creativecommons.org">Creative Commons</a>
+
+    <nav class="footer-menu" aria-label="Footer menu">
+        <ul>
+          <li>
+            <a href="https://creativecommons.org/about/contact/" target="_blank">Contact</a>
+          </li>
+          <li>
+            <a href="https://mail.creativecommons.org/subscribe" target="_blank">Newsletter</a>
+          </li>
+          <li>
+            <a href="https://creativecommons.org/privacy/" target="_blank">Privacy</a>
+          </li>
+          <li>
+            <a href="https://creativecommons.org/policies/" target="_blank">Policies</a>
+          </li>
+          <li>
+            <a href="https://creativecommons.org/terms/" target="_blank">Terms</a>
+          </li>
+        </ul>
+    </nav>
+
+    <div class="contact">
+    <h2>Contact Us</h2>
+    <p>Creative Commons <br /> PO Box 1866, Mountain View, CA 94042</p>
+    <p><a href="mailto:info@creativecommons.org">info@creativecommons.org</a></p>
+
+    <nav class="social-menu" aria-label="Social menu">
+        <ul>
+            <li><a class="icon-replace fa-bluesky" href="https://bsky.app/profile/creativecommons.bsky.social" target="_blank">Bluesky</a></li>
+            <li><a class="icon-replace fa-mastodon" href="https://mastodon.social/@creativecommons" target="_blank">Mastodon</a></li>
+            <li><a class="icon-replace fa-linkedin" href="https://www.linkedin.com/company/creative-commons/" target="_blank">LinkedIn</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <div class="subscribe">
+    <h2>Subscribe to our Newsletter</h2>
+    <form action="https://creativecommons.us4.list-manage.com/subscribe/post?u=fd30364b6577b471373d6076c&amp;id=4603fe102a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter" target="_blank">
+        <input type="email" value="" name="EMAIL" class="email input" id="mce-EMAIL" placeholder="Your email" required>
+        <div style="position: absolute; left: -5000px" aria-hidden="true">
+          <input type="text" name="b_fd30364b6577b471373d6076c_4603fe102a" tabindex="-1" value="">
+        </div>
+        <input type="submit" value="subscribe" id="mc-embedded-subscribe" class="button small">
+      </form>
+    </div>
+
+    <div class="donate">
+        <h2>Support Our Work</h2>
+        <p>Our work relies on you! Help us keep the Internet free and open.</p>
+        <a class="donate icon-attach cc-heart-filled" href="https://www.classy.org/give/313412/#!/donation/checkout?c_src=website&c_src2=top-of-page-banner" target="_blank">Donate Now</a>
+    </div>
+
+
+    <div class="license">
+        <p>Except where otherwise <a href="https://creativecommons.org/policies/#license">noted</a>, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>. Icons by <a href="https://fontawesome.com/" target="_blank">Font Awesome</a>.</p>
+
+        <svg>
+            <use href="/static/vocabulary/svg/cc/icons/cc-icons.svg#cc-logo"></use>
+        </svg>
+        <svg>
+            <use href="/static/vocabulary/svg/cc/icons/cc-icons.svg#cc-by"></use>
+        </svg>
+    </div>
+  </footer>
+  <script src="/static/vocabulary/js/vocabulary.js"></script>
+ </body>
+</html>
