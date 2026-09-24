@@ -182,7 +182,7 @@
 </ul>
 <h3 id="bonus-content">Bonus content</h3><p>Not many of you may know this, but this site uses the <a href="https://getlektor.com">Lektor</a> CMS. I needed to have it installed on my system (windows 10 OS) to run the code in our site repository.
 Lektor suggests running the following code in powershell as an installation step:</p>
-<div class="hll"><pre><span></span><span class="p">(</span><span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://www.getlektor.com/installer.py&#39;</span><span class="p">)</span> <span class="p">|</span> <span class="n">python</span>
+<div class="hll"><pre><span></span><span class="p">(</span><span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">'https://www.getlektor.com/installer.py'</span><span class="p">)</span> <span class="p">|</span> <span class="n">python</span>
 </pre></div>
 <p>I just didn't think this is a very elegant way. Being an ardent <a href="/blog/entries/cc-vocabulary-docs-updates-2/chocolatey.org">chocolatey.org</a> fan, I just had to have it up on there! Now the installation step for lektor is simply:</p>
 <div class="hll"><pre><span></span><span class="n">choco</span> <span class="n">install</span> <span class="n">lektor</span>

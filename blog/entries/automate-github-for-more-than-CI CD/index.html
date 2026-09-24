@@ -165,26 +165,26 @@
     </figcaption>
   </figure>
 </div><p>The quality of these release notes made them quite tedious to generate manually. With the <a href="https://github.com/marketplace/actions/release-drafter">release drafter action</a>, we're able to automatically update a draft release note on every pull request to CC Search. The action lets us configure the line added for each pull request with some basic templating which includes variables for the pr number, title, and author (among others):</p>
-<div class="hll"><pre><span></span><span class="nt">change-template</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-</span><span class="nv"> </span><span class="s">$TITLE:</span><span class="nv"> </span><span class="s">#$NUMBER</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">@$AUTHOR&#39;</span>
+<div class="hll"><pre><span></span><span class="nt">change-template</span><span class="p">:</span><span class="w"> </span><span class="s">'-</span><span class="nv"> </span><span class="s">$TITLE:</span><span class="nv"> </span><span class="s">#$NUMBER</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">@$AUTHOR'</span>
 </pre></div>
 <p><br />This means each pull request gets a line like this in our release notes:</p>
 <blockquote><p>Enable web monetization on single result pages: <strong>#1191</strong> by <strong>@zackkrida</strong></p>
 </blockquote>
 <p>Perfect! We can also map GitHub labels on our pull requests to the sections of our generated release notes, like so:</p>
 <div class="hll"><pre><span></span><span class="nt">categories</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;New</span><span class="nv"> </span><span class="s">Features&#39;</span>
-<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;feature&#39;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Bug</span><span class="nv"> </span><span class="s">Fixes&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'New</span><span class="nv"> </span><span class="s">Features'</span>
+<span class="w">    </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="s">'feature'</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">'Bug</span><span class="nv"> </span><span class="s">Fixes'</span>
 <span class="w">    </span><span class="nt">label</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;bug&#39;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;critical&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'bug'</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'critical'</span>
 </pre></div>
 <p>The resulting release notes require no manual editing at release time, and has saved us hours over time and allows our developers to focus on DevOps work instead of copywriting on release days. We also never miss a contribution or expression of gratitude to one of our contributors. You can read the <a href="https://github.com/cc-archive/cccatalog-frontend/releases/latest">latest CC Search release notes</a> or <a href="https://github.com/cc-archive/cccatalog-frontend/blob/develop/.github/release-drafter.yml">see our full release-drafter.yml file here</a>.</p>
 <h3 id="repository-normalization">Repository Normalization</h3><p>Within a private repository of internal helper scripts, the CC technical team has a number of Github Actions which trigger Python scripts to keep configuration standardized across our repositories. We casually call this process "repository normalization". One such script ensures that we use a standard set of GitHub labels across all of our projects. This consistency helps us do things like direct users to <a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22help+wanted%22+state%3Aopen&amp;type=Issues">open issues in need of assistance</a> across the organization, or issues <a href="https://github.com/search?q=org%3Acreativecommons+label%3A%22good+first+issue%22+state%3Aopen&amp;type=Issues">good for first-time open source contributors</a>. With GitHub Actions, its easy to set up scheduled tasks with only a few lines of human-readable configuration. Here's the gist of running a Python script daily, for example:</p>
 <div class="hll"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example scheduled python action</span>
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">'0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*'</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
@@ -213,7 +213,7 @@
 <span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subhamX/github-project-bot@v1.0.0</span>
 <span class="w">  </span><span class="nt">with</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ACCESS_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ADMIN_GITHUB_TOKEN }}</span>
-<span class="w">    </span><span class="nt">COLUMN_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;In</span><span class="nv"> </span><span class="s">Progress</span><span class="nv"> </span><span class="s">(Community)&quot;</span>
+<span class="w">    </span><span class="nt">COLUMN_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">"In</span><span class="nv"> </span><span class="s">Progress</span><span class="nv"> </span><span class="s">(Community)"</span>
 <span class="w">    </span><span class="nt">PROJECT_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/orgs/creativecommons/projects/7</span>
 <span class="w">    </span><span class="nt">REPO_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/cc-archive/cccatalog-frontend</span>
 </pre></div>

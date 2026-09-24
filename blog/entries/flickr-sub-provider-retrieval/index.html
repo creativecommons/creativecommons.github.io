@@ -243,19 +243,19 @@ query, we identified the corresponding user IDs (content of the <em>owner</em> f
 <strong>flickr.people.findByUsername</strong> method made available in the Flickr API. The mapping between the sub-provider and the
 corresponding user IDs was stored in a dictionary as follows.</p>
 <div class="hll"><pre><span></span><span class="n">FLICKR_SUB_PROVIDERS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;nasa&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;24662369@N07&#39;</span><span class="p">,</span>  <span class="c1"># NASA Goddard Photo and Video</span>
-        <span class="s1">&#39;35067687@N04&#39;</span><span class="p">,</span>  <span class="c1"># NASA HQ PHOTO</span>
-        <span class="s1">&#39;29988733@N04&#39;</span><span class="p">,</span>  <span class="c1"># NASA Johnson</span>
-        <span class="s1">&#39;28634332@N05&#39;</span><span class="p">,</span>  <span class="c1"># NASA&#39;s Marshall Space Flight Center</span>
-        <span class="s1">&#39;108488366@N07&#39;</span><span class="p">,</span>  <span class="c1"># NASAKennedy</span>
-        <span class="s1">&#39;136485307@N06&#39;</span>  <span class="c1"># Apollo Image Gallery</span>
+    <span class="s1">'nasa'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'24662369@N07'</span><span class="p">,</span>  <span class="c1"># NASA Goddard Photo and Video</span>
+        <span class="s1">'35067687@N04'</span><span class="p">,</span>  <span class="c1"># NASA HQ PHOTO</span>
+        <span class="s1">'29988733@N04'</span><span class="p">,</span>  <span class="c1"># NASA Johnson</span>
+        <span class="s1">'28634332@N05'</span><span class="p">,</span>  <span class="c1"># NASA's Marshall Space Flight Center</span>
+        <span class="s1">'108488366@N07'</span><span class="p">,</span>  <span class="c1"># NASAKennedy</span>
+        <span class="s1">'136485307@N06'</span>  <span class="c1"># Apollo Image Gallery</span>
     <span class="p">},</span>
-    <span class="s1">&#39;bio_diversity&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;61021753@N02&#39;</span>  <span class="c1"># BioDivLibrary</span>
+    <span class="s1">'bio_diversity'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'61021753@N02'</span>  <span class="c1"># BioDivLibrary</span>
     <span class="p">},</span>
-    <span class="s1">&#39;spacex&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;130608600@N05&#39;</span>  <span class="c1"># Official SpaceX Photos</span>
+    <span class="s1">'spacex'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'130608600@N05'</span>  <span class="c1"># Official SpaceX Photos</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -273,8 +273,8 @@ dictionary <em>FLICKR_SUB_PROVIDERS</em>. Otherwise the <em>source</em> was set 
 available at the API script level, we did not have to worry about retrieving the user ID (<em>owner</em> value) from the
 <em>creator URL</em> field in our data. Rather, we simply get the owner value from the API response, and try to search for it
 in the <em>FLICKR_SUB_PROVIDERS</em> dictionary as follows.</p>
-<div class="hll"><pre><span></span><span class="n">owner</span> <span class="o">=</span> <span class="n">image_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="n">source</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">FLICKR_SUB_PROVIDERS</span> <span class="k">if</span> <span class="n">owner</span> <span class="ow">in</span> <span class="n">FLICKR_SUB_PROVIDERS</span><span class="p">[</span><span class="n">s</span><span class="p">]),</span> <span class="s1">&#39;Flickr&#39;</span><span class="p">)</span>
+<div class="hll"><pre><span></span><span class="n">owner</span> <span class="o">=</span> <span class="n">image_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'owner'</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">source</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">FLICKR_SUB_PROVIDERS</span> <span class="k">if</span> <span class="n">owner</span> <span class="ow">in</span> <span class="n">FLICKR_SUB_PROVIDERS</span><span class="p">[</span><span class="n">s</span><span class="p">]),</span> <span class="s1">'Flickr'</span><span class="p">)</span>
 </pre></div>
 <p>Since the collection of user IDs corresponding to each sub-provider is represented as a set, the time complexity for
 each sub-provider is O(1) and therefore the total time complexity is linear in the number of sub-providers (that is O(n)
@@ -315,17 +315,17 @@ table to the sub-provider value.</p>
 <span class="n">ON</span>
 <span class="p">{</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">CREATOR_URL</span><span class="p">}</span> <span class="o">=</span> <span class="n">public</span><span class="o">.</span><span class="p">{</span><span class="n">temp_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">CREATOR_URL</span><span class="p">}</span>
 <span class="n">AND</span>
-<span class="p">{</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">}</span> <span class="o">=</span> <span class="s1">&#39;Flickr&#39;</span><span class="p">;</span>
+<span class="p">{</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">}</span> <span class="o">=</span> <span class="s1">'Flickr'</span><span class="p">;</span>
 
-<span class="c1"># Let us refer to the result produced from the SELECT query as &#39;selected_records&#39;</span>
+<span class="c1"># Let us refer to the result produced from the SELECT query as 'selected_records'</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="n">foreign_id</span><span class="p">,</span> <span class="n">sub_provider</span><span class="p">)</span> <span class="ow">in</span> <span class="n">selected_records</span><span class="p">:</span>
     <span class="n">UPDATE</span> <span class="p">{</span><span class="n">image_table</span><span class="p">}</span>
-    <span class="n">SET</span> <span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">}</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{sub_provider}</span><span class="s1">&#39;</span>
+    <span class="n">SET</span> <span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">}</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{sub_provider}</span><span class="s1">'</span>
     <span class="n">WHERE</span>
-    <span class="p">{</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">}</span> <span class="o">=</span> <span class="s1">&#39;Flickr&#39;</span>
+    <span class="p">{</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">PROVIDER</span><span class="p">}</span> <span class="o">=</span> <span class="s1">'Flickr'</span>
     <span class="n">AND</span>
-    <span class="n">MD5</span><span class="p">({</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">FOREIGN_ID</span><span class="p">})</span> <span class="o">=</span> <span class="n">MD5</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{foreign_id}</span><span class="s1">&#39;</span><span class="p">);</span>
+    <span class="n">MD5</span><span class="p">({</span><span class="n">image_table</span><span class="p">}</span><span class="o">.</span><span class="p">{</span><span class="n">col</span><span class="o">.</span><span class="n">FOREIGN_ID</span><span class="p">})</span> <span class="o">=</span> <span class="n">MD5</span><span class="p">(</span><span class="s1">'</span><span class="si">{foreign_id}</span><span class="s1">'</span><span class="p">);</span>
 </pre></div>
 <p>To make this functionality available from the Airflow UI, I have added the Airflow DAG
 <em>flickr_sub_provider_update_workflow</em>.

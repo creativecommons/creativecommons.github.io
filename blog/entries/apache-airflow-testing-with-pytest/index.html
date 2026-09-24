@@ -234,7 +234,7 @@ without errors. To do this, you can use the following function:</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_dags_load_with_no_errors</span><span class="p">():</span>
     <span class="n">dag_bag</span> <span class="o">=</span> <span class="n">DagBag</span><span class="p">(</span><span class="n">include_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">dag_bag</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="s1">&#39;common_api_workflows.py&#39;</span><span class="p">)</span>
+    <span class="n">dag_bag</span><span class="o">.</span><span class="n">process_file</span><span class="p">(</span><span class="s1">'common_api_workflows.py'</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dag_bag</span><span class="o">.</span><span class="n">import_errors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 <p>We initialize a <code>DagBag</code> (this loads DAG files). With the <code>process_file</code> method,
@@ -265,14 +265,14 @@ and a test of the function:</p>
 
     <span class="k">with</span> <span class="n">dag</span><span class="p">:</span>
         <span class="n">start_task</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
-            <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">),</span>
-            <span class="n">bash_command</span><span class="o">=</span><span class="s1">&#39;echo Starting </span><span class="si">{}</span><span class="s1"> workflow&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status</span><span class="p">),</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="s1">'</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">),</span>
+            <span class="n">bash_command</span><span class="o">=</span><span class="s1">'echo Starting </span><span class="si">{}</span><span class="s1"> workflow'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">status</span><span class="p">),</span>
             <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
         <span class="p">)</span>
 
         <span class="n">run_task</span> <span class="o">=</span>  <span class="n">BashOperator</span><span class="p">(</span>
-            <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;get_</span><span class="si">{}</span><span class="s1">_images&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">),</span>
-            <span class="n">bash_command</span><span class="o">=</span><span class="s1">&#39;python </span><span class="si">{}</span><span class="s1"> --mode default&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">script_location</span><span class="p">),</span>
+            <span class="n">task_id</span><span class="o">=</span><span class="s1">'get_</span><span class="si">{}</span><span class="s1">_images'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">),</span>
+            <span class="n">bash_command</span><span class="o">=</span><span class="s1">'python </span><span class="si">{}</span><span class="s1"> --mode default'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">script_location</span><span class="p">),</span>
             <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
         <span class="p">)</span>
 
@@ -282,12 +282,12 @@ and a test of the function:</p>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_create_dag_creates_correct_dependencies</span><span class="p">():</span>
     <span class="n">dag</span> <span class="o">=</span> <span class="n">create_dag</span><span class="p">(</span>
-        <span class="s1">&#39;test_source&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;test_script_location&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;test_dag_id&#39;</span>
+        <span class="s1">'test_source'</span><span class="p">,</span>
+        <span class="s1">'test_script_location'</span><span class="p">,</span>
+        <span class="s1">'test_dag_id'</span>
     <span class="p">)</span>
-    <span class="n">start_id</span> <span class="o">=</span> <span class="s1">&#39;test_source_starting&#39;</span>
-    <span class="n">run_id</span> <span class="o">=</span> <span class="s1">&#39;get_test_source_images&#39;</span>
+    <span class="n">start_id</span> <span class="o">=</span> <span class="s1">'test_source_starting'</span>
+    <span class="n">run_id</span> <span class="o">=</span> <span class="s1">'get_test_source_images'</span>
     <span class="n">start_task</span> <span class="o">=</span> <span class="n">dag</span><span class="o">.</span><span class="n">get_task</span><span class="p">(</span><span class="n">start_id</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">start_task</span><span class="o">.</span><span class="n">upstream_task_ids</span> <span class="o">==</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">assert</span> <span class="n">start_task</span><span class="o">.</span><span class="n">downstream_task_ids</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([</span><span class="n">run_id</span><span class="p">])</span>

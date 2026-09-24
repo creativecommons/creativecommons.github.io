@@ -161,14 +161,14 @@ This post contains details of my work done to make accessibility improvements to
 The solution to overcome this was to use an event listener on the element which would would execute the <code>showLicenseExplanation</code> function onClick.
 Luckily <code>VueJS</code> provides this function inbuilt via the <code>v-on:keyup</code> attribute. So after change the code looks as follows:</p>
 <div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span>
-    <span class="na">:aria-label</span><span class="o">=</span><span class="s">&quot;$t(&#39;browse-page.aria.license-explanation&#39;)&quot;</span>
-    <span class="na">tabindex</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
-    <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;filterType == &#39;licenses&#39;&quot;</span>
-    <span class="na">src</span><span class="o">=</span><span class="s">&quot;@/assets/help_icon.svg&quot;</span>
-    <span class="na">alt</span><span class="o">=</span><span class="s">&quot;help&quot;</span>
-    <span class="na">class</span><span class="o">=</span><span class="s">&quot;license-help is-pulled-right padding-top-smallest padding-right-smaller&quot;</span>
-    <span class="err">@</span><span class="na">click</span><span class="err">.</span><span class="na">stop</span><span class="o">=</span><span class="s">&quot;toggleLicenseExplanationVisibility(item.code)&quot;</span>
-    <span class="na">v-on:keyup</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">&quot;toggleLicenseExplanationVisibility(item.code)&quot;</span>
+    <span class="na">:aria-label</span><span class="o">=</span><span class="s">"$t('browse-page.aria.license-explanation')"</span>
+    <span class="na">tabindex</span><span class="o">=</span><span class="s">"0"</span>
+    <span class="na">v-if</span><span class="o">=</span><span class="s">"filterType == 'licenses'"</span>
+    <span class="na">src</span><span class="o">=</span><span class="s">"@/assets/help_icon.svg"</span>
+    <span class="na">alt</span><span class="o">=</span><span class="s">"help"</span>
+    <span class="na">class</span><span class="o">=</span><span class="s">"license-help is-pulled-right padding-top-smallest padding-right-smaller"</span>
+    <span class="err">@</span><span class="na">click</span><span class="err">.</span><span class="na">stop</span><span class="o">=</span><span class="s">"toggleLicenseExplanationVisibility(item.code)"</span>
+    <span class="na">v-on:keyup</span><span class="err">.</span><span class="na">enter</span><span class="o">=</span><span class="s">"toggleLicenseExplanationVisibility(item.code)"</span>
 <span class="p">/&gt;</span>
 </pre></div>
 <p>Similar change was made to all the tooltips. The reason behind this error was that non-semantic element representation
@@ -184,22 +184,22 @@ The criteria are:</p>
 This modal has an overlay and closes when we press the <strong>esc</strong> key or click on the overlay. The modal also disables other elements when it is opened.</p>
 <p>The final task achieved in the modal was the implementation of trap focus. For this we used the <a href="https://github.com/posva/focus-trap-vue">vue-trap-focus library</a>
 The library exposes a <code>&lt;focus-trap&gt;</code> component which acts as wrapper to enable focus-trap. The implementation we used was:</p>
-<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">focus-trap</span> <span class="na">:active</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal relative&quot;</span> <span class="na">aria-modal</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">role</span><span class="o">=</span><span class="s">&quot;dialog&quot;</span><span class="p">&gt;</span>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">focus-trap</span> <span class="na">:active</span><span class="o">=</span><span class="s">"true"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"modal relative"</span> <span class="na">aria-modal</span><span class="o">=</span><span class="s">"true"</span> <span class="na">role</span><span class="o">=</span><span class="s">"dialog"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">header</span>
-        <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;title&quot;</span>
-        <span class="na">class</span><span class="o">=</span><span class="s">&quot;modal-header padding-top-bigger padding-left-bigger padding-right-normal padding-bottom-small&quot;</span>
+        <span class="na">v-if</span><span class="o">=</span><span class="s">"title"</span>
+        <span class="na">class</span><span class="o">=</span><span class="s">"modal-header padding-top-bigger padding-left-bigger padding-right-normal padding-bottom-small"</span>
     <span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">"header"</span><span class="p">&gt;</span>
             <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>{{ title }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
         <span class="p">&lt;/</span><span class="nt">slot</span><span class="p">&gt;</span>
         <span class="p">&lt;</span><span class="nt">button</span>
-            <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span>
-            <span class="na">class</span><span class="o">=</span><span class="s">&quot;close-button has-color-gray is-size-6 is-size-4-touch&quot;</span>
-            <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;$emit(&#39;close&#39;)&quot;</span>
-            <span class="na">:aria-label</span><span class="o">=</span><span class="s">&quot;$t(&#39;browse-page.aria.close&#39;)&quot;</span>
+            <span class="na">type</span><span class="o">=</span><span class="s">"button"</span>
+            <span class="na">class</span><span class="o">=</span><span class="s">"close-button has-color-gray is-size-6 is-size-4-touch"</span>
+            <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">"$emit('close')"</span>
+            <span class="na">:aria-label</span><span class="o">=</span><span class="s">"$t('browse-page.aria.close')"</span>
         <span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon cross&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">"icon cross"</span> <span class="p">/&gt;</span>
         <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">default</span> <span class="p">/&gt;</span>
@@ -211,17 +211,17 @@ These attributes direct our screen readers to recognise this component as a moda
 <p>The last improvement involves using appropriate label tags for the form elements. A lot of elements did not have proper labels or were nested in wrong way.
 These elements were fixed and after the fixing the nestings the elements had proper labels which the screen readers were able to identify.
 An example a proper input elements with correct label nesting is:</p>
-<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">:for</span><span class="o">=</span><span class="s">&quot;item.code&quot;</span> <span class="na">:disabled</span><span class="o">=</span><span class="s">&quot;block(item)&quot;</span><span class="p">&gt;</span>
+<div class="hll"><pre><span></span><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">"checkbox"</span> <span class="na">:for</span><span class="o">=</span><span class="s">"item.code"</span> <span class="na">:disabled</span><span class="o">=</span><span class="s">"block(item)"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">input</span>
-        <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span>
-        <span class="na">class</span><span class="o">=</span><span class="s">&quot;filter-checkbox margin-right-small&quot;</span>
-        <span class="na">:id</span><span class="o">=</span><span class="s">&quot;item.code&quot;</span>
-        <span class="na">:key</span><span class="o">=</span><span class="s">&quot;index&quot;</span>
-        <span class="na">:checked</span><span class="o">=</span><span class="s">&quot;item.checked&quot;</span>
-        <span class="na">:disabled</span><span class="o">=</span><span class="s">&quot;block(item)&quot;</span>
-        <span class="err">@</span><span class="na">change</span><span class="o">=</span><span class="s">&quot;onValueChange&quot;</span>
+        <span class="na">type</span><span class="o">=</span><span class="s">"checkbox"</span>
+        <span class="na">class</span><span class="o">=</span><span class="s">"filter-checkbox margin-right-small"</span>
+        <span class="na">:id</span><span class="o">=</span><span class="s">"item.code"</span>
+        <span class="na">:key</span><span class="o">=</span><span class="s">"index"</span>
+        <span class="na">:checked</span><span class="o">=</span><span class="s">"item.checked"</span>
+        <span class="na">:disabled</span><span class="o">=</span><span class="s">"block(item)"</span>
+        <span class="err">@</span><span class="na">change</span><span class="o">=</span><span class="s">"onValueChange"</span>
     <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">license-icons</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;filterType == &#39;licenses&#39;&quot;</span> <span class="na">:license</span><span class="o">=</span><span class="s">&quot;item.code&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">license-icons</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"filterType == 'licenses'"</span> <span class="na">:license</span><span class="o">=</span><span class="s">"item.code"</span> <span class="p">/&gt;</span>
     {{ $t(item.name) }}
 <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </pre></div>

@@ -201,24 +201,24 @@
 
     <span class="nd">@staticmethod</span>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_record_window_samples</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Insert a status into all sliding windows. &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">""" Insert a status into all sliding windows. """</span>
         <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
         <span class="c1"># Time-based sliding windows</span>
         <span class="k">for</span> <span class="n">stat_key</span><span class="p">,</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">WINDOW_PAIRS</span><span class="p">:</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">stat_key</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">zadd</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">now</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">stat_key</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">'</span>
+            <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">zadd</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">now</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
             <span class="c1"># Delete events from outside the window</span>
-            <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">zremrangebyscore</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;-inf&#39;</span><span class="p">,</span> <span class="n">now</span> <span class="o">-</span> <span class="n">interval</span><span class="p">)</span>
-        <span class="c1"># &quot;Last n requests&quot; window</span>
-        <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">LAST_50_REQUESTS</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
-        <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">ltrim</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">LAST_50_REQUESTS</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">zremrangebyscore</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">'-inf'</span><span class="p">,</span> <span class="n">now</span> <span class="o">-</span> <span class="n">interval</span><span class="p">)</span>
+        <span class="c1"># "Last n requests" window</span>
+        <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">LAST_50_REQUESTS</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">pipe</span><span class="o">.</span><span class="n">ltrim</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">LAST_50_REQUESTS</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 <p><em><center>Collecting status codes in aggregate</center></em></p>
 <p>Meanwhile, the crawl monitor process can keep tabs on the contents of each error threshold.</p>
 <p>When more than 10% of the requests made to a source in the last minute are errors, we'll set a halt condition in Redis and stop replenishing rate limit tokens (more on that below).</p>
 <div class="hll"><pre><span></span><span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
 <span class="n">one_minute_window</span> <span class="o">=</span> <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">zrangebyscore</span><span class="p">(</span>
-    <span class="n">one_minute_window_key</span><span class="p">,</span> <span class="s1">&#39;-inf&#39;</span><span class="p">,</span> <span class="n">now</span> <span class="o">-</span> <span class="mi">60</span>
+    <span class="n">one_minute_window_key</span><span class="p">,</span> <span class="s1">'-inf'</span><span class="p">,</span> <span class="n">now</span> <span class="o">-</span> <span class="mi">60</span>
 <span class="p">)</span>
 <span class="n">errors</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">success</span> <span class="o">=</span> <span class="mi">0</span>
@@ -233,7 +233,7 @@
 </pre></div>
 <p><em><center>Detecting elevated crawl errors for a source</center></em></p>
 <p>For detecting "serious" errors, where we've seen 50 failed requests in a row, we'll set a permanent halt condition. Someone will have to manually troubleshoot the situation and switch the crawler back on for that source.</p>
-<div class="hll"><pre><span></span><span class="n">last_50_statuses_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;statuslast50req:</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
+<div class="hll"><pre><span></span><span class="n">last_50_statuses_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'statuslast50req:</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">'</span>
 <span class="n">last_50_statuses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">lrange</span><span class="p">(</span><span class="n">last_50_statuses_key</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_50_statuses</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="ow">and</span> <span class="n">_every_request_failed</span><span class="p">(</span><span class="n">last_50_statuses</span><span class="p">):</span>
     <span class="k">await</span> <span class="n">redis</span><span class="o">.</span><span class="n">sadd</span><span class="p">(</span><span class="n">HALTED_SET</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
@@ -250,7 +250,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">redis</span> <span class="o">=</span> <span class="n">redis</span>
 
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
-        <span class="n">token_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CURRTOKEN_PREFIX</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">token_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">CURRTOKEN_PREFIX</span><span class="si">}{</span><span class="n">source</span><span class="si">}</span><span class="s1">'</span>
         <span class="n">tokens</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">decr</span><span class="p">(</span><span class="n">token_key</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">tokens</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">token_acquired</span> <span class="o">=</span> <span class="kc">True</span>
@@ -272,12 +272,12 @@
 <p>In other words, we need to make sure that each worker process isn't jamming itself up with a single source. We have a <a href="https://en.wikipedia.org/wiki/Scheduling_(computing%29">scheduling problem</a>. We've naively implemented first-come-first-serve and need to switch to a different scheduling strategy.</p>
 <p>There are innumerable ways to address scheduling problems. Since there are only a few dozen sources in our system, we can get away with using a stupid scheduling algorithm: give each source equal capacity in every worker. In other words, if there are 5000 tasks to distribute and 30 sources, we can allocate 166 simultaneous tasks to each source per worker. That's plenty for our purposes. There are obvious drawbacks of this approach in that eventually there will be so many sources that we start starving high rate limit sources of work. We'll cross that bridge when we come to it; it's better to use the simplest possible approach we can get away with instead of spending all of our time on solving hypothetical future problems.</p>
 <div class="hll"><pre><span></span>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_schedule</span><span class="p">):</span>
-        <span class="n">raw_sources</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">smembers</span><span class="p">(</span><span class="s1">&#39;inbound_sources&#39;</span><span class="p">)</span>
-        <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_sources</span><span class="p">]</span>
+        <span class="n">raw_sources</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis</span><span class="o">.</span><span class="n">smembers</span><span class="p">(</span><span class="s1">'inbound_sources'</span><span class="p">)</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">raw_sources</span><span class="p">]</span>
         <span class="n">num_sources</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
-        <span class="c1"># A source never gets more than 1/4th of the worker&#39;s capacity. This</span>
+        <span class="c1"># A source never gets more than 1/4th of the worker's capacity. This</span>
         <span class="c1"># helps prevent starvation of lower rate limit requests and ensures</span>
-        <span class="c1"># that the first few sources to be discovered don&#39;t get all of the</span>
+        <span class="c1"># that the first few sources to be discovered don't get all of the</span>
         <span class="c1"># initial task slots.</span>
         <span class="n">max_share</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">MAX_TASKS</span> <span class="o">/</span> <span class="mi">4</span>
         <span class="n">share</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MAX_TASKS</span> <span class="o">/</span> <span class="n">num_sources</span><span class="p">),</span> <span class="n">max_share</span><span class="p">)</span>
@@ -300,19 +300,19 @@
 <p><em><center>Testing our crawl monitor's circuit breaking functionality with mock dependencies</center></em></p>
 <div class="hll"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">source_fixture</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Mocks the /v1/sources endpoint response. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">""" Mocks the /v1/sources endpoint response. """</span>
     <span class="k">return</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;source_name&quot;</span><span class="p">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;image_count&quot;</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
-            <span class="s2">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Example&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;source_url&quot;</span><span class="p">:</span> <span class="s2">&quot;example.com&quot;</span>
+            <span class="s2">"source_name"</span><span class="p">:</span> <span class="s2">"example"</span><span class="p">,</span>
+            <span class="s2">"image_count"</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span>
+            <span class="s2">"display_name"</span><span class="p">:</span> <span class="s2">"Example"</span><span class="p">,</span>
+            <span class="s2">"source_url"</span><span class="p">:</span> <span class="s2">"example.com"</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="s2">&quot;source_name&quot;</span><span class="p">:</span> <span class="s2">&quot;another&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;image_count&quot;</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>
-            <span class="s2">&quot;display_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Another&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;source_url&quot;</span><span class="p">:</span> <span class="s2">&quot;whatever&quot;</span>
+            <span class="s2">"source_name"</span><span class="p">:</span> <span class="s2">"another"</span><span class="p">,</span>
+            <span class="s2">"image_count"</span><span class="p">:</span> <span class="mi">1000000</span><span class="p">,</span>
+            <span class="s2">"display_name"</span><span class="p">:</span> <span class="s2">"Another"</span><span class="p">,</span>
+            <span class="s2">"source_url"</span><span class="p">:</span> <span class="s2">"whatever"</span>
         <span class="p">}</span>
     <span class="p">]</span>
 
@@ -329,59 +329,59 @@
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_error_circuit_breaker</span><span class="p">(</span><span class="n">source_fixture</span><span class="p">):</span>
     <span class="n">sources</span> <span class="o">=</span> <span class="n">source_fixture</span>
     <span class="n">redis</span><span class="p">,</span> <span class="n">monitor</span> <span class="o">=</span> <span class="n">create_mock_monitor</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
-    <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;statuslast50req:example&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;500&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
-    <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;statuslast50req:another&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;200&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
+    <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">'statuslast50req:example'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">'500'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
+    <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">'statuslast50req:another'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">'200'</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
     <span class="k">await</span> <span class="n">run_monitor</span><span class="p">(</span><span class="n">monitor_task</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="sa">b</span><span class="s1">&#39;example&#39;</span> <span class="ow">in</span> <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;halted&#39;</span><span class="p">]</span>
-    <span class="k">assert</span> <span class="sa">b</span><span class="s1">&#39;another&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">&#39;halted&#39;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="sa">b</span><span class="s1">'example'</span> <span class="ow">in</span> <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">'halted'</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="sa">b</span><span class="s1">'another'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">redis</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="s1">'halted'</span><span class="p">]</span>
 </pre></div>
 <p>The main drawback of dependency injection is that initializing your objects will take some more ceremony. See the <a href="https://github.com/creativecommons/image-crawler/blob/00b59aba9a15faccf203a53d73a98e8c06cb69e8/worker/scheduler.py#L162">initialization of the crawl scheduler</a> for an example of wiring up an object with a lot of dependencies. You might also find that constructors and other functions with a lot of dependencies will have a lot of arguments if care isn't taken to bundle external dependencies together. In my opinion, the price of a few extra lines of initialization code is well worth the benefits gained from testability and modularity.</p>
 <h4 id="smoke-testing">Smoke testing</h4><p>Even with our unit test coverage, we still need to do some basic small-scale manual tests to make sure our assumptions hold up in the real world. We'll need to write <a href="https://www.terraform.io/">Terraform</a> modules that provision a working version of the real system. Sadly, our Terraform infrastructure repository is private for now, but here's a taste of what the infra code looks like.</p>
-<div class="hll"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;image-crawler&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../../modules/services/image-crawler&quot;</span>
-<span class="w">  </span><span class="na">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prod&quot;</span>
-<span class="w">  </span><span class="na">docker_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.25.0&quot;</span>
-<span class="w">  </span><span class="na">aws_access_key_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.aws_access_key_id}&quot;</span>
-<span class="w">  </span><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.aws_secret_access_key}&quot;</span>
-<span class="w">  </span><span class="na">zookeeper_endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${module.kafka.zookeeper_brokers}&quot;</span>
-<span class="w">  </span><span class="na">kafka_brokers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${module.kafka.kafka_brokers}&quot;</span>
-<span class="w">  </span><span class="na">worker_instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;m5.large&quot;</span>
+<div class="hll"><pre><span></span><span class="kr">module</span><span class="w"> </span><span class="nv">"image-crawler"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../../modules/services/image-crawler"</span>
+<span class="w">  </span><span class="na">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"prod"</span>
+<span class="w">  </span><span class="na">docker_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.25.0"</span>
+<span class="w">  </span><span class="na">aws_access_key_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.aws_access_key_id}"</span>
+<span class="w">  </span><span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.aws_secret_access_key}"</span>
+<span class="w">  </span><span class="na">zookeeper_endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${module.kafka.zookeeper_brokers}"</span>
+<span class="w">  </span><span class="na">kafka_brokers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${module.kafka.kafka_brokers}"</span>
+<span class="w">  </span><span class="na">worker_instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"m5.large"</span>
 <span class="w">  </span><span class="na">worker_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
 <span class="p">}</span>
 </pre></div>
 <p><em><center>Initialization of crawler Terraform module in our production environment</center></em></p>
-<div class="hll"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-workers&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.ami}&quot;</span>
-<span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.worker_instance_type}&quot;</span>
-<span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${data.template_file.worker_init.rendered}&quot;</span>
-<span class="w">  </span><span class="na">subnet_id</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span>
-<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span>
-<span class="w">  </span><span class="na">count</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.worker_count}&quot;</span>
+<div class="hll"><pre><span></span><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"crawler-workers"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.ami}"</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.worker_instance_type}"</span>
+<span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"${data.template_file.worker_init.rendered}"</span>
+<span class="w">  </span><span class="na">subnet_id</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"${element(data.aws_subnet_ids.subnets.ids, 0)}"</span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"${aws_security_group.image-crawler-sg.id}"</span><span class="p">]</span>
+<span class="w">  </span><span class="na">count</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.worker_count}"</span>
 
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">Name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;image-crawler-worker-${var.environment}&quot;</span>
-<span class="w">    </span><span class="na">environment</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment}&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:environment&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment == &quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:product&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cccatalog-api&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:purpose&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Image crawler worker&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:team&quot;</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cc-search&quot;</span>
+<span class="w">    </span><span class="na">Name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"image-crawler-worker-${var.environment}"</span>
+<span class="w">    </span><span class="na">environment</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.environment}"</span>
+<span class="w">    </span><span class="s2">"cc:environment"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.environment == "dev" ? "staging" : "production"}"</span>
+<span class="w">    </span><span class="s2">"cc:product"</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"cccatalog-api"</span>
+<span class="w">    </span><span class="s2">"cc:purpose"</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"Image crawler worker"</span>
+<span class="w">    </span><span class="s2">"cc:team"</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"cc-search"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;crawler-monitor&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.ami}&quot;</span>
-<span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c5.large&quot;</span>
-<span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${data.template_file.monitor_init.rendered}&quot;</span>
-<span class="w">  </span><span class="na">subnet_id</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${element(data.aws_subnet_ids.subnets.ids, 0)}&quot;</span>
-<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;${aws_security_group.image-crawler-sg.id}&quot;</span><span class="p">]</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"crawler-monitor"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.ami}"</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"c5.large"</span>
+<span class="w">  </span><span class="na">user_data</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"${data.template_file.monitor_init.rendered}"</span>
+<span class="w">  </span><span class="na">subnet_id</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"${element(data.aws_subnet_ids.subnets.ids, 0)}"</span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"${aws_security_group.image-crawler-sg.id}"</span><span class="p">]</span>
 
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">Name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;image-crawler-monitor-${var.environment}&quot;</span>
-<span class="w">    </span><span class="na">environment</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment}&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:environment&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.environment == &quot;dev&quot; ? &quot;staging&quot; : &quot;production&quot;}&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:product&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cccatalog-api&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:purpose&quot;</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Image crawler monitor&quot;</span>
-<span class="w">    </span><span class="s2">&quot;cc:team&quot;</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cc-search&quot;</span>
+<span class="w">    </span><span class="na">Name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"image-crawler-monitor-${var.environment}"</span>
+<span class="w">    </span><span class="na">environment</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.environment}"</span>
+<span class="w">    </span><span class="s2">"cc:environment"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.environment == "dev" ? "staging" : "production"}"</span>
+<span class="w">    </span><span class="s2">"cc:product"</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"cccatalog-api"</span>
+<span class="w">    </span><span class="s2">"cc:purpose"</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"Image crawler monitor"</span>
+<span class="w">    </span><span class="s2">"cc:team"</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"cc-search"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -404,41 +404,41 @@
 <p>It would be nice to build a reporting dashboard for this, but in the interest of time, we'll dump a giant JSON blob to <code>STDOUT</code> every 5 seconds and call it a day. When we want to check on crawl progress, we <code>ssh</code> into the crawl monitoring virtual machine and <code>tail</code> the logs (we could also use our Graylog instance if we're feeling lazy). Fortunately, JSON is both trivially human and machine readable, so we can build a more sophisticated monitoring system later by parsing the logs.</p>
 <p>Here's an example log line from one of our smoke tests, indicating that we've crawled 13,224 images successfully and nothing else is happening.</p>
 <div class="hll"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;event&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;monitoring_update&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;time&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-04-17T20:22:56.837232&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;general&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;global_max_rps&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">193.418869804698</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;error_rps&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;processing_rate&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;success_rps&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;circuit_breaker_tripped&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">      </span><span class="nt">&quot;num_resized&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13224</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;resize_errors&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;split_rate&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">   </span><span class="nt">"event"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring_update"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-17T20:22:56.837232"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"general"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"global_max_rps"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">193.418869804698</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"error_rps"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"processing_rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"success_rps"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"circuit_breaker_tripped"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">"num_resized"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13224</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"resize_errors"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"split_rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">   </span><span class="p">},</span>
-<span class="w">   </span><span class="nt">&quot;specific&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;flickr&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;successful&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13188</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;last_50_statuses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
+<span class="w">   </span><span class="nt">"specific"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"flickr"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"successful"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">13188</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"last_50_statuses"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"200"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
 <span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;rate_limit&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">178.375147633876</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;error&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="nt">"rate_limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">178.375147633876</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;animaldiversity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;last_50_statuses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">      </span><span class="nt">"animaldiversity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"last_50_statuses"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"200"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
 <span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;successful&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;error&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;rate_limit&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.206215440554406</span>
+<span class="w">         </span><span class="nt">"successful"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"rate_limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.206215440554406</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;phylopic&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;rate_limit&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;error&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;successful&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;last_50_statuses&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;200&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
+<span class="w">      </span><span class="nt">"phylopic"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"rate_limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"error"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"successful"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"last_50_statuses"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"200"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">18</span>
 <span class="w">         </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">   </span><span class="p">}</span>
